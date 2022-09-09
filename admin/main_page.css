@@ -1,0 +1,12 @@
+
+    .ego-for-back.container{
+        display:grid;
+        grid-template-columns:2fr 1fr;
+        width: 95%;
+        margin:0 auto;
+    }
+
+    .ego-for-back.container input,
+    .ego-for-back.container label{
+        display: block;    
+    }
