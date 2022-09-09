@@ -25,6 +25,7 @@ require_once 'includes/cpt/streamings.php';
 
 // Custom fields
 require_once 'includes/cf/streamings.php';
+require_once 'includes/cf/to_api.php';
 
 // Shortcodes
 require_once 'includes/shortcode/twich_embed.php';
@@ -57,7 +58,7 @@ add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
     $post_types = array( 'ego_streams' );
     if ( is_single($post_type)){
-        $template = __DIR__.'/public/single-ego_streams.php';
+        $template = __DIR__.'/public/single.php';
     }
     return $template;
 }

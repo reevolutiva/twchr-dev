@@ -13,7 +13,7 @@
  * all_data = get_post_meta( get_the_ID(), 'ego_stream_all_data', true )
  */
 class ego_stream {
-	private $config = '{"title":"Egosapiens Steams","prefix":"ego_stream_","domain":"ego_stream","class_name":"ego_stream","post-type":["post"],"context":"normal","priority":"default","cpt":"ego_stream","fields":[{"type":"text","label":"id","id":"ego_stream_id"},{"type":"text","label":"user_id","id":"ego_stream_user_id"},{"type":"text","label":"title","id":"ego_stream_title"},{"type":"text","label":"description","id":"ego_stream_description"},{"type":"url","label":"url","id":"ego_stream_url"},{"type":"text","label":"duration","id":"ego_stream_duration"},{"type":"textarea","label":"all_data","rows":"10","id":"ego_stream_all_data"}]}';
+	private $config = '{"title":"Egosapiens Steams","prefix":"ego_stream_","domain":"ego_stream","class_name":"ego_stream","post-type":["post"],"context":"side","priority":"high","cpt":"ego_stream","fields":[{"type":"text","label":"id","id":"ego_stream_id"},{"type":"text","label":"user_id","id":"ego_stream_user_id"},{"type":"text","label":"title","id":"ego_stream_title"},{"type":"text","label":"description","id":"ego_stream_description"},{"type":"url","label":"url","id":"ego_stream_url"},{"type":"text","label":"duration","id":"ego_stream_duration"},{"type":"textarea","label":"all_data","rows":"10","id":"ego_stream_all_data"}]}';
 
 	public function __construct() {
 		$this->config = json_decode( $this->config, true );
