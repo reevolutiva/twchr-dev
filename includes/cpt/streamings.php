@@ -35,7 +35,7 @@ function egosapiens_stream() {
 		'label'                 => __( 'Streaming', 'text_domain' ),
 		'description'           => __( 'Streaming de strean', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'thumbnail' ),
+		'supports'              => array( 'title', 'thumbnail','editor' ),
 		'taxonomies'            => array( 'category' ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -49,7 +49,8 @@ function egosapiens_stream() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
-		'menu_icon' 			=> 'dashicons-rss'
+		'menu_icon' 			=> 'dashicons-rss',
+		'show_in_rest'			=> true
 	);
 	register_post_type( 'ego_stream', $args );
 
