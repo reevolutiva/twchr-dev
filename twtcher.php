@@ -57,7 +57,7 @@ add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
     $post_types = array( 'ego_streams' );
     if ( is_single($post_type)){
-        $template = __DIR__.'/public/single'.$post_type.'.php';
+        $template = __DIR__.'/public/single-ego_streams.php';
     }
     return $template;
 }
