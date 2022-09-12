@@ -51,6 +51,7 @@ function egosapiens_stream() {
 		'capability_type'       => 'page',
 		'menu_icon' 			=> 'dashicons-rss',
 		'show_in_rest'			=> true
+
 	);
 	register_post_type( 'ego_stream', $args );
 

@@ -19,6 +19,8 @@ function Desactivar(){
 }
 register_activation_hook(__FILE__,'Desactivar' );
 
+// admin styles
+require_once 'admin/admin_dashboard.php';
 
 // Custom post types
 require_once 'includes/cpt/streamings.php';
