@@ -40,8 +40,8 @@ require_once 'includes/create-post/test.php';
 function egosapiens_main_menu(){
     //add_media_page($page_title:string,$menu_title:string,$capability:string,$menu_slug:string,$callback:callable,$position:integer|null )
     add_menu_page(
-        'Egosapiens',
-        'Egosapiens',
+        'Twittcher',
+        'Twittcher',
         'administrator',
         'egosapiens_wp_menu',
         'egosapiens_main_page',
