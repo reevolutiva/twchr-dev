@@ -33,6 +33,7 @@ require_once 'includes/cf/to_api.php';
 require_once 'includes/shortcode/twich_embed.php';
 
 require_once 'includes/api-connection/twicht.php';
+require_once 'includes/api-connection/twichtv.php';
 
 require_once 'includes/create-post/test.php';
 
