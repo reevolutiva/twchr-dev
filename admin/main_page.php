@@ -19,6 +19,7 @@
                     $client_id = $_GET['client-id'];
                     $secret_key = $_GET['secret-key'];
                     var_dump($_GET);
+                    fronted_to_db($client_id, $secret_key);
                 }
             }
         ?>

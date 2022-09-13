@@ -19,6 +19,11 @@ function Desactivar(){
 }
 register_activation_hook(__FILE__,'Desactivar' );
 
+//setings
+require_once 'includes/api-connection/api_db.php';
+require_once 'includes/api-connection/twicht.php';
+require_once 'includes/api-connection/twichtv.php';
+
 // admin styles
 require_once 'admin/admin_dashboard.php';
 
@@ -32,8 +37,6 @@ require_once 'includes/cf/to_api.php';
 // Shortcodes
 require_once 'includes/shortcode/twich_embed.php';
 
-require_once 'includes/api-connection/twicht.php';
-require_once 'includes/api-connection/twichtv.php';
 
 require_once 'includes/create-post/test.php';
 
