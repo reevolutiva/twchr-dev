@@ -51,7 +51,16 @@ function egosapiens_main_menu(){
         'egosapiens_main_page',
         plugin_dir_url(__FILE__).'includes/assets/Logo.png',
         2
-    );  
+    );
+    
+    add_submenu_page(
+        'egosapiens_wp_menu',
+        'User Token',
+        'User Token',
+        'administrator',
+        'egosapiens_user_token',
+        'egosapiens_submenu_user_token',
+    );
 }
 
 add_action('admin_menu','egosapiens_main_menu');
@@ -59,6 +68,10 @@ add_action('admin_menu','egosapiens_main_menu');
 
 function egosapiens_main_page(){
     require_once 'admin/main_page.php';
+}
+
+function egosapiens_submenu_user_token(){
+    require_once 'admin/submenu_user_token.php';
 }
 
 add_filter( 'template_include', 'template_replace' );
