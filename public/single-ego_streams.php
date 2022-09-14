@@ -34,7 +34,9 @@ get_header();
 				//crearPostParaTwitch($list_videos);
 				
 				if($_GET['autentication']==true){
-					autenticate();
+					$api_key = 'lvlu0kmiervxate3yqfhppsh4d2kol';
+  					$client_id = 'mtxa43qjzhqij6793d1l095a5hwwcd';
+					autenticate($client_id, $secret_key,'https://egosapiens.local/wp-admin/admin.php?page=egosapiens_wp_menu');
 				}
 				if(isset($_GET['code'])){
 					var_dump($_GET['code']);

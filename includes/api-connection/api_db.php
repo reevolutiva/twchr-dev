@@ -30,6 +30,14 @@
             $sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twitcher_keys'";
             $wpdb->query($sql);
         }
-        
-        var_dump($wpdb->result);
+    }
+
+    function db_to_front($data){
+        global $wpdb;
+        $sql = "SELECT * FROM wp_options WHERE option_name='$data'";
+        $wpdb->query($sql);
+        return array(
+            'last_result' => $wpdb->last_result,
+            'result' => $wpdb->result
+        );
     }

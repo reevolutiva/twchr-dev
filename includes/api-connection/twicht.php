@@ -54,10 +54,10 @@ function post_stream(){
   
 } 
 
-function autenticate(){
-  $api_key = 'lvlu0kmiervxate3yqfhppsh4d2kol';
-  $client_id = 'mtxa43qjzhqij6793d1l095a5hwwcd';
-  $redirect = 'https://egosapiens.local/ego_stream/sadasdsadsad/';
+function autenticate($api_key, $client_id,$redirect){
+  //$api_key = 'lvlu0kmiervxate3yqfhppsh4d2kol';
+  //$client_id = 'mtxa43qjzhqij6793d1l095a5hwwcd';
+  //$redirect = 'https://egosapiens.local/ego_stream/sadasdsadsad/';
   $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),array('channel_editor'));
   $authUrl = $twitchtv->authenticate();
   if(!function_exists('wp_redirect'))
