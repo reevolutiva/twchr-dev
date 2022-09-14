@@ -22,8 +22,18 @@
                    ): ?>
                    
                    <input type="submit" value="resincronizar" name="resincronizar">
-
                 <?php
+                if(isset($_GET['resincronizar'])){
+                    global $wpdb;
+                    $array_keys = array(
+                        'api-key' => '',
+                        'client-id' => '',
+                        'user_token' => ''
+                    );
+                    $json_array = json_encode($array_keys);
+                    $sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twitcher_keys'";
+                    $wpdb->query($sql);
+                }
                 endif;
             ?>
         </form>

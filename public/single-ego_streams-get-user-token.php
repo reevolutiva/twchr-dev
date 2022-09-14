@@ -30,11 +30,7 @@ get_header();
 					</section>
 					<a href="?autentication=true">Auntenticar</a>
 			<?php
-				//$token = get_twicth_api('80i53du4hlrjvnp6yag1lzirzk2kpd','oc3y4236g7hh43o6z3y3pd2mzlt3pn');
-
-				//$list_videos = get_twicth_video($token)->data;
 				
-				//crearPostParaTwitch($list_videos);
 		
 			if ($_GET['autentication'] == true) {
 				if(!empty($twch_data_prime->{'api-key'}) && 

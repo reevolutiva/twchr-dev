@@ -25,8 +25,31 @@ function get_twicth_video($data){
 }
 
 
+function validateToken($client_id,$client_secret,$code){
+  $url = "https://id.twitch.tv/oauth2/token";
+  $body = array(
+    "client_id" =>$client_id ,
+    "client_secret" => $client_secret ,
+    "code" => $code ,
+    "grant_type" => "authorization_code",
+    "redirect_uri" => "https://egosapiens.local/ego_stream/get-user-token/"
+  );
 
-function post_stream(){
+  $args = array(
+    'headers'=> array(
+      'authorization' => 'Bearer n7e60q8tk2cmrejl4nlnzxsre934a5',
+      'client-id' => $client_id
+    ),
+    'body'=> json_encode($body)
+  );
+  
+  $res = wp_remote_post($url,$args);
+  $response = json_decode(wp_remote_retrieve_body($res));
+
+  var_dump($response);
+}
+
+function post_stream($token,$client_id){
   $body = array(
     'start_time' => '2021-07-01T18:00:00Z',
     'title' => 'TwitchDev Monthly Update',
@@ -38,8 +61,8 @@ function post_stream(){
 
   $args = array(
     'headers' => array(
-      'authorization' => 'Bearer g24wyvgtwvwud0k48h33e7fbssixpg',
-      'client-id' => '80i53du4hlrjvnp6yag1lzirzk2kpd'
+      'authorization' => 'Bearer'.$token,
+      'client-id' => $client_id
     ),
     'body' => $body
   );
@@ -48,7 +71,7 @@ function post_stream(){
 
 
   $res = wp_remote_post($url,$args);
-  $response = wp_remote_retrieve_body($res);
+  $response = json_decode(wp_remote_retrieve_body($res));
 
   var_dump($response);
   
