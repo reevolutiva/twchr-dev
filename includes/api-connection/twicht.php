@@ -61,8 +61,8 @@ function autenticate($api_key, $client_id,$redirect){
   $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),array('channel_editor'));
   $authUrl = $twitchtv->authenticate();
   if(!function_exists('wp_redirect'))
-           {
-               include_once( ABSPATH . 'wp-includes/pluggable.php' );
-           }
+    {
+      include_once( ABSPATH . 'wp-includes/pluggable.php' );
+    }
   wp_redirect($authUrl);
 }

@@ -30,26 +30,10 @@
 
         <hr/>
 
-        <form action="./admin.php" method="get">
-            <p>User este enlace para la redireccion que solicita twitch: <span style="color:tomato;"><?= bloginfo('url')?>/wp-admin/admin.php?page=egosapiens_wp_menu</span></p>
-            <input type="hidden" name="page" value="egosapiens_wp_menu">
-            <input type="hidden" name="userToken_api-token" value="<?= $apiKey ?>">
-            <input type="hidden" name="userToken_client-id" value="<?= $clientID ?>">
-            <input type="hidden" name="autentication" value="true">
-            <input type="submit" value="solitiar user token">
-            <?php 
-                if($_GET['autentication']==true){
-                    $client_id = $_GET['userToken_api-token'];
-                    $secret_key = $_GET['userToken_client-id'];
-                    autenticate($client_id, $secret_key,'https://egosapiens.local/wp-admin/admin.php?page=egosapiens_wp_menu');
-                } 
-                if(isset($_GET['code'])){
-					var_dump($_GET['code']);
-				}
-				
-            ?>
-            <input type="text" placeholder="user token" name="user-token">
-        </form>
+        <p>User este enlace para la redireccion que solicita twitch: <span style="color:tomato;"><?= bloginfo('url')?>/ego_stream/get-user-token/</span></p>
+            
+        <p><a class="btn" href="<?= bloginfo('url')?>/ego_stream/get-user-token/">solicitar token</a></p>
+        
     </main>
     <aside>
     <?php 
@@ -61,10 +45,23 @@
                     ){
                         $client_id = $_GET['client-id'];
                         $secret_key = $_GET['api-key'];
-                        var_dump($_GET);
                         fronted_to_db($client_id, $secret_key);
                     }
                 }
             }
         ?>
+        <table class="twittcher-table">
+            <tr>
+                <td>API KEY</td>
+                <td><?= $twch_data_prime->{'api-key'}?></td>
+            </tr>
+            <tr>
+                <td>Client ID</td>
+                <td><?= $twch_data_prime->{'client-id'}?></td>
+            </tr>
+            <tr>
+                <td>User token</td>
+                <td><?= $twch_data_prime->{'user_token'}?></td>
+            </tr>
+        </table>
     </aside>

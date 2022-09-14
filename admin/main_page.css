@@ -10,3 +10,22 @@
     .ego-for-back.container label{
         display: block;    
     }
+
+    .twittcher-table tbody{
+        display: grid;
+    }
+    .twittcher-table tr{
+    padding: 1em 1.5em;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 1em;
+    background-color: #fff;
+}
+
+.twittcher-table tr:nth-child(even){
+    background-color: #e8e8e8;
+}
+
+.twittcher-table td{
+    text-align: center;
+}

@@ -76,9 +76,14 @@ function egosapiens_submenu_user_token(){
 
 add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
-    $post_types = array( 'ego_streams' );
-    if ( is_single($post_type)){
-        $template = __DIR__.'/public/single-ego_streams.php';
+    $post_types = array('single-ego_streams-get-user-token');
+    if ( is_get_user_token_page()){
+        $template = __DIR__.'/public/single-ego_streams-get-user-token.php';
     }
     return $template;
+}
+
+function is_get_user_token_page(){
+    $url = explode("/",$_SERVER['REQUEST_URI']);
+    return $url[2]=== 'get-user-token';		
 }
