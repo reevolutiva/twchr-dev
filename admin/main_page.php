@@ -11,13 +11,13 @@
         ?>
         <form method="GET" action="./admin.php">
             <input type="hidden" name="page" value="egosapiens_wp_menu">
-            <?php $apiKey = !empty($twch_data_prime->{'api-key'}) ? $twch_data_prime->{'api-key'} : null ; ?>
-            <input id="client-id" type="text" placeholder="API KEY" name="api-key" value="<?= $apiKey?>" <?php if(!empty($twch_data_prime->{'api-key'})) echo 'disabled="true"' ?>>
+            <?php $apiKey = !empty($twch_data_prime->{'client-secret'}) ? $twch_data_prime->{'client-secret'} : null ; ?>
+            <input id="client-id" type="text" placeholder="Client Secret" name="client-secret" value="<?= $apiKey?>" <?php if(!empty($twch_data_prime->{'client-secret'})) echo 'disabled="true"' ?>>
             <?php $clientID = !empty($twch_data_prime->{'client-id'}) ?  $twch_data_prime->{'client-id'} : null; ?>
-            <input id="api-key" type="text" placeholder="Client ID" name="client-id" value="<?= $clientID ?>" <?php if(!empty($twch_data_prime->{'client-id'})) echo 'disabled="true"' ?>>
-            <input type="submit" value="sincronizar" name="sincronizar" <?php if(!empty($twch_data_prime->{'api-key'}) && !empty($twch_data_prime->{'client-id'})) echo 'disabled="true"' ?>>
+            <input id="client-secret" type="text" placeholder="Client ID" name="client-id" value="<?= $clientID ?>" <?php if(!empty($twch_data_prime->{'client-id'})) echo 'disabled="true"' ?>>
+            <input type="submit" value="sincronizar" name="sincronizar" <?php if(!empty($twch_data_prime->{'client-secret'}) && !empty($twch_data_prime->{'client-id'})) echo 'disabled="true"' ?>>
             <?php 
-                if(!empty($twch_data_prime->{'api-key'}) && 
+                if(!empty($twch_data_prime->{'client-secret'}) && 
                    !empty($twch_data_prime->{'client-id'})
                    ): ?>
                    
@@ -26,9 +26,9 @@
                 if(isset($_GET['resincronizar'])){
                     global $wpdb;
                     $array_keys = array(
-                        'api-key' => '',
+                        'client-secret' => '',
                         'client-id' => '',
-                        'user_token' => ''
+                        'code' => ''
                     );
                     $json_array = json_encode($array_keys);
                     $sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twitcher_keys'";
@@ -51,10 +51,10 @@
                 if(count($_GET) > 1){
                     if(
                         isset($_GET['client-id']) &&
-                        isset($_GET['api-key'])
+                        isset($_GET['client-secret'])
                     ){
                         $client_id = $_GET['client-id'];
-                        $secret_key = $_GET['api-key'];
+                        $secret_key = $_GET['client-secret'];
                         fronted_to_db($client_id, $secret_key);
                     }
                 }
@@ -62,16 +62,16 @@
         ?>
         <table class="twittcher-table">
             <tr>
-                <td>API KEY</td>
-                <td><?= $twch_data_prime->{'api-key'}?></td>
+                <td>Client Secret</td>
+                <td><?= $twch_data_prime->{'client-secret'}?></td>
             </tr>
             <tr>
                 <td>Client ID</td>
                 <td><?= $twch_data_prime->{'client-id'}?></td>
             </tr>
             <tr>
-                <td>User token</td>
-                <td><?= $twch_data_prime->{'user_token'}?></td>
+                <td>Code</td>
+                <td><?= $twch_data_prime->{'code'}?></td>
             </tr>
         </table>
     </aside>

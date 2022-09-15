@@ -27,47 +27,37 @@ function get_twicth_video($data){
 
 function validateToken($client_id,$client_secret,$code){
   $url = "https://id.twitch.tv/oauth2/token";
-  $body = array(
-    "client_id" =>$client_id ,
-    "client_secret" => $client_secret ,
-    "code" => $code ,
-    "grant_type" => "authorization_code",
-    "redirect_uri" => "https://egosapiens.local/ego_stream/get-user-token/"
-  );
+  $urlecode = 'client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$code.'&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fegosapiens.local%2Fego_stream%2Fget-user-token%2F'; 
 
   $args = array(
-    'headers'=> array(
-      'authorization' => 'Bearer n7e60q8tk2cmrejl4nlnzxsre934a5',
-      'client-id' => $client_id
-    ),
-    'body'=> json_encode($body)
+    'body'=> $urlecode
   );
   
   $res = wp_remote_post($url,$args);
   $response = json_decode(wp_remote_retrieve_body($res));
 
-  var_dump($response);
+  return $response;
 }
 
-function post_stream($token,$client_id){
+function post_stream($tokenValidate,$client_id){
   $body = array(
-    'start_time' => '2021-07-01T18:00:00Z',
+    'start_time' => '2023-02-01T18:00:00Z',
     'title' => 'TwitchDev Monthly Update',
     'timezone' => 'America/New_York',
-    'is_recurring' => false,
+    'is_recurring' => true,
     'duration' => "60",
     'category_id' => "509670"
   );
 
   $args = array(
     'headers' => array(
-      'authorization' => 'Bearer'.$token,
+      'authorization' => 'Bearer '.$tokenValidate,
       'client-id' => $client_id
     ),
     'body' => $body
   );
   
-  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=780848608";
+  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=817863896";
 
 
   $res = wp_remote_post($url,$args);
@@ -77,15 +67,18 @@ function post_stream($token,$client_id){
   
 } 
 
-function autenticate($api_key, $client_id,$redirect){
+function autenticate($api_key, $client_id,$redirect,$scope){
   //$api_key = 'lvlu0kmiervxate3yqfhppsh4d2kol';
   //$client_id = 'mtxa43qjzhqij6793d1l095a5hwwcd';
   //$redirect = 'https://egosapiens.local/ego_stream/sadasdsadsad/';
-  $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),array('channel_editor'));
+  $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
   $authUrl = $twitchtv->authenticate();
+
+  //var_dump($authUrl);
   if(!function_exists('wp_redirect'))
     {
       include_once( ABSPATH . 'wp-includes/pluggable.php' );
     }
   wp_redirect($authUrl);
+  
 }
