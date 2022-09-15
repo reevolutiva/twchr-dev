@@ -82,3 +82,11 @@ function autenticate($api_key, $client_id,$redirect,$scope){
   wp_redirect($authUrl);
   
 }
+
+function twicher_twicht_init_api($twtch_client-id, $twtch_client-secret){
+
+}
+
+function twitcher_refresh_api(){
+  
+}

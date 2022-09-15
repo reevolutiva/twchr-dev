@@ -15,12 +15,12 @@ $scope = $twch_data_prime->{'scope'};
 //$validateTokenObject = validateToken($client_id, $client_secret, $code );
 //saveValidateToken($validateTokenObject);
 
-$twch_data_vericate = json_decode(db_to_front('twitcher_keys_validate')['last_result'][0]->option_value);
+//$twch_data_vericate = json_decode(db_to_front('twitcher_keys_validate')['last_result'][0]->option_value);
 
-$validateToken = $twch_data_vericate->{'validate-token'};
+//$validateToken = $twch_data_vericate->{'validate-token'};
 
 /*TODO Activar post_stream en el hook de insert o update de cpt streaming*/
-post_stream($validateToken,$client_id);
+//post_stream($validateToken,$client_id);
 
 //var_dump($validateTokenObject);
 
