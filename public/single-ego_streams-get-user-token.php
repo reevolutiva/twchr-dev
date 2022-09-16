@@ -6,11 +6,8 @@
  *
  * @package egosapiens
  */
-$args = array(
-	"post_type" => "ego_stream"
-);
 
-$cpt = new WP_Query($args);
+
 
 $twch_data_prime = json_decode(db_to_front('twitcher_keys')['last_result'][0]->option_value);
 
@@ -20,8 +17,8 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
-			while ( $cpt->have_posts() ) :
-				$cpt->the_post();
+			while ( have_posts() ) :
+				the_post();
 			?>
 				
 					<h1><?php the_title(); ?></h1>

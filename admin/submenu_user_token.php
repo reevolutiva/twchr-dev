@@ -54,6 +54,8 @@ $scope = $twch_data_prime->{'scope'};
     400	Request was invalid.
     401	Authorization failed.
 
-    
+    Usar save_post global
+        if(post -> is cpt)
+            code
 
 */

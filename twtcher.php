@@ -74,11 +74,26 @@ function egosapiens_submenu_user_token(){
     require_once 'admin/submenu_user_token.php';
 }
 
+function is_this_single_of_cpt($data_cpt, $data_single){
+    $url = explode("/",$_SERVER['REQUEST_URI']);
+    $cpt = $url[1];
+    $single = $url[2];
+    if($cpt === $data_cpt && $single === $data_single) return true;
+    else return false;
+}
+
+function is_this_cpt($is_cpt){
+    $url = explode("/",$_SERVER['REQUEST_URI']);
+    return $url[1] === $is_cpt;		
+}
+
 add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
-    $post_types = array('single-ego_streams-get-user-token');
-    if ( is_get_user_token_page()){
-        $template = __DIR__.'/public/single-ego_streams-get-user-token.php';
+
+    if ( is_this_cpt('ego_stream')){
+        if(is_this_single_of_cpt('ego_stream','get-user-token')){
+            $template = __DIR__.'/public/single-ego_streams-get-user-token.php';
+        }
     }
     return $template;
 }
