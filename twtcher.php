@@ -101,6 +101,8 @@ function template_replace( $template ) {
         $template = __DIR__.'/public/single-ego_streams-get-user-token.php';    
     }else if(is_this_cpt('ego_stream') && how_directory_accses() > 1){
         $template = __DIR__.'/public/single-ego_streams.php';    
+    }else{
+        $template = __DIR__.'/public/archive-ego_streams.php';
     }
     return $template;
 }

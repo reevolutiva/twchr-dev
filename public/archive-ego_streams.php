@@ -23,6 +23,9 @@ get_header();
 			$cpt->the_post();
 
 			the_content();
+			?>
+				<h2><a href="<?php the_permalink()?>"><?php the_title() ?></a></h2>
+			<?php
 
 		endwhile; // End of the loop.
 		?>
