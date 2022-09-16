@@ -87,13 +87,20 @@ function is_this_cpt($is_cpt){
     return $url[1] === $is_cpt;		
 }
 
+
+function how_directory_accses(){
+    $url = explode("/",$_SERVER['REQUEST_URI']);
+    $quaty = count($url) - 2;
+    return $quaty;	
+}
+
 add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
 
-    if ( is_this_cpt('ego_stream')){
-        if(is_this_single_of_cpt('ego_stream','get-user-token')){
-            $template = __DIR__.'/public/single-ego_streams-get-user-token.php';
-        }
+    if (is_this_single_of_cpt('ego_stream','get-user-token')){ 
+        $template = __DIR__.'/public/single-ego_streams-get-user-token.php';    
+    }else if(is_this_cpt('ego_stream') && how_directory_accses() > 1){
+        $template = __DIR__.'/public/single-ego_streams.php';    
     }
     return $template;
 }

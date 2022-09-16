@@ -7,6 +7,11 @@
  * @package egosapiens
  */
 
+$args = array(
+	"post_type" => "ego_stream"
+);
+
+$cpt = new WP_Query($args);
 
 get_header();
 ?>
@@ -14,8 +19,8 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
-		while ( have_posts() ) :
-			the_post();
+		while ( $cpt->have_posts() ) :
+			$cpt->the_post();
 
 			the_content();
 
