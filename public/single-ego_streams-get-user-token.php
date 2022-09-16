@@ -38,7 +38,7 @@ get_header();
 				):
 					$client_id = $twch_data_prime->{'client-id'};
 					$secret_key = $twch_data_prime->{'client-secret'};
-					$return = site_url('/ego_stream/get-user-token/');
+					$return = site_url('/ego_stream/get-user-token');
 					$scope = array(
 						"channel:manage:schedule"
 					);

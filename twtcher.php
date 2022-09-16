@@ -87,3 +87,10 @@ function is_get_user_token_page(){
     $url = explode("/",$_SERVER['REQUEST_URI']);
     return $url[2]=== 'get-user-token';		
 }
+
+add_action('save_post','cpt_action');
+
+function cpt_action($post_id){
+   
+}
+?>

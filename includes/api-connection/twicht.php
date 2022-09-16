@@ -83,10 +83,15 @@ function autenticate($api_key, $client_id,$redirect,$scope){
   
 }
 
-function twicher_twicht_init_api($twtch_client-id, $twtch_client-secret){
+function twicher_twicht_init_api(){
 
 }
 
 function twitcher_refresh_api(){
   
 }
+
+/*function ego_cp_callback( $post_ID, $post, $update ) {
+	echo "hello wordl";
+}
+add_action( 'save_post', 'ego_cp_callback', 10, 3 );
