@@ -1,6 +1,6 @@
 <?php 
 // Register Custom Post Type
-function egosapiens_stream() {
+function register_twchr_stream() {
 
 	$labels = array(
 		'name'                  => _x( 'Streamings', 'Post Type General Name', 'text_domain' ),
@@ -31,12 +31,31 @@ function egosapiens_stream() {
 		'items_list_navigation' => __( 'Lista de navegacion', 'text_domain' ),
 		'filter_items_list'     => __( 'Filtro de lista', 'text_domain' ),
 	);
+	/*
+	‘title’ *
+	‘editor’ (content) *
+	‘author’ *
+	‘thumbnail’ (featured image, current theme must also support post-thumbnails) *
+	‘excerpt’ *
+	‘trackbacks’
+	‘custom-fields’ *
+	‘comments’ (also will see comment count balloon on edit screen) *
+	‘revisions’ (will store revisions) *
+	‘page-attributes’ (menu order, hierarchical must be true to show Parent option) *
+	‘post-formats’ add post formats, see Post Formats *
+	*/
 	$args = array(
 		'label'                 => __( 'Streaming', 'text_domain' ),
 		'description'           => __( 'Streaming de strean', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'thumbnail','editor' ),
-		'taxonomies'            => array( 'category' ),
+		'supports'              => array( 
+											'title',
+											'thumbnail',
+											'editor',
+											'comments',
+											'excerpt' 
+										),
+		'taxonomies'            => array( 'schedule' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -50,11 +69,11 @@ function egosapiens_stream() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'menu_icon' 			=> 'dashicons-rss',
-		'show_in_rest'			=> true
+		'show_in_rest'			=> false
 
 	);
-	register_post_type( 'ego_stream', $args );
+	register_post_type( 'twchr_streams', $args );
 
 }
-add_action( 'init', 'egosapiens_stream', 0 );
+add_action( 'init', 'register_twchr_stream', 0 );
 ?>

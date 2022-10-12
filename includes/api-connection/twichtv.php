@@ -666,4 +666,3 @@ class TwitchTV_Curl_Cache {
         return !empty($this->cache[$id]);
     }
 }
-?>

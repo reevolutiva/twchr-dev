@@ -1,5 +1,3 @@
-
-
 <?php  
 // Add Shortcode
 function shorcode_twich_embed( $atts ) {
@@ -7,6 +5,7 @@ function shorcode_twich_embed( $atts ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
+			'host' => 'reevolutiva',
 			'video' => '#',
             'ancho' => 800,
             'alto' => 400
@@ -14,8 +13,8 @@ function shorcode_twich_embed( $atts ) {
 		$atts
 	);
     $atts_ouput = json_encode($atts);
-	  $host = "egosapiens.local";
-	    $url = "https://player.twitch.tv/?autoplay=true&chanel=egosapiens&height=".$atts['alto']."&parent=".$host."&referrer=https%3A%2F%2F".$host."%2Ftest%2F&video=".$atts['video']."&width=".$atts['ancho'];
+	  $host = $_SERVER['SERVER_NAME'];
+	    $url = "https://player.twitch.tv/?autoplay=true&chanel=".$atts['host']."&height=".$atts['alto']."&parent=".$host."&referrer=https%3A%2F%2F".$host."%2Ftest%2F&video=".$atts['video']."&width=".$atts['ancho'];
 	    $idClass = 'twich-frame'.rand();
 	    $html = "<twichcontainer id='".$idClass."'>
 	                <iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>

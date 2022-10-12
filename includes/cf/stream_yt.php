@@ -4,20 +4,10 @@
  * https://jeremyhixon.com/tool/wordpress-meta-box-generator/
  * 
  * Retrieving the values:
- * id = get_post_meta( get_the_ID(), 'twchr-from-api_id', true )
- * user_id = get_post_meta( get_the_ID(), 'twchr-from-api_user_id', true )
- * stream_id = get_post_meta( get_the_ID(), 'twchr-from-api_stream_id', true )
- * title = get_post_meta( get_the_ID(), 'twchr-from-api_title', true )
- * description = get_post_meta( get_the_ID(), 'twchr-from-api_description', true )
- * url = get_post_meta( get_the_ID(), 'twchr-from-api_url', true )
- * duration = get_post_meta( get_the_ID(), 'twchr-from-api_duration', true )
- * start time = get_post_meta( get_the_ID(), 'twchr-from-api_start-time', true )
- * description = get_post_meta( get_the_ID(), 'twchr-from-api_description', true )
- * end time = get_post_meta( get_the_ID(), 'twchr-from-api_end-time', true )
- * all Data = get_post_meta( get_the_ID(), 'twchr-from-api_all-data', true )
+ * Link de videos en YouTube = get_post_meta( get_the_ID(), 'twchr_streams__ytlink-de-videos-en-youtube', true )
  */
-class Twttcher {
-	private $config = '{"title":"Twittcher Stream","prefix":"twchr-from-api_","domain":"Twttcher","class_name":"Twttcher","post-type":["post"],"context":"normal","priority":"core","cpt":"twchr_streams","fields":[{"type":"text","label":"id","id":"twchr-from-api_id"},{"type":"text","label":"user_id","id":"twchr-from-api_user_id"},{"type":"text","label":"stream_id","id":"twchr-from-api_stream_id"},{"type":"text","label":"title","id":"twchr-from-api_title"},{"type":"text","label":"description","id":"twchr-from-api_description"},{"type":"url","label":"url","id":"twchr-from-api_url"},{"type":"text","label":"duration","id":"twchr-from-api_duration"},{"type":"text","label":"start time","id":"twchr-from-api_start-time"},{"type":"textarea","label":"description","id":"twchr-from-api_description"},{"type":"text","label":"end time","id":"twchr-from-api_end-time"},{"type":"textarea","label":"all Data","id":"twchr-from-api_all-data"}]}';
+class Youtube {
+	private $config = '{"title":"Youtube","prefix":"twchr_streams__yt","domain":"youtube","class_name":"Youtube","context":"normal","priority":"default","cpt":"twchr_streams","fields":[{"type":"url","label":"Link de videos en YouTube","default":"https:\/\/www.youtube.com\/","id":"twchr_streams__ytlink-de-videos-en-youtube"}]}';
 
 	public function __construct() {
 		$this->config = json_decode( $this->config, true );
@@ -97,9 +87,6 @@ class Twttcher {
 
 	private function field( $field ) {
 		switch ( $field['type'] ) {
-			case 'textarea':
-				$this->textarea( $field );
-				break;
 			default:
 				$this->input( $field );
 		}
@@ -112,15 +99,6 @@ class Twttcher {
 			$field['id'], $field['id'],
 			isset( $field['pattern'] ) ? "pattern='{$field['pattern']}'" : '',
 			$field['type'],
-			$this->value( $field )
-		);
-	}
-
-	private function textarea( $field ) {
-		printf(
-			'<textarea class="regular-text" id="%s" name="%s" rows="%d">%s</textarea>',
-			$field['id'], $field['id'],
-			isset( $field['rows'] ) ? $field['rows'] : 5,
 			$this->value( $field )
 		);
 	}
@@ -138,4 +116,4 @@ class Twttcher {
 	}
 
 }
-new Twttcher;
+new Youtube;

@@ -3,50 +3,50 @@
 function get_twicth_api($client_id,$client_secret){
   //$url = 'https://id.twitch.tv/oauth2/token?client_id=80i53du4hlrjvnp6yag1lzirzk2kpd&client_secret=oc3y4236g7hh43o6z3y3pd2mzlt3pn&grant_type=client_credentials';
   $url = 'https://id.twitch.tv/oauth2/token?client_id='.$client_id.'&client_secret='.$client_secret.'&grant_type=client_credentials';
-  $data = wp_remote_post($url,$arrg);
+  $data = wp_remote_post($url);
   $response = json_decode(wp_remote_retrieve_body($data));
   return $response;
 }
 
-function get_twicth_video($data){
+function get_twicth_video($app_token, $client_id,$user_id){
   $args = array(
     'headers'=> array(
-      'Authorization' => "Bearer $data->access_token",
-      'client-id' => '80i53du4hlrjvnp6yag1lzirzk2kpd'
+      'Authorization' => "Bearer $app_token",
+      'client-id' => $client_id
     )
   );
 
-  $url = "https://api.twitch.tv/helix/videos?user_id=780848608";
+  $url = "https://api.twitch.tv/helix/videos?user_id=$user_id";
 
   $data = wp_remote_get($url,$args);
 
   $response = json_decode(wp_remote_retrieve_body($data));
+  
   return $response;
 }
 
 
-function validateToken($client_id,$client_secret,$code){
+function validateToken($client_id,$client_secret,$code,$redirect){
   $url = "https://id.twitch.tv/oauth2/token";
-  $urlecode = 'client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$code.'&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fegosapiens.local%2Fego_stream%2Fget-user-token%2F'; 
+  $urlecode = 'client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$code.'&grant_type=authorization_code&redirect_uri='.$redirect; 
 
   $args = array(
     'body'=> $urlecode
   );
   
   $res = wp_remote_post($url,$args);
-  $response = json_decode(wp_remote_retrieve_body($res));
-
-  return $response;
+  //show_dump($url_full);
+  return $res;
 }
 
-function post_stream($tokenValidate,$client_id){
+function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
   $body = array(
-    'start_time' => '2023-02-01T18:00:00Z',
-    'title' => 'TwitchDev Monthly Update',
+    'start_time' => $twchr_start_time,
+    'title' => $twchr_titulo,
     'timezone' => 'America/New_York',
     'is_recurring' => true,
-    'duration' => "60",
-    'category_id' => "509670"
+    'duration' => $twchr_duration,
+    'category_id' => $twchr_category
   );
 
   $args = array(
@@ -59,28 +59,47 @@ function post_stream($tokenValidate,$client_id){
   
   $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=817863896";
 
+  //show_dump($args);
+  //die();
 
   $res = wp_remote_post($url,$args);
-  $response = json_decode(wp_remote_retrieve_body($res));
-
-  var_dump($response);
+  $response_body = json_decode(wp_remote_retrieve_body($res));
+  $response_response = $res['response'];
+  //show_dump($response_body);
+  //die();
+  // codigo para accionar segun la respuesta de la api
+  switch ($response_response['code']) {
+    case 200:
+        $allData = $response_body->{'data'};
+        return array('allData'=>$allData,'status'=>200,'message'=>'schedule segment creado exitosamente.');
+      //die();
+      break;
+    case 401:
+      return array("message"=>"USER TOKEN es invalido, espere un momento, en unos momentos sera redirigido a un lugar donde podra conseguir un USER TOKEN actualizado.",'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true');
+     
+      break;
+    case 400:
+      $glosa = str_replace('"','`',$response_body->{'message'});
+      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+      
+      break;
+    default:
+      break;
+  } 
   
 } 
 
+
 function autenticate($api_key, $client_id,$redirect,$scope){
-  //$api_key = 'lvlu0kmiervxate3yqfhppsh4d2kol';
-  //$client_id = 'mtxa43qjzhqij6793d1l095a5hwwcd';
-  //$redirect = 'https://egosapiens.local/ego_stream/sadasdsadsad/';
   $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
   $authUrl = $twitchtv->authenticate();
 
-  //var_dump($authUrl);
-  if(!function_exists('wp_redirect'))
-    {
-      include_once( ABSPATH . 'wp-includes/pluggable.php' );
-    }
-  wp_redirect($authUrl);
+  $msg = "<h3>Usted sera redirigido a Twcht en unos segundos</h3>";
+  $script = "<script>location.href ='$authUrl';</script>";
   
+  echo $msg;
+  //echo $authUrl;
+  echo $script;
 }
 
 function twicher_twicht_init_api(){
@@ -91,7 +110,8 @@ function twitcher_refresh_api(){
   
 }
 
-/*function ego_cp_callback( $post_ID, $post, $update ) {
+/*function twchr_cp_callback( $post_ID, $post, $update ) {
 	echo "hello wordl";
 }
-add_action( 'save_post', 'ego_cp_callback', 10, 3 );
+add_action( 'save_post', 'twchr_cp_callback', 10, 3 );
+*/

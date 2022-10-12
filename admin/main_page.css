@@ -1,13 +1,11 @@
 
-    .ego-for-back.container{
-        display:grid;
-        grid-template-columns:2fr 1fr;
+    .twchr-for-back.container{
         width: 95%;
-        margin:0 auto;
+        margin:10vh auto 0 auto;
     }
 
-    .ego-for-back.container input,
-    .ego-for-back.container label{
+    .twchr-for-back.container input,
+    .twchr-for-back.container label{
         display: block;    
     }
 
@@ -28,4 +26,12 @@
 
 .twittcher-table td{
     text-align: center;
+}
+
+@media screen and (min-width:1000px){
+    .twchr-for-back.container{
+        display:grid;
+        grid-template-columns:1fr auto;
+        column-gap:50px;
+    }
 }
