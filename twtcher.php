@@ -40,6 +40,9 @@ require_once 'includes/create-post/crear_twchr_stream.php';
 //Actualizar post
 require_once 'includes/update-post/update_twchr_stream.php';
 
+// Traer un post
+require_once 'includes/get-post/get_twchr_stream.php';
+
 require_once 'includes/twchr_get_videos.php';
 
 //Taxonomias

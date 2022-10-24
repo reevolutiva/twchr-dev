@@ -93,6 +93,8 @@
                 $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
                 $subcribers = get_subcribers($twch_data_app_token, $client_id);
+
+                               
                 $listVideo = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                 $mostViwed = false;
                 $viewed = array();
@@ -110,8 +112,7 @@
                             'title' => $title
                         );
                     }
-                    
-                    
+                                   
                 }
 
                 //show_dump($mostViwed);
