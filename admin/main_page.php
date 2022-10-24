@@ -117,7 +117,7 @@
                             <td data-twchr-final-number="12" class='twchr-results-item'>12</td>
                         </tr>
                         <tr>
-                            <td><?php _e('Otra data relevante','twitcher'); ?></td>
+                            <td><?php _e('Last Imported','twitcher'); ?></td>
                             <td data-twchr-final-number="12" class='twchr-results-item' >12</td>
                         </tr>
                         <tr>

@@ -79,6 +79,7 @@
     grid-template-columns: repeat(3,1fr);
     row-gap:10pt;
     grid-template-rows: 2cm 2cm 1cm;
+    margin: 0;
 }
 
 .twchr-dashboard-card .keys-twchr form div p,
@@ -138,6 +139,7 @@
     width: max-content;
     padding:8px 1cm;
     height: max-content;
+    align-self: end;
 }
 
 
