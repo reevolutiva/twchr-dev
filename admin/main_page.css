@@ -33,10 +33,11 @@
 .twchr-dashboard-card .hello-twchr-user h2{
     grid-area: title;
     margin: 0;
-    line-height: 1.5em;
 }
 .twchr-dashboard-card .hello-twchr-user p{
     grid-area: parrafo;
+    font-family: 'Comfortaa';
+    color: #A6ABBD;
 }
 
 .twchr-dashboard-card .hello-twchr-user  picture{
@@ -53,6 +54,7 @@
 .twchr-dashboard-card.plugin-hello{
     grid-column: 1/4;
     display: flex;
+    align-items: flex-end;
 }
 
 .twchr-dashboard-card.plugin-hello picture{
@@ -60,7 +62,11 @@
     margin-right: 10px;
 }
 .twchr-dashboard-card.plugin-hello h2{
-    transform: translateY(50px);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    color:var(--twchr-purple);
+    transform: translateY(10px);
 }
 
 .twchr-dashboard-card h2{

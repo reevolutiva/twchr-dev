@@ -283,7 +283,7 @@ function twchr_redirect_setUp(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.3.69';
+    $version = 'beta.3.73';
     
     // Estilos
     wp_enqueue_style('admin-styles', plugin_dir_url(__FILE__) . 'includes/css/admin.css',array(),$version,'all');
