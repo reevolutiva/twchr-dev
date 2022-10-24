@@ -4,21 +4,26 @@
  * https://jeremyhixon.com/tool/wordpress-meta-box-generator/
  * 
  * Retrieving the values:
- * id = get_post_meta( get_the_ID(), 'twchr-from-api_id', true )
- * user_id = get_post_meta( get_the_ID(), 'twchr-from-api_user_id', true )
- * stream_id = get_post_meta( get_the_ID(), 'twchr-from-api_stream_id', true )
- * title = get_post_meta( get_the_ID(), 'twchr-from-api_title', true )
+ * create_at = get_post_meta( get_the_ID(), 'twchr-from-api_create_at', true )
  * description = get_post_meta( get_the_ID(), 'twchr-from-api_description', true )
- * url = get_post_meta( get_the_ID(), 'twchr-from-api_url', true )
  * duration = get_post_meta( get_the_ID(), 'twchr-from-api_duration', true )
- * start time = get_post_meta( get_the_ID(), 'twchr-from-api_start-time', true )
- * description = get_post_meta( get_the_ID(), 'twchr-from-api_description', true )
- * end time = get_post_meta( get_the_ID(), 'twchr-from-api_end-time', true )
- * all Data = get_post_meta( get_the_ID(), 'twchr-from-api_all-data', true )
+ * id = get_post_meta( get_the_ID(), 'twchr-from-api_id', true )
+ * languaje = get_post_meta( get_the_ID(), 'twchr-from-api_languaje', true )
+ * muted_segment = get_post_meta( get_the_ID(), 'twchr-from-api_muted_segment', true )
+ * published_at = get_post_meta( get_the_ID(), 'twchr-from-api_published_at', true )
+ * stream_id = get_post_meta( get_the_ID(), 'twchr-from-api_stream_id', true )
+ * thumbnail_url = get_post_meta( get_the_ID(), 'twchr-from-api_thumbnail_url', true )
+ * type = get_post_meta( get_the_ID(), 'twchr-from-api_type', true )
+ * url = get_post_meta( get_the_ID(), 'twchr-from-api_url', true )
+ * user_id = get_post_meta( get_the_ID(), 'twchr-from-api_user_id', true )
+ * user_login = get_post_meta( get_the_ID(), 'twchr-from-api_user_login', true )
+ * user_name = get_post_meta( get_the_ID(), 'twchr-from-api_user_name', true )
+ * view_count = get_post_meta( get_the_ID(), 'twchr-from-api_view_count', true )
+ * viewble = get_post_meta( get_the_ID(), 'twchr-from-api_viewble', true )
  */
 class Twttcher {
-	private $config = '{"title":"Twittcher Stream","prefix":"twchr-from-api_","domain":"Twttcher","class_name":"Twttcher","post-type":["post"],"context":"normal","priority":"core","cpt":"twchr_streams","fields":[{"type":"text","label":"id","id":"twchr-from-api_id"},{"type":"text","label":"user_id","id":"twchr-from-api_user_id"},{"type":"text","label":"stream_id","id":"twchr-from-api_stream_id"},{"type":"text","label":"title","id":"twchr-from-api_title"},{"type":"text","label":"description","id":"twchr-from-api_description"},{"type":"url","label":"url","id":"twchr-from-api_url"},{"type":"text","label":"duration","id":"twchr-from-api_duration"},{"type":"text","label":"start time","id":"twchr-from-api_start-time"},{"type":"textarea","label":"description","id":"twchr-from-api_description"},{"type":"text","label":"end time","id":"twchr-from-api_end-time"},{"type":"textarea","label":"all Data","id":"twchr-from-api_all-data"}]}';
-
+	private $config = '{"title":"Twittcher Stream","prefix":"twchr-from-api_","domain":"twittcher","class_name":"Twttcher","post-type":["post"],"context":"normal","priority":"high","cpt":"twchr_streams","fields":[{"type":"text","label":"create_at","id":"twchr-from-api_create_at"},{"type":"text","label":"description","id":"twchr-from-api_description"},{"type":"text","label":"duration","id":"twchr-from-api_duration"},{"type":"number","label":"id","step":"1","id":"twchr-from-api_id"},{"type":"text","label":"languaje","id":"twchr-from-api_languaje"},{"type":"text","label":"muted_segment","id":"twchr-from-api_muted_segment"},{"type":"text","label":"published_at","id":"twchr-from-api_published_at"},{"type":"text","label":"stream_id","id":"twchr-from-api_stream_id"},{"type":"text","label":"thumbnail_url","id":"twchr-from-api_thumbnail_url"},{"type":"text","label":"type","id":"twchr-from-api_type"},{"type":"text","label":"url","id":"twchr-from-api_url"},{"type":"text","label":"user_id","id":"twchr-from-api_user_id"},{"type":"text","label":"user_login","id":"twchr-from-api_user_login"},{"type":"text","label":"user_name","id":"twchr-from-api_user_name"},{"type":"number","label":"view_count","step":"1","id":"twchr-from-api_view_count"},{"type":"text","label":"viewble","id":"twchr-from-api_viewble"}]}';
+	
 	public function __construct() {
 		$this->config = json_decode( $this->config, true );
 		$this->process_cpts();

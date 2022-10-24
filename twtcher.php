@@ -1,13 +1,16 @@
 <?php
 /*
-Plugin Name: Twitcher
-Plugin URI: twtcher.pro
-Description: Un plugin para convertir wordpress es un centro de cotrol de streamings
-Version: 1
-Author: reevolutiva
-Author URI: twitcher.pro
-License: GPL2
+* Plugin Name: Twitcher
+* Plugin URI: twtcher.pro
+* Description: Un plugin para convertir wordpress es un centro de cotrol de streamings
+* Version: 1
+* Author: reevolutiva
+* Author URI: twitcher.pro
+* License: GPL2
+* Text Domain: twitcher
+* Domain Path: /languages
 */
+
 
 //setings
 require_once 'includes/dev_functions.php';
@@ -85,30 +88,69 @@ function twchr_main_menu(){
         plugin_dir_url(__FILE__).'includes/assets/Logo.png',
         2
     );
-
+        */
     add_submenu_page(
-        'twchr_wp_menu',
-        'User Token',
-        'User Token',
-        'administrator',
-        'twchr_user_token',
-        'twchr_submenu_user_token',
+        'edit.php?post_type=twchr_streams',
+        'Broadcaster Settings',
+        'Broadcaster Settings',
+        'manage_options',
+        'twchr_boradcaster_setting',
+        'twchr_submenu_boradcaster_setting',
     );
-    */
+    
 }
 
 add_action('admin_menu','twchr_main_menu');
+
+function twchr_post_db_exist($cpt,$value_title){
+    global $wpdb;
+    $sql = "SELECT post_title FROM wp_posts WHERE post_type = '$cpt' AND post_title = '$value_title';";
+    $wpdb->query($sql);
+    $response = $wpdb->{'last_result'};
+    if(COUNT($response) > 0){
+        return $response;
+    }else{
+        return false;
+    }
+    
+}
+
+function twchr_cf_db_exist($key,$value){
+    global $wpdb;
+    $sql = "SELECT * FROM wp_postmeta WHERE meta_key = '$key' AND meta_value = '$value';";
+    $wpdb->query($sql);
+    $response = $wpdb->{'last_result'};
+    if(COUNT($response) > 0){
+        return $response;
+    }else{
+        return false;
+    }
+    
+}
 
 // Template de menu prinicpal de plugin
 function twchr_main_page(){
     require_once 'admin/main_page.php';
 }
 
-/* Template de meunu secudario de plugin
-function twchr_submenu_user_token(){
-    require_once 'admin/submenu_user_token.php';
+//Template de meunu secudario de plugin
+function twchr_submenu_boradcaster_setting(){
+    require_once 'admin/submenu_boradcaster_setting.php';
 }
-*/
+
+
+function twchr_token_validate($token){
+    $url = 'https://id.twitch.tv/oauth2/validate';
+    $args = array(
+        'headers' => array(
+            'Authorization' => 'Bearer '.$token
+        )
+    );
+
+    $response = wp_remote_get( $url, $args);
+    $body = wp_remote_retrieve_body($response);
+    return json_decode($body);
+}
 
 
 /* Funcion is_this_single_of_cpt() que verifica si estamos en un archive o un single 
@@ -177,7 +219,7 @@ function is_get_user_token_page($term_id){
 function schedule_update($term_id) {
 
     // Recoje data de BDD
-    $twch_data_prime = json_decode(db_to_front('twitcher_keys')['last_result'][0]->option_value);
+    $twch_data_prime = json_decode(get_option( 'twitcher_keys', false ));
     $tokenValidate = $twch_data_prime->{'user_token'};
     $client_id = $twch_data_prime->{'client-id'};
 
@@ -187,12 +229,29 @@ function schedule_update($term_id) {
     $dateTime_rfc = date(DateTimeInterface::RFC3339,$dateTime_stg);
 
     $duration = sanitize_text_field($_POST['twchr_toApi_duration']);
-    $select = sanitize_text_field($_POST['twchr_toApi_category']);
-    $tag_name = $_POST["tag-name"];
+    $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
+    $tag_name = '';
+    /*
+        Si existe la variable $_POST['tag-name']
+        significa que se que la taxonomia se creo en el hook create-schedule
+        asi $tag-name valdra $_POST['tag-name']
+    */
+    if(isset($_POST['tag-name'])){
+        $tag_name = $_POST['tag-name'];
 
-    
+    /*
+        Si no existe la variable $_POST['tag-name']
+        verifica que exista la variable $_POST['name']
+
+        Si la variable $_POST['name'] existe significa que 
+        la taxonomia se creo en el hook edit-schedule
+        asi que $tag-name valdra $_POST['name']
+    */    
+    }elseif (isset($_POST['name'])) {
+        $tag_name = $_POST['name'];
+    }
     // Envia los datos a la API de twich
-    return post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select,$duration);
+    return post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
 
     
 }
@@ -224,19 +283,21 @@ function twchr_redirect_setUp(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.2.14';
+    $version = 'beta.3.69';
     
     // Estilos
     wp_enqueue_style('admin-styles', plugin_dir_url(__FILE__) . 'includes/css/admin.css',array(),$version,'all');
 
     // Scripts
+    wp_enqueue_script('twchr_gscjs',plugin_dir_url(__FILE__) . 'includes/js/gscjs.js',array(),$version,true);
     wp_register_script('twchr_custom_script',plugin_dir_url(__FILE__) . 'includes/js/admin.js',array(),$version,true);
     wp_enqueue_script('twchr_custom_script');
 
     //Definimos las variables WordPress a enviar dentro de un array
     $params = array (
-        'twitcher_keys' => get_option('twitcher_keys') ,
-        'twitcher_app_token' => get_option('twitcher_app_token')
+        'twitcher_keys' => json_decode(get_option('twitcher_keys')) ,
+        'twitcher_app_token' => get_option('twitcher_app_token'),
+        'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0]
     );
 
     //Usamos esta función para que coloque los valores inline
@@ -244,3 +305,27 @@ function twchr_admin_js() {
 }
 
 add_action('admin_enqueue_scripts', 'twchr_admin_js');
+
+add_action('init','twchr_fonts');
+
+function twchr_fonts(){
+    ?>
+    <style>
+        @font-face {
+            font-family: 'Comfortaa';
+            src: url(<?= plugins_url('twitcher-original/includes/assets/fonts/Comfortaa-Regular.ttf');?>);
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: 'Comfortaa';
+            src: url(<?= plugins_url('twitcher-original/includes/assets/fonts/Comfortaa-Bold.ttf');?>);
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: 'Comfortaa';
+            src: url(<?= plugins_url('twitcher-original/includes/assets/fonts/Comfortaa-Light.ttf');?>);
+            font-weight: light;
+        }
+    </style>
+    <?php
+}

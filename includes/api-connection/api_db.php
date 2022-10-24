@@ -1,22 +1,17 @@
 <?php 
+// Retorna true si $data existe en wp_options
     function twittcher_data_exist($data){
-        global $wpdb;
-        $sql = "SELECT * FROM wp_options WHERE option_name='$data'";
-        //show_dump($sql);
-        $wpdb->query($sql);
-        //$response = $wpdb->last_result[0];
-        $response = $wpdb->last_result;
-        //show_dump($wpdb->last_result);
-
-        if(!empty($response[0])){
+        if(get_option($data, false) != false){
             return true;
         }else{
             return false;
         }
     }
-    function twittcher_getData_wp_optios($data){
+
+    // Si existe un dato en BDD me lo devuelves
+    function twittcher_getData($table,$key,$data){
         global $wpdb;
-        $sql = "SELECT * FROM wp_options WHERE option_name='$data'";
+        $sql = "SELECT * FROM $table WHERE meta_key='$key' AND meta_value='$data'";
         $wpdb->query($sql);
         $response = $wpdb->last_result[0];
         if(!empty($response)){
@@ -26,9 +21,9 @@
         }
     }
 
+    // Guarda $client_secret y $clientId en wp_options
     function fronted_to_db($client_secret,$clientId){
-        
-        if(!twittcher_data_exist('twitcher_keys')){
+        if(twittcher_data_exist('twitcher_keys') == false){
             $array_keys = array(
                 'client-secret' => $client_secret,
                 'client-id' => $clientId
@@ -46,26 +41,19 @@
         }
     }
 
+    // Guarda appToken en wp_option
     function twchr_save_app_token($token){
-        
-        if(!twittcher_data_exist('twitcher_app_token')){
-            add_option('twitcher_app_token',$token);
-        }else{
+        //show_dump($token);
+        if(get_option('twitcher_app_token') != false || get_option('twitcher_app_token') == ''){
             update_option('twitcher_app_token',$token);
+                        
+        }else{
+            add_option('twitcher_app_token',$token);
         }
+
     }
 
-    function db_to_front($data){
-        global $wpdb;
-        $sql = "SELECT * FROM wp_options WHERE option_name='$data'";
-        $wpdb->query($sql);
-        return array(
-            'last_result' => $wpdb->last_result,
-            'result' => $wpdb->result,
-            'all' => $wpdb
-        );
-    }
-
+    // Guarda el user token validado
     function saveValidateToken($validateTokenObject){ 
         global $wpdb;       
         $validateToken = $validateTokenObject->{'access_token'};
@@ -90,33 +78,3 @@
         }
         
     }
-
-    function twchr_post_db_exist($cpt,$value_title){
-        global $wpdb;
-        $sql = "SELECT post_title FROM wp_posts WHERE post_type = '$cpt' AND post_title = '$value_title';";
-        $wpdb->query($sql);
-        $response = $wpdb->{'last_result'};
-        if(COUNT($response) > 0){
-            return $response;
-        }else{
-            return false;
-        }
-        
-    }
-
-   /* Sin usos 
-   function setInstalled(){
-        // Pregunto si existe twchr_setInstaled
-        $datainstaled = db_to_front('twchr_setInstaled');
-        show_dump('de setInstalled');
-        show_dump(COUNT($datainstaled['last_result']));
-        
-        //show_dump();
-            if(COUNT($datainstaled['last_result']) == 0){
-                //Crear variable twchr_setInstaled   
-                add_option('twchr_setInstaled',0,'',true );
-            }
-            //die();
-        
-    }
-    */

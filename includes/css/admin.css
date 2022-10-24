@@ -1,3 +1,12 @@
+
+.twchr-modal h3{
+    font-family: 'Comfortaa';
+}
+
+:root{
+    --twchr-blue:#429CD6;
+    --twchr-purple:#65449B;
+}
 .alert-twchr-back{
     background-color: #fff;
     padding: 10px 14px;
@@ -36,18 +45,63 @@
 .twchr_modal{
     background-color: #fff;
     position: absolute;
-    min-width: 500px;
-    min-height: 150px;
+    width: max-content;
+    padding: 10px 15px;
+    left: 0;
+    top: 0cm;
     z-index:-1;
-    left:10vw;
     transition: .3s ease-in-out ;
     opacity: 0;
 }
 
 .twchr_modal.active{
     display: block;
-    left:20vw;
-    top:-10px;
-    z-index:10;
+    left: 0;
+    top: 1cm;
+    z-index: 10;
     opacity: 1;
+    overflow: scroll;
+    max-height: 150px;
+}
+
+.twchr_modal section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.twchr_modal section input{
+    width: auto;
+}
+
+.twchr_message{
+    background-color: #fff;
+    z-index: 9999;
+    padding: 5pt 10pt;
+    box-shadow: 0 0 4px 0px rgb(0 0 0 / 30%);
+    margin: 5pt 0;
+}
+
+.twchr_modal_video_ajax input{
+    position: relative;
+}
+
+
+.twchr_videos_ajax.video-saved::after{
+    content: 'saved';
+    color: green;
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 6px;
+}
+
+.menu-icon-twchr_streams .dashicons-before img{
+    transform: scale(.7);
+    opacity: 1 !important;
+}
+
+.twchr-dashboard-card{
+    background-color: #fff;
+    box-shadow: -2.5px -2.5px 5px #FAFBFF, 2.5px 2.5px 5px #A6ABBD;
+    border-radius: 15px;
 }

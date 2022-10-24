@@ -1,62 +1,186 @@
 <style>
     <?php include 'main_page.css'; ?>
 </style>
+<div class="twchr-for-back twchr-container">
+    <article class='twchr-dashboard-card plugin-hello'>
+        <picture>
+            <img src="<?= plugins_url('/twitcher-original/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
+        </picture>
+        <h2><?= __('Data','twitcher'); ?></h2>
+    </article>
+        <article>
+            <h3><?php _e('Twitcher Settings'); ?></h3>
+            <div class="twchr-dashboard-card twchr-card-keys">
+            <?php 
+                $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+            
+                $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
+                //$twch_data_prime_lengt = count($twch_data_prime);
+                $twch_data_app_token = get_option('twitcher_app_token');
+            
+                
+                
+                if($data_broadcaster_raw != false):
+                    $display_name = $data_broadcaster_raw->{'data'}[0]->{'display_name'};
+                    $nombre = $data_broadcaster_raw->{'data'}[0]->{'login'};
+                    $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+                    $description = $data_broadcaster_raw->{'data'}[0]->{'description'};
+                    $foto = $data_broadcaster_raw->{'data'}[0]->{'profile_image_url'};
+                    $type = $data_broadcaster_raw->{'data'}[0]->{'type'};
+                    $broadcaster_type = $data_broadcaster_raw->{'data'}[0]->{'broadcaster_type'};
+                    $created_at = $data_broadcaster_raw->{'data'}[0]->{'created_at'};
+            ?>
+                <div class='hello-twchr-user'> 
+                    <h2><?php printf('%s', $display_name);?></h2>                                
+                    <p><?php printf('Description: %s', $description);?></p>
+                    <picture><img src="<?= $foto ?>" alt="twchr-profile-picture"></picture>
+                </div>
+                <div class='keys-twchr'> 
+                
+                    <form method="GET" action="./edit.php">
+                        <input type="hidden" name="post_type" value="twchr_streams">
+                        <input type="hidden" name="page" value="twchr-settings">
+                        <?php $clientID = !empty($twch_data_prime->{'client-id'}) ? $twch_data_prime->{'client-id'} : null ; ?>
+                        <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?= $clientID?>">
+                        <?php $clientSecret = !empty($twch_data_prime->{'client-secret'}) ?  $twch_data_prime->{'client-secret'} : null; ?>
+                        <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?= $clientSecret ?>" disabled="true">
+                        <div>
+                            <p>Broadcaster Type</p>
+                            <p class="twchr-key-value">Lorem Ipsum Dolor</p>
+                        </div>
+                        <div>
+                            <p>Type</p>
+                            <p class="twchr-key-value">Lorem Ipsum Dolor</p>
+                        </div>
+                        <div>
+                            <p>Created at</p>
+                            <p class="twchr-key-value"><?= $created_at ?></p>
+                        </div>
+                        <div>
+                            <p>Client ID</p>
+                            <p class="twchr-key-value"><?= $clientID?></p>
+                        </div>
+                        <div>
+                            <p>User login</p>
+                            <p class="twchr-key-value"><?= $nombre ?></p>
+                        </div>
+                        <input type="submit" value="<?php esc_attr_e('Reconnect','twitcher');?>" name="renew" id='twchr_submitbutton' >
+                        <?php 
+                            if(isset($_GET['renew'])){
+                                ?>
+                                    <script> 
+                                        const wishexist = prompt('<?php _e('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','twitcher');?> y = yes & n = no.');
+                                        if(wishexist === 'y' || wishexist === 'yes'){
+                                            location.href='<?= site_url("/twttcher-setup")?>';
+                                        }else{
+                                            location.href='<?=site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings")?>';
+                                        }
+                                    </script> 
+                                <?php
+                                die();
+                            }
+                        ?>    
+                        </form>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </article>
+        <article>
+            <h3>Your Twitch Results:</h3>
+            <?php 
+                $data_broadcaster = $data_broadcaster_raw->{'data'}[0];
+                $client_id = $twch_data_prime->{'client-id'};
+                $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-<div class="twchr-for-back container">
-    <main>
-        <h1>Twitcher Settings</h1>
+                $subcribers = get_subcribers($twch_data_app_token, $client_id);
+                $listVideo = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                //show_dump();
+                
+            ?>
+            <div class="twchr-dashboard-card twitch-result">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><?php _e('View Count','twitcher'); ?></td>
+                            <td data-twchr-final-number="<?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td>
+                        </tr>
+                        <tr>
+                            <td><?php _e('Suscribers','twitcher'); ?></td>
+                            <td data-twchr-final-number="<?= isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?= isset($subcribers->{'total'}) ? $subcribers->{'total'} : 'null' ?></td>
+                        </tr>
+                        <tr>
+                            <td><?php _e('Videos','twitcher'); ?></td>
+                            <td data-twchr-final-number="<?= isset($listVideo) ? COUNT($listVideo->{'data'}) : 0 ?>" class='twchr-results-item'><?= isset($listVideo) ? COUNT($listVideo->{'data'}) : 0 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?php _e('Most viewed','twitcher'); ?></td>
+                            <td data-twchr-final-number="12" class='twchr-results-item'>12</td>
+                        </tr>
+                        <tr>
+                            <td><?php _e('Otra data relevante','twitcher'); ?></td>
+                            <td data-twchr-final-number="12" class='twchr-results-item' >12</td>
+                        </tr>
+                        <tr>
+                            <td class="btn-renew-apiKeys">
+                                <a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>"><?= __('Refresh','twitcher') ?></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article>
+        <h3>Your Twitch connection:</h3>
         <?php 
             if(isset($_GET['from']) && $_GET['from'] == 'setUp-plugin'){
-                delete_option('twitcher_keys');
-                delete_option('twitcher_app_token');
-                
+                             
                 if(
                     isset($_GET['client-id']) &&
                     isset($_GET['client-secret'])
                 ){
                     $client_id = $_GET['client-id'];
                     $client_secret = $_GET['client-secret'];
-                    //var_dump($_GET);
+                    
                     fronted_to_db($client_secret, $client_id);
 
+                    // Obtengo App Token
                     $twchr_token_app = get_twicth_api($client_id, $client_secret );
+                    
+                    // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
+                      
+                   
 
-            
                     echo "<script> location.href='https://".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true'; </script>";
                 }
-            }else{
-            $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
-            //$twch_data_prime_lengt = count($twch_data_prime);
-            $twch_data_app_token = get_option('twitcher_app_token');
+            }else{ ?>
             
-            
-            //show_dump($twch_data_prime);
-        ?>
-        <form method="GET" action="./edit.php">
-            <input type="hidden" name="post_type" value="twchr_streams">
-            <input type="hidden" name="page" value="twchr-settings">
-            <?php $clientID = !empty($twch_data_prime->{'client-id'}) ? $twch_data_prime->{'client-id'} : null ; ?>
-            <input id="client-id" type="text" placeholder="Client ID" name="client-id" value="<?= $clientID?>" disabled="true">
-            <?php $clientSecret = !empty($twch_data_prime->{'client-secret'}) ?  $twch_data_prime->{'client-secret'} : null; ?>
-            <input id="client-secret" type="password" placeholder="Client Secret" name="client-secret" value="<?= $clientSecret ?>" disabled="true">
-            <input type="submit" value="resincronizar" name="resincronizar" >
-            <?php 
-                if(isset($_GET['resincronizar'])){
-                    echo "<script>const wishexist = prompt('Si continuas este proseso se eliminaran todas las api-keys instaladas en wordpress ¿Esta seguro de hacerlo? s = sí y n = no.'); if(wishexist === 's' || wishexist === 'sí'){ location.href='".site_url("/twttcher-setup")."'}else{location.href='".site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings")."'}</script>";
-                    die();
-                }
-            ?>
-        </form>
+            <div class="twchr-dashboard-card twitch-connect">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><?= __('Renew Client ID','twitcher'); ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-id'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= __('Renew Client Secret','twitcher'); ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-secret'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                        </tr>
+                        <tr>
+                            <td><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true"><?= __('Renew User Token','twitcher'); ?></a></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'user_token'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                        </tr>
+                        <tr>
+                            <td><a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&app_token_action=update"><?= __('Renew App Token','twitcher'); ?></a></td>
+                            <td class='twitch-connect__status'><?= $twch_data_app_token != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                        </tr>
+                        <tr>
+                            <td class="btn-renew-apiKeys"><a href="<?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <hr/>
-        <h3>Actualiza tu USER TOKEN</h3>   
-        <p><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true">renovar user token</a></p>
-
-        <hr/>
-        
-        <h3>Actualiza tu APP TOKEN</h3>
-        <a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&app_token_action=update">renovar app token</a>
         <?php 
             if(isset($_GET['app_token_action'])){
                 switch ($_GET['app_token_action']) {
@@ -64,11 +188,13 @@
                         
                         $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
-                        wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings'));
-                        exit;
-                        
+                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')."'</script>";
                         break;
-                    
+                    case 'renewAll_api_keys':
+                        $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
+                        twchr_save_app_token($twchr_token_app->{'access_token'});
+                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true')."'</script>";
+                        
                     default:
                         # code...
                         break;
@@ -76,8 +202,7 @@
             }
         ?>
         
-    </main>
-    <aside>
+    </article>
     <?php 
             if(isset($_GET)){  
                 if(count($_GET) > 1){
@@ -102,6 +227,7 @@
                     
                     if(isset($_GET['autentication'])){
                         if ($_GET['autentication'] == true) {
+                            //show_dump($twch_data_prime);
                             if(!empty($twch_data_prime->{'client-secret'}) && 
                             !empty($twch_data_prime->{'client-id'})
                             ):
@@ -111,7 +237,12 @@
                                 $scope = array(
                                     "channel:manage:schedule"
                                 );
-                                
+
+                                if(isset($_GET['twchr_id'])){
+                                    $term_id = $_GET['twchr_id'];
+                                    $allData = '';
+                                    update_term_meta($term_id,'twchr_fromApi_allData',$allData);
+                                }
                                 autenticate($client_id, $secret_key, $return,$scope);  
                             endif;
                         }
@@ -125,10 +256,10 @@
         
                         $response = validateToken($client_id,$client_secret,$code, $redirect);
                         $validateTokenObject = json_decode($response['body']);
-                        $response_code = $response['response'];
-        
-                        if($response_code['code'] == 200){
-                            global $wpdb;
+                        $response_response = $response['response'];
+                        
+                        if($response_response['code'] == 200){
+                            
                             $userToken = $validateTokenObject->{'access_token'};
                             $userTokenRefresh = $validateTokenObject->{'refresh_token'};
         
@@ -142,16 +273,24 @@
                             );
         
                             $json_array = json_encode($array_keys);
-                            $sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twitcher_keys'";
         
-                            $wpdb->query($sql);
+                            update_option( 'twitcher_keys', $json_array, true);
+                            echo "<h3>User Token actualizado actualizado correctamente</h3>";
+                            $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true';
+                            echo "<script>location.href='$urlRedirection'</script>";
                         }else{
-                            var_dump($validateTokenObject);
+                        ?>
+                            <div class="twchr-modal-error">
+                                <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
+                                <p>Intente nuevamente</p>
+                                <p><b>Error: </b><?= $validateTokenObject->{'message'} ?></p>
+                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings');?>">ok</a></p>
+                            </div>
+                        <?php
+                            die();
                         }
-        
-                        echo "<h3>User Token actualizado actualizado correctamente</h3>";
-                        $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings';
-                        echo "<script>location.href='$urlRedirection'</script>";
+                
+                        
                     }
         
                     if(isset($_GET['error']) && isset($_GET['error_description'])){
@@ -168,74 +307,5 @@
                 }
             }
             //var_dump($twch_data_prime);
-        ?>
-        <table class="twittcher-table">
-            <h3>Keys para API de Twitch</h3>
-            <?php if($twch_data_prime != false): ?>
-                <tr>
-                <td>Client ID</td>
-                <td><?= $twch_data_prime->{'client-id'}?></td>
-            </tr>
-            <tr>
-                <td>Client Secret</td>
-                <td><?= $twch_data_prime->{'client-secret'}?></td>
-            </tr>
-            <tr>
-                <td>Code</td>
-                <td>
-                <?php 
-                    if(isset($twch_data_prime->{'code'})) {
-                        echo $twch_data_prime->{'code'};
-                    }else{
-                        echo'key sin registrar';
-                    } 
-                ?>
-                </td>
-            </tr>
-            <tr>
-                <td>Scope</td>
-                <td>
-                <?php 
-                    if(isset($twch_data_prime->{'scope'})) {
-                        echo $twch_data_prime->{'scope'};
-                    }else{
-                        echo'key sin registrar';
-                    } 
-                ?>
-            </td>
-            </tr>
-            <tr>
-                <td>User token</td>
-                <td>
-                <?php 
-                    if(isset($twch_data_prime->{'user_token'})) {
-                        echo $twch_data_prime->{'user_token'};
-                    }else{
-                        echo'key sin registrar';
-                    } 
-                ?>
-            </td>
-            </tr>
-            <tr>
-                <td>User token - refresh</td>
-                <td>
-                <?php 
-                    if(isset($twch_data_prime->{'user_token_refresh'})) {
-                        echo $twch_data_prime->{'user_token_refresh'};
-                    }else{
-                        echo'key sin registrar';
-                    } 
-                ?>
-            </td>
-            </tr>
-            <?php endif; ?>
-            <?php if($twch_data_app_token != false): ?>
-            <tr>
-                <td>App Token</td>
-                <td><?= $twch_data_app_token?></td>
-            </tr>
-            <?php endif; ?>
-        </table>
-    </aside>
-    <?php } 
+        } 
     ?>

@@ -49,11 +49,8 @@ function twchr_add_taxonomy_cf_to_api($taxonomy) {
             <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="escribe tu categoria">
             <p>Categoria del stream</p>
         </div>
-        <label for="twchr_fromApi_allData">All Data</label>
-        <div>
-            <input type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value=''>
-            <p>Data procedente de la API de Twitch.</p>
-        </div>
+        <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value'>
+        <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name'>
     </div>
     <?php
     
@@ -64,7 +61,8 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
     //wp_nonce_field( 'schedule_cf', 'schedule_cf_nonce' );
     $dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
-	$select = get_term_meta( $term->term_id, 'twchr_toApi_category', true );
+    $select_value = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
+    $select_name = get_term_meta($term->term_id,'twchr_toApi_category_name',true);
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
     //show_dump($dateTime);
 
@@ -118,19 +116,25 @@ function twchr_taxnonomy_save( $term_id ) {
     $dateTime_old = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
     $duration_old = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
     $select_old = get_term_meta( $term->term_id, 'twchr_toApi_category', true );
+    $select_value_old = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
+    $select_name_old = get_term_meta($term->term_id,'twchr_toApi_category_name',true);
+    
         
     // Saneamos lo introducido por el usuario.            
     $dateTime = sanitize_text_field($_POST['twchr_toApi_dateTime']);
     $duration = sanitize_text_field($_POST['twchr_toApi_duration']);
-    $select = sanitize_text_field($_POST['twchr_toApi_category']);
+    $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
+    $select_name = sanitize_text_field($_POST['twchr_toApi_category_name']);
+    
         
     // Actualizamos el campo meta en la base de datos.
     update_term_meta($term_id,'twchr_toApi_dateTime',$dateTime,$dateTime_old);
     update_term_meta($term_id,'twchr_toApi_duration',$duration, $duration_old);
-    update_term_meta($term_id,'twchr_toApi_category',$select, $select_old);
+    update_term_meta($term_id,'twchr_toApi_category_value',$select_value, $select_value_old);
+    update_term_meta($term_id,'twchr_toApi_category_name',$select_name, $select_name_old);
     
 
-    if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category']) ){
+    if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
             $response = schedule_update($term_id);
          
             $allData = json_encode($response);

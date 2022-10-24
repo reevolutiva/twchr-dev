@@ -74,10 +74,12 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
         return array('allData'=>$allData,'status'=>200,'message'=>'schedule segment creado exitosamente.');
       //die();
       break;
+    //case 401:
     case 401:
-      return array("message"=>"USER TOKEN es invalido, espere un momento, en unos momentos sera redirigido a un lugar donde podra conseguir un USER TOKEN actualizado.",'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true');
+      return array("message"=>"USER TOKEN es invalido, espere un momento, en unos momentos sera redirigido a un lugar donde podra conseguir un USER TOKEN actualizado.",'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true','post-id'=>$post_id);
      
       break;
+    //case 400:
     case 400:
       $glosa = str_replace('"','`',$response_body->{'message'});
       return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
@@ -91,6 +93,43 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
 
 
 function autenticate($api_key, $client_id,$redirect,$scope){
+  $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
+  $token = isset($twch_data_prime->{'user_token'}) ? $twch_data_prime->{'user_token'} : false;
+  $token_validate ;
+  $token_status ;
+  $twch_data_app_token;
+
+  if($token != false){
+    $token_validate = twchr_token_validate($token);
+    $token_status = isset($token_validate->{'status'}) ? false : true;
+    $twch_data_app_token = get_option('twitcher_app_token');
+  }else{
+    $token_status = false;
+  }
+
+  
+  // IF endpoint validate
+  if($token_status){
+    $user_login = $token_validate ->{'login'};
+    
+    $args = array(
+        'headers' => array(
+            'Authorization' => 'Bearer '.$twch_data_app_token,
+            'client-id' => $twch_data_prime->{'client-id'}
+        )
+    );
+
+    $url = "https://api.twitch.tv/helix/users?login=".$user_login;
+    $response = wp_remote_get( $url, $args);
+    $body = wp_remote_retrieve_body( $response);
+
+    update_option( 'twchr_data_broadcaster', $body, true);
+
+    $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings';
+    echo "<script>location.href='$urlRedirection'</script>";
+    
+  }else{
+
   $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
   $authUrl = $twitchtv->authenticate();
 
@@ -100,18 +139,20 @@ function autenticate($api_key, $client_id,$redirect,$scope){
   echo $msg;
   //echo $authUrl;
   echo $script;
+  }
 }
 
-function twicher_twicht_init_api(){
+function get_subcribers($app_token, $client_id){
+  $args = array(
+    'headers' => array(
+      'Authorization' => 'Bearer '.$app_token,
+      'client-id' => $client_id 
+    )
+  );
 
-}
+  $get =  wp_remote_get( 'https://api.twitch.tv/helix/eventsub/subscriptions', $args);
 
-function twitcher_refresh_api(){
-  
-}
+  $response = wp_remote_retrieve_body( $get);
 
-/*function twchr_cp_callback( $post_ID, $post, $update ) {
-	echo "hello wordl";
+  return json_decode($response);
 }
-add_action( 'save_post', 'twchr_cp_callback', 10, 3 );
-*/

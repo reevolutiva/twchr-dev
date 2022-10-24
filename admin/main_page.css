@@ -1,37 +1,178 @@
-
-    .twchr-for-back.container{
+.twchr-for-back.twchr-container{
         width: 95%;
-        margin:10vh auto 0 auto;
-    }
-
-    .twchr-for-back.container input,
-    .twchr-for-back.container label{
-        display: block;    
-    }
-
-    .twittcher-table tbody{
+        margin:1cm auto 0 auto;
         display: grid;
-    }
-    .twittcher-table tr{
-    padding: 1em 1.5em;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    column-gap: 1em;
+        grid-template-columns: minmax(300px,588px) 300px 300px;
+        grid-template-rows: 150px 380px;
+        grid-gap: 1cm;
+}
+
+.twchr-for-back-broadcast{
+    width: 95%;
+    margin:10vh auto 0 auto;
+}
+
+
+.twchr-dashboard-card{
     background-color: #fff;
+    box-shadow: -2.5px -2.5px 5px #FAFBFF, 2.5px 2.5px 5px #A6ABBD;
+    border-radius: 15px;
+    padding: 15px 25px;
+    height: 100%;
+    position: relative;
 }
 
-.twittcher-table tr:nth-child(even){
-    background-color: #e8e8e8;
+.twchr-dashboard-card .hello-twchr-user{
+    display: grid;
+    grid-template-columns: 1fr minmax(auto,136px);
+    grid-template-rows: 55px auto;
+    grid-template-areas: 'title logo'
+                         'parrafo logo';
 }
 
-.twittcher-table td{
-    text-align: center;
+.twchr-dashboard-card .hello-twchr-user h2{
+    grid-area: title;
+    margin: 0;
+    line-height: 1.5em;
+}
+.twchr-dashboard-card .hello-twchr-user p{
+    grid-area: parrafo;
 }
 
-@media screen and (min-width:1000px){
-    .twchr-for-back.container{
-        display:grid;
-        grid-template-columns:1fr auto;
-        column-gap:50px;
-    }
+.twchr-dashboard-card .hello-twchr-user  picture{
+    grid-area: logo;
+}
+
+.twchr-dashboard-card picture img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.twchr-dashboard-card.plugin-hello{
+    grid-column: 1/4;
+    display: flex;
+}
+
+.twchr-dashboard-card.plugin-hello picture{
+    max-width: 150px;
+    margin-right: 10px;
+}
+.twchr-dashboard-card.plugin-hello h2{
+    transform: translateY(50px);
+}
+
+.twchr-dashboard-card h2{
+    font-size: 36px;
+    line-height: 1em;
+}
+
+.twchr-dashboard-card .keys-twchr form{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap:10pt;
+    grid-template-rows: 2cm 2cm 1cm;
+}
+
+.twchr-dashboard-card .keys-twchr form div p,
+.twchr-dashboard-card table td:first-child{
+    margin: 0;
+    font-size: 15px;
+    line-height: 17px;
+}
+
+.twchr-dashboard-card table{
+    display: block;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.twchr-dashboard-card table tbody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.twchr-dashboard-card table tbody tr{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.twchr-dashboard-card table tbody tr a{
+    color:#C9BBBB;
+}
+
+.twchr-dashboard-card table tbody tr td:nth-child(2){
+    color:var(--twchr-blue);
+    font-size: 20px;
+}
+
+.twchr-dashboard-card .keys-twchr form div p:first-child,
+.twchr-dashboard-card  table tr td:first-child{
+    color:#C9BBBB;
+}
+
+
+.twchr-dashboard-card table tbody tr td.twitch-connect__status{
+    color: var(--twchr-blue);
+}
+
+#twchr_submitbutton{
+    grid-column: 3/4;
+    border: none;
+    background-color: var(--twchr-purple);
+    color: #fff;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    grid-row: 3/4;
+    width: max-content;
+    padding:8px 1cm;
+    height: max-content;
+}
+
+
+.twchr-dashboard-card table tbody .btn-renew-apiKeys{
+    width: 100%;
+    display: block;
+}
+
+.twchr-dashboard-card table tbody .btn-renew-apiKeys a{
+    border: none;
+    background-color: var(--twchr-purple);
+    padding: 8px 1cm;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));    
+    width: max-content;
+    display: block;
+    color:#fff;
+    text-decoration: none;
+    margin:0 auto;
+}
+
+.twchr-modal-error{    
+    position: fixed;
+    background-color: #fff;
+    width: 600px;
+    top: 40%;
+    left: 37%;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 50%);
+}
+
+.twchr-dashboard-card .keys-twchr form div p:first-child{
+    margin-bottom: 5pt;
+}
+.twchr-card-keys{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.twitch-result table , .twitch-connect table{
+    padding-top: 16pt;
 }

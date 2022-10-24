@@ -1,0 +1,100 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Twitcher\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-19 18:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.3\n"
+"X-Domain: twitcher"
+
+#: admin/main_page.php:270
+msgid "App Token"
+msgstr ""
+
+#: admin/main_page.php:212
+msgid "Client ID"
+msgstr ""
+
+#: admin/main_page.php:216
+msgid "Client Secret"
+msgstr ""
+
+#: admin/main_page.php:220
+msgid "Code"
+msgstr ""
+
+#: admin/admin_dashboard.php:15
+msgid "Developed reevolutiva.com"
+msgstr ""
+
+#: admin/main_page.php:68
+msgid ""
+"If you continue this process, all the api-keys installed in wordpress will "
+"be removed. Are you sure to do it?"
+msgstr ""
+
+#: admin/main_page.php:209
+msgid "Keys to Twitch's API"
+msgstr ""
+
+#. Author of the plugin
+msgid "reevolutiva"
+msgstr ""
+
+#: admin/main_page.php:62
+msgid "Renew"
+msgstr ""
+
+#: admin/main_page.php:89
+msgid "Renew App Token"
+msgstr ""
+
+#: admin/main_page.php:84
+msgid "Renew User Token"
+msgstr ""
+
+#: admin/admin_dashboard.php:9
+msgid "Thanks for installing Twithcer plugin!"
+msgstr ""
+
+#. Name of the plugin
+msgid "Twitcher"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "twitcher.pro"
+msgstr ""
+
+#. URI of the plugin
+msgid "twtcher.pro"
+msgstr ""
+
+#. Description of the plugin
+msgid "Un plugin para convertir wordpress es un centro de cotrol de streamings"
+msgstr ""
+
+#: admin/main_page.php:226 admin/main_page.php:238 admin/main_page.php:250
+#: admin/main_page.php:262
+msgid "unregistered key"
+msgstr ""
+
+#: admin/main_page.php:88
+msgid "Update App Token"
+msgstr ""
+
+#: admin/main_page.php:83
+msgid "Update User Token"
+msgstr ""
+
+#: admin/main_page.php:256
+msgid "User token - refresh"
+msgstr ""
