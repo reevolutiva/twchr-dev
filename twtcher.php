@@ -105,6 +105,7 @@ function twchr_main_menu(){
 
 add_action('admin_menu','twchr_main_menu');
 
+/*
 function twchr_post_db_exist($cpt,$value_title){
     global $wpdb;
     $sql = "SELECT post_title FROM wp_posts WHERE post_type = '$cpt' AND post_title = '$value_title';";
@@ -130,6 +131,7 @@ function twchr_cf_db_exist($key,$value){
     }
     
 }
+*/
 
 // Template de menu prinicpal de plugin
 function twchr_main_page(){
