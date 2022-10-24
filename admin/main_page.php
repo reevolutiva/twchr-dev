@@ -1,3 +1,6 @@
+<?php 
+    require_once 'aux_functions/twchr_max_of_list.php';
+?>
 <style>
     <?php include 'main_page.css'; ?>
 </style>
@@ -93,29 +96,13 @@
                 $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
                 $subcribers = get_subcribers($twch_data_app_token, $client_id);
-
-                               
-                $listVideo = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
-                $mostViwed = false;
-                $viewed = array();
-                foreach($listVideo->{'data'} as $item){
-                    $view = $item->{'view_count'};                                     
-                    array_push($viewed,$view);
-                }
-                foreach($listVideo->{'data'} as $item){
-                    $max_view = max($viewed);
-                    $title = $item->{'title'};
-                    $view = $item->{'view_count'};
-                    if($view == $max_view){
-                        $mostViwed = array(
-                            'view' => $max_view,
-                            'title' => $title
-                        );
-                    }
-                                   
-                }
-
-                //show_dump($mostViwed);
+                             
+                $listVideo_from_api = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                $listVideo_from_wp = twchr_get_stream();
+            
+                $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
+                $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
+                
                 ?>
             <div class="twchr-dashboard-card twitch-result">
                 <table>
@@ -134,13 +121,13 @@
                         </tr>
                         <tr>
                             <td><?php _e('Most viewed','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?= $mostViwed != false ? $mostViwed['view'] : 0  ?>" class='twchr-results-item'>0</td>
-                            <td class="twchr-tooltip"><?= $mostViwed != false ? $mostViwed['title'] : 'undefined' ?></td>
+                            <td data-twchr-final-number="<?= $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
+                            <td class="twchr-tooltip"><?= $mostViwed_from_api != false ? $mostViwed_from_api['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Last Imported','twitcher'); ?></td>
-                            <td data-twchr-final-number="12" class='twchr-results-item' >12</td>
-                            <td class="twchr-tooltip">undefined</td>
+                            <td data-twchr-final-number="<?= $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
+                            <td class="twchr-tooltip"><?= $mostViwed_from_wp != false ? $mostViwed_from_wp['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">

@@ -120,8 +120,7 @@ function twchr_post_db_exist($cpt,$value_title){
         return false;
     }
     
-}
-
+}*/
 function twchr_cf_db_exist($key,$value){
     global $wpdb;
     $sql = "SELECT * FROM wp_postmeta WHERE meta_key = '$key' AND meta_value = '$value';";
@@ -134,7 +133,7 @@ function twchr_cf_db_exist($key,$value){
     }
     
 }
-*/
+
 
 // Template de menu prinicpal de plugin
 function twchr_main_page(){
