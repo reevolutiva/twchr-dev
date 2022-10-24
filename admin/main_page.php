@@ -94,9 +94,28 @@
 
                 $subcribers = get_subcribers($twch_data_app_token, $client_id);
                 $listVideo = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
-                //show_dump();
-                
-            ?>
+                $mostViwed = false;
+                $viewed = array();
+                foreach($listVideo->{'data'} as $item){
+                    $view = $item->{'view_count'};                                     
+                    array_push($viewed,$view);
+                }
+                foreach($listVideo->{'data'} as $item){
+                    $max_view = max($viewed);
+                    $title = $item->{'title'};
+                    $view = $item->{'view_count'};
+                    if($view == $max_view){
+                        $mostViwed = array(
+                            'view' => $max_view,
+                            'title' => $title
+                        );
+                    }
+                    
+                    
+                }
+
+                //show_dump($mostViwed);
+                ?>
             <div class="twchr-dashboard-card twitch-result">
                 <table>
                     <tbody>
@@ -114,7 +133,8 @@
                         </tr>
                         <tr>
                             <td><?php _e('Most viewed','twitcher'); ?></td>
-                            <td data-twchr-final-number="12" class='twchr-results-item'>12</td>
+                            <td data-twchr-final-number="<?= $mostViwed != false ? $mostViwed['view'] : 0  ?>" class='twchr-results-item'>0</td>
+                            <td class="twchr-tooltip"><?= $mostViwed != false ? $mostViwed['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Last Imported','twitcher'); ?></td>
