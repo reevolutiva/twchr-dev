@@ -306,7 +306,7 @@ function twchr_admin_js() {
 
 add_action('admin_enqueue_scripts', 'twchr_admin_js');
 
-add_action('init','twchr_fonts');
+add_action('admin_init','twchr_fonts');
 
 function twchr_fonts(){
     ?>
