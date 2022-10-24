@@ -90,16 +90,6 @@
     position: relative;
 }
 
-
-.twchr_videos_ajax.video-saved::after{
-    content: 'saved';
-    color: green;
-    display: block;
-    position: absolute;
-    left: 20px;
-    top: 6px;
-}
-
 .menu-icon-twchr_streams .dashicons-before img{
     transform: scale(.7);
     opacity: 1 !important;

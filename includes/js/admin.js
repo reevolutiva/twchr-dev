@@ -369,17 +369,19 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 
         // Genera tantos checkbox como videos tenga el la API
         data.forEach((item, index) => {
+            console.log(item);
             const id = item.id;
             const title = item.title;
+            const date = item.created_at;
             Content += `<section class='twchr_modal_video_ajax'>
-                            <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'>${title}</label>
+                            <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
                             <input type='checkbox' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax${id}' value='${id}'>
                         </section>`;
     
         });
     
     
-        modal.innerHTML = Content;
+        modal.innerHTML += Content;
         
         // Me comunico con la API de wordpress
         gscFetch (location.origin+'/wp-json/twchr/twchr_get_streaming/', twchr_verification_videos,'json');
@@ -392,7 +394,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
                 const wp_stream_id = WpData[pos].twchr_stream_id;
 
                 if(wp_stream_id == twtch_stream_id){
-                    check.classList.add('video-saved');
+                    check.parentElement.children[0].children[2].classList.add('video-saved');
                 }
             });
         }

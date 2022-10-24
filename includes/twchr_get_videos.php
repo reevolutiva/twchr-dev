@@ -131,6 +131,89 @@ function twchr_get_videos_function(){
                     grid-column:2/3;
                     grid-row:1/3;
                 }
+                .twchr-modal-selection__list{
+                    display: flex;
+                    justify-content:space-between;
+                    margin-top:1cm;
+                }
+
+                .twchr-modal-selection__list li {
+                    color:var(--twchr-purple);
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 17px;
+                    text-align: center;
+                }
+
+                .twchr_modal_video_ajax{
+                    display: grid;
+                    grid-template-columns:auto 56px;
+                }
+                .twchr_modal_video_ajax input[type='checkbox']{
+                    display: block;
+                    margin:2pt auto;
+                    width: 25px;
+                    height: 25px;
+                    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;
+                    background-blend-mode: soft-light, normal;
+                    box-shadow: inset -2.5px -2.5px 5px #FAFBFF, inset 2.5px 2.5px 5px #A6ABBD;
+                    border-radius: 3px;
+                }
+                .twchr_modal_video_ajax input[type='checkbox']:checked{
+                    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #65449B;
+                    background-blend-mode: soft-light, normal;
+                    border: 0.5px solid rgba(255, 255, 255, 0.4);
+                    box-shadow: inset -2.5px -2.5px 5px rgba(250, 251, 255, 0.1), inset 2.5px 2.5px 5px #366CBD;
+                }
+                .twchr_modal_video_ajax input[type='checkbox']:checked::before {
+                    margin:0; 
+                    height: none; 
+                    width: none; 
+                    width: 100%;
+                    filter: brightness(10);
+                }
+
+                .twchr_modal_video_ajax label{
+                    display: grid;
+                    grid-template-columns:repeat(3,auto);
+                    width: 100%;
+                    border: 1px solid #429CD6;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 5px;
+                    padding: 3pt 8pt;
+                    box-sizing: border-box;
+                }
+                .twchr_modal_video_ajax span{
+                    font-family: 'Comfortaa';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 2em;
+                }
+                .twchr_modal_video_ajax span.video-saved{
+                    display: block;
+                    width: 25px;
+                    height: 100%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-image:url(<?= plugins_url('twitcher/includes/assets/twchr_check.png')?>);
+                    margin:0;
+                }
+
+                #twchr-modal-selection__btn{
+                    background-color:var(--twchr-purple);
+                    width: 107px;
+                    height: 30px;
+                    border: none;
+                    border-radius: 10px;
+                    color:#fff;
+                    font-size:15px;
+                    margin: 19pt 0 0 auto;
+                    display: block;
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+                }
             </style>
                 <?php
                 switch ($_GET['get_thing']) {
@@ -217,7 +300,15 @@ function twchr_get_videos_function(){
                                         <img src="<?= plugins_url('/twitcher-original/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
                                     </picture>
                                 </div>
-                                <div id="twchr-modal-selection__content"></div> 
+
+                                <div id="twchr-modal-selection__content">
+                                    <ul class="twchr-modal-selection__list">
+                                        <li><?= __('Streaming name','twitcher'); ?></li>
+                                        <li><?= __('Date','twitcher'); ?></li>
+                                        <li><?= __('Already saved?','twitcher'); ?></li>
+                                        <li><?= __('Import','twitcher'); ?></li>
+                                    </ul>
+                                </div> 
                                 <button id="twchr-modal-selection__btn"><?= __('send','twitcher');?></button>
                             </stream>
                          <?php

@@ -1,6 +1,5 @@
 <?php
 function twchr_max_of_list($list,$num,$title,$cf = false){
-    
     $mostViwed = false;
     $viewed = array();
     foreach($list as $item){
