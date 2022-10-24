@@ -139,10 +139,12 @@
                         <tr>
                             <td><?php _e('Last Imported','twitcher'); ?></td>
                             <td data-twchr-final-number="12" class='twchr-results-item' >12</td>
+                            <td class="twchr-tooltip">undefined</td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
                                 <a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>"><?= __('Refresh','twitcher') ?></a>
+                                
                             </td>
                         </tr>
                     </tbody>
