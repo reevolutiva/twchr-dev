@@ -52,11 +52,13 @@ function twchr_get_videos_function_edit(){
             modal .tchr_modal_list li span:after{
                 content:'x';
             }
+
+            
         </style>
         <a class="twchr_button_get_videos" href="<?= bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
             
         <modal class="twchr_modal_get_videos">
-    
+            
         </modal>
         <?php
         endif; 
@@ -93,6 +95,7 @@ function twchr_get_videos_function(){
                     box-shadow: -2.5px -2.5px 5px #FAFBFF, 2.5px 2.5px 5px #A6ABBD;
                     border-radius: 15px;
                     padding:1cm;
+                    z-index: 99;
                 }
 
                 stream.twchr-modal h3{
@@ -124,12 +127,14 @@ function twchr_get_videos_function(){
 
                 .twchr-modal-selection__info{
                     display: grid;
-                    grid-template-columns:2fr 1fr;
+                    grid-template-columns: 2fr 104px;
+                    column-gap: 2cm;
                 }
 
-                .twchr-modal-selection__info picture{
-                    grid-column:2/3;
-                    grid-row:1/3;
+                .twchr-modal-selection__info picture img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit:contain;
                 }
                 .twchr-modal-selection__list{
                     display: flex;
@@ -210,9 +215,42 @@ function twchr_get_videos_function(){
                     border-radius: 10px;
                     color:#fff;
                     font-size:15px;
-                    margin: 19pt 0 0 auto;
                     display: block;
                     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+                }
+
+                .twchr-modal .twchr_help_button{
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    background-image:url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+                    background-size:contain;
+                    background-repeat:no-repeat;
+                    margin-left:6pt;
+                }
+
+                .twchr-modal .twchr-modal-footer{
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content:flex-end;
+                    position: relative;
+                }
+
+                .twchr-modal .twchr-modal-footer p {
+                    position:absolute;
+                    top:-2cm;
+                    left:0;
+                    background-color: #fff;
+                    border: 1px solid rgba(66, 156, 214, 0.3);
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    width: 65%;
+                    padding:10pt 19pt;
+                    border-radius:10px;
+                    display: none;
+                }
+
+                .twchr-modal .twchr-modal-footer:hover p{
+                    display: block;
                 }
             </style>
                 <?php
@@ -295,9 +333,9 @@ function twchr_get_videos_function(){
                             <stream id="twchr-modal-selection" class='twchr-modal <?php if(isset($_GET['stream_id'])) echo "disabled";?>'>
                                 <div class="twchr-modal-selection__info">
                                     <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
-                                    <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?></p>
+                                    
                                     <picture>
-                                        <img src="<?= plugins_url('/twitcher-original/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                                        <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
                                     </picture>
                                 </div>
 
@@ -308,8 +346,14 @@ function twchr_get_videos_function(){
                                         <li><?= __('Already saved?','twitcher'); ?></li>
                                         <li><?= __('Import','twitcher'); ?></li>
                                     </ul>
-                                </div> 
-                                <button id="twchr-modal-selection__btn"><?= __('send','twitcher');?></button>
+                                </div>
+
+                                <div class="twchr-modal-footer">
+                                    <span class="twchr_help_button">
+                                        <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?></p> 
+                                    </span>                                
+                                    <button id="twchr-modal-selection__btn"><?= __('send','twitcher');?></button>
+                                </div>
                             </stream>
                          <?php
                         break;
