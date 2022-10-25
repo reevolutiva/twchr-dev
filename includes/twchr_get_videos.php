@@ -226,14 +226,25 @@ function twchr_get_videos_function(){
                     background-image:url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
                     background-size:contain;
                     background-repeat:no-repeat;
-                    margin-left:6pt;
+                    margin-right:6pt;
                 }
 
+                .twchr-modal-selection_close{
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 18pt;
+                    color: #b5b9c8;
+                    position: absolute;
+                    right: 1cm;
+                    top: 9pt;
+                    cursor:pointer;
+                }
                 .twchr-modal .twchr-modal-footer{
                     margin-top: 20px;
                     display: flex;
                     justify-content:flex-end;
                     position: relative;
+                    align-items:center;
                 }
 
                 .twchr-modal .twchr-modal-footer p {
@@ -331,6 +342,9 @@ function twchr_get_videos_function(){
                     case 'videos_ajax':
                          ?>
                             <stream id="twchr-modal-selection" class='twchr-modal <?php if(isset($_GET['stream_id'])) echo "disabled";?>'>
+                                <div class="twchr-modal-selection_close">
+                                    x
+                                </div>
                                 <div class="twchr-modal-selection__info">
                                     <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
                                     
@@ -352,9 +366,18 @@ function twchr_get_videos_function(){
                                     <span class="twchr_help_button">
                                         <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?></p> 
                                     </span>                                
-                                    <button id="twchr-modal-selection__btn"><?= __('send','twitcher');?></button>
+                                    <button id="twchr-modal-selection__btn"><?= __('Import','twitcher');?></button>
                                 </div>
                             </stream>
+                            <script>
+                                            const twchr_modal_error = document.querySelector("#twchr-modal-selection");
+                                            const twchr_modal_error_button_close = document.querySelector(".twchr-modal-selection_close");
+
+                                            twchr_modal_error_button_close.addEventListener('click',e => {
+                                                twchr_modal_error.style.display = 'none';
+                                                location.href='<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
+                                            });
+                            </script>
                          <?php
                         break;
                     case 'videos_update':
