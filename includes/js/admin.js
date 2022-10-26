@@ -262,7 +262,7 @@ if((getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_typ
                         const url = dataFromApi.url_redirect+"&tchr_id="+dataFromApi['post-id'];
                         
                         setTimeout(() => {
-                            location.href = url;
+                            //location.href = url;
                         }, 2000);
 
                         break;

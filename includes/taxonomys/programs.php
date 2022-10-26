@@ -64,6 +64,11 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
     $select_value = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
     $select_name = get_term_meta($term->term_id,'twchr_toApi_category_name',true);
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
+
+    $select_cat = array(
+        'name' => $select_name,
+        'value' => $select_value
+    );
     //show_dump($dateTime);
 
 	require_once 'form_programs.php';
@@ -96,7 +101,7 @@ function twchr_taxonomy_schedule() {
     register_taxonomy( 'schedule', array( 'post', 'twchr_streams' ), $args );
 }
 
-function twchr_taxnonomy_save( $term_id ) {
+function twchr_taxnonomy_save( $term_id, $tt_id ) {
     // Comprobamos si se ha definido el nonce.
     
     /*
@@ -110,14 +115,15 @@ function twchr_taxnonomy_save( $term_id ) {
       return $term_id;
     }
     */
+
     
     
     
-    $dateTime_old = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
-    $duration_old = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
-    $select_old = get_term_meta( $term->term_id, 'twchr_toApi_category', true );
-    $select_value_old = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
-    $select_name_old = get_term_meta($term->term_id,'twchr_toApi_category_name',true);
+    $dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
+    $duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
+    $select_old = get_term_meta( $term_id, 'twchr_toApi_category', true );
+    $select_value_old = get_term_meta($term_id,'twchr_toApi_category_value',true);
+    $select_name_old = get_term_meta($term_id,'twchr_toApi_category_name',true);
     
         
     // Saneamos lo introducido por el usuario.            
@@ -134,22 +140,24 @@ function twchr_taxnonomy_save( $term_id ) {
     update_term_meta($term_id,'twchr_toApi_category_name',$select_name, $select_name_old);
     
 
+    
     if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
             $response = schedule_update($term_id);
-         
             $allData = json_encode($response);
+            //show_dump($response);
+            //die();
             update_term_meta($term_id,'twchr_fromApi_allData',$allData);
             
-            //wp_redirect(site_url('wp-admin/term.php?taxonomy=schedule&tag_ID='.$term_id));
-            //exit;
-            //die();
+            
+            
         
    }
+   
 
    //echo "hola";
   }
-  add_action( 'edit_schedule', 'twchr_taxnonomy_save' );
-  add_action( 'create_schedule', 'twchr_taxnonomy_save' );
+  add_action( 'edit_schedule', 'twchr_taxnonomy_save', 10,5);
+  add_action( 'create_schedule', 'twchr_taxnonomy_save', 10,5);
 
 
   function schedule_endpoint() {
