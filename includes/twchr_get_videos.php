@@ -137,8 +137,8 @@ function twchr_get_videos_function(){
                     object-fit:contain;
                 }
                 .twchr-modal-selection__list{
-                    display: flex;
-                    justify-content:space-between;
+                    display:grid;
+                    grid-template-columns:2fr 1.5fr 1fr 56px;
                     margin-top:1cm;
                 }
 
@@ -181,13 +181,14 @@ function twchr_get_videos_function(){
 
                 .twchr_modal_video_ajax label{
                     display: grid;
-                    grid-template-columns:repeat(3,auto);
+                    grid-template-columns:2fr 1fr 1fr;
                     width: 100%;
                     border: 1px solid #429CD6;
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                     border-radius: 5px;
                     padding: 3pt 8pt;
                     box-sizing: border-box;
+                    justify-items:center;
                 }
                 .twchr_modal_video_ajax span{
                     font-family: 'Comfortaa';
