@@ -7,7 +7,7 @@
 <div class="twchr-for-back twchr-container">
     <article class='twchr-dashboard-card plugin-hello'>
         <picture>
-            <img src="<?= plugins_url('/twitcher-original/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
+            <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
         </picture>
         <h2><?= __('Data','twitcher'); ?></h2>
     </article>
