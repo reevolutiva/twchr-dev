@@ -36,5 +36,19 @@
 			<p></p>
 			<img src="<?= plugins_url('/twitcher/admin/setUp-img/setUp-image-4.jpg') ?>" alt="">
 		</section>
+		<section class="card-section form">
+			<h3>5</h3>
+			<h4><?php _e('Get your Client-id and your Client-secret from your app and paste at the following forms','twitcher');?></h4>
+			<form method='GET' action='https://"<?=$_SERVER['SERVER_NAME']?>"/wp-admin/edit.php'>
+				<input type='hidden' name='post_type' value='twchr_streams'>
+				<input type='hidden' name='page' value='twchr-settings'>
+				<input type='hidden' name='from' value='setUp-plugin'>
+				<label for="client-id">Client Id</label>
+				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?= $clientId ?>'>
+				<label for="client-secret">Client Secret</label>
+				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?= $clientSecret ?>'>								
+				<input type='submit' value='sincronizar' name='sincronizar'>
+			</form>
+		</section>
 	</div>
 </div>
