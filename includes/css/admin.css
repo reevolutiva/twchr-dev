@@ -290,3 +290,93 @@ stream.twchr-modal .twchr-modal-button.close{
     display: block;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
 }
+
+.twchr_settUp_overlay{
+    width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    z-index: 99999;
+    top: -1cm;
+    left: -5cm;
+    background-color: #fff;
+    font-family: 'Comfortaa';
+    padding-top: 1cm;
+
+}
+.twchr_settUp_overlay #twchr-setUp{
+    max-width:1000px;
+    margin:0 auto;
+}
+
+.twchr_settUp_overlay #twchr-setUp h1{
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 50px;
+    color:var(--twchr-purple);
+
+}
+
+.twchr_settUp_overlay #twchr-setUp section form input{
+    margin-bottom: 10px;
+}
+
+.twchr_settUp_overlay #twchr-setUp .presentation{
+    display: flex;
+    align-items: baseline;
+}
+.twchr_settUp_overlay #twchr-setUp .presentation img{
+    max-width: 200px;
+    margin-left:5pt;
+}
+.twchr_settUp_overlay #twchr-setUp .card-section{
+    display: grid;
+    grid-template-columns:auto 1fr 228px;
+    grid-template-rows:1fr 1fr;
+    column-gap:1cm;
+    box-shadow: 0px 4px 4px #65449B;
+    border-radius: 10px;
+    border:1px solid var(--twchr-blue);
+    margin-bottom: 10pt;
+    padding:0 5pt;
+}
+
+.twchr_settUp_overlay #twchr-setUp .card-section h3{
+    grid-row:1/3;
+    grid-column:1/2;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    color: var(--twchr-blue);
+    margin: 0;
+    display: grid;
+    place-items:center;
+}
+.twchr_settUp_overlay #twchr-setUp .card-section p{
+    align-self: flex-start;
+    justify-self: center;
+    margin:0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+}
+.twchr_settUp_overlay #twchr-setUp .card-section p a{
+    font-size:9pt;
+}
+.twchr_settUp_overlay #twchr-setUp .card-section h4{
+    align-self: flex-end;
+    justify-self: center;
+    margin:0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+}
+.twchr_settUp_overlay #twchr-setUp .card-section img{
+    grid-row:1/3;
+    grid-column:3/4;
+}

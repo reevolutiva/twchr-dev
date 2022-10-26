@@ -84,24 +84,14 @@ function twchr_main_menu(){
         'twchr_main_page'//$function
     );
 
-    /*
-    add_menu_page(
-        'Twitcher',
-        'Twitcher',
-        'administrator',
-        'twchr_wp_menu',
-        'twchr_main_page',
-        plugin_dir_url(__FILE__).'includes/assets/Logo.png',
-        2
-    );
-        */
+        
     add_submenu_page(
         'edit.php?post_type=twchr_streams',
-        'Broadcaster Settings',
-        'Broadcaster Settings',
+        __('Help','twitcher'),
+        __('Help','twitcher'),
         'manage_options',
-        'twchr_boradcaster_setting',
-        'twchr_submenu_boradcaster_setting',
+        'twchr_help',
+        'twchr_menu_help',
     );
     
 }
@@ -141,8 +131,8 @@ function twchr_main_page(){
 }
 
 //Template de meunu secudario de plugin
-function twchr_submenu_boradcaster_setting(){
-    require_once 'admin/submenu_boradcaster_setting.php';
+function twchr_menu_help(){
+    require_once 'admin/submenu_menu_help.php';
 }
 
 
