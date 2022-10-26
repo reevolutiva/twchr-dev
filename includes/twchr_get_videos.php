@@ -52,7 +52,7 @@ stream.twchr_modal_get_videos.active {
         x
     </div>
     <div class="twchr-modal-selection__info">
-        <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
+        <h3><?php _e('Asign video to post','twitcher') ?></h3>
 
         <picture>
             <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
