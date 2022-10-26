@@ -1,6 +1,6 @@
 <?php
 
-add_action('admin_init','twchr_fonts');
+add_action('wp_after_admin_bar_render','twchr_fonts');
 
 function twchr_fonts(){
     ?>
@@ -26,7 +26,7 @@ function twchr_fonts(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.3.87';
+    $version = 'beta.3.89';
     
     // Estilos
     wp_enqueue_style('admin-styles', plugins_url('twitcher/includes/css/admin.css'),array(),$version,'all');
