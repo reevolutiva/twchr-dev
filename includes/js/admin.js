@@ -102,12 +102,20 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
         // Creo tantos input-radio como videos tenga la api
         arrayList.forEach((item, index) => {
             const id = item.id;
-            const name = item.title;
-            Content += `<section><label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${name}'>${name}</label><input type='radio' id='twchr_videos_ajax-${name}' class='twchr_videos_ajax' name=twchr_videos_ajax' value='${id}'></section>`;
-           });
+            const title = item.title;
+            const date_raw = item.created_at; // Fecha en RFC
+            let date = new Date(date_raw);
+            date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
+            Content += `<section class='twchr_modal_video_ajax'>
+                            <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
+                            <input type='radio' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax${id}' value='${id}'>
+                        </section>`;
+    
+        });
+    
     
            // Introdusco la lista de check-boxs al modal .twchr_modal_get_videos
-           GSCJS.queryOnly(".twchr_modal_get_videos").innerHTML = Content;
+           GSCJS.queryOnly("#twchr_button_get_videos__content").innerHTML += Content;
     
            // Guardo los inputs radio creados más arriba
            const options = GSCJS.queryAll(".twchr_modal_get_videos section label");
@@ -117,7 +125,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             // Agrego un eventLitener a los labels
             e.addEventListener('click',(event)=>{
                 GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
-                GSCJS.queryOnly("#titlewrap input").value = e.textContent; // Escribo el titulo del post
+                GSCJS.queryOnly("#titlewrap input").value = e.children[0].textContent; // Escribo el titulo del post
                 const pos = event.target.getAttribute('data-twchrDataPosition'); // Guardo la posision del input seleccionado
                 const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
                 
@@ -184,7 +192,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                 const alertCode = GSCJS.crearNodo('SPAN');
                 alertCode.textContent = `[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]`;
                 GSCJS.queryOnly("#wp-content-editor-tools #wp-content-media-buttons").appendChild(alertCode);
-                GSCJS.queryOnly(".twchr_modal_get_videos").classList.remove('active');
+                GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
     
                
                 
@@ -369,7 +377,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 
         // Genera tantos checkbox como videos tenga el la API
         data.forEach((item, index) => {
-            console.log(item);
+            //console.log(item);
             const id = item.id;
             const title = item.title;
             const date_raw = item.created_at; // Fecha en RFC
