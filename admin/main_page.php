@@ -170,19 +170,19 @@
                     <tbody>
                         <tr>
                             <td><?= __('Renew Client ID','twitcher'); ?></td>
-                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-id'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-id'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
                             <td><?= __('Renew Client Secret','twitcher'); ?></td>
-                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-secret'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
                             <td><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true"><?= __('Renew User Token','twitcher'); ?></a></td>
-                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'user_token'}) != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
                             <td><a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&app_token_action=update"><?= __('Renew App Token','twitcher'); ?></a></td>
-                            <td class='twitch-connect__status'><?= $twch_data_app_token != false ?  'Ok' : "<span style='color:var(--e-context-error-color)'>".__('Error','twitcher')."</span>" ?></td>
+                            <td class='twitch-connect__status'><?= $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys"><a href="<?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
