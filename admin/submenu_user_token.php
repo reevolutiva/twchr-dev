@@ -1,5 +1,5 @@
 <?php 
-$twch_data_prime = json_decode(db_to_front('twitcher_keys')['last_result'][0]->option_value);
+$twch_data_prime = json_decode(db_to_front('twchr_keys')['last_result'][0]->option_value);
 
 $client_id = $twch_data_prime->{'client-id'};
 $client_secret = $twch_data_prime->{'client-secret'};
@@ -15,7 +15,7 @@ $scope = $twch_data_prime->{'scope'};
 //$validateTokenObject = validateToken($client_id, $client_secret, $code );
 //saveValidateToken($validateTokenObject);
 
-//$twch_data_vericate = json_decode(db_to_front('twitcher_keys_validate')['last_result'][0]->option_value);
+//$twch_data_vericate = json_decode(db_to_front('twchr_keys_validate')['last_result'][0]->option_value);
 
 //$validateToken = $twch_data_vericate->{'validate-token'};
 

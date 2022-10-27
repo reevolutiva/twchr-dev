@@ -5,7 +5,7 @@
 add_action('submitpost_box','twchr_get_videos_function_edit');
 
 function twchr_get_videos_function_edit(){
-    $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
+    $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
     $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
     $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
     $twch_data_app_token = get_option('twitcher_app_token');
@@ -94,7 +94,7 @@ twchr_modal_button_close.addEventListener('click', e => {
 add_action('restrict_manage_posts','twchr_get_videos_function');
 
 function twchr_get_videos_function(){
-    $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
+    $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
             //$twch_data_prime_lengt = count($twch_data_prime);
     $twch_data_app_token = get_option('twitcher_app_token');
     $get_length = COUNT($_GET);

@@ -9,7 +9,7 @@
 
 
 
-$twch_data_prime = json_decode(db_to_front('twitcher_keys')['last_result'][0]->option_value);
+$twch_data_prime = json_decode(db_to_front('twchr_keys')['last_result'][0]->option_value);
 
 get_header();
 ?>
@@ -54,7 +54,7 @@ get_header();
 					'scope' => $_GET['scope']
 				);
 				$json_array = json_encode($array_keys);
-				$sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twitcher_keys'";
+				$sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twchr_keys'";
 
 				
 				$wpdb->query($sql);

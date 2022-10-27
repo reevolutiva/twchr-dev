@@ -17,7 +17,7 @@
             <?php 
                 $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
             
-                $twch_data_prime = get_option('twitcher_keys') == false ? false : json_decode(get_option('twitcher_keys'));
+                $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
                 //$twch_data_prime_lengt = count($twch_data_prime);
                 $twch_data_app_token = get_option('twitcher_app_token');
             
@@ -226,7 +226,7 @@
                             );
                             $json_array = json_encode($array_keys);
                             
-                            add_option('twitcher_keys',$json_array);
+                            add_option('twchr_keys',$json_array);
 
                             wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings'));
                             exit;
@@ -284,7 +284,7 @@
         
                             $json_array = json_encode($array_keys);
         
-                            update_option( 'twitcher_keys', $json_array, true);
+                            update_option( 'twchr_keys', $json_array, true);
                             echo "<h3>User Token actualizado actualizado correctamente</h3>";
                             $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true';
                             echo "<script>location.href='$urlRedirection'</script>";

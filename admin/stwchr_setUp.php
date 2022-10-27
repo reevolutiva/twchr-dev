@@ -1,6 +1,6 @@
 <?php  
 		add_option('twchr_setInstaled',1,'',true );
-		$twchrKeysJSON = get_option('twitcher_keys');
+		$twchrKeysJSON = get_option('twchr_keys');
 		$clientId =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-id'} : '';
 		$clientSecret =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-secret'} : '';
 		
@@ -16,7 +16,7 @@
 		</div>
 		<section class="card-section">
 			<h3>1</h3>
-			<h4><?php _e('Go to Twitch Developers Console App Creation ','twitcher');?><a target="new_black" href="https://dev.twitch.tv/console"><?= __('(click here)','twitcher'); ?></a></h4>
+			<h4><?php _e('Go to ','twitcher');?><a target="new_black" href="https://dev.twitch.tv/console/apps/create"><?= __('Twitch Developers Console App Creation (click here)','twitcher'); ?></a></h4>
 			<p>(Twitch credentials required).</p>
 			<img src="<?= plugins_url('/twitcher/admin/setUp-img/setUp-image-1.jpg') ?>" alt="">
 		</section>

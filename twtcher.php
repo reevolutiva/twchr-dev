@@ -213,7 +213,7 @@ function is_get_user_token_page($term_id){
 function serie_update($term_id) {
 
     // Recoje data de BDD
-    $twch_data_prime = json_decode(get_option( 'twitcher_keys', false ));
+    $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
     $tokenValidate = $twch_data_prime->{'user_token'};
     $client_id = $twch_data_prime->{'client-id'};
 
