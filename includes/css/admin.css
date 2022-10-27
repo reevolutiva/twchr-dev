@@ -423,3 +423,11 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 58px;
     font-size:20px;
 }
+
+.twitch-result .error-card{
+    text-align:center;
+}
+.twitch-result .error-card h3{
+    font-size: 3em;
+    color:tomato;
+}

@@ -97,14 +97,21 @@
 
                 $subcribers = get_subcribers($twch_data_app_token, $client_id);
                              
-                $listVideo_from_api = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                $listVideo_from_api = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                 $listVideo_from_wp = twchr_get_stream();
-            
-                $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
-                $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
+
+                if($listVideo_from_api === false){
+
+                }else{
+                    $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
+                    $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
+                }
+
+                
                 
                 ?>
             <div class="twchr-dashboard-card twitch-result">
+                <?php if($listVideo_from_api != false): ?>
                 <table>
                     <tbody>
                         <tr>
@@ -137,6 +144,17 @@
                         </tr>
                     </tbody>
                 </table>
+                <?php endif; 
+                    if($listVideo_from_api === false):
+                        $error = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                        ?>
+                        <div class="error-card">
+                            <h3>Error: <?= $error->{'status'} ?></h3>
+                            <p><?= $error->{'message'} ?></p>
+                        </div>
+                        <?php
+                    endif;
+                ?>
             </div>
         </article>
         <article>
