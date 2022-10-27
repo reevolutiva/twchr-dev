@@ -9,10 +9,10 @@
         <picture>
             <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
         </picture>
-        <h2><?= __('Data','twitcher'); ?></h2>
+        <h2><?= __('Settings','twitcher'); ?></h2>
     </article>
         <article>
-            <h3><?php _e('Twitcher Settings'); ?></h3>
+            <h3><?php _e('Twitcher Data'); ?></h3>
             <div class="twchr-dashboard-card twchr-card-keys">
             <?php 
                 $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
