@@ -56,7 +56,7 @@ function register_twchr_stream() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
-		'menu_icon' 			=> plugins_url('twitcher-original/includes/assets/logo_colores_completos_6pt.svg'),
+		'menu_icon' 			=> plugins_url('twitcher/includes/assets/logo_colores_completos_6pt.svg'),
 		'show_in_rest'			=> false
 
 	);

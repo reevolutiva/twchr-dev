@@ -257,6 +257,7 @@ function twchr_redirect_setUp(){
     // Si la url contiene 'plugins' retorna true
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'plugins');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'action=upload-plugin');
+    $dataUrl3 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams&page=twchr-settings');
     //show_dump(twittcher_data_exist('twchr_setInstaled'));
 
     //add_option('twchr_setInstaled',0,'',true );
@@ -265,7 +266,7 @@ function twchr_redirect_setUp(){
     //show_dump($setInstaled);
     //echo "dentro de la funcion redirect_setUp";
     if(!$setInstaled){
-        if($dataUrl1 || $dataUrl2){  
+        if($dataUrl1 || $dataUrl2 || $dataUrl3){  
             $url = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');
             echo "<script>location.href='$url'</script>";
             //exit;
