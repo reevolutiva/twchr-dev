@@ -2,7 +2,7 @@
 
 //TODO: usar create_{taxonomy} y edit_{taxonomy}
 
-add_action( 'schedule_add_form_fields', 'twchr_add_taxonomy_cf_to_api');
+add_action( 'serie_add_form_fields', 'twchr_add_taxonomy_cf_to_api');
 
 function twchr_add_taxonomy_cf_to_api($taxonomy) {
     ?>
@@ -55,10 +55,10 @@ function twchr_add_taxonomy_cf_to_api($taxonomy) {
     <?php
     
 }
-add_action( 'schedule_edit_form_fields', 'twchr_edit_taxonomy_cf_to_api',10, 2 );
+add_action( 'serie_edit_form_fields', 'twchr_edit_taxonomy_cf_to_api',10, 2 );
 
 function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
-    //wp_nonce_field( 'schedule_cf', 'schedule_cf_nonce' );
+    //wp_nonce_field( 'serie_cf', 'serie_cf_nonce' );
     $dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
     $select_value = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
@@ -75,20 +75,20 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
 }
 
 
-add_action('init', 'twchr_taxonomy_schedule');
-function twchr_taxonomy_schedule() {
+add_action('init', 'twchr_taxonomy_serie');
+function twchr_taxonomy_serie() {
     $labels = array(
-        'name'              => _x( 'Schedules', 'taxonomy general name' ),
-        'singular_name'     => _x( 'Schedule', 'taxonomy singular name' ),
-        'search_items'      => __( 'Search Schedules' ),
-        'all_items'         => __( 'All Schedules' ),
-        'parent_item'       => __( 'Parent Schedule' ),
-        'parent_item_colon' => __( 'Parent Schedule:' ),
-        'edit_item'         => __( 'Edit Schedule' ),
-        'update_item'       => __( 'Update Schedule' ),
-        'add_new_item'      => __( 'Add New Schedule' ),
-        'new_item_name'     => __( 'New Schedule Name' ),
-        'menu_name'         => __( 'Schedule' ),
+        'name'              => _x( 'Series', 'taxonomy general name' , 'twitcher'),
+        'singular_name'     => _x( 'serie', 'taxonomy singular name' , 'twitcher'),
+        'search_items'      => __( 'Search series' , 'twitcher'),
+        'all_items'         => __( 'All series' , 'twitcher'),
+        'parent_item'       => __( 'Parent serie' , 'twitcher'),
+        'parent_item_colon' => __( 'Parent serie:' , 'twitcher'),
+        'edit_item'         => __( 'Edit serie' , 'twitcher'),
+        'update_item'       => __( 'Update serie' , 'twitcher'),
+        'add_new_item'      => __( 'Add New serie' , 'twitcher'),
+        'new_item_name'     => __( 'New serie Name' , 'twitcher'),
+        'menu_name'         => __( 'Series' , 'twitcher'),
     );
     $args = array( 
         'hierarchical'      => false, 
@@ -96,22 +96,22 @@ function twchr_taxonomy_schedule() {
 		 'show_ui'           => true,
 		 'show_admin_column' => true,
 		 'query_var'         => true,
-		 'rewrite'           => [ 'slug' => 'schedule' ],
+		 'rewrite'           => [ 'slug' => 'serie' ],
     );
-    register_taxonomy( 'schedule', array( 'post', 'twchr_streams' ), $args );
+    register_taxonomy( 'serie', array( 'post', 'twchr_streams' ), $args );
 }
 
 function twchr_taxnonomy_save( $term_id, $tt_id ) {
     // Comprobamos si se ha definido el nonce.
     
     /*
-    if ( ! isset( $_POST['schedule_cf_nonce'] ) ) {
+    if ( ! isset( $_POST['serie_cf_nonce'] ) ) {
       return $term_id;
     }
-    $nonce = $_POST['schedule_cf_nonce'];
+    $nonce = $_POST['serie_cf_nonce'];
         
     // Verificamos que el nonce es válido.
-    if ( !wp_verify_nonce( $nonce, 'schedule_cf' ) ) {
+    if ( !wp_verify_nonce( $nonce, 'serie_cf' ) ) {
       return $term_id;
     }
     */
@@ -142,7 +142,7 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
 
     
     if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
-            $response = schedule_update($term_id);
+            $response = serie_update($term_id);
             $allData = json_encode($response);
             //show_dump($response);
             //die();
@@ -156,22 +156,22 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
 
    //echo "hola";
   }
-  add_action( 'edit_schedule', 'twchr_taxnonomy_save', 10,5);
-  add_action( 'create_schedule', 'twchr_taxnonomy_save', 10,5);
+  add_action( 'edit_serie', 'twchr_taxnonomy_save', 10,5);
+  add_action( 'create_serie', 'twchr_taxnonomy_save', 10,5);
 
 
-  function schedule_endpoint() {
-    register_rest_route( 'twchr/', 'twchr_get_schedule', array(
+  function serie_endpoint() {
+    register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'get_schedule',
+        'callback' => 'get_serie',
     ) );
 }
 
-add_action( 'rest_api_init', 'schedule_endpoint' );
+add_action( 'rest_api_init', 'serie_endpoint' );
 
-function get_schedule( $request ) {
+function get_serie( $request ) {
     $args = array(
-        'taxonomy' => 'schedule',
+        'taxonomy' => 'serie',
         'hide_empty' => false
     );
     $request = get_terms($args);
@@ -193,7 +193,7 @@ function get_schedule( $request ) {
  
     /*
     $args = array(
-        'taxonomy'               => 'schedule',
+        'taxonomy'               => 'serie',
         'orderby'                => 'name',
         'order'                  => 'ASC',
         'hide_empty'             => false,
