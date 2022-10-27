@@ -1,4 +1,5 @@
 <?php  
+		add_option('twchr_setInstaled',1,'',true );
 		$twchrKeysJSON = get_option('twitcher_keys');
 		$clientId =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-id'} : '';
 		$clientSecret =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-secret'} : '';
