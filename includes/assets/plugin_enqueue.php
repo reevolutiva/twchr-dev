@@ -39,7 +39,7 @@ function twchr_admin_js() {
     //Definimos las variables WordPress a enviar dentro de un array
     $params = array (
         'twchr_keys' => json_decode(get_option('twchr_keys')) ,
-        'twitcher_app_token' => get_option('twitcher_app_token'),
+        'twchr_app_token' => get_option('twchr_app_token'),
         'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0]
     );
 

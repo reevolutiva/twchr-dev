@@ -19,7 +19,7 @@
             
                 $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
                 //$twch_data_prime_lengt = count($twch_data_prime);
-                $twch_data_app_token = get_option('twitcher_app_token');
+                $twch_data_app_token = get_option('twchr_app_token');
             
                 
                 
@@ -74,7 +74,7 @@
                                     <script> 
                                         const wishexist = prompt('<?php _e('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','twitcher');?> y = yes & n = no.');
                                         if(wishexist === 'y' || wishexist === 'yes'){
-                                            location.href='<?= site_url("/twttcher-setup")?>';
+                                            location.href='<?= site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
                                         }else{
                                             location.href='<?=site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings")?>';
                                         }

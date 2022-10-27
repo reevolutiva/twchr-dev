@@ -1,5 +1,9 @@
 <?php  
 		add_option('twchr_setInstaled',1,'',true );
+		if(isset($_GET['clearAll'])){
+			delete_option('twchr_keys');
+			delete_option('twchr_app_token');
+		}
 		$twchrKeysJSON = get_option('twchr_keys');
 		$clientId =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-id'} : '';
 		$clientSecret =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-secret'} : '';

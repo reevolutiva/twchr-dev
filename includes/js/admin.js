@@ -401,7 +401,7 @@ if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type')
     });
     inputTxtCategory.oninput = ()=>{
         const query = inputTxtCategory.value;
-        const appToken = tchr_vars_admin.twitcher_app_token;
+        const appToken = tchr_vars_admin.twchr_app_token;
         const twch_data_prime = tchr_vars_admin.twchr_keys;
         twchr_modal.classList.add('active');
         getCategorysTwitch(appToken, twch_data_prime['client-id'], query);
@@ -421,7 +421,7 @@ if(
     modal_get_video.classList.toggle('active');
     const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
     const client_id = tchr_vars_admin.twchr_keys['client-id'];
-    const appToken = tchr_vars_admin.twitcher_app_token;
+    const appToken = tchr_vars_admin.twchr_app_token;
     tchr_get_clips(appToken,client_id,user_id)
    });
 }
@@ -489,6 +489,6 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 
     const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
     const client_id = tchr_vars_admin.twchr_keys['client-id'];
-    const appToken = tchr_vars_admin.twitcher_app_token;
+    const appToken = tchr_vars_admin.twchr_app_token;
     tchr_get_clips(appToken,client_id,user_id,twchr_videos_ajax);
 }

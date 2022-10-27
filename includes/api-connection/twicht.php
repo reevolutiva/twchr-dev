@@ -102,7 +102,7 @@ function autenticate($api_key, $client_id,$redirect,$scope){
   if($token != false){
     $token_validate = twchr_token_validate($token);
     $token_status = isset($token_validate->{'status'}) ? false : true;
-    $twch_data_app_token = get_option('twitcher_app_token');
+    $twch_data_app_token = get_option('twchr_app_token');
   }else{
     $token_status = false;
   }

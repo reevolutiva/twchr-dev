@@ -8,7 +8,7 @@ function twchr_get_videos_function_edit(){
     $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
     $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
     $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
-    $twch_data_app_token = get_option('twitcher_app_token');
+    $twch_data_app_token = get_option('twchr_app_token');
     // domain.net/wp-admin/post-new.php
     // Divide la url por sus "/" y escoje el ultimo item
     $dataUrl = explode('/',$_SERVER['REQUEST_URI'])[2];
@@ -96,7 +96,7 @@ add_action('restrict_manage_posts','twchr_get_videos_function');
 function twchr_get_videos_function(){
     $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
             //$twch_data_prime_lengt = count($twch_data_prime);
-    $twch_data_app_token = get_option('twitcher_app_token');
+    $twch_data_app_token = get_option('twchr_app_token');
     $get_length = COUNT($_GET);
     $dataUrl = $_GET['post_type'];
     if($dataUrl == 'twchr_streams' && $get_length == 1):
