@@ -15,7 +15,7 @@
 		</div>
 		<section class="card-section">
 			<h3>1</h3>
-			<h4><?php _e('Go to Twitch Developers Console App Creation (Click here). ','twitcher');?></h4>
+			<h4><?php _e('Go to Twitch Developers Console App Creation ','twitcher');?><a target="new_black" href="https://dev.twitch.tv/console"><?= __('(click here)','twitcher'); ?></a></h4>
 			<p>(Twitch credentials required).</p>
 			<img src="<?= plugins_url('/twitcher/admin/setUp-img/setUp-image-1.jpg') ?>" alt="">
 		</section>
@@ -27,7 +27,7 @@
 		<section class="card-section">
 			<h3>3</h3>
 			<h4><?php _e('Set at “oAuth redirection url field” the follow Link:','twitcher');?> <span><?php _e('https site only','twitcher');?></span></h4>
-			<p><a href="https://dev.egosapiens.net/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings">https://dev.egosapiens.net/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings</a></p>
+			<p><?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings') ?></p>
 			<img src="<?= plugins_url('/twitcher/admin/setUp-img/setUp-image-3.jpg') ?>" alt="">
 		</section>
 		<section class="card-section">
@@ -38,7 +38,7 @@
 		<section class="card-section form">
 			<h3>5</h3>
 			<h4><?php _e('Get your Client-id and your Client-secret from your app and paste at the following forms','twitcher');?></h4>
-			<form method='GET' action='https://"<?=$_SERVER['SERVER_NAME']?>"/wp-admin/edit.php'>
+			<form method='GET' action='https://<?=$_SERVER['SERVER_NAME']?>/wp-admin/edit.php'>
 				<input type='hidden' name='post_type' value='twchr_streams'>
 				<input type='hidden' name='page' value='twchr-settings'>
 				<input type='hidden' name='from' value='setUp-plugin'>
