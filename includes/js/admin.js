@@ -287,6 +287,7 @@ if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type')
             const alert = crearElemento("DIV","alert-twchr-back");
             const state = dataFromApi.status;
             const segment_id = dataFromApi.allData.segments[0].id;
+            let existTwitch = false;
                 switch (state) {
                     case 200:
 
@@ -308,11 +309,16 @@ if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type')
                     
                             if(res.status != 404){
                                 const schedule_segment = res.data.segments;
-                                /*
+                                
                                 schedule_segment.forEach(segment =>{
-
+                                    if(segment.id === segment_id){
+                                        console.log('existe');
+                                        console.log(segment.title);
+                                        alert.classList.remove("warning");
+                                        alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
+                                    }
                                 });
-                                */
+                                
                             }else{
                                 console.log(res);
                             }
@@ -321,8 +327,9 @@ if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type')
                             
                         }
                         
-                        
-                        alert.innerHTML = `<h3>Éxito</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p>`;
+                        console.log(existTwitch);
+                        alert.classList.add("warning");
+                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
                         ajaxResponse.appendChild(alert)
                         break;
 

@@ -71,12 +71,12 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
   switch ($response_response['code']) {
     case 200:
         $allData = $response_body->{'data'};
-        return array('allData'=>$allData,'status'=>200,'message'=>'schedule segment creado exitosamente.');
+        return array('allData'=>$allData,'status'=>200,'message'=>__('successfully created series','twitcher'));
       //die();
       break;
     //case 401:
     case 401:
-      return array("message"=>"USER TOKEN es invalido, espere un momento, en unos momentos sera redirigido a un lugar donde podra conseguir un USER TOKEN actualizado.",'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true','post-id'=>$post_id);
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true','post-id'=>$post_id);
      
       break;
     //case 400:
