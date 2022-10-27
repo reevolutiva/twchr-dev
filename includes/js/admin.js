@@ -1,4 +1,35 @@
 // Funcion que obtiene los parametros GET con JS
+/**
+ * It fetches a URL and returns the response in the format you specify
+ * @param url - The url to fetch from.
+ * @param callback - The function to be called when the request is complete.
+ * @param mode - json, blob, or text
+ * @param [requestOptions=false] - This is an object that contains the request options.
+ */
+async function twchrFetchGet (url, callback, mode, requestOptions=false){
+    let get;
+    if(requestOptions != false){
+        get = await fetch(url,requestOptions);
+    }else{
+        get = await fetch(url);
+    }
+    
+    let response;
+    switch (mode) {
+      case "json":
+        response = await get.json();
+        break;
+      case "blob":
+        response = await get.blob();
+        break;
+      default:
+        response = await get.text();
+        break;
+    }
+    callback(response);
+  }
+
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -242,25 +273,57 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
 
 }
 
-//taxonomy=schedule&post_type=twchr_streams
-if((getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'edit-tags.php') ||
-   (getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
+//taxonomy=serie&post_type=twchr_streams
+if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'edit-tags.php') ||
+   (getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
    ){
     const ajaxResponse = document.querySelector("#ajax-response");
     const getResponse = async (url) =>{
         try {
            const response = await fetch(url);
            const res = await response.json();
-           res.forEach(element => {
+           res.forEach((element, index) => {
             const dataFromApi = JSON.parse(element.dataFromTwitch);
             const alert = crearElemento("DIV","alert-twchr-back");
             const state = dataFromApi.status;
-                
+            const segment_id = dataFromApi.allData.segments[0].id;
                 switch (state) {
                     case 200:
-                        alert.innerHTML = `<h3>Éxito</h3><p>${dataFromApi.message}</p><p>Schedule: <b>${element.name}</b></p>`;
-                        ajaxResponse.appendChild(alert)
 
+                        let requestOptionsgetSchedule = {
+                            method: 'GET',
+                            headers: {
+                                    "Authorization" : `Bearer ${tchr_vars_admin.twitcher_keys.user_token}`,
+                                    "client-id" : tchr_vars_admin.twitcher_keys['client-id']
+                                },
+                            redirect: 'follow'
+                            };
+                        twchrFetchGet(`https://api.twitch.tv/helix/schedule?broadcaster_id=${tchr_vars_admin.twitcher_data_broadcaster.id}`,getScheduleCallback,'json',requestOptionsgetSchedule);
+                        function getScheduleCallback(res){
+                            if(res.status === 401){
+                                const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true`;
+                                alert('Invalid User Token, You will be redirected to another page to get a new User Token');
+                                location.href = url_redirect
+                            }
+                    
+                            if(res.status != 404){
+                                const schedule_segment = res.data.segments;
+                                /*
+                                schedule_segment.forEach(segment =>{
+
+                                });
+                                */
+                            }else{
+                                console.log(res);
+                            }
+                            
+                            
+                            
+                        }
+                        
+                        
+                        alert.innerHTML = `<h3>Éxito</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p>`;
+                        ajaxResponse.appendChild(alert)
                         break;
 
                     case 401:
@@ -276,7 +339,7 @@ if((getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_typ
                         break;
                     case 400:
                         alert.classList.add("warning");
-                        alert.innerHTML = `<h3>${dataFromApi.error}</h3><p>${dataFromApi.message}</p><p>Schedule: <b>${dataFromApi.title}</b></p>`;
+                        alert.innerHTML = `<h3>${dataFromApi.error}</h3><p>${dataFromApi.message}</p><p>serie: <b>${dataFromApi.title}</b></p>`;
                         ajaxResponse.appendChild(alert);
                         break;
                     
@@ -295,9 +358,11 @@ if((getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_typ
         }
     }
 
-    const url = location.origin+'/wp-json/twchr/twchr_get_schedule';
+    const url = location.origin+'/wp-json/twchr/twchr_get_serie';
     getResponse(url);
 
+
+    
 
     const inputTxtCategory = document.querySelector("#twchr_toApi_category_ajax");
     const span = crearElemento("SPAN","btn");
@@ -321,6 +386,10 @@ if((getParameterByName('taxonomy') ==='schedule' && getParameterByName('post_typ
                 }
             });
         }
+
+        
+
+
         twchr_modal.classList.remove('active');
     });
     inputTxtCategory.oninput = ()=>{

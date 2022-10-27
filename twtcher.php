@@ -213,7 +213,7 @@ function is_get_user_token_page($term_id){
     return $url[2]=== 'get-user-token';		
 }
 
-function schedule_update($term_id) {
+function serie_update($term_id) {
 
     // Recoje data de BDD
     $twch_data_prime = json_decode(get_option( 'twitcher_keys', false ));

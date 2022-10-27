@@ -33,7 +33,6 @@
 		<section class="card-section">
 			<h3>4</h3>
 			<h4><?php _e('Go to Cateogory and select “Others”, then resolve the captcha and press “Create”','twitcher');?></h4>
-			<p></p>
 			<img src="<?= plugins_url('/twitcher/admin/setUp-img/setUp-image-4.jpg') ?>" alt="">
 		</section>
 		<section class="card-section form">
