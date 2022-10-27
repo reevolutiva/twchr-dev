@@ -57,16 +57,13 @@ require_once 'includes/assets/plugin_enqueue.php';
 
 
 function Activar(){
-    require_once 'includes/create-post/crear_setUp_page.php';
-    crear_page_setUP();
     
-    //wp_die();
 }
 register_activation_hook(__FILE__,'Activar' );
 
 function Desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin    
-    //delete_option('twchr_setInstaled' );
+    delete_option('twchr_setInstaled' );
 }
 register_activation_hook(__FILE__,'Desactivar' );
 
@@ -269,7 +266,7 @@ function twchr_redirect_setUp(){
     //echo "dentro de la funcion redirect_setUp";
     if(!$setInstaled){
         if($dataUrl1 || $dataUrl2){  
-            $url = site_url('twttcher-setup');
+            $url = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');
             echo "<script>location.href='$url'</script>";
             //exit;
             
