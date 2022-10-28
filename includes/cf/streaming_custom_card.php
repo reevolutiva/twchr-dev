@@ -28,7 +28,7 @@
                 <p>Views</p>
             </div>
             <div class="item status">
-                <h3>Expired</h3>
+                <h3></h3>
                 <p>Status</p>
             </div>
         </div>

@@ -250,12 +250,13 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     }
 
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
-    const twchr_edit_card = GSCJS.crearNodo('ARTICLE','');
+    const twchr_edit_card = GSCJS.queryOnly(".twchr_custom_card--contain");
+    
 
-    console.log(postBox)
+    //console.log(postBox)
     // Lleno Twchr card
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
     
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
@@ -264,12 +265,24 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
 
-    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
-
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
     
-    twittcher_stream.appendChild(twchr_edit_card);
-
+    twchrFetchGet(
+        'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
+        (element)=>{
+            console.log(element.data);
+            if(element.data){
+                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('on');
+                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Online';
+            }else{
+                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('failed');
+                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Ofline';    
+            }
+        },
+        'json',{headers: {
+            "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
+            "client-id": tchr_vars_admin.twchr_keys['client-id']
+    }});
     
 }
 

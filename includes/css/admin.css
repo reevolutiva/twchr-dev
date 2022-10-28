@@ -434,16 +434,8 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 #twittcher-stream{
-    background-color: transparent;
-    border: none;
+    display: none;
 }
-#twittcher-stream .postbox-header{
-    border: none;
-}
-#twittcher-stream .inside{
-    /*display: none;*/
-}
-
 .twchr_custom_card--contain{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;
     background-blend-mode: soft-light, normal;
@@ -509,6 +501,7 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_custom_card--contain .twchr_card_body--list li{
     display: grid;
     grid-template-columns:111px auto;
+    margin-bottom: 10pt;
 }
 .twchr_custom_card--contain .twchr_card_body--list li span.label{
     
@@ -537,4 +530,19 @@ stream.twchr-modal .twchr-modal-button.close{
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
+    margin: 0 auto 10pt auto;
+}
+
+.twchr_custom_card--contain .twchr_card_body--status .item h3.on{
+    color:#0C884C;
+}
+.twchr_custom_card--contain .twchr_card_body--status .item h3.failed{
+    color:tomato;
+}
+
+@media screen and (max-width:1293px){
+    .twchr_custom_card--contain .twchr_card_header,
+    .twchr_custom_card--contain .twchr_card_body{
+        display: block;
+    }
 }
