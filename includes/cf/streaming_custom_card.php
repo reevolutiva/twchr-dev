@@ -8,7 +8,7 @@
             <h4>"Welcome to Twitch development! Here is a quick overview of our products and information to help you get started."</h4>
         </div>
         <div class="twchr_card_header--img">
-            <img src="<?= plugins_url('/twitcher/includes/assets/logo-color.png') ?>" alt="logo-twitch">
+            <img src="" alt="twtich-img">
         </div>
     </div>
     <div class="twchr_card_body">
