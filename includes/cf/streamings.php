@@ -145,3 +145,8 @@ class Twttcher {
 
 }
 new Twttcher;
+
+add_action( 'edit_form_advanced', 'twchr_streaming_custom_card' );
+function twchr_streaming_custom_card(){
+	require_once 'streaming_custom_card.php';
+}

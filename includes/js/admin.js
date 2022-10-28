@@ -234,85 +234,6 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                 GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
             }
            });
-            /*
-           options.forEach(e => {
-            // Agrego un eventLitener a los labels
-            e.addEventListener('click',(event)=>{
-                GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
-                GSCJS.queryOnly("#titlewrap input").value = e.children[0].textContent; // Escribo el titulo del post
-                const pos = event.target.getAttribute('data-twchrDataPosition'); // Guardo la posision del input seleccionado
-                const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
-                
-                // Relleno la metabox Twittcher Stream con los datos que devuelve la API de Twitch
-                postBox.forEach((input,index)=>{
-                    switch (index) {
-                        case 0:
-                            input.value = data.created_at;
-                            break;
-                        case 1:
-                            input.value = data.description;
-                            break;
-                        case 2:
-                            input.value = data.duration;
-                            break;
-                        case 3:
-                            input.value = data.id;
-                            break;
-                        case 4:
-                            input.value = data.language;
-                            break;
-                        case 5:
-                            input.value = data.muted_segment;
-                            break;
-                        case 6:
-                            input.value = data.published_at;
-                            break;
-                        case 7:
-                            input.value = data.stream_id;
-                            break;
-                        case 8:
-                            input.value = data.thumbnail_url;
-                            break;
-                        case 9:
-                            input.value = data.type;
-                            break;
-                        case 10:
-                            input.value = data.url;
-                            break;
-                        case 11:
-                            input.value = data.user_id;
-                            break;
-                        case 12:
-                            input.value = data.user_login;
-                            break;
-                        case 13:
-                            input.value = data.user_name;
-                            break;
-                        case 14:
-                            input.value = data.view_count;
-                            break;
-                        case 15:
-                            input.value = data.viewable;
-                            break;
-                                   
-                        default:
-                            break;
-                    }
-                });
-
-                // Creo un fragmeto de HTML que me muestra el shorcode actualizado
-                // Ya que JS no escribe en Iframes y el campo de post_content es un iframe
-                GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
-                const alertCode = GSCJS.crearNodo('SPAN');
-                alertCode.textContent = `[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]`;
-                GSCJS.queryOnly("#wp-content-editor-tools #wp-content-media-buttons").appendChild(alertCode);
-                GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
-    
-               
-                
-            });
-           });
-           */
       }else{ // Sí se definio un callback ejecuta el callback
         callback_ajax(arrayList); // Pasa al Callback el arrayList con los videos
       }
@@ -323,9 +244,33 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
 if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
 (getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
+    const twittcher_stream = GSCJS.queryOnly("#twittcher-stream");
     if(element.value.length < 1){
-        GSCJS.queryOnly("#twittcher-stream").style.display = 'none';
+        //twittcher_stream.style.display = 'none';
     }
+
+    const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
+    const twchr_edit_card = GSCJS.crearNodo('ARTICLE','');
+
+    console.log(postBox)
+    // Lleno Twchr card
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
+    
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
+
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[16].value === '' ? 'undefined' : postBox[1].value;
+
+    
+    twittcher_stream.appendChild(twchr_edit_card);
+
+    
 }
 
 //post_type=twchr_streams&page=twchr-settings
