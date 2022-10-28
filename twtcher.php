@@ -91,7 +91,6 @@ function twchr_main_menu(){
         'twchr_help',
         'twchr_menu_help',
     );
-
     */
     
 }
