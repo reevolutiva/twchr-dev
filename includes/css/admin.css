@@ -116,6 +116,7 @@ stream.twchr-modal{
 
 stream.twchr-modal h3{
     color:var(--twchr-purple);
+    font-size: 28px;
 }
 stream.twchr-modal p{
     color:#848484;

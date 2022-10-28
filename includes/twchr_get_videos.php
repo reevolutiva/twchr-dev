@@ -43,6 +43,16 @@ stream.twchr_modal_get_videos.active {
     display: block;
 }
 
+.twchr-modal .twchr_help_button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 6pt;
+}
+
 </style>
 <a class="twchr_button_get_videos"
     href="<?= bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
@@ -67,15 +77,17 @@ stream.twchr_modal_get_videos.active {
             <li><?= __('Import','twitcher'); ?></li>
         </ul>
         <div class="content">
-            
+
         </div>
     </div>
 
     <div class="twchr-modal-footer">
         <span class="twchr_help_button">
-            <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?>
+            <p><?php _e('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','twitcher'); ?>
             </p>
+            
         </span>
+        <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
     </div>
 </stream>
 <script>
