@@ -149,9 +149,89 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
            GSCJS.queryOnly("#twchr_button_get_videos__content .content").innerHTML = Content;
     
            // Guardo los inputs radio creados más arriba
-           const options = GSCJS.queryAll(".twchr_modal_get_videos section label");
+           const input = GSCJS.queryAll(".twchr_modal_get_videos section input");
            const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
 
+           // Guardo boton asign 
+           const asign_btn = GSCJS.queryOnly(".twchr_modal_get_videos #twchr-modal-selection__btn");
+
+           asign_btn.addEventListener('click',(event)=>{
+            //console.log(event.target);
+            event.preventDefault();
+            let pos;
+            input.forEach(item => {
+                item.checked ? pos = item.getAttribute('data-position') : 'not found';
+            });
+            if(pos != 'not found'){
+                const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
+                GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
+                GSCJS.queryOnly("#titlewrap input").value = data.title; // Escribo el titulo del post
+                postBox.forEach((input,index)=>{
+                    switch (index) {
+                        case 0:
+                            input.value = data.created_at;
+                            break;
+                        case 1:
+                            input.value = data.description;
+                            break;
+                        case 2:
+                            input.value = data.duration;
+                            break;
+                        case 3:
+                            input.value = data.id;
+                            break;
+                        case 4:
+                            input.value = data.language;
+                            break;
+                        case 5:
+                            input.value = data.muted_segment;
+                            break;
+                        case 6:
+                            input.value = data.published_at;
+                            break;
+                        case 7:
+                            input.value = data.stream_id;
+                            break;
+                        case 8:
+                            input.value = data.thumbnail_url;
+                            break;
+                        case 9:
+                            input.value = data.type;
+                            break;
+                        case 10:
+                            input.value = data.url;
+                            break;
+                        case 11:
+                            input.value = data.user_id;
+                            break;
+                        case 12:
+                            input.value = data.user_login;
+                            break;
+                        case 13:
+                            input.value = data.user_name;
+                            break;
+                        case 14:
+                            input.value = data.view_count;
+                            break;
+                        case 15:
+                            input.value = data.viewable;
+                            break;
+                                   
+                        default:
+                            break;
+                    }
+                });
+
+                // Creo un fragmeto de HTML que me muestra el shorcode actualizado
+                // Ya que JS no escribe en Iframes y el campo de post_content es un iframe
+                GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
+                const alertCode = GSCJS.crearNodo('SPAN');
+                alertCode.textContent = `[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]`;
+                GSCJS.queryOnly("#wp-content-editor-tools #wp-content-media-buttons").appendChild(alertCode);
+                GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
+            }
+           });
+            /*
            options.forEach(e => {
             // Agrego un eventLitener a los labels
             e.addEventListener('click',(event)=>{
@@ -229,6 +309,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                 
             });
            });
+           */
       }else{ // Sí se definio un callback ejecuta el callback
         callback_ajax(arrayList); // Pasa al Callback el arrayList con los videos
       }
