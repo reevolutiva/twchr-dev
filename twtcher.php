@@ -4,7 +4,7 @@
 * Plugin URI: twtcher.pro
 * Description: Un plugin para convertir wordpress es un centro de cotrol de streamings
 * Version: 1
-* Author: reevolutiva
+* Author: Conjuntas Club
 * Author URI: twitcher.pro
 * License: GPL2
 * Text Domain: twitcher

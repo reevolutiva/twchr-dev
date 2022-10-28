@@ -12,6 +12,6 @@ function left_admin_footer_text_output($text) {
  
 add_filter('update_footer', 'right_admin_footer_text_output', 11); //right side
 function right_admin_footer_text_output($text) {
-    $text = __('Developed reevolutiva.com','twitcher');
+    $text = __('Developed Conjuntas.club','twitcher');
     return $text;
 }
