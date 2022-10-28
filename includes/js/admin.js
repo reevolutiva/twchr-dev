@@ -264,8 +264,10 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--img img").setAttribute('src',postBox[8].value);
-
+    let card_img = postBox[8].value;
+    card_img = card_img.replace("%{width}x%{height}","250x150");
+    GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--img img").setAttribute('src',card_img);
+  
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
    
     twchrFetchGet(
