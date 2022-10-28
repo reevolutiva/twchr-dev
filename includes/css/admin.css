@@ -560,6 +560,15 @@ stream.twchr-modal .twchr-modal-button.close{
     background-color: transparent;
 }
 
+.modal-edit-shordcode{
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10pt;
+    position: fixed;
+    left: 30%;
+    transform: scale(1.5);
+    border-radius: 10px;
+}
 @media screen and (max-width:1293px){
     .twchr_custom_card--contain .twchr_card_header,
     .twchr_custom_card--contain .twchr_card_body{
