@@ -38,7 +38,7 @@
                     <p><?php printf('Description: %s', $description);?></p>
                     <picture><img src="<?= $foto ?>" alt="twchr-profile-picture"></picture>
                 </div>
-                <div class='keys-twchr'> 
+                <div class='keys-twchr twchr-data'> 
                 
                     <form method="GET" action="./edit.php">
                         <input type="hidden" name="post_type" value="twchr_streams">
@@ -57,7 +57,8 @@
                         </div>
                         <div>
                             <p>Created at</p>
-                            <p class="twchr-key-value"><?= $created_at ?></p>
+                            <p class="twchr-key-value created_at"><?= $created_at ?></p>
+                            
                         </div>
                         <div>
                             <p>Client ID</p>

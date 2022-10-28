@@ -492,3 +492,11 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
     const appToken = tchr_vars_admin.twchr_app_token;
     tchr_get_clips(appToken,client_id,user_id,twchr_videos_ajax);
 }
+
+if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('page') == 'twchr-settings'){
+    const field_created_at = GSCJS.queryOnly(".twchr-data .created_at");
+    const create_at_data_raw = field_created_at.textContent;
+    let create_at = new Date(create_at_data_raw);
+    create_at = `${create_at.getDay()} / ${create_at.getMonth()} / ${create_at.getFullYear()}`;
+    field_created_at.textContent = create_at;
+}
