@@ -146,7 +146,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
     
     
            // Introdusco la lista de check-boxs al modal .twchr_modal_get_videos
-           GSCJS.queryOnly("#twchr_button_get_videos__content").innerHTML += Content;
+           GSCJS.queryOnly("#twchr_button_get_videos__content .content").innerHTML = Content;
     
            // Guardo los inputs radio creados más arriba
            const options = GSCJS.queryAll(".twchr_modal_get_videos section label");
@@ -238,7 +238,6 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
 
 if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
 (getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
-    console.log('estoy donde devo estar');
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
     if(element.value.length < 1){
         GSCJS.queryOnly("#twittcher-stream").style.display = 'none';

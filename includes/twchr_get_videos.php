@@ -66,6 +66,9 @@ stream.twchr_modal_get_videos.active {
             <li><?= __('Already saved?','twitcher'); ?></li>
             <li><?= __('Import','twitcher'); ?></li>
         </ul>
+        <div class="content">
+            
+        </div>
     </div>
 
     <div class="twchr-modal-footer">
