@@ -117,6 +117,8 @@ stream.twchr-modal{
 stream.twchr-modal h3{
     color:var(--twchr-purple);
     font-size: 28px;
+    line-height: 34.3px;
+
 }
 stream.twchr-modal p{
     color:#848484;
@@ -280,7 +282,8 @@ stream.twchr-modal .twchr-modal-button.close{
     border-radius: 15px;
 }
 
-#twchr-modal-selection__btn{
+#twchr-modal-selection__btn,
+#twchr-modal-error .twchr-modal-button{
     background-color:var(--twchr-purple);
     width: 107px;
     height: 30px;
@@ -538,6 +541,23 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 .twchr_custom_card--contain .twchr_card_body--status .item h3.failed{
     color:tomato;
+}
+
+#twchr-modal-error{
+    font-family: 'Comfortaa';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 122.5%;
+}
+
+#twchr-modal-error .twchr-modal-button{
+    height: auto;
+    text-align: center;
+}
+#twchr-modal-error .twchr-modal-button.next{
+    border: 2px solid var(--twchr-purple);
+    color:var(--twchr-purple);
+    background-color: transparent;
 }
 
 @media screen and (max-width:1293px){

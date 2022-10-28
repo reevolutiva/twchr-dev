@@ -197,10 +197,10 @@ function twchr_get_videos_function(){
                                     ?>
 
 <stream id="twchr-modal-error" class='twchr-modal'>
-    <h4><?php printf("Streaming: %s already exists in the database",$video->{'title'}); ?></h4>
+    <h4><?php printf("%s already exists in the database",$video->{'title'}); ?></h4>
     <h4><?= __("If you don't see it in the list, maybe it's in the trash.","twitcher"); ?></h4>
     <div class="twchr_button_container">
-        <div class='twchr-modal-button next'><?= __('overwrite','twitcher'); ?></div>
+        <div class='twchr-modal-button next'><?= __('duplicate','twitcher'); ?></div>
         <div class='twchr-modal-button close'><?= __('cancel','twitcher'); ?></div>
     </div>
 </stream>
