@@ -216,6 +216,9 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                         case 15:
                             input.value = data.viewable;
                             break;
+                        case 16:
+                            input.value = data.title;
+                            break;
                                    
                         default:
                             break;
