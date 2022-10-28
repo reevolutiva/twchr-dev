@@ -2,7 +2,7 @@
         width: 95%;
         margin:1cm auto 0 auto;
         display: grid;
-        grid-template-columns: 60% 1fr 1fr;
+        grid-template-columns: 2.5fr 1fr 1fr;
         grid-template-rows: 150px 380px;
         grid-gap: 10pt 1cm;
 }
