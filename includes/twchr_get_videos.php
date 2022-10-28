@@ -279,6 +279,7 @@ twchr_modal_error_button_close.addEventListener('click', e => {
                         if(isset($_GET['json'])){
                             $postarr = array(
                                 'post_title' => $_GET['title'],
+                                'post_type' => 'twchr_streams',
                                 'post_content' => '[twich_embed host="reevolutiva" video="'.$id.'"  ancho="800" alto="400"]',
                                 'meta_input'   => array(
                                     'twchr-from-api_create_at' => $_GET["created_at"],
@@ -298,7 +299,7 @@ twchr_modal_error_button_close.addEventListener('click', e => {
                                     'twchr-from-api_viewble' => $_GET["viewble"],
                                 )
                             );
-                            $update = wp_update_post( $postarr, true, true);
+                            $update = wp_insert_post( $postarr, true, true);
                             if($update){
                                 ?>
 <stream id="twchr-modal-error" class='twchr-modal'>

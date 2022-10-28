@@ -481,7 +481,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
                 const cheked = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
                 if(cheked.length > 0){ // Si hay algun checkbox en cheked
                     if(cheked[index].checked == true){ // Si checkbox esta activo
-                         getParameters += `&streams_id=${item.stream_id}`; // Agrega a getParameters el stream_id de los checkbox selecionados
+                         getParameters += `&streams_id=${index}:${item.stream_id},`; // Agrega a getParameters el stream_id de los checkbox selecionados
                     }
                 }else{
                     console.log('No has seleccionado ninguno');
