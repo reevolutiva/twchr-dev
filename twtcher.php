@@ -81,6 +81,7 @@ function twchr_main_menu(){
         'twchr_main_page'//$function
     );
 
+    /*
         
     add_submenu_page(
         'edit.php?post_type=twchr_streams',
@@ -90,6 +91,8 @@ function twchr_main_menu(){
         'twchr_help',
         'twchr_menu_help',
     );
+
+    */
     
 }
 
