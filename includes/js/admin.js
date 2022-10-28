@@ -276,7 +276,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Online';
             }else{
                 GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('failed');
-                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Ofline';    
+                GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Offline';    
             }
         },
         'json',{headers: {
