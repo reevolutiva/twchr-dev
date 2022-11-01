@@ -109,7 +109,7 @@
                 }
 
                 
-                
+                //show_dump($listVideo);
                 ?>
             <div class="twchr-dashboard-card twitch-result">
                 <?php if($listVideo_from_api != false): ?>
@@ -125,7 +125,7 @@
                         </tr>
                         <tr>
                             <td><?php _e('Videos','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?= isset($listVideo) ? COUNT($listVideo->{'data'}) : 0 ?>" class='twchr-results-item'><?= isset($listVideo) ? COUNT($listVideo->{'data'}) : 0 ?></td>
+                            <td data-twchr-final-number="<?= isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?>" class='twchr-results-item'><?= isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Most viewed','twitcher'); ?></td>
