@@ -94,7 +94,7 @@ function twchr_message_function(){
 	if(isset($_GET['twchr_response'])){
 		?>
 		<div class="twchr_message">
-			<h3 style="color:tomato"><?= $_GET['twchr_response'] ?></h3>
+			<h3 class="destacado"><?= $_GET['twchr_response'] ?></h3>
 			<h3><?= __('Sure you want to override this post-type?','twitcher'); ?></h3>
 			<p><?= __('check the box if you want to rewrite this post-type.','twitcher'); ?> <input type="checkbox" name="twchr_cf_rewrite"></p>
 			

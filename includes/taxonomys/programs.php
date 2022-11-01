@@ -150,3 +150,12 @@ function get_serie( $request ) {
 
     return $response;
 }
+add_action( 'create_serie', 'twchr_save_serie_redirect', 10,5);
+function twchr_save_serie_redirect($term_id, $tt_id){
+   ?>
+    <script>
+        location.href = '<?= site_url('/wp-admin/term.php?taxonomy=serie&tag_ID='.$term_id.'&post_type=twchr_streams&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dserie%26post_type%3Dtwchr_streams') ?>';
+    </script>
+   <?php
+   die();
+}
