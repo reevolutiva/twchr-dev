@@ -39,7 +39,7 @@
 .twchr_toApi_category_ajax--container span{
     grid-column: 2/3;
     grid-row: 1/2;
-    background-color: var(--e-button-context-color-dark);
+    background-color: var(--twchr-purple);
     color: #fff;
     display: grid;
     place-items: center;
