@@ -5,6 +5,7 @@
         grid-template-columns: 2.5fr 1fr 1fr;
         grid-template-rows: 150px 380px;
         grid-gap: 10pt 1cm;
+        padding-bottom: 1.5cm;
 }
 
 

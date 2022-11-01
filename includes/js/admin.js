@@ -339,7 +339,6 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
             const segment_id = dataFromApi.allData.segments[0].id;
 
             
-            
             if(segment_id === current_stream_id){
                 let existTwitch = false;
                 switch (state) {
@@ -422,6 +421,37 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
     const url = location.origin+'/wp-json/twchr/twchr_get_serie';
     getResponse(url);
+
+    const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
+    let current_stream_id;
+        if(allData.value != ""){
+            const object = JSON.parse(allData.value);
+            const state  = object.status;
+            const alert = crearElemento("DIV","alert-twchr-back");
+            switch (state) {
+               case 401:
+                    alert.classList.add("warning");
+                    alert.innerHTML = `<h4>${object['message']}</h4>`;
+                    ajaxResponse.appendChild(alert);
+                    const url = dataFromApi.url_redirect+"&tchr_id="+object['post-id'];
+                    
+                    setTimeout(() => {
+                        //location.href = url;
+                    }, 2000);
+
+                    break;
+                case 400:
+                    alert.classList.add("warning");
+                    alert.innerHTML = `<h3>${object.error}</h3><p>${object.message}</p><p>serie: <b>${object.title}</b></p>`;
+                    ajaxResponse.appendChild(alert);
+                    break;
+                
+                
+            
+                default:
+                    break;
+            }
+        }
 
 
     
