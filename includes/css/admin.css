@@ -443,7 +443,7 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 #twittcher-stream{
-    display: none;
+     display: none; 
 }
 .twchr_custom_card--contain{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;

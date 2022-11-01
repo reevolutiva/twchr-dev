@@ -254,7 +254,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     const twchr_edit_card = GSCJS.queryOnly(".twchr_custom_card--contain");
     
 
-    //console.log(postBox)
+    console.log(postBox)
     // Lleno Twchr card
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
