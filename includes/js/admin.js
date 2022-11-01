@@ -319,9 +319,8 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
 }
 
 //taxonomy=serie&post_type=twchr_streams
-if((getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'edit-tags.php') ||
-   (getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
-   ){
+if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
+   {
     const ajaxResponse = document.querySelector("#ajax-response");
     const getResponse = async (url) =>{
         try {
