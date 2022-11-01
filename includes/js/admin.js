@@ -518,18 +518,26 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
         GSCJS.queryOnly("#twchr-modal-selection__btn").addEventListener('click',event =>{
             event.preventDefault(); // Detengo su ejecucion por defecto
             let getParameters = '?post_type=twchr_streams&get_thing=videos' // Creo la primera parte de la nueva ruta
+            let arrayCVS = '';
             data.forEach((item, index) => {
                 const cheked = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
                 if(cheked.length > 0){ // Si hay algun checkbox en cheked
                     if(cheked[index].checked == true){ // Si checkbox esta activo
-                         getParameters += `&streams_id=${index}:${item.stream_id},`; // Agrega a getParameters el stream_id de los checkbox selecionados
+                        if(index == data.length - 1){
+                            arrayCVS += `${item.id}`;
+                        }else{
+                            arrayCVS += `${item.id},`; // Agrega a getParameters el stream_id de los checkbox selecionados
+                        }                       
+                        
                     }
                 }else{
                     console.log('No has seleccionado ninguno');
                 }
                 
             });
+            getParameters += `&streams_id=${arrayCVS}`;
             newURL = GSCJS.getURLorigin()+GSCJS.getURLpath()+getParameters; // Crea una nueva url con la infromacion de las variables seleccionadas
+            console.log(newURL);
             location.href=newURL; // Redireciona al navegador a la url newURL
         });
 
@@ -555,17 +563,21 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
         modal.innerHTML += Content;
         
         // Me comunico con la API de wordpress
-        gscFetch (location.origin+'/wp-json/twchr/twchr_get_streaming/', twchr_verification_videos,'json');
+        twchrFetchGet(location.origin+'/wp-json/twchr/twchr_get_streaming/', twchr_verification_videos,'json');
 
         function twchr_verification_videos(WpData){
             const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
             chekeed.forEach(check => {
-                const pos = check.getAttribute('data-position');
-                const twtch_stream_id = data[pos].stream_id;
-                const wp_stream_id = WpData[pos].twchr_stream_id;
-
-                if(wp_stream_id == twtch_stream_id){
-                    check.parentElement.children[0].children[2].classList.add('video-saved');
+                
+                const pos = parseInt(check.getAttribute('data-position'));
+                const twtch_stream_id = parseInt(data[pos].stream_id);
+                if(WpData.length > 1){
+                    const wp_stream_id = WpData[pos] != undefined ? WpData[pos].twchr_stream_id : false;
+                    
+                    if(wp_stream_id === twtch_stream_id){
+                        console.log("alive");
+                        check.parentElement.children[0].children[2].classList.add('video-saved');
+                    }
                 }
             });
         }

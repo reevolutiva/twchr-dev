@@ -169,65 +169,87 @@ function twchr_get_videos_function(){
                             $list_videos = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             //show_dump($list_videos);
                             $list_videos_array = $list_videos->{'data'};
-                            
                             /*$streamig_post_raw = new WP_Query($args);*/
                             // List de todos los post
                             /*$streamig_post = $streamig_post_raw->{'posts'};*/
-                            //show_dump($list_videos);
-                            
-                            foreach($list_videos_array as $video){
+                            $streams_id = explode(",",$_GET['streams_id']);
+                            while(COUNT($streams_id) > 0){
+                                $index = $streams_id[0];
+                                
+                                foreach($list_videos_array as $video){
+                                    if($video->id === $index){
+                                            $video_exist = twittcher_getData('wp_postmeta','twchr-from-api_stream_id', $video->{'stream_id'});
+                                            if($video_exist === false){
+                                                crearStream($video->{'title'} ,$video->{'id'} ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
+                                            }else{
+                                                twitcher_update_cpt($video->{'title'} ,$video->{'id'} ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
+                                            }
+                                            
+                                    }
+                                }
+                                array_shift($streams_id);
+                                $csv = implode(',', $streams_id);
+                                echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&get_thing=video&streams_id='.$csv)."'</script>";
+
+                            }
+                            /*
+                            foreach($list_videos_array as $video){  
+
                                 if(str_contains($_GET['streams_id'],$video->{'stream_id'}) ):
+                                    show_dump($video);
                                 //$response = twchr_post_db_exist('twchr_streams',$video->{'title'});
                                 //$video_exist = twchr_post_db_exist('twchr_streams',$video->{'title'});
                                 $video_exist = twittcher_getData('wp_postmeta','twchr-from-api_stream_id', $video->{'stream_id'});
                                 //show_dump($video);
                                 if($video_exist === false){
-                                    crearStream($video->{'title'} ,$video->{'id'} ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
+                                    //crearStream($video->{'title'} ,$video->{'id'} ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
                                     echo "<h4>";
                                     printf("Streaming: %s was successfully added to the database",$video->{'title'});
                                     echo "</h4>";
-                                    echo "<script>location.href='".site_url('wp-admin/edit.php?post_type=twchr_streams')."'</script>";
+                                    //echo "<script>location.href='".site_url('wp-admin/edit.php?post_type=twchr_streams')."'</script>";
                                     
                                 }else{
                                     $json = '';
                                     foreach ($video as $key => $val){
                                         $json .= $key."=".$val."&";    
                                     }
-                                    
+                            
                                     ?>
 
-<stream id="twchr-modal-error" class='twchr-modal'>
-    <h4><?php printf("%s already exists in the database",$video->{'title'}); ?></h4>
-    <h4><?= __("If you don't see it in the list, maybe it's in the trash.","twitcher"); ?></h4>
-    <div class="twchr_button_container">
-        <div class='twchr-modal-button next'><?= __('duplicate','twitcher'); ?></div>
-        <div class='twchr-modal-button close'><?= __('cancel','twitcher'); ?></div>
-    </div>
-</stream>
-<script>
-const twchr_modal_error = document.querySelector("#twchr-modal-error");
-const twchr_modal_error_button_next = document.querySelector("#twchr-modal-error .twchr-modal-button.next");
-const twchr_modal_error_button_close = document.querySelector("#twchr-modal-error .twchr-modal-button.close");
+                                <stream id="twchr-modal-error" class='twchr-modal'>
+                                    <h4><?php printf("%s already exists in the database",$video->{'title'}); ?></h4>
+                                    <h4><?= __("If you don't see it in the list, maybe it's in the trash.","twitcher"); ?></h4>
+                                    <div class="twchr_button_container">
+                                        <div class='twchr-modal-button next'><?= __('duplicate','twitcher'); ?></div>
+                                        <div class='twchr-modal-button close'><?= __('cancel','twitcher'); ?></div>
+                                    </div>
+                                </stream>
+                                <script>
+                                const twchr_modal_error = document.querySelector("#twchr-modal-error");
+                                const twchr_modal_error_button_next = document.querySelector("#twchr-modal-error .twchr-modal-button.next");
+                                const twchr_modal_error_button_close = document.querySelector("#twchr-modal-error .twchr-modal-button.close");
 
-twchr_modal_error_button_next.addEventListener('click', e => {
-    twchr_modal_error.style.display = 'none';
-    location.href =
-        '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_update&json=true&'.$json)?>';
-});
+                                twchr_modal_error_button_next.addEventListener('click', e => {
+                                    twchr_modal_error.style.display = 'none';
+                                    location.href =
+                                        '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_update&json=true&'.$json)?>';
+                                });
 
-twchr_modal_error_button_close.addEventListener('click', e => {
-    twchr_modal_error.style.display = 'none';
-    location.href = '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
-});
-</script>
-<?php
+                                twchr_modal_error_button_close.addEventListener('click', e => {
+                                    twchr_modal_error.style.display = 'none';
+                                    location.href = '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
+                                });
+                                </script>
+                                <?php
                                 }
                                 endif;   
                             }
+                            */
                         }else{
                             wp_redirect(site_url('/twttcher-setup'));
                             exit;
                         }
+                        
                        
                         
                         
