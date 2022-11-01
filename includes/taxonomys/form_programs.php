@@ -36,10 +36,10 @@
         <input type="number" id="twchr_toApi_duration" name="twchr_toApi_duration" value="<?=$duration?>">
         <p>Tiempo promedio que dura su transmición.</p>
     </div>
-    <label for="twchr_toApi_category_ajax">Categoria</label>
+    <label for="twchr_toApi_category_ajax">Categoria Twitch</label>
     <div>
         <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="escribe tu categoria" value='<?= $select_name?>'>
-        <p>Categoria del stream</p>
+        <p>Categoria de Twitch del stream</p>
     </div>
     <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?= $select_value?>'>
     <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?= $select_name?>'>
