@@ -326,12 +326,22 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         try {
            const response = await fetch(url);
            const res = await response.json();
+           const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
+           let current_stream_id;
+               if(allData.value != ""){
+                    const object = JSON.parse(allData.value);
+                    current_stream_id = object.allData.segments[0].id; 
+            }
            res.forEach((element, index) => {
             const dataFromApi = JSON.parse(element.dataFromTwitch);
             const alert = crearElemento("DIV","alert-twchr-back");
             const state = dataFromApi.status;
             const segment_id = dataFromApi.allData.segments[0].id;
-            let existTwitch = false;
+
+            
+            
+            if(segment_id === current_stream_id){
+                let existTwitch = false;
                 switch (state) {
                     case 200:
 
@@ -356,8 +366,8 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                                 
                                 schedule_segment.forEach(segment =>{
                                     if(segment.id === segment_id){
-                                        console.log('existe');
-                                        console.log(segment.title);
+                                        //console.log('existe');
+                                        //console.log(segment.title);
                                         alert.classList.remove("warning");
                                         alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
                                     }
@@ -371,7 +381,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                             
                         }
                         
-                        console.log(existTwitch);
+                        
                         alert.classList.add("warning");
                         alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
                         ajaxResponse.appendChild(alert)
@@ -399,6 +409,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                     default:
                         break;
                 }
+            }
                 
            });
 

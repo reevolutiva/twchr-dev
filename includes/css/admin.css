@@ -11,11 +11,12 @@
 :root{
     --twchr-blue:#429CD6;
     --twchr-purple:#65449B;
+    --twchr-green:#30CC2D;
 }
 .alert-twchr-back{
     background-color: #fff;
     padding: 10px 14px;
-    border-left: 3px solid var(--e-context-success-color);
+    border-left: 3px solid var(--twchr-green);
     margin-top: 15px;
     margin-bottom: 20px;
     width: max-content;

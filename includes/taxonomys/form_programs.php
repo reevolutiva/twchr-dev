@@ -45,7 +45,7 @@
     <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?= $select_name?>'>
     <label for="twchr_fromApi_allData">All Data</label>
     <div>
-        <input type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?= $allData;?>'>
+        <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?= $allData;?>'>
         <p>Data procedente de la API de Twitch.</p>
     </div>
 </div>
