@@ -230,9 +230,14 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                 GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
                 const alertCode = GSCJS.crearNodo('DIV');
                 alertCode.classList.add("modal-edit-shordcode");
-                alertCode.innerHTML = `<h3>Copy this shortcode</h3><p>[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]</p>`;
+                alertCode.innerHTML = `<h3>Copy this shortcode</h3><p>[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"] <span class="modal-clipboard-button dashicons dashicons-clipboard"></span></p>`;
                 GSCJS.queryOnly("#wp-content-editor-tools #wp-content-media-buttons").appendChild(alertCode);
                 GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
+
+                GSCJS.queryOnly('span.modal-clipboard-button').addEventListener('click',()=>{
+                    navigator.clipboard.writeText(`[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]`);
+                    alertCode.style.display = 'none';
+                });
             }
            });
       }else{ // Sí se definio un callback ejecuta el callback

@@ -572,6 +572,18 @@ stream.twchr-modal .twchr-modal-button.close{
     transform: scale(1.5);
     border-radius: 10px;
 }
+
+.modal-clipboard-button{
+   
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.5em;
+    display: inline-block;
+}
+.modal-clipboard-button:hover{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
 @media screen and (max-width:1293px){
     .twchr_custom_card--contain .twchr_card_header,
     .twchr_custom_card--contain .twchr_card_body{
