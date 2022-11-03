@@ -13,5 +13,7 @@ if(isset($_GET['setUpPage']) && $_GET['setUpPage'] == true){
 </style>
 <div class="twchr-for-back-broadcast container">
     <h1>Help</h1>
-    <h4>Start SetUp</h4><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true'); ?>">Start</a>   
+    <h3><?php _e('Mail your support requests to  contacto@twitcher.pro','twittcher'); ?></h3>
+    <p><a href='https://twitcher.pro/'><?php _e('More information visite https://twitcher.pro/','twittcher'); ?></a></p>
+    </hr>   
 </div>
