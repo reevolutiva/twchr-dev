@@ -74,10 +74,10 @@ function twchr_main_menu(){
 
     add_submenu_page(
         'edit.php?post_type=twchr_streams', //$parent_slug
-        'Twitcher Settings',  //$page_title
-        'Twitcher Settings',        //$menu_title
+        'Twitcher Dashboard',  //$page_title
+        'Twitcher Dashboard',        //$menu_title
         'manage_options',           //$capability
-        'twchr-settings',//$menu_slug
+        'twchr-dashboard',//$menu_slug
         'twchr_main_page'//$function
     );
 
@@ -259,7 +259,7 @@ function twchr_redirect_setUp(){
     // Si la url contiene 'plugins' retorna true
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'plugins');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'action=upload-plugin');
-    $dataUrl3 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams&page=twchr-settings');
+    $dataUrl3 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams&page=twchr-dashboard');
     //show_dump(twittcher_data_exist('twchr_setInstaled'));
 
     //add_option('twchr_setInstaled',0,'',true );

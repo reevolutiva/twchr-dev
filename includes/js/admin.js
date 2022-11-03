@@ -295,8 +295,8 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     
 }
 
-//post_type=twchr_streams&page=twchr-settings
-if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page')=='twchr-settings'){
+//post_type=twchr_streams&page=twchr-dashboard
+if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page')=='twchr-dashboard'){
     const table_tchr_setting__txt = GSCJS.queryAll(".keys-twchr p.twchr-key-value");
     for (let i = 0; i < table_tchr_setting__txt.length; i++) {
         const element = table_tchr_setting__txt[i];
@@ -360,7 +360,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                         twchrFetchGet(`https://api.twitch.tv/helix/schedule?broadcaster_id=${tchr_vars_admin.twitcher_data_broadcaster.id}`,getScheduleCallback,'json',requestOptionsgetSchedule);
                         function getScheduleCallback(res){
                             if(res.status === 401){
-                                const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true`;
+                                const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true`;
                                 alert('Invalid User Token, You will be redirected to another page to get a new User Token');
                                 location.href = url_redirect
                             }
@@ -595,7 +595,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
     tchr_get_clips(appToken,client_id,user_id,twchr_videos_ajax);
 }
 
-if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('page') == 'twchr-settings'){
+if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('page') == 'twchr-dashboard'){
     const field_created_at = GSCJS.queryOnly(".twchr-data .created_at");
     const create_at_data_raw = field_created_at.textContent;
     let create_at = new Date(create_at_data_raw);

@@ -76,7 +76,7 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
       break;
     //case 401:
     case 401:
-      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true','post-id'=>$post_id);
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
      
       break;
     //case 400:
@@ -125,7 +125,7 @@ function autenticate($api_key, $client_id,$redirect,$scope){
 
     update_option( 'twchr_data_broadcaster', $body, true);
 
-    $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings';
+    $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";
     
   }else{

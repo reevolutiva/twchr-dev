@@ -23,7 +23,7 @@ function shorcode_twchr_setUp() {
 							<ol>
 								<li>En la zona izquierda de la pantalla, has click en 'Registra tu aplicación'</li>
 								<li>En la casilla nombre escribe el nombre de tu wordpress</li>
-								<li>En la casilla 'URL de redireccionamiento de OAuth' pega lo siguiente <span style='color:red;'>".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings</span></li>
+								<li>En la casilla 'URL de redireccionamiento de OAuth' pega lo siguiente <span style='color:red;'>".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard</span></li>
 								<li>En la casilla Categoria selecciona 'Others'</li>
 								<li>Resuelve el Captcha</li>
 								<li>Click en crear</li>
@@ -33,7 +33,7 @@ function shorcode_twchr_setUp() {
 							
 							<form method='GET' action='https://".$_SERVER['SERVER_NAME']."/wp-admin/edit.php'>
 								<input type='hidden' name='post_type' value='twchr_streams'>
-								<input type='hidden' name='page' value='twchr-settings'>
+								<input type='hidden' name='page' value='twchr-dashboard'>
 								<input type='hidden' name='from' value='setUp-plugin'>
 								<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='$clientId'>
 								<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='$clientSecret'>								

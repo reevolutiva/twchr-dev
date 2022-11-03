@@ -9,7 +9,7 @@
         <picture>
             <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
         </picture>
-        <h2><?= __('Settings','twitcher'); ?></h2>
+        <h2><?= __('Dashboard','twitcher'); ?></h2>
     </article>
         <article>
             <h3><?php _e('Twitcher Data'); ?></h3>
@@ -42,7 +42,7 @@
                 
                     <form method="GET" action="./edit.php">
                         <input type="hidden" name="post_type" value="twchr_streams">
-                        <input type="hidden" name="page" value="twchr-settings">
+                        <input type="hidden" name="page" value="twchr-dashboard">
                         <?php $clientID = !empty($twch_data_prime->{'client-id'}) ? $twch_data_prime->{'client-id'} : null ; ?>
                         <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?= $clientID?>">
                         <?php $clientSecret = !empty($twch_data_prime->{'client-secret'}) ?  $twch_data_prime->{'client-secret'} : null; ?>
@@ -77,7 +77,7 @@
                                         if(wishexist === 'y' || wishexist === 'yes'){
                                             location.href='<?= site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
                                         }else{
-                                            location.href='<?=site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings")?>';
+                                            location.href='<?=site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard")?>';
                                         }
                                     </script> 
                                 <?php
@@ -139,7 +139,7 @@
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
-                                <a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>"><?= __('Refresh','twitcher') ?></a>
+                                <a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>"><?= __('Refresh','twitcher') ?></a>
                                 
                             </td>
                         </tr>
@@ -180,7 +180,7 @@
                       
                    
 
-                    echo "<script> location.href='https://".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true'; </script>";
+                    echo "<script> location.href='https://".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'; </script>";
                 }
             }else{ ?>
             
@@ -196,15 +196,15 @@
                             <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true"><?= __('Renew User Token','twitcher'); ?></a></td>
+                            <td><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?= __('Renew User Token','twitcher'); ?></a></td>
                             <td class='twitch-connect__status'><?= isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&app_token_action=update"><?= __('Renew App Token','twitcher'); ?></a></td>
+                            <td><a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?= __('Renew App Token','twitcher'); ?></a></td>
                             <td class='twitch-connect__status'><?= $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td class="btn-renew-apiKeys"><a href="<?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
+                            <td class="btn-renew-apiKeys"><a href="<?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -217,12 +217,12 @@
                         
                         $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
-                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings')."'</script>";
+                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')."'</script>";
                         break;
                     case 'renewAll_api_keys':
                         $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
                         twchr_save_app_token($twchr_token_app->{'access_token'});
-                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true')."'</script>";
+                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true')."'</script>";
                         
                     default:
                         # code...
@@ -247,7 +247,7 @@
                             
                             add_option('twchr_keys',$json_array);
 
-                            wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings'));
+                            wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard'));
                             exit;
 
                             
@@ -262,7 +262,7 @@
                             ):
                                 $client_id = $twch_data_prime->{'client-id'};
                                 $secret_key = $twch_data_prime->{'client-secret'};
-                                $return = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings');
+                                $return = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard');
                                 $scope = array(
                                     "channel:manage:schedule"
                                 );
@@ -281,7 +281,7 @@
                         $client_secret = $twch_data_prime->{'client-secret'};
                         $code = $_GET['code'];
                         $scope = $_GET['scope'];
-                        $redirect = site_url('/wp-admin/edit.php?post_type=twchr_streams%26page=twchr-settings');
+                        $redirect = site_url('/wp-admin/edit.php?post_type=twchr_streams%26page=twchr-dashboard');
         
                         $response = validateToken($client_id,$client_secret,$code, $redirect);
                         $validateTokenObject = json_decode($response['body']);
@@ -305,7 +305,7 @@
         
                             update_option( 'twchr_keys', $json_array, true);
                             echo "<h3>User Token actualizado actualizado correctamente</h3>";
-                            $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings&autentication=true';
+                            $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
                             echo "<script>location.href='$urlRedirection'</script>";
                         }else{
                         ?>
@@ -313,7 +313,7 @@
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?= $validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-settings');?>">ok</a></p>
+                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard');?>">ok</a></p>
                             </div>
                         <?php
                             die();
