@@ -41,8 +41,10 @@
     for (let i = 0; i < stream_isset.length; i++) {
         const element = stream_isset[i];
         //console.log(element.value);
-        if(element.value == undefined){
+        if(element.textContent === undefined){
             stream_isset_array.push(true);
+        }else{
+            stream_isset_array.push(false)
         }        
     }
     if(stream_isset_array.every(item => item === true)){
