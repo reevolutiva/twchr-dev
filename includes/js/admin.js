@@ -254,7 +254,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     const twchr_edit_card = GSCJS.queryOnly(".twchr_custom_card--contain");
     
 
-    console.log(postBox)
+    //console.log(postBox)
     // Lleno Twchr card
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
@@ -274,7 +274,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     twchrFetchGet(
         'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
         (element)=>{
-            console.log(element.data);
+            //console.log(element.data);
             if(element.data){
                 GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('on');
                 GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Online';
@@ -537,7 +537,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
             });
             getParameters += `&streams_id=${arrayCVS}`;
             newURL = GSCJS.getURLorigin()+GSCJS.getURLpath()+getParameters; // Crea una nueva url con la infromacion de las variables seleccionadas
-            console.log(newURL);
+            //console.log(newURL);
             location.href=newURL; // Redireciona al navegador a la url newURL
         });
 
@@ -575,7 +575,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
                     const wp_stream_id = WpData[pos] != undefined ? WpData[pos].twchr_stream_id : false;
                     
                     if(wp_stream_id === twtch_stream_id){
-                        console.log("alive");
+                        //console.log("alive");
                         check.parentElement.children[0].children[2].classList.add('video-saved');
                     }
                 }
