@@ -30,7 +30,7 @@ function twchr_stream_data_meta_box_content($post){
 
 function twchr_stream_data_metabox(){
 	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
-	add_meta_box( 'twchr_stream_data', 'Stream Data', 'twchr_stream_data_meta_box_content', 'twchr_streams', 'normal', 'high' );
+	add_meta_box( 'twchr_stream_data', 'Twitcher data', 'twchr_stream_data_meta_box_content', 'twchr_streams', 'normal', 'high' );
 }
 
 add_action('add_meta_boxes','twchr_stream_data_metabox');
