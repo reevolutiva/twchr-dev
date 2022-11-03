@@ -572,17 +572,20 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 
         function twchr_verification_videos(WpData){
             const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
-            chekeed.forEach(check => {
-                
-                const pos = parseInt(check.getAttribute('data-position'));
-                const twtch_stream_id = parseInt(data[pos].stream_id);
+            chekeed.forEach((check, index) => { 
                 if(WpData.length > 1){
-                    const wp_stream_id = WpData[pos] != undefined ? WpData[pos].twchr_stream_id : false;
+                    const wp_id = WpData[index].twchr_id;
+
+                    data.forEach(item =>{
+                        const twtch_id = parseInt(item.id);
+                        if(wp_id === twtch_id){
+                            //console.log(twtch_stream);
+                            check.parentElement.children[0].children[2].classList.add('video-saved');
+                        }
+                    });
+
                     
-                    if(wp_stream_id === twtch_stream_id){
-                        //console.log("alive");
-                        check.parentElement.children[0].children[2].classList.add('video-saved');
-                    }
+                   
                 }
             });
         }

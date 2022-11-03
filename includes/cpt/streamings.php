@@ -128,13 +128,13 @@ function get_streaming( $request ){
 	foreach ($posts as $key =>  $value){	
 			$id = $value->{'ID'}; // guardo su id
 			$title = $value->{'post_title'}; // guardo su title
-			$stream_id = get_post_meta( $id, 'twchr-from-api_stream_id', true ); // guardo el custom-field steram_id
+			$stream_id = get_post_meta( $id, 'twchr-from-api_id', true ); // guardo el custom-field steram_id
 
 			// Guardo los datos anteriores en un array
 			$post_for_api = array(
 				'wordpress_id' => $id,
 				'title' => $title,
-				'twchr_stream_id' => (int)$stream_id // Convierto stream_id a numero entero
+				'twchr_id' => (int)$stream_id // Convierto stream_id a numero entero
 
 			);
 			
