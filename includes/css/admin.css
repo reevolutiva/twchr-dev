@@ -563,6 +563,24 @@ stream.twchr-modal .twchr-modal-button.close{
     background-color: transparent;
 }
 
+#twchr_stream_data metabox {
+    display: flex;
+}
+#twchr_stream_data metabox picture{
+    margin-right: 1em;
+}
+#twchr_stream_data metabox img{
+    height: 50px;
+}
+
+#twchr_stream_data metabox label {
+    display: flex;
+    align-items:center;
+}
+#twchr_stream_data metabox label input{
+    margin-left: 1em;
+}
+
 .modal-edit-shordcode{
     background-color: #fff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

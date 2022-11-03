@@ -29,6 +29,7 @@ require_once 'includes/cpt/streamings.php';
 require_once 'includes/cf/streamings.php';
 //require_once 'includes/cf/to_api.php';
 require_once 'includes/cf/stream_yt.php';
+require_once 'includes/cf/twchr_stream_data.php';
 
 // Shortcodes
 require_once 'includes/shortcode/twich_embed.php';
