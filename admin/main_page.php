@@ -87,7 +87,12 @@
                         </form>
                     </div>
                 </div>
-            <?php endif; ?>
+            <?php endif; 
+        if($data_broadcaster_raw == false): ?>
+            <div class="connect-card">
+                <h2>Connect...</h2>
+            </div>
+        <?php endif;?>
         </article>
         <article>
             <h3>Your Twitch Results:</h3>
@@ -100,19 +105,22 @@
                              
                 $listVideo_from_api = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                 $listVideo_from_wp = twchr_get_stream();
-
-                if($listVideo_from_api === false){
-
+                //show_dump($listVideo_from_api->data[0]->view_count);
+                if($listVideo_from_api === false && get_option('twchr_setInstaled') <= 3){
+                    
                 }else{
+            
                     $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
                     $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
+
+                    //show_dump($mostViwed_from_api);
                 }
 
-                
+                //show_dump($mostViwed_from_api);
                 //show_dump($listVideo);
                 ?>
             <div class="twchr-dashboard-card twitch-result">
-                <?php if($listVideo_from_api != false): ?>
+                <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3): ?>
                 <table>
                     <tbody>
                         <tr>
@@ -146,14 +154,23 @@
                     </tbody>
                 </table>
                 <?php endif; 
-                    if($listVideo_from_api === false):
-                        $error = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
-                        ?>
-                        <div class="error-card">
-                            <h3>Error: <?= $error->{'status'} ?></h3>
-                            <p><?= $error->{'message'} ?></p>
-                        </div>
+                    if(get_option('twchr_setInstaled') <= 3):
+                        $setInstaled = get_option('twchr_setInstaled');
+                        if($setInstaled == 3 && $listVideo_from_api === false){
+                            $error = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                            ?>
+                            <div class="error-card">
+                                <h3>Error: <?= $error->{'status'} ?></h3>
+                                <p><?= $error->{'message'} ?></p>
+                            </div>
                         <?php
+                        }else{
+                            ?>
+                            <div class="connect-card">
+                                <h2>Connect...</h2>
+                            </div>
+                            <?php
+                        }
                     endif;
                 ?>
             </div>
@@ -177,6 +194,9 @@
                     
                     // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
+
+                    // Paso 2 de la instalacion
+                    update_option('twchr_setInstaled',2,true);
                       
                    
 
@@ -217,6 +237,7 @@
                         
                         $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
+                        // Paso 3 de instalaccion
                         echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')."'</script>";
                         break;
                     case 'renewAll_api_keys':
@@ -272,6 +293,7 @@
                                     $allData = '';
                                     update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                                 }
+
                                 autenticate($client_id, $secret_key, $return,$scope);  
                             endif;
                         }
@@ -288,7 +310,6 @@
                         $response_response = $response['response'];
                         
                         if($response_response['code'] == 200){
-                            
                             $userToken = $validateTokenObject->{'access_token'};
                             $userTokenRefresh = $validateTokenObject->{'refresh_token'};
         
@@ -304,6 +325,9 @@
                             $json_array = json_encode($array_keys);
         
                             update_option( 'twchr_keys', $json_array, true);
+                            update_option( 'twchr_setInstaled',3, true);
+
+                            
                             echo "<h3>User Token actualizado actualizado correctamente</h3>";
                             $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
                             echo "<script>location.href='$urlRedirection'</script>";

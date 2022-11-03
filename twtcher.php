@@ -266,7 +266,7 @@ function twchr_redirect_setUp(){
     $setInstaled = get_option('twchr_setInstaled');
     //show_dump($setInstaled);
     //echo "dentro de la funcion redirect_setUp";
-    if(!$setInstaled){
+    if($setInstaled < 1 || $setInstaled == false){
         if($dataUrl1 || $dataUrl2 || $dataUrl3){  
             $url = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');
             echo "<script>location.href='$url'</script>";
