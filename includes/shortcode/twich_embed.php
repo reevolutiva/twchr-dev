@@ -5,7 +5,7 @@ function shorcode_twich_embed( $atts ) {
 	// Attributes
 	$atts = shortcode_atts(
 		array(
-			'host' => 'reevolutiva',
+			'host' => '#',
 			'video' => '#',
             'ancho' => 800,
             'alto' => 400

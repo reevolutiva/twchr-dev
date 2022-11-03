@@ -173,6 +173,8 @@ function twchr_get_videos_function(){
                             // List de todos los post
                             /*$streamig_post = $streamig_post_raw->{'posts'};*/
                             $streams_id = explode(",",$_GET['streams_id']);
+                            $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+                            $twitch_chanel = $data_broadcaster_raw->login;
                             
                             while(COUNT($streams_id)  > 0){
                                 $index = $streams_id[0];
@@ -182,9 +184,9 @@ function twchr_get_videos_function(){
                                             $video_exist = twittcher_getData('wp_postmeta','twchr-from-api_id', $video->id);
                                            
                                             if($video_exist === false){
-                                                crearStream($video->title ,$video->id ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
+                                                crearStream($video->title ,$video->id ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id(),$twitch_chanel);
                                             }else{
-                                                twitcher_update_cpt($video->title ,$video->id ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id());
+                                                twitcher_update_cpt($video->title ,$video->id ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id(),$twitch_chanel);
                                             }
                                             
                                     }

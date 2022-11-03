@@ -201,8 +201,6 @@ function template_replace( $template ) {
     // Sí solo en la url esta la direcion /twchr_streams/ has esto
     }else if(is_this_cpt('twchr_streams')){
         $template = __DIR__.'/public/archive-twchr_streams.php';
-    }else if(is_page('twttcher-setup')){
-        $template = __DIR__.'/public/page-twttcher-setup.php';
     }
     return $template;
 }
