@@ -1,4 +1,3 @@
-
 .twchr-modal h3,
 .twchr-dashboard-card  h2,
 .twchr-for-back *{
@@ -104,7 +103,7 @@
     border-radius: 15px;
 }
 
-stream.twchr-modal{
+stream.twchr-modal,.twchr-modal-general{
     background-color: #fff;
     position: absolute;
     left: 16%;
@@ -286,7 +285,7 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 #twchr-modal-selection__btn,
-#twchr-modal-error .twchr-modal-button{
+.twchr-modal-button{
     background-color:var(--twchr-purple);
     width: 107px;
     height: 30px;
@@ -557,7 +556,8 @@ stream.twchr-modal .twchr-modal-button.close{
     height: auto;
     text-align: center;
 }
-#twchr-modal-error .twchr-modal-button.next{
+#twchr-modal-error .twchr-modal-button.next,
+.twchr-modal-button.ghost{
     border: 2px solid var(--twchr-purple);
     color:var(--twchr-purple);
     background-color: transparent;
@@ -593,6 +593,15 @@ stream.twchr-modal .twchr-modal-button.close{
     left: 30%;
     transform: scale(1.5);
     border-radius: 10px;
+}
+
+.modal-button-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-duplicate .modal-button-container{
+    margin-top: 1cm;
 }
 @media screen and (max-width:1293px){
     .twchr_custom_card--contain .twchr_card_header,
