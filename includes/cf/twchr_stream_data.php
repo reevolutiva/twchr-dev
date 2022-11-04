@@ -18,12 +18,14 @@ function twchr_stream_data_meta_box_content($post){
 	$values    = get_post_custom( $post->ID );
 	//show_dump($values);
 	$dateTime = isset($values['twchr_stream_data_dateTime'][0]) ? $values['twchr_stream_data_dateTime'][0] : '';
+	$dateTimeTwitch = isset($values['twchr-from-api_create_at'][0]) ? $values['twchr-from-api_create_at'][0] : false;
+	
 	?>
     <metabox>
         <picture>
             <img src="<?= plugins_url('/twitcher/includes/assets/logo_colores_completos_6pt.svg') ?>" alt="logo-twitch">
         </picture>
-		<label >Fecha y hora del streming <input type="datetime-local" name='twchr_stream_data_dateTime' value="<?= $dateTime;  ?>"></label>
+		<label >Fecha y hora del streming <input disabled="<?= $dateTimeTwitch == false ? null : 'true'?>" type="<?= $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
 	</metabox>
 	<?php
 }
