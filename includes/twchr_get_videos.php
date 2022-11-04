@@ -183,19 +183,12 @@ function twchr_get_videos_function(){
                                 if(twchr_cf_db_exist('twchr-from-api_id',$index) != false){
                                     foreach($list_videos_array as $video){
                                         if($video->id === $index){
-                                            ?>
-                                            <div class="twchr-modal-general modal-duplicate">
-                                                <h2>Ups! <i><?= $video->title?></i> <?php _e('alredy exist in wordpress','twitcher'); ?></h2>
-                                                <div class="modal-button-container">
-                                                    <button class="twchr-modal-button ghost"><?php _e('Duplicate','twitcher')?></button>
-                                                    <button class="twchr-modal-button"><?php _e('Cancel','twitcher')?></button>
-                                                </div>
-                                            </div>
-                                            <?php
-
+                                            $title_new = $video->title.__(' (Duplicated)','twitcher'); 
+                                            crearStream($title_new ,$video->id ,$video->{'created_at'} ,$video->{'description'} ,$video->{'duration'} ,$video->{'language'} ,$video->{'muted_segment'} ,$video->{'published_at'} ,$video->{'stream_id'} ,$video->{'thumbnail_url'} ,$video->{'type'} ,$video->{'url'} ,$video->{'user_id'} ,$video->{'user_login'} ,$video->{'user_name'} ,$video->{'view_count'} ,$video->{'viewable'}, get_current_user_id(),$twitch_chanel);
                                         }
                                     }
-                                    
+                                    echo "<script> location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams')."'</script>";
+                                                                     
                                     break;
                                 }
                                 
