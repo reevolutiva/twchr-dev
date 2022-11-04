@@ -338,7 +338,7 @@
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?= $validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard');?>">ok</a></p>
+                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
                             </div>
                         <?php
                             die();

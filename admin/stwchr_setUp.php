@@ -12,9 +12,6 @@
 		$clientSecret =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-secret'} : '';
 		
 ?>
-<style>
-		
-</style>
 <div class="twchr_settUp_overlay">
 	<div id='twchr-setUp'>
 		<div class="presentation">
@@ -59,3 +56,13 @@
 		</section>
 	</div>
 </div>
+
+<?php 
+	if(isset($_GET['error'])){
+		?>
+			<script>
+				alert("Ups! Error: <?=$_GET['error']?>");
+			</script>
+		<?php
+	}
+?>
