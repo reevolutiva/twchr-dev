@@ -3,54 +3,38 @@ Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
 Requires at least: 6.03
+Tested up to: 6.1
 Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Manage, promote and monetise your streaming integrrating the power of twitch to wordpress
+Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to wordpress.
 
 == Description ==
+Monetize your streams and grow your audience by integrating your Twitch channel to your Wordpress site in a simple
+and fast way with Twitcher Wordpress Plugin.
+Twitcher Integrates your Twitch Channel to Wordpress and create a Post Page for every past Stream, so you could mannage
+and promote your programs and series, and offer extra content for your audience, taking advantage of the power of google.
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+== Features ==
+* Import Twitch Videos as Streaming Post Tipe
+* Twitch API Helix Enabled
+* Schedule Twitch Series direct from Wordpress a make an archive for all the chapters of your Serie
+* Keep on track your twitch views and and monitoring connections with a beautifull dashboard
+* Easy Installation: onnect your Wordpress site with your Twitch.tv channel and import your previous videos in less than 5 minutes.
+* Compatible with Woocommerce, Learndash and most plugins and themes.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
 
-A few notes about the sections above:
-
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
-
-== Installation ==
-
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+= Links =                                                                
+*   <a href="https://twitcher.pro/" title="">HomePage</a>
+*   <a href="https://conjuntas.club" title="Developers Team.">Developers</a>
+*   <a href="https://www.patreon.com/reevolutiva" title="">Patreon</a>          
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Is Twitcher free? =
 
-An answer to that question.
+All free and GPL.
 
 = What about foo bar? =
 
