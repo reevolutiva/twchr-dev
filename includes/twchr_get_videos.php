@@ -205,8 +205,9 @@ function twchr_get_videos_function(){
                                 }
                                 array_shift($streams_id);
                                 
-                                //echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&streams_id=').implode($streams_id)."'</script>";
-                                
+                                if(COUNT($streams_id) ==  0){
+                                    echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&streams_id=')."'</script>";
+                                }                                
                             }
                             
                         }else{
