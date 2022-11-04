@@ -23,14 +23,14 @@ function twchr_stream_data_meta_box_content($post){
         <picture>
             <img src="<?= plugins_url('/twitcher/includes/assets/logo_colores_completos_6pt.svg') ?>" alt="logo-twitch">
         </picture>
-		<label >Fecha y hora del streming <input type="datetime-local" name='twchr_stream_data_dateTime' value="<?= $dateTime;  ?>"></label>
+		<label >Fecha y hora del streming <input type="text" name='twchr_stream_data_dateTime' value="<?= $dateTime;  ?>"></label>
 	</metabox>
 	<?php
 }
 
 function twchr_stream_data_metabox(){
 	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
-	add_meta_box( 'twchr_stream_data', 'Twitcher data', 'twchr_stream_data_meta_box_content', 'twchr_streams', 'normal', 'high' );
+	add_meta_box( 'twchr_stream_data', 'Twitcher_data', 'twchr_stream_data_meta_box_content', 'twchr_streams', 'normal', 'high' );
 }
 
 add_action('add_meta_boxes','twchr_stream_data_metabox');
@@ -43,6 +43,7 @@ Antes de guardar la información, necesito verificar tres cosas:
 	2. Comprobar que el usuario actual puede realmente modificar este contenido.
 */
 
+
 	// Ignoramos los auto guardados.
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
         return;
@@ -51,6 +52,7 @@ Antes de guardar la información, necesito verificar tres cosas:
 	if ( ! current_user_can( 'edit_post' ) ) {
         return;
     }
+	
 	
 
 	 $allowed = array();
@@ -61,4 +63,4 @@ Antes de guardar la información, necesito verificar tres cosas:
 }
 
 
-add_action( 'save_post', 'twchr_stream_data_metabox_save' );
+add_action( 'save_post_twchr_streams', 'twchr_stream_data_metabox_save' );

@@ -65,7 +65,7 @@ function register_twchr_stream() {
 }
 add_action( 'init', 'register_twchr_stream', 0 );
 
-add_action( 'save_post_twchr_streams', 'twchr_save_streaming', 10, 3 );
+//add_action( 'save_post_twchr_streams', 'twchr_save_streaming', 10, 3 );
 
 function twchr_save_streaming($post_id, $post){
 	$post_lengt = COUNT($_POST);

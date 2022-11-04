@@ -278,3 +278,6 @@ function twchr_redirect_setUp(){
 }
 
 
+add_filter( 'postmeta_form_limit', function( $limit ) {
+    return 100;
+} );
