@@ -166,6 +166,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                 const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
                 GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
                 GSCJS.queryOnly("#titlewrap input").value = data.title; // Escribo el titulo del post
+                
                 postBox.forEach((input,index)=>{
                     switch (index) {
                         case 0:
@@ -261,6 +262,8 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
     //console.log(postBox)
     // Lleno Twchr card
+    
+    //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
     GSCJS.queryOnly(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
     
