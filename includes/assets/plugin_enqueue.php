@@ -26,7 +26,7 @@ function twchr_fonts(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.4.57';
+    $version = 'beta.4.63';
     
     // Estilos
     wp_enqueue_style('admin-styles', plugins_url('twitcher/includes/css/admin.css'),array(),$version,'all');
@@ -40,7 +40,8 @@ function twchr_admin_js() {
     $params = array (
         'twchr_keys' => json_decode(get_option('twchr_keys')) ,
         'twchr_app_token' => get_option('twchr_app_token'),
-        'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0]
+        'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0],
+        'twitcher_data_clear_all' => get_option( 'twchr_delete_all')
     );
 
     //Usamos esta función para que coloque los valores inline

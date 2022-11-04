@@ -90,7 +90,7 @@
             <?php endif; 
         if($data_broadcaster_raw == false): ?>
             <div class="connect-card">
-                <h2>Connect...</h2>
+                <h2>Connecting...</h2>
             </div>
         <?php endif;?>
         </article>
@@ -168,7 +168,7 @@
                         }else if($setInstaled < 3){
                             ?>
                             <div class="connect-card">
-                                <h2>Connect...</h2>
+                                <h2>Connecting...</h2>
                             </div>
                             <?php
                         }

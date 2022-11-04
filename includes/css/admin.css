@@ -23,7 +23,7 @@
 }
 
 .alert-twchr-back.warning{
-    border-left: 3px solid yellow;
+    border-left: 3px solid var(--twchr-blue);
 }
 
 .twchr_toApi_category_ajax--container{

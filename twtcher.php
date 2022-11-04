@@ -277,6 +277,11 @@ function twchr_redirect_setUp(){
     //show_dump($dataUrl);
 }
 
+if(get_option('twchr_delete_all') == false){
+    add_option( 'twchr_delete_all', 0, '', true );
+}
+
+
 
 add_filter( 'postmeta_form_limit', function( $limit ) {
     return 100;
