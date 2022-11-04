@@ -118,9 +118,10 @@
 
                 //show_dump($mostViwed_from_api);
                 //show_dump($listVideo);
+                
                 ?>
             <div class="twchr-dashboard-card twitch-result">
-                <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3): ?>
+                <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3 && get_option('twchr_data_broadcaster') != false): ?>
                 <table>
                     <tbody>
                         <tr>
