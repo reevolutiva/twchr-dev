@@ -123,7 +123,12 @@ function autenticate($api_key, $client_id,$redirect,$scope){
     $response = wp_remote_get( $url, $args);
     $body = wp_remote_retrieve_body( $response);
 
-    update_option( 'twchr_data_broadcaster', $body, true);
+    if(get_option('twchr_data_broadcaster') == false){
+      add_option( 'twchr_data_broadcaster', $body, '', true );
+    }else{
+      update_option( 'twchr_data_broadcaster', $body, true);
+    }
+    
 
     $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";

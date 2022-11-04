@@ -164,7 +164,7 @@
                                 <p><?= $error->{'message'} ?></p>
                             </div>
                         <?php
-                        }else{
+                        }else if($setInstaled < 3){
                             ?>
                             <div class="connect-card">
                                 <h2>Connect...</h2>
