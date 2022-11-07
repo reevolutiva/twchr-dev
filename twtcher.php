@@ -28,7 +28,7 @@ require_once 'includes/cpt/streamings.php';
 // Custom fields
 require_once 'includes/cf/streamings.php';
 //require_once 'includes/cf/to_api.php';
-require_once 'includes/cf/stream_yt.php';
+//require_once 'includes/cf/stream_yt.php';
 require_once 'includes/cf/twchr_stream_data.php';
 
 // Shortcodes
@@ -192,7 +192,7 @@ Funcion que hace que Worpress busaque los single de un cpt en el
 en el directorio del plugin en ves del directorio del theme
 */
 // TODO: Remplazar is_this_cpt por get_post_type
-add_filter( 'template_include', 'template_replace' );
+//add_filter( 'template_include', 'template_replace' );
 function template_replace( $template ) {
 
     // Sí estoy en un cpt twchr_streams y hay algo más en la url que /twchr_streams/ entonces has esto
