@@ -33,7 +33,6 @@ require_once 'includes/cf/twchr_stream_data.php';
 
 // Shortcodes
 require_once 'includes/shortcode/twich_embed.php';
-require_once 'includes/shortcode/twchr-shortcode.php';
 
 //Crear post stream
 require_once 'includes/create-post/crear_twchr_stream.php';
@@ -63,8 +62,11 @@ function Activar(){
 register_activation_hook(__FILE__,'Activar' );
 
 function Desactivar(){
-    // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin    
-    delete_option('twchr_setInstaled' );
+    // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
+    if (get_option('twchr_delete_all') == 1){
+        delete_option('twchr_setInstaled' );
+    }    
+    
 }
 register_activation_hook(__FILE__,'Desactivar' );
 
@@ -266,7 +268,7 @@ function twchr_redirect_setUp(){
     $setInstaled = get_option('twchr_setInstaled');
     //show_dump($setInstaled);
     //echo "dentro de la funcion redirect_setUp";
-    if($setInstaled < 1 || $setInstaled == false){
+    if($setInstaled <= 2 || $setInstaled == false){
         if($dataUrl1 || $dataUrl2 || $dataUrl3){  
             $url = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');
             echo "<script>location.href='$url'</script>";
