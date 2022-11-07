@@ -277,6 +277,27 @@ function twchr_redirect_setUp(){
     //show_dump($dataUrl);
 }
 
+function twchr_twitch_video_exist($video_id,$token,$client_id){
+    if(isset($video_id) && isset($token) && isset($client_id)){
+        $url = 'https://api.twitch.tv/helix/videos?id='.$video_id;
+        $args = array(
+            'headers'=> array(
+                    "Authorization" => "Bearer $token",
+                    "client-id" => $client_id
+            )
+        );
+        $get = wp_remote_get($url, $args);
+        $response = wp_remote_retrieve_body($get);
+        $response = json_decode($response);
+        
+        if($response->data){
+            return 200;
+        }else{
+            return 404;
+        }
+    }
+}
+
 if(get_option('twchr_delete_all') == false){
     add_option( 'twchr_delete_all', 0, '', true );
 }
