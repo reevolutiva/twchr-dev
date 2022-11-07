@@ -26,7 +26,7 @@ function shorcode_twich_embed( $atts ) {
 			if(!empty($yt_url)){
 				$html = "<iframe width='".$atts['ancho']."' height='".$atts['alto']."' src='".$yt_url."' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 			}else{
-				$html = "<h3>".__('Video not found: Delete the shortcode to dismiss this message.','twitcher')."<h3> <a href='".site_url('/wp-admin/post.php')."?post=".get_the_ID()."&action=edit'>edit</a>";
+				$html = "<h3>".__('Video not found in any source: Delete the shortcode ([twich_embed]) on this streaming edit page to dismiss this message..','twitcher')."<h3> <a style='text-decoration:underline' href='".site_url('/wp-admin/post.php')."?post=".get_the_ID()."&action=edit'>edit</a>";
 			}
 			
 			return $html;

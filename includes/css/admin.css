@@ -617,6 +617,8 @@ stream.twchr-modal .twchr-modal-button.close{
 .modal-duplicate .modal-button-container{
     margin-top: 1cm;
 }
+
+
 @media screen and (max-width:1293px){
     .twchr_custom_card--contain .twchr_card_header,
     .twchr_custom_card--contain .twchr_card_body{
