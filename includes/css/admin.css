@@ -563,21 +563,21 @@ stream.twchr-modal .twchr-modal-button.close{
     background-color: transparent;
 }
 
-#twchr_stream_data metabox {
+#twchr_stream_data metabox div:first-child {
     display: flex;
 }
-#twchr_stream_data metabox picture{
+#twchr_stream_data metabox div:first-child picture{
     margin-right: 1em;
 }
-#twchr_stream_data metabox img{
+#twchr_stream_data metabox div:first-child img{
     height: 50px;
 }
 
-#twchr_stream_data metabox label {
+#twchr_stream_data metabox div:first-child label {
     display: flex;
     align-items:center;
 }
-#twchr_stream_data metabox label input{
+#twchr_stream_data metabox div:first-child label input{
     margin-left: 1em;
 }
 

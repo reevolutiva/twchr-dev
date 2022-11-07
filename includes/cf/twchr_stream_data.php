@@ -19,13 +19,25 @@ function twchr_stream_data_meta_box_content($post){
 	//show_dump($values);
 	$dateTime = isset($values['twchr_stream_data_dateTime'][0]) ? $values['twchr_stream_data_dateTime'][0] : '';
 	$dateTimeTwitch = isset($values['twchr-from-api_create_at'][0]) ? $values['twchr-from-api_create_at'][0] : false;
-	
+	$yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
+	$select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : ''; 
+	//show_dump($values);
 	?>
     <metabox>
-        <picture>
-            <img src="<?= plugins_url('/twitcher/includes/assets/logo_colores_completos_6pt.svg') ?>" alt="logo-twitch">
-        </picture>
-		<label >Fecha y hora del streming <input disabled="<?= $dateTimeTwitch == false ? null : 'true'?>" type="<?= $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
+        <div>
+			<picture>
+				<img src="<?= plugins_url('/twitcher/includes/assets/logo_colores_completos_6pt.svg') ?>" alt="logo-twitch">
+			</picture>
+			<label >Fecha y hora del streming <input disabled="<?= $dateTimeTwitch == false ? null : 'true'?>" type="<?= $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
+		</div>
+		<div>
+			<lablel><?php _e('Source Priority','twticher'); ?></lablel>
+			<select name="twchr_stream_src_priority">
+				<option value="tw" <?php selected($select,'tw')?>>Twitch</option>
+				<option value="yt" <?php selected($select,'yt')?>>Youtube</option>
+			</select>
+			<label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src' value="<?= $yt_url != false ? $yt_url : ''?>"></label>
+		</div>
 	</metabox>
 	<?php
 }
@@ -50,10 +62,18 @@ Antes de guardar la información, necesito verificar tres cosas:
     }		
 	
 
-	 $allowed = array();
-	 if ( isset( $_POST['twchr_stream_data_dateTime'] ) ) {
-        update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
-    }
+		$allowed = array();
+		if ( isset( $_POST['twchr_stream_data_dateTime'] ) ) {
+			update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
+		}
+
+		if( isset( $_POST['twchr_streams__yt-link-video-src'] )){
+			update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', wp_kses( $_POST['twchr_streams__yt-link-video-src'], $allowed ) );
+		}
+
+		if( isset( $_POST['twchr_stream_src_priority'] )){
+			update_post_meta( $post_id, 'twchr_stream_src_priority', wp_kses( $_POST['twchr_stream_src_priority'], $allowed ) );
+		}
 	  
 }
 
