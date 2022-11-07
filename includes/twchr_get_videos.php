@@ -210,90 +210,45 @@ function twchr_get_videos_function(){
                         break;
                     case 'videos_ajax':
                          ?>
-<stream id="twchr-modal-selection" class='twchr-modal <?php if(isset($_GET['stream_id'])) echo "disabled";?>'>
-    <div class="twchr-modal-selection_close">
-        x
-    </div>
-    <div class="twchr-modal-selection__info">
-        <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
+                            <stream id="twchr-modal-selection" class='twchr-modal <?php if(isset($_GET['stream_id'])) echo "disabled";?>'>
+                                <div class="twchr-modal-selection_close">
+                                    x
+                                </div>
+                                <div class="twchr-modal-selection__info">
+                                    <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
 
-        <picture>
-            <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
-        </picture>
-    </div>
+                                    <picture>
+                                        <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                                    </picture>
+                                </div>
 
-    <div id="twchr-modal-selection__content">
-        <ul class="twchr-modal-selection__list">
-            <li><?= __('Streaming name','twitcher'); ?></li>
-            <li><?= __('Date','twitcher'); ?></li>
-            <li><?= __('Already saved?','twitcher'); ?></li>
-            <li><?= __('Import','twitcher'); ?></li>
-        </ul>
-    </div>
+                                <div id="twchr-modal-selection__content">
+                                    <ul class="twchr-modal-selection__list">
+                                        <li><?= __('Streaming name','twitcher'); ?></li>
+                                        <li><?= __('Date','twitcher'); ?></li>
+                                        <li><?= __('Already saved?','twitcher'); ?></li>
+                                        <li><?= __('Import','twitcher'); ?></li>
+                                    </ul>
+                                </div>
 
-    <div class="twchr-modal-footer">
-        <span class="twchr_help_button">
-            <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?>
-            </p>
-        </span>
-        <button id="twchr-modal-selection__btn"><?= __('Import','twitcher');?></button>
-    </div>
-</stream>
-<script>
-const twchr_modal_error = document.querySelector("#twchr-modal-selection");
-const twchr_modal_error_button_close = document.querySelector(".twchr-modal-selection_close");
+                                <div class="twchr-modal-footer">
+                                    <span class="twchr_help_button">
+                                        <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?>
+                                        </p>
+                                    </span>
+                                    <button id="twchr-modal-selection__btn"><?= __('Import','twitcher');?></button>
+                                </div>
+                            </stream>
+                            <script>
+                            const twchr_modal_error = document.querySelector("#twchr-modal-selection");
+                            const twchr_modal_error_button_close = document.querySelector(".twchr-modal-selection_close");
 
-twchr_modal_error_button_close.addEventListener('click', e => {
-    twchr_modal_error.style.display = 'none';
-    location.href = '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
-});
-</script>
-<?php
-                        break;
-                    case 'videos_update':
-                        if(isset($_GET['json'])){
-                            $postarr = array(
-                                'post_title' => $_GET['title'],
-                                'post_type' => 'twchr_streams',
-                                'post_content' => '[twich_embed host="reevolutiva" video="'.$id.'"  ancho="800" alto="400"]',
-                                'meta_input'   => array(
-                                    'twchr-from-api_create_at' => $_GET["created_at"],
-                                    'twchr-from-api_duration' => $_GET["duration"],
-                                    'twchr-from-api_id' => $_GET["id"],
-                                    'twchr-from-api_languaje' => $_GET["language"],
-                                    'twchr-from-api_muted_segment' => $_GET["muted_segments"],
-                                    'twchr-from-api_published_at' => $_GET["published_at"],
-                                    'twchr-from-api_stream_id' => $_GET["stream_id"],
-                                    'twchr-from-api_thumbnail_url' => $_GET["thumbnail_url"],
-                                    'twchr-from-api_type' => $_GET["type"],
-                                    'twchr-from-api_url' => $_GET["url"],
-                                    'twchr-from-api_user_id' => $_GET["user_id"],
-                                    'twchr-from-api_user_login' => $_GET["user_login"],
-                                    'twchr-from-api_user_name' => $_GET["user_name"],
-                                    'twchr-from-api_view_count' => $_GET["view_count"],
-                                    'twchr-from-api_viewble' => $_GET["viewble"],
-                                )
-                            );
-                            $update = wp_insert_post( $postarr, true, true);
-                            if($update){
-                                ?>
-<stream id="twchr-modal-error" class='twchr-modal'>
-    <h3>'Post <?=$_GET['title']?>'</h3>
-    <h4 style="text-align:center;"><?= __('Streaming upgraded successfully.'); ?></h4>
-    <div class='twchr-modal-button close'>Ok</div>
-</stream>
-<script>
-const twchr_modal_error = document.querySelector("#twchr-modal-error");
-const twchr_modal_error_button_close = document.querySelector("#twchr-modal-error .twchr-modal-button.close");
-twchr_modal_error_button_close.addEventListener('click', e => {
-    twchr_modal_error.style.display = 'none';
-    location.href = '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
-});
-</script>
-<?php
-                            }
-                        }
-                         
+                            twchr_modal_error_button_close.addEventListener('click', e => {
+                                twchr_modal_error.style.display = 'none';
+                                location.href = '<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&')?>';
+                            });
+                            </script>
+                            <?php
                         break;
                     default:
                         # code...
