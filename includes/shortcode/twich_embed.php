@@ -13,6 +13,9 @@ function shorcode_twich_embed( $atts ) {
 		$atts
 	);
     $atts_ouput = json_encode($atts);
+	// $var get_option(video_src)
+	// swtich($var)
+	// case : tw
 	  $host = $_SERVER['SERVER_NAME'];
 	    $url = "https://player.twitch.tv/?autoplay=true&chanel=".$atts['host']."&height=".$atts['alto']."&parent=".$host."&referrer=https%3A%2F%2F".$host."%2Ftest%2F&video=".$atts['video']."&width=".$atts['ancho'];
 	    $idClass = 'twich-frame'.rand();
@@ -22,6 +25,20 @@ function shorcode_twich_embed( $atts ) {
                         console.log($atts_ouput);
                     </script>
 	            </twichcontainer>";
+
+	// case yt
+	/*
+		$host = $_SERVER['SERVER_NAME'];
+	    $url = "https://player.twitch.tv/?autoplay=true&chanel=".$atts['host']."&height=".$atts['alto']."&parent=".$host."&referrer=https%3A%2F%2F".$host."%2Ftest%2F&video=".$atts['video']."&width=".$atts['ancho'];
+	    $idClass = 'twich-frame'.rand();
+	    $html = "<twichcontainer id='".$idClass."'>
+	                <iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+	                <script>
+                        console.log($atts_ouput);
+                    </script>
+	            </twichcontainer>";
+		$url = <iframe width="560" height="315" src="https://www.youtube.com/embed/1CJSOziZUrs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	*/
 	   return $html;
 
 }

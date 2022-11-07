@@ -171,9 +171,10 @@ function twchr_get_videos_function(){
                             $list_videos_array = $list_videos->{'data'};
                             // List de todos los post
                             $streams_id = explode(",",$_GET['streams_id']);
-                            $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
-                            $twitch_chanel = $data_broadcaster_raw->login;
-                            
+                            $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+                            $data_broadcaster = $data_broadcaster->data[0];
+                            $twitch_chanel = $data_broadcaster->login;
+                                
                             while(COUNT($streams_id)  > 0){
                                 $index = $streams_id[0];
 
