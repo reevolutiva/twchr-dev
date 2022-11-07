@@ -1,11 +1,11 @@
 <?php
 /*
 * Plugin Name: Twitcher
-* Plugin URI: twtcher.pro
-* Description: Un plugin para convertir wordpress es un centro de cotrol de streamings
-* Version: 1
-* Author: Conjuntas Club
-* Author URI: twitcher.pro
+* Plugin URI: twitcher.pro
+* Description: Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to Wordpress.
+* Version: 0.1.0
+* Author: Conjuntas.Club
+* Author URI: conjuntas.club
 * License: GPL2
 * Text Domain: twitcher
 * Domain Path: /languages
