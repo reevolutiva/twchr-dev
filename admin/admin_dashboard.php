@@ -6,7 +6,8 @@ add_action('admin_enqueue_scripts', 'twitcher_admin_style');
 
 add_filter('admin_footer_text', 'left_admin_footer_text_output'); //left side
 function left_admin_footer_text_output($text) {
-    $text = __('Thanks for installing Twithcer plugin!','twitcher');
+    
+    $text = __('Thanks for installing  plugin! ','twitcher')."<a href='https://twitcher.pro/'>Twitcher.pro</a>";
     return $text;
 }
  

@@ -63,7 +63,7 @@ msgid "Renew User Token"
 msgstr ""
 
 #: admin/admin_dashboard.php:9
-msgid "Thanks for installing Twithcer plugin!"
+msgid "Thanks for installing Twitcher.pro plugin!"
 msgstr ""
 
 #. Name of the plugin
