@@ -4,10 +4,10 @@
  * https://jeremyhixon.com/tool/wordpress-meta-box-generator/
  * 
  * Retrieving the values:
- * Link de videos en YouTube = get_post_meta( get_the_ID(), 'twchr_streams__ytlink-de-videos-en-youtube', true )
+ * Link de videos en YouTube = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true )
  */
 class Youtube {
-	private $config = '{"title":"Youtube","prefix":"twchr_streams__yt","domain":"youtube","class_name":"Youtube","context":"normal","priority":"default","cpt":"twchr_streams","fields":[{"type":"url","label":"Link de videos en YouTube","default":"https:\/\/www.youtube.com\/","id":"twchr_streams__ytlink-de-videos-en-youtube"}]}';
+	private $config = '{"title":"Video SRC","prefix":"twchr_streams__yt","domain":"Video SRC","class_name":"Video SRC","context":"normal","priority":"default","cpt":"twchr_streams","fields":[{"type":"url","label":"BackUp YouTube URL","default":"","id":"twchr_streams__yt-link-video-src"}]}';
 
 	public function __construct() {
 		$this->config = json_decode( $this->config, true );
