@@ -2,9 +2,11 @@
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
-Requires at least: 6.03
+Requires at least: 5.0
 Tested up to: 6.1
-Stable tag: 0.1.0
+Requires PHP 7.4.30
+Stable tag: trunk
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,3 +59,5 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 = 0.1 =
 * Public Beta Released
+
+== Upgrade Notice ==
