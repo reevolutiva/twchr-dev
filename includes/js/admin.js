@@ -160,7 +160,8 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             const title = item.title;
             const date_raw = item.created_at; // Fecha en RFC
             let date = new Date(date_raw);
-            date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
+            
+            date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
             Content += `<section class='twchr_modal_video_ajax'>
                             <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
                             <input type='radio' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax${id}' value='${id}'>
@@ -598,7 +599,8 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
             const title = item.title;
             const date_raw = item.created_at; // Fecha en RFC
             let date = new Date(date_raw);
-            date = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
+            console.log(date);
+            date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
             Content += `<section class='twchr_modal_video_ajax'>
                             <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
                             <input type='checkbox' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax${id}' value='${id}'>
