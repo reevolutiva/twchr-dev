@@ -6,7 +6,7 @@ Requires at least: 5.0
 Tested up to: 5.0
 Requires PHP: 7.3
 Stable tag: 0.1
-License: GPLv2 or later
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to wordpress.
@@ -47,9 +47,13 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Twitcher Dashboard 1.png
+2. Import Twitch Videos as Straming Post Type 2.png
+3. Easy Installer 3.png
+4. Twitcher video Card 4.png
+5. Twitch Video Category 5.png
+6. Youtube video backup 6.png
+7. Asign video to Post 7.png
 
 == Changelog ==
 
