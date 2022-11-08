@@ -26,7 +26,7 @@ function twchr_stream_data_meta_box_content($post){
     <metabox>
         <div>
 			<picture>
-				<img src="<?= plugins_url('/twitcher/includes/assets/logo_colores_completos_6pt.svg') ?>" alt="logo-twitch">
+				<img src="<?= plugins_url('/twitcher/includes/assets/logo_menu.svg') ?>" alt="logo-twitch">
 			</picture>
 			<label >Fecha y hora del streming <input disabled="<?= $dateTimeTwitch == false ? null : 'true'?>" type="<?= $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
 		</div>
