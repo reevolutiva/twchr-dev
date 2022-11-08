@@ -175,6 +175,7 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_modal_video_ajax{
     display: grid;
     grid-template-columns:auto 56px;
+    margin-bottom: 10pt;
 }
 .twchr_modal_video_ajax input[type='checkbox']{
     display: block;
@@ -616,6 +617,12 @@ stream.twchr-modal .twchr-modal-button.close{
 
 .modal-duplicate .modal-button-container{
     margin-top: 1cm;
+}
+
+#twchr-modal-selection #twchr-modal-selection__content{
+    max-height: 630px;
+    min-height: 300px;
+    overflow: auto;
 }
 
 @media screen and (max-width:1330px){
