@@ -3,10 +3,9 @@ Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
 Requires at least: 5.0
-Tested up to: 6.1
-Requires PHP 7.4.30
-Stable tag: trunk
-
+Tested up to: 5.0
+Requires PHP: 7.3
+Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,12 +35,11 @@ and promote your programs and series, and offer extra content for your audience,
 
 = Is Twitcher free? =
 
-All free and GPL.
+Free and GPL.
 
 = Wath do I need to connect my Twitch.tv account with my Wordpress site? =
 
-Your site must have a valid SSL certificate. You most provide to twitch an "https://" link.
-Also, you will need your Twitch user and password.
+Your site must have a valid SSL certificate on your Wordpress Site (You most provide to twitch an "https://" link). Also, you will need your Twitch user and password.
 
 = Wath I need to know before install this plugin? =
 
@@ -49,9 +47,7 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
 (or jpg, jpeg, gif).
 2. This is the second screen shot
 
@@ -61,3 +57,13 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 * Public Beta Released
 
 == Upgrade Notice ==
+
+= 0.1 =
+* Import Streamings as Post
+* Twitch Dashboard
+* Schedule series
+* Embeed streaming by shortcode
+* Back up streaming link on youtube
+* Asign Twitch video to post
+* Easy Install
+* Api Helix
