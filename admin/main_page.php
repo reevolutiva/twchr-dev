@@ -49,11 +49,11 @@
                         <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?= $clientSecret ?>" disabled="true">
                         <div>
                             <p>Broadcaster Type</p>
-                            <p class="twchr-key-value">Lorem Ipsum Dolor</p>
+                            <p class="twchr-key-value"><?= empty($broadcaster_type) ? 'undefined' : $broadcaster_type ?></p>
                         </div>
                         <div>
                             <p>Type</p>
-                            <p class="twchr-key-value">Lorem Ipsum Dolor</p>
+                            <p class="twchr-key-value"><?= empty($type) ? 'undefined' : $type ?></p>
                         </div>
                         <div>
                             <p>Created at</p>
@@ -113,11 +113,11 @@
                     $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
                     $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
 
-                    //show_dump($mostViwed_from_api);
+                    //show_dump($listVideo_from_api->{'data'});
                 }
 
                 //show_dump($mostViwed_from_api);
-                //show_dump($listVideo);
+                //show_dump($data_broadcaster->{'view_count'});
                 
                 ?>
             <div class="twchr-dashboard-card twitch-result">
@@ -126,7 +126,7 @@
                     <tbody>
                         <tr>
                             <td><?php _e('View Count','twitcher'); ?></td>
-                            <td data-twchr-final-number="999<?php /*isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 */?>" class='twchr-results-item' ><?php /*isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' */?>999</td>
+                            <td data-twchr-final-number="<?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td> 
                         </tr>
                         <tr>
                             <td><?php _e('Suscribers','twitcher'); ?></td>

@@ -1,5 +1,5 @@
 <?php
-function twchr_max_of_list($list,$num,$title,$cf = false){
+function twchr_max_of_list($list,$num,$title_var,$cf = false){
     $mostViwed = false;
     $viewed = array();
     foreach($list as $item){
@@ -12,10 +12,12 @@ function twchr_max_of_list($list,$num,$title,$cf = false){
         }                                   
         array_push($viewed,$view);
     }
+
     foreach($list as $item){
         $max_view = max($viewed);
-        $title = $item->{$title};
+        $title = $item->{$title_var};
         $view;
+        //show_dump($title);
         if($cf){
             $id = $item->{'ID'};
             $view = get_post_meta( $id, $num, true );

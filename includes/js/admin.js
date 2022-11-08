@@ -60,21 +60,36 @@ function create_strg_secret(str_lg){
 const twchrFrontEndCounter = (nodeTarget,time) =>{
     const finalNumber = parseInt(nodeTarget.getAttribute('data-twchr-final-number'));
     let currentNumber = 0;
+    let count = 0;
+    let var_time = time;
     if(finalNumber | finalNumber > 1){
         const counter = setInterval(() => {
-            if(finalNumber <= 100){
-                currentNumber++;
-            }else{
-                if(currentNumber > (finalNumber - 20)){
-                    currentNumber++;
-                }else{
-                    currentNumber = currentNumber + 15;
-                }
-            }
+            
+                var_time = 35000;
+                    
+                    const arrayNumber = [
+                        Math.trunc(finalNumber/finalNumber),
+                        Math.trunc(finalNumber/20),
+                        Math.trunc(finalNumber/18),
+                        Math.trunc(finalNumber/16),
+                        Math.trunc(finalNumber/14),
+                        Math.trunc(finalNumber/12),
+                        Math.trunc(finalNumber/10),
+                        Math.trunc(finalNumber/8),
+                        Math.trunc(finalNumber/6),
+                        Math.trunc(finalNumber/4),
+                        Math.trunc(finalNumber/2),
+                        Math.trunc(finalNumber/1)
+                    ];
+
+                    currentNumber = arrayNumber[count];
+                    count++;
+                
+            
             
             nodeTarget.textContent = currentNumber;
             if(currentNumber === finalNumber) clearInterval(counter);
-        }, time);
+        }, var_time);
     }
   }
   
@@ -341,7 +356,7 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
         
     }
     const twchr_result_items = GSCJS.queryAll("td.twchr-results-item");
-
+    
     twchrFrontEndCounter(twchr_result_items[0],80);
     twchrFrontEndCounter(twchr_result_items[1],80);
     twchrFrontEndCounter(twchr_result_items[2],80);
