@@ -62,7 +62,16 @@ const twchrFrontEndCounter = (nodeTarget,time) =>{
     let currentNumber = 0;
     if(finalNumber | finalNumber > 1){
         const counter = setInterval(() => {
-            currentNumber++;
+            if(finalNumber <= 100){
+                currentNumber++;
+            }else{
+                if(currentNumber > (finalNumber - 20)){
+                    currentNumber++;
+                }else{
+                    currentNumber = currentNumber + 15;
+                }
+            }
+            
             nodeTarget.textContent = currentNumber;
             if(currentNumber === finalNumber) clearInterval(counter);
         }, time);

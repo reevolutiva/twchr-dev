@@ -126,7 +126,7 @@
                     <tbody>
                         <tr>
                             <td><?php _e('View Count','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td>
+                            <td data-twchr-final-number="999<?php /*isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 */?>" class='twchr-results-item' ><?php /*isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' */?>999</td>
                         </tr>
                         <tr>
                             <td><?php _e('Suscribers','twitcher'); ?></td>
