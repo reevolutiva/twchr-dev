@@ -276,16 +276,11 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
 if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
 (getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
-    const twittcher_stream = GSCJS.queryOnly("#twittcher-stream");
     if(element.value.length < 1){
         //twittcher_stream.style.display = 'none';
     }
 
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
-    const twchr_edit_card = GSCJS.queryOnly(".twchr_custom_card--contain");
-    
-
-    //console.log(postBox)
     // Lleno Twchr card
     
     //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
