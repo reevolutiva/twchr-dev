@@ -65,43 +65,8 @@ function register_twchr_stream() {
 }
 add_action( 'init', 'register_twchr_stream', 0 );
 
-//add_action( 'save_post_twchr_streams', 'twchr_save_streaming', 10, 3 );
 
-function twchr_save_streaming($post_id, $post){
-	$post_lengt = COUNT($_POST);
-	if($post_lengt > 0){
-		$stream_id = $_POST['twchr-from-api_id'];
-		if(twchr_cf_db_exist('twchr-from-api_id',$stream_id)){
-			if(isset($_POST['twchr_cf_rewrite']) && $_POST['twchr_cf_rewrite'] = 'on'){
-	
-			}else{
-				$url = site_url('wp-admin/post.php')."?post=$post_id&action=edit&twchr_response=".__('The streaming: ','twitcher').$_POST['post_title'].__(" already exists as the slug ",'twitcher').$_POST['post_name'];
-				echo "<script>location.href='$url'</script>";
-				//show_dump($_POST);
-				die();
-				
-			}
-			
-		}
-	}
-	
-	
-}
 
-add_action( 'edit_form_top', 'twchr_message_function');
-
-function twchr_message_function(){
-	if(isset($_GET['twchr_response'])){
-		?>
-		<div class="twchr_message">
-			<h3 class="destacado"><?= $_GET['twchr_response'] ?></h3>
-			<h3><?= __('Sure you want to override this post-type?','twitcher'); ?></h3>
-			<p><?= __('check the box if you want to rewrite this post-type.','twitcher'); ?> <input type="checkbox" name="twchr_cf_rewrite"></p>
-			
-		</div>
-		<?php
-	}
-}
 
 // Creo un endpoint
 
