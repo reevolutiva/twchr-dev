@@ -1,4 +1,4 @@
-=== Twitcher ===
+=== Twitch Wordpress Manager: Twitcher.pro ===
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
