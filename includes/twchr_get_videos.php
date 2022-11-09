@@ -12,92 +12,93 @@ function twchr_get_videos_function_edit(){
     // domain.net/wp-admin/post-new.php
     // Divide la url por sus "/" y escoje el ultimo item
     $dataUrl = explode('/',$_SERVER['REQUEST_URI'])[2];
+   
     if(
     // Si la url contiene "post-new.php" y "post_type=twchr_streams"
     (str_contains( $dataUrl, 'post-new.php') && $_GET['post_type'] == 'twchr_streams') ||
      // Si la url contiene "post.php" y "action=edit"
-    (str_contains( $dataUrl, 'post.php') && $_GET['action'] == 'edit')
+    (str_contains( $dataUrl, 'post.php') && $_GET['action'] == 'edit' && get_post_type() === 'twchr_streams')
     ):
         ?>
-<style>
-a.twchr_button_get_videos {
-    text-decoration: none;
-    padding: 5px 10px;
-    display: block;
-    margin-bottom: 10pt;
-    width: max-content;
-    border-radius: 5px;
-    background-color: var(--twchr-purple);
-    color: #fff;
-}
+        <style>
+            a.twchr_button_get_videos {
+                text-decoration: none;
+                padding: 5px 10px;
+                display: block;
+                margin-bottom: 10pt;
+                width: max-content;
+                border-radius: 5px;
+                background-color: var(--twchr-purple);
+                color: #fff;
+            }
 
-stream.twchr_modal_get_videos{
-    display: none;
-}
+            stream.twchr_modal_get_videos{
+                display: none;
+            }
 
-stream.twchr_modal_get_videos.active {
-    z-index: 10000;
-    right: 19px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
-    opacity: 1;
-    display: block;
-}
+            stream.twchr_modal_get_videos.active {
+                z-index: 10000;
+                right: 19px;
+                box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+                opacity: 1;
+                display: block;
+            }
 
-.twchr-modal .twchr_help_button {
-    display: block;
-    width: 40px;
-    height: 40px;
-    background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 6pt;
-}
+            .twchr-modal .twchr_help_button {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-right: 6pt;
+            }
 
-</style>
-<a class="twchr_button_get_videos"
-    href="<?= bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
+        </style>
+        <a class="twchr_button_get_videos"
+            href="<?= bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
 
-<stream class="twchr_modal_get_videos twchr-modal">
-    <div class="twchr-modal-selection_close">
-        x
-    </div>
-    <div class="twchr-modal-selection__info">
-        <h3><?php _e('Asign video to post','twitcher') ?></h3>
+        <stream class="twchr_modal_get_videos twchr-modal">
+            <div class="twchr-modal-selection_close">
+                x
+            </div>
+            <div class="twchr-modal-selection__info">
+                <h3><?php _e('Asign video to post','twitcher') ?></h3>
 
-        <picture>
-            <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
-        </picture>
-    </div>
+                <picture>
+                    <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                </picture>
+            </div>
 
-    <div id="twchr_button_get_videos__content">
-        <ul class="twchr-modal-selection__list">
-            <li><?= __('Streaming name','twitcher'); ?></li>
-            <li><?= __('Date','twitcher'); ?></li>
-            <li><?= __('Already saved?','twitcher'); ?></li>
-            <li><?= __('Import','twitcher'); ?></li>
-        </ul>
-        <div class="content">
+            <div id="twchr_button_get_videos__content">
+                <ul class="twchr-modal-selection__list">
+                    <li><?= __('Streaming name','twitcher'); ?></li>
+                    <li><?= __('Date','twitcher'); ?></li>
+                    <li><?= __('Already saved?','twitcher'); ?></li>
+                    <li><?= __('Import','twitcher'); ?></li>
+                </ul>
+                <div class="content">
 
-        </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="twchr-modal-footer">
-        <span class="twchr_help_button">
-            <p><?php _e('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','twitcher'); ?>
-            </p>
-            
-        </span>
-        <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
-    </div>
-</stream>
-<script>
-const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
-const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
+            <div class="twchr-modal-footer">
+                <span class="twchr_help_button">
+                    <p><?php _e('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','twitcher'); ?>
+                    </p>
+                    
+                </span>
+                <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
+            </div>
+        </stream>
+        <script>
+        const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
+        const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
 
-twchr_modal_button_close.addEventListener('click', e => {
-    twchr_modal.classList.remove('active');
-});
-</script>
+        twchr_modal_button_close.addEventListener('click', e => {
+            twchr_modal.classList.remove('active');
+        });
+        </script>
 <?php
         endif; 
             
