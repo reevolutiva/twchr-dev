@@ -619,7 +619,8 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-top: 1cm;
 }
 
-#twchr-modal-selection #twchr-modal-selection__content{
+#twchr-modal-selection #twchr-modal-selection__content,
+#twchr_button_get_videos__content{
     max-height: 381px;
     overflow: auto;
 }
