@@ -57,7 +57,7 @@ function register_twchr_stream() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'menu_icon' 			=> plugins_url('twitcher/includes/assets/logo_menu.svg'),
-		'show_in_rest'			=> false
+		'show_in_rest'			=> true
 
 	);
 	register_post_type( 'twchr_streams', $args );

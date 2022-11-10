@@ -228,7 +228,7 @@ stream.twchr-modal .twchr-modal-button.close{
     color: #b5b9c8;
     position: absolute;
     right: 1cm;
-    top: 9pt;
+    top: 34pt;
     cursor:pointer;
 }
 .twchr-modal .twchr-modal-footer{
@@ -453,9 +453,7 @@ stream.twchr-modal .twchr-modal-button.close{
     color:tomato;
 }
 
-#twittcher-stream{
-     display: none; 
-}
+
 .twchr_custom_card--contain{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;
     background-blend-mode: soft-light, normal;
@@ -604,9 +602,9 @@ stream.twchr-modal .twchr-modal-button.close{
     background-color: #fff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 10pt;
-    position: fixed;
-    left: 30%;
-    transform: scale(1.5);
+    position: absolute;
+    left: 25%;
+    top: 40%;
     border-radius: 10px;
 }
 
@@ -617,6 +615,11 @@ stream.twchr-modal .twchr-modal-button.close{
 
 .modal-duplicate .modal-button-container{
     margin-top: 1cm;
+}
+
+stream.twchr-modal.twchr_modal_get_videos{
+    position: static;
+    margin-bottom: 1cm;
 }
 
 #twchr-modal-selection #twchr-modal-selection__content,

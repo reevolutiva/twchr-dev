@@ -22,131 +22,177 @@
  * viewble = get_post_meta( get_the_ID(), 'twchr-from-api_viewble', true )
  * title = get_post_meta( get_the_ID(), 'twchr-from-api_title', true )
  */
-class Twttcher {
-	private $config = '{"title":"Twittcher Stream","prefix":"twchr-from-api_","domain":"twittcher","class_name":"Twttcher","post-type":["post"],"context":"normal","priority":"high","cpt":"twchr_streams","fields":[{"type":"text","label":"create_at","id":"twchr-from-api_create_at"},{"type":"text","label":"description","id":"twchr-from-api_description"},{"type":"text","label":"duration","id":"twchr-from-api_duration"},{"type":"number","label":"id","step":"1","id":"twchr-from-api_id"},{"type":"text","label":"languaje","id":"twchr-from-api_languaje"},{"type":"text","label":"muted_segment","id":"twchr-from-api_muted_segment"},{"type":"text","label":"published_at","id":"twchr-from-api_published_at"},{"type":"text","label":"stream_id","id":"twchr-from-api_stream_id"},{"type":"text","label":"thumbnail_url","id":"twchr-from-api_thumbnail_url"},{"type":"text","label":"type","id":"twchr-from-api_type"},{"type":"text","label":"url","id":"twchr-from-api_url"},{"type":"text","label":"user_id","id":"twchr-from-api_user_id"},{"type":"text","label":"user_login","id":"twchr-from-api_user_login"},{"type":"text","label":"user_name","id":"twchr-from-api_user_name"},{"type":"number","label":"view_count","step":"1","id":"twchr-from-api_view_count"},{"type":"text","label":"viewble","id":"twchr-from-api_viewble"},{"type":"text","label":"title","id":"twchr-from-api_title"}]}';
+
+
+ 
+function twitcher_stream_meta_box_content($post){
+	$values    = get_post_custom( $post->ID );
+	//show_dump($values);
+	?>
+	<style>
+            a.twchr_button_get_videos {
+                text-decoration: none;
+                padding: 5px 10px;
+                display: block;
+                margin-bottom: 10pt;
+                width: max-content;
+                border-radius: 5px;
+                background-color: var(--twchr-purple);
+                color: #fff;
+            }
+
+            stream.twchr_modal_get_videos{
+                display: none;
+            }
+
+            stream.twchr_modal_get_videos.active {
+                max-width:100%;
+                position: static;
+    			margin-bottom: 1cm;
+                box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+                display: block;
+            }
+
+            .twchr-modal .twchr_help_button {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-right: 6pt;
+            }
+
+			#twitcher_stream metabox{
+				display: grid;
+				grid-template-columns:1fr 1fr 1fr;
+				row-gap:15px;
+			}
+
+			#twitcher_stream metabox label{
+				display: grid;
+				grid-template-columns:30% 60%;
+			}
+
+			#twitcher_stream metabox input{
+				border:1px solid var(--twchr-purple);
+				box-shadow:5px 6px 5px #00000012 inset;
+			}
+
+        </style>
+        <a id="twchr-gutemberg-modal-button" class="twchr_button_get_videos"
+            href="#"><?php _e('Asign Twitch Streaming','twitcher')?>
+		</a>
+		<stream class="twchr_modal_get_videos twchr-modal">
+            <div class="twchr-modal-selection_close">
+                x
+            </div>
+            <div class="twchr-modal-selection__info">
+                <h3><?php _e('Asign video to post','twitcher') ?></h3>
+
+                <picture>
+                    <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                </picture>
+            </div>
+
+            <div id="twchr_button_get_videos__content">
+                <ul class="twchr-modal-selection__list">
+                    <li><?= __('Streaming name','twitcher'); ?></li>
+                    <li><?= __('Date','twitcher'); ?></li>
+                    <li><?= __('Already saved?','twitcher'); ?></li>
+                    <li><?= __('Import','twitcher'); ?></li>
+                </ul>
+                <div class="content">
+
+                </div>
+            </div>
+
+            <div class="twchr-modal-footer">
+                <span class="twchr_help_button">
+                    <p><?php _e('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','twitcher'); ?>
+                    </p>
+                    
+                </span>
+                <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
+            </div>
+        </stream>
+    <metabox>
+		<label>create_at<input name='twchr-from-api_create_at' type="text"></label>
+		<label>description<input name='twchr-from-api_description' type="text"></label>
+		<label>duration<input name='twchr-from-api_duration' type="text"></label>
+		<label>id<input name='twchr-from-api_id' type="text"></label>
+		<label>languaje<input name='twchr-from-api_languaje' type="text"></label>
+		<label>muted_segment<input name='twchr-from-api_muted_segment' type="text"></label>
+		<label>published_at<input name='twchr-from-api_published_at' type="text"></label>
+		<label>stream_id<input name='twchr-from-api_stream_id' type="text"></label>
+		<label>thumbnail_url<input name='twchr-from-api_thumbnail_url' type="text"></label>
+		<label>type<input name='twchr-from-api_type' type="text"></label>
+		<label>url<input name='twchr-from-api_url' type="text"></label>
+		<label>user_id<input name='twchr-from-api_user_id' type="text"></label>
+		<label>user_login<input name='twchr-from-api_user_login' type="text"></label>
+		<label>user_name<input name='twchr-from-api_user_name' type="text"></label>
+		<label>view_count<input name='twchr-from-api_view_count' type="text"></label>
+		<label>viewble<input name='twchr-from-api_viewble' type="text"></label>
+		<label>title<input name='twchr-from-api_title' type="text"></label>
+	</metabox>
 	
-	public function __construct() {
-		$this->config = json_decode( $this->config, true );
-		$this->process_cpts();
-		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
-		add_action( 'save_post', [ $this, 'save_post' ] );
-	}
+        <script>
+		const twchr_gutember_modal_button = document.querySelector("#twchr-gutemberg-modal-button");
+		twchr_gutember_modal_button.addEventListener('click',()=>{
+			twchr_modal.classList.toggle("active");
+            const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
+            const client_id = tchr_vars_admin.twchr_keys['client-id'];
+            const appToken = tchr_vars_admin.twchr_app_token;
+            tchr_get_clips(appToken,client_id,user_id)
+		});
+        const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
+        const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
 
-	public function process_cpts() {
-		if ( !empty( $this->config['cpt'] ) ) {
-			if ( empty( $this->config['post-type'] ) ) {
-				$this->config['post-type'] = [];
-			}
-			$parts = explode( ',', $this->config['cpt'] );
-			$parts = array_map( 'trim', $parts );
-			$this->config['post-type'] = array_merge( $this->config['post-type'], $parts );
-		}
-	}
+        twchr_modal_button_close.addEventListener('click', e => {
+            twchr_modal.classList.remove('active');
+        });
 
-	public function add_meta_boxes() {
-		foreach ( $this->config['post-type'] as $screen ) {
-			add_meta_box(
-				sanitize_title( $this->config['title'] ),
-				$this->config['title'],
-				[ $this, 'add_meta_box_callback' ],
-				$screen,
-				$this->config['context'],
-				$this->config['priority']
-			);
-		}
-	}
+        
 
-	public function save_post( $post_id ) {
-		foreach ( $this->config['fields'] as $field ) {
-			switch ( $field['type'] ) {
-				case 'url':
-					if ( isset( $_POST[ $field['id'] ] ) ) {
-						$sanitized = esc_url_raw( $_POST[ $field['id'] ] );
-						update_post_meta( $post_id, $field['id'], $sanitized );
-					}
-					break;
-				default:
-					if ( isset( $_POST[ $field['id'] ] ) ) {
-						$sanitized = sanitize_text_field( $_POST[ $field['id'] ] );
-						update_post_meta( $post_id, $field['id'], $sanitized );
-					}
-			}
-		}
-	}
-
-	public function add_meta_box_callback() {
-		$this->fields_table();
-	}
-
-	private function fields_table() {
-		?><table class="form-table" role="presentation">
-			<tbody><?php
-				foreach ( $this->config['fields'] as $field ) {
-					?><tr>
-						<th scope="row"><?php $this->label( $field ); ?></th>
-						<td><?php $this->field( $field ); ?></td>
-					</tr><?php
-				}
-			?></tbody>
-		</table><?php
-	}
-
-	private function label( $field ) {
-		switch ( $field['type'] ) {
-			default:
-				printf(
-					'<label class="" for="%s">%s</label>',
-					$field['id'], $field['label']
-				);
-		}
-	}
-
-	private function field( $field ) {
-		switch ( $field['type'] ) {
-			case 'textarea':
-				$this->textarea( $field );
-				break;
-			default:
-				$this->input( $field );
-		}
-	}
-
-	private function input( $field ) {
-		printf(
-			'<input class="regular-text %s" id="%s" name="%s" %s type="%s" value="%s">',
-			isset( $field['class'] ) ? $field['class'] : '',
-			$field['id'], $field['id'],
-			isset( $field['pattern'] ) ? "pattern='{$field['pattern']}'" : '',
-			$field['type'],
-			$this->value( $field )
-		);
-	}
-
-	private function textarea( $field ) {
-		printf(
-			'<textarea class="regular-text" id="%s" name="%s" rows="%d">%s</textarea>',
-			$field['id'], $field['id'],
-			isset( $field['rows'] ) ? $field['rows'] : 5,
-			$this->value( $field )
-		);
-	}
-
-	private function value( $field ) {
-		global $post;
-		if ( metadata_exists( 'post', $post->ID, $field['id'] ) ) {
-			$value = get_post_meta( $post->ID, $field['id'], true );
-		} else if ( isset( $field['default'] ) ) {
-			$value = $field['default'];
-		} else {
-			return '';
-		}
-		return str_replace( '\u0027', "'", $value );
-	}
-
+        
+        </script>
+	<?php
 }
-new Twttcher;
 
-add_action( 'edit_form_advanced', 'twchr_streaming_custom_card' );
-function twchr_streaming_custom_card(){
-	if(get_post_type() === 'twchr_streams') require_once 'streaming_custom_card.php';
+function twitcher_stream_metabox(){
+	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
+	add_meta_box( 'twitcher_stream', 'Twitcher data', 'twitcher_stream_meta_box_content', 'twchr_streams', 'normal', 'high' );
 }
+
+add_action('add_meta_boxes','twitcher_stream_metabox');
+
+
+function twitcher_stream_metabox_save($post_id){
+/* 
+Antes de guardar la información, necesito verificar tres cosas:
+	1. Si la entrada se está autoguardando
+	2. Comprobar que el usuario actual puede realmente modificar este contenido.
+*/
+	
+	if (! current_user_can( 'edit_posts' )) {
+        return;
+    }		
+	
+
+		$allowed = array();
+		if ( isset( $_POST['twitcher_stream_dateTime'] ) ) {
+			update_post_meta( $post_id, 'twitcher_stream_dateTime', wp_kses( $_POST['twitcher_stream_dateTime'], $allowed ) );
+		}
+
+		if( isset( $_POST['twchr_streams__yt-link-video-src'] )){
+			update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', wp_kses( $_POST['twchr_streams__yt-link-video-src'], $allowed ) );
+		}
+
+		if( isset( $_POST['twchr_stream_src_priority'] )){
+			update_post_meta( $post_id, 'twchr_stream_src_priority', wp_kses( $_POST['twchr_stream_src_priority'], $allowed ) );
+		}
+	  
+}
+
+
+add_action( 'save_post', 'twitcher_stream_metabox_save' );
