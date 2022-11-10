@@ -26,8 +26,26 @@
 
  
 function twitcher_stream_meta_box_content($post){
-	$values    = get_post_custom( $post->ID );
-	//show_dump($values);
+	$values = get_post_custom( $post->ID );
+
+
+	$create_at = isset($values['twchr-from-api_create_at'][0]) ? $values['twchr-from-api_create_at'] : false;
+    $description =  isset($values['twchr-from-api_description'][0]) ? $values['twchr-from-api_description'][0] : false;
+    $duration = isset($values['twchr-from-api_duration'][0]) ? $values['twchr-from-api_duration'][0] : false;
+    $id = isset($values['twchr-from-api_id'][0]) ? $values['twchr-from-api_id'][0] : false;
+    $languaje = isset($values['twchr-from-api_languaje'][0]) ? $values['twchr-from-api_languaje'][0] : false;
+    $muted_segment = isset($values['twchr-from-api_muted_segment'][0]) ? $values['twchr-from-api_muted_segment'][0] : false;
+    $published_at = isset($values['twchr-from-api_published_at'][0]) ? $values['twchr-from-api_published_at'][0] : false;
+    $stream_id = isset($values['twchr-from-api_stream_id'][0]) ? $values['twchr-from-api_stream_id'][0] : false;
+    $thumbnail_url = isset($values['twchr-from-api_thumbnail_url'][0]) ? $values['twchr-from-api_thumbnail_url'][0] : false;
+    $type = isset($values['twchr-from-api_type'][0]) ? $values['twchr-from-api_type'][0] : false;
+    $url = isset($values['twchr-from-api_url'][0]) ? $values['twchr-from-api_url'][0] : false;
+    $user_id = isset($values['twchr-from-api_user_id'][0]) ? $values['twchr-from-api_user_id'][0] : false;
+    $user_login = isset($values['twchr-from-api_user_login'][0]) ? $values['twchr-from-api_user_login'][0] : false;
+    $user_name = isset($values['twchr-from-api_user_name'][0]) ? $values['twchr-from-api_user_name'][0] : false;
+    $view_count = isset($values['twchr-from-api_view_count'][0]) ? $values['twchr-from-api_view_count'][0] : false;
+    $viewble = isset($values['twchr-from-api_viewble'][0]) ? $values['twchr-from-api_viewble'][0] : false;
+    $title = isset($values['twchr-from-api_title'][0]) ? $values['twchr-from-api_title'][0] : false;
 	?>
 	<style>
             a.twchr_button_get_videos {
@@ -116,27 +134,27 @@ function twitcher_stream_meta_box_content($post){
                 <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
             </div>
         </stream>
-    <metabox>
-		<label>create_at<input name='twchr-from-api_create_at' type="text"></label>
-		<label>description<input name='twchr-from-api_description' type="text"></label>
-		<label>duration<input name='twchr-from-api_duration' type="text"></label>
-		<label>id<input name='twchr-from-api_id' type="text"></label>
-		<label>languaje<input name='twchr-from-api_languaje' type="text"></label>
-		<label>muted_segment<input name='twchr-from-api_muted_segment' type="text"></label>
-		<label>published_at<input name='twchr-from-api_published_at' type="text"></label>
-		<label>stream_id<input name='twchr-from-api_stream_id' type="text"></label>
-		<label>thumbnail_url<input name='twchr-from-api_thumbnail_url' type="text"></label>
-		<label>type<input name='twchr-from-api_type' type="text"></label>
-		<label>url<input name='twchr-from-api_url' type="text"></label>
-		<label>user_id<input name='twchr-from-api_user_id' type="text"></label>
-		<label>user_login<input name='twchr-from-api_user_login' type="text"></label>
-		<label>user_name<input name='twchr-from-api_user_name' type="text"></label>
-		<label>view_count<input name='twchr-from-api_view_count' type="text"></label>
-		<label>viewble<input name='twchr-from-api_viewble' type="text"></label>
-		<label>title<input name='twchr-from-api_title' type="text"></label>
+  
+    <metabox <?=  $_GET['twchr_card'] == 'off' ? 'style="display:none;"' : ''?>>
+		<label>create_at<input name='twchr-from-api_create_at' type="text" value='<?= $create_at != false ? $create_at : ''?>'></label>
+		<label>description<input name='twchr-from-api_description' type="text" value='<?= $description != false ? $description : ''?>'></label>
+		<label>duration<input name='twchr-from-api_duration' type="text" value='<?= $duration != false ? $duration : ''?>'></label>
+		<label>id<input name='twchr-from-api_id' type="text" value='<?= $id != false ? $id : ''?>'></label>
+		<label>languaje<input name='twchr-from-api_languaje' type="text" value='<?= $languaje != false ? $languaje : ''?>'></label>
+		<label>muted_segment<input name='twchr-from-api_muted_segment' type="text" value='<?= $muted_segment != false ? $muted_segment : ''?>'></label>
+		<label>published_at<input name='twchr-from-api_published_at' type="text" value='<?= $published_at != false ? $published_at : ''?>'></label>
+		<label>stream_id<input name='twchr-from-api_stream_id' type="text" value='<?= $stream_id != false ? $stream_id : ''?>'></label>
+		<label>thumbnail_url<input name='twchr-from-api_thumbnail_url' type="text" value='<?= $thumbnail_url != false ? $thumbnail_url : ''?>'></label>
+		<label>type<input name='twchr-from-api_type' type="text" value='<?= $type != false ? $type : ''?>'></label>
+		<label>url<input name='twchr-from-api_url' type="text" value='<?= $url != false ? $url : ''?>'></label>
+		<label>user_id<input name='twchr-from-api_user_id' type="text" value='<?= $user_id != false ? $user_id : ''?>'></label>
+		<label>user_login<input name='twchr-from-api_user_login' type="text" value='<?= $user_login != false ? $user_login : ''?>'></label>
+		<label>user_name<input name='twchr-from-api_user_name' type="text" value='<?= $user_name != false ? $user_name : ''?>'></label>
+		<label>view_count<input name='twchr-from-api_view_count' type="text" value='<?= $view_count != false ? $view_count : ''?>'></label>
+		<label>viewble<input name='twchr-from-api_viewble' type="text" value='<?= $viewble != false ? $viewble : ''?>'></label>
+		<label>title<input name='twchr-from-api_title' type="text" value='<?= $title != false ? $title : ''?>'></label>
 	</metabox>
-	
-        <script>
+    <script>
 		const twchr_gutember_modal_button = document.querySelector("#twchr-gutemberg-modal-button");
 		twchr_gutember_modal_button.addEventListener('click',()=>{
 			twchr_modal.classList.toggle("active");
@@ -151,17 +169,17 @@ function twitcher_stream_meta_box_content($post){
         twchr_modal_button_close.addEventListener('click', e => {
             twchr_modal.classList.remove('active');
         });
-
-        
-
-        
         </script>
+	<?php 
+            require_once 'streaming_custom_card.php';
+    ?>
+        
 	<?php
 }
 
 function twitcher_stream_metabox(){
 	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
-	add_meta_box( 'twitcher_stream', 'Twitcher data', 'twitcher_stream_meta_box_content', 'twchr_streams', 'normal', 'high' );
+	add_meta_box( 'twitcher_stream', 'Twitcher streamings', 'twitcher_stream_meta_box_content', 'twchr_streams', 'normal', 'high' );
 }
 
 add_action('add_meta_boxes','twitcher_stream_metabox');
@@ -172,7 +190,7 @@ function twitcher_stream_metabox_save($post_id){
 Antes de guardar la información, necesito verificar tres cosas:
 	1. Si la entrada se está autoguardando
 	2. Comprobar que el usuario actual puede realmente modificar este contenido.
-*/
+ */
 	
 	if (! current_user_can( 'edit_posts' )) {
         return;
@@ -180,16 +198,56 @@ Antes de guardar la información, necesito verificar tres cosas:
 	
 
 		$allowed = array();
-		if ( isset( $_POST['twitcher_stream_dateTime'] ) ) {
-			update_post_meta( $post_id, 'twitcher_stream_dateTime', wp_kses( $_POST['twitcher_stream_dateTime'], $allowed ) );
+		if ( isset( $_POST['twchr-from-api_create_at'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_create_at', wp_kses( $_POST['twchr-from-api_create_at'], $allowed ) );
 		}
-
-		if( isset( $_POST['twchr_streams__yt-link-video-src'] )){
-			update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', wp_kses( $_POST['twchr_streams__yt-link-video-src'], $allowed ) );
+		if ( isset( $_POST['twchr-from-api_description'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_description', wp_kses( $_POST['twchr-from-api_description'], $allowed ) );
 		}
-
-		if( isset( $_POST['twchr_stream_src_priority'] )){
-			update_post_meta( $post_id, 'twchr_stream_src_priority', wp_kses( $_POST['twchr_stream_src_priority'], $allowed ) );
+		if ( isset( $_POST['twchr-from-api_duration'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_duration', wp_kses( $_POST['twchr-from-api_duration'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_id'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_id', wp_kses( $_POST['twchr-from-api_id'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_languaje'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_languaje', wp_kses( $_POST['twchr-from-api_languaje'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_muted_segment'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_muted_segment', wp_kses( $_POST['twchr-from-api_muted_segment'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_published_at'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_published_at', wp_kses( $_POST['twchr-from-api_published_at'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_stream_id'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_stream_id', wp_kses( $_POST['twchr-from-api_stream_id'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_thumbnail_url'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_thumbnail_url', wp_kses( $_POST['twchr-from-api_thumbnail_url'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_type'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_type', wp_kses( $_POST['twchr-from-api_type'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_url'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_url', wp_kses( $_POST['twchr-from-api_url'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_user_id'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_user_id', wp_kses( $_POST['twchr-from-api_user_id'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_user_login'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_user_login', wp_kses( $_POST['twchr-from-api_user_login'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_user_name'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_user_name', wp_kses( $_POST['twchr-from-api_user_name'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_view_count'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_view_count', wp_kses( $_POST['twchr-from-api_view_count'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_viewble'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_viewble', wp_kses( $_POST['twchr-from-api_viewble'], $allowed ) );
+		}
+		if ( isset( $_POST['twchr-from-api_title'] ) ) {
+			update_post_meta( $post_id, 'twchr-from-api_title', wp_kses( $_POST['twchr-from-api_title'], $allowed ) );
 		}
 	  
 }

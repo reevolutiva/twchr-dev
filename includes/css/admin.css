@@ -458,12 +458,20 @@ stream.twchr-modal .twchr-modal-button.close{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;
     background-blend-mode: soft-light, normal;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: -2.5px -2.5px 5px #FAFBFF, 2.5px 2.5px 5px #A6ABBD;
+    box-shadow: 0 0 5px #A6ABBD;
     border-radius: 15px;
-    padding: 26pt 65pt 35pt 65pt;
+    padding: 26pt 78pt 35pt 78pt;
     box-sizing:border-box;
     font-family: 'Comfortaa';
     font-style: normal;
+    position: absolute;
+    top: 1cm;
+}
+.twchr_custom_card--contain.closed{
+    display: none;
+}
+#twitcher_stream .inside{
+    height: 550px;
 }
 .twchr_custom_card--contain .twchr_card_header{
     display: grid;

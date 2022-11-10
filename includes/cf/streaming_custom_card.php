@@ -1,4 +1,4 @@
-<div class="twchr_custom_card--contain postbox-container">
+<div class="twchr_custom_card--contain">
     <div class="twchr_card_header">
         <div class="twchr_card_header--title">
             <img src="<?= plugins_url('/twitcher/includes/assets/twitch_logo.png') ?>" alt="logo-twitch">
