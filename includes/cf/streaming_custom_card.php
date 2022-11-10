@@ -1,3 +1,119 @@
+<style>
+    
+.twchr_custom_card--contain{
+    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;
+    background-blend-mode: soft-light, normal;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 5px #A6ABBD;
+    border-radius: 15px;
+    padding: 26pt 78pt 35pt 78pt;
+    box-sizing:border-box;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    position: absolute;
+    top: 1cm;
+    width: 95%;
+}
+.twchr_custom_card--contain.closed{
+    display: none;
+}
+#twitcher_stream .inside{
+    min-height: 550px;
+}
+.twchr_custom_card--contain .twchr_card_header{
+    display: grid;
+    grid-template-columns:1fr 220px;
+    grid-template-rows:68px 100px;
+}
+.twchr_custom_card--contain .twchr_card_header--title{
+    display: flex;
+    align-items:center;
+}
+.twchr_custom_card--contain .twchr_card_header--title img{
+    height: 27px;
+    margin-right:10pt;
+}
+.twchr_custom_card--contain .twchr_card_header--title h3{
+    
+    
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+}
+.twchr_custom_card--contain .twchr_card_header-description h4{
+    
+    
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0;
+}
+.twchr_custom_card--contain .twchr_card_header--img{
+    grid-row:1/3;
+    grid-column:2/3;
+}
+
+.twchr_custom_card--contain .twchr_card_header--img img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
+.twchr_custom_card--contain .twchr_card_body{
+    display: grid;
+    grid-template-columns:1fr 220px;
+}
+
+.twchr_custom_card--contain .twchr_card_body--list ul{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height: 100%;
+    margin: 0;
+}
+.twchr_custom_card--contain .twchr_card_body--list li{
+    display: grid;
+    grid-template-columns:111px auto;
+    margin-bottom: 10pt;
+}
+.twchr_custom_card--contain .twchr_card_body--list li span.label{
+    
+    
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #C9BBBB;
+}
+.twchr_custom_card--contain .twchr_card_body--list li span.value{
+    
+    
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+.twchr_custom_card--contain .twchr_card_body--status .item{
+    width:max-content;
+    margin:0 auto;
+    text-align:center;
+}
+
+.twchr_custom_card--contain .twchr_card_body--status .item h3{
+    color:var(--twchr-purple);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    margin: 0 auto 10pt auto;
+}
+
+.twchr_custom_card--contain .twchr_card_body--status .item h3.on{
+    color:#0C884C;
+}
+.twchr_custom_card--contain .twchr_card_body--status .item h3.failed{
+    color:tomato;
+}
+
+</style>
 <div class="twchr_custom_card--contain">
     <div class="twchr_card_header">
         <div class="twchr_card_header--title">

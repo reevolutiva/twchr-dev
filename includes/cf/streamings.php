@@ -154,25 +154,89 @@ function twitcher_stream_meta_box_content($post){
 		<label>viewble<input name='twchr-from-api_viewble' type="text" value='<?= $viewble != false ? $viewble : ''?>'></label>
 		<label>title<input name='twchr-from-api_title' type="text" value='<?= $title != false ? $title : ''?>'></label>
 	</metabox>
+    <?php 
+            require_once 'streaming_custom_card.php';
+    ?>
     <script>
+        async function twchrFetchGet (url, callback, mode, requestOptions=false){
+            let get;
+            if(requestOptions != false){
+                get = await fetch(url,requestOptions);
+            }else{
+                get = await fetch(url);
+            }
+            
+            let response;
+            switch (mode) {
+            case "json":
+                response = await get.json();
+                break;
+            case "blob":
+                response = await get.blob();
+                break;
+            default:
+                response = await get.text();
+                break;
+            }
+            callback(response);
+        }
 		const twchr_gutember_modal_button = document.querySelector("#twchr-gutemberg-modal-button");
-		twchr_gutember_modal_button.addEventListener('click',()=>{
-			twchr_modal.classList.toggle("active");
-            const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
-            const client_id = tchr_vars_admin.twchr_keys['client-id'];
-            const appToken = tchr_vars_admin.twchr_app_token;
-            tchr_get_clips(appToken,client_id,user_id)
-		});
-        const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
+        const twchr_modal = document.querySelector(".twchr_modal_get_videos");
         const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
+        
+        
+		twchr_gutember_modal_button.addEventListener('click',(e)=>{
+        
+            document.querySelector(".twchr_custom_card--contain").style = "display:none;";
+            
+		});
+        
+        
 
         twchr_modal_button_close.addEventListener('click', e => {
             twchr_modal.classList.remove('active');
         });
+        const postBox = [...document.querySelectorAll("#twitcher_stream metabox input") ];
+        
+        document.querySelector(".twchr_custom_card--contain .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
+        
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
+        let card_img = postBox[8].value;
+        card_img = card_img.replace("%{width}x%{height}","250x150");
+        document.querySelector(".twchr_custom_card--contain .twchr_card_header--img img").setAttribute('src',card_img);
+    
+        document.querySelector(".twchr_custom_card--contain .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
+        <?php
+            $twch_data_prime = json_decode(get_option('twchr_keys'));
+            $client_id = $twch_data_prime->{'client-id'};
+            $twchr_app_token = get_option('twchr_app_token');
+        ?>
+        twchrFetchGet(
+            'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
+            (element)=>{
+                //console.log(element.data);
+                if(element.data){
+                    document.querySelector(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('on');
+                    document.querySelector(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Online';
+                }else{
+                    document.querySelector(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").classList.add('failed');
+                    document.querySelector(".twchr_custom_card--contain .twchr_card_body--status .item.status h3").textContent = 'Offline';    
+                }
+            },
+            'json',{headers: {
+                "Authorization": `Bearer <?= $twchr_app_token?>`,
+                "client-id": '<?= $client_id?>'
+        }});
+
+    
         </script>
-	<?php 
-            require_once 'streaming_custom_card.php';
-    ?>
+	
         
 	<?php
 }
