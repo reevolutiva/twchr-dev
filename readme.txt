@@ -1,4 +1,4 @@
-=== Twitch Account Manager ===
+=== Manage Twitch Account: Easy Wordpress Integration ===
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
@@ -25,6 +25,7 @@ and promote your programs and series, and offer extra content for your audience,
 * Compatible with Woocommerce, Learndash and most plugins and themes.
 * Twitch *API Helix* Enabled
 
+NOTE: Use of this plugin requires the full understanding and acceptance of Twitch Interactive, Inc. terms of service. This is an unofficial Wordpress integration.
 
 = Links =                                                                
 *   <a href="https://twitcher.pro/" title="">HomePage</a>
