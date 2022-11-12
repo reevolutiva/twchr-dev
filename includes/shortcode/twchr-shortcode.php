@@ -2,6 +2,7 @@
 // Add Shortcode
 
 function shorcode_twchr_setUp() {
+	
 		add_option('twchr_setInstaled',1,'',true );
 		$twchrKeysJSON = get_option('twchr_keys');
 		$clientId =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-id'} : '';

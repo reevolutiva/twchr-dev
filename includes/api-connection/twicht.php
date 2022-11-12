@@ -1,14 +1,27 @@
 <?php
-
-function get_twicth_api($client_id,$client_secret){
+/**
+ * Function save client_id and client_secret in BDD
+ *
+ * @param string $client_id
+ * @param string $client_secret
+ * @return void
+ */
+function get_twicth_api(string $client_id,string $client_secret){
   //$url = 'https://id.twitch.tv/oauth2/token?client_id=80i53du4hlrjvnp6yag1lzirzk2kpd&client_secret=oc3y4236g7hh43o6z3y3pd2mzlt3pn&grant_type=client_credentials';
   $url = 'https://id.twitch.tv/oauth2/token?client_id='.$client_id.'&client_secret='.$client_secret.'&grant_type=client_credentials';
   $data = wp_remote_post($url);
   $response = json_decode(wp_remote_retrieve_body($data));
   return $response;
 }
-
-function get_twicth_video($app_token, $client_id,$user_id){
+/**
+ * Function get list videos from twitch from especific channel
+ *
+ * @param string $app_token
+ * @param string $client_id
+ * @param string $user_id
+ * @return void
+ */
+function get_twicth_video(string $app_token,string $client_id,string $user_id){
   $args = array(
     'headers'=> array(
       'Authorization' => "Bearer $app_token",
@@ -95,9 +108,9 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
 function autenticate($api_key, $client_id,$redirect,$scope){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
   $token = isset($twch_data_prime->{'user_token'}) ? $twch_data_prime->{'user_token'} : false;
-  $token_validate ;
-  $token_status ;
-  $twch_data_app_token;
+  $token_validate = '';
+  $token_status = '' ;
+  $twch_data_app_token = '';
 
   if($token != false){
     $token_validate = twchr_token_validate($token);

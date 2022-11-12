@@ -17,7 +17,7 @@
 .twchr_custom_card--contain.closed{
     display: none;
 }
-#twitcher_stream .inside{
+#twitcher_stream .inside.active{
     min-height: 550px;
 }
 .twchr_custom_card--contain .twchr_card_header{
@@ -114,7 +114,7 @@
 }
 
 </style>
-<div class="twchr_custom_card--contain">
+<div class="twchr_custom_card--contain closed">
     <div class="twchr_card_header">
         <div class="twchr_card_header--title">
             <img src="<?= plugins_url('/twitcher/includes/assets/twitch_logo.png') ?>" alt="logo-twitch">

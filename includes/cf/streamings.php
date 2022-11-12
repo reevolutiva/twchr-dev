@@ -234,7 +234,18 @@ function twitcher_stream_meta_box_content($post){
                 "client-id": '<?= $client_id?>'
         }});
 
-    
+        const twchr_streamings_inputs_array = [];
+        postBox.forEach(element =>{
+            twchr_streamings_inputs_array.push(element.value);
+        });
+        // Si todos los inputs esta vacios
+        if(twchr_streamings_inputs_array.every(e => e === '')){
+            document.querySelector(".twchr_custom_card--contain").classList.add("closed");
+            document.querySelector("#twitcher_stream .inside").classList.remove("active");
+        }else{
+            document.querySelector(".twchr_custom_card--contain").classList.remove("closed");
+            document.querySelector("#twitcher_stream .inside").classList.add("active");
+        }
         </script>
 	
         
