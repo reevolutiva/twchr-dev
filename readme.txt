@@ -1,11 +1,11 @@
-=== Twitch Wordpress Manager: Twitcher.pro ===
+=== Twitch Account Manager ===
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
 Requires at least: 5.0
-Tested up to: 5.0
+Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 0.1
+Stable tag: 0.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,8 +13,8 @@ Manage, promote and monetise your Twitch.tv streaming integrrating the power of 
 
 == Description ==
 *Monetize your streams* and grow your audience by integrating your Twitch channel to your Wordpress site in a simple
-and fast way with **Twitcher Wordpress Plugin**.
-Twitcher Integrates your Twitch Channel to Wordpress and create a Post Page for every past Stream, so you could mannage
+and fast way with **Twitcher.pro Wordpress Twitch account manager Plugin**.
+Twitcher.pro Integrates your Twitch Channel to Wordpress and create a Post Page for every past Stream, so you could mannage
 and promote your programs and series, and offer extra content for your audience, taking advantage of the power of google.
 
 == Features ==
@@ -33,7 +33,7 @@ and promote your programs and series, and offer extra content for your audience,
 
 == Frequently Asked Questions ==
 
-= Is Twitcher free? =
+= Is Twitcher.pro free? =
 
 Free and GPL.
 
