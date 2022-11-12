@@ -7,7 +7,7 @@ Tested up to: 6.1
 Requires PHP: 7.3
 Stable tag: 0.1.1
 License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to wordpress.
 
