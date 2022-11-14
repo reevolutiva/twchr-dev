@@ -1,12 +1,36 @@
 <?php
-function crearStream($title ,$id ,$create_at ,$description ,$duration ,$api_languaje ,$muted_segment ,$published_at ,$stream_id ,$thumbnail_url ,$type ,$url ,$user_id ,$user_login ,$user_name ,$view_count ,$viewble, $author = 1, $host=undefined){
+/**
+ * Create a new twchr_streams white shortcode twchr_embed includes
+ *
+ * @param [type] $title
+ * @param [type] $id
+ * @param [type] $create_at
+ * @param [type] $description
+ * @param [type] $duration
+ * @param [type] $api_languaje
+ * @param [type] $muted_segment
+ * @param [type] $published_at
+ * @param [type] $stream_id
+ * @param [type] $thumbnail_url
+ * @param [type] $type
+ * @param [type] $url
+ * @param [type] $user_id
+ * @param [type] $user_login
+ * @param [type] $user_name
+ * @param [type] $view_count
+ * @param [type] $viewble
+ * @param integer $author
+ * @param [type] $host
+ * @return void
+ */
+function crearStream($title ,$id ,$create_at ,$description ,$duration ,$api_languaje ,$muted_segment ,$published_at ,$stream_id ,$thumbnail_url ,$type ,$url ,$user_id ,$user_login ,$user_name ,$view_count ,$viewble, $author = 1, $host=false){
         
     $postarr = array(
         'post_title' => $title,
         'post_status' => 'publish',
         'post_author' => $author,
         'post_type' => 'twchr_streams',
-        'post_content' => '[twich_embed host="'.$host.'" video="'.$id.'"]',
+        'post_content' => '	<!-- wp:shortcode -->[twich_embed host="'.$host.'" video="'.$id.'"]<!-- /wp:shortcode -->',
         'meta_input'   => array(
             'twchr-from-api_create_at' => $create_at,
             'twchr-from-api_description' => $description,
