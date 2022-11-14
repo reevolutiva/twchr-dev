@@ -1,12 +1,12 @@
 <?php
 /*
-* Plugin Name: Twitcher
+* Plugin Name: Manage Twitch Account: Easy Wordpress Integration
 * Plugin URI: twitcher.pro
-* Description: Manage, promote and monetise your Twitch.tv streaming integrating the power of Twitch to Wordpress.
+* Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
 * Version: 0.1.1
 * Author: Conjuntas.Club
 * Author URI: conjuntas.club
-* License: GPL2
+* License: GPL3
 * Text Domain: twitcher
 * Domain Path: /languages
 */
