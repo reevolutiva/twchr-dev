@@ -56,19 +56,19 @@ require_once 'includes/assets/plugin_enqueue.php';
 */
 
 
-function Activar(){
+function twchr_activar(){
     
 }
-register_activation_hook(__FILE__,'Activar' );
+register_activation_hook(__FILE__,'twchr_activar' );
 
-function Desactivar(){
+function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
     if (get_option('twchr_delete_all') == 1){
         delete_option('twchr_setInstaled' );
     }    
     
 }
-register_activation_hook(__FILE__,'Desactivar' );
+register_activation_hook(__FILE__,'twchr_desactivar' );
 
 
 // Menu consola de administracion en Dashboard WP
