@@ -95,9 +95,9 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
 function autenticate($api_key, $client_id,$redirect,$scope){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
   $token = isset($twch_data_prime->{'user_token'}) ? $twch_data_prime->{'user_token'} : false;
-  $token_validate ;
-  $token_status ;
-  $twch_data_app_token;
+  $token_validate = '';
+  $token_status = '';
+  $twch_data_app_token = '';
 
   if($token != false){
     $token_validate = twchr_token_validate($token);
