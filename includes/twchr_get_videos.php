@@ -48,7 +48,7 @@ function twchr_get_videos_function_edit(){
                 display: block;
                 width: 40px;
                 height: 40px;
-                background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+                background-image: url(<?php echo  plugins_url('twitcher/includes/assets/help.png')?>);
                 background-size: contain;
                 background-repeat: no-repeat;
                 margin-right: 6pt;
@@ -56,7 +56,7 @@ function twchr_get_videos_function_edit(){
 
         </style>
         <a class="twchr_button_get_videos"
-            href="<?= bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
+            href="<?php echo  bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
 
         <stream class="twchr_modal_get_videos twchr-modal">
             <div class="twchr-modal-selection_close">
@@ -66,16 +66,16 @@ function twchr_get_videos_function_edit(){
                 <h3><?php _e('Asign video to post','twitcher') ?></h3>
 
                 <picture>
-                    <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                    <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
                 </picture>
             </div>
 
             <div id="twchr_button_get_videos__content">
                 <ul class="twchr-modal-selection__list">
-                    <li><?= __('Streaming name','twitcher'); ?></li>
-                    <li><?= __('Date','twitcher'); ?></li>
-                    <li><?= __('Already saved?','twitcher'); ?></li>
-                    <li><?= __('Import','twitcher'); ?></li>
+                    <li><?php echo  __('Streaming name','twitcher'); ?></li>
+                    <li><?php echo  __('Date','twitcher'); ?></li>
+                    <li><?php echo  __('Already saved?','twitcher'); ?></li>
+                    <li><?php echo  __('Import','twitcher'); ?></li>
                 </ul>
                 <div class="content">
 
@@ -88,7 +88,7 @@ function twchr_get_videos_function_edit(){
                     </p>
                     
                 </span>
-                <button id="twchr-modal-selection__btn"><?= __('Asign','twitcher');?></button>
+                <button id="twchr-modal-selection__btn"><?php echo  __('Asign','twitcher');?></button>
             </div>
         </stream>
         <script>
@@ -118,7 +118,7 @@ function twchr_get_videos_function(){
     if($dataUrl == 'twchr_streams' && $get_length == 1):
         ?>
 <a style="text-decoration: none;display:inline-block;color:#fff;background-color: var(--twchr-purple);padding: .5em;border: 1px solid;border-radius: 5px;line-height: 1em;"
-    href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php _e('Import Twitch Streamings','twitcher')?></a>
+    href="<?php echo  bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php _e('Import Twitch Streamings','twitcher')?></a>
 <?php   
         
     endif; 
@@ -132,7 +132,7 @@ function twchr_get_videos_function(){
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(<?= plugins_url('twitcher/includes/assets/twchr_check.png')?>);
+    background-image: url(<?php echo  plugins_url('twitcher/includes/assets/twchr_check.png')?>);
     margin: 0;
 }
 
@@ -152,7 +152,7 @@ function twchr_get_videos_function(){
     display: block;
     width: 40px;
     height: 40px;
-    background-image: url(<?= plugins_url('twitcher/includes/assets/help.png')?>);
+    background-image: url(<?php echo  plugins_url('twitcher/includes/assets/help.png')?>);
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 6pt;
@@ -219,16 +219,16 @@ function twchr_get_videos_function(){
                                     <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
 
                                     <picture>
-                                        <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                                        <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
                                     </picture>
                                 </div>
 
                                 <div id="twchr-modal-selection__content">
                                     <ul class="twchr-modal-selection__list">
-                                        <li><?= __('Streaming name','twitcher'); ?></li>
-                                        <li><?= __('Date','twitcher'); ?></li>
-                                        <li><?= __('Already saved?','twitcher'); ?></li>
-                                        <li><?= __('Import','twitcher'); ?></li>
+                                        <li><?php echo  __('Streaming name','twitcher'); ?></li>
+                                        <li><?php echo  __('Date','twitcher'); ?></li>
+                                        <li><?php echo  __('Already saved?','twitcher'); ?></li>
+                                        <li><?php echo  __('Import','twitcher'); ?></li>
                                     </ul>
                                 </div>
 
@@ -237,7 +237,7 @@ function twchr_get_videos_function(){
                                         <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?>
                                         </p>
                                     </span>
-                                    <button id="twchr-modal-selection__btn"><?= __('Import','twitcher');?></button>
+                                    <button id="twchr-modal-selection__btn"><?php echo  __('Import','twitcher');?></button>
                                 </div>
                             </stream>
                             <script>
