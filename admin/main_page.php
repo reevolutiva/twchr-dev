@@ -5,9 +5,10 @@
     <?php include 'main_page.css'; ?>
 </style>
 <div class="twchr-for-back twchr-container">
+    
     <article class='twchr-dashboard-card plugin-hello'>
         <picture>
-            <img src="<?php echo TWCHR_DIR_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
+            <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
         </picture>
         <h2><?php echo  __('Dashboard','twitcher'); ?></h2>
     </article>
@@ -44,9 +45,9 @@
                         <input type="hidden" name="post_type" value="twchr_streams">
                         <input type="hidden" name="page" value="twchr-dashboard">
                         <?php $clientID = !empty($twch_data_prime->{'client-id'}) ? $twch_data_prime->{'client-id'} : null ; ?>
-                        <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?php echo  $clientID?>">
+                        <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?php echo sanitize_key($clientID)?>">
                         <?php $clientSecret = !empty($twch_data_prime->{'client-secret'}) ?  $twch_data_prime->{'client-secret'} : null; ?>
-                        <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?php echo  $clientSecret ?>" disabled="true">
+                        <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?php echo sanitize_key($clientSecret) ?>" disabled="true">
                         <div>
                             <p>Broadcaster Type</p>
                             <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : $broadcaster_type ?></p>

@@ -48,7 +48,7 @@ function twchr_get_videos_function_edit(){
                 display: block;
                 width: 40px;
                 height: 40px;
-                background-image: url(<?php echo  plugins_url('twitcher/includes/assets/help.png')?>);
+                background-image: url(<?php echo TWCHR_URL_ASSETS.'help.png'?>);
                 background-size: contain;
                 background-repeat: no-repeat;
                 margin-right: 6pt;
@@ -66,7 +66,7 @@ function twchr_get_videos_function_edit(){
                 <h3><?php _e('Asign video to post','twitcher') ?></h3>
 
                 <picture>
-                    <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                    <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg';?>" alt="logo-twitcher">
                 </picture>
             </div>
 
@@ -132,7 +132,7 @@ function twchr_get_videos_function(){
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(<?php echo  plugins_url('twitcher/includes/assets/twchr_check.png')?>);
+    background-image: url(<?php echo TWCHR_URL_ASSETS.'twchr_check.png';?>);
     margin: 0;
 }
 
@@ -152,7 +152,7 @@ function twchr_get_videos_function(){
     display: block;
     width: 40px;
     height: 40px;
-    background-image: url(<?php echo  plugins_url('twitcher/includes/assets/help.png')?>);
+    background-image: url(<?php echo TWCHR_URL_ASSETS.'help.png';?>);
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 6pt;
@@ -200,7 +200,7 @@ function twchr_get_videos_function(){
                             }
                             
                         }else{
-                            wp_redirect(site_url('/twttcher-setup'));
+                            wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true'));
                             exit;
                         }
                         
@@ -219,7 +219,7 @@ function twchr_get_videos_function(){
                                     <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
 
                                     <picture>
-                                        <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="logo-twitcher">
+                                        <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg';?>" alt="logo-twitcher">
                                     </picture>
                                 </div>
 

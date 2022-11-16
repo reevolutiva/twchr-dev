@@ -7,7 +7,9 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
     $dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
     $select_value = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
+    $select_value = sanitize_text_field($select_value);
     $select_name = get_term_meta($term->term_id,'twchr_toApi_category_name',true);
+    $select_name = sanitize_text_field($select_name);
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
 
     $select_cat = array(
@@ -54,9 +56,9 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
       return $term_id;
     }
     $nonce = $_POST['serie_cf_nonce'];
-        
-    // Verificamos que el nonce es válido.
-    if ( !wp_verify_nonce( $nonce, 'serie_cf' ) ) {
+            // Verificamos que el nonce es válido.
+ 
+   if ( !wp_verify_nonce( $nonce, 'serie_cf' ) ) {
       return $term_id;
     }
     */
