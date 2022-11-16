@@ -191,7 +191,7 @@
                     fronted_to_db($client_secret, $client_id);
 
                     // Obtengo App Token
-                    $twchr_token_app = get_twicth_api($client_id, $client_secret );
+                    $twchr_token_app = twchr_get_twicth_api($client_id, $client_secret );
                     
                     // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
@@ -236,13 +236,13 @@
                 switch ($_GET['app_token_action']) {
                     case 'update':
                         
-                        $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
+                        $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
                         // Paso 3 de instalaccion
                         echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')."'</script>";
                         break;
                     case 'renewAll_api_keys':
-                        $twchr_token_app = get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
+                        $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
                         twchr_save_app_token($twchr_token_app->{'access_token'});
                         echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true')."'</script>";
                         
