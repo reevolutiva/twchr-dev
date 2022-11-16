@@ -105,19 +105,7 @@ function twchr_main_menu(){
 
 add_action('admin_menu','twchr_main_menu');
 
-/*
-function twchr_post_db_exist($cpt,$value_title){
-    global $wpdb;
-    $sql = "SELECT post_title FROM wp_posts WHERE post_type = '$cpt' AND post_title = '$value_title';";
-    $wpdb->query($sql);
-    $response = $wpdb->{'last_result'};
-    if(COUNT($response) > 0){
-        return $response;
-    }else{
-        return false;
-    }
-    
-}*/
+
 function twchr_cf_db_exist($key,$value){
     global $wpdb;
     $sql = "SELECT * FROM wp_postmeta WHERE meta_key = '$key' AND meta_value = '$value';";
@@ -157,66 +145,6 @@ function twchr_token_validate($token){
 }
 
 
-/* Funcion is_this_single_of_cpt() que verifica si estamos en un archive o un single 
-   Preguntando cuantos items le sigen al dominio
-
-    Ejemplo:
-        1 dominio.cl/streaming/streamn
-        2 dominio.cl/streaming/
-
-    Esta funcion en el caso 1 retornaria true y en el caso 2 fasle
-*/
-function is_this_single_of_cpt($data_cpt, $data_single){
-    $url = explode("/",$_SERVER['REQUEST_URI']);
-	$url_leng = count($url) - 2 ;
-    if($url_leng > 1){
-		$cpt = $url[1];
-		$single = $url[2];
-		if($cpt === $data_cpt && $single === $data_single) return true;
-		else return false;
-	}else{
-		return false;
-	}
-}
-
-// En base a la url verifica si el paramatro de la funcion es igual a la consulta en la url
-function is_this_cpt($is_cpt){
-    $url = explode("/",$_SERVER['REQUEST_URI']);
-    return $url[1] === $is_cpt;		
-}
-
-// Cuenta cuantos items porta la url despues de el dominio
-// Ejemplo: dominio.cl/streaming/streamn
-//                      1          2
-function how_directory_accses(){
-    $url = explode("/",$_SERVER['REQUEST_URI']);
-    $quaty = count($url) - 2;
-    return $quaty;	
-}
-
-/* 
-Funcion que hace que Worpress busaque los single de un cpt en el 
-en el directorio del plugin en ves del directorio del theme
-*/
-// TODO: Remplazar is_this_cpt por get_post_type
-//add_filter( 'template_include', 'template_replace' );
-function template_replace( $template ) {
-
-    // Sí estoy en un cpt twchr_streams y hay algo más en la url que /twchr_streams/ entonces has esto
-    if(is_this_cpt('twchr_streams') && how_directory_accses() > 1){
-        $template = __DIR__.'/public/single-twchr_streams.php';    
-    // Sí solo en la url esta la direcion /twchr_streams/ has esto
-    }else if(is_this_cpt('twchr_streams')){
-        $template = __DIR__.'/public/archive-twchr_streams.php';
-    }
-    return $template;
-}
-
-// TODO: Reemplazar por is_sigle
-function is_get_user_token_page($term_id){
-    $url = explode("/",$_SERVER['REQUEST_URI']);
-    return $url[2]=== 'get-user-token';		
-}
 
 function serie_update($term_id) {
 
