@@ -8,7 +8,7 @@ function twchr_get_twicth_api($client_id,$client_secret){
   return $response;
 }
 
-function get_twicth_video($app_token, $client_id,$user_id){
+function twchr_get_twicth_video($app_token, $client_id,$user_id){
   $args = array(
     'headers'=> array(
       'Authorization' => "Bearer $app_token",

@@ -103,7 +103,7 @@
 
                 $subcribers = get_subcribers($twch_data_app_token, $client_id);
                              
-                $listVideo_from_api = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                 $listVideo_from_wp = twchr_get_stream();
                 //show_dump($listVideo_from_api->data[0]->view_count);
                 if($listVideo_from_api === false && get_option('twchr_setInstaled') <= 3){
@@ -158,7 +158,7 @@
                     if(get_option('twchr_setInstaled') <= 3):
                         $setInstaled = get_option('twchr_setInstaled');
                         if($setInstaled == 3 && $listVideo_from_api === false){
-                            $error = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                            $error = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             ?>
                             <div class="error-card">
                                 <h3>Error: <?php echo  $error->{'status'} ?></h3>
