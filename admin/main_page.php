@@ -349,9 +349,9 @@
                     }
         
                     if(isset($_GET['error']) && isset($_GET['error_description'])){
-                        echo "Error: ".$_GET['error'];
+                        echo "Error: ".sanitize_text_field($_GET['error']);
                         echo "</br>";
-                        echo "Descripción del error: ".$_GET['error_description'];
+                        echo "Descripción del error: ".sanitize_text_field($_GET['error_description']);
                     }
         
                     if(isset($_GET['twch_api_error'])){
