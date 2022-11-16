@@ -26,7 +26,7 @@ function twchr_get_twicth_video($app_token, $client_id,$user_id){
 }
 
 
-function validateToken($client_id,$client_secret,$code,$redirect){
+function twchr_validateToken($client_id,$client_secret,$code,$redirect){
   $url = "https://id.twitch.tv/oauth2/token";
   $urlecode = 'client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$code.'&grant_type=authorization_code&redirect_uri='.$redirect; 
 

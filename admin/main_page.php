@@ -306,13 +306,13 @@
                         $scope = $_GET['scope'];
                         $redirect = site_url('/wp-admin/edit.php?post_type=twchr_streams%26page=twchr-dashboard');
         
-                        $response = validateToken($client_id,$client_secret,$code, $redirect);
-                        $validateTokenObject = json_decode($response['body']);
+                        $response = twchr_validateToken($client_id,$client_secret,$code, $redirect);
+                        $twchr_validateTokenObject = json_decode($response['body']);
                         $response_response = $response['response'];
                         
                         if($response_response['code'] == 200){
-                            $userToken = $validateTokenObject->{'access_token'};
-                            $userTokenRefresh = $validateTokenObject->{'refresh_token'};
+                            $userToken = $twchr_validateTokenObject->{'access_token'};
+                            $userTokenRefresh = $twchr_validateTokenObject->{'refresh_token'};
         
                             $array_keys = array(
                                 'client-secret' => $client_secret,
@@ -337,8 +337,8 @@
                             <div class="twchr-modal-error">
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
-                                <p><b>Error: </b><?php echo  $validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
+                                <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
+                                <p><a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
                             </div>
                         <?php
                             die();
