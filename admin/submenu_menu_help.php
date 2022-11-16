@@ -1,7 +1,7 @@
 <?php 
 
 if(isset($_GET['setUpPage']) && $_GET['setUpPage'] == true){
-    require_once 'stwchr_setUp.php';
+    require_once 'twchr_setUp.php';
     die();
 }
 
