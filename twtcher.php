@@ -12,6 +12,7 @@
 */
 
 
+
 //setings
 require_once 'includes/dev_functions.php';
 
@@ -55,6 +56,10 @@ require_once 'includes/assets/plugin_enqueue.php';
     Funciones de activacion iniciales del plugin
 */
 
+define('TWCHR_PATH', __FILE__);
+define('TWCHR_URL', plugin_dir_url(__FILE__));
+
+define('TWCHR_URL_ASSETS', plugin_dir_url(__FILE__).'includes/assets/');
 
 function twchr_activar(){
     

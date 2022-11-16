@@ -43,4 +43,3 @@ if(isset($_GET['twchr_set_clear_all']) ){
     <h3>Setup</h3>
     <a class="twchr-btn-general" href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');?>">Run Setup</a>  
 </div>
-
