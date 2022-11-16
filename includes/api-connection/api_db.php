@@ -53,28 +53,3 @@
 
     }
 
-    // Guarda el user token validado
-    function savetwchr_validateToken($twchr_validateTokenObject){ 
-        global $wpdb;       
-        $twchr_validateToken = $twchr_validateTokenObject->{'access_token'};
-        $twchr_validateTokenRefresh = $twchr_validateTokenObject->{'refresh_token'};
-        if(!twittcher_data_exist('twchr_keys_validate')){
-            $array_keys = array(
-                'validate-token' => $twchr_validateToken,
-                'token-refresh' => $twchr_validateTokenRefresh
-            );
-            $json_array = json_encode($array_keys);
-            $sql = "INSERT INTO wp_options VALUE(null,'twchr_keys_validate','$json_array',true)";
-            //$wpdb->query($sql);
-        }else{
-            $array_keys = array(
-                'validate-token' => $twchr_validateToken,
-                'token-refresh' => $twchr_validateTokenRefresh
-            );
-            $json_array = json_encode($array_keys);
-            $sql = "UPDATE wp_options SET option_value='$json_array' WHERE option_name='twchr_keys_validate'";
-            $wpdb->query($sql);
-            //var_dump($sql);
-        }
-        
-    }
