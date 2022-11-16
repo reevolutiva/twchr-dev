@@ -185,8 +185,8 @@
                     isset($_GET['client-id']) &&
                     isset($_GET['client-secret'])
                 ){
-                    $client_id = $_GET['client-id'];
-                    $client_secret = $_GET['client-secret'];
+                    $client_id = sanitize_text_field($_GET['client-id']);
+                    $client_secret = sanitize_text_field($_GET['client-secret']);
                     
                     fronted_to_db($client_secret, $client_id);
 
@@ -194,7 +194,7 @@
                     $twchr_token_app = twchr_get_twicth_api($client_id, $client_secret );
                     
                     // Guardo AppToken                    
-                    twchr_save_app_token($twchr_token_app->{'access_token'});
+                    twchr_save_app_token(sanitize_key($twchr_token_app->{'access_token'}));
 
                     // Paso 2 de la instalacion
                     update_option('twchr_setInstaled',2,true);
