@@ -41,6 +41,5 @@ if(isset($_GET['twchr_set_clear_all']) ){
         <input type="submit" value="<?php _e('save','twitcher')?>">
     </form> 
     <h3>Setup</h3>
-    <a class="twchr-btn-general" href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');?>">Run Setup</a>  
+    <a class="twchr-btn-general" href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');?>">Run Setup</a>  
 </div>
-
