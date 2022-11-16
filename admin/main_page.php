@@ -7,7 +7,7 @@
 <div class="twchr-for-back twchr-container">
     <article class='twchr-dashboard-card plugin-hello'>
         <picture>
-            <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
+            <img src="<?php echo TWCHR_DIR_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
         </picture>
         <h2><?php echo  __('Dashboard','twitcher'); ?></h2>
     </article>
@@ -101,7 +101,7 @@
                 $client_id = $twch_data_prime->{'client-id'};
                 $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-                $subcribers = get_subcribers($twch_data_app_token, $client_id);
+                $subcribers = twchr_get_subcribers($twch_data_app_token, $client_id);
                              
                 $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                 $listVideo_from_wp = twchr_get_stream();
@@ -295,7 +295,7 @@
                                     update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                                 }
 
-                                autenticate($client_id, $secret_key, $return,$scope);  
+                                twchr_autenticate($client_id, $secret_key, $return,$scope);  
                             endif;
                         }
                     }

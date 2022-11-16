@@ -39,7 +39,7 @@ function twchr_validateToken($client_id,$client_secret,$code,$redirect){
   return $res;
 }
 
-function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+function twchr_post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
   $body = array(
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,
@@ -92,7 +92,7 @@ function post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_sta
 } 
 
 
-function autenticate($api_key, $client_id,$redirect,$scope){
+function twchr_autenticate($api_key, $client_id,$redirect,$scope){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
   $token = isset($twch_data_prime->{'user_token'}) ? $twch_data_prime->{'user_token'} : false;
   $token_validate = '';
@@ -147,7 +147,7 @@ function autenticate($api_key, $client_id,$redirect,$scope){
   }
 }
 
-function get_subcribers($app_token, $client_id){
+function twchr_get_subcribers($app_token, $client_id){
   $args = array(
     'headers' => array(
       'Authorization' => 'Bearer '.$app_token,

@@ -161,7 +161,7 @@ function twchr_get_videos_function(){
 <?php
                 switch ($_GET['get_thing']) {
                     case 'videos':
-                        $post_streaming_a_crear_repetido = array();
+                        $twchr_post_streaming_a_crear_repetido = array();
                         if($twch_data_prime != false || $twch_data_app_token != false){
                              // Extrago de la API un array con todos los videos publicados en la cuenta de twtch
                             $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));

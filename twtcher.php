@@ -253,7 +253,7 @@ function serie_update($term_id) {
         $tag_name = $_POST['name'];
     }
     // Envia los datos a la API de twich
-    return post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+    return twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
 
     
 }
