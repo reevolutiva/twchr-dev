@@ -164,7 +164,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
             Content += `<section class='twchr_modal_video_ajax'>
                             <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
-                            <input type='radio' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax${id}' value='${id}'>
+                            <input type='radio' data-position='${index}' id='twchr_videos_ajax-${title}' class='twchr_videos_ajax' name=twchr_videos_ajax' value='${id}'>
                         </section>`;
     
         });
