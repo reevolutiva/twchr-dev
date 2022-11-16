@@ -21,14 +21,14 @@ function twchr_stream_data_meta_box_content($post){
 	$dateTimeTwitch = isset($values['twchr-from-api_create_at'][0]) ? $values['twchr-from-api_create_at'][0] : false;
 	$yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
 	$select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : ''; 
-	
+	//show_dump($values);
 	?>
     <metabox>
         <div>
 			<picture>
-				<img src="<?php echo TWCHR_URL_ASSETS.'logo_menu.svg' ?>" alt="logo-twitch">
+				<img src="<?= plugins_url('/twitcher/includes/assets/logo_menu.svg') ?>" alt="logo-twitch">
 			</picture>
-			<label >Fecha y hora del streming <input <?php echo  $dateTimeTwitch == false ? null : 'disabled'?> type="<?php echo  $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
+			<label >Fecha y hora del streming <input <?= $dateTimeTwitch == false ? null : 'disabled'?> type="<?= $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
 		</div>
 		<div>
 			<lablel><?php _e('Source Priority','twticher'); ?></lablel>
@@ -36,7 +36,7 @@ function twchr_stream_data_meta_box_content($post){
 				<option value="tw" <?php selected($select,'tw')?>>Twitch</option>
 				<option value="yt" <?php selected($select,'yt')?>>Youtube</option>
 			</select>
-			<label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src' value="<?php echo  $yt_url != false ? $yt_url : ''?>"></label>
+			<label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src' value="<?= $yt_url != false ? $yt_url : ''?>"></label>
 		</div>
 	</metabox>
 	<?php

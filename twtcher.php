@@ -1,16 +1,15 @@
 <?php
 /*
-* Plugin Name: Manage Twitch Account: Easy Wordpress Integration
+* Plugin Name: Twitcher
 * Plugin URI: twitcher.pro
-* Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
+* Description: Manage, promote and monetise your Twitch.tv streaming integrating the power of Twitch to Wordpress.
 * Version: 0.1.1
 * Author: Conjuntas.Club
 * Author URI: conjuntas.club
-* License: GPL3
+* License: GPL2
 * Text Domain: twitcher
 * Domain Path: /languages
 */
-
 
 
 //setings
@@ -56,24 +55,20 @@ require_once 'includes/assets/plugin_enqueue.php';
     Funciones de activacion iniciales del plugin
 */
 
-define('TWCHR_PATH', __FILE__);
-define('TWCHR_URL', plugin_dir_url(__FILE__));
 
-define('TWCHR_URL_ASSETS', plugin_dir_url(__FILE__).'includes/assets/');
-
-function twchr_activar(){
+function Activar(){
     
 }
-register_activation_hook(__FILE__,'twchr_activar' );
+register_activation_hook(__FILE__,'Activar' );
 
-function twchr_desactivar(){
+function Desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
     if (get_option('twchr_delete_all') == 1){
         delete_option('twchr_setInstaled' );
     }    
     
 }
-register_activation_hook(__FILE__,'twchr_desactivar' );
+register_activation_hook(__FILE__,'Desactivar' );
 
 
 // Menu consola de administracion en Dashboard WP

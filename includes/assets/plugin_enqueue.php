@@ -7,17 +7,17 @@ function twchr_fonts(){
     <style>
         @font-face {
             font-family: 'Comfortaa';
-            src: url(<?php echo  plugins_url('twitcher/includes/assets/fonts/Comfortaa-Regular.ttf');?>);
+            src: url(<?= plugins_url('twitcher/includes/assets/fonts/Comfortaa-Regular.ttf');?>);
             font-weight: normal;
         }
         @font-face {
             font-family: 'Comfortaa';
-            src: url(<?php echo  plugins_url('twitcher/includes/assets/fonts/Comfortaa-Bold.ttf');?>);
+            src: url(<?= plugins_url('twitcher/includes/assets/fonts/Comfortaa-Bold.ttf');?>);
             font-weight: bold;
         }
         @font-face {
             font-family: 'Comfortaa';
-            src: url(<?php echo  plugins_url('twitcher/includes/assets/fonts/Comfortaa-Light.ttf');?>);
+            src: url(<?= plugins_url('twitcher/includes/assets/fonts/Comfortaa-Light.ttf');?>);
             font-weight: light;
         }
     </style>

@@ -1,7 +1,7 @@
-<div class="twchr_custom_card--contain">
+<div class="twchr_custom_card--contain postbox-container">
     <div class="twchr_card_header">
         <div class="twchr_card_header--title">
-            <img src="<?php echo TWCHR_URL_ASSETS.'twitch_logo.png'; ?>" alt="logo-twitch">
+            <img src="<?= plugins_url('/twitcher/includes/assets/twitch_logo.png') ?>" alt="logo-twitch">
             <h3>Twitch Developers 101</h3>
         </div>
         <div class="twchr_card_header-description">

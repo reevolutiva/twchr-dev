@@ -7,9 +7,9 @@
 <div class="twchr-for-back twchr-container">
     <article class='twchr-dashboard-card plugin-hello'>
         <picture>
-            <img src="<?php echo  plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
+            <img src="<?= plugins_url('/twitcher/includes/assets/Isologo_twitcher.svg')?>" alt="Logo Twitcher">
         </picture>
-        <h2><?php echo  __('Dashboard','twitcher'); ?></h2>
+        <h2><?= __('Dashboard','twitcher'); ?></h2>
     </article>
         <article>
             <h3><?php _e('Twitcher Data'); ?></h3>
@@ -36,7 +36,7 @@
                 <div class='hello-twchr-user'> 
                     <h2><?php printf('%s', $display_name);?></h2>                                
                     <p><?php printf('Description: %s', $description);?></p>
-                    <picture><img src="<?php echo  $foto ?>" alt="twchr-profile-picture"></picture>
+                    <picture><img src="<?= $foto ?>" alt="twchr-profile-picture"></picture>
                 </div>
                 <div class='keys-twchr twchr-data'> 
                 
@@ -44,29 +44,29 @@
                         <input type="hidden" name="post_type" value="twchr_streams">
                         <input type="hidden" name="page" value="twchr-dashboard">
                         <?php $clientID = !empty($twch_data_prime->{'client-id'}) ? $twch_data_prime->{'client-id'} : null ; ?>
-                        <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?php echo  $clientID?>">
+                        <input id="client-id" type="hidden" placeholder="Client ID" name="client-id" value="<?= $clientID?>">
                         <?php $clientSecret = !empty($twch_data_prime->{'client-secret'}) ?  $twch_data_prime->{'client-secret'} : null; ?>
-                        <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?php echo  $clientSecret ?>" disabled="true">
+                        <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?= $clientSecret ?>" disabled="true">
                         <div>
                             <p>Broadcaster Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : $broadcaster_type ?></p>
+                            <p class="twchr-key-value"><?= empty($broadcaster_type) ? 'undefined' : $broadcaster_type ?></p>
                         </div>
                         <div>
                             <p>Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($type) ? 'undefined' : $type ?></p>
+                            <p class="twchr-key-value"><?= empty($type) ? 'undefined' : $type ?></p>
                         </div>
                         <div>
                             <p>Created at</p>
-                            <p class="twchr-key-value created_at"><?php echo  $created_at ?></p>
+                            <p class="twchr-key-value created_at"><?= $created_at ?></p>
                             
                         </div>
                         <div>
                             <p>Client ID</p>
-                            <p class="twchr-key-value"><?php echo  $clientID?></p>
+                            <p class="twchr-key-value"><?= $clientID?></p>
                         </div>
                         <div>
                             <p>User login</p>
-                            <p class="twchr-key-value"><?php echo  $nombre ?></p>
+                            <p class="twchr-key-value"><?= $nombre ?></p>
                         </div>
                         <input type="submit" value="<?php esc_attr_e('Reconnect','twitcher');?>" name="renew" id='twchr_submitbutton' >
                         <?php 
@@ -75,9 +75,9 @@
                                     <script> 
                                         const wishexist = prompt('<?php _e('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','twitcher');?> y = yes & n = no.');
                                         if(wishexist === 'y' || wishexist === 'yes'){
-                                            location.href='<?php echo  site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
+                                            location.href='<?= site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
                                         }else{
-                                            location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard")?>';
+                                            location.href='<?=site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard")?>';
                                         }
                                     </script> 
                                 <?php
@@ -126,29 +126,29 @@
                     <tbody>
                         <tr>
                             <td><?php _e('View Count','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td> 
+                            <td data-twchr-final-number="<?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?= isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td> 
                         </tr>
                         <tr>
                             <td><?php _e('Suscribers','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 'null' ?></td>
+                            <td data-twchr-final-number="<?= isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?= isset($subcribers->{'total'}) ? $subcribers->{'total'} : 'null' ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Videos','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?>" class='twchr-results-item'><?php echo  isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?></td>
+                            <td data-twchr-final-number="<?= isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?>" class='twchr-results-item'><?= isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Most viewed','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['title'] : 'undefined' ?></td>
+                            <td data-twchr-final-number="<?= $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
+                            <td class="twchr-tooltip"><?= $mostViwed_from_api != false ? $mostViwed_from_api['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td><?php _e('Last Imported','twitcher'); ?></td>
-                            <td data-twchr-final-number="<?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['title'] : 'undefined' ?></td>
+                            <td data-twchr-final-number="<?= $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
+                            <td class="twchr-tooltip"><?= $mostViwed_from_wp != false ? $mostViwed_from_wp['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
-                                <a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>"><?php echo  __('Refresh','twitcher') ?></a>
+                                <a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>"><?= __('Refresh','twitcher') ?></a>
                                 
                             </td>
                         </tr>
@@ -161,8 +161,8 @@
                             $error = get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             ?>
                             <div class="error-card">
-                                <h3>Error: <?php echo  $error->{'status'} ?></h3>
-                                <p><?php echo  $error->{'message'} ?></p>
+                                <h3>Error: <?= $error->{'status'} ?></h3>
+                                <p><?= $error->{'message'} ?></p>
                             </div>
                         <?php
                         }else if($setInstaled < 3){
@@ -209,23 +209,23 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><?php echo  __('Renew Client ID','twitcher'); ?></td>
-                            <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'client-id'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
+                            <td><?= __('Renew Client ID','twitcher'); ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-id'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo  __('Renew Client Secret','twitcher'); ?></td>
-                            <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
+                            <td><?= __('Renew Client Secret','twitcher'); ?></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a class="btn" href="<?php echo  bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?php echo  __('Renew User Token','twitcher'); ?></a></td>
-                            <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
+                            <td><a class="btn" href="<?= bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?= __('Renew User Token','twitcher'); ?></a></td>
+                            <td class='twitch-connect__status'><?= isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a href="<?php echo  bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo  __('Renew App Token','twitcher'); ?></a></td>
-                            <td class='twitch-connect__status'><?php echo  $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
+                            <td><a href="<?= bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?= __('Renew App Token','twitcher'); ?></a></td>
+                            <td class='twitch-connect__status'><?= $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td class="btn-renew-apiKeys"><a href="<?php echo  site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
+                            <td class="btn-renew-apiKeys"><a href="<?= site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -337,8 +337,8 @@
                             <div class="twchr-modal-error">
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
-                                <p><b>Error: </b><?php echo  $validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
+                                <p><b>Error: </b><?= $validateTokenObject->{'message'} ?></p>
+                                <p><a href="<?= site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
                             </div>
                         <?php
                             die();

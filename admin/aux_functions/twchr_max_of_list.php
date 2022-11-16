@@ -1,18 +1,9 @@
 <?php
-/**
- * Give a list y choice the item most high from this list.
- *
- * @param array $list
- * @param integer $num
- * @param mixed $title_var
- * @param boolean $cf
- * @return void
- */
-function twchr_max_of_list(array $list,int $num, mixed $title_var, $cf = false){
+function twchr_max_of_list($list,$num,$title_var,$cf = false){
     $mostViwed = false;
     $viewed = array();
     foreach($list as $item){
-        $view=''; 
+        $view; 
         if($cf){
             $id = $item->{'ID'};
             $view = get_post_meta( $id, $num, true );
@@ -45,4 +36,3 @@ function twchr_max_of_list(array $list,int $num, mixed $title_var, $cf = false){
 
     return $mostViwed;
 }
-?>

@@ -22,8 +22,8 @@ function to_api_meta_box_content($post){
 	$select = isset($values['twchr_toApi_category']) ? $values['twchr_toApi_category'][0] : ''; 
 	?>
     <metabox>
-		<label >Fecha y hora<input type="datetime-local" name='twchr_toApi_dateTime' value="<?php echo  $dateTime;  ?>"></label>
-		<label >Duration (minutos)<input type="number" name="twchr_toApi_duration" value="<?php echo  $duration?>"></label>
+		<label >Fecha y hora<input type="datetime-local" name='twchr_toApi_dateTime' value="<?= $dateTime;  ?>"></label>
+		<label >Duration (minutos)<input type="number" name="twchr_toApi_duration" value="<?= $duration?>"></label>
 		<label>Categoria
 			<select name="twchr_toApi_category">  
 				<option value="509658" <?php selected( $select, 509658 ); ?>>Just Chating</option> 
