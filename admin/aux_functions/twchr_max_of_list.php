@@ -3,12 +3,12 @@
  * Give a list y choice the item most high from this list.
  *
  * @param array $list
- * @param mixed $num
- * @param mixed $title_var
+ * @param string $num
+ * @param string $title_var
  * @param boolean $cf
  * @return void
  */
-function twchr_max_of_list(array $list, mixed $num, mixed $title_var, $cf = false){
+function twchr_max_of_list(array $list, string $num, string  $title_var, bool $cf = false){
     $mostViwed = false;
     $viewed = array();
     foreach($list as $item){
