@@ -1,4 +1,4 @@
-=== Manage Twitch Account: Easy Wordpress Integration ===
+=== Manage Twitch Account: Easy API Integration ===
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed

@@ -1,6 +1,6 @@
 <?php
 /*
-* Plugin Name: Manage Twitch Account: Easy Wordpress Integration
+* Plugin Name: Manage Twitch Account: Easy API Integration
 * Plugin URI: twitcher.pro
 * Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
 * Version: 0.1.1
