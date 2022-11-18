@@ -253,7 +253,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
 
                 // Creo un fragmeto de HTML que me muestra el shorcode actualizado
                 // Ya que JS no escribe en Iframes y el campo de post_content es un iframe
-                GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
+                //GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
                 const alertCode = GSCJS.crearNodo('DIV');
                 alertCode.classList.add("modal-edit-shordcode");
                 alertCode.innerHTML = `<h3>Copy this shortcode and paste in the area to display video</h3><p style="width: 100%;display: grid;grid-template-columns: auto 1.5em;column-gap: 7pt;"><input style="border: none;width: 100%;" value='[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]'> <span class="modal-clipboard-button dashicons dashicons-clipboard"></span></p>`;
