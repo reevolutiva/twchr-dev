@@ -189,8 +189,14 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             });
             if(pos != 'not found'){
                 const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
-                GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
-                GSCJS.queryOnly("#titlewrap input").value = data.title; // Escribo el titulo del post
+                let titulo = data.title;
+                twchrFetchGet(location.origin+'/wp-json/twchr/twchr_get_streaming',(i)=>{
+                    // Pregunto si este video ya existe
+                    i.some(it => it.title == titulo) ? titulo = titulo+" (Duplicate)" : titulo = titulo; 
+                    GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
+                    GSCJS.queryOnly("#titlewrap input").value = titulo; // Escribo el titulo del post                    
+                },'json'); 
+
                 
                 postBox.forEach((input,index)=>{
                     switch (index) {
@@ -318,17 +324,20 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             "client-id": tchr_vars_admin.twchr_keys['client-id']
     }});
 
-    const stream_isset = document.querySelectorAll('.twchr_card_body--list ul li span.value');
-    const stream_isset_array = [];
+    const stream_isset = document.querySelectorAll('.twchr_card_body--list ul li span.value'); 
+    const stream_isset_array = []; // array vacio
+    
+    // Itera la loste de stream_isset
     for (let i = 0; i < stream_isset.length; i++) {
         const element = stream_isset[i];
-        console.log(element.innerText);
+        // Si element es igual a undefined marca true sino flase
         if(element.textContent === 'undefined'){
             stream_isset_array.push(true);
         }else{
             stream_isset_array.push(false)
         }        
     }
+
     if(stream_isset_array.every(item => item === true)){
         document.querySelector('.twchr_custom_card--contain').style.display = 'none';
     }
