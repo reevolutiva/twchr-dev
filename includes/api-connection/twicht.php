@@ -1,4 +1,5 @@
 <?php
+$domain = sanitize_text_field($_SERVER['SERVER_NAME']);
 
 function twchr_get_twicth_api($client_id,$client_secret){
   //$url = 'https://id.twitch.tv/oauth2/token?client_id=80i53du4hlrjvnp6yag1lzirzk2kpd&client_secret=oc3y4236g7hh43o6z3y3pd2mzlt3pn&grant_type=client_credentials';
@@ -76,7 +77,7 @@ function twchr_post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twc
       break;
     //case 401:
     case 401:
-      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.$domain.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
      
       break;
     //case 400:
@@ -130,7 +131,7 @@ function twchr_autenticate($api_key, $client_id,$redirect,$scope){
     }
     
 
-    $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
+    $urlRedirection = 'https://'.$domain.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";
     
   }else{
