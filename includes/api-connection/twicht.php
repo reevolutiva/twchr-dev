@@ -136,15 +136,15 @@ function twchr_autenticate($api_key, $client_id,$redirect,$scope){
     
   }else{
 
-  $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
-  $authUrl = $twitchtv->authenticate();
+    $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
+    $authUrl = $twitchtv->authenticate();
 
-  $msg = "<h3>Usted sera redirigido a Twcht en unos segundos</h3>";
-  $script = "<script>location.href ='$authUrl';</script>";
-  
-  echo $msg;
-  //echo $authUrl;
-  echo $script;
+    $msg = "<h3>Usted sera redirigido a Twcht en unos segundos</h3>";
+    $script = "<script>location.href ='$authUrl';</script>";
+    
+    echo esc_html($msg);
+    echo esc_js($script);
+
   }
 }
 
