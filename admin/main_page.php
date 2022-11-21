@@ -19,10 +19,10 @@
                 $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
             
                 $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+                //show_dump($twch_data_prime);
                 //$twch_data_prime_lengt = count($twch_data_prime);
                 $twch_data_app_token = get_option('twchr_app_token');
-            
-                
+                //show_dump($twch_data_app_token);
                 
                 if($data_broadcaster_raw != false):
                     $display_name = $data_broadcaster_raw->{'data'}[0]->{'display_name'};
@@ -98,14 +98,19 @@
         <article>
             <h3>Your Twitch Results:</h3>
             <?php 
-                $data_broadcaster = $data_broadcaster_raw->{'data'}[0];
-                $client_id = $twch_data_prime->{'client-id'};
-                $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+                $data_broadcaster = '';
+                $listVideo_from_api = false;
+                if($data_broadcaster_raw != false){
+                    $data_broadcaster = $data_broadcaster_raw->{'data'}[0];
+                    $client_id = $twch_data_prime->{'client-id'};
+                    $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-                $subcribers = twchr_get_subcribers($twch_data_app_token, $client_id);
-                             
-                $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
-                $listVideo_from_wp = twchr_get_stream();
+                    $subcribers = twchr_get_subcribers($twch_data_app_token, $client_id);
+                                
+                    $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                    $listVideo_from_wp = twchr_get_stream();
+                }
+                
                 //show_dump($listVideo_from_api->data[0]->view_count);
                 if($listVideo_from_api === false && get_option('twchr_setInstaled') <= 3){
                     
@@ -186,8 +191,8 @@
                     isset($_GET['client-id']) &&
                     isset($_GET['client-secret'])
                 ){
-                    $client_id = sanitize_text_field($_GET['client-id']);
-                    $client_secret = sanitize_text_field($_GET['client-secret']);
+                    $client_id = $_GET['client-id'];
+                    $client_secret = $_GET['client-secret'];
                     
                     fronted_to_db($client_secret, $client_id);
 
@@ -195,7 +200,7 @@
                     $twchr_token_app = twchr_get_twicth_api($client_id, $client_secret );
                     
                     // Guardo AppToken                    
-                    twchr_save_app_token(sanitize_key($twchr_token_app->{'access_token'}));
+                    twchr_save_app_token($twchr_token_app->{'access_token'});
 
                     // Paso 2 de la instalacion
                     update_option('twchr_setInstaled',2,true);
