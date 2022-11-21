@@ -59,6 +59,10 @@ define('TWCHR_URL', plugin_dir_url(__FILE__));
 
 define('TWCHR_URL_ASSETS', plugin_dir_url(__FILE__).'includes/assets/');
 
+define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
+
+$domain = sanitize_text_field($_SERVER['SERVER_NAME']);
+
 function twchr_activar(){
     
 }

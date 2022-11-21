@@ -1,5 +1,4 @@
 <?php
-$domain = sanitize_text_field($_SERVER['SERVER_NAME']);
 
 function twchr_get_twicth_api($client_id,$client_secret){
   //$url = 'https://id.twitch.tv/oauth2/token?client_id=80i53du4hlrjvnp6yag1lzirzk2kpd&client_secret=oc3y4236g7hh43o6z3y3pd2mzlt3pn&grant_type=client_credentials';

@@ -291,7 +291,7 @@
                                 );
 
                                 if(isset($_GET['twchr_id'])){
-                                    $term_id = $_GET['twchr_id'];
+                                    $term_id = sanitize_text_field($_GET['twchr_id']);
                                     $allData = '';
                                     update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                                 }
@@ -301,10 +301,10 @@
                         }
                     }
                     if (isset($_GET['code'])) {
-                        $client_id = $twch_data_prime->{'client-id'};
-                        $client_secret = $twch_data_prime->{'client-secret'};
-                        $code = $_GET['code'];
-                        $scope = $_GET['scope'];
+                        $client_id = sanitize_text_field($twch_data_prime->{'client-id'});
+                        $client_secret = sanitize_text_field($twch_data_prime->{'client-secret'});
+                        $code = sanitize_text_field($_GET['code']);
+                        $scope = sanitize_text_field($_GET['scope']);
                         $redirect = site_url('/wp-admin/edit.php?post_type=twchr_streams%26page=twchr-dashboard');
         
                         $response = twchr_validateToken($client_id,$client_secret,$code, $redirect);

@@ -168,7 +168,7 @@ function twchr_get_videos_function(){
                             $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
 
                             $list_videos = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
-                           
+           
                             $list_videos_array = $list_videos->{'data'};
                             // List de todos los post
                             $streams_id = explode(",",$_GET['streams_id']);
