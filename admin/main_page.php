@@ -154,7 +154,7 @@
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
-                                <a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>"><?php echo  __('Refresh','twitcher') ?></a>
+                                <a href="<?php echo TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php echo  __('Refresh','twitcher') ?></a>
                                 
                             </td>
                         </tr>
@@ -207,7 +207,7 @@
                       
                    
 
-                    echo "<script> location.href='https://".$_SERVER['SERVER_NAME']."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'; </script>";
+                    echo "<script> location.href='".TWCHR_HOME_URL."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'; </script>";
                 }
             }else{ ?>
             
@@ -283,14 +283,15 @@
                     }
                     
                     if(isset($_GET['autentication'])){
+                        //show_dump($twch_data_prime);
                         if ($_GET['autentication'] == true) {
-                            //show_dump($twch_data_prime);
+                            
                             if(!empty($twch_data_prime->{'client-secret'}) && 
                             !empty($twch_data_prime->{'client-id'})
                             ):
                                 $client_id = $twch_data_prime->{'client-id'};
                                 $secret_key = $twch_data_prime->{'client-secret'};
-                                $return = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard');
+                                $return = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
                                 $scope = array(
                                     "channel:manage:schedule"
                                 );
@@ -336,7 +337,7 @@
 
                             
                             echo "<h3>User Token actualizado actualizado correctamente</h3>";
-                            $urlRedirection = 'https://'.$_SERVER['SERVER_NAME'].'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+                            $urlRedirection = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
                             echo "<script>location.href='$urlRedirection'</script>";
                         }else{
                         ?>
@@ -362,7 +363,7 @@
                     if(isset($_GET['twch_api_error'])){
                         $data = str_replace('\\',"",$_GET['twch_api_error'],);
                         echo "<h4>".$data."</h4>";
-                        echo "<a href='https://".$_SERVER['SERVER_NAME']."/wp-admin/post.php?post=".$_GET['twch_post_id']."&action=edit'>voler a intentar</a>";
+                        echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".$_GET['twch_post_id']."&action=edit'>voler a intentar</a>";
                     }
                 }
             }

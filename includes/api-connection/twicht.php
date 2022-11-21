@@ -130,7 +130,7 @@ function twchr_autenticate($api_key, $client_id,$redirect,$scope){
     }
     
 
-    $urlRedirection = 'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
+    $urlRedirection = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";
     
   }else{
@@ -138,11 +138,12 @@ function twchr_autenticate($api_key, $client_id,$redirect,$scope){
     $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
     $authUrl = $twitchtv->authenticate();
 
-    $msg = "<h3>Usted sera redirigido a Twcht en unos segundos</h3>";
-    $script = "<script>location.href ='$authUrl';</script>";
+    $msg = '<h3>Usted sera redirigido a Twcht en unos segundos</h3>';
+    $script = '<script>location.href ="'.$authUrl.'";</script>';
     
     echo esc_html($msg);
-    echo esc_js($script);
+    echo $script;
+    
 
   }
 }
