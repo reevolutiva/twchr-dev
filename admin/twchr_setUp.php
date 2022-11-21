@@ -43,7 +43,7 @@
 		<section class="card-section form">
 			<h3>5</h3>
 			<h4><?php _e('Get your Client-id and your Client-secret from your app and paste at the following forms','twitcher');?></h4>
-			<form method='GET' action='https://<?php echo $domain?>/wp-admin/edit.php'>
+			<form method='GET' action='<?php echo TWCHR_HOME_URL?>/wp-admin/edit.php'>
 				<input type='hidden' name='post_type' value='twchr_streams'>
 				<input type='hidden' name='page' value='twchr-dashboard'>
 				<input type='hidden' name='from' value='setUp-plugin'>

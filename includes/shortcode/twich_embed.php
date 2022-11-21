@@ -32,7 +32,7 @@ function shorcode_twich_embed( $atts ) {
 			return $html;
 			break;
 		default:
-			$host = $sanitize_text_field(_SERVER['SERVER_NAME']);
+			$host = TWCHR_HOME_URL;
 			$url = "https://player.twitch.tv/?autoplay=true&chanel=".$atts['host']."&height=".$atts['alto']."&parent=".$host."&referrer=https%3A%2F%2F".$host."%2Ftest%2F&video=".$atts['video']."&width=".$atts['ancho'];
 			$idClass = 'twich-frame'.rand();
 			$html = "<twichcontainer id='".$idClass."'>
