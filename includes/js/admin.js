@@ -6,7 +6,7 @@
  * @param mode - json, blob, or text
  * @param [requestOptions=false] - This is an object that contains the request options.
  */
-async function twchrFetchGet (url, callback, mode, requestOptions=false){
+ async function twchrFetchGet (url, callback, mode, requestOptions=false){
     let get;
     if(requestOptions != false){
         get = await fetch(url,requestOptions);
