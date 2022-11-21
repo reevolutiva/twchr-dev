@@ -100,6 +100,7 @@
             <?php 
                 $data_broadcaster = '';
                 $listVideo_from_api = false;
+                $listVideo_from_wp = '';
                 if($data_broadcaster_raw != false){
                     $data_broadcaster = $data_broadcaster_raw->{'data'}[0];
                     $client_id = $twch_data_prime->{'client-id'};
@@ -107,11 +108,18 @@
 
                     $subcribers = twchr_get_subcribers($twch_data_app_token, $client_id);
                                 
-                    $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ? false : twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                    $listVideo_from_api = false;
+                    if(!isset(twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'})){
+                        if(twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ){
+                            $listVideo_from_api = false;
+                        }
+                    }else{
+                        $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                    }
+                                          
                     $listVideo_from_wp = twchr_get_stream();
                 }
                 
-                //show_dump($listVideo_from_api->data[0]->view_count);
                 if($listVideo_from_api === false && get_option('twchr_setInstaled') <= 3){
                     
                 }else{
