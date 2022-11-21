@@ -160,20 +160,20 @@ function serie_update($term_id) {
     $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
     $tag_name = '';
     /*
-        Si existe la variable $_POST['tag-name']
+        Si existe la variable 'tag-name'
         significa que se que la taxonomia se creo en el hook create-schedule
-        asi $tag-name valdra $_POST['tag-name']
+        asi $tag-name valdra 'tag-name'
     */
     if(isset($_POST['tag-name'])){
         $tag_name = sanitize_text_field($_POST['tag-name']);
 
     /*
-        Si no existe la variable $_POST['tag-name']
-        verifica que exista la variable $_POST['name']
+        Si no existe la variable 'tag-name'
+        verifica que exista la variable 'name'
 
-        Si la variable $_POST['name'] existe significa que 
+        Si la variable 'name' existe significa que 
         la taxonomia se creo en el hook edit-schedule
-        asi que $tag-name valdra $_POST['name']
+        asi que $tag-name valdra 'name'
     */    
     }elseif (isset($_POST['name'])) {
         $tag_name = $_POST['name'];
@@ -207,7 +207,6 @@ function twchr_redirect_setUp(){
             
         }
     }
-    //show_dump($dataUrl);
 }
 
 function twchr_twitch_video_exist($video_id,$token,$client_id){

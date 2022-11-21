@@ -114,7 +114,7 @@ function twchr_get_videos_function(){
             //$twch_data_prime_lengt = count($twch_data_prime);
     $twch_data_app_token = get_option('twchr_app_token');
     $get_length = COUNT($_GET);
-    $dataUrl = $_GET['post_type'];
+    $dataUrl = sanitize_term_field($_GET['post_type']);
     if($dataUrl == 'twchr_streams' && $get_length == 1):
         ?>
 <a style="text-decoration: none;display:inline-block;color:#fff;background-color: var(--twchr-purple);padding: .5em;border: 1px solid;border-radius: 5px;line-height: 1em;"
