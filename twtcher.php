@@ -165,7 +165,7 @@ function serie_update($term_id) {
         asi $tag-name valdra $_POST['tag-name']
     */
     if(isset($_POST['tag-name'])){
-        $tag_name = $_POST['tag-name'];
+        $tag_name = sanitize_text_field($_POST['tag-name']);
 
     /*
         Si no existe la variable $_POST['tag-name']
