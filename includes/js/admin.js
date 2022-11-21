@@ -605,7 +605,8 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
             const title = item.title;
             const date_raw = item.created_at; // Fecha en RFC
             let date = new Date(date_raw);
-            console.log(date);
+            //console.log(item);
+            //console.log(index);
             date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`; // fecha en formato dd/mm/yyyy
             Content += `<section class='twchr_modal_video_ajax'>
                             <label data-twchrDataPosition='${index}' for='twchr_videos_ajax-${title}'><span>${title}</span><span>${date}</span><span></span></label>
@@ -623,15 +624,27 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
         function twchr_verification_videos(WpData){
             const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
             chekeed.forEach((check, index) => { 
-                if(WpData.length > 1){
+                if(WpData.length > 1 && index < WpData.length ){
+    
                     const wp_id = WpData[index].twchr_id;
+                   
 
-                    data.forEach(item =>{
+                    data.forEach(item =>{                        
                         const twtch_id = parseInt(item.id);
+                    
                         if(wp_id === twtch_id){
-                            //console.log(twtch_stream);
-                            check.parentElement.children[0].children[2].classList.add('video-saved');
+                            /*
+                            console.log(item.title);
+                            console.log(WpData[index].title);
+                            console.log(index);
+                            */
+                            if(chekeed.some(elemento =>  elemento.value == wp_id)){
+                                const check_active = chekeed.find(e => e.value == wp_id);
+                                check_active.parentElement.children[0].children[2].classList.add('video-saved');
+                            }
                         }
+                    
+                        
                     });
 
                     

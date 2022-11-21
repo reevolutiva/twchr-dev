@@ -26,7 +26,7 @@ function twchr_fonts(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.4.83';
+    $version = 'beta.4.112';
     
     // Estilos
     wp_enqueue_style('admin-styles', plugins_url('twitcher/includes/css/admin.css'),array(),$version,'all');
