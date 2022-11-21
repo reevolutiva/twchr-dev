@@ -260,8 +260,8 @@
                 if(count($_GET) > 1){
                     if(isset($_GET['sincronizar'])){
                         if( isset($_GET['client-id']) && isset($_GET['client-secret'])){
-                            $client_id = $_GET['client-id'];
-                            $client_secret = $_GET['client-secret'];
+                            $client_id = sanitize_text_field($_GET['client-id']);
+                            $client_secret = sanitize_text_field($_GET['client-secret']);
                             $array_keys = array(
                                 'client-secret' => $client_secret,
                                 'client-id' => $client_id
