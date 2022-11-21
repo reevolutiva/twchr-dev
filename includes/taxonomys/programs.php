@@ -89,7 +89,7 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
 
     
     if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
-            $response = serie_update($term_id);
+            $response = twchr_serie_update($term_id);
             $allData = json_encode($response);
             //show_dump($response);
             //die();
@@ -106,16 +106,16 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
   add_action( 'edit_serie', 'twchr_taxnonomy_save', 10,5);
 
 
-  function serie_endpoint() {
+  function twchr_serie_endpoint() {
     register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'get_serie',
+        'callback' => 'twchr_api_get_serie',
     ) );
 }
 
-add_action( 'rest_api_init', 'serie_endpoint' );
+add_action( 'rest_api_init', 'twchr_serie_endpoint' );
 
-function get_serie( $request ) {
+function twchr_api_get_serie( $request ) {
     $args = array(
         'taxonomy' => 'serie',
         'hide_empty' => false
@@ -136,19 +136,6 @@ function get_serie( $request ) {
 
         array_push($response, $array_rest);
     }
- 
-    /*
-    $args = array(
-        'taxonomy'               => 'serie',
-        'orderby'                => 'name',
-        'order'                  => 'ASC',
-        'hide_empty'             => false,
-    );
-    $the_query = new WP_Term_Query($args);
-    foreach($the_query->get_terms() as $term){ 
-
-    }
-    */
 
     return $response;
 }

@@ -148,7 +148,7 @@ function twchr_token_validate($token){
 
 
 
-function serie_update($term_id) {
+function twchr_serie_update($term_id) {
 
     // Recoje data de BDD
     $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
