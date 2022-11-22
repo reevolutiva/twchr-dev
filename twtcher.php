@@ -46,6 +46,7 @@ require_once 'includes/twchr_get_videos.php';
 
 //Taxonomias
 require_once 'includes/taxonomys/programs.php';
+require_once 'includes/taxonomys/cat_twcht.php';
 
 // Enqueue
 require_once 'includes/assets/plugin_enqueue.php';
@@ -244,3 +245,13 @@ if(get_option('twchr_delete_all') == false){
 add_filter( 'postmeta_form_limit', function( $limit ) {
     return 100;
 } );
+
+function twchr_ajax_stream_sinlge(){
+    ?>
+        <label for="twchr_toApi_category_ajax"><?php _e('Category of Twitch','twitcher'); ?></label>
+        <div>
+            <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo  $select_name?>'>
+            <p><?php _e('Category of twitch stream','twitcher'); ?></p>
+        </div>
+    <?php
+}
