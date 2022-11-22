@@ -43,7 +43,7 @@ function register_twchr_stream() {
 											'comments',
 											'excerpt' 
 										),
-		'taxonomies'            => array( 'schedule','category','post_tag' ),
+		'taxonomies'            => array( 'schedule','category'),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
