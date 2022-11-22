@@ -246,12 +246,64 @@ add_filter( 'postmeta_form_limit', function( $limit ) {
     return 100;
 } );
 
-function twchr_ajax_stream_sinlge(){
-    ?>
-        <label for="twchr_toApi_category_ajax"><?php _e('Category of Twitch','twitcher'); ?></label>
-        <div>
-            <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo  $select_name?>'>
-            <p><?php _e('Category of twitch stream','twitcher'); ?></p>
-        </div>
-    <?php
+add_action('save_post','twchr_set_terms');
+function twchr_set_terms(){
+    $tax_input = $_POST['tax_input'];
+    $cat_twicht = explode(',',$tax_input['cat_twcht']);
+    $cat_twicht_lengt = COUNT($cat_twicht);
+
+
+
+    $response =  wp_remote_get(TWCHR_HOME_URL.'/wp-json/twchr/twchr_get_cat_twcht');
+    $list_categories = json_decode($response['body']);
+   
+    foreach($list_categories as $list){
+        $term_id = $list->{'term_id'};
+        $twchr_cat_id = $list->{'stream_category_id'};
+        $name_wp = $list->{'name'};
+        $twchr_cat_name = $list->{'stream_category_name'};
+        $twchr_cat_thumbail = $list->{'stream_category_name'};
+        
+        $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+        $client_id = $twch_data_prime->{'client-id'};
+        $app_token = get_option('twchr_app_token');
+
+        if(empty($twchr_cat_id)){
+           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $data = $response->{'data'};
+           foreach($data as $item){
+                $name_twcht = $item->{'name'};
+                if($name_twcht === $name_wp){
+                    update_term_meta($term_id,'twchr_stream_category_id',$item->id);
+                }
+           }
+           
+        }
+        if(empty($twchr_cat_name)){
+           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $data = $response->{'data'};
+           foreach($data as $item){
+                $name_twcht = $item->{'name'};
+                if($name_twcht === $name_wp){
+                    update_term_meta($term_id,'twchr_stream_category_name',$item->name);
+                }
+           }
+           
+        }
+        if(empty($twchr_cat_thumbail)){
+           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $data = $response->{'data'};
+           foreach($data as $item){
+                $name_twcht = $item->{'name'};
+                if($name_twcht === $name_wp){
+                    update_term_meta($term_id,'twchr_stream_category_thumbail',$item->{"box_art_url"});
+                }
+           }
+           
+        }
+        
+
+        //show_dump($list);   
+    }
+    //die();
 }

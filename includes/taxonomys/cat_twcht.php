@@ -93,3 +93,37 @@ function twchr_cat_twitch_save( $term_id, $tt_id ) {
   }
   add_action( 'edit_cat_twcht', 'twchr_cat_twitch_save', 10,5);
   add_action( 'create_cat_twcht', 'twchr_cat_twitch_save', 10,5);
+
+
+  function twchr_cat_twcht_endpoint() {
+    register_rest_route( 'twchr/', 'twchr_get_cat_twcht', array(
+        'methods'  => WP_REST_Server::READABLE,
+        'callback' => 'twchr_api_get_cat_twcht',
+    ) );
+}
+
+add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
+
+function twchr_api_get_cat_twcht( $request ) {
+    $args = array(
+        'taxonomy' => 'cat_twcht',
+        'hide_empty' => false
+    );
+    $request = get_terms($args);
+    $response = array();
+    foreach($request as $term){
+        $term_id = $term->{'term_id'};
+        $array_rest = array(
+            "term_id" => $term_id,
+            "name" => $term->{'name'},
+            "taxonomy" => $term->{'taxonomy'},
+            "stream_category_id" => get_term_meta($term_id,'twchr_stream_category_id',true),
+            "stream_category_name" => get_term_meta($term_id,'twchr_stream_category_name',true),
+            "stream_category_thumbail" => get_term_meta($term_id,'twchr_stream_category_thumbail',true)
+        );
+
+        array_push($response, $array_rest);
+    }
+
+    return $response;
+}

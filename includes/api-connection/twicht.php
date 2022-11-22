@@ -162,3 +162,19 @@ function twchr_get_subcribers($app_token, $client_id){
 
   return json_decode($response);
 }
+
+function twchr_get_categories($app_token, $client_id,$query){
+  $url = "https://api.twitch.tv/helix/search/categories?query=$query";
+  $args = array(
+      'headers'=> array(
+        'Authorization' => "Bearer $app_token",
+        'client-id' => $client_id
+      )
+  );
+              
+    $data = wp_remote_get($url,$args);
+
+    $response = json_decode(wp_remote_retrieve_body($data));
+
+    return $response;
+}
