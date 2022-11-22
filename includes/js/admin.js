@@ -512,6 +512,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
     const inputTxtCategory = document.querySelector("#twchr_toApi_category_ajax");
     const span = crearElemento("SPAN","btn");
+    span.classList.add("twchr-category-button-select");
     const twchr_modal = crearElemento("MODAL","twchr_modal");
     const padreInput = inputTxtCategory.parentElement;
     span.textContent = 'select';
@@ -683,4 +684,46 @@ if(getParameterByName('post_type') == 'twchr_streams' && getParameterByName('pag
 
         }
     }
+}
+
+
+if(document.querySelector("body").classList.contains("twchr-single-streaming-active")){
+    const span = crearElemento("SPAN","btn");
+    span.classList.add("twchr-category-button-select");
+    const twchr_modal = crearElemento("MODAL","twchr_modal");
+    span.textContent = 'select';
+    metaboxCategoryTwitch.classList.add("twchr_toApi_category_ajax--container");
+    metaboxCategoryTwitch.appendChild(span);
+    metaboxCategoryTwitch.appendChild(twchr_modal);
+
+    cat_twcht_submit.style.display = "none";
+
+    span.addEventListener('click',()=>{
+        const radios = document.querySelectorAll(".twchr_toApi_category_ajax_radio");
+        if(radios.length > 1){
+            radios.forEach(radio =>{
+                if(radio.checked === true){
+                    const optionName = radio.parentElement.children[0].textContent;
+                    document.querySelector("#twchr_toApi_category_value").value = radio.value;
+                    document.querySelector("#twchr_toApi_category_name").value = optionName;
+                    cat_twcht_input.value = optionName;
+                    span.style.display = "none";
+                    cat_twcht_submit.style.display = "block";
+                    
+                }
+            });
+        }
+
+        
+
+
+        twchr_modal.classList.remove('active');
+    });
+    cat_twcht_input.oninput = ()=>{
+        const query = cat_twcht_input.value;
+        const appToken = tchr_vars_admin.twchr_app_token;
+        const twch_data_prime = tchr_vars_admin.twchr_keys;
+        twchr_modal.classList.add('active');
+        getCategorysTwitch(appToken, twch_data_prime['client-id'], query);
+    }  
 }
