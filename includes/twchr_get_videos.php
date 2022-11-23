@@ -56,7 +56,7 @@ function twchr_get_videos_function_edit(){
 
         </style>
         <a class="twchr_button_get_videos"
-            href="<?php echo  bloginfo('url').$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
+            href="<?php echo  TWCHR_HOME_URL.$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
 
         <stream class="twchr_modal_get_videos twchr-modal">
             <div class="twchr-modal-selection_close">
@@ -119,7 +119,7 @@ function twchr_get_videos_function(){
     if($dataUrl == 'twchr_streams' && $get_length == 1):
         ?>
 <a style="text-decoration: none;display:inline-block;color:#fff;background-color: var(--twchr-purple);padding: .5em;border: 1px solid;border-radius: 5px;line-height: 1em;"
-    href="<?php echo  bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php _e('Import Twitch Streamings','twitcher')?></a>
+    href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php _e('Import Twitch Streamings','twitcher')?></a>
 <?php   
         
     endif; 

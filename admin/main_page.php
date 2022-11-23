@@ -37,7 +37,7 @@
                 <div class='hello-twchr-user'> 
                     <h2><?php printf('%s', $display_name);?></h2>                                
                     <p><?php printf('Description: %s', $description);?></p>
-                    <picture><img src="<?php echo  $foto ?>" alt="twchr-profile-picture"></picture>
+                    <picture><img src="<?php echo $foto ?>" alt="twchr-profile-picture"></picture>
                 </div>
                 <div class='keys-twchr twchr-data'> 
                 
@@ -76,7 +76,7 @@
                                     <script> 
                                         const wishexist = prompt('<?php _e('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','twitcher');?> y = yes & n = no.');
                                         if(wishexist === 'y' || wishexist === 'yes'){
-                                            location.href='<?php echo  site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
+                                            location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
                                         }else{
                                             location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard")?>';
                                         }
@@ -231,11 +231,11 @@
                             <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a class="btn" href="<?php echo  bloginfo('url')?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?php echo  __('Renew User Token','twitcher'); ?></a></td>
+                            <td><a class="btn" href="<?php echo  TWCHR_HOME_URL?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?php echo  __('Renew User Token','twitcher'); ?></a></td>
                             <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a href="<?php echo  bloginfo('url');?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo  __('Renew App Token','twitcher'); ?></a></td>
+                            <td><a href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo  __('Renew App Token','twitcher'); ?></a></td>
                             <td class='twitch-connect__status'><?php echo  $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
@@ -353,7 +353,7 @@
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
+                                <p><a href="<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
                             </div>
                         <?php
                             die();
