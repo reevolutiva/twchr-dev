@@ -59,17 +59,19 @@ function twchr_cat_twcht_edit_field($term,$taxonomy) {
     <div clasS="form-field">
         <label>
             <p>Twitcht Catergory ID</p>
-            <input type="number" name="twchr_stream_category_id" value="<?php echo $twchr_cat_id?>" placeholder="999"/>
+            <input type="number" name="twchr_stream_category_id" value="<?php twchr_esc_i18n($twchr_cat_id,'html')?>" placeholder="999"/>
         </label>
         <label>
             <p>Twitch Category Name</p>
-            <input type="text" name="twchr_stream_category_name" value="<?php echo $twchr_cat_name?>" placeholder="just-chatting"/>
+            <input type="text" name="twchr_stream_category_name" value="<?php twchr_esc_i18n($twchr_cat_name,'html')?>" placeholder="just-chatting"/>
         </label>
         <label>
             <p>Twitch Category Thubnail</p>
             <div style="display: grid;grid-template-columns:1fr 75px;">
-                <input style="height: 1cm;align-self: center;" type="text" name="twchr_stream_category_thumbail" value="<?php echo $twchr_cat_thumbail?>" placeholder="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
-                <img  src="<?php echo $twchr_cat_thumbail?>" alt="Twitcher Stream Category Thumbnail">
+                <input style="height: 1cm;align-self: center;" type="text" name="twchr_stream_category_thumbail" value="<?php twchr_esc_i18n($twchr_cat_thumbail,'html') ?>" placeholder="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
+                <?php if(!empty($twchr_cat_thumbail)): ?>
+                    <img  src="<?php twchr_esc_i18n($twchr_cat_thumbail,'html')?>" alt="Twitcher Stream Category Thumbnail">
+                <?php endif; ?>        
             </div>
         </label>
     </div>
@@ -127,6 +129,8 @@ function twchr_api_get_cat_twcht( $request ) {
 
         array_push($response, $array_rest);
     }
+
+    COUNT($response) === 0 ? $response = false : $response = $response;
 
     return $response;
 }
