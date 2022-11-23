@@ -78,6 +78,19 @@
     max-height: 150px;
 }
 
+#cat_twcht .twchr_modal{
+    position: static;
+    width: 120%;
+}
+#cat_twcht .twchr_modal section{
+    border-bottom:1px solid var(--twchr-purple) ;
+    align-items: center;
+    padding: 3pt 0;
+}
+
+#cat_twcht .twchr_modal section:last-child{
+    border-bottom: none;
+}
 .twchr_modal section{
     display: flex;
     justify-content: space-between;
