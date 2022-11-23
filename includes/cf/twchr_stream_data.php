@@ -31,7 +31,7 @@ function twchr_stream_data_meta_box_content($post){
 			<label >Fecha y hora del streming <input <?php echo  $dateTimeTwitch == false ? null : 'disabled'?> type="<?php echo  $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){echo $dateTimeTwitch; }else{echo $dateTime;}  ?>"></label>
 		</div>
 		<div>
-			<lablel><?php _e('Source Priority','twticher'); ?></lablel>
+			<lablel><?php twchr_esc_i18n('Source Priority','html'); ?></lablel>
 			<select name="twchr_stream_src_priority">
 				<option value="tw" <?php selected($select,'tw')?>>Twitch</option>
 				<option value="yt" <?php selected($select,'yt')?>>Youtube</option>

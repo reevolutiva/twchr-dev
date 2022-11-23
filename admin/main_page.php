@@ -10,10 +10,10 @@
         <picture>
             <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
         </picture>
-        <h2><?php echo  esc_html(__('Dashboard','twitcher')); ?></h2>
+        <h2><?php twchr_esc_i18n('Dashboard','html'); ?></h2>
     </article>
         <article>
-            <h3><?php _e('Twitcher Data'); ?></h3>
+            <h3><?php twchr_esc_i18n('Twitcher Data','html'); ?></h3>
             <div class="twchr-dashboard-card twchr-card-keys">
             <?php 
                 $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
@@ -74,7 +74,7 @@
                             if(isset($_GET['renew'])){
                                 ?>
                                     <script> 
-                                        const wishexist = prompt('<?php _e('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','twitcher');?> y = yes & n = no.');
+                                        const wishexist = prompt('<?php twchr_esc_i18n('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','html');?> y = yes & n = no.');
                                         if(wishexist === 'y' || wishexist === 'yes'){
                                             location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
                                         }else{
@@ -139,30 +139,30 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><?php _e('View Count','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('View Count','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td> 
                         </tr>
                         <tr>
-                            <td><?php _e('Suscribers','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('Suscribers','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 'null' ?></td>
                         </tr>
                         <tr>
-                            <td><?php _e('Videos','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('Videos','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?>" class='twchr-results-item'><?php echo  isset($listVideo_from_api) ? COUNT($listVideo_from_api->{'data'}) : 0 ?></td>
                         </tr>
                         <tr>
-                            <td><?php _e('Most viewed','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('Most viewed','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
                             <td class="twchr-tooltip"><?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
-                            <td><?php _e('Last Imported','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('Last Imported','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
                             <td class="twchr-tooltip"><?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['title'] : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
-                                <a href="<?php echo TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php echo  __('Refresh','twitcher') ?></a>
+                                <a href="<?php echo TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php twchr_esc_i18n('Refresh','html') ?></a>
                                 
                             </td>
                         </tr>
@@ -223,23 +223,23 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><?php echo  __('Renew Client ID','twitcher'); ?></td>
+                            <td><?php   twchr_esc_i18n('Renew Client ID','html'); ?></td>
                             <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'client-id'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><?php echo  __('Renew Client Secret','twitcher'); ?></td>
+                            <td><?php twchr_esc_i18n('Renew Client Secret','html'); ?></td>
                             <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'client-secret'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a class="btn" href="<?php echo  TWCHR_HOME_URL?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?php echo  __('Renew User Token','twitcher'); ?></a></td>
+                            <td><a class="btn" href="<?php echo  TWCHR_HOME_URL?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true"><?php twchr_esc_i18n('Renew User Token','html'); ?></a></td>
                             <td class='twitch-connect__status'><?php echo  isset($twch_data_prime->{'user_token'}) != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td><a href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo  __('Renew App Token','twitcher'); ?></a></td>
+                            <td><a href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo twchr_esc_i18n('Renew App Token','html'); ?></a></td>
                             <td class='twitch-connect__status'><?php echo  $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td class="btn-renew-apiKeys"><a href="<?php echo  site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php _e('Renew all','twitcher'); ?></a></td>
+                            <td class="btn-renew-apiKeys"><a href="<?php echo  site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php twchr_esc_i18n('Renew all','html'); ?></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -353,7 +353,7 @@
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php _e('Back SetUp','twitcher'); ?></a></p>
+                                <p><a href="<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php twchr_esc_i18n('Back SetUp','html'); ?></a></p>
                             </div>
                         <?php
                             die();

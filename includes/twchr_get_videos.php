@@ -55,15 +55,15 @@ function twchr_get_videos_function_edit(){
             }
 
         </style>
-        <a class="twchr_button_get_videos"
-            href="<?php echo  TWCHR_HOME_URL.$_SERVER['REQUEST_URI']?>"><?php _e('Asign Twitch Streaming','twitcher')?></a>
+        <a class="twchr_button_get_videos"'
+            href="<?php twchr_esc_i18n(TWCHR_HOME_URL.$_SERVER['REQUEST_URI'],'html')  ?>"><?php twchr_esc_i18n('Asign Twitch Streaming','html')?></a>
 
         <stream class="twchr_modal_get_videos twchr-modal">
             <div class="twchr-modal-selection_close">
                 x
             </div>
             <div class="twchr-modal-selection__info">
-                <h3><?php _e('Asign video to post','twitcher') ?></h3>
+                <h3><?php twchr_esc_i18n('Asign video to post','html') ?></h3>
 
                 <picture>
                     <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg';?>" alt="logo-twitcher">
@@ -72,10 +72,10 @@ function twchr_get_videos_function_edit(){
 
             <div id="twchr_button_get_videos__content">
                 <ul class="twchr-modal-selection__list">
-                    <li><?php echo  __('Streaming name','twitcher'); ?></li>
-                    <li><?php echo  __('Date','twitcher'); ?></li>
-                    <li><?php echo  __('Already saved?','twitcher'); ?></li>
-                    <li><?php echo  __('Import','twitcher'); ?></li>
+                    <li><?php twchr_esc_i18n('Streaming name','html'); ?></li>
+                    <li><?php twchr_esc_i18n('Date','html'); ?></li>
+                    <li><?php twchr_esc_i18n('Already saved?','html'); ?></li>
+                    <li><?php twchr_esc_i18n('Import','html'); ?></li>
                 </ul>
                 <div class="content">
 
@@ -84,11 +84,11 @@ function twchr_get_videos_function_edit(){
 
             <div class="twchr-modal-footer">
                 <span class="twchr_help_button">
-                    <p><?php _e('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','twitcher'); ?>
+                    <p><?php twchr_esc_i18n('The folowing list is the avaiable videos in your twitch account. Select the video that you want to asign to this post.','html'); ?>
                     </p>
                     
                 </span>
-                <button id="twchr-modal-selection__btn"><?php echo  __('Asign','twitcher');?></button>
+                <button id="twchr-modal-selection__btn"><?php twchr_esc_i18n('Asign','html');?></button>
             </div>
         </stream>
         <script>
@@ -119,7 +119,7 @@ function twchr_get_videos_function(){
     if($dataUrl == 'twchr_streams' && $get_length == 1):
         ?>
 <a style="text-decoration: none;display:inline-block;color:#fff;background-color: var(--twchr-purple);padding: .5em;border: 1px solid;border-radius: 5px;line-height: 1em;"
-    href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php _e('Import Twitch Streamings','twitcher')?></a>
+    href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&get_thing=videos_ajax"><?php twchr_esc_i18n('Import Twitch Streamings','html')?></a>
 <?php   
         
     endif; 
@@ -218,7 +218,7 @@ function twchr_get_videos_function(){
                                     x
                                 </div>
                                 <div class="twchr-modal-selection__info">
-                                    <h3><?php _e('Importing Twitch Videos to Streaming Post Tool','twitcher') ?></h3>
+                                    <h3><?php twchr_esc_i18n('Importing Twitch Videos to Streaming Post Tool','html') ?></h3>
 
                                     <picture>
                                         <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg';?>" alt="logo-twitcher">
@@ -227,19 +227,19 @@ function twchr_get_videos_function(){
 
                                 <div id="twchr-modal-selection__content">
                                     <ul class="twchr-modal-selection__list">
-                                        <li><?php echo  __('Streaming name','twitcher'); ?></li>
-                                        <li><?php echo  __('Date','twitcher'); ?></li>
-                                        <li><?php echo  __('Already saved?','twitcher'); ?></li>
-                                        <li><?php echo  __('Import','twitcher'); ?></li>
+                                        <li><?php twchr_esc_i18n('Streaming name','html'); ?></li>
+                                        <li><?php twchr_esc_i18n('Date','html'); ?></li>
+                                        <li><?php twchr_esc_i18n('Already saved?','html'); ?></li>
+                                        <li><?php twchr_esc_i18n('Import','html'); ?></li>
                                     </ul>
                                 </div>
 
                                 <div class="twchr-modal-footer">
                                     <span class="twchr_help_button">
-                                        <p><?php _e('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','twitcher'); ?>
+                                        <p><?php twchr_esc_i18n('The following list is the avaible videos in your Twitch account. The videos whit “ok” marc are already saved as post type Streaming. Select te videos and press import button to create a new post for your video streaming.','html'); ?>
                                         </p>
                                     </span>
-                                    <button id="twchr-modal-selection__btn"><?php echo  __('Import','twitcher');?></button>
+                                    <button id="twchr-modal-selection__btn"><?php twchr_esc_i18n('Import','html');?></button>
                                 </div>
                             </stream>
                             <script>
