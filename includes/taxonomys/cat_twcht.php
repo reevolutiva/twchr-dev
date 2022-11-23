@@ -41,7 +41,7 @@ function twchr_cat_twcht_create_field(){
         </label>
         <label>
             <p>Twitch Category Thubnail</p>
-            <input type="text" name="twchr_stream_category_thumbail" value="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
+            <input type="text" name="twchr_stream_category_thumbail" placeholder="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
         </label>
     </div>
     <?php
@@ -63,11 +63,14 @@ function twchr_cat_twcht_edit_field($term,$taxonomy) {
         </label>
         <label>
             <p>Twitch Category Name</p>
-            <input type="text" name="twchr_stream_category_name" value="" placeholder="just-chatting"/>
+            <input type="text" name="twchr_stream_category_name" value="<?php echo $twchr_cat_name?>" placeholder="just-chatting"/>
         </label>
         <label>
             <p>Twitch Category Thubnail</p>
-            <input type="text" name="twchr_stream_category_thumbail" value="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
+            <div style="display: grid;grid-template-columns:1fr 75px;">
+                <input style="height: 1cm;align-self: center;" type="text" name="twchr_stream_category_thumbail" value="<?php echo $twchr_cat_thumbail?>" placeholder="https://static-cdn.jtvnw.net/ttv-boxart/33214-52x72.jpg" />
+                <img  src="<?php echo $twchr_cat_thumbail?>" alt="Twitcher Stream Category Thumbnail">
+            </div>
         </label>
     </div>
     <?php

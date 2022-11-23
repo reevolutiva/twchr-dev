@@ -248,11 +248,8 @@ add_filter( 'postmeta_form_limit', function( $limit ) {
 
 add_action('save_post','twchr_set_terms');
 function twchr_set_terms(){
-    $tax_input = $_POST['tax_input'];
-    $cat_twicht = explode(',',$tax_input['cat_twcht']);
-    $cat_twicht_lengt = COUNT($cat_twicht);
 
-
+    // Aqui estaba tax_input
 
     $response =  wp_remote_get(TWCHR_HOME_URL.'/wp-json/twchr/twchr_get_cat_twcht');
     $list_categories = json_decode($response['body']);
