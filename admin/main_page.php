@@ -10,7 +10,7 @@
         <picture>
             <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
         </picture>
-        <h2><?php echo  __('Dashboard','twitcher'); ?></h2>
+        <h2><?php echo  esc_html(__('Dashboard','twitcher')); ?></h2>
     </article>
         <article>
             <h3><?php _e('Twitcher Data'); ?></h3>

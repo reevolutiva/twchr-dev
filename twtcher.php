@@ -15,6 +15,7 @@
 
 //setings
 require_once 'includes/dev_functions.php';
+require_once 'admin/aux_functions/twchr_i18n.php';
 
 require_once 'includes/api-connection/twicht.php';
 require_once 'includes/api-connection/twichtv.php';
