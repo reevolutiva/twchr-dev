@@ -172,7 +172,8 @@ function twchr_get_videos_function(){
            
                             $list_videos_array = $list_videos->{'data'};
                             // List de todos los post
-                            $streams_id = explode(",",$_GET['streams_id']);
+                            $streams_id = sanitize_text_field($_GET['streams_id']);
+                            $streams_id = explode(",",$streams_id);
                             $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
                             $data_broadcaster = $data_broadcaster->data[0];
                             $twitch_chanel = $data_broadcaster->login;
