@@ -201,7 +201,7 @@ function twchr_get_videos_function(){
                             }
                             
                         }else{
-                            wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true'));
+                            //wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true'));
                             exit;
                         }
                         

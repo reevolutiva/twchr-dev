@@ -50,24 +50,24 @@
                         <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?php echo sanitize_key($clientSecret) ?>" disabled="true">
                         <div>
                             <p>Broadcaster Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : $broadcaster_type ?></p>
+                            <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : sanitize_text_field($broadcaster_type) ?></p>
                         </div>
                         <div>
                             <p>Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($type) ? 'undefined' : $type ?></p>
+                            <p class="twchr-key-value"><?php echo  empty($type) ? 'undefined' : sanitize_text_field($type) ?></p>
                         </div>
                         <div>
                             <p>Created at</p>
-                            <p class="twchr-key-value created_at"><?php echo  $created_at ?></p>
+                            <p class="twchr-key-value created_at"><?php echo  sanitize_text_field($created_at) ?></p>
                             
                         </div>
                         <div>
                             <p>Client ID</p>
-                            <p class="twchr-key-value"><?php echo  $clientID?></p>
+                            <p class="twchr-key-value"><?php echo sanitize_text_field($clientID) ?></p>
                         </div>
                         <div>
                             <p>User login</p>
-                            <p class="twchr-key-value"><?php echo  $nombre ?></p>
+                            <p class="twchr-key-value"><?php echo sanitize_text_field($nombre) ?></p>
                         </div>
                         <input type="submit" value="<?php esc_attr_e('Reconnect','twitcher');?>" name="renew" id='twchr_submitbutton' >
                         <?php 
@@ -371,7 +371,7 @@
                     if(isset($_GET['twch_api_error'])){
                         $data = str_replace('\\',"",$_GET['twch_api_error'],);
                         echo "<h4>".$data."</h4>";
-                        echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".$_GET['twch_post_id']."&action=edit'>voler a intentar</a>";
+                        echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".sanitize_text_field($_GET['twch_post_id'])."&action=edit'>voler a intentar</a>";
                     }
                 }
             }

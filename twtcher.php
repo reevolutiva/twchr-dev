@@ -246,14 +246,15 @@ add_filter( 'postmeta_form_limit', function( $limit ) {
     return 100;
 } );
 
-add_action('save_post','twchr_set_terms');
+add_action('set_object_terms','twchr_set_terms');
 function twchr_set_terms(){
 
     // Aqui estaba tax_input
 
     $response =  wp_remote_get(TWCHR_HOME_URL.'/wp-json/twchr/twchr_get_cat_twcht');
-    $list_categories = json_decode($response['body']);
-   
+    $list_categories = wp_remote_retrieve_body($response);
+    $list_categories = json_decode($list_categories);
+
     foreach($list_categories as $list){
         $term_id = $list->{'term_id'};
         $twchr_cat_id = $list->{'stream_category_id'};
