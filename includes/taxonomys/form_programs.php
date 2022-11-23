@@ -36,7 +36,7 @@
         <input type="number" id="twchr_toApi_duration" name="twchr_toApi_duration" value="<?php echo $duration?>">
         <p><?php twchr_esc_i18n('Average time that your transmission lasts.','html');?></p>
     </div>
-    <label for="twchr_toApi_category_ajax"><?php twchr_esc_i18n('Category of Twitch','html'); ?></label>
+    <label for="twchr_toApi_category_ajax"><?php twchr_esc_i18n("Twitch's category",'html'); ?></label>
     <div>
         <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo  $select_name?>'>
         <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
