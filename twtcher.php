@@ -251,18 +251,31 @@ add_action('set_object_terms','twchr_set_terms');
 function twchr_set_terms(){
 
     // Aqui estaba tax_input
+    $args = array(
+        'taxonomy' => 'cat_twcht',
+        'hide_empty' => false
+    );
+    $request = get_terms($args);
+    $list_categories = array();
+    foreach($request as $term){
+        $term_id = $term->{'term_id'};
+        $array_rest = array(
+            "term_id" => $term_id,
+            "name" => $term->{'name'},
+            "taxonomy" => $term->{'taxonomy'},
+            "stream_category_id" => get_term_meta($term_id,'twchr_stream_category_id',true),
+            "stream_category_name" => get_term_meta($term_id,'twchr_stream_category_name',true),
+            "stream_category_thumbail" => get_term_meta($term_id,'twchr_stream_category_thumbail',true)
+        );
 
-    $response =  wp_remote_get(TWCHR_HOME_URL.'/wp-json/twchr/twchr_get_cat_twcht');
-    $list_categories = wp_remote_retrieve_body($response);
-    $list_categories = json_decode($list_categories);
-    show_dump($response);
-    die();
+        array_push($list_categories, $array_rest);
+    }
     foreach($list_categories as $list){
-        $term_id = $list->{'term_id'};
-        $twchr_cat_id = $list->{'stream_category_id'};
-        $name_wp = $list->{'name'};
-        $twchr_cat_name = $list->{'stream_category_name'};
-        $twchr_cat_thumbail = $list->{'stream_category_name'};
+        $term_id = $list['term_id'];
+        $twchr_cat_id = $list['stream_category_id'];
+        $name_wp = $list['name'];
+        $twchr_cat_name = $list['stream_category_name'];
+        $twchr_cat_thumbail = $list['stream_category_name'];
         
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
         $client_id = $twch_data_prime->{'client-id'};

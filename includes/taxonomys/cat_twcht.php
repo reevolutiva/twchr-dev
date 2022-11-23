@@ -128,5 +128,7 @@ function twchr_api_get_cat_twcht( $request ) {
         array_push($response, $array_rest);
     }
 
+    COUNT($response) === 0 ? $response = false : $response = $response;
+
     return $response;
 }
