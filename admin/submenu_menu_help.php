@@ -23,13 +23,13 @@ if(isset($_GET['twchr_set_clear_all']) ){
 </style>
 <div class="twchr-for-back-broadcast container">
     <h1>Help</h1>
-    <h3><?php _e('Mail your support requests to  contacto@twitcher.pro','twittcher'); ?></h3>
-    <p><a href='https://twitcher.pro/'><?php _e('More information visite https://twitcher.pro/','twittcher'); ?></a></p>
+    <h3><?php twchr_esc_i18n('Mail your support requests to  contacto@twitcher.pro','html'); ?></h3>
+    <p><a href='https://twitcher.pro/'><?php twchr_esc_i18n('More information visite https://twitcher.pro/','html'); ?></a></p>
     </hr>
     <form action="./edit.php" method="get">
         <input type="hidden" name="post_type" value="twchr_streams">
         <input type="hidden" name="page" value="twchr_help">
-        <p><?php _e('Remove all Twitcher data on uninstall','twitcher'); ?></p>
+        <p><?php twchr_esc_i18n('Remove all Twitcher data on uninstall','html'); ?></p>
         <label>
             on
             <input type="radio" name="twchr_set_clear_all" value="1" >
@@ -38,7 +38,7 @@ if(isset($_GET['twchr_set_clear_all']) ){
             off
             <input type="radio" name="twchr_set_clear_all" value="0" >
         </label>
-        <input type="submit" value="<?php _e('save','twitcher')?>">
+        <input type="submit" value="<?php twchr_esc_i18n('save','html')?>">
     </form> 
     <h3>Setup</h3>
     <a class="twchr-btn-general" href="<?php echo  site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');?>">Run Setup</a>  

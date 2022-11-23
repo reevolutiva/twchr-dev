@@ -26,26 +26,26 @@
     }
 </style>
 <div class='twchr_toApi_form-field'>
-    <label for="twchr_toApi_dateTime"><?php _e('Date and Time','twitcher'); ?></label>
+    <label for="twchr_toApi_dateTime"><?php twchr_esc_i18n('Date and Time','html'); ?></label>
     <div>
         <input type="datetime-local" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $dateTime?>">
-        <p><?php _e('The recurring date your stream aired.','twitcher') ?></p>
+        <p><?php twchr_esc_i18n('The recurring date your stream aired.','html') ?></p>
     </div>
-    <label for="twchr_toApi_duration"><?php _e('Duration','twitcher'); ?></label>
+    <label for="twchr_toApi_duration"><?php twchr_esc_i18n('Duration','html'); ?></label>
     <div>
         <input type="number" id="twchr_toApi_duration" name="twchr_toApi_duration" value="<?php echo $duration?>">
-        <p><?php _e('Average time that your transmission lasts.','twitcher');?></p>
+        <p><?php twchr_esc_i18n('Average time that your transmission lasts.','html');?></p>
     </div>
-    <label for="twchr_toApi_category_ajax"><?php _e('Category of Twitch','twitcher'); ?></label>
+    <label for="twchr_toApi_category_ajax"><?php twchr_esc_i18n('Category of Twitch','html'); ?></label>
     <div>
         <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo  $select_name?>'>
-        <p><?php _e('Category of twitch stream','twitcher'); ?></p>
+        <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
     </div>
     <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo  $select_value?>'>
     <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo  $select_name?>'>
-    <label for="twchr_fromApi_allData"><?php _e('All Data','twitcher');?></label>
+    <label for="twchr_fromApi_allData"><?php twchr_esc_i18n('All Data','html');?></label>
     <div>
         <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo  $allData;?>'>
-        <p><?php _e('Data from Twitch','twitcher');?></p>
+        <p><?php twchr_esc_i18n('Data from Twitch','html');?></p>
     </div>
 </div>

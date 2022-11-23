@@ -49,22 +49,6 @@ function twchr_taxonomy_serie() {
 }
 
 function twchr_taxnonomy_save( $term_id, $tt_id ) {
-    // Comprobamos si se ha definido el nonce.
-    
-    /*
-    if ( ! isset( $_POST['serie_cf_nonce'] ) ) {
-      return $term_id;
-    }
-    $nonce = $_POST['serie_cf_nonce'];
-            // Verificamos que el nonce es válido.
- 
-   if ( !wp_verify_nonce( $nonce, 'serie_cf' ) ) {
-      return $term_id;
-    }
-    */
-
-    
-    
     
     $dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
     $duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
