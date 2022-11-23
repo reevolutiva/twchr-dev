@@ -104,12 +104,24 @@ function twchr_main_menu(){
         'twchr_help',
         'twchr_menu_help',
     );
+
+    add_submenu_page(
+        'edit.php?post_type=twchr_streams',
+        __('ToDo list','twitcher'),
+        __('ToDo list','twitcher'),
+        'manage_options',
+        'twchr_todo_list',
+        'twchr_todo_list',
+    );
     
     
 }
 
 add_action('admin_menu','twchr_main_menu');
 
+function twchr_todo_list(){
+    require_once 'admin/todo_list.php';
+}
 
 function twchr_cf_db_exist($key,$value){
     global $wpdb;
