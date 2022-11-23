@@ -182,7 +182,7 @@ function twchr_serie_update($term_id) {
         asi que $tag-name valdra 'name'
     */    
     }elseif (isset($_POST['name'])) {
-        $tag_name = $_POST['name'];
+        $tag_name = sanitize_text_field($_POST['name']);
     }
     // Envia los datos a la API de twich
     return twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
@@ -254,7 +254,8 @@ function twchr_set_terms(){
     $response =  wp_remote_get(TWCHR_HOME_URL.'/wp-json/twchr/twchr_get_cat_twcht');
     $list_categories = wp_remote_retrieve_body($response);
     $list_categories = json_decode($list_categories);
-
+    show_dump($response);
+    die();
     foreach($list_categories as $list){
         $term_id = $list->{'term_id'};
         $twchr_cat_id = $list->{'stream_category_id'};
