@@ -50,24 +50,24 @@
                         <input id="client-secret" type="hidden" placeholder="Client Secret" name="client-secret" value="<?php echo sanitize_key($clientSecret) ?>" disabled="true">
                         <div>
                             <p>Broadcaster Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : sanitize_text_field($broadcaster_type) ?></p>
+                            <p class="twchr-key-value"><?php echo  empty($broadcaster_type) ? 'undefined' : esc_html($broadcaster_type) ?></p>
                         </div>
                         <div>
                             <p>Type</p>
-                            <p class="twchr-key-value"><?php echo  empty($type) ? 'undefined' : sanitize_text_field($type) ?></p>
+                            <p class="twchr-key-value"><?php echo  empty($type) ? 'undefined' : esc_html($type) ?></p>
                         </div>
                         <div>
                             <p>Created at</p>
-                            <p class="twchr-key-value created_at"><?php echo  sanitize_text_field($created_at) ?></p>
+                            <p class="twchr-key-value created_at"><?php echo esc_html($created_at) ?></p>
                             
                         </div>
                         <div>
                             <p>Client ID</p>
-                            <p class="twchr-key-value"><?php echo sanitize_text_field($clientID) ?></p>
+                            <p class="twchr-key-value"><?php echo esc_html($clientID) ?></p>
                         </div>
                         <div>
                             <p>User login</p>
-                            <p class="twchr-key-value"><?php echo sanitize_text_field($nombre) ?></p>
+                            <p class="twchr-key-value"><?php echo esc_html($nombre) ?></p>
                         </div>
                         <input type="submit" value="<?php esc_attr_e('Reconnect','twitcher');?>" name="renew" id='twchr_submitbutton' >
                         <?php 
