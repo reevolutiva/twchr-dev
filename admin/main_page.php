@@ -199,8 +199,8 @@
                     isset($_GET['client-id']) &&
                     isset($_GET['client-secret'])
                 ){
-                    $client_id = $_GET['client-id'];
-                    $client_secret = $_GET['client-secret'];
+                    $client_id = sanitize_text_field($_GET['client-id']);
+                    $client_secret = sanitize_text_field($_GET['client-secret']);
                     
                     fronted_to_db($client_secret, $client_id);
 
