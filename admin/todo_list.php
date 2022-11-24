@@ -1,16 +1,3 @@
-<?php 
-    $array = [  "Agendar Stream",
-                "Notificar por Discord",
-                "Notificar por Faceboock",
-                "Notificar por Twiter",
-                "Iniciar Transmicion",
-                "Insertar Live en un post",
-                "Descargar Live",
-                "Importar Live como Streming",
-                "Subir Streming a YouTube",
-                "Cambiar fuente de Streaming de Twitch a YouTube"
-            ];
-?>
 <style>
     .twchr_todo_list ul li label{
         display: flex;
@@ -42,17 +29,33 @@
 <div class="twchr-container">
     <div class="twchr_todo_list">
         <ul>
-        <?php foreach($array as $key => $item): ?>
-            <li class=""> <label> <span><?php echo $key?></span> <h3><?php echo $item?></h3> <input type="checkbox" name="twchr_todo_list" > </label></li>
-        <?php endforeach;?>
         </ul>
     </div>
 </div>
 
 <script>
+    const  array = [  "Agendar Stream",
+                "Notificar por Discord",
+                "Notificar por Faceboock",
+                "Notificar por Twiter",
+                "Iniciar Transmicion",
+                "Insertar Live en un post",
+                "Descargar Live",
+                "Importar Live como Streming",
+                "Subir Streming a YouTube",
+                "Cambiar fuente de Streaming de Twitch a YouTube"
+            ];
     const todo_list = document.querySelector(".twchr_todo_list ul");
-    const items_list = todo_list.querySelectorAll("input");
+    
 
+    // Render todo_list
+    array.forEach((value, key) => {
+        const li = `  <li class=""> <label> <span>${key}</span> <h3>${value}</h3> <input type="checkbox" name="twchr_todo_list" > </label></li>`;
+        todo_list.innerHTML = todo_list.innerHTML + li;
+    });
+
+    const items_list = todo_list.querySelectorAll("input");
+    
     [...todo_list.querySelectorAll("li")].forEach( (li, index) => {
         li.addEventListener('click',(e)=>{
             //console.log(e.target);
@@ -60,4 +63,5 @@
         });
     }
     );
+    
 </script>
