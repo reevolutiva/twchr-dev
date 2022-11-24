@@ -32,7 +32,7 @@ function twchr_admin_js() {
     wp_enqueue_style('admin-styles', plugins_url('twitcher/includes/css/admin.css'),array(),$version,'all');
 
     // Scripts
-    wp_enqueue_script('twchr_gscjs',plugins_url('twitcher/includes/js/gscjs.js'),array(),$version,true);
+    wp_enqueue_script('twchr_gscjs',plugins_url('twitcher/includes/js/gscjs.js'),array(),$version,false);
     wp_register_script('twchr_custom_script',plugins_url('twitcher/includes/js/admin.js'),array(),$version,true);
     wp_enqueue_script('twchr_custom_script');
 
