@@ -57,6 +57,7 @@ function create_strg_secret(str_lg){
 }
 
 
+
 const twchrFrontEndCounter = (nodeTarget,time) =>{
     const finalNumber = parseInt(nodeTarget.getAttribute('data-twchr-final-number'));
     let currentNumber = 0;
