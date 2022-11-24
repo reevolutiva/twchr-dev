@@ -247,7 +247,7 @@
 
         <?php 
             if(isset($_GET['app_token_action'])){
-                switch ($_GET['app_token_action']) {
+                switch (sanitize_text_field($_GET['app_token_action'])) {
                     case 'update':
                         
                         $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
