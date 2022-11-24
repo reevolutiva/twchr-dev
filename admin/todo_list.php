@@ -29,6 +29,7 @@
         <ul>
         </ul>
     </div>
+    <input type="text" id="twchr_toDo_field">
 </div>
 
 <script>
@@ -67,14 +68,15 @@
 
             [...todo_list.querySelectorAll("li")].forEach( (li_1, index_1) => {
                 if(items_list[index_1].checked == false){
-                    //const pos = todoListUpdateState.indexOf(li.querySelector("span").innerText);
-                    console.log(index_1);
-            
+                    if(todoListUpdateState.includes(index_1)){
+                        const pos = todoListUpdateState.indexOf(index_1);
+                        todoListUpdateState.splice(pos, 1);               
+                    }
                 }
-                
             });
             
-            console.log(todoListUpdateState);  
+            document.querySelector("#twchr_toDo_field").value = JSON.stringify(todoListUpdateState);
+            //console.log();  
         });
     }
     );
