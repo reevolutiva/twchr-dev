@@ -106,16 +106,7 @@ function twchr_main_menu(){
         'twchr_help',
         'twchr_menu_help',
     );
-
-    add_submenu_page(
-        'edit.php?post_type=twchr_streams',
-        __('ToDo list','twitcher'),
-        __('ToDo list','twitcher'),
-        'manage_options',
-        'twchr_todo_list',
-        'twchr_todo_list',
-    );
-    
+  
     
 }
 
