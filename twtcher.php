@@ -57,6 +57,7 @@ require_once 'includes/assets/plugin_enqueue.php';
 */
 
 define('TWCHR_HOME_URL',site_url());
+define('TWCHR_ADMIN_URL',site_url().'/wp-admin/');
 define('TWCHR_PATH', __FILE__);
 define('TWCHR_URL', plugin_dir_url(__FILE__));
 
@@ -220,7 +221,7 @@ function twchr_redirect_setUp(){
     //echo "dentro de la funcion redirect_setUp";
     if($setInstaled <= 1 || $setInstaled == false){
         if($dataUrl1 || $dataUrl2 || $dataUrl3){  
-            $url = site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true');
+            $url = TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true';
             echo "<script>location.href='$url'</script>";
             //exit;
             

@@ -22,9 +22,7 @@
 
     }
 
-    .twchr_todo_list ul li label input{
-       display: none;
-    }
+    
 </style>
 <div class="twchr-container">
     <div class="twchr_todo_list">
@@ -55,11 +53,28 @@
     });
 
     const items_list = todo_list.querySelectorAll("input");
-    
+    let todoListUpdateState = [];
     [...todo_list.querySelectorAll("li")].forEach( (li, index) => {
         li.addEventListener('click',(e)=>{
-            //console.log(e.target);
-            items_list[index].checked == true ? li.classList.add("active") : li.classList.remove("active");
+            if(items_list[index].checked == true){
+                li.classList.add("active");
+                if(!todoListUpdateState.includes(index)){
+                    todoListUpdateState.push(index);
+                }
+            }else{
+                li.classList.remove("active");
+            }
+
+            [...todo_list.querySelectorAll("li")].forEach( (li_1, index_1) => {
+                if(items_list[index_1].checked == false){
+                    //const pos = todoListUpdateState.indexOf(li.querySelector("span").innerText);
+                    console.log(index_1);
+            
+                }
+                
+            });
+            
+            console.log(todoListUpdateState);  
         });
     }
     );

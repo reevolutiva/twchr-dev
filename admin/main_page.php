@@ -37,7 +37,7 @@
                 <div class='hello-twchr-user'> 
                     <h2><?php printf('%s', $display_name);?></h2>                                
                     <p><?php printf('Description: %s', $description);?></p>
-                    <picture><img src="<?php echo $foto ?>" alt="twchr-profile-picture"></picture>
+                    <picture><img src="<?php esc_url($foto); ?>" alt="twchr-profile-picture"></picture>
                 </div>
                 <div class='keys-twchr twchr-data'> 
                 
@@ -253,12 +253,12 @@
                         $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
                         // Paso 3 de instalaccion
-                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')."'</script>";
+                        echo "<script>location.href='".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard'"."</script>";
                         break;
                     case 'renewAll_api_keys':
                         $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
                         twchr_save_app_token($twchr_token_app->{'access_token'});
-                        echo "<script>location.href='".site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true')."'</script>";
+                        echo "<script>location.href='".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'"."</script>";
                         
                     default:
                         # code...
@@ -283,7 +283,7 @@
                             
                             add_option('twchr_keys',$json_array);
 
-                            wp_redirect(site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard'));
+                            wp_redirect(TWCHR_ADMIN_URLedit.php?post_type=twchr_streams&page=twchr-dashboard'));
                             exit;
 
                             
@@ -319,7 +319,7 @@
                         $client_secret = sanitize_text_field($twch_data_prime->{'client-secret'});
                         $code = sanitize_text_field($_GET['code']);
                         $scope = sanitize_text_field($_GET['scope']);
-                        $redirect = site_url('/wp-admin/edit.php?post_type=twchr_streams%26page=twchr-dashboard');
+                        $redirect = TWCHR_ADMIN_URLedit.php?post_type=twchr_streams%26page=twchr-dashboard');
         
                         $response = twchr_validateToken($client_id,$client_secret,$code, $redirect);
                         $twchr_validateTokenObject = json_decode($response['body']);
@@ -353,7 +353,11 @@
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
-                                <p><a href="<?php echo site_url('/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error='.$twchr_validateTokenObject->{'message'});?>"><?php twchr_esc_i18n('Back SetUp','html'); ?></a></p>
+                                <p>
+                                    <a href='<?php echo TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=".$twchr_validateTokenObject->{'message'};> ?>
+                                        <?php twchr_esc_i18n('Back SetUp','html'); ?>
+                                    </a>
+                                </p>
                             </div>
                         <?php
                             die();
