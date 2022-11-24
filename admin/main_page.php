@@ -37,7 +37,7 @@
                 <div class='hello-twchr-user'> 
                     <h2><?php printf('%s', $display_name);?></h2>                                
                     <p><?php printf('Description: %s', $description);?></p>
-                    <picture><img src="<?php esc_url($foto); ?>" alt="twchr-profile-picture"></picture>
+                    <picture><img src="<?php echo esc_url($foto); ?>" alt="twchr-profile-picture"></picture>
                 </div>
                 <div class='keys-twchr twchr-data'> 
                 
