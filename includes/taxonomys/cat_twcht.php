@@ -85,9 +85,10 @@ function twchr_cat_twitch_save( $term_id, $tt_id ) {
     $twchr_cat_thumbail_old = get_term_meta($term_id,'twchr_stream_category_thumbail',true);
         
     // Saneamos lo introducido por el usuario.            
-    $twchr_cat_id = $_POST['twchr_stream_category_id'];
-    $twchr_cat_name = $_POST['twchr_stream_category_name'];
-    $twchr_cat_thumbail = $_POST['twchr_stream_category_thumbail'];
+    $twchr_cat_id = sanitize_text_field($_POST['twchr_stream_category_id']);
+    $twchr_cat_name = sanitize_text_field($_POST['twchr_stream_category_name']);
+    $twchr_cat_thumbail = sanitize_text_field($_POST['twchr_stream_category_thumbail']);
+
     
         
     // Actualizamos el campo meta en la base de datos.
