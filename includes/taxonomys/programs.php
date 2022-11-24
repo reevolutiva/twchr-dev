@@ -75,8 +75,7 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
     if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
             $response = twchr_serie_update($term_id);
             $allData = json_encode($response);
-            //show_dump($response);
-            //die();
+            
             update_term_meta($term_id,'twchr_fromApi_allData',$allData);
             
             
@@ -84,8 +83,6 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
         
    }
    
-
-   //echo "hola";
   }
   add_action( 'edit_serie', 'twchr_taxnonomy_save', 10,5);
 

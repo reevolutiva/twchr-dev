@@ -140,11 +140,11 @@
                     <tbody>
                         <tr>
                             <td><?php twchr_esc_i18n('View Count','html'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 'null' ?></td> 
+                            <td data-twchr-final-number="<?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($data_broadcaster->{'view_count'}) ? esc_html($data_broadcaster->{'view_count'}) : 'null' ?></td> 
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Suscribers','html'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 'null' ?></td>
+                            <td data-twchr-final-number="<?php echo  isset($subcribers->{'total'}) ? $subcribers->{'total'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($subcribers->{'total'}) ? esc_html($subcribers->{'total'}) : 'null' ?></td>
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Videos','html'); ?></td>
@@ -153,12 +153,12 @@
                         <tr>
                             <td><?php twchr_esc_i18n('Most viewed','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['title'] : 'undefined' ?></td>
+                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_api != false ? esc_html($mostViwed_from_api['title']) : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Last Imported','html'); ?></td>
                             <td data-twchr-final-number="<?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['title'] : 'undefined' ?></td>
+                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_wp != false ? esc_html($mostViwed_from_wp['title']) : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
@@ -175,8 +175,8 @@
                             $error = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             ?>
                             <div class="error-card">
-                                <h3>Error: <?php echo  $error->{'status'} ?></h3>
-                                <p><?php echo  $error->{'message'} ?></p>
+                                <h3>Error: <?php echo  esc_html($error->{'status'}) ?></h3>
+                                <p><?php echo  esc_html($error->{'message'}) ?></p>
                             </div>
                         <?php
                         }else if($setInstaled < 3){
