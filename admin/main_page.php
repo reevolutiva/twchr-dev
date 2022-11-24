@@ -76,9 +76,9 @@
                                     <script> 
                                         const wishexist = prompt('<?php twchr_esc_i18n('If you continue this process, all the api-keys installed in wordpress will be removed. Are you sure to do it?','html');?> y = yes & n = no.');
                                         if(wishexist === 'y' || wishexist === 'yes'){
-                                            location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll")?>';
+                                            location.href='<?php echo TWCHR_ADMIN_URL."/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&clearAll"?>';
                                         }else{
-                                            location.href='<?php echo site_url("/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard")?>';
+                                            location.href='<?php echo TWCHR_ADMIN_URL."/edit.php?post_type=twchr_streams&page=twchr-dashboard"?>';
                                         }
                                     </script> 
                                 <?php
@@ -239,7 +239,7 @@
                             <td class='twitch-connect__status'><?php echo  $twch_data_app_token != false ?  "<img src='".plugins_url('twitcher/includes/assets/sync.svg')."'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
-                            <td class="btn-renew-apiKeys"><a href="<?php echo  site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard')?>&app_token_action=renewAll_api_keys"><?php twchr_esc_i18n('Renew all','html'); ?></a></td>
+                            <td class="btn-renew-apiKeys"><a href="<?php echo  TWCHR_ADMIN_URL.'/edit.php?post_type=twchr_streams&page=twchr-dashboard'?>&app_token_action=renewAll_api_keys"><?php twchr_esc_i18n('Renew all','html'); ?></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -283,7 +283,7 @@
                             
                             add_option('twchr_keys',$json_array);
 
-                            wp_redirect(TWCHR_ADMIN_URLedit.php?post_type=twchr_streams&page=twchr-dashboard'));
+                            wp_redirect(TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams&page=twchr-dashboard');
                             exit;
 
                             
@@ -319,7 +319,7 @@
                         $client_secret = sanitize_text_field($twch_data_prime->{'client-secret'});
                         $code = sanitize_text_field($_GET['code']);
                         $scope = sanitize_text_field($_GET['scope']);
-                        $redirect = TWCHR_ADMIN_URLedit.php?post_type=twchr_streams%26page=twchr-dashboard');
+                        $redirect = TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams%26page=twchr-dashboard';
         
                         $response = twchr_validateToken($client_id,$client_secret,$code, $redirect);
                         $twchr_validateTokenObject = json_decode($response['body']);
@@ -354,7 +354,7 @@
                                 <p>Intente nuevamente</p>
                                 <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
                                 <p>
-                                    <a href='<?php echo TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=".$twchr_validateTokenObject->{'message'};> ?>
+                                    <a href='<?php echo TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=".$twchr_validateTokenObject->{'message'}?>'>
                                         <?php twchr_esc_i18n('Back SetUp','html'); ?>
                                     </a>
                                 </p>

@@ -33,7 +33,7 @@
 		<section class="card-section">
 			<h3>3</h3>
 			<h4><?php twchr_esc_i18n('Set at “oAuth redirection url field” the follow Link:','html');?> <span><?php twchr_esc_i18n('https site only','html');?></span></h4>
-			<p><?php echo site_url('wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard') ?></p>
+			<p><?php echo TWCHR_ADMIN_URL.'/edit.php?post_type=twchr_streams&page=twchr-dashboard'; ?></p>
 			<img src="<?php echo TWCHR_SETUP_ASSETS.'/setUp-image-3.jpg' ?>" alt="">
 		</section>
 		<section class="card-section">
