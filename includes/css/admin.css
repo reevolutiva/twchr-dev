@@ -632,26 +632,34 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 .twchr_todo_list ul li label{
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 35px 1fr;
     margin-bottom: 1rem;
+    column-gap: 10px;
+    align-items: center;
 }
-.twchr_todo_list ul li.active span{
-    background-color: purple;
-    color: #fff;
+.twchr_todo_list ul li.active{
+    position: relative;
 }
 .twchr_todo_list ul li span{
     display: block;
-    font-size: 2rem;
+    font-size: 1.5em;
     border-radius: 50px;
-    width: 4rem;
-    height: 4rem;
-    background-color: #fff;
+    width: 35px;
+    height: 35px;
     display: grid;
     place-items: center;
-    margin-right: 2rem;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4) inset;
+    outline: 1px solid;   
 
+}
 
+.twchr_todo_list ul li input{
+    display: none;
+}
+.twchr_todo_list--header{
+    display: flex;
+    justify-content: flex-end;
 }
 
 #twchr_stream_todDo .overlay.maximized{
@@ -659,10 +667,22 @@ stream.twchr-modal .twchr-modal-button.close{
     top: 5vh;
     left: 0;
     width: 100vw;
+    height: 100vh;
+    overflow: auto;
     background-color: #fff;
     z-index: 9999;
 }
 
+#twchr_stream_todDo .overlay.maximized .twchr_todo_list > *{
+    padding:0 5%;
+}
+#twchr_stream_todDo .overlay.maximized .twchr_todo_list ul{
+    padding-bottom: 10%;
+}
+
+body.html-hidden{
+    overflow: hidden;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;

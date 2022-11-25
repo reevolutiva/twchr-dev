@@ -16,6 +16,7 @@
         $response = $wpdb->last_result[0];
         if(!empty($response)){
             return $response;
+            //echo esc_html($response);
         }else{
             return false;
         }

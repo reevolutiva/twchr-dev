@@ -15,40 +15,108 @@
 
  
 function twchr_stream_todDo($post){
+    
+    $todo_list_array = [
+        [
+            "name" =>__('Schedule Stream','twitcher'),
+            "status" => false,
+            "index"=> 0
+        ],
+        [
+            "name" => __('Notify by Discord','twitcher'),
+            "status" => false,
+            "index" => 1
+        ],
+        [
+            "name"=>__('Notify by Facebook','twitcher'),
+            "status" => false,
+            "index" => 2
+        ],
+        [
+            "name"=>__('Notify by Twitter','twitcher'),
+            "status" => false,
+            "index" => 3
+        ],
+        [
+            "name"=>__('Start live streaming','twitcher'),
+            "status" => false,
+            "index" => 4
+        ],
+        [
+            "name"=>__('Insert live streaming into Post','twitcher'),
+            "status" => false,
+            "index" => 5
+        ],
+        [
+            "name"=>__('Download Streaming','twitcher'),
+            "status" => false,
+            "index" => 6
+        ],
+        [
+            "name"=>__('Import streaming to Wordpress','twitcher'),
+            "status" => false,
+            "index" => 7
+        ],
+        [
+            "name"=>__('Upload streaming to YouTube','twitcher'),
+            "status" => false,
+            "index" => 8
+        ],
+        [
+            "name"=>__('Change source streaming from Twitcher to Youtube','twitcher'),
+            "status" => false,
+            "index" => 9
+        ]
+    ];
 	$values    = get_post_custom( $post->ID );
-	$twchr_toDo_list_field = isset($values['twchr_toDo_list_field'][0]) ? $values['twchr_toDo_list_field'][0] : '';
+	$twchr_toDo_list_field = isset($values['twchr_toDo_list_field'][0]) ? $values['twchr_toDo_list_field'][0] : json_encode($todo_list_array);
+	
 	?>
+    <style>
+        .twchr_todo_list ul li.active span{
+            background-image: url(<?php echo TWCHR_URL_ASSETS.'twchr_check.png';?>);
+            display: block;
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            outline: none;
+            font-size:0;
+
+        }
+    </style>
     <metabox>
         <div class="overlay">
             <div class="overlay-content">            
                 <div class="twchr_todo_list">
                     <div class="twchr_todo_list--header">
-                        <button>X</button>
+                        <button>< ></button>
                     </div>
                     <ul></ul>
                 </div>
             </div>
         </div>
         <div>
-            <input  type="text" id="twchr_toDo_field" name="twchr_toDo_list_field" value="<?php echo esc_html($twchr_toDo_list_field)?>">
+            <input  type="hidden" id="twchr_toDo_field" name="twchr_toDo_list_field" value="<?php echo esc_html(trim($twchr_toDo_list_field))?>">
+            
 		</div>
         
         <script>
             const twchr_toDo_field = document.querySelector('#twchr_toDo_field');
-            console.log(twchr_toDo_field.value);
-            const  array = [{"name":"Agendar Stream","status":false,"index":0},{"name":"Notificar por Discord","status":true,"index":1},{"name":"Notificar por Faceboock","status":true,"index":2},{"name":"Notificar por Twiter","status":true,"index":3},{"name":"Iniciar Transmicion","status":true,"index":4},{"name":"Insertar Live en un post","status":true,"index":5},{"name":"Descargar Live","status":true,"index":6},{"name":"Importar Live como Streming","status":true,"index":7},{"name":"Subir Streming a YouTube","status":true,"index":8},{"name":"Cambiar fuente de Streaming de Twitch a YouTube","status":true,"index":9},{"name":"Agendar Stream","status":true,"index":0}];
             const todo_list = document.querySelector(".twchr_todo_list ul");
             const twchr_todo_overlay = document.querySelector("#twchr_stream_todDo .overlay");
-        
+            const todo_list_array = JSON.parse(twchr_toDo_field.value);
+    
 
             twchr_todo_overlay.querySelector(".twchr_todo_list--header button").addEventListener("click", (e)=>{
                 e.preventDefault();
                 twchr_todo_overlay.classList.toggle("maximized");
+                document.body.classList.toggle("html-hidden");
+    
             });
 
             // Render todo_list
-            array.forEach((value, key) => {
-                const li = `<li class="${value.status === true ? 'active' : ''}"> <label> <span>${key}</span> <h3>${value.name}</h3> <input type="checkbox" name="twchr_todo_list" ${value.status === true ? 'checked' : ''}> </label></li>`;
+            todo_list_array.forEach((value, key) => {
+                const li = `<li class="${value.status === true ? 'active' : ''}"> <label> <span>${key}</span> <h4>${value.name}</h4> <input type="checkbox" name="twchr_todo_list" ${value.status === true ? 'checked' : ''}></label></li>`;
                 todo_list.innerHTML = todo_list.innerHTML + li;
             });
 
@@ -59,44 +127,34 @@ function twchr_stream_todDo($post){
                     if(items_list[index].checked == true){
                         li.classList.add("active");
                         if(!todoListUpdateState.includes(index)){
-                            const name = li.querySelector("h3").textContent;
-                            todoListUpdateState
-                            const tchr_toDo = new twchr_todDo_json_constructor(name,true,index);
-                            todoListUpdateState.push(tchr_toDo);
+                            todoListUpdateState[index].status = true;
+                            
                         }
                     }else{
                         li.classList.remove("active");
-                    }
-
-                    [...todo_list.querySelectorAll("li")].forEach( (li_1, index_1) => {
-                        if(items_list[index_1].checked == false){
-                            if(todoListUpdateState.includes(index_1)){
-                                const pos = todoListUpdateState.indexOf(index_1);
-                                todoListUpdateState.splice(pos, 1);               
-                            }
+                        if(todoListUpdateState[index].status === true){
+                            todoListUpdateState[index].status = false;
                         }
-                    });
+                    }
                     
                     twchr_toDo_field.value = JSON.stringify(todoListUpdateState);
-                    //console.log();  
                 });
             }
             );
-            
-            class twchr_todDo_json_constructor {
-                constructor(name,status,index){
-                    this.name = name;
-                    this.status = status;
-                    this.index = index;
-                }
-            }
         </script>
 	<?php
 }
 
 function twchr_stream_toDo_metabox(){
 	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
-	add_meta_box( 'twchr_stream_todDo', 'Twitcher stream to do', 'twchr_stream_todDo', 'twchr_streams', 'normal', 'high' );
+	add_meta_box( 
+        'twchr_stream_todDo', 
+        'Twitcher stream to do',
+        'twchr_stream_todDo', 
+        'twchr_streams', 
+        'side',
+        'core'
+    );
 }
 
 add_action('add_meta_boxes','twchr_stream_toDo_metabox');
@@ -112,7 +170,6 @@ Antes de guardar la información, necesito verificar tres cosas:
 	if (! current_user_can( 'edit_posts' )) {
         return;
     }		
-	
 
 		$allowed = array();
 		if ( isset( $_POST['twchr_toDo_list_field'] ) ) {
