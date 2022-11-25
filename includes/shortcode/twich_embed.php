@@ -51,3 +51,83 @@ add_shortcode( 'twich_embed', 'shorcode_twich_embed' );
 
 //[twich_embed host="reevolutiva" video="1640517875" ancho="800" alto="400"]
 
+// Add Shortcode
+function shorcode_twich_embed_live( $atts ) {
+	
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			//https://player.twitch.tv/?autoplay=true&channel=reevolutiva&muted=true&parent=testtwitcher.local
+			$url = "https://player.twitch.tv/?autoplay=true&channel=".$atts['host']."&parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twich_embed_live', 'shorcode_twich_embed_live' );
+//[twich_embed_live host="reevolutiva"]
+
+// Add Shortcode
+function shorcode_twich_embed_live_chat( $atts ) {
+	
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			$url = "https://player.twitch.tv/?autoplay=true&channel=".$atts['host']."&parent=".$host;
+			$urlChat = "https://www.twitch.tv/embed/".$atts['host']."/chat?parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+						<iframe src=".$urlChat." width='".($atts['ancho'] / 2)."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twich_embed_live_chat', 'shorcode_twich_embed_live_chat' );
+//[twich_embed_live_chat host="reevolutiva"]
+
+// Add Shortcode
+function shorcode_twich_embed_chat( $atts ) {
+	
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			$urlChat = "https://www.twitch.tv/embed/".$atts['host']."/chat?parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$urlChat." width='".($atts['ancho'] / 2)."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twich_embed_chat', 'shorcode_twich_embed_chat' );
+//[twich_embed_chat host="reevolutiva"]
