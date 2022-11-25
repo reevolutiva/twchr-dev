@@ -23,49 +23,39 @@ function twchr_stream_todDo($post){
             "index"=> 0
         ],
         [
-            "name" => __('Notify by Discord','twitcher'),
+            "name" => __('Notify your audiencie','twitcher'),
             "status" => false,
             "index" => 1
         ],
         [
-            "name"=>__('Notify by Facebook','twitcher'),
+            "name"=>__('Start live streaming','twitcher'),
             "status" => false,
             "index" => 2
         ],
         [
-            "name"=>__('Notify by Twitter','twitcher'),
+            "name"=>__('Import live streaming','twitcher'),
             "status" => false,
             "index" => 3
         ],
         [
-            "name"=>__('Start live streaming','twitcher'),
+            "name"=>__('Import streaming to Wordpress','twitcher'),
             "status" => false,
             "index" => 4
         ],
         [
-            "name"=>__('Insert live streaming into Post','twitcher'),
+            "name"=>__('Download Streaming','twitcher'),
             "status" => false,
             "index" => 5
         ],
         [
-            "name"=>__('Download Streaming','twitcher'),
+            "name"=>__('Upload streaming to YouTube','twitcher'),
             "status" => false,
             "index" => 6
         ],
         [
-            "name"=>__('Import streaming to Wordpress','twitcher'),
-            "status" => false,
-            "index" => 7
-        ],
-        [
-            "name"=>__('Upload streaming to YouTube','twitcher'),
-            "status" => false,
-            "index" => 8
-        ],
-        [
             "name"=>__('Change source streaming from Twitcher to Youtube','twitcher'),
             "status" => false,
-            "index" => 9
+            "index" => 7
         ]
     ];
 	$values    = get_post_custom( $post->ID );
@@ -88,9 +78,6 @@ function twchr_stream_todDo($post){
         <div class="overlay">
             <div class="overlay-content">            
                 <div class="twchr_todo_list">
-                    <div class="twchr_todo_list--header">
-                        <button>< ></button>
-                    </div>
                     <ul></ul>
                 </div>
             </div>
@@ -106,13 +93,6 @@ function twchr_stream_todDo($post){
             const twchr_todo_overlay = document.querySelector("#twchr_stream_todDo .overlay");
             const todo_list_array = JSON.parse(twchr_toDo_field.value);
     
-
-            twchr_todo_overlay.querySelector(".twchr_todo_list--header button").addEventListener("click", (e)=>{
-                e.preventDefault();
-                twchr_todo_overlay.classList.toggle("maximized");
-                document.body.classList.toggle("html-hidden");
-    
-            });
 
             // Render todo_list
             todo_list_array.forEach((value, key) => {
@@ -149,11 +129,10 @@ function twchr_stream_toDo_metabox(){
 	//add_meta_box($id:string,$title:string,$callback:callable,$screen:string|array|WP_Screen|null,$context:string,$priority:string,$callback_args:array|null )
 	add_meta_box( 
         'twchr_stream_todDo', 
-        'Twitcher stream to do',
+        __('Streaming Success List','twitcher'),
         'twchr_stream_todDo', 
         'twchr_streams', 
-        'side',
-        'core'
+        'side'
     );
 }
 

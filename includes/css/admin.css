@@ -1,6 +1,7 @@
 .twchr-modal h3,
 .twchr-dashboard-card  h2,
-.twchr-for-back *{
+.twchr-for-back *,
+#twchr_stream_todDo > *{
     font-family: 'Comfortaa';
 }
 
@@ -662,27 +663,6 @@ stream.twchr-modal .twchr-modal-button.close{
     justify-content: flex-end;
 }
 
-#twchr_stream_todDo .overlay.maximized{
-    position: fixed;
-    top: 5vh;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background-color: #fff;
-    z-index: 9999;
-}
-
-#twchr_stream_todDo .overlay.maximized .twchr_todo_list > *{
-    padding:0 5%;
-}
-#twchr_stream_todDo .overlay.maximized .twchr_todo_list ul{
-    padding-bottom: 10%;
-}
-
-body.html-hidden{
-    overflow: hidden;
-}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
