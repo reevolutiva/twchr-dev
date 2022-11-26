@@ -38,14 +38,14 @@
     </div>
     <label for="twchr_toApi_category_ajax"><?php twchr_esc_i18n("Twitch's category",'html'); ?></label>
     <div>
-        <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo  $select_name?>'>
+        <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo $select_name?>'>
         <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
     </div>
-    <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo  $select_value?>'>
-    <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo  $select_name?>'>
+    <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo $select_value?>'>
+    <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo $select_name?>'>
     <label for="twchr_fromApi_allData"><?php twchr_esc_i18n('All Data','html');?></label>
     <div>
-        <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo  $allData;?>'>
+        <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo $allData;?>'>
         <p><?php twchr_esc_i18n('Data from Twitch','html');?></p>
     </div>
 </div>

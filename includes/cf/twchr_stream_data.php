@@ -28,7 +28,7 @@ function twchr_stream_data_meta_box_content($post){
 			<picture>
 				<img src="<?php echo TWCHR_URL_ASSETS.'logo_menu.svg' ?>" alt="logo-twitch">
 			</picture>
-			<label >Fecha y hora del streming <input <?php echo  $dateTimeTwitch == false ? null : 'disabled'?> type="<?php echo  $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){ twchr_esc_i18n($dateTimeTwitch,'html'); }else{ twchr_esc_i18n($dateTime,'html');}  ?>"></label>
+			<label >Fecha y hora del streming <input <?php echo $dateTimeTwitch == false ? null : 'disabled'?> type="<?php echo $dateTimeTwitch == false ? "datetime-local" : "text"?>" name='twchr_stream_data_dateTime' value="<?php if($dateTimeTwitch){ twchr_esc_i18n($dateTimeTwitch,'html'); }else{ twchr_esc_i18n($dateTime,'html');}  ?>"></label>
 		</div>
 		<div>
 			<lablel><?php twchr_esc_i18n('Source Priority','html'); ?></lablel>

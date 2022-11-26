@@ -49,9 +49,9 @@
 				<input type='hidden' name='page' value='twchr-dashboard'>
 				<input type='hidden' name='from' value='setUp-plugin'>
 				<label for="client-id">Client Id</label>
-				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?php echo  $clientId ?>'>
+				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?php echo $clientId ?>'>
 				<label for="client-secret">Client Secret</label>
-				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo  $clientSecret ?>'>								
+				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $clientSecret ?>'>								
 				<input type='submit' value='sincronizar' name='sincronizar'>
 			</form>
 		</section>

@@ -152,13 +152,13 @@
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Most viewed','html'); ?></td>
-                            <td data-twchr-final-number="<?php echo  $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_api != false ? esc_html($mostViwed_from_api['title']) : 'undefined' ?></td>
+                            <td data-twchr-final-number="<?php echo $mostViwed_from_api != false ? $mostViwed_from_api['view'] : 0  ?>" class='twchr-results-item'>0</td>
+                            <td class="twchr-tooltip"><?php echo $mostViwed_from_api != false ? esc_html($mostViwed_from_api['title']) : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Last Imported','html'); ?></td>
-                            <td data-twchr-final-number="<?php echo  $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
-                            <td class="twchr-tooltip"><?php echo  $mostViwed_from_wp != false ? esc_html($mostViwed_from_wp['title']) : 'undefined' ?></td>
+                            <td data-twchr-final-number="<?php echo $mostViwed_from_wp != false ? $mostViwed_from_wp['view'] : 0  ?>" class='twchr-results-item' >12</td>
+                            <td class="twchr-tooltip"><?php echo $mostViwed_from_wp != false ? esc_html($mostViwed_from_wp['title']) : 'undefined' ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys">
@@ -236,7 +236,7 @@
                         </tr>
                         <tr>
                             <td><a href="<?php echo  TWCHR_HOME_URL;?>/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&app_token_action=update"><?php echo twchr_esc_i18n('Renew App Token','html'); ?></a></td>
-                            <td class='twitch-connect__status'><?php echo  $twch_data_app_token != false ?  "<img src='".TWCHR_URL_ASSETS."sync.svg'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
+                            <td class='twitch-connect__status'><?php echo $twch_data_app_token != false ?  "<img src='".TWCHR_URL_ASSETS."sync.svg'>" : "<span style='color:tomato;'>".__('Error','twitcher')."</span>" ?></td>
                         </tr>
                         <tr>
                             <td class="btn-renew-apiKeys"><a href="<?php echo  TWCHR_ADMIN_URL.'/edit.php?post_type=twchr_streams&page=twchr-dashboard'?>&app_token_action=renewAll_api_keys"><?php twchr_esc_i18n('Renew all','html'); ?></a></td>
@@ -344,7 +344,6 @@
                             update_option( 'twchr_setInstaled',3, true);
 
                             
-                            echo "<h3>User Token actualizado actualizado correctamente</h3>";
                             $urlRedirection = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
                             echo "<script>location.href='$urlRedirection'</script>";
                         }else{
@@ -352,7 +351,7 @@
                             <div class="twchr-modal-error">
                                 <h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
                                 <p>Intente nuevamente</p>
-                                <p><b>Error: </b><?php echo  $twchr_validateTokenObject->{'message'} ?></p>
+                                <p><b>Error: </b><?php echo $twchr_validateTokenObject->{'message'} ?></p>
                                 <p>
                                     <a href='<?php echo TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=".$twchr_validateTokenObject->{'message'}?>'>
                                         <?php twchr_esc_i18n('Back SetUp','html'); ?>
@@ -369,7 +368,7 @@
                     if(isset($_GET['error']) && isset($_GET['error_description'])){
                         echo "Error: ".sanitize_text_field($_GET['error']);
                         echo "</br>";
-                        echo "Descripción del error: ".sanitize_text_field($_GET['error_description']);
+                        echo __("Error description: ","twitcher").sanitize_text_field($_GET['error_description']);
                     }
         
                     if(isset($_GET['twch_api_error'])){
@@ -378,7 +377,7 @@
                         ?>
                         <h4><?php esc_html($data) ?></h4>
                         <?php
-                        echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".sanitize_text_field($_GET['twch_post_id'])."&action=edit'>voler a intentar</a>";
+                        echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".sanitize_text_field($_GET['twch_post_id'])."&action=edit'>".__("try again","twitcher")."</a>";
                     }
                 }
             }
