@@ -375,8 +375,9 @@
                     if(isset($_GET['twch_api_error'])){
                         $data_raw = sanitize_text_field($_GET['twch_api_error']);
                         $data = str_replace('\\',"",$data_raw,);
-                        
-                        echo "<h4>".$data."</h4>";
+                        ?>
+                        <h4><?php esc_html($data) ?></h4>
+                        <?php
                         echo "<a href='".TWCHR_HOME_URL."/wp-admin/post.php?post=".sanitize_text_field($_GET['twch_post_id'])."&action=edit'>voler a intentar</a>";
                     }
                 }
