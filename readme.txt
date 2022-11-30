@@ -9,23 +9,23 @@ Stable tag: 0.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Manage, promote and monetise your Twitch.tv streaming integrating the power of twitch to WordPress.
+Manage, promote and monetize your Twitch.tv streaming integrating the power of twitch to WordPress.
 
 == Description ==
-**Twitcher Manage Twitch Account** is a tool for streamers to *Monetize your streams and grow your audience*.
-Integrate your *Twitch channel to your WordPress* site in a simple and fast way.
-Twitcher *connects your site with Twitch Helix Api* and add *mannage your Twitch.tv Account from your WordPress Dashboard*.
-Import all your past streamings as post page for every past Stream, so you could mannage and promote your programs and series,
- and offer extra content to your audience, so you can take advantage of the power of google organic seach.
+**Twitcher Manage Twitch Account** is a tool for streamers to **Monetize your streams and grow your audience**.
+Integrate your **Twitch channel to your WordPress** site in a simple and fast way.
+Twitcher **connects your site with Twitch Helix Api** and add **manage your Twitch.tv Account from your WordPress Dashboard**.
+Import all your past streamings as post page for every past Stream, so you could manage and promote your programs and series,
+ and offer extra content to your audience, so you can take advantage of the power of google organic search.
 
 == Features ==
-* *Embed Twitch Videos to Wordpress* as Streaming Post Tipe
-* *Mannage your Twitch* schedule calendar direct from WordPress and make an archive for all the chapters of your Series
+* **Embed Twitch Videos to Wordpress** as Streaming Post Type
+* **Manage your Twitch schedule** calendar direct from WordPress and make an archive for all the chapters of your Series
 * Youtube fallback link for your streamings
-* Keep on *track your twitch views* and mannage connections
-* *Easy Installation* & use: Connect your Wordpress site with your Twitch.tv channel and import your previous videos in less than 5 minutes.
+* Keep on **track your twitch views** and manage connections
+* **Easy Installation** & use: Connect your Wordpress site with your Twitch.tv channel and import your previous videos in less than 5 minutes.
 * Compatible with Woocommerce, Learndash and most plugins and themes.
-* Twitch *API Helix* Enabled
+* Twitch **API Helix** Enabled
 
 NOTE: Use of this plugin requires the full understanding and acceptance of Twitch Interactive, Inc. terms of service. This is an unofficial WordPress integration.
 Twitcher.pro is a conjuntas.club plugin.
@@ -41,37 +41,37 @@ Twitcher.pro is a conjuntas.club plugin.
 
 Free and GPL.
 
-= Wath do I need to connect my Twitch.tv account with my Wordpress site? =
+= What do I need to connect my Twitch.tv account with my Wordpress site? =
 
 Your site must have a valid SSL certificate on your Wordpress Site (You most provide to twitch an "https://" link). Also, you will need your Twitch user and password.
 
-= Wath I need to know before install this plugin? =
+= What do I need to know before install this plugin? =
 
 Nothing: Once you install the plugin, you will be redirect to the instruction and setup page.
 
 == Screenshots ==
 
 1. Twitcher Dashboard 1.png
-2. Import Twitch Videos as Straming Post Type 2.png
+2. Import Twitch Videos as Streaming Post Type 2.png
 3. Easy Installer 3.png
 4. Twitcher video Card 4.png
 5. Twitch Video Category 5.png
 6. Youtube video backup 6.png
-7. Asign video to Post 7.png
+7. Assign video to Post 7.png
 
 == Changelog ==
 
 = 0.1.2 =
 * Bug fix
-* Easy Install improove
+* Easy Install improve
 
 = 0.1.1 =
 * Import Streamings as Post
 * Twitch Dashboard
 * Schedule series
-* Embeed streaming by shortcode
+* Embed streaming by shortcode
 * Back up streaming link on youtube
-* Asign Twitch video to post
+* Assign Twitch video to post
 * Easy Install
 * Api Helix
 
@@ -84,8 +84,8 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 * Import Streamings as Post
 * Twitch Dashboard
 * Schedule series
-* Embeed streaming by shortcode
+* Embed streaming by shortcode
 * Back up streaming link on youtube
-* Asign Twitch video to post
+* Assign Twitch video to post
 * Easy Install
 * Api Helix
