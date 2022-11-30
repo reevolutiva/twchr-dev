@@ -9,13 +9,14 @@ Stable tag: 0.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to WordPress.
+Manage, promote and monetise your Twitch.tv streaming integrating the power of twitch to WordPress.
 
 == Description ==
-**Twitcher Manage Twitch Account** is a tool for streamers to *Monetize your streams and grow your audience*. Integrate your Twitch channel to your WordPress site in a simple$
-streaming platforms and comunitys in your unique WordPress site.
-Integrates your Twitch Channel to WordPress and create a Post Page for every past Stream, so you could mannage and promote your programs and series, and offer extra content a$
-advantage of the power of google.
+**Twitcher Manage Twitch Account** is a tool for streamers to *Monetize your streams and grow your audience*.
+Integrate your *Twitch channel to your WordPress* site in a simple and fast way.
+Twitcher *connects your site with Twitch Helix Api* and add *mannage your Twitch.tv Account from your WordPress Dashboard*.
+Import all your past streamings as post page for every past Stream, so you could mannage and promote your programs and series,
+ and offer extra content to your audience, so you can take advantage of the power of google organic seach.
 
 == Features ==
 * *Embed Twitch Videos to Wordpress* as Streaming Post Tipe
@@ -26,7 +27,8 @@ advantage of the power of google.
 * Compatible with Woocommerce, Learndash and most plugins and themes.
 * Twitch *API Helix* Enabled
 
-NOTE: Use of this plugin requires the full understanding and acceptance of Twitch Interactive, Inc. terms of service. This is an unofficial WordPress integration and Twitcher$
+NOTE: Use of this plugin requires the full understanding and acceptance of Twitch Interactive, Inc. terms of service. This is an unofficial WordPress integration.
+Twitcher.pro is a conjuntas.club plugin.
 
 = Links =
 *   <a href="https://twitcher.pro/" title="">HomePage</a>
