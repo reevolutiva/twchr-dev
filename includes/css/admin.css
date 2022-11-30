@@ -631,6 +631,24 @@ stream.twchr-modal .twchr-modal-button.close{
     overflow: auto;
 }
 
+.twchr-alert{
+    border-radius: 13px;
+    background-color: #fff;
+    font-family: 'Comfortaa';
+    margin: 1.5cm 20pt 6pt 20pt;
+    padding: 15pt 20pt;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-right: 2cm solid var(--twchr-purple);
+}
+.twchr-alert__title{
+    margin: 0 0 10pt 0;
+}
+
+.twchr-alert__anchor{
+    width: max-content;
+    padding: 0 5pt;
+}
+
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
