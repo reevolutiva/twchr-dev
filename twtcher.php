@@ -67,7 +67,12 @@ define('TWCHR_URL_FONTS', plugin_dir_url(__FILE__).'includes/assets/fonts');
 define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 
 
+function twchr_activar(){
+    $url = TWCHR_ADMIN_URL."edit?post_type=twchr_streams&page=twchr-dashboard";
+    echo "<script>location.href='".$url."'</script>";
+}
 
+register_activation_hook(__FILE__,'twchr_activar');
 
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
