@@ -68,10 +68,6 @@ define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 
 
 
-function twchr_activar(){
-    
-}
-register_activation_hook(__FILE__,'twchr_activar' );
 
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
