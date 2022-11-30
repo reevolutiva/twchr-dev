@@ -73,7 +73,7 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 * Back up streaming link on youtube
 * Asign Twitch video to post
 * Easy Install
-* Api Helixd
+* Api Helix
 
 == Upgrade Notice ==
 
