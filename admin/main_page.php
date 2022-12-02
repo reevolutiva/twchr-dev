@@ -121,7 +121,7 @@
                 }
                 
                 if($listVideo_from_api === false && get_option('twchr_setInstaled') <= 3){
-                    
+                
                 }else{
             
                     $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
