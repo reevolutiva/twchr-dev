@@ -194,13 +194,16 @@
         <h3>Your Twitch connection:</h3>
         <?php 
             if(isset($_GET['from']) && $_GET['from'] == 'setUp-plugin'){
-                             
+                 
                 if(
-                    isset($_GET['client-id']) &&
-                    isset($_GET['client-secret'])
+                    isset($_GET['client-id']) && !empty($_GET['client-id']) &&
+                    isset($_GET['client-secret']) && !empty($_GET['client-secret']) &&
+                    isset($_GET['twchr_accept_terms_and_conditions']) && $_GET['twchr_accept_terms_and_conditions'] === 'on'
                 ){
                     $client_id = sanitize_text_field($_GET['client-id']);
                     $client_secret = sanitize_text_field($_GET['client-secret']);
+                    $terms_and_conditions = $_GET['twchr_accept_terms_and_conditions'] == 'on' ? true : false;
+                    $keep_informed = $_GET['twchr_newsletters'] == 'on' ? true : false;
                     
                     fronted_to_db($client_secret, $client_id);
 
@@ -209,6 +212,9 @@
                     
                     // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
+
+                    add_option('twchr_terms_and_conditions', $terms_and_conditions);
+                    add_option('twchr_keep_informed', $keep_informed);
 
                     // Paso 2 de la instalacion
                     update_option('twchr_setInstaled',2,true);
