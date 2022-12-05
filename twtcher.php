@@ -68,20 +68,15 @@ define('TWCHR_URL_FONTS', plugin_dir_url(__FILE__).'includes/assets/fonts');
 
 define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 
-function twchr_activar(){
-    $data = date("Y-m-d H:i:s");
-    if (get_option('twchr_installation_date') == false){
-        add_option('twchr_installation_date', $data);    
-    }
-}
 
-register_activation_hook(__FILE__,'twchr_activar');
 
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
     if (get_option('twchr_delete_all') == 1){
         delete_option('twchr_setInstaled' );
+        delete_option('twchr_installation_date' );
     }    
+    
     
 }
 register_activation_hook(__FILE__,'twchr_desactivar' );

@@ -47,13 +47,14 @@ if(isset($_GET['twchr_set_clear_all']) ){
 <?php 
     
     $db = twchr_recopiate_data();
+    
     foreach ($db as $key => $value) {
         if(is_array($value)){
             $json = json_encode($value);
         }else{
             $json = $value;
         }
-        echo "<input hidden='to-twitcher-server-".$key."' value ='$json'>";
+        echo "<input type='hidden' name='to-twitcher-server-".$key."' value ='$json'>";
         //var_dump($json);
     }
 ?>

@@ -32,7 +32,7 @@
             'users_quantity' => $USER_QUANTIYY,
             'template' => $TEMPLATE,
             'instalationDate' =>$INSTALATION_DATE,
-            'user_email' => wp_get_current_user()->{'user_email'}
+            'user_email' => wp_get_current_user()->{'user_email'},
         );
 
         return $PAKAGE;

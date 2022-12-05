@@ -204,6 +204,10 @@
                     $client_secret = sanitize_text_field($_GET['client-secret']);
                     $terms_and_conditions = $_GET['twchr_accept_terms_and_conditions'] == 'on' ? true : false;
                     $keep_informed = $_GET['twchr_newsletters'] == 'on' ? true : false;
+                    $data = date("Y-m-d H:i:s");
+                        if (get_option('twchr_installation_date') === false){
+                            add_option('twchr_installation_date', $data);    
+                        }
                     
                     fronted_to_db($client_secret, $client_id);
 
