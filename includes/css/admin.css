@@ -126,9 +126,21 @@ stream.twchr-modal h3{
     color:var(--twchr-purple);
     font-size: 28px;
     line-height: 34.3px;
+    font-family: 'Comfortaa';
 
 }
-stream.twchr-modal p{
+.twchr-modal-general h3{
+    font-size: 28px;
+    line-height: 34.3px;
+    font-family: 'Comfortaa';
+}
+.twchr-modal-general h4{
+    font-size: 20px;
+    line-height: 1.3em;
+    font-family: 'Comfortaa';
+}
+stream.twchr-modal p,
+.twchr-modal-general p{
     color:#848484;
 }
     stream.twchr-modal .twchr-modal-button{
@@ -664,9 +676,35 @@ stream.twchr-modal .twchr-modal-button.close{
     padding: 0 5pt;
 }
 
-.xdebug-var-dump{
-    position: relative;
-    background-color: #fff;
+.twchr-modal-disactive{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+}
+.twchr-modal-disactive p {
+    width: 487px;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    color: #848484;
+}
+.twchr-modal-disactive button{
+    background-color: var(--twchr-purple);
+    color: #fff;
+    font-family: 'Comfortaa';
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    padding: 5px 0px;
+}
+.twchr-modal-disactive textarea{
+    width: 100%;
+    border: 1px solid #000;
+    height: 4cm;
 }
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{

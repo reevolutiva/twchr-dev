@@ -733,3 +733,57 @@ twchr_wp_admin_menu.forEach(item => {
     }
     
 });
+
+if(location.pathname.includes('plugins.php')){
+    const disactive_link = GSCJS.queryOnly("table.plugins tr[data-slug='manage-twitch'] a");
+    const url_disactive = disactive_link.href;
+    const modal_disactive = GSCJS.crearNodo("DIV","");
+    modal_disactive.classList.add("twchr-modal-general");
+    modal_disactive.classList.add("twchr-modal-disactive");
+    modal_disactive.innerHTML = `
+        <div>
+            <h3>Help us to improove</h3>
+            <p>We thank you for give a try to Twitcher.
+            We want to develope the best monetization tool for streamers.
+            Please, share with us yout sugestions about your experience with Twitcher </p>
+            <h4>How was your experiencie with Twitcher?</h4>
+            <div>
+                <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
+                </svg>
+                <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
+                </svg>
+                <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
+                </svg>
+                <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
+                </svg>
+                <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
+                </svg>
+            </div>
+            <input type="range" >
+            <h4>How we can improove Twitcher?</h4>
+            <textarea></textarea>
+        </div>
+        <div>
+            <picture>
+                <img src="${location.origin}/wp-content/plugins/twitcher/includes/assets/Isologo_twitcher.svg"/>
+            </picture>
+        </div>
+        <input type="hidden" name="url-disactivate" value='${url_disactive}'>
+        <button>Share your feedback </button>
+    `;
+   
+    disactive_link.setAttribute("src","#");
+    disactive_link.addEventListener('click',(e)=>{
+        e.preventDefault();
+        GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
+    });
+
+    modal_disactive.querySelector("button").addEventListener("click",()=>{
+        location.href =  modal_disactive.querySelector("input[name='url-disactivate']").value;
+    });
+}
