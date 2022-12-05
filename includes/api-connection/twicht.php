@@ -129,6 +129,7 @@ function twchr_autenticate($api_key, $client_id,$redirect,$scope){
       update_option( 'twchr_data_broadcaster', $body, true);
     }
     
+    add_option('twchr_log', 0);
 
     $urlRedirection = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";

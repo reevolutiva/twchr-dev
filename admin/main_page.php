@@ -204,10 +204,7 @@
                     $client_secret = sanitize_text_field($_GET['client-secret']);
                     $terms_and_conditions = $_GET['twchr_accept_terms_and_conditions'] == 'on' ? true : false;
                     $keep_informed = $_GET['twchr_newsletters'] == 'on' ? true : false;
-                    $data = date("Y-m-d H:i:s");
-                        if (get_option('twchr_installation_date') === false){
-                            add_option('twchr_installation_date', $data);    
-                        }
+                    
                     
                     fronted_to_db($client_secret, $client_id);
 
@@ -219,15 +216,18 @@
 
                     add_option('twchr_terms_and_conditions', $terms_and_conditions);
                     add_option('twchr_keep_informed', $keep_informed);
+                    
 
                     // Paso 2 de la instalacion
-                    update_option('twchr_setInstaled',2,true);
-                      
-                   
-
+                    update_option('twchr_setInstaled',2,true);     
                     echo "<script> location.href='".TWCHR_HOME_URL."/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'; </script>";
+                    die();
+                    
                 }
-            }else{ ?>
+            }else{ 
+            
+          
+            ?>
             
             <div class="twchr-dashboard-card twitch-connect">
                 <table>
@@ -319,8 +319,9 @@
                                     $allData = '';
                                     update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                                 }
-
+                                
                                 twchr_autenticate($client_id, $secret_key, $return,$scope);  
+    
                             endif;
                         }
                     }
@@ -380,6 +381,14 @@
                         echo "</br>";
                         echo __("Error description: ","twitcher").sanitize_text_field($_GET['error_description']);
                     }
+
+                    if(isset($_GET['error_description'])){
+                        ?>
+                            <script>
+                                alert("<?php echo $_GET['error_description']?>");
+                            </script>
+                        <?php
+                    }
         
                     if(isset($_GET['twch_api_error'])){
                         $data_raw = sanitize_text_field($_GET['twch_api_error']);
@@ -393,4 +402,16 @@
             }
             //var_dump($twch_data_prime);
         } 
-    ?>
+
+        if(isset($_GET['twchr_server_response']) && $_GET['twchr_server_response'] != 200){
+            ?>
+                <script>
+                    alert("<?php echo$_GET['twchr_server_response'] ?>");
+                </script>
+            <?php
+        }
+        
+        if(get_option('twchr_log') != false ){
+            instanse_comunicate_server();
+        }
+?>

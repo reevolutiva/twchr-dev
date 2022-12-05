@@ -43,20 +43,3 @@ if(isset($_GET['twchr_set_clear_all']) ){
     <h3>Setup</h3>
     <a class="twchr-btn-general" href="<?php echo  TWCHR_ADMIN_URL.'/edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true';?>">Run Setup</a>  
 </div>
-<form action="https://twitcher.pro/twch_server/twchr_get/" method="post">
-<?php 
-    
-    $db = twchr_recopiate_data();
-    
-    foreach ($db as $key => $value) {
-        if(is_array($value)){
-            $json = json_encode($value);
-        }else{
-            $json = $value;
-        }
-        echo "<input type='hidden' name='to-twitcher-server-".$key."' value ='$json'>";
-        //var_dump($json);
-    }
-?>
-<input type="submit" value="enviar">
-</form>

@@ -1,4 +1,5 @@
 <?php
+    // Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva
     /*
         ** DATA A RECOPILAR
         * URL
@@ -7,7 +8,6 @@
         * Plugins Instalados
         * Cantidad de Usuarios
         * Tema
-        * Imstallation Date
     */
     function twchr_recopiate_data(){
         $list_old = get_plugins();
@@ -22,7 +22,6 @@
 
         $USER_QUANTIYY = COUNT(get_users());
         $TEMPLATE = get_option('template');
-        $INSTALATION_DATE = get_option('twchr_installation_date');
         
         $PAKAGE = array(
             'url' => $URL,
@@ -31,7 +30,6 @@
             'plugins' => $list_new,
             'users_quantity' => $USER_QUANTIYY,
             'template' => $TEMPLATE,
-            'instalationDate' =>$INSTALATION_DATE,
             'user_email' => wp_get_current_user()->{'user_email'},
         );
 
@@ -39,10 +37,24 @@
     }
 
 function instanse_comunicate_server(){
-    ?>
-    <form action="https://twitcher.pro/twch_server/twchr_get/" method="post">
-    <?php 
+    $case = get_option("twchr_log");
+    $event = false;
+    switch ($case) {
+        case '0':
+            $event = 'activate';
+            break;
+        case '1':
+            $event = 'disactivate';
+            break;
         
+        default:
+            break;
+    }
+    if ($event != false):
+    ?>
+    <form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
+    <?php 
+        update_option('twchr_log',1);
         $db = twchr_recopiate_data();
         foreach ($db as $key => $value) {
             if(is_array($value)){
@@ -54,6 +66,14 @@ function instanse_comunicate_server(){
             //var_dump($json);
         }
     ?>
+    <input type="hidden" name="to-twitcher-server-event" value="<?php echo $event?>">
     </form>
+    <script>
+        const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
+        twchr_form_to_server.submit();
+    </script>
     <?php
+    die();
+    endif;
+    
 }

@@ -664,6 +664,10 @@ stream.twchr-modal .twchr-modal-button.close{
     padding: 0 5pt;
 }
 
+.xdebug-var-dump{
+    position: relative;
+    background-color: #fff;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
