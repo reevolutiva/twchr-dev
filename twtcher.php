@@ -52,6 +52,8 @@ require_once 'includes/taxonomys/cat_twcht.php';
 // Enqueue
 require_once 'includes/assets/plugin_enqueue.php';
 
+require_once 'twitcher-api/from_db.php';
+
 /* 
     Funciones de activacion iniciales del plugin
 */
@@ -66,7 +68,14 @@ define('TWCHR_URL_FONTS', plugin_dir_url(__FILE__).'includes/assets/fonts');
 
 define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 
+function twchr_activar(){
+    $data = date("Y-m-d H:i:s");
+    if (get_option('twchr_installation_date') == false){
+        add_option('twchr_installation_date', $data);    
+    }
+}
 
+register_activation_hook(__FILE__,'twchr_activar');
 
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
