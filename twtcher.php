@@ -97,7 +97,8 @@ function twchr_main_menu(){
         'Twitcher Dashboard',        //$menu_title
         'manage_options',           //$capability
         'twchr-dashboard',//$menu_slug
-        'twchr_main_page'//$function
+        'twchr_main_page',//$function
+        0
     );
 
     
