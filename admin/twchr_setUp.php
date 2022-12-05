@@ -51,8 +51,16 @@
 				<label for="client-id">Client Id</label>
 				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?php echo $clientId ?>'>
 				<label for="client-secret">Client Secret</label>
-				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $clientSecret ?>'>								
-				<input type='submit' value='sincronizar' name='sincronizar'>
+				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $clientSecret ?>'>						
+				<div class="row-input">
+					<input type="checkbox" name="twchr_accept_terms_and_conditions" id="twchr_accept_terms_and_conditions">
+					<label for="twchr_accept_terms_and_conditions"><?php _e('I acept Twitcher Terms and conditions','twitcher');?></label>
+				</div>		
+				<div class="row-input">
+					<input type="checkbox" name="twchr_newsletters" id="twchr_newsletters">
+					<label for="twchr_newsletters"><?php _e('Keepme informed about Twitcher’s features and news','twitcher'); _e(' (optional)','twitcher');?></label>
+				</div>		
+				<input type='submit' value='<?php _e('Finish Installation','twitcher');?>' name='sincronizar'>
 			</form>
 		</section>
 	</div>

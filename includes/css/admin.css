@@ -183,9 +183,7 @@ stream.twchr-modal .twchr-modal-button.close{
     grid-template-columns:auto 56px;
     margin-bottom: 10pt;
 }
-.twchr_modal_video_ajax input[type='checkbox']{
-    display: block;
-    margin:2pt auto;
+input[type='checkbox']{
     width: 25px;
     height: 25px;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;
@@ -193,19 +191,25 @@ stream.twchr-modal .twchr-modal-button.close{
     box-shadow: inset -2.5px -2.5px 5px #FAFBFF, inset 2.5px 2.5px 5px #A6ABBD;
     border-radius: 3px;
 }
-.twchr_modal_video_ajax input[type='checkbox']:checked{
+input[type='checkbox']:checked{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #65449B;
     background-blend-mode: soft-light, normal;
     border: 0.5px solid rgba(255, 255, 255, 0.4);
     box-shadow: inset -2.5px -2.5px 5px rgba(250, 251, 255, 0.1), inset 2.5px 2.5px 5px #366CBD;
 }
-.twchr_modal_video_ajax input[type='checkbox']:checked::before {
+ input[type='checkbox']:checked::before {
     margin:0; 
     height: none; 
     width: none; 
     width: 100%;
     filter: brightness(10);
 }
+ .twchr_modal_video_ajax input[type='checkbox']{
+    display: block;
+    margin:2pt auto;
+   
+}
+
 
 
 .twchr_modal_video_ajax label{
@@ -421,6 +425,14 @@ stream.twchr-modal .twchr-modal-button.close{
     grid-column:2/3;
     grid-row:3/4;
     
+}
+.card-section.form form .row-input{
+    display: flex;
+    margin: 1em  0;
+    align-items: center;
+}
+.card-section.form form .row-input input{
+    margin: 0 1em 0 0;
 }
 .card-section.form form input[type=text],
 .card-section.form form input[type=password]{
