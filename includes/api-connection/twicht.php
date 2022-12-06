@@ -179,3 +179,75 @@ function twchr_get_categories($app_token, $client_id,$query){
 
     return $response;
 }
+
+function twchr_get_user_followers($app_token, $client_id, $user_id){
+  $url = "https://api.twitch.tv/helix/users/follows?to_id=".$user_id;
+
+  $args = array(
+    'headers'=> array(
+      'Authorization' => "Bearer $app_token",
+      'client-id' => $client_id
+    )
+);
+
+$get = wp_remote_get($url, $args);
+$response = wp_remote_retrieve_body($get);
+$object = json_decode($response);
+
+return $object;
+
+
+}
+
+
+function twchr_get_moderators($app_token, $client_id, $user_id){
+  $url = "https://api.twitch.tv/helix/moderation/moderators?broadcaster_id=".$user_id;
+
+    $args = array(
+      'headers'=> array(
+        'Authorization' => "Bearer $app_token",
+        'client-id' => $client_id
+      )
+    );
+
+    $get = wp_remote_get($url, $args);
+    
+    $response = wp_remote_retrieve_body($get);
+    var_dump($response);
+    
+    $object = json_decode($response);
+
+    return $object;
+
+
+}
+
+function twchr_get_clips($app_token, $client_id, $user_id){
+    $url = "https://api.twitch.tv/helix/clips?broadcaster_id=".$user_id;
+
+    $args = array(
+      'headers'=> array(
+        'Authorization' => "Bearer $app_token",
+        'client-id' => $client_id
+      )
+    );
+
+    $get = wp_remote_get($url, $args);
+    $response = wp_remote_retrieve_body($get);
+    $object = json_decode($response);
+
+    return $object;
+
+
+}
+
+
+
+function twchr_get_schedule(){
+  $args = array(
+    'taxonomy' => 'serie',
+    'hide_empty' => false
+  );
+  $request = get_terms($args);
+  return $request;
+}

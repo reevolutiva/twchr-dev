@@ -134,7 +134,7 @@
                 //show_dump($data_broadcaster->{'view_count'});
                 
                 ?>
-            <div class="twchr-dashboard-card twitch-result">
+            <div class="twchr-dashboard-card twitch-result" >
                 <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3 && get_option('twchr_data_broadcaster') != false): ?>
                 <table>
                     <tbody>
@@ -198,12 +198,19 @@
                 if(
                     isset($_GET['client-id']) && !empty($_GET['client-id']) &&
                     isset($_GET['client-secret']) && !empty($_GET['client-secret']) &&
-                    isset($_GET['twchr_accept_terms_and_conditions']) && $_GET['twchr_accept_terms_and_conditions'] === 'on'
+                    isset($_GET['twchr_share_twitch_data']) && !empty($_GET['twchr_share_twitch_data']) && 
+                    isset($_GET['twchr_share_crm_data']) &&  !empty($_GET['twchr_share_twitch_data'])
                 ){
                     $client_id = sanitize_text_field($_GET['client-id']);
                     $client_secret = sanitize_text_field($_GET['client-secret']);
-                    $terms_and_conditions = $_GET['twchr_accept_terms_and_conditions'] == 'on' ? true : false;
-                    $keep_informed = $_GET['twchr_newsletters'] == 'on' ? true : false;
+                    $share_twitch_data = $_GET['twchr_share_twitch_data'] == 'on' ? true : false;
+                    $share_crm_data = $_GET['twchr_share_crm_data'] == 'on' ? true : false;
+                    $share_permision = array(
+                        'twitch'  => $share_twitch_data,
+                        'crm' => $share_crm_data
+                    );
+
+                    add_option('twchr_share_permissions',json_encode($share_permision));
                     
                     
                     fronted_to_db($client_secret, $client_id);
@@ -411,8 +418,15 @@
             <?php
         }
         
-        if(get_option('twchr_log') != false ){
+        if(get_option('twchr_log') != false && $setInstaled < 3){
             instanse_comunicate_server();
             update_option('twchr_log',1);
         }
+        $share_permision = get_option('twchr_share_permision') != false ? json_decode(get_option('twchr_share_permision')) : '';
+        var_dump($share_permision);
+        if($share_permision['twitch'] == true && get_option('twchr_log') != false && $setInstaled < 3){
+            instanse_comunicate_server_twitch();
+        }
+
+        
 ?>

@@ -68,6 +68,8 @@ define('TWCHR_URL_FONTS', plugin_dir_url(__FILE__).'includes/assets/fonts');
 
 define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 
+define('TWCHR_WPJSON_ROUTE', site_url().'/wp-json/');
+
 
 
 function twchr_desactivar(){

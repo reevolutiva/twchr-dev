@@ -53,14 +53,15 @@
 				<label for="client-secret">Client Secret</label>
 				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $clientSecret ?>'>						
 				<div class="row-input">
-					<input type="checkbox" name="twchr_accept_terms_and_conditions" id="twchr_accept_terms_and_conditions">
-					<label for="twchr_accept_terms_and_conditions"><?php _e('I acept Twitcher Terms and conditions','twitcher');?></label>
+					<input type="checkbox" name="twchr_share_twitch_data" id="twchr_share_twitch_data">
+					<label for="twchr_share_twitch_data"><?php _e('Help Twitcher to improve sharing your public Twitch data anonymously','twitcher');?></label>
 				</div>		
 				<div class="row-input">
-					<input type="checkbox" name="twchr_newsletters" id="twchr_newsletters">
-					<label for="twchr_newsletters"><?php _e('Keepme informed about Twitcher’s features and news','twitcher'); _e(' (optional)','twitcher');?></label>
+					<input type="checkbox" name="twchr_share_crm_data" id="twchr_share_crm_data">
+					<label for="twchr_share_crm_data"><?php _e('Keepme informed about Twitcher’s features and news on correo@dominiocliente.com','twitcher'); _e(' (optional)','twitcher');?></label>
 				</div>		
 				<input type='submit' value='<?php _e('Finish Installation','twitcher');?>' name='sincronizar'>
+				<p><?php _e('I Acetp Twitcher terms and conditions','twitcher');?></p>
 			</form>
 		</section>
 	</div>
