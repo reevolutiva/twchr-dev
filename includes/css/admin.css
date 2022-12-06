@@ -659,21 +659,38 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 .twchr-alert{
-    border-radius: 13px;
+    border-radius: 10px;
     background-color: #fff;
     font-family: 'Comfortaa';
     margin: 1.5cm 20pt 6pt 20pt;
-    padding: 15pt 20pt;
+    padding: 15px, 30px, 15px, 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-right: 2cm solid var(--twchr-purple);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 800px;
 }
 .twchr-alert__title{
-    margin: 0 0 10pt 0;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--twchr-purple);
+
 }
 
 .twchr-alert__anchor{
-    width: max-content;
-    padding: 0 5pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 16px;
+
+    background: #65449B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
 }
 
 .twchr-modal-disactive{

@@ -333,8 +333,9 @@ function twchr_card_config_plugin(){
         if(get_option('twchr_setInstaled') <= 1 || get_option('twchr_setInstaled') == false):
         ?>
             <section class="twchr-alert">
-                <h3 class="twchr-alert__title"><?php _e('Twitcher Installed','twitcher'); ?></h3>
-                <a class="twchr-alert__anchor twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php _e('Go Configuration','twitcher'); ?></a>
+                <img src="<?php echo TWCHR_URL_ASSETS?>/warning.png" alt="">
+                <h3 class="twchr-alert__title"><?php _e('It seems you havn’t imported or created any video already. ','twitcher'); ?></h3>
+                <a class="twchr-alert__anchor twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php _e('Setup','twitcher'); ?></a>
             </section>
         <?php
         endif;
