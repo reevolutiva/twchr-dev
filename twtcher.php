@@ -334,12 +334,45 @@ function twchr_card_config_plugin(){
         ?>
             <section class="twchr-alert">
                 <img src="<?php echo TWCHR_URL_ASSETS?>/warning.png" alt="">
-                <h3 class="twchr-alert__title"><?php _e('It seems you havn’t imported or created any video already. ','twitcher'); ?></h3>
+                <h3 class="twchr-alert__title"><?php _e('Twitcher Manage Twitch Acount needs connection with Twitch. ','twitcher'); ?></h3>
                 <a class="twchr-alert__anchor twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL.'edit.php?post_type=twchr_streams&page=twchr-dashboard'?>"><?php _e('Setup','twitcher'); ?></a>
             </section>
         <?php
         endif;
-    endif;    
+    endif;
+    // Si este wordpress no esta usando el protocolo SSL
+    if(!twchr_is_ssl_secure()){
+        ?>
+            <section class="twchr-alert">
+                <img src="<?php echo TWCHR_URL_ASSETS?>warning.png" alt="">
+                <h3 class="twchr-alert__title"><?php _e('Twitch.tv requires SSL https:// secure sites. ','twitcher'); ?></h3>
+                <div class="twchr-alert__row">
+                    <a class="twchr-alert__anchor twchr-btn-general" target="_blank" href="https://dev.twitch.tv/docs/embed"><?php _e('Read More','twitcher'); ?></a>
+                    <img src="<?php echo TWCHR_URL_ASSETS?>close.png" alt="">
+                </div>
+            </section>
+        <?php
+    }
+    // Cuenta cuantos streamings han sido creados usando la api de wordpress
+    $num_streamigs = COUNT(json_decode( wp_remote_retrieve_body(wp_remote_get('http://twchr.local/wp-json/twchr/twchr_get_streaming'))));
+    
+    // Si el numero de streamings creados es de 0
+    if($num_streamigs == 0 && get_option('twchr_setInstaled') == 3 && twchr_is_ssl_secure()){
+        ?>
+        <section class="twchr-alert">
+            <h3 class="twchr-alert__title"><?php _e('It seems you havn’t imported or created any video already. ','twitcher'); ?></h3>
+            <div class="twchr-alert__row">
+                <a class="twchr-alert__anchor twchr-btn-general" target="_blank" href="https://twitcher.pro/twitcher-first-steps-manage-twitch-account-from-wordpress-easy-api-integration/"><?php _e('Import or create streaming','twitcher'); ?></a>
+                <img src="<?php echo TWCHR_URL_ASSETS?>close.png" alt="">
+            </div>
+        </section>
+    <?php
+    }
+}
+
+function twchr_is_ssl_secure(){
+    $res = str_contains($_SERVER['HTTP_REFERER'],'https');
+    return $res;
 }
 
 add_action('all_admin_notices','twchr_card_config_plugin');
