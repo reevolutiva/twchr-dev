@@ -39,22 +39,24 @@
 function instanse_comunicate_server(){
     $case = get_option("twchr_log");
     $event = false;
+    
     switch ($case) {
         case '0':
             $event = 'activate';
+            
             break;
         case '1':
             $event = 'disactivate';
+            
             break;
         
         default:
             break;
     }
-    if ($event != false):
+    if ($event != false && ($case == 0 || $case == 1)):
     ?>
     <form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
     <?php 
-        update_option('twchr_log',1);
         $db = twchr_recopiate_data();
         foreach ($db as $key => $value) {
             if(is_array($value)){
@@ -70,7 +72,14 @@ function instanse_comunicate_server(){
     </form>
     <script>
         const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
-        twchr_form_to_server.submit();
+        <?php
+            if($case == 0){
+                ?>
+                twchr_form_to_server.submit();
+                <?php
+                update_option('twchr_log',1);
+            }
+        ?>
     </script>
     <?php
     die();

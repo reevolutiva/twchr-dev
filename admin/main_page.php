@@ -413,5 +413,6 @@
         
         if(get_option('twchr_log') != false ){
             instanse_comunicate_server();
+            update_option('twchr_log',1);
         }
 ?>

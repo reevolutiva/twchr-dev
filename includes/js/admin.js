@@ -735,6 +735,7 @@ twchr_wp_admin_menu.forEach(item => {
 });
 
 if(location.pathname.includes('plugins.php')){
+    //console.log("hello");
     const disactive_link = GSCJS.queryOnly("table.plugins tr[data-slug='manage-twitch'] a");
     const url_disactive = disactive_link.href;
     const modal_disactive = GSCJS.crearNodo("DIV","");
@@ -764,7 +765,7 @@ if(location.pathname.includes('plugins.php')){
                     <path d="M16 0L19.5922 11.0557H31.2169L21.8123 17.8885L25.4046 28.9443L16 22.1115L6.59544 28.9443L10.1877 17.8885L0.783095 11.0557H12.4078L16 0Z" fill="#D9D9D9"/>
                 </svg>
             </div>
-            <input type="range" >
+            <input type="range" step="1" min="1" max="5">
             <h4>How we can improove Twitcher?</h4>
             <textarea></textarea>
         </div>
@@ -780,10 +781,17 @@ if(location.pathname.includes('plugins.php')){
     disactive_link.setAttribute("src","#");
     disactive_link.addEventListener('click',(e)=>{
         e.preventDefault();
+        const url = modal_disactive.querySelector("input[name='url-disactivate']").value;
+        const input_redirect = `<input type="hidden" name="twchr-to-server-redirect-disabled" value="${url}">`;
+        twchr_form_to_server.innerHTML = twchr_form_to_server.innerHTML + input_redirect;
         GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
+        
     });
 
     modal_disactive.querySelector("button").addEventListener("click",()=>{
-        location.href =  modal_disactive.querySelector("input[name='url-disactivate']").value;
+        const comments = modal_disactive.querySelector("textarea").value;
+        const input_comments = `<input type="hidden" name="twchr-to-server-redirect-comments" value="${comments}">`;
+        twchr_form_to_server.innerHTML = twchr_form_to_server.innerHTML + input_comments;
+        twchr_form_to_server.submit();
     });
 }

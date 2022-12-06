@@ -75,7 +75,9 @@ function twchr_desactivar(){
     if (get_option('twchr_delete_all') == 1){
         delete_option('twchr_setInstaled' );
         delete_option('twchr_installation_date' );
-    }    
+        
+    }  
+    update_option('twchr_log',2);  
     
     
 }
@@ -340,3 +342,12 @@ function twchr_card_config_plugin(){
 }
 
 add_action('all_admin_notices','twchr_card_config_plugin');
+
+function twchr_form_plugin_footer(){
+//var_dump(get_option('twchr_log'));
+   if(str_contains($_SERVER['REQUEST_URI'],'plugins.php') && get_option('twchr_log') == 1){
+        instanse_comunicate_server();
+   }
+}
+
+add_action("shutdown","twchr_form_plugin_footer");
