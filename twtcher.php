@@ -76,6 +76,8 @@ function twchr_desactivar(){
     if (get_option('twchr_delete_all') == 1){
         delete_option('twchr_setInstaled' );
         delete_option('twchr_installation_date' );
+        delete_option('twchr_log' );
+        
         
     }   
     
@@ -375,7 +377,7 @@ function twchr_card_config_plugin(){
 }
 
 function twchr_is_ssl_secure(){
-    $res = str_contains($_SERVER['HTTP_REFERER'],'https');
+    $res = $_SERVER['HTTPS'] == 'on';
     return $res;
 }
 
@@ -386,7 +388,9 @@ add_action('all_admin_notices','twchr_card_config_plugin');
     Solo podemos insertar un formulario a la vez
 */
 function twchr_form_plugin_footer(){
-        if(get_option('twchr_setInstaled') == 3){
+    $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams');
+    $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'plugins.php');
+        if(get_option('twchr_setInstaled') == 3 && ($dataUrl1 || $dataUrl2)){
             instanse_comunicate_server();    
         }
 }

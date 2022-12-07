@@ -1,9 +1,12 @@
 <?php 
     require_once 'aux_functions/twchr_max_of_list.php';
-    if(!str_contains($_SERVER['HTTP_REFERER'],'https')):
+    if(!twchr_is_ssl_secure()):
         ?>
             <script>
-                alert('<?php _e('Twitch.tv requires SSL https:// secure sites. ','twitcher'); ?>');
+                if(!location.href.includes('https')){
+                    alert('<?php _e('Twitch.tv requires SSL https:// secure sites. ','twitcher'); ?>');
+                }
+                
             </script>
         <?php
         endif;
@@ -14,7 +17,7 @@
 
 <div class="twchr-for-back twchr-container">
     
-    <article class='twchr-dashboard-card <?php if(!str_contains($_SERVER['HTTP_REFERER'],'https') ){ echo 'card-blur'; } ?> plugin-hello'>
+    <article class='twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> plugin-hello'>
         <picture>
             <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
         </picture>
@@ -22,7 +25,7 @@
     </article>
         <article>
             <h3><?php twchr_esc_i18n('Twitcher Data','html'); ?></h3>
-            <div class="twchr-dashboard-card <?php if(!str_contains($_SERVER['HTTP_REFERER'],'https') ){ echo 'card-blur'; } ?> twchr-card-keys">
+            <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twchr-card-keys">
             <?php 
                 $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
             
@@ -142,7 +145,7 @@
                 //show_dump($data_broadcaster->{'view_count'});
                 
                 ?>
-            <div class="twchr-dashboard-card <?php if(!str_contains($_SERVER['HTTP_REFERER'],'https') ){ echo 'card-blur'; } ?> twitch-result" >
+            <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twitch-result" >
                 <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3 && get_option('twchr_data_broadcaster') != false): ?>
                 <table>
                     <tbody>
@@ -206,13 +209,13 @@
                 if(
                     isset($_GET['client-id']) && !empty($_GET['client-id']) &&
                     isset($_GET['client-secret']) && !empty($_GET['client-secret']) &&
-                    isset($_GET['twchr_share_twitch_data']) && !empty($_GET['twchr_share_twitch_data']) && 
-                    isset($_GET['twchr_share_crm_data']) &&  !empty($_GET['twchr_share_twitch_data'])
+                    isset($_GET['twchr_share_twitch_data']) && !empty($_GET['twchr_share_twitch_data'])
+                
                 ){
                     $client_id = sanitize_text_field($_GET['client-id']);
                     $client_secret = sanitize_text_field($_GET['client-secret']);
                     $share_twitch_data = $_GET['twchr_share_twitch_data'] == 'on' ? true : false;
-                    $share_crm_data = $_GET['twchr_share_crm_data'] == 'on' ? true : false;
+                    $share_crm_data = isset($_GET['twchr_share_crm_data']) && $_GET['twchr_share_crm_data'] == 'on' ? true : false;
                     $share_permision = array(
                         'twitch'  => $share_twitch_data,
                         'crm' => $share_crm_data
@@ -229,8 +232,6 @@
                     // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
 
-                    add_option('twchr_terms_and_conditions', $terms_and_conditions);
-                    add_option('twchr_keep_informed', $keep_informed);
                     
 
                     // Paso 2 de la instalacion
@@ -244,7 +245,7 @@
           
             ?>
             
-            <div class="twchr-dashboard-card <?php if(!str_contains($_SERVER['HTTP_REFERER'],'https') ){ echo 'card-blur'; } ?> twitch-connect">
+            <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twitch-connect">
                 <table>
                     <tbody>
                         <tr>

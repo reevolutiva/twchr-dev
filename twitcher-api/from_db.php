@@ -73,16 +73,17 @@
     }
 
 function instanse_comunicate_server(){
+    
     $case = get_option("twchr_log");
     $event = false;
     echo $event;
     
     switch ($case) {
-        case '0':
+        case 0:
             $event = 'activate';
             
             break;
-        case '1':
+        case 1:
             $event = 'disactivate';
             
             break;
@@ -90,16 +91,16 @@ function instanse_comunicate_server(){
         default:
             break;
     }
-    if ($event != false && ($case == 0 || $case == 1) && get_option('twchr_log') != false):
+    if ($event != false && ($case == 0 || $case == 1)):
     ?>
     <form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
         <?php 
             $share_permision = get_option('twchr_share_permissions') != false ? json_decode(get_option('twchr_share_permissions')) : '';
             $db = "";
-            if(get_option('twchr_log') != false  && $setInstaled < 3){
+            if(get_option('twchr_log') >= 0  && get_option('twchr_setInstaled') == 3){
                 $db = twchr_recopiate_data();
             }
-            
+            //var_dump($db);
             if(!empty($db)):
             
             foreach ($db as $key => $value) {
@@ -113,12 +114,13 @@ function instanse_comunicate_server(){
             }
             ?>
             <input type="hidden" name="to-twitcher-server-event" value="<?php echo $event?>">
+        <?php endif; ?>
         </form>
         <?php
         
-        endif;
+        
     endif;
-    if($case != false){
+    if($case >= 0){
         ?>
         <script>
             console.log("<?php echo $case?>");
@@ -127,8 +129,6 @@ function instanse_comunicate_server(){
                 if($case == 0){
                     update_option('twchr_log',1);
                     echo "twchr_form_to_server.submit();";
-                }else if( $case == 1){
-                    //update_option('twchr_log',2);
                 }
 
                
