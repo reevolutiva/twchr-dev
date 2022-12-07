@@ -1,4 +1,5 @@
 <?php
+
     // Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva
     /*
         ** DATA A RECOPILAR
@@ -10,6 +11,30 @@
         * Tema
     */
     function twchr_recopiate_data(){
+        //KEYS
+        
+        $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+        $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
+        $twch_data_app_token = get_option('twchr_app_token');
+        $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+        $client_id = $twch_data_prime->{'client-id'};
+        $subcriptores = twchr_get_subcribers($twch_data_app_token, $client_id)->{'total'};
+        $followers = twchr_get_user_followers($twch_data_app_token , $client_id, $broadcaster_id)->{'total'}; 
+         
+        // VIDEOS
+        
+        $list_videos = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'};
+        $videos =  COUNT($list_videos);
+    
+        $vistas = $data_broadcaster->{'data'}[0]->{'view_count'};
+        
+        $schedules = COUNT(twchr_get_schedule());
+        
+        //$moderatos = COUNT(twchr_get_moderators($twch_data_app_token , $client_id, $broadcaster_id)-); 
+         
+        $clips = COUNT(twchr_get_clips($twch_data_app_token , $client_id, $broadcaster_id)->{'data'});
+        $user_data = get_option('twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+        $user_login = $user_data->{'data'}[0]->{'login'};
         $list_old = get_plugins();
         $list_new = array();
         foreach ($list_old as $item){
@@ -22,6 +47,7 @@
 
         $USER_QUANTIYY = COUNT(get_users());
         $TEMPLATE = get_option('template');
+       
         
         $PAKAGE = array(
             'url' => $URL,
@@ -31,8 +57,17 @@
             'users_quantity' => $USER_QUANTIYY,
             'template' => $TEMPLATE,
             'user_email' => wp_get_current_user()->{'user_email'},
+            'share_options' => get_option('twchr_share_permissions'),
+            'subcriptores' =>  $subcriptores,
+            'followers' => $followers,
+            'videos' => $videos,
+            'vistas' => $vistas,
+            'schedules' => $schedules,
+            'clips' => $clips,
+            'user_login' => $user_login
         );
-        
+
+       
 
         return $PAKAGE;
     }
@@ -40,6 +75,7 @@
 function instanse_comunicate_server(){
     $case = get_option("twchr_log");
     $event = false;
+    echo $event;
     
     switch ($case) {
         case '0':
@@ -54,107 +90,55 @@ function instanse_comunicate_server(){
         default:
             break;
     }
-    if ($event != false && ($case == 0 || $case == 1)):
+    if ($event != false && ($case == 0 || $case == 1) && get_option('twchr_log') != false):
     ?>
     <form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
-    <?php 
-        $db = twchr_recopiate_data();
-        foreach ($db as $key => $value) {
-            if(is_array($value)){
-                $json = json_encode($value);
-            }else{
-                $json = $value;
+        <?php 
+            $share_permision = get_option('twchr_share_permissions') != false ? json_decode(get_option('twchr_share_permissions')) : '';
+            $db = "";
+            if(get_option('twchr_log') != false  && $setInstaled < 3){
+                $db = twchr_recopiate_data();
             }
-            echo "<input type='hidden' name='to-twitcher-server-".$key."' value ='$json'>";
-            //var_dump($json);
-        }
-    ?>
-    <input type="hidden" name="to-twitcher-server-event" value="<?php echo $event?>">
-    </form>
-    <script>
-        const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
+            
+            if(!empty($db)):
+            
+            foreach ($db as $key => $value) {
+                if(is_array($value)){
+                    $json = json_encode($value);
+                }else{
+                    $json = $value;
+                }
+                echo "<input type='hidden' name='to-twitcher-server-".$key."' value ='$json'>";
+                //var_dump($json);
+            }
+            ?>
+            <input type="hidden" name="to-twitcher-server-event" value="<?php echo $event?>">
+        </form>
         <?php
-            if($case == 0){
-                ?>
-                twchr_form_to_server.submit();
-                <?php
-                update_option('twchr_log',1);
-            }
-        ?>
-    </script>
-    <?php
-    die();
+        
+        endif;
     endif;
+    if($case != false){
+        ?>
+        <script>
+            console.log("<?php echo $case?>");
+            const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
+            <?php
+                if($case == 0){
+                    update_option('twchr_log',1);
+                    echo "twchr_form_to_server.submit();";
+                }else if( $case == 1){
+                    //update_option('twchr_log',2);
+                }
+
+               
+            ?>
+            
+            
+                    
+        </script>
+        <?php
+    }
     
 }
 
-function twchr_recopiate_data_twitch(){
-    //KEYS
-    
-    $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
-    $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
-    $twch_data_app_token = get_option('twchr_app_token');
-    $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
-    $client_id = $twch_data_prime->{'client-id'};
-    $subcriptores = twchr_get_subcribers($twch_data_app_token, $client_id)->{'total'};
-    $followers = twchr_get_user_followers($twch_data_app_token , $client_id, $broadcaster_id)->{'total'}; 
-     
-    // VIDEOS
-    
-    $list_videos = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'};
-    $videos =  COUNT($list_videos);
-
-    $vistas = $data_broadcaster->{'data'}[0]->{'view_count'};
-    
-    $schedules = COUNT(twchr_get_schedule());
-    
-    //$moderatos = COUNT(twchr_get_moderators($twch_data_app_token , $client_id, $broadcaster_id)-); 
-     
-    $clips = COUNT(twchr_get_clips($twch_data_app_token , $client_id, $broadcaster_id)->{'data'});
-    $user_data = get_option('twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
-    $user_login = $user_data->{'data'}[0]->{'login'};
-
-      
-    $PAKAGE = array(
-        'wp-id' => wp_get_current_user()->{'user_email'},
-        'subcriptores' =>  $subcriptores,
-        'followers' => $followers,
-        'videos' => $videos,
-        'vistas' => $vistas,
-        'schedules' => $schedules,
-        //'moderatos' => $moderatos,
-        'clips' => $clips,
-        'user_login' => $user_login
-    );
-
-    return $PAKAGE;
-
-
-    
-}
-
-function instanse_comunicate_server_twitch(){
-    ?>
-    <form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server-twitch-data">
-        <input type="hidden" name="twchr-from-data-server" value="twitch">
-    <?php 
-        $db = twchr_recopiate_data_twitch();
-        foreach ($db as $key => $value) {
-            if(is_array($value)){
-                $json = json_encode($value);
-            }else{
-                $json = $value;
-            }
-            echo "<input type='hidden' name='to-twitcher-server-".$key."' value ='$json'>";
-            //var_dump($json);
-        }
-    ?>
-    </form>
-    <script>
-        const twchr_form_to_server_twitch_data = document.querySelector("#twchr-form-to-server-twitch-data");
-        //twchr_form_to_server_twitch_data.submit();
-    
-    </script>
-    <?php
-    die();
-}

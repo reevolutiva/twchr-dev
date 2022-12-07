@@ -418,15 +418,7 @@
             <?php
         }
         
-        if(get_option('twchr_log') != false && $setInstaled < 3){
-            instanse_comunicate_server();
-            update_option('twchr_log',1);
-        }
-        $share_permision = get_option('twchr_share_permision') != false ? json_decode(get_option('twchr_share_permision')) : '';
-        var_dump($share_permision);
-        if($share_permision['twitch'] == true && get_option('twchr_log') != false && $setInstaled < 3){
-            instanse_comunicate_server_twitch();
-        }
+        
 
         
 ?>

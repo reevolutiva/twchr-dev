@@ -78,8 +78,7 @@ function twchr_desactivar(){
         delete_option('twchr_setInstaled' );
         delete_option('twchr_installation_date' );
         
-    }  
-    update_option('twchr_log',2);  
+    }   
     
     
 }
@@ -355,8 +354,12 @@ function twchr_card_config_plugin(){
             </section>
         <?php
     }
-    // Cuenta cuantos streamings han sido creados usando la api de wordpress
-    $num_streamigs = COUNT(json_decode( wp_remote_retrieve_body(wp_remote_get('http://twchr.local/wp-json/twchr/twchr_get_streaming'))));
+    // Cuenta cuantos streamings han sido creados
+
+    $num_streamigs = COUNT(get_posts(array(
+		'post_type'  => 'twchr_streams',
+		'post_status' => "publish"
+	)));
     
     // Si el numero de streamings creados es de 0
     if($num_streamigs == 0 && get_option('twchr_setInstaled') == 3 && twchr_is_ssl_secure()){
@@ -379,11 +382,12 @@ function twchr_is_ssl_secure(){
 
 add_action('all_admin_notices','twchr_card_config_plugin');
 
+/*
+    IMPORATANTE
+    Solo podemos insertar un formulario a la vez
+*/
 function twchr_form_plugin_footer(){
-//var_dump(get_option('twchr_log'));
-   if(str_contains($_SERVER['REQUEST_URI'],'plugins.php') && get_option('twchr_log') == 1){
-        instanse_comunicate_server();
-   }
+        instanse_comunicate_server();    
 }
 
 add_action("shutdown","twchr_form_plugin_footer");
