@@ -3,17 +3,17 @@
 add_action('init', 'twchr_taxonomy_cat_twcht');
 function twchr_taxonomy_cat_twcht() {
     $labels = array(
-        'name'              => _x( 'Category Twitch', 'taxonomy general name' , 'twitcher'),
-        'singular_name'     => _x( 'Category Twitch', 'taxonomy singular name' , 'twitcher'),
+        'name'              => _x( 'Twitch Category', 'taxonomy general name' , 'twitcher'),
+        'singular_name'     => _x( 'Twitch Category', 'taxonomy singular name' , 'twitcher'),
         'search_items'      => __( 'Search Categorys Twitch' , 'twitcher'),
         'all_items'         => __( 'All Categorys Twitch' , 'twitcher'),
-        'parent_item'       => __( 'Parent Category Twitch' , 'twitcher'),
-        'parent_item_colon' => __( 'Parent Category Twitch:' , 'twitcher'),
-        'edit_item'         => __( 'Edit Category Twitch' , 'twitcher'),
-        'update_item'       => __( 'Update Category Twitch' , 'twitcher'),
-        'add_new_item'      => __( 'Add New Category Twitch' , 'twitcher'),
-        'new_item_name'     => __( 'New Category Twitch Name' , 'twitcher'),
-        'menu_name'         => __( 'Category Twitch' , 'twitcher'),
+        'parent_item'       => __( 'Parent Twitch Category' , 'twitcher'),
+        'parent_item_colon' => __( 'Parent Twitch Category:' , 'twitcher'),
+        'edit_item'         => __( 'Edit Twitch Category' , 'twitcher'),
+        'update_item'       => __( 'Update Twitch Category' , 'twitcher'),
+        'add_new_item'      => __( 'Add New Twitch Category' , 'twitcher'),
+        'new_item_name'     => __( 'New Twitch Category Name' , 'twitcher'),
+        'menu_name'         => __( 'Twitch Category' , 'twitcher'),
     );
     $args = array( 
         'hierarchical'      => false, 
