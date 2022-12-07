@@ -71,7 +71,6 @@ define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
 define('TWCHR_WPJSON_ROUTE', site_url().'/wp-json/');
 
 
-
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
     if (get_option('twchr_delete_all') == 1){
@@ -387,7 +386,9 @@ add_action('all_admin_notices','twchr_card_config_plugin');
     Solo podemos insertar un formulario a la vez
 */
 function twchr_form_plugin_footer(){
-        instanse_comunicate_server();    
+        if(get_option('twchr_setInstaled') == 3){
+            instanse_comunicate_server();    
+        }
 }
 
 add_action("shutdown","twchr_form_plugin_footer");

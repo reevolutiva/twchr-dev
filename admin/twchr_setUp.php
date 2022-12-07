@@ -19,6 +19,7 @@
 				<h1><?php twchr_esc_i18n('Welcome to  ','html');?> </h1>
 				<img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg'?>" alt="Logo Twitcher">
 		</div>
+	
 		<section class="card-section">
 			<h3>1</h3>
 			<h4><?php twchr_esc_i18n('Go to ','html');?><a target="new_black" href="https://dev.twitch.tv/console/apps/create"><?php twchr_esc_i18n('Twitch Developers Console App Creation (click here)','html'); ?></a></h4>
