@@ -33,8 +33,6 @@ function twchr_admin_js() {
 
     // Scripts
     wp_enqueue_script('twchr_gscjs',TWCHR_URL."includes/js/gscjs.js",array(),$version,false);
-    wp_register_script('twchr_custom_script',TWCHR_URL."includes/js/admin.js",array(),$version,true);
-    wp_enqueue_script('twchr_custom_script');
 
     
     $setInstaled = get_option('twchr_setInstaled');
@@ -47,6 +45,8 @@ function twchr_admin_js() {
             'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0],
             'twitcher_data_clear_all' => get_option( 'twchr_delete_all')
         );
+        wp_register_script('twchr_custom_script',TWCHR_URL."includes/js/admin.js",array(),$version,true);
+        wp_enqueue_script('twchr_custom_script');
         wp_localize_script('twchr_custom_script','tchr_vars_admin',$params);
     }
     

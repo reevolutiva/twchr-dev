@@ -77,6 +77,7 @@ function twchr_desactivar(){
         delete_option('twchr_setInstaled' );
         delete_option('twchr_installation_date' );
         delete_option('twchr_log' );
+        delete_option('twchr_share_permissions' );
         
         
     }   
@@ -372,6 +373,11 @@ function twchr_card_config_plugin(){
                 <img src="<?php echo TWCHR_URL_ASSETS?>close.png" alt="">
             </div>
         </section>
+        <script>
+            document.querySelector("section.twchr-alert .twchr-alert__row a").addEventListener('click',() =>{
+                location.href = location.origin+"/wp-admin/edit.php?post_type=twchr_streams";
+            });
+        </script>
     <?php
     }
 }
