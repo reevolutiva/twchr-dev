@@ -1,4 +1,5 @@
 <?php 
+$delete_all = get_option("twchr_delete_all");
 
 if(isset($_GET['setUpPage']) && $_GET['setUpPage'] == true){
     require_once 'twchr_setUp.php';
@@ -32,11 +33,11 @@ if(isset($_GET['twchr_set_clear_all']) ){
         <p><?php twchr_esc_i18n('Remove all Twitcher data on uninstall','html'); ?></p>
         <label>
             on
-            <input type="radio" name="twchr_set_clear_all" value="1" >
+            <input type="radio" name="twchr_set_clear_all" value="1" <?php echo $delete_all !== false && $delete_all == 1 ? 'checked' : ''  ?>>
         </label>
         <label>
             off
-            <input type="radio" name="twchr_set_clear_all" value="0" >
+            <input type="radio" name="twchr_set_clear_all" value="0" <?php echo $delete_all !== false && $delete_all == 0 ? 'checked' : ''  ?>>
         </label>
         <input type="submit" value="<?php twchr_esc_i18n('save','html')?>">
     </form> 

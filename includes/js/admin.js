@@ -672,23 +672,6 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
     field_created_at.textContent = create_at;
 }
 
-if(getParameterByName('post_type') == 'twchr_streams' && getParameterByName('page') == 'twchr_help'){
-    const twchr_set_clear_all = parseInt(tchr_vars_admin.twitcher_data_clear_all);
-    const radio_opt = document.querySelectorAll(".twchr-for-back-broadcast input[type=radio]");
-
-    if (twchr_set_clear_all !== false) {
-
-        if (twchr_set_clear_all == 0) {
-            radio_opt[1].checked = true;
-
-        } else if (twchr_set_clear_all == 1) {
-            radio_opt[0].checked = true;
-
-        }
-    }
-}
-
-
 if(document.querySelector("body").classList.contains("twchr-single-streaming-active")){
     const twchr_modal = crearElemento("MODAL","twchr_modal");
     metaboxCategoryTwitch.classList.add("twchr_toApi_category_ajax--container");
