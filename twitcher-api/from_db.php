@@ -75,8 +75,10 @@
 function instanse_comunicate_server(){
     
     $case = get_option("twchr_log");
+    // Convierto $case de string a numero entero
+    $case = (int) $case;
     $event = false;
-    echo $event;
+    //echo "<script> alert('".$case."'); </script>";
     
     switch ($case) {
         case 0:
