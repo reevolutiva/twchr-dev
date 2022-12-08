@@ -785,6 +785,7 @@ if(location.pathname.includes('plugins.php')){
         const input_redirect = `<input type="hidden" name="twchr-to-server-redirect-disabled" value="${url}">`;
         twchr_form_to_server.innerHTML = twchr_form_to_server.innerHTML + input_redirect;
         GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
+        window.scrollTo(0,0);
         
     });
 
