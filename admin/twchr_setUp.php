@@ -74,7 +74,7 @@
 	if(isset($_GET['error'])){
 		?>
 			<script>
-				alert("Ups! Error: <?php twchr_esc_i18n($_GET['error']);?>");
+				alert("Ups! Error: <?php twchr_esc_i18n($_GET['error'],'');?>");
 			</script>
 		<?php
 	}
