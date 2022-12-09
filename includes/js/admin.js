@@ -410,6 +410,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                             };
                         twchrFetchGet(`https://api.twitch.tv/helix/schedule?broadcaster_id=${tchr_vars_admin.twitcher_data_broadcaster.id}`,getScheduleCallback,'json',requestOptionsgetSchedule);
                         function getScheduleCallback(res){
+                        
                             if(res.status === 401){
                                 const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true`;
                                 alert('Invalid User Token, You will be redirected to another page to get a new User Token');
@@ -425,6 +426,10 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                                         //console.log(segment.title);
                                         alert.classList.remove("warning");
                                         alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
+                                    }else{
+                                        alert.classList.add("warning");
+                                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
+                                        ajaxResponse.appendChild(alert)
                                     }
                                 });
                                 
@@ -437,9 +442,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                         }
                         
                         
-                        alert.classList.add("warning");
-                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
-                        ajaxResponse.appendChild(alert)
+                        
                         break;
 
                     case 401:

@@ -1,4 +1,125 @@
 <?php
+// Actualiza los schedules segment
+function  twtchr_twitch_schedule_update($post_id,$user_token,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+  $body = array(
+    'start_time' => $twchr_start_time,
+    'duration' => $twchr_duration,
+    'category_id' => $twchr_category,
+    'title' => $twchr_titulo,
+    'is_canceled' => true,
+    'timezone' => 'America/New_York'
+  );
+
+  $args = array(
+    'headers' => array(
+      'authorization' => 'Bearer '.$user_token,
+      'client-id' => $client_id,
+      'Content-Type' => 'application/json'
+    ),
+    'body' => $body
+  );
+
+  $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+  $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+  
+  $url = " https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=".$broadcaster_id;
+
+  $res = wp_remote_post($url,$args);
+  $response_body = json_decode(wp_remote_retrieve_body($res));
+  $response_response = $res['response'];
+
+  // codigo para accionar segun la respuesta de la api
+  switch ($response_response['code']) {
+    case 200:
+        $allData = $response_body->{'data'};
+        return array('allData'=>$allData,'status'=>200,'message'=>__('Successfully updated serie.','twitcher'));
+      //die();
+      break;
+    //case 401:
+    case 401:
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
+     
+      break;
+    //case 400:
+    case 400:
+      $glosa = str_replace('"','`',$response_body->{'message'});
+      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+      
+      break;
+    default:
+      break;
+  }
+}
+// Trae los schedules  segment
+function twtchr_twitch_schedule_get($user_token,$client_id){
+ 
+  $args = array(
+    'headers' => array(
+      'authorization' => 'Bearer '.$user_token,
+      'client-id' => $client_id
+    )
+  );
+
+  $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+  $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+  
+  $url = " https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=".$broadcaster_id;
+
+  $res = wp_remote_get($url,$args);
+  $response_body = json_decode(wp_remote_retrieve_body($res));
+  $response_response = $res['response'];
+  return $response_response;
+}
+// Create twitch schedule segment
+function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+  $body = array(
+    'start_time' => $twchr_start_time,
+    'title' => $twchr_titulo,
+    'timezone' => 'America/New_York',
+    'is_recurring' => true,
+    'duration' => $twchr_duration,
+    'category_id' => $twchr_category
+  );
+
+  $args = array(
+    'headers' => array(
+      'authorization' => 'Bearer '.$tokenValidate,
+      'client-id' => $client_id
+    ),
+    'body' => $body
+  );
+  
+  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=817863896";
+
+  $res = wp_remote_post($url,$args);
+  $response_body = json_decode(wp_remote_retrieve_body($res));
+  $response_response = $res['response'];
+  //show_dump($response_body);
+  //die();
+  // codigo para accionar segun la respuesta de la api
+  switch ($response_response['code']) {
+    case 200:
+        $allData = $response_body->{'data'};
+        return array('allData'=>$allData,'status'=>200,'message'=>__('successfully created series','twitcher'));
+      //die();
+      break;
+    //case 401:
+    case 401:
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
+     
+      break;
+    //case 400:
+    case 400:
+      $glosa = str_replace('"','`',$response_body->{'message'});
+      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+      
+      break;
+    default:
+      break;
+  } 
+  
+}
+
 
 function twchr_get_twicth_api($client_id,$client_secret){
   //$url = 'https://id.twitch.tv/oauth2/token?client_id=80i53du4hlrjvnp6yag1lzirzk2kpd&client_secret=oc3y4236g7hh43o6z3y3pd2mzlt3pn&grant_type=client_credentials';
@@ -39,58 +160,6 @@ function twchr_validateToken($client_id,$client_secret,$code,$redirect){
   return $res;
 }
 
-// Create twitch schedule segment
-function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
-  $body = array(
-    'start_time' => $twchr_start_time,
-    'title' => $twchr_titulo,
-    'timezone' => 'America/New_York',
-    'is_recurring' => true,
-    'duration' => $twchr_duration,
-    'category_id' => $twchr_category
-  );
-
-  $args = array(
-    'headers' => array(
-      'authorization' => 'Bearer '.$tokenValidate,
-      'client-id' => $client_id
-    ),
-    'body' => $body
-  );
-  
-  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=817863896";
-
-  //show_dump($args);
-  //die();
-
-  $res = wp_remote_post($url,$args);
-  $response_body = json_decode(wp_remote_retrieve_body($res));
-  $response_response = $res['response'];
-  //show_dump($response_body);
-  //die();
-  // codigo para accionar segun la respuesta de la api
-  switch ($response_response['code']) {
-    case 200:
-        $allData = $response_body->{'data'};
-        return array('allData'=>$allData,'status'=>200,'message'=>__('successfully created series','twitcher'));
-      //die();
-      break;
-    //case 401:
-    case 401:
-      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
-     
-      break;
-    //case 400:
-    case 400:
-      $glosa = str_replace('"','`',$response_body->{'message'});
-      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
-      
-      break;
-    default:
-      break;
-  } 
-  
-} 
 
 
 function twchr_autenticate($api_key, $client_id,$redirect,$scope){
