@@ -39,7 +39,8 @@ function twchr_validateToken($client_id,$client_secret,$code,$redirect){
   return $res;
 }
 
-function twchr_post_stream($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+// Create twitch schedule segment
+function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
   $body = array(
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,

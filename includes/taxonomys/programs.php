@@ -119,7 +119,7 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
             $tag_name = sanitize_text_field($_POST['name']);
         }
         // Envia los datos a la API de twich
-        $response = twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+        $response = twtchr_twitch_schedule_create($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
         $allData = json_encode($response);          
         update_term_meta($term_id,'twchr_fromApi_allData',$allData);
    }
