@@ -51,7 +51,7 @@ function  twtchr_twitch_schedule_update($post_id,$user_token,$client_id,$twchr_t
   }
 }
 // Trae los schedules  segment
-function twtchr_twitch_schedule_get($user_token,$client_id){
+function  twtchr_twitch_schedule_get($user_token,$client_id){
  
   $args = array(
     'headers' => array(
@@ -63,12 +63,18 @@ function twtchr_twitch_schedule_get($user_token,$client_id){
   $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
   $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
   
-  $url = " https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=".$broadcaster_id;
+  $url = "https://api.twitch.tv/helix/schedule?broadcaster_id=".$broadcaster_id;
 
   $res = wp_remote_get($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));
   $response_response = $res['response'];
-  return $response_response;
+  
+  if($response_response['code'] == 200) {
+    $data = $response_body->{'data'}->{'segments'};
+    return $data;
+  }else{
+    return $response_response;
+  }
 }
 // Create twitch schedule segment
 function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){

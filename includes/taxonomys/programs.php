@@ -126,3 +126,35 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
 	require_once 'form_programs.php';
 }
 add_action( 'serie_edit_form_fields', 'twchr_edit_taxonomy_cf_to_api',10, 2 );
+
+function twchr_twitch_sync_series()
+{
+ ?>
+   <a class="twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_series=true">Sync series</a>
+<?php
+if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
+    $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+    $client_id = $twch_data_prime->{'client-id'};
+    $user_token = $twch_data_prime->{'user_token'};
+
+    //FROM TWCH
+    $schedules_twitch = twtchr_twitch_schedule_get($user_token,$client_id);
+    // FROM WP
+    $schedules_wp = get_terms(array(
+        'taxonomy' => 'serie',
+        'hide_empty' => false
+    ));
+
+    foreach($schedules_wp as $schedule_wp){
+        var_dump($schedule_wp);
+        /*foreach($schedules_twitch as $schedule_tw){
+         
+        } 
+        */ 
+    }
+                                
+    
+}  
+}
+
+ add_action('serie_pre_add_form','twchr_twitch_sync_series');
