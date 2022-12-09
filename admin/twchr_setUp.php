@@ -11,6 +11,7 @@
 		$twchrKeysJSON = get_option('twchr_keys');
 		$clientId =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-id'} : '';
 		$clientSecret =  $twchrKeysJSON != false ? json_decode($twchrKeysJSON)->{'client-secret'} : '';
+		$user_email = wp_get_current_user()->{'user_email'};
 		
 ?>
 <div class="twchr_settUp_overlay">
@@ -59,13 +60,14 @@
 				</div>		
 				<div class="row-input">
 					<input type="checkbox" name="twchr_share_crm_data" id="twchr_share_crm_data" checked>
-					<label for="twchr_share_crm_data"><?php _e('Keepme informed about Twitcher’s features and news on correo@dominiocliente.com','twitcher'); _e(' (optional)','twitcher');?></label>
+					<label for="twchr_share_crm_data"><?php _e('Keepme informed about Twitcher’s features and news on ','twitcher'); echo $user_email;  _e(' (optional)','twitcher');?></label>
 				</div>
 				<div class="footer-row">
 					<input type='submit' value='<?php _e('Finish Installation','twitcher');?>' name='sincronizar'>
-					<p><?php _e('I Acetp Twitcher terms and conditions','twitcher');?></p>
-				</div>		
+					<p><?php _e('I Acept Twitcher ','twitcher');?> <a href="https://twitcher.pro/privacy-policy/"><?php _e('terms & conditions','twicher');?></a></p>
+				</div>	
 			</form>
+			
 		</section>
 	</div>
 </div>
