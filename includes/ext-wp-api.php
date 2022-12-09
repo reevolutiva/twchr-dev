@@ -2,17 +2,18 @@
 //Haciendo visible en el Enpoint 
 //Taxonomía Series
 //twchr_endpoint_tax
-//twchr_endpoint_tax_register_serie TODO:
-function twchr_serie_endpoint() {
+//twchr_endpoint_tax_register_serie 
+function twchr_endpoint_tax_register_serie() {
     register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'twchr_api_get_serie',
+        'callback' => 'twchr_endpoint_tax_register_callback_serie',
     ) );
 }
-add_action( 'rest_api_init', 'twchr_serie_endpoint' );//twchr_endpoint_tax_register_serie
-//twchr_endpoint_tax_register_callback_serie TODO:
+add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );//twchr_endpoint_tax_register_serie
+
+//twchr_endpoint_tax_register_callback_serie 
 // Recopila las taxonomías y las pasa al Endpoint de Wordpress
-function twchr_api_get_serie( $request ) {
+function twchr_endpoint_tax_register_callback_serie( $request ) {
     $args = array(
         'taxonomy' => 'serie',
         'hide_empty' => false
@@ -40,16 +41,16 @@ function twchr_api_get_serie( $request ) {
 
 // CPT Streamings
 //twchr_endpoint_cpt_register_streaming
-function twchr_streaming_endpoint() {
-    register_rest_route( 'twchr/', 'twchr_get_streaming', array(
+function twchr_endpoint_cpt_register_streaming() {
+    register_rest_route( 'twchr/', 'twchr_endpoint_cpt_register_callback_streaming', array(
         'methods'  => 'GET',
-        'callback' => 'twchr_get_streaming',
+        'callback' => 'twchr_endpoint_cpt_register_callback_streaming',
     ) );
 }
-add_action( 'rest_api_init', 'twchr_streaming_endpoint' );
+add_action( 'rest_api_init', 'twchr_endpoint_cpt_register_streaming' );
 
-//twchr_endpoint_cpt_register_callback_streaming TODO:
-function twchr_get_streaming( $request ){
+//twchr_endpoint_cpt_register_callback_streaming 
+function twchr_endpoint_cpt_register_callback_streaming( $request ){
 	// Solicita a BDD todos los post-type = twchr_streams que esten plubicados
 	$posts = get_posts(array(
 		'post_type'  => 'twchr_streams',
@@ -79,6 +80,6 @@ function twchr_get_streaming( $request ){
 	// retorno array_response
 	return $array_response;
 
-} //twchr_endpoint_cpt_register_callback_streaming fin TODO:
+} //twchr_endpoint_cpt_register_callback_streaming fin 
 
 // Fin cpt streamings
