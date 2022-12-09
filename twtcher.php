@@ -54,6 +54,9 @@ require_once 'includes/assets/plugin_enqueue.php';
 
 require_once 'twitcher-api/from_db.php';
 
+// End Points
+require_once 'includes/ext-wp-api.php';
+
 /* 
     Funciones de activacion iniciales del plugin
 */
