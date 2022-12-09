@@ -158,7 +158,7 @@ if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
     ));
 
     foreach($schedules_wp as $schedule_wp){
-        var_dump($schedule_wp);
+        //var_dump($schedule_wp);
         /*foreach($schedules_twitch as $schedule_tw){
          
         } 
