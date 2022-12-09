@@ -81,7 +81,7 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
             $tag_name = sanitize_text_field($_POST['name']);
         }
         // Envia los datos a la API de twich
-        $response = twtchr_twitch_schedule_update($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+        $response = twtchr_twitch_schedule_segment_update($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
         $allData = json_encode($response);          
         update_term_meta($term_id,'twchr_fromApi_allData',$allData);
    }
@@ -138,7 +138,7 @@ if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
     $user_token = $twch_data_prime->{'user_token'};
 
     //FROM TWCH
-    $schedules_twitch = twtchr_twitch_schedule_get($user_token,$client_id);
+    $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
     // FROM WP
     $schedules_wp = get_terms(array(
         'taxonomy' => 'serie',

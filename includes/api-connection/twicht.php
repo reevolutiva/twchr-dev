@@ -1,8 +1,7 @@
 <?php
 // twtchr_twitch_schedule
 // Actualiza los schedules segment
-// twtchr_twitch_schedule_segment_update TODO:
-function  twtchr_twitch_schedule_update($post_id,$user_token,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
   $body = array(
     'start_time' => $twchr_start_time,
     'duration' => $twchr_duration,
@@ -52,8 +51,8 @@ function  twtchr_twitch_schedule_update($post_id,$user_token,$client_id,$twchr_t
       break;
   }
 }
-//twtchr_twitch_schedule_segment_get TODO:
-function  twtchr_twitch_schedule_get($user_token,$client_id){
+
+function  twtchr_twitch_schedule_segment_get($user_token,$client_id){
  
   $args = array(
     'headers' => array(
@@ -78,8 +77,8 @@ function  twtchr_twitch_schedule_get($user_token,$client_id){
     return $response_response;
   }
 }
-// Create twitch schedule segmenttwtchr_twitch_schedule_segment_create TODO:
-function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+// Create twitch schedule segment twtchr_twitch_schedule_segment_create
+function twtchr_twitch_schedule_segment_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
   $body = array(
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,
@@ -130,7 +129,7 @@ function twtchr_twitch_schedule_create($post_id,$tokenValidate,$client_id,$twchr
 //
 //twchr_twitch_video 
 //Obtiene un array de videos
-function twchr_get_twicth_video($app_token, $client_id,$user_id){ //FIXME:twchr_twitch_video_get
+function twchr_twitch_video_get($app_token, $client_id,$user_id){ 
   $args = array(
     'headers'=> array(
       'Authorization' => "Bearer $app_token",
@@ -148,16 +147,18 @@ function twchr_get_twicth_video($app_token, $client_id,$user_id){ //FIXME:twchr_
 }
 
 //twtchr_twitch_subscribers
-//twtchr_twitch_subscribers_get TODO:
-function twchr_get_subcribers($app_token, $client_id){
+//twtchr_twitch_subscribers_get 
+function twtchr_twitch_subscribers_get($app_token, $client_id){
   $args = array(
     'headers' => array(
       'Authorization' => 'Bearer '.$app_token,
       'client-id' => $client_id 
     )
   );
-//FIXME: 'https://api.twitch.tv/helix/subscriptions?broadcaster_id=141981764'
-  $get =  wp_remote_get( 'https://api.twitch.tv/helix/eventsub/subscriptions', $args);
+  $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+  $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+  
+  $get =  wp_remote_get( 'https://api.twitch.tv/helix/subscriptions?broadcaster_id='.$broadcaster_id, $args);
 
   $response = wp_remote_retrieve_body( $get);
 
@@ -165,8 +166,8 @@ function twchr_get_subcribers($app_token, $client_id){
 }
 
 //twtchr_twitch_categories
-//twtchr_twitch_categories_get TODO:
-function twchr_get_categories($app_token, $client_id,$query){
+//twtchr_twitch_categories_get 
+function twtchr_twitch_categories_get($app_token, $client_id,$query){
   $url = "https://api.twitch.tv/helix/search/categories?query=$query";
   $args = array(
       'headers'=> array(
@@ -183,8 +184,8 @@ function twchr_get_categories($app_token, $client_id,$query){
 }
 
 //twtchr_twitch_users
-//twtchr_twitch_users_get TODO:
-function twchr_get_user_followers($app_token, $client_id, $user_id){
+//twtchr_twitch_users_get 
+function twtchr_twitch_users_get_followers($app_token, $client_id, $user_id){
   $url = "https://api.twitch.tv/helix/users/follows?to_id=".$user_id;
 
   $args = array(
@@ -203,8 +204,8 @@ return $object;
 
 }
 //twtchr_twitch_moderators
-//twtchr_twitch_moderators_get TODO:
-function twchr_get_moderators($app_token, $client_id, $user_id){
+//twtchr_twitch_moderators_get 
+function twtchr_twitch_moderators_get($app_token, $client_id, $user_id){
   $url = "https://api.twitch.tv/helix/moderation/moderators?broadcaster_id=".$user_id;
     $args = array(
       'headers'=> array(
@@ -226,8 +227,8 @@ function twchr_get_moderators($app_token, $client_id, $user_id){
 }
 
 // twtchr_twitch_clips
-// twtchr_twitch_clips_get. TODO:
-function twchr_get_clips($app_token, $client_id, $user_id){
+// twtchr_twitch_clips_get. 
+function twtchr_twitch_clips_get($app_token, $client_id, $user_id){
     $url = "https://api.twitch.tv/helix/clips?broadcaster_id=".$user_id;
 
     $args = array(
@@ -249,8 +250,8 @@ function twchr_get_clips($app_token, $client_id, $user_id){
 //
 //Funciones de autenticación//
 // Obtener token
-// twtchr_twitch_autenticate_apptoken_get //FIXME:twtchr_twitch_autenticate_apptoken_get
-function twchr_get_twicth_api($client_id,$client_secret){
+// twtchr_twitch_autenticate_apptoken_get 
+function twtchr_twitch_autenticate_apptoken_get($client_id,$client_secret){
   $url = 'https://id.twitch.tv/oauth2/token?client_id='.$client_id.'&client_secret='.$client_secret.'&grant_type=client_credentials';
   $data = wp_remote_post($url);
   $response = json_decode(wp_remote_retrieve_body($data));
@@ -270,8 +271,8 @@ function twchr_validateToken($client_id,$client_secret,$code,$redirect){
   //show_dump($url_full);
   return $res;
 }
-//twtchr_twitch_autenticate //FIXME:
-function twchr_autenticate($api_key, $client_id,$redirect,$scope){
+//twtchr_twitch_autenticate 
+function twtchr_twitch_autenticate($api_key, $client_id,$redirect,$scope){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
   $token = isset($twch_data_prime->{'user_token'}) ? $twch_data_prime->{'user_token'} : false;
   $token_validate = '';

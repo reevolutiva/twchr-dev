@@ -254,7 +254,7 @@ function twchr_set_terms(){
         $app_token = get_option('twchr_app_token');
 
         if(empty($twchr_cat_id)){
-           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $response = twtchr_twitch_categories_get($app_token, $client_id,$name_wp);
            $data = $response->{'data'};
            foreach($data as $item){
                 $name_twcht = $item->{'name'};
@@ -265,7 +265,7 @@ function twchr_set_terms(){
            
         }
         if(empty($twchr_cat_name)){
-           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $response = twtchr_twitch_categories_get($app_token, $client_id,$name_wp);
            $data = $response->{'data'};
            foreach($data as $item){
                 $name_twcht = $item->{'name'};
@@ -276,7 +276,7 @@ function twchr_set_terms(){
            
         }
         if(empty($twchr_cat_thumbail)){
-           $response = twchr_get_categories($app_token, $client_id,$name_wp);
+           $response = twtchr_twitch_categories_get($app_token, $client_id,$name_wp);
            $data = $response->{'data'};
            foreach($data as $item){
                 $name_twcht = $item->{'name'};

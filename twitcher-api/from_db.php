@@ -18,21 +18,21 @@
         $twch_data_app_token = get_option('twchr_app_token');
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
         $client_id = $twch_data_prime->{'client-id'};
-        $subcriptores = twchr_get_subcribers($twch_data_app_token, $client_id)->{'total'};
-        $followers = twchr_get_user_followers($twch_data_app_token , $client_id, $broadcaster_id)->{'total'}; 
+        $subcriptores = twtchr_twitch_subscribers_get($twch_data_app_token, $client_id)->{'total'};
+        $followers = twtchr_twitch_users_get_followers($twch_data_app_token , $client_id, $broadcaster_id)->{'total'}; 
          
         // VIDEOS
         
-        $list_videos = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'};
+        $list_videos = twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'};
         $videos =  COUNT($list_videos);
     
         $vistas = $data_broadcaster->{'data'}[0]->{'view_count'};
         
         $schedules = COUNT(twchr_get_schedule());
         
-        //$moderatos = COUNT(twchr_get_moderators($twch_data_app_token , $client_id, $broadcaster_id)-); 
+        //$moderatos = COUNT(twtchr_twitch_moderators_get($twch_data_app_token , $client_id, $broadcaster_id)-); 
          
-        $clips = COUNT(twchr_get_clips($twch_data_app_token , $client_id, $broadcaster_id)->{'data'});
+        $clips = COUNT(twtchr_twitch_clips_get($twch_data_app_token , $client_id, $broadcaster_id)->{'data'});
         $user_data = get_option('twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
         $user_login = $user_data->{'data'}[0]->{'login'};
         $list_old = get_plugins();

@@ -117,15 +117,15 @@
                     $client_id = $twch_data_prime->{'client-id'};
                     $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-                    $subcribers = twchr_get_subcribers($twch_data_app_token, $client_id);
+                    $subcribers = twtchr_twitch_subscribers_get($twch_data_app_token, $client_id);
                                 
                     $listVideo_from_api = false;
-                    if(!isset(twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'})){
-                        if(twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ){
+                    if(!isset(twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'})){
+                        if(twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'status'} === 401 ){
                             $listVideo_from_api = false;
                         }
                     }else{
-                        $listVideo_from_api = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                        $listVideo_from_api = twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                     }
                                           
                     $listVideo_from_wp = twchr_get_stream();
@@ -183,7 +183,7 @@
                     if(get_option('twchr_setInstaled') <= 3):
                         $setInstaled = get_option('twchr_setInstaled');
                         if($setInstaled == 3 && $listVideo_from_api === false){
-                            $error = twchr_get_twicth_video($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
+                            $error = twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             ?>
                             <div class="error-card">
                                 <h3>Error: <?php echo  esc_html($error->{'status'}) ?></h3>
@@ -227,7 +227,7 @@
                     fronted_to_db($client_secret, $client_id);
 
                     // Obtengo App Token
-                    $twchr_token_app = twchr_get_twicth_api($client_id, $client_secret );
+                    $twchr_token_app = twtchr_twitch_autenticate_apptoken_get($client_id, $client_secret );
                     
                     // Guardo AppToken                    
                     twchr_save_app_token($twchr_token_app->{'access_token'});
@@ -276,13 +276,13 @@
                 switch (sanitize_text_field($_GET['app_token_action'])) {
                     case 'update':
                         
-                        $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
+                        $twchr_token_app = twtchr_twitch_autenticate_apptoken_get($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});
                         twchr_save_app_token($twchr_token_app->{'access_token'});
                         // Paso 3 de instalaccion
                         echo "<script>location.href='".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard'"."</script>";
                         break;
                     case 'renewAll_api_keys':
-                        $twchr_token_app = twchr_get_twicth_api($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
+                        $twchr_token_app = twtchr_twitch_autenticate_apptoken_get($twch_data_prime->{'client-id'},$twch_data_prime->{'client-secret'});                
                         twchr_save_app_token($twchr_token_app->{'access_token'});
                         echo "<script>location.href='".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'"."</script>";
                         
@@ -336,7 +336,7 @@
                                     update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                                 }
                                 
-                                twchr_autenticate($client_id, $secret_key, $return,$scope);  
+                                twtchr_twitch_autenticate($client_id, $secret_key, $return,$scope);  
     
                             endif;
                         }
