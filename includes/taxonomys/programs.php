@@ -86,9 +86,42 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
     update_term_meta($term_id,'twchr_toApi_category_value',$select_value, $select_value_old);
     update_term_meta($term_id,'twchr_toApi_category_name',$select_name, $select_name_old);
     if(isset($_POST['twchr_toApi_dateTime']) && isset($_POST['twchr_toApi_duration']) && isset($_POST['twchr_toApi_category_value']) ){
-            $response = twchr_serie_update($term_id);
-            $allData = json_encode($response);          
-            update_term_meta($term_id,'twchr_fromApi_allData',$allData);
+            
+        // Recoje data de BDD
+        $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
+        $tokenValidate = $twch_data_prime->{'user_token'};
+        $client_id = $twch_data_prime->{'client-id'};
+
+        $dateTime_raw = sanitize_text_field($_POST['twchr_toApi_dateTime']);
+        $dateTime_stg = strtotime($dateTime_raw);
+        $dateTime_rfc = date(DateTimeInterface::RFC3339,$dateTime_stg);
+
+        $duration = sanitize_text_field($_POST['twchr_toApi_duration']);
+        $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
+        $tag_name = '';
+        /*
+            Si existe la variable 'tag-name'
+            significa que se que la taxonomia se creo en el hook create-schedule
+            asi $tag-name valdra 'tag-name'
+        */
+        if(isset($_POST['tag-name'])){
+            $tag_name = sanitize_text_field($_POST['tag-name']);
+
+        /*
+            Si no existe la variable 'tag-name'
+            verifica que exista la variable 'name'
+
+            Si la variable 'name' existe significa que 
+            la taxonomia se creo en el hook edit-schedule
+            asi que $tag-name valdra 'name'
+        */    
+        }elseif (isset($_POST['name'])) {
+            $tag_name = sanitize_text_field($_POST['name']);
+        }
+        // Envia los datos a la API de twich
+        $response = twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+        $allData = json_encode($response);          
+        update_term_meta($term_id,'twchr_fromApi_allData',$allData);
    }
   }
 add_action('init', 'twchr_taxonomy_serie'); //Fin Guardar taxonomía
@@ -110,43 +143,6 @@ function twchr_save_serie_redirect($term_id, $tt_id){
    die();
 }
 
-//Actualiza  
-function twchr_serie_update($term_id) {
-
-    // Recoje data de BDD
-    $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
-    $tokenValidate = $twch_data_prime->{'user_token'};
-    $client_id = $twch_data_prime->{'client-id'};
-
-    $dateTime_raw = sanitize_text_field($_POST['twchr_toApi_dateTime']);
-    $dateTime_stg = strtotime($dateTime_raw);
-    $dateTime_rfc = date(DateTimeInterface::RFC3339,$dateTime_stg);
-
-    $duration = sanitize_text_field($_POST['twchr_toApi_duration']);
-    $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
-    $tag_name = '';
-    /*
-        Si existe la variable 'tag-name'
-        significa que se que la taxonomia se creo en el hook create-schedule
-        asi $tag-name valdra 'tag-name'
-    */
-    if(isset($_POST['tag-name'])){
-        $tag_name = sanitize_text_field($_POST['tag-name']);
-
-    /*
-        Si no existe la variable 'tag-name'
-        verifica que exista la variable 'name'
-
-        Si la variable 'name' existe significa que 
-        la taxonomia se creo en el hook edit-schedule
-        asi que $tag-name valdra 'name'
-    */    
-    }elseif (isset($_POST['name'])) {
-        $tag_name = sanitize_text_field($_POST['name']);
-    }
-    // Envia los datos a la API de twich
-    return twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
-}
 
 //Formulario que aparece en el Edit de la taxonomía Series en Wordpress
 function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
