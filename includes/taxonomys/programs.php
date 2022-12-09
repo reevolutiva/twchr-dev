@@ -2,7 +2,9 @@
 //Manejadores de taxonomía Series
 
 //Registra la taxonomía Serie en Wordpress
-function twchr_taxonomy_serie() {
+//twchr_tax_serie
+//twchr_tax_serie_register  
+function twchr_tax_serie_register() {
     $labels = array(
         'name'              => _x( 'Series', 'taxonomy general name' , 'twitcher'),
         'singular_name'     => _x( 'serie', 'taxonomy singular name' , 'twitcher'),
@@ -27,8 +29,12 @@ function twchr_taxonomy_serie() {
     register_taxonomy( 'serie', array( 'post', 'twchr_streams' ), $args );
 }
 
+add_action('init', 'twchr_tax_serie_register'); //Fin Guardar taxonomía
+
 //guarda una entrada de la taxonomía Serie en WordPress
-function twchr_taxnonomy_save( $term_id, $tt_id ) {
+// twchr_tax_serie
+// twchr_tax_serie_save
+function twchr_tax_serie_save( $term_id, $tt_id ) {
     
     $dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
     $duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
@@ -86,14 +92,15 @@ function twchr_taxnonomy_save( $term_id, $tt_id ) {
         update_term_meta($term_id,'twchr_fromApi_allData',$allData);
    }
   }
-add_action('init', 'twchr_taxonomy_serie'); //Fin Guardar taxonomía
 
-add_action( 'edit_serie', 'twchr_taxnonomy_save', 10,5);
 
-add_action( 'create_serie', 'twchr_save_serie_redirect', 10,5);
+add_action( 'edit_serie', 'twchr_tax_serie_save', 10,5);
+
 
 //Redirecciona del create al Edit de la Taxonomía
-function twchr_save_serie_redirect($term_id, $tt_id){
+// twchr_tax_serie
+// twchr_tax_serie_create
+function twchr_tax_serie_create($term_id, $tt_id){
    ?>
     <script>
         location.href = '<?php echo TWCHR_ADMIN_URL."term.php?taxonomy=serie&tag_ID="
@@ -105,9 +112,12 @@ function twchr_save_serie_redirect($term_id, $tt_id){
    die();
 }
 
+add_action( 'create_serie', 'twchr_tax_serie_create', 10,5);
 
 //Formulario que aparece en el Edit de la taxonomía Series en Wordpress
-function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
+//twchr_tax_serie
+//twchr_tax_serie_edit
+function twchr_tax_serie_edit($term,$taxonomy) {
     //wp_nonce_field( 'serie_cf', 'serie_cf_nonce' );
     $dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
@@ -125,12 +135,14 @@ function twchr_edit_taxonomy_cf_to_api($term,$taxonomy) {
 
 	require_once 'form_programs.php';
 }
-add_action( 'serie_edit_form_fields', 'twchr_edit_taxonomy_cf_to_api',10, 2 );
+add_action( 'serie_edit_form_fields', 'twchr_tax_serie_edit',10, 2 );
 
-function twchr_twitch_sync_series()
+// twchr_tax_serie
+// twchr_tax_serie_import
+function twchr_tax_serie_import()
 {
  ?>
-   <a class="twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_series=true">Sync series</a>
+   <a class="twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_series=true">import series</a>
 <?php
 if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
     $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
@@ -157,4 +169,4 @@ if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
 }  
 }
 
- add_action('serie_pre_add_form','twchr_twitch_sync_series');
+ add_action('serie_pre_add_form','twchr_tax_serie_import');
