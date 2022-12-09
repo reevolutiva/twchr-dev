@@ -1,15 +1,16 @@
 <?php
-//Taxonomía Series
 //Haciendo visible en el Enpoint 
+//Taxonomía Series
+//twchr_endpoint_tax
+//twchr_endpoint_tax_register_serie TODO:
 function twchr_serie_endpoint() {
     register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
         'callback' => 'twchr_api_get_serie',
     ) );
 }
-
-add_action( 'rest_api_init', 'twchr_serie_endpoint' );
-
+add_action( 'rest_api_init', 'twchr_serie_endpoint' );//twchr_endpoint_tax_register_serie
+//twchr_endpoint_tax_register_callback_serie TODO:
 // Recopila las taxonomías y las pasa al Endpoint de Wordpress
 function twchr_api_get_serie( $request ) {
     $args = array(
@@ -35,20 +36,19 @@ function twchr_api_get_serie( $request ) {
 
     return $response;
 }
-//Fin Taxonomía Series
-
+//Fin Taxonomía Series //fin twchr_endpoint_tax_register_callback_serie
 
 // CPT Streamings
-
+//twchr_endpoint_cpt_register_streaming
 function twchr_streaming_endpoint() {
     register_rest_route( 'twchr/', 'twchr_get_streaming', array(
         'methods'  => 'GET',
         'callback' => 'twchr_get_streaming',
     ) );
 }
-
 add_action( 'rest_api_init', 'twchr_streaming_endpoint' );
 
+//twchr_endpoint_cpt_register_callback_streaming TODO:
 function twchr_get_streaming( $request ){
 	// Solicita a BDD todos los post-type = twchr_streams que esten plubicados
 	$posts = get_posts(array(
@@ -79,6 +79,6 @@ function twchr_get_streaming( $request ){
 	// retorno array_response
 	return $array_response;
 
-}
+} //twchr_endpoint_cpt_register_callback_streaming fin TODO:
 
 // Fin cpt streamings
