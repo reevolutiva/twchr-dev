@@ -132,3 +132,44 @@ function twchr_save_serie_redirect($term_id, $tt_id){
    <?php
    die();
 }
+
+
+function twchr_serie_update($term_id) {
+
+    // Recoje data de BDD
+    $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
+    $tokenValidate = $twch_data_prime->{'user_token'};
+    $client_id = $twch_data_prime->{'client-id'};
+
+
+    $dateTime_raw = sanitize_text_field($_POST['twchr_toApi_dateTime']);
+    $dateTime_stg = strtotime($dateTime_raw);
+    $dateTime_rfc = date(DateTimeInterface::RFC3339,$dateTime_stg);
+
+    $duration = sanitize_text_field($_POST['twchr_toApi_duration']);
+    $select_value = sanitize_text_field($_POST['twchr_toApi_category_value']);
+    $tag_name = '';
+    /*
+        Si existe la variable 'tag-name'
+        significa que se que la taxonomia se creo en el hook create-schedule
+        asi $tag-name valdra 'tag-name'
+    */
+    if(isset($_POST['tag-name'])){
+        $tag_name = sanitize_text_field($_POST['tag-name']);
+
+    /*
+        Si no existe la variable 'tag-name'
+        verifica que exista la variable 'name'
+
+        Si la variable 'name' existe significa que 
+        la taxonomia se creo en el hook edit-schedule
+        asi que $tag-name valdra 'name'
+    */    
+    }elseif (isset($_POST['name'])) {
+        $tag_name = sanitize_text_field($_POST['name']);
+    }
+    // Envia los datos a la API de twich
+    return twchr_post_stream($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+
+    
+}
