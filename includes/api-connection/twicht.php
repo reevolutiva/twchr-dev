@@ -319,11 +319,3 @@ function twchr_get_clips($app_token, $client_id, $user_id){
 
 
 
-function twchr_get_schedule(){
-  $args = array(
-    'taxonomy' => 'serie',
-    'hide_empty' => false
-  );
-  $request = get_terms($args);
-  return $request;
-}

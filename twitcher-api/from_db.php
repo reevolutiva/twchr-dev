@@ -144,3 +144,11 @@ function instanse_comunicate_server(){
     
 }
 
+function twchr_get_schedule(){
+    $args = array(
+      'taxonomy' => 'serie',
+      'hide_empty' => false
+    );
+    $request = get_terms($args);
+    return $request;
+  }
