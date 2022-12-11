@@ -1,4 +1,9 @@
 == Changelog ==
+==0.2==
+* Twitcher Api Integration
+* Feedback capture
+* Twitch Calendar sincronization
+* Bug correction
 
 = 0.1.1 =
 * Import Streamings as Post
@@ -14,6 +19,11 @@
 * Public Beta Released
 
 == Upgrade Notice ==
+==0.2==
+* Twitcher Api Integration
+* Feedback capture
+* Twitch Calendar sincronization
+* Bug correction
 
 = 0.1.2 =
 * Corrected double slash on Twitch Link on Easy Install
@@ -27,4 +37,4 @@
 * Asign Twitch video to post
 * Easy Install
 * Api Helix
-
+ 
