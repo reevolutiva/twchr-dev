@@ -1,6 +1,7 @@
 <?php
 //Manejadores de taxonomía Series
-
+//TODO: Cambiar el nombre de la taxonomía Serie por "Twitch_Calendar"
+//TODO:Acivar el Switch "Is Recurring" y manejar los errores
 //Registra la taxonomía Serie en Wordpress
 //twchr_tax_serie
 //twchr_tax_serie_register  

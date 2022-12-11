@@ -90,7 +90,7 @@ register_activation_hook(__FILE__,'twchr_desactivar' );
 
 // Menu consola de administracion en Dashboard WP
 function twchr_main_menu(){
-    //TODO:eliminar línea 94 de no se necesaria
+    //TODO:eliminar línea 94 de no ser necesaria
     //add_media_page($page_title:string,$menu_title:string,$capability:string,$menu_slug:string,$callback:callable,$position:integer|null )
     add_submenu_page(
         'edit.php?post_type=twchr_streams', //$parent_slug
@@ -117,10 +117,11 @@ function twchr_main_menu(){
 }
 
 add_action('admin_menu','twchr_main_menu');
-//TODO:Mover al archivo twchr_Todo.php que estará en la carpeta TWCHR_FEATURES (ver línea 71)
-function twchr_todo_list(){
-    require_once 'admin/todo_list.php';
-}
+
+//TODO:Lo comento, dado que no existe el archivo
+//function twchr_todo_list(){
+//    require_once 'admin/todo_list.php';
+//}
 
 //TODO:Describir función
 function twchr_cf_db_exist($key,$value){
@@ -162,11 +163,11 @@ function twchr_token_validate($token){
 }
 
 // Funcion para redirección a pagina de instalacion
+//TODO:Mover a la característica correspondiente (¿features/twchr_setup.php?)
 function twchr_redirect_setUp(){
     // Si la url contiene 'plugins' retorna true
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams&page=twchr-dashboard');
     //show_dump(twittcher_data_exist('twchr_setInstaled'));
-
     //add_option('twchr_setInstaled',0,'',true );
     // ¿Eciste dato en wp_options twchr_setInstaled? 
     $setInstaled = get_option('twchr_setInstaled');
@@ -218,6 +219,7 @@ add_filter( 'postmeta_form_limit', function( $limit ) {
 add_action('set_object_terms','twchr_set_terms');
 
 //TODO:Describir función
+//TODO:Mover a Taxonomys
 function twchr_set_terms(){
     // Aqui estaba tax_input
     $args = array(
@@ -289,7 +291,10 @@ function twchr_set_terms(){
     }
     //die();
 }
+
 //TODO:Describir función
+//TODO:Definir la ruta donde irán los menús e interfases y mover ahí
+//TODO:Cada card debe ser una función aparte
 function twchr_card_config_plugin(){
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'plugins.php');
@@ -344,6 +349,7 @@ function twchr_card_config_plugin(){
 }
 
 //TODO:Descibir función
+//TODO:Mover a la carpeta de la característica correspondiente (¿features/twchr_cards.php?)
 function twchr_is_ssl_secure(){
     $res = $_SERVER['HTTPS'] == 'on';
     return $res;

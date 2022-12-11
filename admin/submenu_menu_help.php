@@ -25,12 +25,12 @@ if(isset($_GET['twchr_set_clear_all']) ){
 <div class="twchr-for-back-broadcast container">
     <h1>Help</h1>
     <h3><?php twchr_esc_i18n('Mail your support requests to  contacto@twitcher.pro','html'); ?></h3>
-    <p><a href='https://twitcher.pro/'><?php twchr_esc_i18n('More information visite https://twitcher.pro/','html'); ?></a></p>
+    <p><a href='https://twitcher.pro/'><?php twchr_esc_i18n('For more information visit https://twitcher.pro/','html'); ?></a></p>
     </hr>
     <form action="./edit.php" method="get">
         <input type="hidden" name="post_type" value="twchr_streams">
         <input type="hidden" name="page" value="twchr_help">
-        <p><?php twchr_esc_i18n('Remove all Twitcher data on uninstall','html'); ?></p>
+        <p><?php twchr_esc_i18n('Remove all data on uninstall','html'); ?></p>
         <label>
             on
             <input type="radio" name="twchr_set_clear_all" value="1" <?php echo $delete_all !== false && $delete_all == 1 ? 'checked' : ''  ?>>

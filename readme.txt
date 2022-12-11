@@ -61,7 +61,8 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 ==0.2==
 * Twitcher Api Integration
 * Feedback capture
-* Debug errore
+* Twitch Calendar sincronization
+* Bug correction
 
 = 0.1 =
 * Public Beta Released
