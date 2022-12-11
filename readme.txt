@@ -5,15 +5,16 @@ Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, emb
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 0.1.2
+Stable tag: 0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Manage, promote and monetise your Twitch.tv streaming integrrating the power of twitch to wordpress.
+Twitcher is a WordPress plugin for Streaming and VOD management.
+Twitcher uses the Twitch API (Helix) to sincronice the Twitch Video and Streaming list and publish it as a custom post type (Streamings).
 
 == Description ==
-*Monetize your streams* and grow your audience by integrating your Twitch channel to your Wordpress site in a simple
-and fast way with **Twitcher.pro Wordpress Twitch account manager Plugin**.
+Monetize your passion transforming subscribers and followers into members and customers. 
+Integrate your Twitch channel to your Wordpress site in a simple and fast way with **Twitcher.pro Wordpress Twitch account manager Plugin**.
 Twitcher.pro Integrates your Twitch Channel to Wordpress and create a Post Page for every past Stream, so you could mannage
 and promote your programs and series, and offer extra content for your audience, taking advantage of the power of google.
 
@@ -57,6 +58,10 @@ Nothing: Once you install the plugin, you will be redirect to the instruction an
 7. Asign video to Post 7.png
 
 == Changelog ==
+==0.2==
+* Twitcher Api Integration
+* Feedback capture
+* Debug errore
 
 = 0.1 =
 * Public Beta Released

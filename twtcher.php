@@ -3,7 +3,7 @@
 * Plugin Name: Manage Twitch Account: Easy API Integration
 * Plugin URI: twitcher.pro
 * Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
-* Version: 0.1.2
+* Version: 0.2
 * Author: Conjuntas.Club
 * Author URI: conjuntas.club
 * License: GPL3
@@ -68,12 +68,13 @@ define('TWCHR_URL', plugin_dir_url(__FILE__));
 
 define('TWCHR_URL_ASSETS', plugin_dir_url(__FILE__).'includes/assets/');
 define('TWCHR_URL_FONTS', plugin_dir_url(__FILE__).'includes/assets/fonts');
-
+//Añadí la carpeta features para poner funcionalidades del plugin.
+define('TWCHR_FEATURES', plugin_dir_url(__FILE__).'includes/features/');
 define('TWCHR_SETUP_ASSETS', plugin_dir_url(__FILE__).'/admin/setUp-img/');
-
 define('TWCHR_WPJSON_ROUTE', site_url().'/wp-json/');
 
-
+ 
+//Desactivación del plugin y eliminación de datos.
 function twchr_desactivar(){
     // Eliminar datos en BDD correpondientes al pluigin al desactivar el plugin
     if (get_option('twchr_delete_all') == 1){
@@ -81,19 +82,16 @@ function twchr_desactivar(){
         delete_option('twchr_installation_date' );
         delete_option('twchr_log' );
         delete_option('twchr_share_permissions' );
-        
-        
-    }   
-    
-    
+        }   
 }
+
 register_activation_hook(__FILE__,'twchr_desactivar' );
 
 
 // Menu consola de administracion en Dashboard WP
 function twchr_main_menu(){
+    //TODO:eliminar línea 94 de no se necesaria
     //add_media_page($page_title:string,$menu_title:string,$capability:string,$menu_slug:string,$callback:callable,$position:integer|null )
-
     add_submenu_page(
         'edit.php?post_type=twchr_streams', //$parent_slug
         'Twitcher Dashboard',  //$page_title
@@ -119,11 +117,12 @@ function twchr_main_menu(){
 }
 
 add_action('admin_menu','twchr_main_menu');
-
+//TODO:Mover al archivo twchr_Todo.php que estará en la carpeta TWCHR_FEATURES (ver línea 71)
 function twchr_todo_list(){
     require_once 'admin/todo_list.php';
 }
 
+//TODO:Describir función
 function twchr_cf_db_exist($key,$value){
     global $wpdb;
     $sql = "SELECT * FROM wp_postmeta WHERE meta_key = '$key' AND meta_value = '$value';";
@@ -143,12 +142,12 @@ function twchr_main_page(){
     require_once 'admin/main_page.php';
 }
 
-//Template de meunu secudario de plugin
+//Template de menu secudario de plugin
 function twchr_menu_help(){
     require_once 'admin/submenu_menu_help.php';
 }
 
-
+//TODO:mover a carpeta de API
 function twchr_token_validate($token){
     $url = 'https://id.twitch.tv/oauth2/validate';
     $args = array(
@@ -162,12 +161,7 @@ function twchr_token_validate($token){
     return json_decode($body);
 }
 
-
-
-
-add_action('shutdown','twchr_redirect_setUp');
-
-// Funcion para redurecian a pagina de instalacion
+// Funcion para redirección a pagina de instalacion
 function twchr_redirect_setUp(){
     // Si la url contiene 'plugins' retorna true
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams&page=twchr-dashboard');
@@ -188,6 +182,10 @@ function twchr_redirect_setUp(){
     }
 }
 
+add_action('shutdown','twchr_redirect_setUp');
+
+//TODO:mover a carpeta API
+//TODO:Describir función
 function twchr_twitch_video_exist($video_id,$token,$client_id){
     if(isset($video_id) && isset($token) && isset($client_id)){
         $url = 'https://api.twitch.tv/helix/videos?id='.$video_id;
@@ -213,15 +211,14 @@ if(get_option('twchr_delete_all') == false){
     add_option( 'twchr_delete_all', 0, '', true );
 }
 
-
-
 add_filter( 'postmeta_form_limit', function( $limit ) {
     return 100;
 } );
 
 add_action('set_object_terms','twchr_set_terms');
-function twchr_set_terms(){
 
+//TODO:Describir función
+function twchr_set_terms(){
     // Aqui estaba tax_input
     $args = array(
         'taxonomy' => 'cat_twcht',
@@ -292,7 +289,7 @@ function twchr_set_terms(){
     }
     //die();
 }
-
+//TODO:Describir función
 function twchr_card_config_plugin(){
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'plugins.php');
@@ -346,6 +343,7 @@ function twchr_card_config_plugin(){
     }
 }
 
+//TODO:Descibir función
 function twchr_is_ssl_secure(){
     $res = $_SERVER['HTTPS'] == 'on';
     return $res;
@@ -357,6 +355,8 @@ add_action('all_admin_notices','twchr_card_config_plugin');
     IMPORATANTE
     Solo podemos insertar un formulario a la vez
 */
+
+//TODO:Describir función
 function twchr_form_plugin_footer(){
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'],'post_type=twchr_streams');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'],'plugins.php');
