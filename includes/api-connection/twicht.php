@@ -52,7 +52,10 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
   }
 }
 
-function  twtchr_twitch_schedule_segment_get($user_token,$client_id){
+function  twtchr_twitch_schedule_segment_get(){
+  $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+  $client_id = $twch_data_prime->{'client-id'};
+  $user_token = $twch_data_prime->{'user_token'};
  
   $args = array(
     'headers' => array(
@@ -74,7 +77,11 @@ function  twtchr_twitch_schedule_segment_get($user_token,$client_id){
     $data = $response_body->{'data'}->{'segments'};
     return $data;
   }else{
-    return $response_body;
+   
+    if(isset($response_body->{'error'})){
+            //var_dump($schedules_twitch);
+            twchr_twitch_autentication_error_handdler($response_body->{'error'}, $response_body->{'message'});
+      }
   }
 }
 // Create twitch schedule segment twtchr_twitch_schedule_segment_create

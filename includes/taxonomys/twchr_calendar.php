@@ -156,7 +156,7 @@ function twchr_tax_calendar_import()
         $user_token = $twch_data_prime->{'user_token'};
 
         //FROM TWCH
-        $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
+        $schedules_twitch = twtchr_twitch_schedule_segment_get();
 
         // FROM WP
         $schedules_wp = get_terms(array(
@@ -181,6 +181,11 @@ function twchr_tax_calendar_import()
             //<-
             // schedule_id
             // allDarta
+
+
+        // CLIKC BUTTON -> foreach (item -> item.delryr)
+        // GET LIST SCHEDULE -> foreach (item -> item.title | insert_term(items.title) | insert_meta_term
+        // // item.title exist == false insert_term(items.title) | insert_meta_term
       
         
         if(isset($schedules_twitch->{'error'})){
@@ -188,7 +193,8 @@ function twchr_tax_calendar_import()
             twchr_twitch_autentication_error_handdler($schedules_twitch->{'error'}, $schedules_twitch->{'message'});
         }
            
-        //var_dump($schedules_twitch);
+        var_dump($schedules_twitch->data->segments);
+        die();
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $item){
                 $wp_id = $item->term_id;
@@ -196,18 +202,6 @@ function twchr_tax_calendar_import()
                 foreach($schedules_twitch->data->segments as $schedule){
                     $tw_id = $schedule->{'id'};
                     if($tw_id == $wp_tw_id){
-                        /*
-                        $dateTime = $schedule->start_time;
-                        update_term_meta($wp_id,'twchr_toApi_dateTime',$dateTime);
-                        $select_value = $schedule->category->id;
-                        update_term_meta($wp_id,'twchr_toApi_category_value',$select_value);
-                        $select_name = $schedule->category->name;
-                        update_term_meta($wp_id,'twchr_toApi_category_name',$select_name);
-                        $schedule_segment_id = $schedule->id;
-                        update_term_meta($wp_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-                        $allData = json_encode($schedule);
-                        update_term_meta($wp_id,'twchr_fromApi_allData',$allData);
-                        */
                     }else{
                         $new_term =wp_insert_term($schedule->title, 'calendar');
                         
