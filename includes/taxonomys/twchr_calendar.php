@@ -149,15 +149,28 @@ function twchr_tax_calendar_import()
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
         $client_id = $twch_data_prime->{'client-id'};
         $user_token = $twch_data_prime->{'user_token'};
+        echo($client_id);
+        echo "</br>";
+        echo($user_token);
 
         //FROM TWCH
         $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
+        if(isset($schedules_twitch->{'error'})){
+            echo "<script>
+                        alert('Error: ".$schedules_twitch->{'error'}."');; 
+                        alert('message: ".$schedules_twitch->{'message'}."');
+                        alert('".__("You will be redirected to the authentication page in a few seconds.",'twitcher')."');
+                        location.href = '".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+                    </script>";
+        }
+        var_dump($schedules_twitch);
         // FROM WP
         $schedules_wp = get_terms(array(
             'taxonomy' => 'calendar',
             'hide_empty' => false
         ));
 
+        //var_dump($schedules_twitch);
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $schedule_wp){
                 var_dump($schedule_wp);

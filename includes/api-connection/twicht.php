@@ -69,12 +69,12 @@ function  twtchr_twitch_schedule_segment_get($user_token,$client_id){
   $res = wp_remote_get($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));
   $response_response = $res['response'];
-  
-  if($response_response['code'] == 200) {
+
+  if( isset($response_body->{'code'}) && $response_body->{'code'} == 200) {
     $data = $response_body->{'data'}->{'segments'};
     return $data;
   }else{
-    return $response_response;
+    return $response_body;
   }
 }
 // Create twitch schedule segment twtchr_twitch_schedule_segment_create
