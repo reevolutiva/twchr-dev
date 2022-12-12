@@ -145,29 +145,38 @@ function twchr_tax_calendar_import()
  ?>
    <a class="twchr-btn-general twchr-btn-general-lg" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=calendar&post_type=twchr_streams&sync_calendar=true">import calendar</a>
 <?php
-if(isset($_GET['sync_calendar']) && $_GET['sync_calendar'] == 'true'){
-    $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
-    $client_id = $twch_data_prime->{'client-id'};
-    $user_token = $twch_data_prime->{'user_token'};
+    if(isset($_GET['sync_calendar']) && $_GET['sync_calendar'] == 'true'){
+        $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+        $client_id = $twch_data_prime->{'client-id'};
+        $user_token = $twch_data_prime->{'user_token'};
 
-    //FROM TWCH
-    $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
-    // FROM WP
-    $schedules_wp = get_terms(array(
-        'taxonomy' => 'calendar',
-        'hide_empty' => false
-    ));
+        //FROM TWCH
+        $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
+        // FROM WP
+        $schedules_wp = get_terms(array(
+            'taxonomy' => 'calendar',
+            'hide_empty' => false
+        ));
 
-    foreach($schedules_wp as $schedule_wp){
-        //var_dump($schedule_wp);
-        /*foreach($schedules_twitch as $schedule_tw){
-         
-        } 
-        */ 
-    }
-                                
-    
-}  
+        if(!COUNT($schedules_wp) == 0){
+            foreach($schedules_wp as $schedule_wp){
+                var_dump($schedule_wp);
+                /*foreach($schedules_twitch as $schedule_tw){
+                
+                } 
+                */ 
+            }
+        }else{
+            ?>
+            <section class="twchr-alert twchr-alert-inner">
+                <img src="<?php echo TWCHR_URL_ASSETS ?>/warning.png" alt="">
+                <h3 class="twchr-alert__title"><?php _e("oops! you haven't saved any events to your twitch calendar yet.", 'twitcher'); ?></h3>
+            </section>
+            <?php
+        }
+                                    
+        
+    }  
 }
 
  add_action('calendar_pre_add_form','twchr_tax_calendar_import');

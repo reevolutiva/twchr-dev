@@ -800,6 +800,10 @@ stream.twchr-modal .twchr-modal-button.close{
     height: max-content;
     padding: 5pt 10px;
 }
+
+.twchr-alert-inner{
+    margin: 10pt 0 !important;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
