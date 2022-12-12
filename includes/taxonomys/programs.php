@@ -1,23 +1,23 @@
 <?php
-//Manejadores de taxonomía Series
+//Manejadores de taxonomía Calendar
 //TODO: Cambiar el nombre de la taxonomía Serie por "Twitch_Calendar"
 //TODO:Acivar el Switch "Is Recurring" y manejar los errores
 //Registra la taxonomía Serie en Wordpress
-//twchr_tax_serie
-//twchr_tax_serie_register  
-function twchr_tax_serie_register() {
+//twchr_tax_calendar
+//twchr_tax_calendar_register  
+function twchr_tax_calendar_register() {
     $labels = array(
-        'name'              => _x( 'Series', 'taxonomy general name' , 'twitcher'),
-        'singular_name'     => _x( 'serie', 'taxonomy singular name' , 'twitcher'),
-        'search_items'      => __( 'Search series' , 'twitcher'),
-        'all_items'         => __( 'All series' , 'twitcher'),
-        'parent_item'       => __( 'Parent serie' , 'twitcher'),
-        'parent_item_colon' => __( 'Parent serie:' , 'twitcher'),
-        'edit_item'         => __( 'Edit serie' , 'twitcher'),
-        'update_item'       => __( 'Update serie' , 'twitcher'),
-        'add_new_item'      => __( 'Add New serie' , 'twitcher'),
-        'new_item_name'     => __( 'New serie Name' , 'twitcher'),
-        'menu_name'         => __( 'Series' , 'twitcher'),
+        'name'              => _x( 'Calendar', 'taxonomy general name' , 'twitcher'),
+        'singular_name'     => _x( 'calendar', 'taxonomy singular name' , 'twitcher'),
+        'search_items'      => __( 'Search calendar' , 'twitcher'),
+        'all_items'         => __( 'All calendar' , 'twitcher'),
+        'parent_item'       => __( 'Parent calendar' , 'twitcher'),
+        'parent_item_colon' => __( 'Parent calendar:' , 'twitcher'),
+        'edit_item'         => __( 'Edit calendar' , 'twitcher'),
+        'update_item'       => __( 'Update calendar' , 'twitcher'),
+        'add_new_item'      => __( 'Add New calendar' , 'twitcher'),
+        'new_item_name'     => __( 'New calendar Name' , 'twitcher'),
+        'menu_name'         => __( 'Calendar' , 'twitcher'),
     );
     $args = array( 
         'hierarchical'      => false, 
@@ -25,17 +25,17 @@ function twchr_tax_serie_register() {
 		 'show_ui'           => true,
 		 'show_admin_column' => true,
 		 'query_var'         => true,
-		 'rewrite'           => [ 'slug' => 'serie' ],
+		 'rewrite'           => [ 'slug' => 'calendar' ],
     );
-    register_taxonomy( 'serie', array( 'post', 'twchr_streams' ), $args );
+    register_taxonomy( 'calendar', array( 'post', 'twchr_streams' ), $args );
 }
 
-add_action('init', 'twchr_tax_serie_register'); //Fin Guardar taxonomía
+add_action('init', 'twchr_tax_calendar_register'); //Fin Guardar taxonomía
 
 //guarda una entrada de la taxonomía Serie en WordPress
-// twchr_tax_serie
-// twchr_tax_serie_save
-function twchr_tax_serie_save( $term_id, $tt_id ) {
+// twchr_tax_calendar
+// twchr_tax_calendar_save
+function twchr_tax_calendar_save( $term_id, $tt_id ) {
     
     $dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
     $duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
@@ -95,31 +95,31 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
   }
 
 
-add_action( 'edit_serie', 'twchr_tax_serie_save', 10,5);
+add_action( 'edit_calendar', 'twchr_tax_calendar_save', 10,5);
 
 
 //Redirecciona del create al Edit de la Taxonomía
-// twchr_tax_serie
-// twchr_tax_serie_create
-function twchr_tax_serie_create($term_id, $tt_id){
+// twchr_tax_calendar
+// twchr_tax_calendar_create
+function twchr_tax_calendar_create($term_id, $tt_id){
    ?>
     <script>
-        location.href = '<?php echo TWCHR_ADMIN_URL."term.php?taxonomy=serie&tag_ID="
+        location.href = '<?php echo TWCHR_ADMIN_URL."term.php?taxonomy=calendar&tag_ID="
                                     .$term_id
-                                    ."&post_type=twchr_streams&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dserie%26post_type%3Dtwchr_streams" ?>
+                                    ."&post_type=twchr_streams&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dcalendar%26post_type%3Dtwchr_streams" ?>
                         ';
     </script>
    <?php
    die();
 }
 
-add_action( 'create_serie', 'twchr_tax_serie_create', 10,5);
+add_action( 'create_calendar', 'twchr_tax_calendar_create', 10,5);
 
-//Formulario que aparece en el Edit de la taxonomía Series en Wordpress
-//twchr_tax_serie
-//twchr_tax_serie_edit
-function twchr_tax_serie_edit($term,$taxonomy) {
-    //wp_nonce_field( 'serie_cf', 'serie_cf_nonce' );
+//Formulario que aparece en el Edit de la taxonomía Calendar en Wordpress
+//twchr_tax_calendar
+//twchr_tax_calendar_edit
+function twchr_tax_calendar_edit($term,$taxonomy) {
+    //wp_nonce_field( 'calendar_cf', 'calendar_cf_nonce' );
     $dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
     $select_value = get_term_meta($term->term_id,'twchr_toApi_category_value',true);
@@ -136,16 +136,16 @@ function twchr_tax_serie_edit($term,$taxonomy) {
 
 	require_once 'form_programs.php';
 }
-add_action( 'serie_edit_form_fields', 'twchr_tax_serie_edit',10, 2 );
+add_action( 'calendar_edit_form_fields', 'twchr_tax_calendar_edit',10, 2 );
 
-// twchr_tax_serie
-// twchr_tax_serie_import
-function twchr_tax_serie_import()
+// twchr_tax_calendar
+// twchr_tax_calendar_import
+function twchr_tax_calendar_import()
 {
  ?>
-   <a class="twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_series=true">import series</a>
+   <a class="twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=calendar&post_type=twchr_streams&sync_calendar=true">import calendar</a>
 <?php
-if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
+if(isset($_GET['sync_calendar']) && $_GET['sync_calendar'] == 'true'){
     $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
     $client_id = $twch_data_prime->{'client-id'};
     $user_token = $twch_data_prime->{'user_token'};
@@ -154,7 +154,7 @@ if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
     $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
     // FROM WP
     $schedules_wp = get_terms(array(
-        'taxonomy' => 'serie',
+        'taxonomy' => 'calendar',
         'hide_empty' => false
     ));
 
@@ -170,4 +170,4 @@ if(isset($_GET['sync_series']) && $_GET['sync_series'] == 'true'){
 }  
 }
 
- add_action('serie_pre_add_form','twchr_tax_serie_import');
+ add_action('calendar_pre_add_form','twchr_tax_calendar_import');

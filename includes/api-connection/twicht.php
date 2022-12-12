@@ -146,6 +146,29 @@ function twchr_twitch_video_get($app_token, $client_id,$user_id){
   return $response;
 }
 
+//Pregunta a Twitcht api por un video ID especifico si ese video existe retonra 200 y si no existe 404
+
+function twchr_twitch_video_exist($video_id,$token,$client_id){
+  if(isset($video_id) && isset($token) && isset($client_id)){
+      $url = 'https://api.twitch.tv/helix/videos?id='.$video_id;
+      $args = array(
+          'headers'=> array(
+                  "Authorization" => "Bearer $token",
+                  "client-id" => $client_id
+          )
+      );
+      $get = wp_remote_get($url, $args);
+      $response = wp_remote_retrieve_body($get);
+      $response = json_decode($response);
+      
+      if($response->data){
+          return 200;
+      }else{
+          return 404;
+      }
+  }
+}
+
 //twtchr_twitch_subscribers
 //twtchr_twitch_subscribers_get 
 function twtchr_twitch_subscribers_get($app_token, $client_id){
@@ -280,7 +303,7 @@ function twtchr_twitch_autenticate($api_key, $client_id,$redirect,$scope){
   $twch_data_app_token = '';
 
   if($token != false){
-    $token_validate = twchr_token_validate($token);
+    $token_validate = twchr_twitch_token_validate($token);
     $token_status = isset($token_validate->{'status'}) ? false : true;
     $twch_data_app_token = get_option('twchr_app_token');
   }else{
@@ -327,5 +350,18 @@ function twtchr_twitch_autenticate($api_key, $client_id,$redirect,$scope){
     
 
   }
+}
+
+function twchr_twitch_token_validate($token){
+  $url = 'https://id.twitch.tv/oauth2/validate';
+  $args = array(
+      'headers' => array(
+          'Authorization' => 'Bearer '.$token
+      )
+  );
+
+  $response = wp_remote_get( $url, $args);
+  $body = wp_remote_retrieve_body($response);
+  return json_decode($body);
 }
 
