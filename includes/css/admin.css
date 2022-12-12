@@ -794,6 +794,12 @@ stream.twchr-modal .twchr-modal-button.close{
 .card-blur{
     filter: blur(5px);
 }
+
+.twchr-btn-general-lg{
+    width: max-content;
+    height: max-content;
+    padding: 5pt 10px;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;

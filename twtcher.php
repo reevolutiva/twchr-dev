@@ -65,7 +65,7 @@ require_once 'includes/get-post/get_twchr_stream.php';
 require_once 'includes/twchr_get_videos.php';
 
 //Taxonomias
-require_once 'includes/taxonomys/programs.php';
+require_once 'includes/taxonomys/twchr_calendar.php';
 require_once 'includes/taxonomys/cat_twcht.php';
 
 // Enqueue
