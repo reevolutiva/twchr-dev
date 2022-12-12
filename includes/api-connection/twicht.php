@@ -365,3 +365,11 @@ function twchr_twitch_token_validate($token){
   return json_decode($body);
 }
 
+function twchr_twitch_autentication_error_handdler($error_code , $msg){
+  echo "<script>
+    alert('Error: ".$error_code."'); 
+    alert('message: ".$msg."');
+    alert('".__("You will be redirected to the authentication page in a few seconds.",'twitcher')."');
+    location.href = '".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+  </script>";
+}

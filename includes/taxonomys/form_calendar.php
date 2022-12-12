@@ -48,4 +48,7 @@
         <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo $allData;?>'>
         <p><?php twchr_esc_i18n('Data from Twitch','html');?></p>
     </div>
+    <div>
+        <input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo $schedule_segment_id?>">
+    </div>
 </div>
