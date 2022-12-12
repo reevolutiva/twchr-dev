@@ -38,7 +38,6 @@
 
 .twchr_modal{
     background-color: #fff;
-    position: absolute;
     width: max-content;
     padding: 10px 15px;
     left: 0;
@@ -803,6 +802,10 @@ stream.twchr-modal .twchr-modal-button.close{
 
 .twchr-alert-inner{
     margin: 10pt 0 !important;
+}
+
+.twchr_toApi_category_ajax--container{
+    position: relative;
 }
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{

@@ -2,20 +2,20 @@
 //Haciendo visible en el Enpoint 
 //Taxonomía Series
 //twchr_endpoint_tax
-//twchr_endpoint_tax_register_serie 
-function twchr_endpoint_tax_register_serie() {
-    register_rest_route( 'twchr/', 'twchr_get_serie', array(
+//twchr_endpoint_tax_register_calendar 
+function twchr_endpoint_tax_register_calendar() {
+    register_rest_route( 'twchr/', 'twchr_get_calendar', array(
         'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'twchr_endpoint_tax_register_callback_serie',
+        'callback' => 'twchr_endpoint_tax_register_callback_calendar',
     ) );
 }
-add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );//twchr_endpoint_tax_register_serie
+add_action( 'rest_api_init', 'twchr_endpoint_tax_register_calendar' );//twchr_endpoint_tax_register_calendar
 
-//twchr_endpoint_tax_register_callback_serie 
+//twchr_endpoint_tax_register_callback_calendar 
 // Recopila las taxonomías y las pasa al Endpoint de Wordpress
-function twchr_endpoint_tax_register_callback_serie( $request ) {
+function twchr_endpoint_tax_register_callback_calendar( $request ) {
     $args = array(
-        'taxonomy' => 'serie',
+        'taxonomy' => 'calendar',
         'hide_empty' => false
     );
     $request = get_terms($args);
@@ -37,7 +37,7 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 
     return $response;
 }
-//Fin Taxonomía Series //fin twchr_endpoint_tax_register_callback_serie
+//Fin Taxonomía Series //fin twchr_endpoint_tax_register_callback_calendar
 
 // CPT Streamings
 //twchr_endpoint_cpt_register_streaming

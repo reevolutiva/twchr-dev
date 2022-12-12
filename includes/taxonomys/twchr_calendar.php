@@ -88,7 +88,9 @@ function twchr_tax_calendar_save( $term_id, $tt_id ) {
             $tag_name = sanitize_text_field($_POST['name']);
         }
         // Envia los datos a la API de twich
-        $response = twtchr_twitch_schedule_segment_update($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+        $response = twtchr_twitch_schedule_segment_create($term_id,$tokenValidate,$client_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
+        $schedule_segment_id = $response->{'data'}->{'segments'}[0]->{'id'};
+        update_term_meta($term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
         $allData = json_encode($response);          
         update_term_meta($term_id,'twchr_fromApi_allData',$allData);
    }
@@ -132,9 +134,8 @@ function twchr_tax_calendar_edit($term,$taxonomy) {
         'name' => $select_name,
         'value' => $select_value
     );
-    //show_dump($dateTime);
 
-	require_once 'form_programs.php';
+	require_once 'form_calendar.php';
 }
 add_action( 'calendar_edit_form_fields', 'twchr_tax_calendar_edit',10, 2 );
 
@@ -155,6 +156,14 @@ function twchr_tax_calendar_import()
 
         //FROM TWCH
         $schedules_twitch = twtchr_twitch_schedule_segment_get($user_token,$client_id);
+        $schedules_twitch = $schedules_twitch->{'data'}->{'segments'};
+
+        // FROM WP
+        $schedules_wp = get_terms(array(
+            'taxonomy' => 'calendar',
+            'hide_empty' => false
+        ));
+        
         if(isset($schedules_twitch->{'error'})){
             echo "<script>
                         alert('Error: ".$schedules_twitch->{'error'}."');; 
@@ -163,17 +172,24 @@ function twchr_tax_calendar_import()
                         location.href = '".TWCHR_ADMIN_URL."edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
                     </script>";
         }
-        var_dump($schedules_twitch);
-        // FROM WP
-        $schedules_wp = get_terms(array(
-            'taxonomy' => 'calendar',
-            'hide_empty' => false
-        ));
+        var_dump($schedules_wp);
+        foreach($schedules_twitch as $schedules_tw){
+            $tw_id = $schedules_tw->{'id'};
+            $tw_title = $schedules_tw->{'title'};
+            if(!COUNT($schedules_wp) == 0){
+                foreach($schedules_wp as $schedule_wp){
+                    $wp_id = $schedule_wp->{'id'};
+                }
+                
+            }
+
+        }
+        
 
         //var_dump($schedules_twitch);
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $schedule_wp){
-                var_dump($schedule_wp);
+                //var_dump($schedule_wp);
                 /*foreach($schedules_twitch as $schedule_tw){
                 
                 } 
