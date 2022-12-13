@@ -28,7 +28,7 @@
     
         $vistas = $data_broadcaster->{'data'}[0]->{'view_count'};
         
-        $schedules = COUNT(twchr_get_schedule());
+        $schedules = COUNT(twtchr_twitch_schedule_segment_get());
         
         //$moderatos = COUNT(twtchr_twitch_moderators_get($twch_data_app_token , $client_id, $broadcaster_id)-); 
          
