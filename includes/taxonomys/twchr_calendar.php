@@ -151,9 +151,7 @@ function twchr_tax_calendar_import()
    <a class="twchr-btn-general twchr-btn-general-lg" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=calendar&post_type=twchr_streams&sync_calendar=true">import calendar</a>
 <?php
     if(isset($_GET['sync_calendar']) && $_GET['sync_calendar'] == 'true'){
-        $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
-        $client_id = $twch_data_prime->{'client-id'};
-        $user_token = $twch_data_prime->{'user_token'};
+    
 
         //FROM TWCH
         $schedules_twitch = twtchr_twitch_schedule_segment_get();
@@ -164,97 +162,7 @@ function twchr_tax_calendar_import()
             'hide_empty' => false
         ));
         
-        
-        
-
-        // get_schedule
-        // schedules_twitch_item.id == schedules_wp_item.id ?
-        // save schedule -> calender event -> save twitch data event in cf 
-        // else update calendar event
-
-        // create schedule 
-            // ->
-            // title
-            // dateTime
-            // category_id
-            // is_recurring = true
-            //<-
-            // schedule_id
-            // allDarta
-
-
-        // CLIKC BUTTON -> foreach (item -> item.delryr)
-        // GET LIST SCHEDULE -> foreach (item -> item.title | insert_term(items.title) | insert_meta_term
-        // // item.title exist == false insert_term(items.title) | insert_meta_term
-      
-        
-        if(isset($schedules_twitch->{'error'})){
-            //var_dump($schedules_twitch);
-            twchr_twitch_autentication_error_handdler($schedules_twitch->{'error'}, $schedules_twitch->{'message'});
-        }
-           
-        var_dump($schedules_twitch->data->segments);
-        die();
-        if(!COUNT($schedules_wp) == 0){
-            foreach($schedules_wp as $item){
-                $wp_id = $item->term_id;
-                $wp_tw_id = get_term_meta($wp_id,'twchr_toApi_schedule_segment_id');
-                foreach($schedules_twitch->data->segments as $schedule){
-                    $tw_id = $schedule->{'id'};
-                    if($tw_id == $wp_tw_id){
-                    }else{
-                        $new_term =wp_insert_term($schedule->title, 'calendar');
-                        
-                        if(isset($new_term->errors['term_exists'])){
-                            //TODO: Poner esta redireccion en el error handler
-                            echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=calendar&post_type=twchr_streams'</script>";
-                            die();
-                        }
-
-                        $new_term_id = $new_term['term_id'];
-                       
-                        
-                        $dateTime = $schedule->start_time;
-                        add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
-                        $select_value = $schedule->category->id;
-                        add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
-                        $select_name = $schedule->category->name;
-                        add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
-                        $schedule_segment_id = $schedule->id;
-                        add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-                        $allData = json_encode($schedule);
-                        add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
-                    }
-                   
-                }
-            }
-        }else{
-            $schedule = $schedules_twitch->data->segments[0];
-            $new_term =wp_insert_term($schedule->title, 'calendar');
-            if(isset($new_term->errors['term_exists'])){
-                //TODO: Poner esta redireccion en el error handler
-                echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=calendar&post_type=twchr_streams'</script>";
-                die();
-            }
-
-            $new_term_id = $new_term['term_id'];
-                       
-                        
-            $dateTime = $schedule->start_time;
-            add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
-            $select_value = $schedule->category->id;
-            add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
-            $select_name = $schedule->category->name;
-            add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
-            $schedule_segment_id = $schedule->id;
-            add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-            $allData = json_encode($schedule);
-            add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
-            
-            wp_redirect(TWCHR_ADMIN_URL."edit-tags.php?taxonomy=calendar&post_type=twchr_streams");
-            exit;
-        }
-                                    
+        var_dump($schedules_twitch);
         
     }  
 }

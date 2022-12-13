@@ -72,8 +72,8 @@ function  twtchr_twitch_schedule_segment_get(){
   $res = wp_remote_get($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));
   $response_response = $res['response'];
-
-  if( isset($response_body->{'code'}) && $response_body->{'code'} == 200) {
+  
+  if( isset($response_body->{'data'}->{'segments'})) {
     $data = $response_body->{'data'}->{'segments'};
     return $data;
   }else{

@@ -713,13 +713,6 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
     }  
 }
 
-const twchr_wp_admin_menu = document.querySelectorAll("#menu-posts-twchr_streams ul li a");
-twchr_wp_admin_menu.forEach(item => {
-    if(item.textContent === 'Twitch Category'){
-        item.parentElement.style.display = 'none';
-    }
-    
-});
 
 if(location.pathname.includes('plugins.php')){
     //console.log("hello");
