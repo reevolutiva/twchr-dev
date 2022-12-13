@@ -1,4 +1,4 @@
-<div class="twchr_custom_card--contain">
+<div class="twchr_custom_card--contain custom_card_ft">
     <div class="twchr_card_header">
         <div class="twchr_card_header--title">
             <img src="<?php echo TWCHR_URL_ASSETS.'twitch_logo.png'; ?>" alt="logo-twitch">

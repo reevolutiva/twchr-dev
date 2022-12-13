@@ -195,7 +195,8 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-bottom: 10pt;
 }
 .twchr_modal_video_ajax input[type='checkbox'],
-#twchr-setUp input[type='checkbox']{
+#twchr-setUp input[type='checkbox'],
+.twchr_schedule_card_input[type='checkbox']{
     width: 25px;
     height: 25px;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;
@@ -205,14 +206,16 @@ stream.twchr-modal .twchr-modal-button.close{
     flex-shrink: 0;
 }
 .twchr_modal_video_ajax input[type='checkbox']:checked,
-#twchr-setUp input[type='checkbox']:checked{
+#twchr-setUp input[type='checkbox'],
+.twchr_schedule_card_input[type='checkbox']:checked{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #65449B;
     background-blend-mode: soft-light, normal;
     border: 0.5px solid rgba(255, 255, 255, 0.4);
     box-shadow: inset -2.5px -2.5px 5px rgba(250, 251, 255, 0.1), inset 2.5px 2.5px 5px #366CBD;
 }
 .twchr_modal_video_ajax input[type='checkbox']:checked::before ,
-#twchr-setUp input[type='checkbox']:checked::before {
+#twchr-setUp input[type='checkbox'],
+.twchr_schedule_card_input[type='checkbox']:checked::before {
     margin:0; 
     height: none; 
     width: none; 
@@ -806,6 +809,30 @@ stream.twchr-modal .twchr-modal-button.close{
 
 .twchr_toApi_category_ajax--container{
     position: relative;
+}
+.twchr_custom_card--contain.custom_card_hd{
+    padding: 5pt 10pt;
+}
+.twchr_custom_card--contain.custom_card_hd .twchr_card_body{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-auto-rows: 35px;
+    grid-gap: 10pt;
+}
+
+.twchr_custom_card--contain.custom_card_hd .twchr_card_body section{
+    grid-column: 1/span 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.twchr_custom_card--contain.custom_card_hd .twchr_card_body input[type="text"]{
+    background: #FAFBFF;
+    border: 1px solid #D0CECE;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    height: 31px;
 }
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
