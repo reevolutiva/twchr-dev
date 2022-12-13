@@ -699,10 +699,11 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
                         console.log(radio);
                         if(radio.checked === true){
                             const optionName = radio.parentElement.children[0].textContent;
-                            document.querySelector("#twchr_toApi_category_value").value = radio.value;
+                            document.querySelector("#twchr_schedule_card_input--category").value = radio.value;
                             document.querySelector("#twchr_toApi_category_name").value = optionName;
                             cat_twcht_input.value = optionName;   
                             twchr_modal.classList.remove('active');
+                            twchr_modal.innerHTML = "";
                         }
                     });
                     

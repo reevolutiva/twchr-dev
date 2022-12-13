@@ -12,7 +12,8 @@ for (let i = 0; i < stream_isset.length; i++) {
 if (stream_isset_array.every(item => item === true)) {
     document.querySelector('.twchr_custom_card--contain').style.display = 'none';
 }
-
+const metabox_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
+const metabox_cat_calendar = document.querySelector("#tagsdiv-calendar");
 const metaboxCategoryTwitch = document.querySelector("#tagsdiv-cat_twcht #cat_twcht");
 const cat_twcht_input = metaboxCategoryTwitch.querySelector("input");
 const cat_twcht_submit = metaboxCategoryTwitch.querySelector("input[type='button'].button.tagadd");
@@ -26,3 +27,8 @@ metaboxCategoryTwitch.querySelector(".ajaxtag").appendChild(section);
 metaboxCategoryTwitch.classList.add("single-twicher-metabox");
 
 document.querySelector("body").classList.add("twchr-single-streaming-active");
+
+const twchr_tagchecklist = document.querySelector("#tagsdiv-cat_twcht .tagchecklist");
+
+twchr_schedule_metabox_container.appendChild(metabox_cat_tw);
+twchr_schedule_metabox_container.appendChild(metabox_cat_calendar);
