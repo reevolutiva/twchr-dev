@@ -1,13 +1,14 @@
 <?php
 function twchr_cf_schedule__card(){
     $values  = get_post_custom($_GET['post']);
-
+    
     $title = isset($values['twchr_schedule_card_input--title']) ? $values['twchr_schedule_card_input--title'][0] : '';
     $category = isset($values['twchr_schedule_card_input--category']) ? $values['twchr_schedule_card_input--category'][0] : '';
     $dateTime = isset($values['twchr_schedule_card_input--dateTime']) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
     $duration = isset($values['twchr_schedule_card_input--duration']) ? $values['twchr_schedule_card_input--duration'][0] : '';
     $is_recurring = isset($values['twchr_schedule_card_input--is_recurrig']) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
     $serie = isset($values['twchr_schedule_card_input--serie']) ? $values['twchr_schedule_card_input--serie'][0] : '';
+    //var_dump($values);
     require_once 'schedule_custom_card.php';
 }
 
@@ -31,22 +32,23 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             //die();
             
             if ( isset( $_POST['twchr_schedule_card_input--title'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--title', wp_kses( $_POST['twchr_schedule_card_input--title'], $allowed ) );
+                update_post_meta( $post_id, 'twchr_schedule_card_input--title', wp_kses( $_POST['twchr_schedule_card_input--title'], $allowed ) );
             }
-            if ( isset( $_POST['twchr_schedule_card_input--category'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--category', wp_kses( $_POST['twchr_schedule_card_input--category'], $allowed ) );
-            }
+            
             if ( isset( $_POST['twchr_schedule_card_input--dateTime'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', wp_kses( $_POST['twchr_schedule_card_input--dateTime'], $allowed ) );
+                update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', wp_kses( $_POST['twchr_schedule_card_input--dateTime'], $allowed ) );
             }
             if ( isset( $_POST['twchr_schedule_card_input--duration'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--duration', wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed ) );
+                update_post_meta( $post_id, 'twchr_schedule_card_input--duration', wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed ) );
             }
             if ( isset( $_POST['twchr_schedule_card_input--is_recurring'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--is_recurring', wp_kses( $_POST['twchr_schedule_card_input--is_recurring'], $allowed ) );
+                update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurring', wp_kses( $_POST['twchr_schedule_card_input--is_recurring'], $allowed ) );
             }
-            if ( isset( $_POST['twchr_schedule_card_input--serie'] ) ) {
-                add_post_meta( $post_id, 'twchr_schedule_card_input--serie', wp_kses( $_POST['twchr_schedule_card_input--serie'], $allowed ) );
+            if ( isset( $_POST['twchr_schedule_card_input--serie__id'] ) ) {
+                wp_set_post_terms($post_id,$_POST['twchr_schedule_card_input--serie__id'],'serie');
+            }
+            if ( isset( $_POST['twchr_schedule_card_input--category__value'] ) ) {
+                wp_set_post_terms($post_id,$_POST['twchr_schedule_card_input--category__value'],'cat_twcht');
             }
           
     }

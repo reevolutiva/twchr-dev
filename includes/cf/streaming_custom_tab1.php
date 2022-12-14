@@ -76,26 +76,6 @@ twchr_is_recurring.addEventListener('click', (e) => {
         input_serie.style.display = 'block';
         input_serie_label.style.display = 'block';
         show_date.style.display = 'flex';
-
-
-        /*
-            (broadcaster.broadcaster_type == 'partner' || broadcaster.broadcaster_type == 'afiliate') ?
-                muestro toda la card
-                :
-                opt1 = confirm("usted no es ni afiliado ni phatner asi que no puede crear un streaming singular ¿desea continuar?");
-                // OJO USTED NO ES AFIADO ESTO DARA ERROR
-                if(opt1 == true){
-                    res = twchr_twitch_schedule_create()
-                    alert(res.data);
-                    SWCHT(OPT_user){
-                        case 1 : get sereie data in sctream;
-                        case 2 : redirect to serie tax edit
-                    }
-                } 
-                    
-
-        */
-
     }
 });
 </script>

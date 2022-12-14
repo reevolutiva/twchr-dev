@@ -36,8 +36,19 @@
         <input type="number" id="twchr_toApi_duration" name="twchr_toApi_duration" value="<?php echo $duration?>">
         <p><?php twchr_esc_i18n('Average time that your transmission lasts.','html');?></p>
     </div>
-    <label for="twchr_toApi_duration"><?php twchr_esc_i18n('Chapter','html'); ?></label>
+    <label for="twchr_toApi_category_ajax"><?php twchr_esc_i18n("Twitch's category",'html'); ?></label>
     <div>
-        <input type="text" id="twchr_toApi_schedule_chapter" name='twchr_toApi_schedule_chapter' value="<?php echo /*$schedule_chapter*/ '{"starting_at":"2020-12-10","duration":"60","id":"lkasjdlasjdlja"}';?>">
+        <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo $select_name?>'>
+        <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
+    </div>
+    <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo $select_value?>'>
+    <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo $select_name?>'>
+    <label for="twchr_fromApi_allData"><?php twchr_esc_i18n('All Data','html');?></label>
+    <div>
+        <input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo $allData;?>'>
+        <p><?php twchr_esc_i18n('Data from Twitch','html');?></p>
+    </div>
+    <div>
+        <input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo $schedule_segment_id?>">
     </div>
 </div>
