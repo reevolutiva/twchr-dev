@@ -679,6 +679,8 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 if(document.querySelector("body").classList.contains("twchr-single-streaming-active")){
     const twchr_modal = crearElemento("MODAL","twchr_modal");
     const twchr_ajax_input_category = document.querySelector("#twchr_schedule_card_input--category");
+    const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
+    const twchr_ajax_label_serie = document.querySelector("label[for='twchr_schedule_card_input--serie']");
     const twchr_ajax_label_category = document.querySelector("label[for='twchr_schedule_card_input--category']");
     twchr_ajax_label_category.classList.add("twchr_toApi_category_ajax--container");
     twchr_ajax_label_category.appendChild(twchr_modal);
@@ -713,6 +715,35 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
             }
         });
         
+    }
+    const modal = GSCJS.crearNodo("MODAL",'');
+    modal.classList.add("twchr_modal");
+    twchr_ajax_label_serie.appendChild(modal);
+    twchr_ajax_input_serie.oninput = ()=>{
+        twchrFetchGet (location.origin+"/wp-json/twchr/twchr_get_serie",
+        (res)=>{
+            modal.innerHTML = '';
+            res.forEach((item, index) =>{
+                modal.innerHTML += `<section>
+                                        <label data-twchr-serie-wp-name="${item.name}" for='twchr-modal-serie-radio-input-${index}'>${item.name}</label>
+                                        <input type='radio' name='twchr-modal-serie-radio-input-${index}' value='${item.term_id}'/>
+                                    </section>`;
+            });
+            modal.classList.add('active');
+
+            const radios = modal.querySelectorAll("input");
+            radios.forEach( radio => {
+                    radio.addEventListener('click', (e) =>{
+                        document.querySelector("input[name='twchr_schedule_card_input--serie__id']").value = e.target.value;
+                        twchr_ajax_input_serie.value = e.target.parentElement.querySelector("label").getAttribute("data-twchr-serie-wp-name");
+
+                        modal.innerHTML = '';
+                        modal.classList.remove("active");
+                    });
+                }
+            );
+        },
+        'json');
     }  
 }
 

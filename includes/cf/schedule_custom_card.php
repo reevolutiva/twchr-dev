@@ -14,6 +14,7 @@
         <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="checkbox" <?php echo $is_recurring == 'on' ? 'checked' : '' ?>>
         <label for="twchr_schedule_card_input--serie" <?php echo $is_recurring == false ? 'style="display:none;"' : '' ;?>><?php _e('Serie','twitcher');?></label>
         <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie" class="twchr_schedule_card_input" type="text" value="<?php echo $serie ?>" <?php echo $is_recurring == false ? 'disabled style="display:none;"' : '' ;?> >
+        <input name="twchr_schedule_card_input--serie__id" type="hidden" >
         
         <section id="twchr_schedule_card_input--show" <?php echo $is_recurring == false ? 'style="display:none;"' : '' ;?>>
             <h5><?php _e('Repeat every:','twitcher');?></h5>

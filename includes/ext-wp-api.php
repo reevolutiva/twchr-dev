@@ -2,20 +2,20 @@
 //Haciendo visible en el Enpoint 
 //Taxonomía Series
 //twchr_endpoint_tax
-//twchr_endpoint_tax_register_calendar 
-function twchr_endpoint_tax_register_calendar() {
-    register_rest_route( 'twchr/', 'twchr_get_calendar', array(
+//twchr_endpoint_tax_register_serie 
+function twchr_endpoint_tax_register_serie() {
+    register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'twchr_endpoint_tax_register_callback_calendar',
+        'callback' => 'twchr_endpoint_tax_register_callback_serie',
     ) );
 }
-add_action( 'rest_api_init', 'twchr_endpoint_tax_register_calendar' );//twchr_endpoint_tax_register_calendar
+add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );//twchr_endpoint_tax_register_serie
 
-//twchr_endpoint_tax_register_callback_calendar 
+//twchr_endpoint_tax_register_callback_serie 
 // Recopila las taxonomías y las pasa al Endpoint de Wordpress
-function twchr_endpoint_tax_register_callback_calendar( $request ) {
+function twchr_endpoint_tax_register_callback_serie( $request ) {
     $args = array(
-        'taxonomy' => 'calendar',
+        'taxonomy' => 'serie',
         'hide_empty' => false
     );
     $request = get_terms($args);
@@ -25,11 +25,7 @@ function twchr_endpoint_tax_register_callback_calendar( $request ) {
         $array_rest = array(
             "term_id" => $term_id,
             "name" => $term->{'name'},
-            "taxonomy" => $term->{'taxonomy'},
-            "dateTime" => get_term_meta( $term_id, 'twchr_toApi_dateTime', true ),
-            "duration" => get_term_meta( $term_id, 'twchr_toApi_duration', true ),
-            "select" => get_term_meta( $term_id, 'twchr_toApi_category', true ),
-            "dataFromTwitch" => get_term_meta( $term_id, 'twchr_fromApi_allData', true )
+            "taxonomy" => $term->{'taxonomy'}
         );
 
         array_push($response, $array_rest);
@@ -37,7 +33,7 @@ function twchr_endpoint_tax_register_callback_calendar( $request ) {
 
     return $response;
 }
-//Fin Taxonomía Series //fin twchr_endpoint_tax_register_callback_calendar
+//Fin Taxonomía Series //fin twchr_endpoint_tax_register_callback_serie
 
 // CPT Streamings
 //twchr_endpoint_cpt_register_streaming

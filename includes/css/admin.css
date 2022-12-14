@@ -822,6 +822,7 @@ stream.twchr-modal .twchr-modal-button.close{
     justify-content: space-between;
 }
 
+
 .twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="text"],
 .twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="datetime-local"],
 .twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="number"]{
@@ -832,6 +833,9 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 31px;
 }
 
+.twchr_custom_card--contain.custom_card_hd label[for='twchr_schedule_card_input--serie']{
+    position: relative;
+}
 
 
 
