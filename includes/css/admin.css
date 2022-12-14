@@ -58,8 +58,11 @@
 }
 
 #cat_twcht .twchr_modal.active{
-    position: static;
+    position: absolute;
     width: auto;
+    top: 0;
+    left: 300px;
+    max-height: 100px;
 }
 #cat_twcht .twchr_modal section{
     border-bottom:1px solid var(--twchr-purple) ;
@@ -835,7 +838,8 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 31px;
 }
 
-.twchr-streaming-metabox-container .postbox{
+.twchr-streaming-metabox-container .postbox,
+#tagsdiv-calendar{
     border: none;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #FFFFFF;
     background-blend-mode: soft-light, normal;
@@ -844,16 +848,16 @@ stream.twchr-modal .twchr-modal-button.close{
     border-radius: 15px;
 }
 
-.twchr-streaming-metabox-container .postbox .handle-actions{
+
+.twchr-streaming-metabox-container{
+    margin: 10pt 0;
+}
+.twchr-streaming-metabox-container .handle-actions{
     display: none;
 }
 
-.twchr-streaming-metabox-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    column-gap: 10pt;
-    margin-top: 10pt;
-    
+.twchr-streaming-metabox-container:nth-of-type(2){
+    margin-top: 0;
 }
 
 @media screen and (max-width:1330px){

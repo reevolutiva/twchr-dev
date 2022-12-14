@@ -29,14 +29,25 @@ function twchr_card_config_plugin()
     // Si este wordpress no esta usando el protocolo SSL
     if (!twchr_is_ssl_secure()) {
         ?>
-        <section class="twchr-alert">
+        <section class="twchr-alert alert-ssl">
             <img src="<?php echo TWCHR_URL_ASSETS ?>warning.png" alt="">
             <h3 class="twchr-alert__title"><?php _e('Twitch.tv requires SSL https:// secure sites. ', 'twitcher'); ?></h3>
             <div class="twchr-alert__row">
+                <a class="twchr-alert__anchor twchr-btn-general ssl" target="_blank" href="<?php echo str_replace(site_url(),'http','https')?>"><?php _e('Force SSL', 'twitcher'); ?></a>
                 <a class="twchr-alert__anchor twchr-btn-general" target="_blank" href="https://dev.twitch.tv/docs/embed"><?php _e('Read More', 'twitcher'); ?></a>
                 <img src="<?php echo TWCHR_URL_ASSETS ?>close.png" alt="">
             </div>
         </section>
+        <script>
+            document.querySelector(".twchr-alert.alert-ssl a.twchr-alert__anchor.ssl").addEventListener('click', (e)=>{
+                e.preventDefault();
+                const opt = confirm("<?php _e('If you do not have an ssl certificate installed on your domain this action may give you an error. Are you sure to continue?','twitcher');?>");
+                if(opt){
+                    alert("<?php _e('You will be redirected to this same website but with ssl protocol','twitcher');?>");
+                    location.href = location.href.replace("http","https");
+                }
+            });
+        </script>
     <?php
     }
     // Cuenta cuantos streamings han sido creados

@@ -374,8 +374,8 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
 
 }
 
-//taxonomy=calendar&post_type=twchr_streams
-if(getParameterByName('taxonomy') ==='calendar' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
+//taxonomy=serie&post_type=twchr_streams
+if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
    {
     const ajaxResponse = document.querySelector("#ajax-response");
     const getResponse = async (url) =>{
@@ -425,10 +425,10 @@ if(getParameterByName('taxonomy') ==='calendar' && getParameterByName('post_type
                                         //console.log('existe');
                                         //console.log(segment.title);
                                         alert.classList.remove("warning");
-                                        alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>calendar: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
+                                        alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
                                     }else{
                                         alert.classList.add("warning");
-                                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>calendar: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
+                                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
                                         ajaxResponse.appendChild(alert)
                                     }
                                 });
@@ -458,7 +458,7 @@ if(getParameterByName('taxonomy') ==='calendar' && getParameterByName('post_type
                         break;
                     case 400:
                         alert.classList.add("warning");
-                        alert.innerHTML = `<h3>${dataFromApi.error}</h3><p>${dataFromApi.message}</p><p>calendar: <b>${dataFromApi.title}</b></p>`;
+                        alert.innerHTML = `<h3>${dataFromApi.error}</h3><p>${dataFromApi.message}</p><p>serie: <b>${dataFromApi.title}</b></p>`;
                         ajaxResponse.appendChild(alert);
                         break;
                     
@@ -478,7 +478,7 @@ if(getParameterByName('taxonomy') ==='calendar' && getParameterByName('post_type
         }
     }
 
-    const url = location.origin+'/wp-json/twchr/twchr_get_calendar';
+    const url = location.origin+'/wp-json/twchr/twchr_get_serie';
     getResponse(url);
 
     const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
@@ -501,7 +501,7 @@ if(getParameterByName('taxonomy') ==='calendar' && getParameterByName('post_type
                     break;
                 case 400:
                     alert.classList.add("warning");
-                    alert.innerHTML = `<h3>${object.error}</h3><p>${object.message}</p><p>calendar: <b>${object.title}</b></p>`;
+                    alert.innerHTML = `<h3>${object.error}</h3><p>${object.message}</p><p>serie: <b>${object.title}</b></p>`;
                     ajaxResponse.appendChild(alert);
                     break;
                 
@@ -703,7 +703,7 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
                             document.querySelector("#twchr_toApi_category_name").value = optionName;
                             cat_twcht_input.value = optionName;   
                             twchr_modal.classList.remove('active');
-                            twchr_modal.innerHTML = "";
+                            twchr_modal.innerHTML ="";
                         }
                     });
                     

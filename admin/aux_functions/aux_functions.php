@@ -14,3 +14,27 @@ function twchr_validate_cf_db_exist($key,$value){
     }
     
 }
+
+/**
+ * Extrae el value de un objecto de tipo JSON por su Key
+ *
+ * @param [type] $key
+ * @param [type] $json
+ * @return void
+ */
+function twchr_object_get_value_by($key,$json){
+    $object = json_decode($json);
+    return $object->{$key};
+}
+
+/**
+ * Extrae el value de un array de tipo JSON por su indice
+ *
+ * @param [type] $key
+ * @param [type] $json
+ * @return void
+ */
+function twchr_array_get_value_by($key,$json){
+    $array = json_decode($json);
+    return $array[$key];
+}

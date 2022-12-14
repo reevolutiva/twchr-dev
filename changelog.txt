@@ -2,7 +2,7 @@
 ==0.2==
 * Twitcher Api Integration
 * Feedback capture
-* Twitch Calendar sincronization
+* Twitch Serie sincronization
 * Bug correction
 
 = 0.1.1 =
@@ -22,7 +22,7 @@
 ==0.2==
 * Twitcher Api Integration
 * Feedback capture
-* Twitch Calendar sincronization
+* Twitch Serie sincronization
 * Bug correction
 
 = 0.1.2 =

@@ -26,7 +26,7 @@ function twchr_fonts(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.4.156';
+    $version = 'beta.4.158';
     
     // Estilos
     wp_enqueue_style('admin-styles', TWCHR_URL."includes/css/admin.css" ,array(),$version,'all');
