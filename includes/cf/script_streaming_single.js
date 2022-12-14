@@ -15,16 +15,6 @@ if (stream_isset_array.every(item => item === true)) {
 const metabox_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
 const metabox_cat_calendar = document.querySelector("#tagsdiv-serie");
 const metaboxCategoryTwitch = document.querySelector("#tagsdiv-cat_twcht #cat_twcht");
-const cat_twcht_input = metaboxCategoryTwitch.querySelector("input");
-const cat_twcht_submit = metaboxCategoryTwitch.querySelector("input[type='button'].button.tagadd");
-const cat_twcht_inputs_hiddens = `<input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='#'>
-                                  <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='#'>`;
-const section = document.createElement("DIV");
-section.innerHTML = cat_twcht_inputs_hiddens;
-
-metaboxCategoryTwitch.querySelector(".ajaxtag").appendChild(section);
-
-metaboxCategoryTwitch.classList.add("single-twicher-metabox");
 
 document.querySelector("body").classList.add("twchr-single-streaming-active");
 
