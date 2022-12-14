@@ -294,31 +294,31 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     // Lleno Twchr card
     
     //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
     
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
     let card_img = postBox[8].value;
     card_img = card_img.replace("%{width}x%{height}","250x150");
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_header--img img").setAttribute('src',card_img);
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header--img img").setAttribute('src',card_img);
   
-    GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
+    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
    
     twchrFetchGet(
         'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
         (element)=>{
             //console.log(element.data);
             if(element.data){
-                GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--status .item.status h3").classList.add('on');
-                GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--status .item.status h3").textContent = 'Online';
+                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('on');
+                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Online';
             }else{
-                GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--status .item.status h3").classList.add('failed');
-                GSCJS.queryOnly(".twchr_custom_card--contain.custom_card_ft .twchr_card_body--status .item.status h3").textContent = 'Offline';    
+                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('failed');
+                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Offline';    
             }
         },
         'json',{headers: {
@@ -341,7 +341,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     }
 
     if(stream_isset_array.every(item => item === true)){
-        document.querySelector('.twchr_custom_card--contain.custom_card_ft').style.display = 'none';
+        //document.querySelector('.twchr_car_tab2').style.display = 'none';
     }
     
 }

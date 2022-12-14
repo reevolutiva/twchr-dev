@@ -803,19 +803,46 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_toApi_category_ajax--container{
     position: relative;
 }
-.twchr_custom_card--contain.custom_card_hd{
+.twchr_custom_card--contain{
     padding: 10pt;
     position: relative;
     z-index: 9999;
+    overflow: hidden;
 }
-.twchr_custom_card--contain.custom_card_hd .twchr_card_body{
+
+.twchr_custom_card--contain .custom_card_row{
+    display: grid;
+    grid-template-columns: repeat(2,100%);
+    column-gap: 20px;
+    transition: .3s ease-in-out;
+}
+.twchr_custom_card--contain .custom_card_row section{
+    width: 100%;
+    margin-right: 10pt;
+}
+.twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr;
     grid-template-rows: 35px 35px 35px 35px;
     grid-gap: 10pt;
 }
+.twchr_custom_card--contain .custom_card_row .twchr_car_tab2 .twchr_car_tab1{
+    display: flex;
+    justify-content: space-between;
+}
+.twchr_custom_card--contain .twchr_custom_card_header{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10pt;
+}
 
-.twchr_custom_card--contain.custom_card_hd .twchr_card_body section#twchr_schedule_card_input--show{
+.twchr_custom_card--contain .twchr_custom_card_header div h3{
+    box-shadow: 3px 3px 3px var(--twchr-purple) inset;
+    border-radius: 10px;
+    padding: 5pt 10pt;
+}
+
+.twchr_custom_card--contain .twchr_car_tab1 section#twchr_schedule_card_input--show{
     grid-column: 1/span 2;
     display: flex;
     align-items: center;
@@ -823,9 +850,9 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 
-.twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="text"],
-.twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="datetime-local"],
-.twchr_custom_card--contain.custom_card_hd .twchr_card_body > input[type="number"]{
+.twchr_custom_card--contain .twchr_car_tab1 > input[type="text"],
+.twchr_custom_card--contain .twchr_car_tab1 > input[type="datetime-local"],
+.twchr_custom_card--contain .twchr_car_tab1 > input[type="number"]{
     background: #FAFBFF;
     border: 1px solid #D0CECE;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -833,7 +860,7 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 31px;
 }
 
-.twchr_custom_card--contain.custom_card_hd label[for='twchr_schedule_card_input--serie']{
+.twchr_custom_card--contain label[for='twchr_schedule_card_input--serie']{
     position: relative;
 }
 
@@ -850,6 +877,14 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-top: 0;
 }
 
+#tagsdiv-cat_twcht,#tagsdiv-serie{
+    display: none;
+}
+
+.twchr_custom_card--contain .custom_card_row .twchr_car_tab2,
+.twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
+    padding: 0 1cm;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
@@ -859,12 +894,6 @@ stream.twchr-modal .twchr-modal-button.close{
     }
 }
 
-@media screen and (max-width:1293px){
-    .twchr_custom_card--contain .twchr_card_header,
-    .twchr_custom_card--contain .twchr_card_body{
-        display: block;
-    }
-}
 
 @media screen and (max-width:960px){
     .twchr_settUp_overlay{

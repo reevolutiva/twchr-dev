@@ -20,5 +20,12 @@ document.querySelector("body").classList.add("twchr-single-streaming-active");
 
 const twchr_tagchecklist = document.querySelector("#tagsdiv-cat_twcht .tagchecklist");
 
-metabox_cat_tw.style.display = 'none';
-metabox_cat_calendar.style.display = 'none';
+const twchr_card_header_menu = document.querySelectorAll(".twchr_custom_card_header h3");
+const twchr_slide_card_row = document.querySelector(".twchr_custom_card--contain .custom_card_row");
+
+twchr_card_header_menu[1].addEventListener('click', ()=>{
+    twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+});
+twchr_card_header_menu[0].addEventListener('click', ()=>{
+    twchr_slide_card_row.style.transform = 'translateX(0%)';
+});
