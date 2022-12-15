@@ -85,7 +85,13 @@ function  twtchr_twitch_schedule_segment_get(){
   }
 }
 // Create twitch schedule segment twtchr_twitch_schedule_segment_create
-function twtchr_twitch_schedule_segment_create($post_id,$tokenValidate,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+
+  //GET CREDENTIALS
+  $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
+  $tokenValidate = $twch_data_prime->{'user_token'};
+  $client_id = $twch_data_prime->{'client-id'};
+
   $body = array(
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,

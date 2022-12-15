@@ -74,9 +74,9 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 $response = wp_create_term($cat_twitch_name,'cat_twcht');
                
                 $id = (int)$response['term_id'];
-                wp_set_post_terms($post_id,[$id],'cat_twcht');
-                    
-                    
+                wp_set_post_terms($post_id,[$id],'cat_twcht');     
+                
+                twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration);
 
                 
             }
