@@ -860,9 +860,9 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 
-.twchr_custom_card--contain .twchr_car_tab1 > input[type="text"],
-.twchr_custom_card--contain .twchr_car_tab1 > input[type="datetime-local"],
-.twchr_custom_card--contain .twchr_car_tab1 > input[type="number"]{
+.twchr_custom_card--contain .twchr_car_tab1  input[type="text"],
+.twchr_custom_card--contain .twchr_car_tab1  input[type="datetime-local"],
+.twchr_custom_card--contain .twchr_car_tab1  input[type="number"]{
     background: #FAFBFF;
     border: 1px solid #D0CECE;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);

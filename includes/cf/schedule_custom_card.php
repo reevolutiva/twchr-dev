@@ -2,10 +2,13 @@
     <div class="twchr_custom_card--contain">
         <div class="twchr_custom_card_header">
             <div>
-                <h3>To API</h3>
+                <h3><?php _e('Schedule Future Streaming','twitcher');?></h3>
             </div>
             <div>
-                <h3>Streaming Data</h3>
+                <h3><?php _e('Assign Twitch Streaming or Video','twitcher');?></h3>
+            </div>
+            <div>
+                <h3><?php _e('Assign Youtube Link Video','twitcher');?></h3>
             </div>
         </div>
         <div class="custom_card_row">
