@@ -55,6 +55,8 @@ function twchr_cat_twcht_edit_field($term,$taxonomy) {
     $twchr_cat_id = get_term_meta($term_id,'twchr_stream_category_id',true);
     $twchr_cat_name = get_term_meta($term_id,'twchr_stream_category_name',true);
     $twchr_cat_thumbail = get_term_meta($term_id,'twchr_stream_category_thumbail',true);
+
+    var_dump($term);
     ?>
     <div clasS="form-field">
         <label>
@@ -90,11 +92,13 @@ function twchr_cat_twitch_save( $term_id, $tt_id ) {
     $twchr_cat_thumbail = sanitize_text_field($_POST['twchr_stream_category_thumbail']);
 
     
+    if(!empty($twchr_cat_id) && !empty($twchr_cat_name) && !empty($twchr_cat_thumbail)){
+        // Actualizamos el campo meta en la base de datos.
+        update_term_meta($term_id,'twchr_stream_category_id',$twchr_cat_id,$twchr_cat_id_old);
+        update_term_meta($term_id,'twchr_stream_category_name',$twchr_cat_name, $twchr_cat_name_old);
+        update_term_meta($term_id,'twchr_stream_category_thumbail',$twchr_cat_thumbail, $twchr_cat_thumbail_old);
+    }
         
-    // Actualizamos el campo meta en la base de datos.
-    update_term_meta($term_id,'twchr_stream_category_id',$twchr_cat_id,$twchr_cat_id_old);
-    update_term_meta($term_id,'twchr_stream_category_name',$twchr_cat_name, $twchr_cat_name_old);
-    update_term_meta($term_id,'twchr_stream_category_thumbail',$twchr_cat_thumbail, $twchr_cat_thumbail_old);
     
   }
   add_action( 'edit_cat_twcht', 'twchr_cat_twitch_save', 10,5);
@@ -110,6 +114,12 @@ function twchr_cat_twitch_save( $term_id, $tt_id ) {
 
 add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
 
+/**
+ * Esta función PHP se utiliza para recuperar términos de una taxonomía específica. La taxonomía en cuestión es "cat_twcht". La función también recupera metadatos específicos para cada término, como el ID de la categoría de transmisión, el nombre de la categoría de transmisión y la miniatura de la categoría de transmisión. La función devuelve los términos recuperados y sus metadatos en una matriz. Si no se encuentran términos, la función devuelve false.
+ *
+ * @param [type] $request
+ * @return void
+ */
 function twchr_api_get_cat_twcht( $request ) {
     $args = array(
         'taxonomy' => 'cat_twcht',
@@ -144,6 +154,7 @@ function twchr_set_terms()
         'taxonomy' => 'cat_twcht',
         'hide_empty' => false
     );
+
     $request = get_terms($args);
     $list_categories = array();
     foreach ($request as $term) {
@@ -159,6 +170,7 @@ function twchr_set_terms()
 
         array_push($list_categories, $array_rest);
     }
+    
     foreach ($list_categories as $list) {
         $term_id = $list['term_id'];
         $twchr_cat_id = $list['stream_category_id'];
@@ -169,6 +181,9 @@ function twchr_set_terms()
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
         $client_id = $twch_data_prime->{'client-id'};
         $app_token = get_option('twchr_app_token');
+
+        //$response = twtchr_twitch_categories_get($app_token, $client_id, $name_wp);
+
 
         if (empty($twchr_cat_id)) {
             $response = twtchr_twitch_categories_get($app_token, $client_id, $name_wp);

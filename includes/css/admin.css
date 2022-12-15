@@ -820,10 +820,15 @@ stream.twchr-modal .twchr-modal-button.close{
     width: 100%;
     margin-right: 10pt;
 }
+
+.twchr_custom_card--contain .custom_card_row section:nth-child(1){
+    display: grid;
+    place-items: center;
+}
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr;
-    grid-template-rows: 35px 35px 35px 35px;
+    grid-template-rows: repeat(4,50px);
     grid-gap: 10pt;
 }
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab2 .twchr_car_tab1{
@@ -889,6 +894,21 @@ stream.twchr-modal .twchr-modal-button.close{
 
 #tagsdiv-cat_twcht,#tagsdiv-serie{
     display: none;
+}
+
+.twchr_cards_input_badges input{
+    display: block;
+    width: 100%;
+}
+.twchr_cards_input_badges badges{
+    margin-top: 5pt;
+    display: block;
+}
+.twchr_cards_input_badges badges span{
+    background-color: var(--twchr-blue);
+    color: #fff;
+    padding: 2pt 6pt;
+    border-radius: 5px;
 }
 
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab2,

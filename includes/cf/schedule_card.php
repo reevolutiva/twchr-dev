@@ -9,6 +9,7 @@ function twchr_cf_schedule__card(){
     }
     $term_cat_twcht_list = '';
     $term_cat_twcht = wp_get_post_terms($post_id, 'cat_twcht');
+    //var_dump($term_cat_twcht);
     foreach($term_cat_twcht as $term){
         $str = "<span>".$term->{'slug'}."</span>";
         $term_cat_twcht_list = $term_cat_twcht_list.$str;
@@ -65,8 +66,24 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             if ( twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__id')) {
                 wp_set_post_terms($post_id,[(int)$_POST['twchr_schedule_card_input--serie__id']] ,'serie');
             }
-            if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--category__value')) {
-                wp_set_post_terms($post_id,[(int)$_POST['twchr_schedule_card_input--category__value']],'cat_twcht');
+            if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--category__value') && twchr_post_isset_and_not_empty('twchr_schedule_card_input--category__name')) {
+                $cat_twitch_id = (int)$_POST['twchr_schedule_card_input--category__value'];
+                $cat_twitch_name = $_POST['twchr_schedule_card_input--category__name'];
+                $actual_terms = get_terms(array( 'taxonomy' => 'cat_twcht', 'hide_empty' => false));
+                // Creo una taxonomia cat_twcht
+                $response = wp_create_term($cat_twitch_name,'cat_twcht');
+               
+                // Si respomse['term_id'] es un strgig siginifica que la taxonomia ya fue creada
+                if(gettype($response['term_id'])  == 'string'){
+                    $id = (int)$response['term_id'];
+                    wp_set_post_terms($post_id,[$id],'cat_twcht');
+                    
+                    
+
+                }else{
+                    $id = (int)$response['term_id'];
+                    wp_set_post_terms($post_id,[$id],'cat_twcht');
+                }
             }
           
     }

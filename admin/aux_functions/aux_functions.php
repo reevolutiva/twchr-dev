@@ -46,7 +46,7 @@ function twchr_array_get_value_by($key,$json){
  * @return void
  */
 function twchr_post_isset_and_not_empty(string $name){
-    if(isset( $_POST[$name] ) && !empty(isset( $_POST[$name] ))){
+    if(isset( $_POST[$name] ) && !empty($_POST[$name])){
         return true;
     }else{
         return false;
