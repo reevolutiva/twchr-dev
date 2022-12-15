@@ -38,3 +38,17 @@ function twchr_array_get_value_by($key,$json){
     $array = json_decode($json);
     return $array[$key];
 }
+
+/**
+ * Verifica si un dato enviado por POST existe en el array $_POST y si su value no esta vacio
+ *
+ * @param string $name
+ * @return void
+ */
+function twchr_post_isset_and_not_empty(string $name){
+    if(isset( $_POST[$name] ) && !empty(isset( $_POST[$name] ))){
+        return true;
+    }else{
+        return false;
+    }
+}
