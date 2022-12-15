@@ -73,17 +73,12 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 // Creo una taxonomia cat_twcht
                 $response = wp_create_term($cat_twitch_name,'cat_twcht');
                
-                // Si respomse['term_id'] es un strgig siginifica que la taxonomia ya fue creada
-                if(gettype($response['term_id'])  == 'string'){
-                    $id = (int)$response['term_id'];
-                    wp_set_post_terms($post_id,[$id],'cat_twcht');
+                $id = (int)$response['term_id'];
+                wp_set_post_terms($post_id,[$id],'cat_twcht');
                     
                     
 
-                }else{
-                    $id = (int)$response['term_id'];
-                    wp_set_post_terms($post_id,[$id],'cat_twcht');
-                }
+                
             }
           
     }
