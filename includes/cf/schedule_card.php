@@ -1,7 +1,13 @@
 <?php
 function twchr_cf_schedule__card(){
     $post_id = $_GET['post'];
-    $term = get_term_by($post_id, '', 'serie');
+    $term_serie = wp_get_post_terms($post_id, 'serie');
+    $term_serie_list = '';
+    foreach($term_serie as $term){
+        $str = "<span>".$term->{'slug'}."</span>";
+        $term_serie_list = $term_serie_list.$str;
+    }
+    $term_cat_twcht = wp_get_post_terms($post_id, 'cat_twcht');
     $values  = get_post_custom($post_id);
     
     $title = isset($values['twchr_schedule_card_input--title']) ? $values['twchr_schedule_card_input--title'][0] : '';
@@ -11,7 +17,7 @@ function twchr_cf_schedule__card(){
     
     $is_recurring = isset($values['twchr_schedule_card_input--is_recurrig']) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
     $serie = isset($values['twchr_schedule_card_input--serie']) ? $values['twchr_schedule_card_input--serie'][0] : '';
-    var_dump($term);
+    //var_dump($term_serie);
     require_once 'schedule_custom_card.php';
 }
 

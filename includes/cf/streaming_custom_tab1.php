@@ -3,7 +3,10 @@
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
         class="twchr_schedule_card_input" type="text" value="<?php echo $title ?>">
     <label for="twchr_schedule_card_input--category"><?php _e('Twitch category','twitcher');?></label>
-    <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" />
+    <div>
+        <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" />
+        <badges><?php echo $term_twcht_cat_list; ?></badges>
+    </div>
     <input name="twchr_schedule_card_input--category__value" type="hidden" />
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
     <input id="twchr_schedule_card_input--dateTime" name="twchr_schedule_card_input--dateTime"
@@ -15,8 +18,11 @@
     <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig"
         class="twchr_schedule_card_input" type="checkbox" checked>
     <label for="twchr_schedule_card_input--serie"><?php _e('Serie','twitcher');?></label>
-    <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie"
-        class="twchr_schedule_card_input" type="text" value="<?php echo $serie ?>">
+    <div>
+        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie"
+            class="twchr_schedule_card_input" type="text" value="<?php echo $serie ?>">
+        <badges><?php echo $term_serie_list; ?></badges>
+    </div>
     <input name="twchr_schedule_card_input--serie__id" type="hidden">
 
     <section id="twchr_schedule_card_input--show">

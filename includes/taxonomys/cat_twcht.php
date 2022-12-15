@@ -23,7 +23,7 @@ function twchr_taxonomy_cat_twcht() {
 		 'query_var'         => true,
 		 'rewrite'           => [ 'slug' => 'cat_twcht' ],
     );
-    register_taxonomy( 'cat_twcht', array( 'post', 'twchr_streams' ), $args );
+    register_taxonomy( 'cat_twcht', array( 'twchr_streams' ), $args );
 }
 
 add_action( 'cat_twcht_add_form_fields', 'twchr_cat_twcht_create_field');
