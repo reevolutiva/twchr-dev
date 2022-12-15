@@ -4,10 +4,10 @@
         class="twchr_schedule_card_input" type="text" value="<?php echo $title ?>">
     <label for="twchr_schedule_card_input--category"><?php _e('Twitch category','twitcher');?></label>
     <div class="twchr_cards_input_badges">
-        <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" />
+        <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo !empty($term_cat_twcht_name) ? $term_cat_twcht_name : ''?>" />
         <badges><?php echo $term_cat_twcht_list; ?></badges>
     </div>
-    <input name="twchr_schedule_card_input--category__value" type="hidden" />
+    <input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo !empty($term_cat_twcht_id) ? $term_cat_twcht_id : ''?>" />
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
     <input id="twchr_schedule_card_input--dateTime" name="twchr_schedule_card_input--dateTime"
         class="twchr_schedule_card_input" type="datetime-local" value="<?php echo $dateTime ?>">
@@ -19,11 +19,10 @@
         class="twchr_schedule_card_input" type="checkbox" checked>
     <label for="twchr_schedule_card_input--serie"><?php _e('Serie','twitcher');?></label>
     <div class="twchr_cards_input_badges">
-        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie"
-            class="twchr_schedule_card_input" type="text" value="<?php echo $serie ?>">
+        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
     </div>
-    <input name="twchr_schedule_card_input--serie__id" type="hidden">
+    <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>">
 
     <section id="twchr_schedule_card_input--show">
         <h5><?php _e('Repeat every:','twitcher');?></h5>
