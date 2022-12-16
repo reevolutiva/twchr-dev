@@ -32,6 +32,9 @@ require_once TWCHR_FEATURES . 'twitch_alerts.php';
 require_once TWCHR_FEATURES . 'twtchr_easy_setUp.php';
 require_once TWCHR_FEATURES . 'twtchr_activate.php';
 require_once TWCHR_FEATURES . 'twtchr_deactivate.php';
+require_once TWCHR_FEATURES . 'twchr_delete_schedule.php';
+
+
 
 // Aux functions
 require_once 'admin/aux_functions/aux_functions.php';

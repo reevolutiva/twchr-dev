@@ -110,8 +110,10 @@ function twchr_cf_schedule__card__metadata_save($post_id){
 
             if($twch_res != false){
                 if($to_api_IsRecurring == false){
-                    update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch',  $twchr_stream_all_data_from_twitch);
-                    update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id',  $twchr_stream_twtich_schedule_id);
+                    $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
+                    $allData = json_encode($twch_res);        
+                    update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch',  $allData);
+                    update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id',  $schedule_segment_id);
                 }else{
                     $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
                     $twtich_end_time = $twch_res['allData']->{'segments'}[0]->{'end_time'};
@@ -122,6 +124,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                         'twtich_start_time' => $to_api_DateTime,
                         'twtich_end_time' => $twtich_end_time,
                         'twtich_title' => $to_api_Title,
+                        'wp_stream_id' => $post_id
                     );
 
                     // Si es diferente a 200 el schedule segement no fue creado existosamente

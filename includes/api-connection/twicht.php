@@ -63,19 +63,26 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
  * @param [type] $schedule_id
  * @return void
  */
-function  twtchr_twitch_schedule_segment_delete($post_id,$user_token,$client_id,$twchr_titulo,$schedule_id){
+function twtchr_twitch_schedule_segment_delete($post_id,$twchr_titulo,$schedule_id){
 
+  // Credentials
+  $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+  $client_id = $twch_data_prime->{'client-id'};
+  $user_token = $twch_data_prime->{'user_token'};
+  $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+  $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
   $args = array(
     'headers' => array(
       'authorization' => 'Bearer '.$user_token,
       'client-id' => $client_id,
       'Content-Type' => 'application/json'
-    )
+    ),
+    'method' => 'DELETE'
   );
 
   
-  $url = "https://api.twitch.tv/helix/schedule/segment?id=".$schedule_id;
+  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=".$broadcaster_id."&id=".$schedule_id;
 
   $res = wp_remote_post($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));
@@ -83,9 +90,9 @@ function  twtchr_twitch_schedule_segment_delete($post_id,$user_token,$client_id,
 
   // codigo para accionar segun la respuesta de la api
   switch ($response_response['code']) {
-    case 200:
+    case 204:
         $allData = $response_body->{'data'};
-        return array('allData'=>$allData,'status'=>200,'message'=>__('Successfully updated serie.','twitcher'));
+        return array('allData'=>$allData,'status'=>204,'message'=>__('Successfully updated serie.','twitcher'));
       //die();
       break;
     //case 401:
