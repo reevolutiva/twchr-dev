@@ -16,12 +16,11 @@
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
     <label for="twchr_schedule_card_input--is_recurrig"><?php _e('Is Recurring ?','twitcher');?></label>
     <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig"
-        class="twchr_schedule_card_input" type="checkbox" checked>
+        class="twchr_schedule_card_input" type="checkbox" <?php echo !empty($is_recurring) == 'on' ? 'checked' :'';?> >
     <label for="twchr_schedule_card_input--serie__name"><?php _e('Serie','twitcher');?></label>
     <div class="twchr_cards_input_badges">
         <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
-        <p> <a href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams' ?>"><?php _e('Create a new serie','twitcher'); ?></a> </p>
     </div>
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>">
 

@@ -57,6 +57,15 @@
     top: 1cm;
     left: 2cm;
     box-shadow: 0 0 3px;    
+    width: 250px;
+}
+
+.twchr_modal.active section{
+    border-bottom: 1px solid var(--twchr-blue);
+    padding: 3pt 0;
+}
+.twchr_modal section input {
+   margin: 0;
 }
 
 
