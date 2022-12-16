@@ -28,7 +28,7 @@
 <div class='twchr_toApi_form-field'>
     <label for="twchr_toApi_dateTime"><?php twchr_esc_i18n('Date and Time','html'); ?></label>
     <div>
-        <input type="datetime-local" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $dateTime?>">
+        <input type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $dateTime?>">
         <p><?php twchr_esc_i18n('The recurring date your stream aired.','html') ?></p>
     </div>
     <label for="twchr_toApi_duration"><?php twchr_esc_i18n('Duration','html'); ?></label>

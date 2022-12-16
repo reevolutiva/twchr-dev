@@ -10,16 +10,16 @@
     <input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo !empty($term_cat_twcht_id) ? $term_cat_twcht_id : ''?>" />
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
     <input id="twchr_schedule_card_input--dateTime" name="twchr_schedule_card_input--dateTime"
-        class="twchr_schedule_card_input" type="datetime-local" value="<?php echo $dateTime ?>">
+        class="twchr_schedule_card_input" type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" value="<?php echo $dateTime ?>">
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration" name="twchr_schedule_card_input--duration"
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
     <label for="twchr_schedule_card_input--is_recurrig"><?php _e('Is Recurring ?','twitcher');?></label>
     <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig"
         class="twchr_schedule_card_input" type="checkbox" checked>
-    <label for="twchr_schedule_card_input--serie"><?php _e('Serie','twitcher');?></label>
+    <label for="twchr_schedule_card_input--serie__name"><?php _e('Serie','twitcher');?></label>
     <div class="twchr_cards_input_badges">
-        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
+        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
         <p> <a href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams' ?>"><?php _e('Create a new serie','twitcher'); ?></a> </p>
     </div>

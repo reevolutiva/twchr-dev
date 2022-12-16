@@ -56,6 +56,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             $to_api_IsRecurring = '';
             $to_api_Duration = '';
 
+
             if ( isset( $_POST['twchr_schedule_card_input--is_recurrig'] ) ) {
                 $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
                 update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
@@ -92,7 +93,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             }
             
             $twch_res = false;
-            if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--category__value') && twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__id')) {
+            if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--category__value')) {
                 $cat_twitch_id = (int)$_POST['twchr_schedule_card_input--category__value'];
                 $cat_twitch_name = $_POST['twchr_schedule_card_input--category__name'];
                 
@@ -132,30 +133,55 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                     $post_id = $_POST['post_ID'];
                     $tax_input_serie = $_POST['tax_input']['serie'];
                     $term_serie = wp_get_post_terms($post_id, 'serie');
-                    $term_id = $term_serie[0]->term_id;
+                    $twchr_new_term_id = '';
+
+
+                    // si este post tiene al menos una serie relacionaa
+                    if(COUNT($term_serie) > 0){
+                        foreach($term_serie as $term){
+                            // Si existe un term.name con el nombre de la serie
+                            if($term->name == $to_api_Title){
+                                // guarda su id
+                                $twchr_new_term_id = $term_serie[0]->term_id;
+                            }else{
+                                // si no existe lo creo
+                                 $new_serie_term = wp_create_term($to_api_Title,'serie');
+                                 $twchr_new_term_id = $new_serie_term['term_id'];
+                            }
+                        }    
+                    }else{
+                        // no tiene ninguna serie relacioada
+                        $new_serie_term = wp_create_term($to_api_Title,'serie');
+        
+                        $twchr_new_term_id = $new_serie_term['term_id'];
+                    }
+
+                    
+                    wp_set_post_terms($post_id,[$twchr_new_term_id],'serie');
 
                     $dateTime = $twch_res['allData']->{'segments'}[0]->{'start_time'};
-                    update_term_meta($term_id,'twchr_toApi_dateTime',$dateTime);
+                    update_term_meta($twchr_new_term_id,'twchr_toApi_dateTime',$dateTime);
                     $duration = $to_api_Duration;
-                    update_term_meta($term_id,'twchr_toApi_duration',$duration);
+                    update_term_meta($twchr_new_term_id,'twchr_toApi_duration',$duration);
                     $select_value = $cat_twitch_id;
-                    update_term_meta($term_id,'twchr_toApi_category_value',$select_value);
+                    update_term_meta($twchr_new_term_id,'twchr_toApi_category_value',$select_value);
+                    $select_name = $cat_twitch_name;
+                    update_term_meta($twchr_new_term_id,'twchr_toApi_category_name',$select_name);
                     $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
-                    update_term_meta($term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
+                    update_term_meta($twchr_new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
                     $allData = json_encode($twch_res);        
-                    update_term_meta($term_id,'twchr_fromApi_allData',$allData);
-                    $twchr_streams_relateds = get_term_meta($term_id, 'twchr_streams_relateds');
-
-                    //var_dump($twchr_streams_relateds);
+                    update_term_meta($twchr_new_term_id,'twchr_fromApi_allData',$allData);
+                    $twchr_streams_relateds = get_term_meta($twchr_new_term_id, 'twchr_streams_relateds');
+                
 
                     if( $twchr_streams_relateds != false && COUNT($twchr_streams_relateds) > 0){
                         $old_value = json_decode($twchr_streams_relateds[0]);
                         array_push($old_value, $stream_object);
                         $meta_value = json_encode($old_value);
-                        update_term_meta($term_id,'twchr_streams_relateds', $meta_value);
+                        update_term_meta($twchr_new_term_id,'twchr_streams_relateds', $meta_value);
                     }else{
                         $meta_value = json_encode([$stream_object]);
-                        add_term_meta($term_id, 'twchr_streams_relateds', $meta_value);
+                        add_term_meta($twchr_new_term_id, 'twchr_streams_relateds', $meta_value);
                     }    
     
                 }
