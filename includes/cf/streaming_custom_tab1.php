@@ -17,7 +17,7 @@
     <label for="twchr_schedule_card_input--is_recurrig"><?php _e('Is Recurring ?','twitcher');?></label>
     <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig"
         class="twchr_schedule_card_input" type="checkbox" <?php echo !empty($is_recurring) == 'on' ? 'checked' :'';?> >
-    <label for="twchr_schedule_card_input--serie__name"><?php _e('Serie','twitcher');?></label>
+    <label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php _e('Serie','twitcher');?></label>
     <div class="twchr_cards_input_badges">
         <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
@@ -51,8 +51,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
     const tag = e.target;
     const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
     
-    const input_serie_label = twchr_schedule_card.querySelector(
-    "label[for='twchr_schedule_card_input--serie']");
+    const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
 
     const show_date = twchr_schedule_card.querySelector("#twchr_schedule_card_input--show");
     const dateRaw = new Date(document.querySelector("input#twchr_schedule_card_input--dateTime").value);
@@ -67,7 +66,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
         if (twchr_broad_type == 'partner' || twchr_broad_type == 'afiliate') {
 
             input_serie.setAttribute('disabled', true);
-            input_serie.style.display = 'none';
+            input_serie.parentElement.style.display = 'none';
             input_serie_label.style.display = 'none';
             show_date.style.display = 'none';
             input_title.removeAttribute('disabled');
@@ -80,7 +79,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
             // si opt1 es true lo desaparce
             if (opt1) {
                 input_serie.setAttribute('disabled', true);
-                input_serie.style.display = 'none';
+                input_serie.parentElement.style.display = 'none';
                 input_serie_label.style.display = 'none';
                 show_date.style.display = 'none';
                 input_title.removeAttribute('disabled');
@@ -92,7 +91,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
     } else {
         //Si checkbox is true
         input_serie.removeAttribute('disabled');
-        input_serie.style.display = 'block';
+        input_serie.parentElement.style.display = 'block';
         input_serie_label.style.display = 'block';
         show_date.style.display = 'flex';
         input_title.value = input_post_title.value;
