@@ -32,7 +32,11 @@
         
         //$moderatos = COUNT(twtchr_twitch_moderators_get($twch_data_app_token , $client_id, $broadcaster_id)-); 
          
-        $clips = COUNT(twtchr_twitch_clips_get($twch_data_app_token , $client_id, $broadcaster_id)->{'data'});
+        $clips = twtchr_twitch_clips_get($twch_data_app_token , $client_id, $broadcaster_id)->{'data'};
+        if(!is_wp_error($clips)){
+            $clips = COUNT($clips);
+        }    
+        
         $user_data = get_option('twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
         $user_login = $user_data->{'data'}[0]->{'login'};
         $list_old = get_plugins();

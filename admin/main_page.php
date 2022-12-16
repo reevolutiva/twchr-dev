@@ -44,6 +44,8 @@
                     $type = $data_broadcaster_raw->{'data'}[0]->{'type'};
                     $broadcaster_type = $data_broadcaster_raw->{'data'}[0]->{'broadcaster_type'};
                     $created_at = $data_broadcaster_raw->{'data'}[0]->{'created_at'};
+
+
             ?>
                 <div class='hello-twchr-user'> 
                     <h2><?php printf('%s', $display_name);?></h2>                                

@@ -1,4 +1,4 @@
-const stream_isset = document.querySelectorAll('.twchr_card_body--list ul li span.value');
+const stream_isset = document.querySelectorAll('.twchr_car_tab2 .previw_card__status ul li span.value');
 const stream_isset_array = [];
 for (let i = 0; i < stream_isset.length; i++) {
     const element = stream_isset[i];
@@ -10,7 +10,7 @@ for (let i = 0; i < stream_isset.length; i++) {
     }
 }
 if (stream_isset_array.every(item => item === true)) {
-    document.querySelector('.twchr_custom_card--contain').style.display = 'none';
+    document.querySelector('.twchr_car_tab2 .previw_card').style.display = 'none';
 }
 const metabox_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
 const metabox_cat_calendar = document.querySelector("#tagsdiv-serie");
