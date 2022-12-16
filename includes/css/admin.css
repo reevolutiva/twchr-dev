@@ -875,6 +875,10 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 31px;
 }
 
+.twchr_custom_card--contain input[disabled="true"]{
+    box-shadow: none !important;
+}
+
 .twchr_custom_card--contain label[for='twchr_schedule_card_input--serie']{
     position: relative;
 }

@@ -1,7 +1,7 @@
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
-        class="twchr_schedule_card_input" type="text" value="<?php echo $title ?>">
+        class="twchr_schedule_card_input" type="text" disabled="true" value="<?php echo $title ?>">
     <label for="twchr_schedule_card_input--category"><?php _e('Twitch category','twitcher');?></label>
     <div class="twchr_cards_input_badges">
         <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo !empty($term_cat_twcht_name) ? $term_cat_twcht_name : ''?>" />
@@ -37,16 +37,22 @@ const twchr_schedule_metabox_container = document.querySelectorAll(".streaming-m
 const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
 const twchr_schedule_card_cat_tw = twchr_schedule_card.querySelector("#twchr_schedule_card_input--category");
 const twchr_is_recurring = twchr_schedule_card.querySelector("input[type='checkbox']");
+const input_title = twchr_schedule_card.querySelector("#twchr_schedule_card_input--title");
+const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
+
 const twchr_broad_type = twchr_data_broadcaster.data[0].broadcaster_type;
 twchr_is_recurring.addEventListener('click', (e) => {
     const tag = e.target;
     const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
+    
     const input_serie_label = twchr_schedule_card.querySelector(
     "label[for='twchr_schedule_card_input--serie']");
 
     const show_date = twchr_schedule_card.querySelector("#twchr_schedule_card_input--show");
     const dateRaw = new Date(document.querySelector("input#twchr_schedule_card_input--dateTime").value);
+    
+
 
 
 
@@ -59,6 +65,8 @@ twchr_is_recurring.addEventListener('click', (e) => {
             input_serie.style.display = 'none';
             input_serie_label.style.display = 'none';
             show_date.style.display = 'none';
+            input_title.removeAttribute('disabled');
+            
         } else {
             // Si el broacater type no es ni pather ni afilate
             const opt1 = confirm(
@@ -70,6 +78,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
                 input_serie.style.display = 'none';
                 input_serie_label.style.display = 'none';
                 show_date.style.display = 'none';
+                input_title.removeAttribute('disabled');
             } else {
                 // volvermos al estado inicial del ckeckbox
                 tag.checked = true;
@@ -81,6 +90,8 @@ twchr_is_recurring.addEventListener('click', (e) => {
         input_serie.style.display = 'block';
         input_serie_label.style.display = 'block';
         show_date.style.display = 'flex';
+        input_title.value = input_post_title.value;
+        input_title.setAttribute('disabled', 'true');
     }
 });
 </script>
