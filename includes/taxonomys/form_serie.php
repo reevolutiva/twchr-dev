@@ -43,7 +43,7 @@
     </div>
     <label for="twchr_streams_relateds"><?php twchr_esc_i18n("Streams related",'html'); ?></label>
     <div>
-        <input type="text" name="twchr_streams_relateds" disabled="true" value="<?php echo $twchr_streams_relateds ?>">
+        <input type="text" name="twchr_streams_relateds" disabled="true" value='<?php echo $twchr_streams_relateds ?>'>
     </div>
     <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo $select_value?>'>
     <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo $select_name?>'>
