@@ -56,9 +56,21 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             $to_api_IsRecurring = '';
             $to_api_Duration = '';
 
+            if ( isset( $_POST['twchr_schedule_card_input--is_recurrig'] ) ) {
+                $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
+                update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
+            }
+
+
             if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--title')) {
                 $to_api_Title = wp_kses($_POST['twchr_schedule_card_input--title'],$allowed);
                 update_post_meta( $post_id, 'twchr_schedule_card_input--title', $to_api_Title );
+            }
+
+            // Si API IS RECURRING 
+            // El titulo sera serie name
+            if($to_api_IsRecurring && twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__name')){
+                $to_api_Title = wp_kses($_POST['twchr_schedule_card_input--serie__name'],$allowed);
             }
             
             if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--dateTime')) {
@@ -74,10 +86,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 $to_api_Duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
                 update_post_meta( $post_id, 'twchr_schedule_card_input--duration',  $to_api_Duration);
             }
-            if ( isset( $_POST['twchr_schedule_card_input--is_recurrig'] ) ) {
-                $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
-                update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
-            }
+            
             if ( twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__id')) {
                 wp_set_post_terms($post_id,[(int)$_POST['twchr_schedule_card_input--serie__id']] ,'serie');
             }
@@ -105,6 +114,8 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 }else{
                     $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
                     $twtich_end_time = $twch_res['allData']->{'segments'}[0]->{'end_time'};
+                    $cat_twitch_id = (int)$_POST['twchr_schedule_card_input--category__value'];
+                    $cat_twitch_name = $_POST['twchr_schedule_card_input--category__name'];
                     $stream_object = array(
                         'twicth_id' => $schedule_segment_id,
                         'twtich_start_time' => $to_api_DateTime,
@@ -122,9 +133,22 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                     $tax_input_serie = $_POST['tax_input']['serie'];
                     $term_serie = wp_get_post_terms($post_id, 'serie');
                     $term_id = $term_serie[0]->term_id;
+
+                    $dateTime = $twch_res['allData']->{'segments'}[0]->{'start_time'};
+                    update_term_meta($term_id,'twchr_toApi_dateTime',$dateTime);
+                    $duration = $to_api_Duration;
+                    update_term_meta($term_id,'twchr_toApi_duration',$duration);
+                    $select_value = $cat_twitch_id;
+                    update_term_meta($term_id,'twchr_toApi_category_value',$select_value);
+                    $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
+                    update_term_meta($term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
+                    $allData = json_encode($twch_res);        
+                    update_term_meta($term_id,'twchr_fromApi_allData',$allData);
                     $twchr_streams_relateds = get_term_meta($term_id, 'twchr_streams_relateds');
 
-                    if(COUNT($twchr_streams_relateds) > 0){
+                    //var_dump($twchr_streams_relateds);
+
+                    if( $twchr_streams_relateds != false && COUNT($twchr_streams_relateds) > 0){
                         $old_value = json_decode($twchr_streams_relateds[0]);
                         array_push($old_value, $stream_object);
                         $meta_value = json_encode($old_value);

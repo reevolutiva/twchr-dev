@@ -41,6 +41,10 @@
         <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo $select_name?>'>
         <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
     </div>
+    <label for="twchr_streams_relateds"><?php twchr_esc_i18n("Streams related",'html'); ?></label>
+    <div>
+        <input type="text" name="twchr_streams_relateds" disabled="true" value="<?php echo $twchr_streams_relateds ?>">
+    </div>
     <input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo $select_value?>'>
     <input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo $select_name?>'>
     <label for="twchr_fromApi_allData"><?php twchr_esc_i18n('All Data','html');?></label>
@@ -51,4 +55,5 @@
     <div>
         <input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo $schedule_segment_id?>">
     </div>
+    
 </div>
