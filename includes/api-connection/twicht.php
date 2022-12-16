@@ -51,6 +51,56 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
       break;
   }
 }
+// twtchr_twitch_schedule
+// eliminar los schedules segment
+function  twtchr_twitch_schedule_segment_delete($post_id,$user_token,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration,$schedule_id){
+  $body = array(
+    'start_time' => $twchr_start_time,
+    'duration' => $twchr_duration,
+    'category_id' => $twchr_category,
+    'title' => $twchr_titulo,
+    'is_canceled' => true,
+    'timezone' => 'America/New_York'
+  );
+
+  $args = array(
+    'headers' => array(
+      'authorization' => 'Bearer '.$user_token,
+      'client-id' => $client_id,
+      'Content-Type' => 'application/json'
+    ),
+    'body' => $body
+  );
+
+  
+  $url = "https://api.twitch.tv/helix/schedule/segment?id=".$schedule_id;
+
+  $res = wp_remote_post($url,$args);
+  $response_body = json_decode(wp_remote_retrieve_body($res));
+  $response_response = $res['response'];
+
+  // codigo para accionar segun la respuesta de la api
+  switch ($response_response['code']) {
+    case 200:
+        $allData = $response_body->{'data'};
+        return array('allData'=>$allData,'status'=>200,'message'=>__('Successfully updated serie.','twitcher'));
+      //die();
+      break;
+    //case 401:
+    case 401:
+      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
+     
+      break;
+    //case 400:
+    case 400:
+      $glosa = str_replace('"','`',$response_body->{'message'});
+      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+      
+      break;
+    default:
+      break;
+  }
+}
 
 function  twtchr_twitch_schedule_segment_get(){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
