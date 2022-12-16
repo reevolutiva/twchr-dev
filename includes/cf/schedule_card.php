@@ -95,34 +95,6 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 wp_set_post_terms($post_id,[$id],'cat_twcht');     
                 
                 $twch_res = twtchr_twitch_schedule_segment_create($post_id,$to_api_Title,$to_api_DateTime ,$cat_twitch_id,$to_api_Duration);
-                /*
-                    if($twchr_res[satus] == 200){
-
-                    }else{
-                        $error =  $twchr_res['error]
-                    }
-                */
-
-                //$schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
-                /*
-                is_recurring == true
-                    
-                else 
-                    save in taxonomy
-                    $stream_object = array(
-                        'twicth_id' => $schedule_segment_id,
-                        'twtich_dateTime' => $to_api_DateTime,
-                        'twtich_title' => $to_api_Title,
-                    );
-
-                    $array = json_decode(cat_twcht.stream)
-                    array_push($array,$stream_object);
-                     cat_twcht.stream = json_encode($array);
-                    */
-        
-
-
-
                 
             }
 

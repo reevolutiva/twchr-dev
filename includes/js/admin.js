@@ -720,16 +720,26 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
     modal.classList.add("twchr_modal");
     twchr_ajax_label_serie.appendChild(modal);
     twchr_ajax_input_serie.oninput = ()=>{
+        const query = twchr_ajax_input_serie.value.toLowerCase();
         twchrFetchGet (location.origin+"/wp-json/twchr/twchr_get_serie",
         (res)=>{
             modal.innerHTML = '';
             res.forEach((item, index) =>{
-                modal.innerHTML += `<section>
+                modal.classList.add('active');
+                const serie_name = item.name.toLowerCase(); 
+                // Si item.name contiene el string de query construye lo siguiente
+                if(serie_name.includes(query)){
+                    modal.innerHTML += `<section>
                                         <label data-twchr-serie-wp-name="${item.name}" for='twchr-modal-serie-radio-input-${index}'>${item.name}</label>
                                         <input type='radio' name='twchr-modal-serie-radio-input-${index}' value='${item.term_id}'/>
                                     </section>`;
+                    
+                }
+
+                if(modal.children.length == 0) modal.classList.remove("active");
+                
             });
-            modal.classList.add('active');
+            
 
             const radios = modal.querySelectorAll("input");
             radios.forEach( radio => {
