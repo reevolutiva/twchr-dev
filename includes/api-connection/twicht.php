@@ -63,7 +63,7 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
  * @param [type] $schedule_id
  * @return void
  */
-function twtchr_twitch_schedule_segment_delete($post_id,$twchr_titulo,$schedule_id){
+function twtchr_twitch_schedule_segment_delete($schedule_id, $twchr_titulo = false, $post_id = false){
 
   // Credentials
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
@@ -88,26 +88,30 @@ function twtchr_twitch_schedule_segment_delete($post_id,$twchr_titulo,$schedule_
   $response_body = json_decode(wp_remote_retrieve_body($res));
   $response_response = $res['response'];
 
+  if($post_id != false && $twchr_titulo != false){
   // codigo para accionar segun la respuesta de la api
-  switch ($response_response['code']) {
-    case 204:
-        $allData = $response_body->{'data'};
-        return array('allData'=>$allData,'status'=>204,'message'=>__('Successfully updated serie.','twitcher'));
-      //die();
-      break;
-    //case 401:
-    case 401:
-      return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
-     
-      break;
-    //case 400:
-    case 400:
-      $glosa = str_replace('"','`',$response_body->{'message'});
-      return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+    switch ($response_response['code']) {
+      case 204:
+          $allData = $response_body->{'data'};
+          return array('allData'=>$allData,'status'=>204,'message'=>__('Successfully updated serie.','twitcher'));
+        //die();
+        break;
+      //case 401:
+      case 401:
+        return array("message"=>__('USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN','twitcher'),'status'=>401,'url_redirect'=>'https://'.TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true','post-id'=>$post_id);
       
-      break;
-    default:
-      break;
+        break;
+      //case 400:
+      case 400:
+        $glosa = str_replace('"','`',$response_body->{'message'});
+        return array('error'=>$response_body->{'error'},'status'=> $response_body->{'status'},'message' => $glosa,'title'=>$twchr_titulo);
+        
+        break;
+      default:
+        break;
+    }
+  }else{
+    return $response_body;
   }
 }
 

@@ -5,7 +5,7 @@
                 <h3><?php _e('Schedule Future Streaming','twitcher');?></h3>
             </div>
             <div>
-                <h3><?php _e('Assign Twitch Streaming or Video','twitcher');?></h3>
+                <h3 class="twchr_button_get_videos"><?php _e('Assign Twitch Streaming or Video','twitcher');?></h3>
             </div>
             <div>
                 <h3><?php _e('Assign Youtube Link Video','twitcher');?></h3>
