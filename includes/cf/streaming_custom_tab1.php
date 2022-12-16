@@ -43,6 +43,11 @@ const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
 
 const twchr_broad_type = twchr_data_broadcaster.data[0].broadcaster_type;
+
+if(twchr_is_recurring.checked == true){
+    input_title.value = input_post_title.value;
+}
+
 twchr_is_recurring.addEventListener('click', (e) => {
     const tag = e.target;
     const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");

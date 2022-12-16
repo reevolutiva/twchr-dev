@@ -127,6 +127,9 @@ function twchr_tax_serie_edit($term,$taxonomy) {
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
     $schedule_segment_id = get_term_meta($term->term_id,'twchr_toApi_schedule_segment_id');
     $schedule_segment_id = empty($schedule_segment_id) ? json_decode($allData)->{'allData'}->{'segments'}[0]->id : $schedule_segment_id; 
+    $twchr_streams_relateds = get_term_meta($term->term_id, 'twchr_streams_relateds, true');
+    $twchr_streams_relateds = empty($twchr_streams_relateds) ? '' : $twchr_streams_relateds;
+
 
     $select_cat = array(
         'name' => $select_name,
