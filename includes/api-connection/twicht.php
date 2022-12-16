@@ -53,23 +53,25 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
 }
 // twtchr_twitch_schedule
 // eliminar los schedules segment
-function  twtchr_twitch_schedule_segment_delete($post_id,$user_token,$client_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration,$schedule_id){
-  $body = array(
-    'start_time' => $twchr_start_time,
-    'duration' => $twchr_duration,
-    'category_id' => $twchr_category,
-    'title' => $twchr_titulo,
-    'is_canceled' => true,
-    'timezone' => 'America/New_York'
-  );
+/**
+ * Eliminar un schedule segment
+ *
+ * @param [type] $post_id
+ * @param [type] $user_token
+ * @param [type] $client_id
+ * @param [type] $twchr_titulo
+ * @param [type] $schedule_id
+ * @return void
+ */
+function  twtchr_twitch_schedule_segment_delete($post_id,$user_token,$client_id,$twchr_titulo,$schedule_id){
+
 
   $args = array(
     'headers' => array(
       'authorization' => 'Bearer '.$user_token,
       'client-id' => $client_id,
       'Content-Type' => 'application/json'
-    ),
-    'body' => $body
+    )
   );
 
   
