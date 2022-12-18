@@ -1,12 +1,9 @@
 const stream_isset = document.querySelectorAll('.twchr_car_tab2 .previw_card__status ul li span.value');
-<<<<<<< HEAD
 const twchr_tagchecklist = document.querySelector("#tagsdiv-cat_twcht .tagchecklist");
 
 const twchr_card_header_menu = document.querySelectorAll(".twchr_custom_card_header h3");
 const twchr_slide_card_row = document.querySelector(".twchr_custom_card--contain .custom_card_row");
 
-=======
->>>>>>> 01e0b0137a48dd198621a56a41d3c1ddcb86aa30
 const stream_isset_array = [];
 for (let i = 0; i < stream_isset.length; i++) {
     const element = stream_isset[i];
