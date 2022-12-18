@@ -38,7 +38,7 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 // CPT Streamings
 //twchr_endpoint_cpt_register_streaming
 function twchr_endpoint_cpt_register_streaming() {
-    register_rest_route( 'twchr/', 'twchr_endpoint_cpt_register_callback_streaming', array(
+    register_rest_route( 'twchr/', 'twchr_get_streaming', array(
         'methods'  => 'GET',
         'callback' => 'twchr_endpoint_cpt_register_callback_streaming',
     ) );

@@ -7,8 +7,7 @@ const twchr_slide_card_row = document.querySelector(".twchr_custom_card--contain
 const stream_isset_array = [];
 for (let i = 0; i < stream_isset.length; i++) {
     const element = stream_isset[i];
-    //console.log(element.value);
-    if (element.textContent === undefined) {
+    if (element.value === undefined) {
         stream_isset_array.push(true);
     } else {
         stream_isset_array.push(false)

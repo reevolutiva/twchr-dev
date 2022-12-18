@@ -2,7 +2,7 @@
     function twchr_delete_schedule_by_cpt($post_id){
         $is_recurrig = get_post_meta($post_id,'twchr_schedule_card_input--is_recurrig')[0];
     
-        if($is_recurrig == false){
+        if($is_recurrig === false){
         // ESTE CPT es un solo streaming
             $schedule_id = get_post_meta($post_id,'twchr_stream_twtich_schedule_id');
             $twchr_titulo = get_the_title($post_id);
