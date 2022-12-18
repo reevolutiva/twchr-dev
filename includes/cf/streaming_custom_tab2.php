@@ -71,6 +71,7 @@
                     <div class="content">
     
                     </div>
+                    
                 </div>
     
                 <div class="twchr-modal-footer">
