@@ -161,38 +161,14 @@ function twchr_tax_serie_import()
             'taxonomy' => 'serie',
             'hide_empty' => false
         ));
-        
-        
-        
 
-        // get_schedule
-        // schedules_twitch_item.id == schedules_wp_item.id ?
-        // save schedule -> calender event -> save twitch data event in cf 
-        // else update serie event
-
-        // create schedule 
-            // ->
-            // title
-            // dateTime
-            // category_id
-            // is_recurring = true
-            //<-
-            // schedule_id
-            // allDarta
-
-
-        // CLIKC BUTTON -> foreach (item -> item.delryr)
-        // GET LIST SCHEDULE -> foreach (item -> item.title | insert_term(items.title) | insert_meta_term
-        // // item.title exist == false insert_term(items.title) | insert_meta_term
-      
         
+            
         if(isset($schedules_twitch->{'error'})){
             //var_dump($schedules_twitch);
             twchr_twitch_autentication_error_handdler($schedules_twitch->{'error'}, $schedules_twitch->{'message'});
         }
            
-        var_dump($schedules_twitch->data->segments);
-        die();
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $item){
                 $wp_id = $item->term_id;
@@ -222,13 +198,20 @@ function twchr_tax_serie_import()
                         add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
                         $allData = json_encode($schedule);
                         add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
+
+                        // Convertir las fechas a timestamp
+                        $start_time = $schedule->start_time;
+                        $end_time = $schedule->end_time;
+                        $minutos = twchr_twitch_video_duration_calculator($start_time ,$end_time);
+                        add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
                     }
                    
                 }
             }
         }else{
-            $schedule = $schedules_twitch->data->segments[0];
-            $new_term =wp_insert_term($schedule->title, 'serie');
+            $schedule = $schedules_twitch[0];
+            $new_term = wp_insert_term($schedule->title, 'serie');
+
             if(isset($new_term->errors['term_exists'])){
                 //TODO: Poner esta redireccion en el error handler
                 echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
@@ -248,9 +231,14 @@ function twchr_tax_serie_import()
             add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
             $allData = json_encode($schedule);
             add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
+            // Convertir las fechas a timestamp
+            $start_time = $schedule->start_time;
+            $end_time = $schedule->end_time;
+            $minutos = twchr_twitch_video_duration_calculator($start_time ,$end_time);
+            add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
             
-            wp_redirect(TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams");
-            exit;
+            echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+            die();
         }
                                     
         

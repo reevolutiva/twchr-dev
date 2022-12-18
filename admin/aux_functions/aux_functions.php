@@ -52,3 +52,25 @@ function twchr_post_isset_and_not_empty(string $name){
         return false;
     }
 }
+
+function twchr_twitch_video_duration_calculator($start_time ,$end_time){
+    $start_time_h = (int)date('H',strtotime($start_time));
+    $start_time_m = (int)date('i',strtotime($start_time));
+    $end_time_h = (int)date('H',strtotime($end_time)); 
+    $end_time_m = (int)date('i',strtotime($end_time)); 
+    $minutos = '';
+
+        // Sucede en la misma hora
+        if(($start_time_h - $end_time_h) == 0){
+            // restas lo minutos
+            $minutos = $end_time_m - $start_time_h;
+
+        }else{
+            // si sucede en mas de una hora
+            // resta los minutos
+            $horas = $end_time_h - $start_time_h;
+            $minutos = $horas * 60;
+            
+        }
+    return $minutos;
+}
