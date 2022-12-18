@@ -84,7 +84,15 @@
             </stream>
             <script>
             const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
+<<<<<<< HEAD
             
+=======
+            const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
+    
+            twchr_modal_button_close.addEventListener('click', e => {
+                twchr_modal.classList.remove('active');
+            });
+>>>>>>> 01e0b0137a48dd198621a56a41d3c1ddcb86aa30
             </script>
             <div class="previw_card">
                 <div class="twchr_card_header">
