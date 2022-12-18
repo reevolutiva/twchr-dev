@@ -57,7 +57,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             $to_api_Duration = '';
 
 
-            if ( isset( $_POST['twchr_schedule_card_input--is_recurrig'] ) ) {
+            if ( twchr_post_isset_and_not_empty('twchr_schedule_card_input--is_recurrig') ) {
                 $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
                 update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
             }
@@ -90,6 +90,18 @@ function twchr_cf_schedule__card__metadata_save($post_id){
             
             if ( twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__id')) {
                 wp_set_post_terms($post_id,[(int)$_POST['twchr_schedule_card_input--serie__id']] ,'serie');
+            }
+
+            if ( twchr_post_isset_and_not_empty('twchr_stream_data_dateTime') ) {
+                update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
+            }
+    
+            if( twchr_post_isset_and_not_empty('twchr_streams__yt-link-video-src')){
+                update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', wp_kses( $_POST['twchr_streams__yt-link-video-src'], $allowed ) );
+            }
+    
+            if( twchr_post_isset_and_not_empty('twchr_stream_src_priority')){
+                update_post_meta( $post_id, 'twchr_stream_src_priority', wp_kses( $_POST['twchr_stream_src_priority'], $allowed ) );
             }
             
             $twch_res = false;
@@ -175,6 +187,8 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                     $allData = json_encode($twch_res);        
                     update_term_meta($twchr_new_term_id,'twchr_fromApi_allData',$allData);
                     $twchr_streams_relateds = get_term_meta($twchr_new_term_id, 'twchr_streams_relateds');
+
+                    
                 
 
                     if( $twchr_streams_relateds != false && COUNT($twchr_streams_relateds) > 0){
