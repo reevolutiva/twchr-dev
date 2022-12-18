@@ -27,8 +27,13 @@
                     border: 0;
                     box-shadow: none;
                     background: 0;
-
+                    display: none;
                 }
+                stream.twchr_modal_get_videos.active{
+                    display: block;
+                }
+
+                
     
                 .twchr-modal .twchr_help_button {
                     display: block;
@@ -79,11 +84,7 @@
             </stream>
             <script>
             const twchr_modal = document.querySelector(".twchr_modal_get_videos.twchr-modal");
-            const twchr_modal_button_close = document.querySelector(".twchr_modal_get_videos.twchr-modal .twchr-modal-selection_close");
-    
-            twchr_modal_button_close.addEventListener('click', e => {
-                twchr_modal.classList.remove('active');
-            });
+            
             </script>
             <div class="previw_card">
                 <div class="twchr_card_header">

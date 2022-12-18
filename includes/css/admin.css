@@ -853,7 +853,11 @@ stream.twchr-modal .twchr-modal-button.close{
     text-align: center;
 }
 
-.twchr_custom_card--contain .twchr_custom_card_header div h3:hover{
+.twchr_custom_card--contain .twchr_custom_card_header div h3.diactive{
+    filter: saturate(0);
+}
+
+.twchr_custom_card--contain .twchr_custom_card_header div h3.active:hover{
     background-color: transparent;
     color: var(--twchr-purple);
     box-shadow: none;

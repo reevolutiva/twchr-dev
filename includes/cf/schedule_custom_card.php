@@ -2,13 +2,13 @@
     <div class="twchr_custom_card--contain">
         <div class="twchr_custom_card_header">
             <div>
-                <h3><?php _e('Schedule Future Streaming','twitcher');?></h3>
+                <h3 class="active"><?php _e('Schedule Future Streaming','twitcher');?></h3>
             </div>
             <div>
-                <h3 class="twchr_button_get_videos"><?php _e('Assign Twitch Streaming or Video','twitcher');?></h3>
+                <h3 class="active twchr_button_get_videos"><?php _e('Assign Twitch Streaming or Video','twitcher');?></h3>
             </div>
             <div>
-                <h3><?php _e('Assign Youtube Link Video','twitcher');?></h3>
+                <h3 class="active"><?php _e('Assign Youtube Link Video','twitcher');?></h3>
             </div>
         </div>
         <div class="custom_card_row">
