@@ -163,17 +163,18 @@ function twchr_tax_serie_import()
         ));
 
         
-            
         if(isset($schedules_twitch->{'error'})){
             //var_dump($schedules_twitch);
             twchr_twitch_autentication_error_handdler($schedules_twitch->{'error'}, $schedules_twitch->{'message'});
         }
-           
+        //Si hay series
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $item){
                 $wp_id = $item->term_id;
-                $wp_tw_id = get_term_meta($wp_id,'twchr_toApi_schedule_segment_id');
-                foreach($schedules_twitch->data->segments as $schedule){
+                $wp_tw_id = get_term_meta($wp_id,'twchr_toApi_schedule_segment_id')[0];
+                
+                foreach($schedules_twitch as $schedule){
+                                      
                     $tw_id = $schedule->{'id'};
                     if($tw_id == $wp_tw_id){
                     }else{
@@ -208,35 +209,43 @@ function twchr_tax_serie_import()
                    
                 }
             }
+            //
         }else{
-            $schedule = $schedules_twitch[0];
-            $new_term = wp_insert_term($schedule->title, 'serie');
+            foreach($schedules_twitch as $schedule){
+                                      
+                $tw_id = $schedule->{'id'};
+                if($tw_id == $wp_tw_id){
+                }else{
+                    $new_term =wp_insert_term($schedule->title, 'serie');
+                    
+                    if(isset($new_term->errors['term_exists'])){
+                        //TODO: Poner esta redireccion en el error handler
+                        echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+                        die();
+                    }
 
-            if(isset($new_term->errors['term_exists'])){
-                //TODO: Poner esta redireccion en el error handler
-                echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
-                die();
+                    $new_term_id = $new_term['term_id'];
+                   
+                    
+                    $dateTime = $schedule->start_time;
+                    add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
+                    $select_value = $schedule->category->id;
+                    add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
+                    $select_name = $schedule->category->name;
+                    add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
+                    $schedule_segment_id = $schedule->id;
+                    add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
+                    $allData = json_encode($schedule);
+                    add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
+
+                    // Convertir las fechas a timestamp
+                    $start_time = $schedule->start_time;
+                    $end_time = $schedule->end_time;
+                    $minutos = twchr_twitch_video_duration_calculator($start_time ,$end_time);
+                    add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
+                }
+               
             }
-
-            $new_term_id = $new_term['term_id'];
-                       
-                        
-            $dateTime = $schedule->start_time;
-            add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
-            $select_value = $schedule->category->id;
-            add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
-            $select_name = $schedule->category->name;
-            add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
-            $schedule_segment_id = $schedule->id;
-            add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-            $allData = json_encode($schedule);
-            add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
-            // Convertir las fechas a timestamp
-            $start_time = $schedule->start_time;
-            $end_time = $schedule->end_time;
-            $minutos = twchr_twitch_video_duration_calculator($start_time ,$end_time);
-            add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
-            
             echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
             die();
         }
