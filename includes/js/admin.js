@@ -312,7 +312,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     twchrFetchGet(
         'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
         (element)=>{
-            //console.log(element.data);
+            
             if(element.data){
                 GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('on');
                 GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Online';
@@ -320,29 +320,38 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('failed');
                 GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Offline';    
             }
+
+            const stream_isset = document.querySelectorAll('.twchr_car_tab2 .previw_card__status ul li span.value');         
+
+            const stream_isset_array = [];
+            for (let i = 0; i < stream_isset.length; i++) {
+                const element = stream_isset[i];
+                if (element.textContent === 'undefined') {
+                    stream_isset_array.push(true);
+                    console.log(element.textContent);
+                } else {
+                    stream_isset_array.push(false);
+                    console.log(element.textContent);
+                }
+            }
+
+            // Sí todos los campos de previw_card son undefined es porque no se ha asignado
+            if (stream_isset_array.every(item => item === true)) {
+                document.querySelector('.twchr_car_tab2 .previw_card').style.display = 'none';
+                twchr_card_header_menu[0].addEventListener('click', ()=>{
+                    twchr_slide_card_row.style.transform = 'translateX(0%)';
+                });
+                // Si no todos los campos son undefined es porque fue asignado
+            }else{
+                twchr_card_header_menu[0].classList.remove("active");
+                twchr_card_header_menu[0].classList.add("diactive");
+                twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+            }
         },
         'json',{headers: {
             "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
             "client-id": tchr_vars_admin.twchr_keys['client-id']
     }});
-
-    const stream_isset = document.querySelectorAll('.twchr_card_body--list ul li span.value'); 
-    const stream_isset_array = []; // array vacio
-    
-    // Itera la loste de stream_isset
-    for (let i = 0; i < stream_isset.length; i++) {
-        const element = stream_isset[i];
-        // Si element es igual a undefined marca true sino flase
-        if(element.textContent === 'undefined'){
-            stream_isset_array.push(true);
-        }else{
-            stream_isset_array.push(false)
-        }        
-    }
-
-    if(stream_isset_array.every(item => item === true)){
-        //document.querySelector('.twchr_car_tab2').style.display = 'none';
-    }
     
 }
 
