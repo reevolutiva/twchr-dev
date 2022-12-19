@@ -138,12 +138,13 @@
                 
                 }else{
             
-                    $mostViwed_from_api = twchr_max_of_list($listVideo_from_api->{'data'},'view_count','title');
+
                     $mostViwed_from_wp = twchr_max_of_list($listVideo_from_wp,'twchr-from-api_view_count','post_title',true);
 
                     //show_dump($listVideo_from_api->{'data'});
                 }
 
+                $followers = twtchr_twitch_users_get_followers($twch_data_app_token,$twch_data_prime->{'client-id'},$data_broadcaster_raw->{'data'}[0]->{'id'})->{'data'};
                 
                 ?>
             <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twitch-result" >
@@ -151,8 +152,8 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td><?php twchr_esc_i18n('View Count','html'); ?></td>
-                            <td data-twchr-final-number="<?php echo  isset($data_broadcaster->{'view_count'}) ? $data_broadcaster->{'view_count'} : 0 ?>" class='twchr-results-item' ><?php echo  isset($data_broadcaster->{'view_count'}) ? esc_html($data_broadcaster->{'view_count'}) : 'null' ?></td> 
+                            <td><?php twchr_esc_i18n('Followers','html'); ?></td>
+                            <td data-twchr-final-number="<?php echo  isset($followers) ? 'Followers' : '' ?>" class='twchr-results-item' ><?php echo  isset($followers) ? COUNT($followers) : '' ?></td> 
                         </tr>
                         <tr>
                             <td><?php twchr_esc_i18n('Suscribers','html'); ?></td>
