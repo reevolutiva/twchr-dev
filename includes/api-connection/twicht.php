@@ -247,10 +247,10 @@ function twchr_twitch_video_exist($video_id,$token,$client_id){
 
 //twtchr_twitch_subscribers
 //twtchr_twitch_subscribers_get 
-function twtchr_twitch_subscribers_get($app_token, $client_id){
+function twtchr_twitch_subscribers_get($user_token, $client_id){
   $args = array(
     'headers' => array(
-      'Authorization' => 'Bearer '.$app_token,
+      'Authorization' => 'Bearer '.$user_token,
       'client-id' => $client_id 
     )
   );
@@ -413,10 +413,12 @@ function twtchr_twitch_autenticate($api_key, $client_id,$redirect,$scope){
     $urlRedirection = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
     echo "<script>location.href='$urlRedirection'</script>";
     
+    
   }else{
 
     $twitchtv = new TwitchTV($api_key, $client_id,urlencode($redirect),$scope);
     $authUrl = $twitchtv->authenticate();
+
 
     $msg = '<h3>Usted sera redirigido a Twcht en unos segundos</h3>';
     $script = '<script>location.href ="'.$authUrl.'";</script>';

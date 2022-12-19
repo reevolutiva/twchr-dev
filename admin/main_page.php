@@ -117,9 +117,10 @@
                 if($data_broadcaster_raw != false){
                     $data_broadcaster = $data_broadcaster_raw->{'data'}[0];
                     $client_id = $twch_data_prime->{'client-id'};
+                    $userToken = $twch_data_prime->{'user_token'};
                     $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-                    $subcribers = twtchr_twitch_subscribers_get($twch_data_app_token, $client_id);
+                    $subcribers = twtchr_twitch_subscribers_get($userToken, $client_id);
                                 
                     $listVideo_from_api = false;
                     if(!isset(twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id)->{'data'})){
@@ -143,8 +144,6 @@
                     //show_dump($listVideo_from_api->{'data'});
                 }
 
-                //show_dump($mostViwed_from_api);
-                //show_dump($data_broadcaster->{'view_count'});
                 
                 ?>
             <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twitch-result" >
@@ -329,7 +328,8 @@
                                 $secret_key = $twch_data_prime->{'client-secret'};
                                 $return = TWCHR_HOME_URL.'/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
                                 $scope = array(
-                                    "channel:manage:schedule"
+                                    "channel:manage:schedule",
+                                    "channel:read:subscriptions"
                                 );
 
                                 if(isset($_GET['twchr_id'])){
