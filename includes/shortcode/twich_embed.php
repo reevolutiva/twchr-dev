@@ -51,3 +51,24 @@ add_shortcode( 'twich_embed', 'shorcode_twich_embed' );
 
 //[twich_embed host="reevolutiva" video="1640517875" ancho="800" alto="400"]
 
+//Shorcode para listar todas las series
+function twtchr_shortcode_tx_series() {
+	$series = get_terms( array(
+	  'taxonomy' => 'serie',
+	  'hide_empty' => false
+	) );
+  
+	if ( ! empty( $series ) && ! is_wp_error( $series ) ) {
+	  $output = '<ul>';
+	  foreach ( $series as $serie ) {
+		$output .= '<li>' . $serie->name . '</li>';
+	  }
+	  $output .= '</ul>';
+	} else {
+	  $output = '<p>No hay series disponibles.</p>';
+	}
+  
+	return $output;
+  }
+  add_shortcode( 'list_series', 'twtchr_shortcode_tx_series' );
+
