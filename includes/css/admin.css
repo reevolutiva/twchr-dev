@@ -45,10 +45,12 @@
     z-index:-1;
     transition: .3s ease-in-out ;
     opacity: 0;
+    display: block;  
+    height: 0;
 }
 
 .twchr_modal.active{
-    display: block;    
+    height: auto;
     z-index: 10;
     opacity: 1;
     overflow: auto;
