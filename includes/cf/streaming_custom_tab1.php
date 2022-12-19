@@ -1,25 +1,25 @@
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
-        class="twchr_schedule_card_input" type="text" disabled="true" value="<?php echo $title ?>">
+        class="twchr_schedule_card_input" type="text" required value="<?php echo $title ?>">
     <label for="twchr_schedule_card_input--category"><?php _e('Twitch category','twitcher');?></label>
     <div class="twchr_cards_input_badges">
-        <input id="twchr_schedule_card_input--category" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo !empty($term_cat_twcht_name) ? $term_cat_twcht_name : ''?>" />
+        <input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo !empty($term_cat_twcht_name) ? $term_cat_twcht_name : ''?>" />
         <badges><?php echo $term_cat_twcht_list; ?></badges>
     </div>
     <input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo !empty($term_cat_twcht_id) ? $term_cat_twcht_id : ''?>" />
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
-    <input id="twchr_schedule_card_input--dateTime" name="twchr_schedule_card_input--dateTime"
+    <input id="twchr_schedule_card_input--dateTime" required name="twchr_schedule_card_input--dateTime"
         class="twchr_schedule_card_input" type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" value="<?php echo $dateTime ?>">
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration','twitcher');?></label>
-    <input id="twchr_schedule_card_input--duration" name="twchr_schedule_card_input--duration"
+    <input id="twchr_schedule_card_input--duration" required name="twchr_schedule_card_input--duration"
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
     <label for="twchr_schedule_card_input--is_recurrig"><?php _e('Is Recurring ?','twitcher');?></label>
-    <input id="twchr_schedule_card_input--is_recurrig" name="twchr_schedule_card_input--is_recurrig"
+    <input id="twchr_schedule_card_input--is_recurrig" required name="twchr_schedule_card_input--is_recurrig"
         class="twchr_schedule_card_input" type="checkbox" <?php echo !empty($is_recurring) == 'on' ? 'checked' :'';?> >
     <label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php _e('Serie','twitcher');?></label>
     <div class="twchr_cards_input_badges">
-        <input id="twchr_schedule_card_input--serie" name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
+        <input id="twchr_schedule_card_input--serie" required name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
     </div>
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>">

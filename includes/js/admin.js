@@ -328,10 +328,8 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 const element = stream_isset[i];
                 if (element.textContent === 'undefined') {
                     stream_isset_array.push(true);
-                    console.log(element.textContent);
                 } else {
                     stream_isset_array.push(false);
-                    console.log(element.textContent);
                 }
             }
 
@@ -352,6 +350,9 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
             "client-id": tchr_vars_admin.twchr_keys['client-id']
     }});
+    
+
+
     
 }
 

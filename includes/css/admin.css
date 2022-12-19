@@ -969,6 +969,10 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
     padding: 0 1cm;
 }
+
+#twchr_schedule_card_input--serie__name--label{
+    position: relative;
+}
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
