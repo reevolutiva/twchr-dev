@@ -111,7 +111,7 @@ function twchr_tax_serie_create($term_id, $tt_id){
    die();
 }
 
-//add_action( 'create_serie', 'twchr_tax_serie_create', 10,5);
+add_action( 'create_serie', 'twchr_tax_serie_create', 10,5);
 
 //Formulario que aparece en el Edit de la taxonomía Serie en Wordpress
 //twchr_tax_serie
