@@ -1,3 +1,39 @@
+function twchr_every_reapeat_writer(newDate_raw,duration){
+    const fecha = new Date(newDate_raw);
+    let dia = '';
+    switch (fecha.getDay()) {
+        case 0 : dia = 'domingo';
+        break;
+        case 1 : dia = 'lunes';
+        break;
+        case 2 : dia = 'martes';
+        break;
+        case 3 : dia = 'miercoles';
+        break;
+        case 4 : dia = 'jueves';
+        break;
+        case 5 : dia = 'viernes';
+        break;
+        case 6 : dia = 'sabado';
+        break;
+        default : '';
+        break;
+    }
+    
+
+    const start_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+
+    fecha.setMinutes(fecha.getMinutes() + duration);
+
+    const end_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+    
+    const fecha_msg = `${dia} from <b>${start_time}</b> to <b>${end_time}</b>`;
+    
+    return fecha_msg;
+}
+
+
+
 // Funcion que obtiene los parametros GET con JS
 /**
  * It fetches a URL and returns the response in the format you specify
@@ -350,6 +386,24 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
             "client-id": tchr_vars_admin.twchr_keys['client-id']
     }});
+
+    if(document.querySelector("#twchr_schedule_card_input--is_recurrig").isChecked == true){
+        const newDate_raw = document.querySelector("#twchr_schedule_card_input--dateTime").value;
+        const duration = parseInt(document.querySelector("#twchr_schedule_card_input--duration").value);
+           
+    
+    }else{
+        const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
+        const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
+        const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
+        const show_date = twchr_schedule_card.querySelector("#twchr_schedule_card_input--show");
+
+        input_serie.setAttribute('disabled', true);
+        input_serie.parentElement.style.display = 'none';
+        input_serie_label.style.display = 'none';
+        show_date.style.display = 'none';
+        input_title.removeAttribute('disabled');
+    }
     
 
 

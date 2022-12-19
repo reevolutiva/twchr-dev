@@ -27,8 +27,7 @@
     <section id="twchr_schedule_card_input--show">
         <h5><?php _e('Repeat every:','twitcher');?></h5>
         <p>
-            <span>Monday</span>
-            <span>from 14:00 to 16:00 pm</span>
+            <?php _e('Select you Date Time','twitcher')?>
         </p>
     </section>
 </div>
@@ -36,6 +35,8 @@
 const twchr_schedule_metabox_container = document.querySelectorAll(".streaming-metabox-container");
 const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
 const twchr_schedule_card_cat_tw = twchr_schedule_card.querySelector("#twchr_schedule_card_input--category");
+const twchr_schedule_card_duration = twchr_schedule_card.querySelector("#twchr_schedule_card_input--duration");
+const twchr_schedule_card_dateTime = twchr_schedule_card.querySelector("#twchr_schedule_card_input--dateTime");
 const twchr_is_recurring = twchr_schedule_card.querySelector("input[type='checkbox']");
 const input_title = twchr_schedule_card.querySelector("#twchr_schedule_card_input--title");
 const input_post_title = document.querySelector("#title");
@@ -47,6 +48,20 @@ if(twchr_is_recurring.checked == true){
     input_title.value = input_post_title.value;
 }
 
+
+twchr_schedule_card_duration.oninput = ()=>{
+    if(twchr_is_recurring.checked == true && twchr_schedule_card_dateTime.value.length > 0 && twchr_schedule_card_dateTime.value.length > 0){
+        const repeat_every = twchr_every_reapeat_writer(twchr_schedule_card_dateTime.value,twchr_schedule_card_duration.value);
+        document.querySelector("#twchr_schedule_card_input--show p").innerHTML = repeat_every;
+    }
+}
+twchr_schedule_card_dateTime.oninput = ()=>{
+    if(twchr_is_recurring.checked == true && twchr_schedule_card_dateTime.value.length > 0 && twchr_schedule_card_dateTime.value.length > 0){
+        const repeat_every = twchr_every_reapeat_writer(twchr_schedule_card_dateTime.value,twchr_schedule_card_duration.value);
+        document.querySelector("#twchr_schedule_card_input--show p").innerHTML = repeat_every;
+    }
+}
+
 twchr_is_recurring.addEventListener('click', (e) => {
     const tag = e.target;
     const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
@@ -54,7 +69,9 @@ twchr_is_recurring.addEventListener('click', (e) => {
     const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
 
     const show_date = twchr_schedule_card.querySelector("#twchr_schedule_card_input--show");
-    const dateRaw = new Date(document.querySelector("input#twchr_schedule_card_input--dateTime").value);
+    const dateRaw = document.querySelector("input#twchr_schedule_card_input--dateTime").value;
+    const duration = document.querySelector("input#twchr_schedule_card_input--duration").value;
+   
     
 
 
@@ -94,6 +111,11 @@ twchr_is_recurring.addEventListener('click', (e) => {
         input_serie.parentElement.style.display = 'block';
         input_serie_label.style.display = 'block';
         show_date.style.display = 'flex';
+        if( twchr_schedule_card_dateTime.value.length > 0 && twchr_schedule_card_dateTime.value.length > 0){
+            const repeat_every = twchr_every_reapeat_writer(dateRaw,duration);
+            show_date.querySelector("p").innerHTML = repeat_every;
+        }
+  
         input_title.value = input_post_title.value;
         input_title.setAttribute('disabled', 'true');
     }
