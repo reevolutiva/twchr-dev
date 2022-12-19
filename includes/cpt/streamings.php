@@ -12,7 +12,7 @@ function register_twchr_stream() {
 		'parent_item_colon'     => __( 'Parent', 'twitcher' ),
 		'all_items'             => __( 'All streamings', 'twitcher' ),
 		'add_new_item'          => __( 'Add new Streaming', 'twitcher' ),
-		'add_new'               => __( 'Add new', 'twitcher' ),
+		'add_new'               => __( 'Add new streaming', 'twitcher' ),
 		'new_item'              => __( 'New Streaming', 'twitcher' ),
 		'edit_item'             => __( 'Edit Streaming', 'twitcher' ),
 		'update_item'           => __( 'Update Streaming', 'twitcher' ),
