@@ -49,7 +49,7 @@
                 }
     
             </style>
-            <stream class="twchr_modal_get_videos twchr-modal">
+            <stream class="twchr_modal_get_videos twchr-modal active">
                 <div class="twchr-modal-selection_close">
                     x
                 </div>

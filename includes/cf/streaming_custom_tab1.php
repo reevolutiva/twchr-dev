@@ -71,10 +71,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
     const show_date = twchr_schedule_card.querySelector("#twchr_schedule_card_input--show");
     const dateRaw = document.querySelector("input#twchr_schedule_card_input--dateTime").value;
     const duration = document.querySelector("input#twchr_schedule_card_input--duration").value;
-   
     
-
-
 
 
     // Si is_recurring es false

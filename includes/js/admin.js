@@ -628,7 +628,6 @@ if(
     
    btn_get_video.addEventListener('click',e=>{
     e.preventDefault();
-    modal_get_video.classList.toggle('active');
     const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
     const client_id = tchr_vars_admin.twchr_keys['client-id'];
     const appToken = tchr_vars_admin.twchr_app_token;
