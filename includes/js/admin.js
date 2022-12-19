@@ -617,6 +617,13 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         getCategorysTwitch(appToken, twch_data_prime['client-id'], query);
     }  
      
+    const twchr_toApi_dateTime = document.querySelector("#twchr_toApi_dateTime");
+    const twchr_toApi_duration = document.querySelector("#twchr_toApi_duration");
+    if(twchr_toApi_dateTime.value.length > 0 && twchr_toApi_duration.value.length > 0){
+        const date = twchr_every_reapeat_writer(twchr_toApi_dateTime.value,twchr_toApi_duration.value);
+        document.querySelector("h4.twchr_serie_repeat").innerHTML = date;
+        //console.log(date);    
+    }
 }
 
 if(

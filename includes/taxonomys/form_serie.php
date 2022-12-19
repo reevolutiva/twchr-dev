@@ -25,13 +25,16 @@
         }
     }
 </style>
+
 <div class='twchr_toApi_form-field'>
+    <label>Every repeat: </label>
+    <h4 class="twchr_serie_repeat"></h4>
     <label for="twchr_toApi_dateTime"><?php twchr_esc_i18n('Date and Time','html'); ?></label>
     <div>
         <input type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $dateTime?>">
         <p><?php twchr_esc_i18n('The recurring date your stream aired.','html') ?></p>
     </div>
-    <label for="twchr_toApi_duration"><?php twchr_esc_i18n('Duration','html'); ?></label>
+    <label for="twchr_toApi_duration"><?php twchr_esc_i18n('Duration (minutes)','html'); ?></label>
     <div>
         <input type="number" id="twchr_toApi_duration" name="twchr_toApi_duration" value="<?php echo $duration?>">
         <p><?php twchr_esc_i18n('Average time that your transmission lasts.','html');?></p>
