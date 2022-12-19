@@ -171,6 +171,27 @@ const getCategorysTwitch = async (appToken, client_id, query, callback=false)=>{
      
 }
 
+const getSchedules_by_id = async (callback) => {
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${tchr_vars_admin.twchr_app_token}`);
+        myHeaders.append("client-id", tchr_vars_admin.twchr_keys['client-id']);
+
+        const broadcaster_id = tchr_vars_admin.twitcher_data_broadcaster.id;
+        const requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+       const get = await fetch(`https://api.twitch.tv/helix/schedule?broadcaster_id=${broadcaster_id}`, requestOptions);
+       const response = await get.json();
+       const arrayList = response.data;
+
+       callback(arrayList)
+
+
+}
+
 // Hago la peticion de videos a Twitch
 const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false)   =>{
     const myHeaders = new Headers();
@@ -404,6 +425,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         show_date.style.display = 'none';
         input_title.removeAttribute('disabled');
     }
+
     
 
 
@@ -540,6 +562,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         } catch (error) {
             console.log(error);
         }
+
     }
 
     const url = location.origin+'/wp-json/twchr/twchr_get_serie';
@@ -640,6 +663,7 @@ if(
     const appToken = tchr_vars_admin.twchr_app_token;
     tchr_get_clips(appToken,client_id,user_id)
    });
+    
 }
 
 if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('get_thing') == 'videos_ajax'){
@@ -819,6 +843,19 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
 
                         modal.innerHTML = '';
                         modal.classList.remove("active");
+
+                        getSchedules_by_id((data)=>{
+                            const segments = data.segments;
+                            segments.forEach(segment =>{
+                                const id = segment.id;
+                                const title = segment.title;
+                                const option = `<option value="${id}}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
+                                document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
+            
+                                
+                            });
+                        });
+
                     });
                 }
             );

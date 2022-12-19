@@ -115,7 +115,7 @@ function twtchr_twitch_schedule_segment_delete($schedule_id, $twchr_titulo = fal
   }
 }
 
-function  twtchr_twitch_schedule_segment_get(){
+function  twtchr_twitch_schedule_segment_get($schedule_id = false){
   $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
   $client_id = $twch_data_prime->{'client-id'};
   $user_token = $twch_data_prime->{'user_token'};
@@ -130,7 +130,14 @@ function  twtchr_twitch_schedule_segment_get(){
   $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
   $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
   
-  $url = "https://api.twitch.tv/helix/schedule?broadcaster_id=".$broadcaster_id;
+
+  if($schedule_id == false) {
+    $url = "https://api.twitch.tv/helix/schedule?broadcaster_id=".$broadcaster_id;
+  }else{
+    $url = "https://api.twitch.tv/helix/schedule?broadcaster_id=".$broadcaster_id."&id=".$schedule_id;
+  }
+
+  
 
   $res = wp_remote_get($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));

@@ -23,6 +23,10 @@
         <badges><?php echo $term_serie_list; ?></badges>
     </div>
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>">
+    <label for="twchr_schedule_card_input--show--slot__validate"><?php _e('user future schedule segment','twitcher'); ?></label>
+    <input type="checkbox" class="twchr_schedule_card_input" name="twchr_schedule_card_input--show--slot__validate" id="twchr_schedule_card_input--show--slot__validate--show__validate">
+    <select name="twchr_dateTime_slot" id="twchr_dateTime_slot"></select>
+ 
 
     <section id="twchr_schedule_card_input--show">
         <h5><?php _e('Repeat every:','twitcher');?></h5>

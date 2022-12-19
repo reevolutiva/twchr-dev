@@ -28,6 +28,7 @@ function twchr_cf_schedule__card(){
     $category = isset($values['twchr_schedule_card_input--category']) ? $values['twchr_schedule_card_input--category'][0] : '';
     $dateTime = isset($values['twchr_schedule_card_input--dateTime']) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
     $duration = isset($values['twchr_schedule_card_input--duration']) ? $values['twchr_schedule_card_input--duration'][0] : '';
+    $twchr_schedule_card_input__show__slot__validate = isset($values['twchr_schedule_card_input--show--slot__validate']) && ['twchr_schedule_card_input--show--slot__validate'][0] == 'on' ? true : false;
     
     $is_recurring = isset($values['twchr_schedule_card_input--is_recurrig']) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
     $serie = isset($values['twchr_schedule_card_input--serie']) ? $values['twchr_schedule_card_input--serie'][0] : '';
