@@ -8,10 +8,6 @@ if(document.querySelector("#twchr_schedule_card_input--is_recurrig").isChecked =
     const newDate_raw = document.querySelector("#twchr_schedule_card_input--dateTime").value;
     const duration = parseInt(document.querySelector("#twchr_schedule_card_input--duration").value);
     const fecha = new Date(newDate_raw);
-
-    console.log(newDate_raw);
-    console.log(duration);
-    console.log(fecha);
     
     let dia = '';
     switch (fecha.getDay()) {
@@ -35,9 +31,9 @@ if(document.querySelector("#twchr_schedule_card_input--is_recurrig").isChecked =
     
 
     const start_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
-    console.log(fecha);
+
     fecha.setMinutes(fecha.getMinutes() + duration);
-    console.log(fecha);
+ 
     const end_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
     
     const fecha_msg = `${dia} from <b>${start_time}</b> to <b>${end_time}</b>`;

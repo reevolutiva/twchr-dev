@@ -1,7 +1,7 @@
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
-        class="twchr_schedule_card_input" type="text" required value="<?php echo $title ?>">
+        class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : 'required'?>  value="<?php echo $title ?>">
     <label for="twchr_schedule_card_input--category"><?php _e('Twitch category','twitcher');?></label>
     <div class="twchr_cards_input_badges">
         <input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo !empty($term_cat_twcht_name) ? $term_cat_twcht_name : ''?>" />
