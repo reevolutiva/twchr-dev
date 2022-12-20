@@ -11,6 +11,7 @@
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
     <input id="twchr_schedule_card_input--dateTime" required name="twchr_schedule_card_input--dateTime"
         class="twchr_schedule_card_input" type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" value="<?php echo $dateTime ?>">
+    <select name="twchr_dateTime_slot" id="twchr_dateTime_slot"></select>
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration" required name="twchr_schedule_card_input--duration"
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
@@ -22,12 +23,7 @@
         <input id="twchr_schedule_card_input--serie" required name="twchr_schedule_card_input--serie__name" class="twchr_schedule_card_input" type="text" value="<?php echo !empty($term_serie_name) ? $term_serie_name : ''?>">
         <badges><?php echo $term_serie_list; ?></badges>
     </div>
-    <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>">
-    <label for="twchr_schedule_card_input--show--slot__validate"><?php _e('user future schedule segment','twitcher'); ?></label>
-    <input type="checkbox" class="twchr_schedule_card_input" name="twchr_schedule_card_input--show--slot__validate" id="twchr_schedule_card_input--show--slot__validate--show__validate">
-    <select name="twchr_dateTime_slot" id="twchr_dateTime_slot"></select>
- 
-
+    <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
         <h5><?php _e('Repeat every:','twitcher');?></h5>
         <p>
@@ -119,6 +115,50 @@ twchr_is_recurring.addEventListener('click', (e) => {
   
         input_title.value = input_post_title.value;
         input_title.setAttribute('disabled', 'true');
+        twchr_schedule_card_dateTime.setAttribute('disabled', 'true');
+        twchr_schedule_card_dateTime.style.display = 'none';
+        document.querySelector("#twchr_dateTime_slot").style.display = 'block'; 
+        getSchedules_by_id((data)=>{
+            const segments = data.segments;
+            document.querySelector("#twchr_dateTime_slot").innerHTML = '';
+            segments.forEach(segment =>{
+                const id = segment.id;
+                const title = segment.title;
+                const option = `<option value="${id}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
+                document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
+
+                
+            });
+
+            [...document.querySelectorAll("#twchr_dateTime_slot option")].forEach(
+                option => {
+                    option.addEventListener('click', (event) =>{
+                        twchr_schedule_id = event.target.value;
+                        segments.forEach(segment =>{
+                            const id = segment.id;
+                            if(id === twchr_schedule_id){
+                                const title = segment.title;
+                                const start_time = segment.start_time;
+                                const end_time = segment.end_time;
+                                const category = segment.category;
+
+                                                          
+                                twchr_schedule_card_cat_tw.value = category.name;
+                                const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
+                                twchr_schedule_card_duration.value  = duration.minutes;
+                                twchr_schedule_card_dateTime.setAttribute('type','text');
+                                twchr_schedule_card_dateTime.value =  start_time;
+                                input_title.value = title;
+                                
+
+                            }
+                        })
+
+                    });
+                    //console.log(option);
+                }
+            );
+        });
     }
 });
 </script>

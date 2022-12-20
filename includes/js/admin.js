@@ -1,3 +1,27 @@
+function twchr_get_duration_form_RFC3666(end_time, start_time) {
+    let date1Object = new Date(Date.parse(end_time));
+    let date2Object = new Date(Date.parse(start_time));
+
+    // Get the difference in milliseconds
+    let diff = date1Object - date2Object;
+
+    // Convert the difference to seconds, minutes, hours, and days
+    let seconds = diff / 1000;
+    let minutes = diff / (1000 * 60);
+    let hours = diff / (1000 * 60 * 60);
+    let days = diff / (1000 * 60 * 60 * 24);
+
+    const response = {
+        'seconds': seconds,
+        'minutes': minutes,
+        'hours': hours,
+        'days': days
+    };
+
+    return response;
+    
+}
+
 function twchr_every_reapeat_writer(newDate_raw,duration){
     const fecha = new Date(newDate_raw);
     let dia = '';
@@ -408,10 +432,62 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             "client-id": tchr_vars_admin.twchr_keys['client-id']
     }});
 
-    if(document.querySelector("#twchr_schedule_card_input--is_recurrig").isChecked == true){
-        const newDate_raw = document.querySelector("#twchr_schedule_card_input--dateTime").value;
-        const duration = parseInt(document.querySelector("#twchr_schedule_card_input--duration").value);
-           
+    if(document.querySelector("#twchr_schedule_card_input--is_recurrig").checked == true){
+
+        twchr_schedule_card_dateTime.setAttribute('disabled', 'true');
+        twchr_schedule_card_dateTime.style.display = 'none'
+        document.querySelector("#twchr_dateTime_slot").style.display = 'block';
+        
+        getSchedules_by_id((data)=>{
+            const segments = data.segments;
+            document.querySelector("#twchr_dateTime_slot").innerHTML = '';
+            segments.forEach(segment =>{
+                const id = segment.id;
+                const title = segment.title;
+                const option = `<option value="${id}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
+                document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
+
+                
+            });
+
+            [...document.querySelectorAll("#twchr_dateTime_slot option")].forEach(
+                option => {
+                    option.addEventListener('click', (event) =>{
+                        twchr_schedule_id = event.target.value;
+                        segments.forEach(segment =>{
+                            const id = segment.id;
+                            if(id === twchr_schedule_id){
+                                const title = segment.title;
+                                const start_time = segment.start_time;
+                                const end_time = segment.end_time;
+                                const category = segment.category;
+                                //console.log(segment);
+                                                          
+                                twchr_schedule_card_cat_tw.value = category.name;
+                                const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
+                                twchr_schedule_card_duration.value  = duration.minutes;
+                                //console.log(duration);
+                                twchr_schedule_card_dateTime.setAttribute('type','text');
+                                twchr_schedule_card_dateTime.value =  start_time;
+                                input_title.value = title;
+                                document.querySelector("#title").value = title;
+                                document.querySelector("#title-prompt-text").classList.add("screen-reader-text");
+                                const repeat_every = twchr_every_reapeat_writer(start_time, duration.minutes);
+                                document.querySelector("#twchr_schedule_card_input--show p").innerHTML = repeat_every;
+                                const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
+                                input_serie.value = title;
+                                
+                                
+
+                            }
+                        })
+
+                    });
+                    //console.log(option);
+                }
+            );
+        });
+        
     
     }else{
         const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
@@ -424,6 +500,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         input_serie_label.style.display = 'none';
         show_date.style.display = 'none';
         input_title.removeAttribute('disabled');
+        document.querySelector("#twchr_dateTime_slot").style.display = 'none';
     }
 
     
@@ -844,17 +921,6 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
                         modal.innerHTML = '';
                         modal.classList.remove("active");
 
-                        getSchedules_by_id((data)=>{
-                            const segments = data.segments;
-                            segments.forEach(segment =>{
-                                const id = segment.id;
-                                const title = segment.title;
-                                const option = `<option value="${id}}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
-                                document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
-            
-                                
-                            });
-                        });
 
                     });
                 }
