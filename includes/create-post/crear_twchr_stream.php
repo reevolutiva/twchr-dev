@@ -6,7 +6,7 @@ function crearStream($title ,$id ,$create_at ,$description ,$duration ,$api_lang
         'post_status' => 'publish',
         'post_author' => $author,
         'post_type' => 'twchr_streams',
-        'post_content' => '[twich_embed host="'.$host.'" video="'.$id.'"]',
+        'post_content' => '[twchr_tw_video host="'.$host.'" video="'.$id.'"]',
         'meta_input'   => array(
             'twchr-from-api_create_at' => $create_at,
             'twchr-from-api_description' => $description,
