@@ -148,7 +148,7 @@
                 
                 ?>
             <div class="twchr-dashboard-card <?php if(!twchr_is_ssl_secure() ){ echo 'card-blur'; } ?> twitch-result" >
-                <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') == 3 && get_option('twchr_data_broadcaster') != false): ?>
+                <?php if($listVideo_from_api != false && get_option('twchr_setInstaled') >= 3 && get_option('twchr_data_broadcaster') != false): ?>
                 <table>
                     <tbody>
                         <tr>
@@ -184,7 +184,7 @@
                 <?php endif; 
                     if(get_option('twchr_setInstaled') <= 3):
                         $setInstaled = get_option('twchr_setInstaled');
-                        if($setInstaled == 3 && $listVideo_from_api === false){
+                        if($setInstaled >= 3 && $listVideo_from_api === false){
                             $error = twchr_twitch_video_get($twch_data_app_token, $twch_data_prime->{'client-id'},$broadcaster_id);
                             ?>
                             <div class="error-card">
