@@ -26,7 +26,7 @@ function twchr_fonts(){
 
 
 function twchr_admin_js() {
-    $version = 'beta.4.163';
+    $version = 'beta.4.164';
     
     // Estilos
     wp_enqueue_style('admin-styles', TWCHR_URL."includes/css/admin.css" ,array(),$version,'all');
@@ -37,7 +37,7 @@ function twchr_admin_js() {
     
     $setInstaled = get_option('twchr_setInstaled');
     //Usamos esta función para que coloque los valores inline
-    if($setInstaled == 3){
+    if($setInstaled >= 3){
         //Definimos las variables WordPress a enviar dentro de un array
         $params = array (
             'twchr_keys' => json_decode(get_option('twchr_keys')) ,

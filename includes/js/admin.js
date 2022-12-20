@@ -1,3 +1,10 @@
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 function twchr_get_duration_form_RFC3666(end_time, start_time) {
     let date1Object = new Date(Date.parse(end_time));
     let date2Object = new Date(Date.parse(start_time));
@@ -90,12 +97,7 @@ function twchr_every_reapeat_writer(newDate_raw,duration){
   }
 
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+
 
 const crearElemento = (element,className) =>{
     const tag = document.createElement(element);
@@ -675,9 +677,10 @@ if(
 }
 
 if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('get_thing') == 'videos_ajax'){
-    
+    console.log("funcona");
     function twchr_videos_ajax (data){
         // Agrego un EventLitener al boton enviar del modal
+        console.log(data);
         GSCJS.queryOnly("#twchr-modal-selection__btn").addEventListener('click',event =>{
             event.preventDefault(); // Detengo su ejecucion por defecto
             let getParameters = '?post_type=twchr_streams&get_thing=videos' // Creo la primera parte de la nueva ruta
