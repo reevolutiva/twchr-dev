@@ -155,7 +155,7 @@ function  twtchr_twitch_schedule_segment_get($schedule_id = false){
   }
 }
 // Create twitch schedule segment twtchr_twitch_schedule_segment_create
-function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration){
+function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_start_time ,$twchr_category,$twchr_duration,$is_recurring = true){
 
   //GET CREDENTIALS
   $twch_data_prime = json_decode(get_option( 'twchr_keys', false ));
@@ -166,7 +166,7 @@ function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_sta
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,
     'timezone' => 'America/New_York',
-    'is_recurring' => true,
+    'is_recurring' => $is_recurring,
     'duration' => $twchr_duration,
     'category_id' => $twchr_category
   );

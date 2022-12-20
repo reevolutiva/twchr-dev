@@ -86,11 +86,14 @@ twchr_is_recurring.addEventListener('click', (e) => {
             input_serie_label.style.display = 'none';
             show_date.style.display = 'none';
             input_title.removeAttribute('disabled');
+            document.querySelector("#twchr_dateTime_slot").style.display = 'none'; 
+            twchr_schedule_card_dateTime.style.display = 'block';
+            twchr_schedule_card_dateTime.removeAttribute('disabled');
             
         } else {
             // Si el broacater type no es ni pather ni afilate
             const opt1 = confirm(
-                "usted no es ni afiliado ni phatner asi que no puede crear un streaming singular ¿desea continuar?"
+                "<?php _e('you are neither an affiliate nor a phatner so you cannot create a unique stream do you want to continue?','twitcher');?>"
                 );
             // si opt1 es true lo desaparce
             if (opt1) {
@@ -99,6 +102,9 @@ twchr_is_recurring.addEventListener('click', (e) => {
                 input_serie_label.style.display = 'none';
                 show_date.style.display = 'none';
                 input_title.removeAttribute('disabled');
+                document.querySelector("#twchr_dateTime_slot").style.display = 'none'; 
+                twchr_schedule_card_dateTime.style.display = 'block';
+                twchr_schedule_card_dateTime.removeAttribute('disabled')
             } else {
                 // volvermos al estado inicial del ckeckbox
                 tag.checked = true;

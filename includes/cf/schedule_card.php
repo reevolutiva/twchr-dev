@@ -115,94 +115,18 @@ function twchr_cf_schedule__card__metadata_save($post_id){
         
                 $id = (int)$response['term_id'];
                 
+                // Creo stream relacionado
                 wp_set_post_terms($post_id,[$id],'cat_twcht');     
                 
-                $twch_res = twtchr_twitch_schedule_segment_create($post_id,$to_api_Title,$to_api_DateTime ,$cat_twitch_id,$to_api_Duration);
                 
             }
 
-            if($twch_res != false){
-                if($to_api_IsRecurring == false){
-                    $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
-                    $allData = json_encode($twch_res);        
-                    update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch',  $allData);
-                    update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id',  $schedule_segment_id);
-                }else{
-                    $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
-                    $twtich_end_time = $twch_res['allData']->{'segments'}[0]->{'end_time'};
-                    $cat_twitch_id = (int)$_POST['twchr_schedule_card_input--category__value'];
-                    $cat_twitch_name = $_POST['twchr_schedule_card_input--category__name'];
-                    $stream_object = array(
-                        'twicth_id' => $schedule_segment_id,
-                        'twtich_start_time' => $to_api_DateTime,
-                        'twtich_end_time' => $twtich_end_time,
-                        'twtich_title' => $to_api_Title,
-                        'wp_stream_id' => $post_id
-                    );
-
-                    // Si es diferente a 200 el schedule segement no fue creado existosamente
-                    if(isset($twchr_res['status']) && $twchr_res['status'] != 200){
-                        var_dump($twch_res);
-                        die();
-                    }
-
-                    $post_id = $_POST['post_ID'];
-                    $tax_input_serie = $_POST['tax_input']['serie'];
-                    $term_serie = wp_get_post_terms($post_id, 'serie');
-                    $twchr_new_term_id = '';
-
-
-                    // si este post tiene al menos una serie relacionaa
-                    if(COUNT($term_serie) > 0){
-                        foreach($term_serie as $term){
-                            // Si existe un term.name con el nombre de la serie
-                            if($term->name == $to_api_Title){
-                                // guarda su id
-                                $twchr_new_term_id = $term_serie[0]->term_id;
-                            }else{
-                                // si no existe lo creo
-                                 $new_serie_term = wp_create_term($to_api_Title,'serie');
-                                 $twchr_new_term_id = $new_serie_term['term_id'];
-                            }
-                        }    
-                    }else{
-                        // no tiene ninguna serie relacioada
-                        $new_serie_term = wp_create_term($to_api_Title,'serie');
-        
-                        $twchr_new_term_id = $new_serie_term['term_id'];
-                    }
-
-                    
-                    wp_set_post_terms($post_id,[$twchr_new_term_id],'serie');
-
-                    $dateTime = $twch_res['allData']->{'segments'}[0]->{'start_time'};
-                    update_term_meta($twchr_new_term_id,'twchr_toApi_dateTime',$dateTime);
-                    $duration = $to_api_Duration;
-                    update_term_meta($twchr_new_term_id,'twchr_toApi_duration',$duration);
-                    $select_value = $cat_twitch_id;
-                    update_term_meta($twchr_new_term_id,'twchr_toApi_category_value',$select_value);
-                    $select_name = $cat_twitch_name;
-                    update_term_meta($twchr_new_term_id,'twchr_toApi_category_name',$select_name);
-                    $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
-                    update_term_meta($twchr_new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-                    $allData = json_encode($twch_res);        
-                    update_term_meta($twchr_new_term_id,'twchr_fromApi_allData',$allData);
-                    $twchr_streams_relateds = get_term_meta($twchr_new_term_id, 'twchr_streams_relateds');
-
-                    
-                
-
-                    if( $twchr_streams_relateds != false && COUNT($twchr_streams_relateds) > 0){
-                        $old_value = json_decode($twchr_streams_relateds[0]);
-                        array_push($old_value, $stream_object);
-                        $meta_value = json_encode($old_value);
-                        update_term_meta($twchr_new_term_id,'twchr_streams_relateds', $meta_value);
-                    }else{
-                        $meta_value = json_encode([$stream_object]);
-                        add_term_meta($twchr_new_term_id, 'twchr_streams_relateds', $meta_value);
-                    }    
-    
-                }
+            if($to_api_IsRecurring == false){
+                $twch_res = twtchr_twitch_schedule_segment_create($post_id,$to_api_Title,$to_api_DateTime ,$cat_twitch_id,$to_api_Duration);
+                $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
+                $allData = json_encode($twch_res);        
+                update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch',  $allData);
+                update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id',  $schedule_segment_id);
             }
             
           
