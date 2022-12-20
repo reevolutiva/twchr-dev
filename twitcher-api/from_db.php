@@ -14,12 +14,14 @@
         //KEYS
         
         $data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+      
         $broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
         $twch_data_app_token = get_option('twchr_app_token');
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
+        $user_token =  $twch_data_prime->{'user_token'};
         $client_id = $twch_data_prime->{'client-id'};
-        $subcriptores = twtchr_twitch_subscribers_get($twch_data_app_token, $client_id)->{'total'};
-        $followers = twtchr_twitch_users_get_followers($twch_data_app_token , $client_id, $broadcaster_id)->{'total'}; 
+        $subcriptores = twtchr_twitch_subscribers_get($user_token, $client_id)->{'total'};
+        $followers = twtchr_twitch_users_get_followers($user_token , $client_id, $broadcaster_id)->{'total'}; 
          
         // VIDEOS
         

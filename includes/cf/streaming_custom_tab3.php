@@ -1,5 +1,5 @@
 <?php 
-$values    = get_post_custom( $_GET['post'] );
+$values    = get_post_custom(get_the_id());
 
 $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
 $select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : ''; 
@@ -25,7 +25,10 @@ if(isset($_GET['twchr_insert_shorcode'])){
         'ID' => $post_id,
         'post_content' => $shorcode
     ));
+    $url = TWCHR_ADMIN_URL."/post.php?post=".get_the_id()."&action=edit";
+    echo "<script>location.href='$url'</script>";
+    die();
+
     
-    echo "<script>location.href='".TWCHR_ADMIN_URL."/post.php?post='".get_the_id()."'&action=edit'</script>";
 }
 ?>

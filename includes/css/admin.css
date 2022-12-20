@@ -929,9 +929,7 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-top: 0;
 }
 
-#tagsdiv-cat_twcht,#tagsdiv-serie{
-    display: none;
-}
+
 
 .twchr_cards_input_badges input{
     display: block;

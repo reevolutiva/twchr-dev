@@ -100,16 +100,19 @@ add_action( 'edit_serie', 'twchr_tax_serie_save', 10,5);
 // twchr_tax_serie
 // twchr_tax_serie_create
 function twchr_tax_serie_create($term_id, $tt_id){
+    if(str_contains($_SERVER['HTTP_REFERER'],'edit-tags.php?taxonomy=serie&post_type=twchr_streams') && !isset($_GET['sync_serie'])):
    ?>
     <script>
         location.href = '<?php echo TWCHR_ADMIN_URL."term.php?taxonomy=serie&tag_ID="
                                     .$term_id
                                     ."&post_type=twchr_streams&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dserie%26post_type%3Dtwchr_streams" ?>
-                        ';
+                        ';<
     </script>
    <?php
    die();
+    endif;
 }
+
 
 add_action( 'create_serie', 'twchr_tax_serie_create', 10,5);
 
@@ -168,7 +171,6 @@ function twchr_tax_serie_import()
             'taxonomy' => 'serie',
             'hide_empty' => false
         ));
-
         
         if(isset($schedules_twitch->{'error'})){
             //var_dump($schedules_twitch);
@@ -179,20 +181,20 @@ function twchr_tax_serie_import()
             foreach($schedules_wp as $item){
                 $wp_id = $item->term_id;
                 $wp_tw_id = get_term_meta($wp_id,'twchr_toApi_schedule_segment_id')[0];
-                
+                                
                 foreach($schedules_twitch as $schedule){
                                       
                     $tw_id = $schedule->{'id'};
                     if($tw_id == $wp_tw_id){
                     }else{
-                        $new_term =wp_insert_term($schedule->title, 'serie');
+                        $new_term = wp_insert_term($schedule->title, 'serie');
                         
                         if(isset($new_term->errors['term_exists'])){
                             //TODO: Poner esta redireccion en el error handler
                             echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
                             die();
                         }
-
+    
                         $new_term_id = $new_term['term_id'];
                        
                         
@@ -206,7 +208,7 @@ function twchr_tax_serie_import()
                         add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
                         $allData = json_encode($schedule);
                         add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
-
+    
                         // Convertir las fechas a timestamp
                         $start_time = $schedule->start_time;
                         $end_time = $schedule->end_time;

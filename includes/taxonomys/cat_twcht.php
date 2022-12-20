@@ -56,7 +56,6 @@ function twchr_cat_twcht_edit_field($term,$taxonomy) {
     $twchr_cat_name = get_term_meta($term_id,'twchr_stream_category_name',true);
     $twchr_cat_thumbail = get_term_meta($term_id,'twchr_stream_category_thumbail',true);
 
-    var_dump($term);
     ?>
     <div clasS="form-field">
         <label>
@@ -223,3 +222,7 @@ function twchr_set_terms()
 }
 
 add_action('set_object_terms', 'twchr_set_terms');
+
+if(str_contains($_SERVER['REQUEST_URI'],'edit-tags.php?taxonomy=cat_twcht')){
+    add_action('create_term', 'twchr_set_terms');
+}

@@ -1,6 +1,6 @@
 <?php
 function twchr_cf_schedule__card(){
-    $post_id = $_GET['post'];
+    $post_id = get_the_id();
     $term_serie = wp_get_post_terms($post_id, 'serie');
     $term_serie_list = '';
     $term_serie_id = '';
@@ -121,7 +121,7 @@ function twchr_cf_schedule__card__metadata_save($post_id){
                 
             }
 
-            if($to_api_IsRecurring == false){
+            if($to_api_IsRecurring == false && isset($to_api_Title) && isset($to_api_DateTime) && isset($cat_twitch_id) && isset($to_api_Duration)){
                 $twch_res = twtchr_twitch_schedule_segment_create($post_id,$to_api_Title,$to_api_DateTime ,$cat_twitch_id,$to_api_Duration);
                 $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
                 $allData = json_encode($twch_res);        
