@@ -116,7 +116,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
         input_serie.parentElement.style.display = 'block';
         input_serie_label.style.display = 'block';
         show_date.style.display = 'flex';
-        if( twchr_schedule_card_dateTime.value.length > 0 && twchr_schedule_card_dateTime.value.length > 0){
+        if( twchr_schedule_card_dateTime.value.length > 0){
             const repeat_every = twchr_every_reapeat_writer(dateRaw,duration);
             show_date.querySelector("p").innerHTML = repeat_every;
         }
@@ -157,6 +157,9 @@ twchr_is_recurring.addEventListener('click', (e) => {
                                 twchr_schedule_card_dateTime.setAttribute('type','text');
                                 twchr_schedule_card_dateTime.value =  start_time;
                                 input_title.value = title;
+
+                                const repeat_every = twchr_every_reapeat_writer(dastart_time,duration);
+                                show_date.querySelector("p").innerHTML = repeat_every;
                                 
 
                             }
