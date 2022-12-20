@@ -10,6 +10,7 @@
             <div>
                 <h3 class="active"><?php _e('Assign Youtube Link Video','twitcher');?></h3>
             </div>
+            <img src="<?php echo TWCHR_URL_ASSETS.'logo_menu.svg'?>" alt="logo twitcher">
         </div>
         <div class="custom_card_row">
             <section>

@@ -5,9 +5,6 @@ $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true 
 $select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : ''; 
 ?>
 <metabox>
-    <picture>
-        <img src="<?php echo TWCHR_URL_ASSETS.'logo_menu.svg' ?>" alt="logo-twitch">
-    </picture>
     <label>Fecha y hora del streming:  <?php echo $dateTime; ?> </label>
         
     <label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src'

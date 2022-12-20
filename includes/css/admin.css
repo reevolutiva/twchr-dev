@@ -842,36 +842,15 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 .twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox {
-    display: grid;
-    grid-template-columns: 200px 1fr 3fr;
-    grid-gap: 10pt;
     max-width: 700px;
 }
 
-.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox label:nth-of-type(1){
-    grid-column: 2/4;
-    display: flex;
-    justify-content: space-between;
+.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox label,
+.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox a{
+    display: block;
 }
 
-.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox label:nth-of-type(2){
-    grid-row: 2/3;
-    grid-column: 2/3;
-}
-.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox label:nth-of-type(3){
-    grid-row: 3/4;
-    grid-column: 2/4;
-    display: flex;
-    justify-content: space-between;
-}
-.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox select{
-    grid-row: 2/3;
-    grid-column: 3/4;
-}
 
-.twchr_custom_card--contain .custom_card_row section:nth-of-type(3) metabox picture{
-    grid-row: 1/4;
-}
 
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
     display: grid;
@@ -885,8 +864,9 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 .twchr_custom_card--contain .twchr_custom_card_header{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 1fr 1fr 1fr 50px;
     column-gap: 10pt;
+    align-items: center;
 }
 
 .twchr_custom_card--contain .twchr_custom_card_header div h3{

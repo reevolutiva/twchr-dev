@@ -49,16 +49,7 @@
                 }
     
             </style>
-            <stream class="twchr_modal_get_videos twchr-modal active">
-                
-                <div class="twchr-modal-selection__info">
-                    <h3><?php twchr_esc_i18n('Asign video to post','html') ?></h3>
-    
-                    <picture>
-                        <img src="<?php echo TWCHR_URL_ASSETS.'Isologo_twitcher.svg';?>" alt="logo-twitcher">
-                    </picture>
-                </div>
-    
+            <stream class="twchr_modal_get_videos twchr-modal active">    
                 <div id="twchr_button_get_videos__content">
                     <ul class="twchr-modal-selection__list">
                         <li><?php twchr_esc_i18n('Streaming name','html'); ?></li>
