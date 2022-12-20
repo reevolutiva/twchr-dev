@@ -280,81 +280,12 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                     GSCJS.queryOnly("#titlewrap input").value = titulo; // Escribo el titulo del post                    
                 },'json'); 
 
-                
-                postBox.forEach((input,index)=>{
-                    switch (index) {
-                        case 0:
-                            input.value = data.created_at;
-                            break;
-                        case 1:
-                            input.value = data.description;
-                            break;
-                        case 2:
-                            input.value = data.duration;
-                            break;
-                        case 3:
-                            input.value = data.id;
-                            break;
-                        case 4:
-                            input.value = data.language;
-                            break;
-                        case 5:
-                            input.value = data.muted_segment;
-                            break;
-                        case 6:
-                            input.value = data.published_at;
-                            break;
-                        case 7:
-                            input.value = data.stream_id;
-                            break;
-                        case 8:
-                            input.value = data.thumbnail_url;
-                            break;
-                        case 9:
-                            input.value = data.type;
-                            break;
-                        case 10:
-                            input.value = data.url;
-                            break;
-                        case 11:
-                            input.value = data.user_id;
-                            break;
-                        case 12:
-                            input.value = data.user_login;
-                            break;
-                        case 13:
-                            input.value = data.user_name;
-                            break;
-                        case 14:
-                            input.value = data.view_count;
-                            break;
-                        case 15:
-                            input.value = data.viewable;
-                            break;
-                        case 16:
-                            input.value = data.title;
-                            break;
-                                   
-                        default:
-                            break;
-                    }
-                });
+                let stream_data_from_twitch = '';
+                for (element in data){
+                    stream_data_from_twitch =  stream_data_from_twitch + "&"+element+"="+data[element];
+                }
 
-                // Creo un fragmeto de HTML que me muestra el shorcode actualizado
-                // Ya que JS no escribe en Iframes y el campo de post_content es un iframe
-                //GSCJS.queryOnly("#twittcher-stream").style.display = 'block';
-                const alertCode = GSCJS.crearNodo('DIV');
-                alertCode.classList.add("modal-edit-shordcode");
-                alertCode.innerHTML = `<h3>Copy this shortcode and paste in the area to display video</h3><p style="width: 100%;display: grid;grid-template-columns: auto 1.5em;column-gap: 7pt;"><input style="border: none;width: 100%;" value='[twich_embed host="${data.user_name}" video="${data.id}"  ancho="800" alto="400"]'> <span class="modal-clipboard-button dashicons dashicons-clipboard"></span></p>`;
-                GSCJS.queryOnly("#wp-content-editor-tools #wp-content-media-buttons").appendChild(alertCode);
-                GSCJS.queryOnly("stream.twchr_modal_get_videos.twchr-modal.active").classList.remove('active');
-
-                GSCJS.queryOnly('span.modal-clipboard-button').addEventListener('click',(event)=>{
-                    const p =  event.target.parentElement;
-                    p.querySelector('input').select();
-                    document.execCommand("copy")
-                    alertCode.style.display = 'none';
-                });
+                location.href = location.href+"&twchr_twitch_embed__host="+data.user_name+"&twchr_twitch_embed__video="+data.id+stream_data_from_twitch;
             }
            });
       }else{ // Sí se definio un callback ejecuta el callback

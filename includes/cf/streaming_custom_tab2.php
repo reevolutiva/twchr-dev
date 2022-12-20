@@ -122,3 +122,40 @@
                 </div>
             </div>
 </div>
+
+<?php
+    
+    if(isset($_GET['twchr_twitch_embed__host']) && $_GET['twchr_twitch_embed__video']){
+        $host = sanitize_text_field($_GET['twchr_twitch_embed__host']);
+        $video = sanitize_text_field($_GET['twchr_twitch_embed__video']);
+        $post_id = get_the_id();
+        $shortcode = '[twchr_tw_video host="'.$host.'" video="'.$video.'" ancho="800" alto="400"]';
+        wp_update_post(array(
+            'post_id' => $post_id,
+            'post_content' => $shortcode,
+            'meta_input'   => array(
+                'twchr-from-api_create_at' => sanitize_text_field($_GET['created_at']),
+                'twchr-from-api_description' => sanitize_text_field($_GET['description']),
+                'twchr-from-api_id' => sanitize_text_field($_GET['id']),
+                'twchr-from-api_languaje' => sanitize_text_field($_GET['language']),
+                'twchr-from-api_muted_segment' => sanitize_text_field($_GET['muted_segment']),
+                'twchr-from-api_published_at' => sanitize_text_field($_GET['published_at']),
+                'twchr-from-api_stream_id' => sanitize_text_field($_GET['stream_id']),
+                'twchr-from-api_thumbnail_url' => sanitize_text_field($_GET['thumbnail_url']),
+                'twchr-from-api_type' => sanitize_text_field($_GET['type']),
+                'twchr-from-api_url' => sanitize_text_field($_GET['url']),
+                'twchr-from-api_user_id' => sanitize_text_field($_GET['user_id']),
+                'twchr-from-api_user_login' => sanitize_text_field($_GET['user_login']),
+                'twchr-from-api_user_name' => sanitize_text_field($_GET['user_name']),
+                'twchr-from-api_view_count' => sanitize_text_field($_GET['view_count']),
+                'twchr-from-api_viewble' => sanitize_text_field($_GET['viewable']),
+                'twchr-from-api_title' => sanitize_text_field($_GET['title'])
+            )
+        ));
+
+       twchr_javaScript_redirect(TWCHR_ADMIN_URL.'/post.php?post='.$post_id.'&action=edit');
+       
+    }
+    
+    
+?>

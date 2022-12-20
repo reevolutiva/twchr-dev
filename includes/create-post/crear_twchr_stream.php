@@ -24,8 +24,7 @@ function crearStream($title ,$id ,$create_at ,$description ,$duration ,$api_lang
             'twchr-from-api_user_name' => $user_name,
             'twchr-from-api_view_count' => $view_count,
             'twchr-from-api_viewble' => $viewble,
-            'twchr-from-api_title' => $title,
-            'twchr_stream_src_priority' => 'tw'
+            'twchr-from-api_title' => $title
         )
     );
 

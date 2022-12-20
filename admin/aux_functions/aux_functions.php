@@ -74,3 +74,8 @@ function twchr_twitch_video_duration_calculator($start_time ,$end_time){
         }
     return $minutos;
 }
+
+function twchr_javaScript_redirect($url){
+    echo "<script>location.href='$url'</script>";
+    die();
+}
