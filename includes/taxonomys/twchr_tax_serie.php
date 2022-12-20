@@ -148,6 +148,13 @@ function twchr_tax_serie_import()
  ?>
    <a class="twchr-btn-general twchr-btn-general-lg" href="<?php echo TWCHR_ADMIN_URL ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_serie=true">import serie</a>
 <?php
+    if(isset($_GET['from_cpt_id'])){
+        $term = wp_create_term('serie-'.$_GET['from_cpt_id'], 'serie');
+        $term_id = $term['term_id'];
+        echo "<script>location.href='".TWCHR_ADMIN_URL."term.php?taxonomy=serie&tag_ID=".$term_id."&post_type=twchr_streams'</script>";
+        die();
+
+    }
     if(isset($_GET['sync_serie']) && $_GET['sync_serie'] == 'true'){
         $twch_data_prime = get_option('twchr_keys') == false ? false : json_decode(get_option('twchr_keys'));
         $client_id = $twch_data_prime->{'client-id'};
