@@ -726,6 +726,7 @@ stream.twchr-modal .twchr-modal-button.close{
     justify-content: space-around;
     align-items: center;
     max-width: 800px;
+    transition: .3s ease-in-out;
 }
 
 .twchr-alert__row{
@@ -950,6 +951,11 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab2,
 .twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
     padding: 0 1cm;
+}
+
+.alert-fade-out{
+    opacity: 0;
+    transform: translateY(-5pt);
 }
 
 #twchr_schedule_card_input--serie__name--label{
