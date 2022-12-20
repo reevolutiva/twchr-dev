@@ -821,6 +821,7 @@ stream.twchr-modal .twchr-modal-button.close{
     position: relative;
     z-index: 9999;
     overflow: hidden;
+    max-width: 850px;
 }
 
 .twchr_custom_card--contain .custom_card_row{
