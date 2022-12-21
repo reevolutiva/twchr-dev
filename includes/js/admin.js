@@ -275,7 +275,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             if(pos != 'not found'){
                 const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
                 let titulo = data.title;
-                twchrFetchGet(location.origin+'/wp-json/twchr/twchr_get_streaming',(i)=>{
+                twchrFetchGet(location.origin+'/wp-json/twchr/v1/twchr_get_streaming',(i)=>{
                     // Pregunto si este video ya existe
                     i.some(it => it.title == titulo) ? titulo = titulo+" (Duplicate)" : titulo = titulo; 
                     GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
@@ -575,7 +575,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
     }
 
-    const url = location.origin+'/wp-json/twchr/twchr_get_serie';
+    const url = location.origin+'/wp-json/twchr/v1/twchr_get_serie';
     getResponse(url);
 
     const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
@@ -731,7 +731,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
         modal.innerHTML += Content;
         
         // Me comunico con la API de wordpress
-        twchrFetchGet(location.origin+'/wp-json/twchr/twchr_get_streaming/', twchr_verification_videos,'json');
+        twchrFetchGet(location.origin+'/wp-json/twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
 
         function twchr_verification_videos(WpData){
             const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
@@ -826,7 +826,7 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
     twchr_ajax_label_serie.appendChild(modal);
     twchr_ajax_input_serie.oninput = ()=>{
         const query = twchr_ajax_input_serie.value.toLowerCase();
-        twchrFetchGet (location.origin+"/wp-json/twchr/twchr_get_serie",
+        twchrFetchGet (location.origin+"/wp-json/twchr/v1/twchr_get_serie",
         (res)=>{
             modal.innerHTML = '';
             res.forEach((item, index) =>{

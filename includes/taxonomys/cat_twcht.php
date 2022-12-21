@@ -104,14 +104,6 @@ function twchr_cat_twitch_save( $term_id, $tt_id ) {
   add_action( 'create_cat_twcht', 'twchr_cat_twitch_save', 10,5);
 
 
-  function twchr_cat_twcht_endpoint() {
-    register_rest_route( 'twchr/', 'twchr_get_cat_twcht', array(
-        'methods'  => WP_REST_Server::READABLE,
-        'callback' => 'twchr_api_get_cat_twcht',
-    ) );
-}
-
-add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
 
 /**
  * Esta función PHP se utiliza para recuperar términos de una taxonomía específica. La taxonomía en cuestión es "cat_twcht". La función también recupera metadatos específicos para cada término, como el ID de la categoría de transmisión, el nombre de la categoría de transmisión y la miniatura de la categoría de transmisión. La función devuelve los términos recuperados y sus metadatos en una matriz. Si no se encuentran términos, la función devuelve false.
