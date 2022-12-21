@@ -2,10 +2,12 @@
 $values    = get_post_custom(get_the_id());
 
 $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
-$select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : ''; 
+$select = isset($values['twchr_stream_src_priority']) ? $values['twchr_stream_src_priority'][0] : '';
+$youtubeData = get_post_meta(get_the_ID(),'twchr-from-api_create_at')[0];
+$youtubeData == false || $youtubeData == '' ? $youtubeData = $dateTime : ''; 
 ?>
 <metabox>
-    <label>Fecha y hora del streming:  <?php echo $dateTime; ?> </label>
+    <label>Date:  <?php echo $youtubeData; ?> </label>
         
     <label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src'
             value="<?php $yt_url != false ? twchr_esc_i18n($yt_url,'html') : ''?>"></label>
