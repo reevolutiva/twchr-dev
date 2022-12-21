@@ -56,13 +56,19 @@ const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_sch
 
 if(twchr_twtich_schedule_response.textContent.length > 0){
     const response = JSON.parse(twchr_twtich_schedule_response.textContent);
+<<<<<<< HEAD
     console.log(twchr_twtich_schedule_response.textContent)
+=======
+>>>>>>> d4696d8fc36d85c22833a4c33c83a932bf4af99e
     if(response.status != 200){
         alert("Error: " + response.error);
         alert("message: "+ response.message);
     }
+<<<<<<< HEAD
 
     ;
+=======
+>>>>>>> d4696d8fc36d85c22833a4c33c83a932bf4af99e
     
 }
 
