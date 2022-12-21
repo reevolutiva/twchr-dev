@@ -162,6 +162,9 @@ function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_sta
   $tokenValidate = $twch_data_prime->{'user_token'};
   $client_id = $twch_data_prime->{'client-id'};
 
+   $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
+  $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+
   $body = array(
     'start_time' => $twchr_start_time,
     'title' => $twchr_titulo,
@@ -179,7 +182,7 @@ function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_sta
     'body' => $body
   );
   
-  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=817863896";
+  $url = "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=".$broadcaster_id;
 
   $res = wp_remote_post($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));

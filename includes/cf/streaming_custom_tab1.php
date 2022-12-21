@@ -1,3 +1,4 @@
+<?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch') ?>
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
@@ -24,6 +25,7 @@
         <badges><?php echo $term_serie_list; ?></badges>
         <p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id='.get_the_id(); ?>"><?php _e('Create a new serie','twitcher'); ?></a></p>
     </div>
+    <input type="hidden" name="twchr_twtich_schedule_response" value="<?php echo $twchr_twicth_schedule_response?>">
    
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
