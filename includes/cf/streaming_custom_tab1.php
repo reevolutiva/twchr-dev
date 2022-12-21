@@ -13,7 +13,7 @@
     <input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"
         class="twchr_schedule_card_input" type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" value="<?php echo $dateTime ?>">
     <select name="twchr_dateTime_slot" id="twchr_dateTime_slot"></select>
-    <label for="twchr_schedule_card_input--duration"><?php _e('Duration','twitcher');?></label>
+    <label for="twchr_schedule_card_input--duration"><?php _e('Duration (mins)','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
     <label for="twchr_schedule_card_input--is_recurrig"><?php _e('Is Recurring ?','twitcher');?></label>
