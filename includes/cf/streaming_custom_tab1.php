@@ -1,4 +1,4 @@
-<?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch') ?>
+<?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch')[0] ?>
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
@@ -10,8 +10,11 @@
     </div>
     <input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo !empty($term_cat_twcht_id) ? $term_cat_twcht_id : ''?>" />
     <label for="twchr_schedule_card_input--dateTime"><?php _e('Date time Streaming','twitcher');?></label>
+    <div>
     <input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"
-        class="twchr_schedule_card_input" type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" value="<?php echo $dateTime ?>">
+        class="twchr_schedule_card_input" type="datetime-local" value="<?php echo $dateTime ?>">
+    <p><?php echo !empty($dateTime) ? $dateTime : ''; ?></p>
+    </div>
     <select name="twchr_dateTime_slot" id="twchr_dateTime_slot"></select>
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration (mins)','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
@@ -25,7 +28,10 @@
         <badges><?php echo $term_serie_list; ?></badges>
         <p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id='.get_the_id(); ?>"><?php _e('Create a new serie','twitcher'); ?></a></p>
     </div>
-    <input type="hidden" name="twchr_twtich_schedule_response" value="<?php echo $twchr_twicth_schedule_response?>">
+    
+    <p id="twchr_twtich_schedule_response" style="display: none;">
+        <?php echo $twchr_twicth_schedule_response?>
+    <p>
    
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
@@ -45,6 +51,20 @@ const twchr_is_recurring = twchr_schedule_card.querySelector("input[type='checkb
 const input_title = twchr_schedule_card.querySelector("#twchr_schedule_card_input--title");
 const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
+const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
+
+if(twchr_twtich_schedule_response.textContent.length > 0){
+    const response = JSON.parse(twchr_twtich_schedule_response.textContent);
+    console.log(twchr_twtich_schedule_response.textContent)
+    if(response.status != 200){
+        alert("Error: " + response.error);
+        alert("message: "+ response.message);
+    }
+
+    ;
+    
+}
+
 
 const twchr_broad_type = twchr_data_broadcaster.data[0].broadcaster_type;
 
@@ -89,7 +109,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
             show_date.style.display = 'none';
             input_title.removeAttribute('disabled');
             document.querySelector("#twchr_dateTime_slot").style.display = 'none'; 
-            twchr_schedule_card_dateTime.style.display = 'block';
+            twchr_schedule_card_dateTime.parentElement.style.display = 'block';
             twchr_schedule_card_dateTime.removeAttribute('disabled');
             
         } else {
@@ -105,7 +125,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
                 show_date.style.display = 'none';
                 input_title.removeAttribute('disabled');
                 document.querySelector("#twchr_dateTime_slot").style.display = 'none'; 
-                twchr_schedule_card_dateTime.style.display = 'block';
+                twchr_schedule_card_dateTime.parentElement.style.display = 'block';
                 twchr_schedule_card_dateTime.removeAttribute('disabled')
             } else {
                 // volvermos al estado inicial del ckeckbox
@@ -126,7 +146,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
         input_title.value = input_post_title.value;
         input_title.setAttribute('disabled', 'true');
         twchr_schedule_card_dateTime.setAttribute('disabled', 'true');
-        twchr_schedule_card_dateTime.style.display = 'none';
+        twchr_schedule_card_dateTime.parentElement.style.display = 'none';
         document.querySelector("#twchr_dateTime_slot").style.display = 'block'; 
         getSchedules_by_id((data)=>{
             const segments = data.segments;

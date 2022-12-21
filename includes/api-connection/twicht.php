@@ -208,6 +208,7 @@ function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_sta
       
       break;
     default:
+      return $response_body;
       break;
   } 
   

@@ -63,6 +63,8 @@ function twchr_cf_schedule__card__metadata_save($post_id)
     if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--is_recurrig')) {
         $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
         update_post_meta($post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
+    }else{
+        update_post_meta($post_id, 'twchr_schedule_card_input--is_recurrig',  'off');
     }
 
 
@@ -121,11 +123,19 @@ function twchr_cf_schedule__card__metadata_save($post_id)
     }
 
     if ($to_api_IsRecurring == false && isset($to_api_Title) && isset($to_api_DateTime) && isset($cat_twitch_id) && isset($to_api_Duration)) {
-        $twch_res = twtchr_twitch_schedule_segment_create($post_id, $to_api_Title, $to_api_DateTime, $cat_twitch_id, $to_api_Duration);
-        $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
+        $twch_res = twtchr_twitch_schedule_segment_create($post_id, $to_api_Title, $to_api_DateTime, $cat_twitch_id, $to_api_Duration,false);
+
+        if(isset($twch_res->error)){
+
+        }else{
+            $schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
+            update_post_meta($post_id, 'twchr_stream_twtich_schedule_id',  $schedule_segment_id);
+        }
+        
+        
         $allData = json_encode($twch_res);
         update_post_meta($post_id, 'twchr_stream_all_data_from_twitch',  $allData);
-        update_post_meta($post_id, 'twchr_stream_twtich_schedule_id',  $schedule_segment_id);
+        
     }
 }
 
