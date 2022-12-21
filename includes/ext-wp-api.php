@@ -1,4 +1,11 @@
 <?php
+function twchr_ext_api_permission_callback( $request, $permission ) {
+    if ( $permission === 'create_posts' ) {
+      return current_user_can( 'publish_posts' );
+    }
+    return true;
+}
+
 //Haciendo visible en el Enpoint 
 //Taxonomía Series
 //twchr_endpoint_tax
@@ -7,6 +14,8 @@ function twchr_endpoint_tax_register_serie() {
     register_rest_route( 'twchr/', 'twchr_get_serie', array(
         'methods'  => WP_REST_Server::READABLE,
         'callback' => 'twchr_endpoint_tax_register_callback_serie',
+        'permission_callback' => 'twchr_ext_api_permission_callback'
+
     ) );
 }
 add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );//twchr_endpoint_tax_register_serie
@@ -41,6 +50,7 @@ function twchr_endpoint_cpt_register_streaming() {
     register_rest_route( 'twchr/', 'twchr_get_streaming', array(
         'methods'  => 'GET',
         'callback' => 'twchr_endpoint_cpt_register_callback_streaming',
+        'permission_callback' => 'twchr_ext_api_permission_callback'
     ) );
 }
 add_action( 'rest_api_init', 'twchr_endpoint_cpt_register_streaming' );
