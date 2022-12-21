@@ -28,8 +28,8 @@ function twchr_cf_schedule__card()
     $title = isset($values['twchr_schedule_card_input--title']) ? $values['twchr_schedule_card_input--title'][0] : '';
     $category = isset($values['twchr_schedule_card_input--category']) ? $values['twchr_schedule_card_input--category'][0] : '';
     $dateTime = isset($values['twchr_schedule_card_input--dateTime']) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
+    $twchr_dateTime_slot = isset($values['twchr_dateTime_slot']) ? $values['twchr_dateTime_slot'][0] : '';
     $duration = isset($values['twchr_schedule_card_input--duration']) ? $values['twchr_schedule_card_input--duration'][0] : '';
-    $twchr_schedule_card_input__show__slot__validate = isset($values['twchr_schedule_card_input--show--slot__validate']) && ['twchr_schedule_card_input--show--slot__validate'][0] == 'on' ? true : false;
 
     $is_recurring = isset($values['twchr_schedule_card_input--is_recurrig']) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
     $serie = isset($values['twchr_schedule_card_input--serie']) ? $values['twchr_schedule_card_input--serie'][0] : '';
@@ -96,6 +96,9 @@ function twchr_cf_schedule__card__metadata_save($post_id)
     if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--serie__id')) {
         wp_set_post_terms($post_id, [(int)$_POST['twchr_schedule_card_input--serie__id']], 'serie');
     }
+    if (twchr_post_isset_and_not_empty('twchr_dateTime_slot')) {
+        update_post_meta($post_id, 'twchr_dateTime_slot',  $_POST['twchr_dateTime_slot']);
+    }
 
     if (twchr_post_isset_and_not_empty('twchr_stream_data_dateTime')) {
         update_post_meta($post_id, 'twchr_stream_data_dateTime', wp_kses($_POST['twchr_stream_data_dateTime'], $allowed));
@@ -136,6 +139,9 @@ function twchr_cf_schedule__card__metadata_save($post_id)
         
         $allData = json_encode($twch_res);
         update_post_meta($post_id, 'twchr_stream_all_data_from_twitch',  $allData);
+        
+    }else{
+        update_post_meta($post_id, 'twchr_stream_all_data_from_twitch','');
         
     }
 }

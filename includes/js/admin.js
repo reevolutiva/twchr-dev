@@ -372,56 +372,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
         twchr_schedule_card_dateTime.parentElement.style.display = 'none'
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
-        
-        getSchedules_by_id((data)=>{
-            const segments = data.segments;
-            document.querySelector("#twchr_dateTime_slot").innerHTML = '';
-            segments.forEach(segment =>{
-                const id = segment.id;
-                const title = segment.title;
-                const option = `<option value="${id}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
-                document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
-
-                
-            });
-
-            [...document.querySelectorAll("#twchr_dateTime_slot option")].forEach(
-                option => {
-                    option.addEventListener('click', (event) =>{
-                        twchr_schedule_id = event.target.value;
-                        segments.forEach(segment =>{
-                            const id = segment.id;
-                            if(id === twchr_schedule_id){
-                                const title = segment.title;
-                                const start_time = segment.start_time;
-                                const end_time = segment.end_time;
-                                const category = segment.category;
-                                //console.log(segment);
-                                                          
-                                twchr_schedule_card_cat_tw.value = category.name;
-                                const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
-                                twchr_schedule_card_duration.value  = duration.minutes;
-                                //console.log(duration);
-                                twchr_schedule_card_dateTime.setAttribute('type','text');
-                                twchr_schedule_card_dateTime.value =  start_time;
-                                input_title.value = title;
-                                document.querySelector("#title").value = title;
-                                document.querySelector("#title-prompt-text").classList.add("screen-reader-text");
-                                const repeat_every = twchr_every_reapeat_writer(start_time, duration.minutes);
-                                document.querySelector("#twchr_schedule_card_input--show p").innerHTML = repeat_every;
-                                const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
-                                input_serie.value = title;
-                                
-                                
-
-                            }
-                        })
-
-                    });
-                    //console.log(option);
-                }
-            );
-        },'eyJzZWdtZW50SUQiOiI3YmI1YjBjNS01NjI5LTQzYWUtYTVhMi1hMWU3ZmFlMWUxODciLCJpc29ZZWFyIjoyMDIyLCJpc29XZWVrIjo1MX0=');
+        const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
 
         const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
           
@@ -431,6 +382,43 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                     const option = `<option value="${item.term_id}">${item.name+" - "+item.term_id}</option>`;
                     twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
                 });
+
+                const options_serie = twchr_ajax_input_serie.querySelectorAll("option");
+                options_serie.forEach(option_serie =>{
+                    option_serie.addEventListener('click',(e)=>{
+                        const term_id = e.target.value;
+                        res.forEach(item =>{
+                            if(item.term_id == term_id){
+                                const chapters = item.chapters;
+                                chapters.forEach(chapter =>{
+                                    const opt = `<option data-term-id="${term_id}" value="${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+                                    twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
+                                });
+                            }
+                        });
+
+                        const options_slot = twchr_dateTime_slot.querySelectorAll("option");
+                        options_slot.forEach(option_slot =>{
+                            option_slot.addEventListener('click',(e)=>{
+                                const term_id = e.target.getAttribute("data-term-id");
+                                res.forEach(item =>{
+                                    if(item.term_id == term_id){
+                                        const chapters = item.chapters;
+                                        chapters.forEach(chapter =>{
+                                            const duration = twchr_get_duration_form_RFC3666(chapter.end_time, chapter.start_time);
+                                            twchr_schedule_card_duration.value = parseInt(duration.minutes);
+                                            twchr_schedule_card_cat_tw.value = chapter.category.name;
+                                            twchr_schedule_card_serie_id.value = term_id;
+                                            
+                                        });
+                                    }
+                                });
+                            });
+                        });
+                    });
+                });
+                
+                
                 
                 
             },

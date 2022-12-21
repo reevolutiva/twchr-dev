@@ -31,7 +31,8 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
         $array_rest = array(
             "term_id" => $term_id,
             "name" => $term->{'name'},
-            "taxonomy" => $term->{'taxonomy'}
+            "taxonomy" => $term->{'taxonomy'},
+            "chapters" => json_decode(get_term_meta($term_id,'twchr_schdules_chapters')[0])
         );
 
         array_push($response, $array_rest);

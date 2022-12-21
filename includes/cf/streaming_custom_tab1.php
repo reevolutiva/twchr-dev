@@ -1,4 +1,5 @@
 <?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch')[0] ?>
+<?php $twchr_twtich_schedule_chapters = get_term_meta($term_id, 'twchr_schdules_chapters', $single) ?>
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
@@ -15,9 +16,11 @@
         class="twchr_schedule_card_input" type="datetime-local" value="<?php echo $dateTime ?>">
     <p><?php echo !empty($dateTime) ? $dateTime : ''; ?></p>
     </div>
-    <select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
-        <option value="null">notting</option>
-    </select>
+    <div class="twchr_cards_input_badges">
+        <select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
+        </select>
+        <badges><span><?php echo $twchr_dateTime_slot ?></span></badges>
+    </div>
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration (mins)','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
         class="twchr_schedule_card_input" type="number" value="<?php echo $duration ?>">
@@ -25,16 +28,17 @@
     <input id="twchr_schedule_card_input--is_recurrig"  name="twchr_schedule_card_input--is_recurrig"
         class="twchr_schedule_card_input" type="checkbox" checked>
     <label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php _e('Serie','twitcher');?></label>
-    <div>
+    <div class="twchr_cards_input_badges">
         <select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
             <option value="null">notting</option>
         </select>
+        <badges><?php echo $term_serie_list; ?></badges>
         <p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id='.get_the_id(); ?>"><?php _e('Create a new serie','twitcher'); ?></a></p>
     </div>
     
     <p id="twchr_twtich_schedule_response" style="display: none;"><?php echo $twchr_twicth_schedule_response?><p>
    
-    <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
+    <input name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
         <h5><?php _e('Repeat every:','twitcher');?></h5>
         <p>
@@ -46,6 +50,7 @@
 const twchr_schedule_metabox_container = document.querySelectorAll(".streaming-metabox-container");
 const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
 const twchr_schedule_card_cat_tw = twchr_schedule_card.querySelector("#twchr_schedule_card_input--category");
+const twchr_schedule_card_serie_id = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__id");
 const twchr_schedule_card_duration = twchr_schedule_card.querySelector("#twchr_schedule_card_input--duration");
 const twchr_schedule_card_dateTime = twchr_schedule_card.querySelector("#twchr_schedule_card_input--dateTime");
 const twchr_is_recurring = twchr_schedule_card.querySelector("input[type='checkbox']");
