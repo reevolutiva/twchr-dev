@@ -11,7 +11,7 @@ function twchr_ext_api_permission_callback( $request, $permission ) {
 //twchr_endpoint_tax
 //twchr_endpoint_tax_register_serie 
 function twchr_endpoint_tax_register_serie() {
-    register_rest_route( 'twchr/', 'twchr_get_serie', array(
+    register_rest_route( 'twchr/', 'twchr_get_serie/', array(
         'methods'  => WP_REST_Server::READABLE,
         'callback' => 'twchr_endpoint_tax_register_callback_serie',
         'permission_callback' => 'twchr_ext_api_permission_callback'
@@ -47,7 +47,7 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 // CPT Streamings
 //twchr_endpoint_cpt_register_streaming
 function twchr_endpoint_cpt_register_streaming() {
-    register_rest_route( 'twchr/', 'twchr_get_streaming', array(
+    register_rest_route( 'twchr/', 'twchr_get_streaming/', array(
         'methods'  => 'GET',
         'callback' => 'twchr_endpoint_cpt_register_callback_streaming',
         'permission_callback' => 'twchr_ext_api_permission_callback'
