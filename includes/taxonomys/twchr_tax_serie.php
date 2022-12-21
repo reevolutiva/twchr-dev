@@ -85,6 +85,17 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
         // Envia los datos a la API de twich
         $response = twtchr_twitch_schedule_segment_create($term_id,$tag_name,$dateTime_rfc ,$select_value,$duration);
         $schedule_segment_id = $response['allData']->{'segments'}[0]->{'id'};
+
+        $schedule_segments_array = twtchr_twitch_schedule_segment_get();
+        
+        $schedule_segments = array();
+        foreach($schedule_segments_array as $segment){
+            if($segment->{'title'} === $tag_name){
+                array_push($schedule_segments,$segment);
+            }
+        }
+
+        update_term_meta($term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
         update_term_meta($term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
         
         $allData = json_encode($response);          
@@ -130,8 +141,7 @@ function twchr_tax_serie_edit($term,$taxonomy) {
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
     $schedule_segment_id = get_term_meta($term->term_id,'twchr_toApi_schedule_segment_id');
     $schedule_segment_id = empty($schedule_segment_id) ? json_decode($allData)->{'allData'}->{'segments'}[0]->id : $schedule_segment_id; 
-    $twchr_streams_relateds = get_term_meta($term->term_id, 'twchr_streams_relateds', true);
-    $twchr_streams_relateds = empty($twchr_streams_relateds) ? '' : $twchr_streams_relateds;
+    $twchr_streams_relateds = get_term_meta($term->term_id, 'twchr_schdules_chapters', true);
 
 
     $select_cat = array(

@@ -192,7 +192,8 @@ function twtchr_twitch_schedule_segment_create($post_id,$twchr_titulo,$twchr_sta
   // codigo para accionar segun la respuesta de la api
   switch ($response_response['code']) {
     case 200:
-        $allData = $response_body->{'data'};
+        $allData = $response_body->{'data'};   
+        
         return array('allData'=>$allData,'status'=>200,'message'=>__('successfully created series','twitcher'));
       //die();
       break;

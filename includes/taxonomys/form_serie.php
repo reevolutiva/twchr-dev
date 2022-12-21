@@ -44,7 +44,7 @@
         <input type="text" name="twchr_toApi_category_ajax" id="twchr_toApi_category_ajax" placeholder="write a category" value='<?php echo $select_name?>'>
         <p><?php twchr_esc_i18n('Category of twitch stream','html'); ?></p>
     </div>
-    <label for="twchr_streams_relateds"><?php twchr_esc_i18n("Streams related",'html'); ?></label>
+    <label for="twchr_streams_relateds"><?php twchr_esc_i18n("Chapters",'html'); ?></label>
     <div>
         <input type="text" name="twchr_streams_relateds" disabled="true" value='<?php echo $twchr_streams_relateds ?>'>
     </div>

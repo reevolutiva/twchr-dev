@@ -209,7 +209,9 @@ const getSchedules_by_id = async (callback) => {
         redirect: 'follow'
         };
 
-       const get = await fetch(`https://api.twitch.tv/helix/schedule?broadcaster_id=${broadcaster_id}`, requestOptions);
+       let url = `https://api.twitch.tv/helix/schedule?broadcaster_id=${broadcaster_id}`;
+    
+       const get = await fetch(url , requestOptions);
        const response = await get.json();
        const arrayList = response.data;
 
@@ -419,7 +421,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                     //console.log(option);
                 }
             );
-        });
+        },'eyJzZWdtZW50SUQiOiI3YmI1YjBjNS01NjI5LTQzYWUtYTVhMi1hMWU3ZmFlMWUxODciLCJpc29ZZWFyIjoyMDIyLCJpc29XZWVrIjo1MX0=');
 
         const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
           
