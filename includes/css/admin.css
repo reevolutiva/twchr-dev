@@ -952,6 +952,9 @@ stream.twchr-modal .twchr-modal-button.close{
     padding: 0 1cm;
 }
 
+.twchr_custom_card--contain select{
+    width: 200px;
+}
 .alert-fade-out{
     opacity: 0;
     transform: translateY(-5pt);
