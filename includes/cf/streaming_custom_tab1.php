@@ -1,4 +1,4 @@
-<?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch') ?>
+<?php $twchr_twicth_schedule_response = get_post_meta(get_the_ID(),'twchr_stream_all_data_from_twitch')[0] ?>
 <div class="twchr_car_tab1">
     <label for="twchr_schedule_card_input--title"><?php _e('Streaming Title','twitcher');?></label>
     <input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
@@ -25,7 +25,9 @@
         <badges><?php echo $term_serie_list; ?></badges>
         <p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id='.get_the_id(); ?>"><?php _e('Create a new serie','twitcher'); ?></a></p>
     </div>
-    <input type="hidden" name="twchr_twtich_schedule_response" value="<?php echo $twchr_twicth_schedule_response?>">
+    <p id="twchr_twtich_schedule_response" style="display: none;">
+        <?php echo $twchr_twicth_schedule_response?>
+    <p>
    
     <input name="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
@@ -45,6 +47,17 @@ const twchr_is_recurring = twchr_schedule_card.querySelector("input[type='checkb
 const input_title = twchr_schedule_card.querySelector("#twchr_schedule_card_input--title");
 const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
+const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
+
+if(twchr_twtich_schedule_response.textContent.length > 0){
+    const response = JSON.parse(twchr_twtich_schedule_response.textContent);
+    if(response.status != 200){
+        alert("Error: " + response.error);
+        alert("message: "+ response.message);
+    }
+    
+}
+
 
 const twchr_broad_type = twchr_data_broadcaster.data[0].broadcaster_type;
 

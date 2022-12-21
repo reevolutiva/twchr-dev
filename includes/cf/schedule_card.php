@@ -63,6 +63,8 @@ function twchr_cf_schedule__card__metadata_save($post_id)
     if (twchr_post_isset_and_not_empty('twchr_schedule_card_input--is_recurrig')) {
         $to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
         update_post_meta($post_id, 'twchr_schedule_card_input--is_recurrig',  $to_api_IsRecurring);
+    }else{
+        update_post_meta($post_id, 'twchr_schedule_card_input--is_recurrig',  'off');
     }
 
 
