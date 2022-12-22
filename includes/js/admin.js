@@ -477,7 +477,9 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     const getResponse = async (url) =>{
         try {
            const response = await fetch(url);
-           const res = await response.json();
+           let res = await response.text();
+           res = JSON.parse(res);
+           
            const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
            let current_stream_id;
                if(allData.value != ""){

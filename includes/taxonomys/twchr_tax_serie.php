@@ -117,7 +117,7 @@ function twchr_tax_serie_create($term_id, $tt_id){
         location.href = '<?php echo TWCHR_ADMIN_URL."term.php?taxonomy=serie&tag_ID="
                                     .$term_id
                                     ."&post_type=twchr_streams&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dserie%26post_type%3Dtwchr_streams" ?>
-                        ';<
+                        ';
     </script>
    <?php
    die();
@@ -218,7 +218,19 @@ function twchr_tax_serie_import()
                         add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
                         $allData = json_encode($schedule);
                         add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
-    
+
+                        
+
+                        $schedule_segments = array();
+                        foreach($schedules_twitch as $segment){
+                            if($segment->{'title'} === $schedule->{'title'}){
+                                array_push($schedule_segments,$segment);
+                            }
+                        }
+                        
+
+                        add_term_meta($new_term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
+                        
                         // Convertir las fechas a timestamp
                         $start_time = $schedule->start_time;
                         $end_time = $schedule->end_time;
@@ -256,6 +268,19 @@ function twchr_tax_serie_import()
                     add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
                     $allData = json_encode($schedule);
                     add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
+
+                    
+        
+                    $schedule_segments = array();
+                    foreach($schedules_twitch as $segment){
+                        if($segment->{'title'} === $schedule->{'title'}){
+                            array_push($schedule_segments,$segment);
+                        }
+                    }
+
+                    add_term_meta($new_term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
+
+                    
 
                     // Convertir las fechas a timestamp
                     $start_time = $schedule->start_time;
