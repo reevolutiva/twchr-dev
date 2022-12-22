@@ -19,7 +19,7 @@
     <div class="twchr_cards_input_badges">
         <select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
         </select>
-        <badges><span><?php echo $twchr_dateTime_slot ?></span></badges>
+        <badges id="twchr_dateTime_slot" ><span><?php echo $twchr_dateTime_slot ?></span></badges>
     </div>
     <label for="twchr_schedule_card_input--duration"><?php _e('Duration (mins)','twitcher');?></label>
     <input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
@@ -32,7 +32,7 @@
         <select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
             <option value="null">notting</option>
         </select>
-        <badges><?php echo $term_serie_list; ?></badges>
+        <badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
         <p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL.'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id='.get_the_id(); ?>"><?php _e('Create a new serie','twitcher'); ?></a></p>
     </div>
     
@@ -40,13 +40,76 @@
    
     <input name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo !empty($term_serie_id) ? $term_serie_id : ''?>"> 
     <section id="twchr_schedule_card_input--show">
-        <h5><?php _e('Repeat every:','twitcher');?></h5>
-        <p>
-            <?php _e('Select you Date Time','twitcher')?>
-        </p>
+        
     </section>
 </div>
 <script>
+
+function twchr_get_duration_form_RFC3666(end_time, start_time) {
+    let date1Object = new Date(end_time);
+    date1Object = Date.parse(date1Object);
+    
+    let date2Object = new Date(start_time);
+    date2Object = Date.parse(date2Object);
+    
+
+    // Get the difference in milliseconds
+    let diff = date1Object - date2Object;
+
+    
+
+    // Convert the difference to seconds, minutes, hours, and days
+    let seconds = diff / 1000;
+    let minutes = diff / (1000 * 60);
+    let hours = diff / (1000 * 60 * 60);
+    let days = diff / (1000 * 60 * 60 * 24);
+
+    const response = {
+        'seconds': seconds,
+        'minutes': minutes,
+        'hours': hours,
+        'days': days
+    };
+
+    return response;
+    
+}
+
+function twchr_every_reapeat_writer(newDate_raw,duration){
+    const fecha = new Date(newDate_raw);
+    let dia = '';
+    switch (fecha.getDay()) {
+        case 0 : dia = 'domingo';
+        break;
+        case 1 : dia = 'lunes';
+        break;
+        case 2 : dia = 'martes';
+        break;
+        case 3 : dia = 'miercoles';
+        break;
+        case 4 : dia = 'jueves';
+        break;
+        case 5 : dia = 'viernes';
+        break;
+        case 6 : dia = 'sabado';
+        break;
+        default : '';
+        break;
+    }
+    
+
+    const start_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+
+    fecha.setMinutes(fecha.getMinutes() + duration);
+
+    const end_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+    
+    const fecha_msg = `${dia} from <b>${start_time}</b> to <b>${end_time}</b>`;
+    
+    return fecha_msg;
+}
+
+
 const twchr_schedule_metabox_container = document.querySelectorAll(".streaming-metabox-container");
 const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
 const twchr_schedule_card_cat_tw = twchr_schedule_card.querySelector("#twchr_schedule_card_input--category");
@@ -58,6 +121,23 @@ const input_title = twchr_schedule_card.querySelector("#twchr_schedule_card_inpu
 const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
 const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
+const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
+// si no esta vacio
+if(!twchr_dateTime_slot.textContent.length == 0){
+    const badge = twchr_dateTime_slot.textContent;
+    const byPipe = badge.split("|");
+    const stream_id = byPipe[0];
+    const dates = byPipe[1];
+
+    const start_time = dates.split(" - ")[0].trim();
+    const end_time = dates.split(" - ")[1];
+
+
+    const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
+    
+    const twchr_date = twchr_every_reapeat_writer(start_time,duration.minutes);
+    twchr_dateTime_slot.innerHTML = twchr_date;
+}
 
 
 if(twchr_twtich_schedule_response.textContent.length > 0){
