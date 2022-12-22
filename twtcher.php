@@ -37,7 +37,7 @@ require_once TWCHR_FEATURES . 'twchr-delete-schedule.php';
 
 
 // Aux functions
-require_once 'admin/aux_functions/aux_functions.php';
+require_once 'admin/aux-functions/aux-functions.php';
 
 require_once 'includes/api-connection/twicht.php';
 require_once 'includes/api-connection/twichtv.php';
@@ -69,7 +69,7 @@ require_once 'includes/get-post/get-twchr-stream.php';
 require_once 'includes/twchr-get-videos.php';
 
 // Taxonomias
-require_once 'includes/taxonomys/twch-tax-serie.php';
+require_once 'includes/taxonomys/twchr-tax-serie.php';
 require_once 'includes/taxonomys/cat-twcht.php';
 
 // Enqueue

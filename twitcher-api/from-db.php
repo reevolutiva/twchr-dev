@@ -109,13 +109,15 @@ function instanse_comunicate_server() {
 		if ( ! empty( $db ) ) :
 
 			foreach ( $db as $key => $value ) {
-				if ( is_array( $value ) ) {
+				if ( is_array( $value ) || str_contains($value,'{') || str_contains($value,'}') ) {
 					$json = json_encode( $value );
+					$json = str_replace('"','\'',$json);
 				} else {
 					$json = $value;
 				}
-				echo esc_html("<input type='hidden' name='to-twitcher-server-" . $key . "' value ='$json'>");
-				// var_dump($json);
+				?>
+					<input type="hidden" name="to-twitcher-server-<?php echo esc_html($key);?>" value ="<?php echo esc_html($json)?>">
+				<?
 			}
 			?>
 			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html($event); ?>">

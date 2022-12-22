@@ -1,5 +1,5 @@
 <?php
-	require_once 'aux_functions/twchr_max_of_list.php';
+	require_once 'aux-functions/twchr-max-of-list.php';
 if ( ! twchr_is_ssl_secure() ) :
 	?>
 			<script>
