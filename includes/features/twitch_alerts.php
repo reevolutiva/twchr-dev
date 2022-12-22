@@ -1,7 +1,6 @@
 <?php
-//TODO:Describir función
 //TODO:Definir la ruta donde irán los menús e interfases y mover ahí
-//TODO:Cada card debe ser una función aparte
+
 
 /*
     1- Alerta para cuando aun no congiguras el plugin
@@ -12,8 +11,12 @@
         twchr_alert_import
 */
 
+/**
+ * Cuenta la cantidad de custom-post-type twchr_streams
+ * Si esa cantidad es 0 se muestra esta alera
+**/
 function twchr_alert_import(){
-    
+
     // Cuenta cuantos streamings han sido creados
 
     $num_streamigs = COUNT(get_posts(array(
@@ -54,6 +57,10 @@ function twchr_alert_import(){
 
 add_action( 'all_admin_notices', 'twchr_alert_import');
 
+/**
+ * Pregunta si la url esta usando el protocolo https
+ * Si no lo esta usando muestra la siguiente alerta
+**/
 function twchr_alert_ssl(){
     // Si este wordpress no esta usando el protocolo SSL
     if (!twchr_is_ssl_secure()) {
@@ -83,6 +90,14 @@ function twchr_alert_ssl(){
 
 add_action('all_admin_notices', 'twchr_alert_ssl');
 
+/**
+ * Pregunta si estamos la url contiene alguno de los siguientes strings
+ *  1- post_type=twchr_streams
+ *  2- plugins.php
+ * 
+ *  Si los contiene y setInstaled es igual o menos a 1 y aun no se ha completado
+ * la instalacion no se ha realizadio es decir twchr_setInstaled
+**/
 function twchr_alert_setup()
 {
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'], 'post_type=twchr_streams');
