@@ -59,6 +59,7 @@ const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option('twchr_data_broadcaster');?>;
 const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
 
+
 if(twchr_twtich_schedule_response.textContent.length > 0){
     const response = JSON.parse(twchr_twtich_schedule_response.textContent);
     if(response.status != 200){

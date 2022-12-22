@@ -302,6 +302,8 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
 if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
 (getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
+    const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
+    const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
     if(element.value.length < 1){
         //twittcher_stream.style.display = 'none';
     }
@@ -355,11 +357,19 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 twchr_card_header_menu[0].addEventListener('click', ()=>{
                     twchr_slide_card_row.style.transform = 'translateX(0%)';
                 });
+
+                if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
+                if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
+
+                
                 // Si no todos los campos son undefined es porque fue asignado
             }else{
                 twchr_card_header_menu[0].classList.remove("active");
                 twchr_card_header_menu[0].classList.add("diactive");
                 twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+  
+                if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
+                if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
             }
         },
         'json',{headers: {
