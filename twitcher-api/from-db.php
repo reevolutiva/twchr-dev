@@ -2,7 +2,7 @@
 	/**
 	* 	Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva 
 	* 	** DATA A RECOPILAR **
-	* 	- URL
+	* 	- url
 	*   - WORDPRESS Version
 	*   - PHP Version
 	*   - Plugins Instalados
@@ -11,7 +11,7 @@
 	**/
 function twchr_recopiate_data() {
 	
-	/** Keys **/
+	// Keys.
 	$data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 
 	$broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
@@ -23,7 +23,7 @@ function twchr_recopiate_data() {
 	$followers = twtchr_twitch_users_get_followers( $user_token, $client_id, $broadcaster_id )->{'total'};
 
 	
-	/** videos **/
+	// videos.
 	$list_videos = twchr_twitch_video_get( $twch_data_app_token, $twch_data_prime->{'client-id'}, $broadcaster_id )->{'data'};
 	$videos = COUNT( $list_videos );
 
@@ -44,20 +44,20 @@ function twchr_recopiate_data() {
 		array_push( $list_new, $item['Name'] );
 	}
 
-	$URL = site_url();
-	$WORDPRESS_VERSION = get_bloginfo( 'version' );
-	$PHP_VERSION = PHP_VERSION;
+	$url = site_url();
+	$wordpress_version = get_bloginfo( 'version' );
+	$php_version = PHP_VERSION;
 
-	$USER_QUANTIYY = COUNT( get_users() );
-	$TEMPLATE = get_option( 'template' );
+	$user_quantity = COUNT( get_users() );
+	$template = get_option( 'template' );
 
 	$PAKAGE = array(
-		'url' => $URL,
-		'wordpressversion' => $WORDPRESS_VERSION,
-		'php_version' => $PHP_VERSION,
+		'url' => $url,
+		'wordpressversion' => $wordpress_version,
+		'php_version' => $php_version,
 		'plugins' => $list_new,
-		'users_quantity' => $USER_QUANTIYY,
-		'template' => $TEMPLATE,
+		'users_quantity' => $user_quantity,
+		'template' => $template,
 		'user_email' => wp_get_current_user()->{'user_email'},
 		'share_options' => get_option( 'twchr_share_permissions' ),
 		'subcriptores' => $subcriptores,
