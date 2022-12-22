@@ -1,16 +1,16 @@
 <?php
 	/**
-	* 	Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva 
-	* 	** DATA A RECOPILAR **
-	* 	- url
-	*   - WORDPRESS Version
-	*   - PHP Version
-	*   - Plugins Instalados
-	*   - Cantidad de Usuarios
-	*   - Tema
-	**/
+	 *   Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva
+	 *   ** DATA A RECOPILAR **
+	 *   - url
+	 *   - WORDPRESS Version
+	 *   - PHP Version
+	 *   - Plugins Instalados
+	 *   - Cantidad de Usuarios
+	 *   - Tema
+	 **/
 function twchr_recopiate_data() {
-	
+
 	// Keys.
 	$data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 
@@ -22,7 +22,6 @@ function twchr_recopiate_data() {
 	$subcriptores = twtchr_twitch_subscribers_get( $user_token, $client_id )->{'total'};
 	$followers = twtchr_twitch_users_get_followers( $user_token, $client_id, $broadcaster_id )->{'total'};
 
-	
 	// videos.
 	$list_videos = twchr_twitch_video_get( $twch_data_app_token, $twch_data_prime->{'client-id'}, $broadcaster_id )->{'data'};
 	$videos = COUNT( $list_videos );
@@ -75,7 +74,7 @@ function twchr_recopiate_data() {
 function instanse_comunicate_server() {
 
 	$case = get_option( 'twchr_log' );
-	/** Convierto $case de string a numero entero **/
+	/** Convierto $case de string a numero entero */
 	$case = (int) $case;
 	$event = false;
 
@@ -101,22 +100,22 @@ function instanse_comunicate_server() {
 		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_setInstaled' ) == 3 ) {
 			$db = twchr_recopiate_data();
 		}
-		
+
 		if ( ! empty( $db ) ) :
 
 			foreach ( $db as $key => $value ) {
-				if ( is_array( $value ) || str_contains($value,'{') || str_contains($value,'}') ) {
+				if ( is_array( $value ) || str_contains( $value, '{' ) || str_contains( $value, '}' ) ) {
 					$json = json_encode( $value );
-					$json = str_replace('"','\'',$json);
+					$json = str_replace( '"', '\'', $json );
 				} else {
 					$json = $value;
 				}
 				?>
-					<input type="hidden" name="to-twitcher-server-<?php echo esc_html($key);?>" value ="<?php echo esc_html($json)?>">
+					<input type="hidden" name="to-twitcher-server-<?php echo esc_html( $key ); ?>" value ="<?php echo esc_html( $json ); ?>">
 				<?
 			}
 			?>
-			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html($event); ?>">
+			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html( $event ); ?>">
 		<?php endif; ?>
 		</form>
 		<?php

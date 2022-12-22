@@ -1,190 +1,79 @@
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/twchr_twchrapi_controller.php[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 8 ERRORS AFFECTING 7 LINES[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-twchrapi-controller.php, but found twchr_twchrapi_controller.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
-  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
-  7 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  8 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
-  9 | [31mERROR[0m | [1mVariable "$dataUrl1" is not in valid snake_case format, try "$data_url1"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 10 | [31mERROR[0m | [1mVariable "$dataUrl2" is not in valid snake_case format, try "$data_url2"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 11 | [31mERROR[0m | [1mVariable "$dataUrl1" is not in valid snake_case format, try "$data_url1"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 11 | [31mERROR[0m | [1mVariable "$dataUrl2" is not in valid snake_case format, try "$data_url2"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/from-db.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 10 ERRORS AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  53 | [31mERROR[0m | [1mVariable "$PAKAGE" is not in valid snake_case format, try "$p_a_k_a_g_e"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  71 | [31mERROR[0m | [1mVariable "$PAKAGE" is not in valid snake_case format, try "$p_a_k_a_g_e"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  74 | [31mERROR[0m | [1mMissing doc comment for function instanse_comunicate_server()[0m (Squiz.Commenting.FunctionComment.Missing)
+  94 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  94 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  94 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 119 | [31mERROR[0m | [1mPHP syntax error: syntax error, unexpected 'endif' (T_ENDIF)[0m (Generic.PHP.Syntax.PHPSyntax)
+ 129 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 144 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_schedule()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/from_db.php[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 33 ERRORS AFFECTING 29 LINES[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected from-db.php, but found from_db.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
-   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
-   3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-   4 | [31mERROR[0m | [1mEmpty line required before block comment[0m (Squiz.Commenting.BlockComment.NoEmptyLineBefore)
-  13 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
-  14 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  26 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  50 | [31mERROR[0m | [1mVariable "$URL" is not in valid snake_case format, try "$u_r_l"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  51 | [31mERROR[0m | [1mVariable "$WORDPRESS_VERSION" is not in valid snake_case format, try "$w_o_r_d_p_r_e_s_s_v_e_r_s_i_o_n"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  52 | [31mERROR[0m | [1mVariable "$PHP_VERSION" is not in valid snake_case format, try "$p_h_p_v_e_r_s_i_o_n"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  54 | [31mERROR[0m | [1mVariable "$USER_QUANTIYY" is not in valid snake_case format, try "$u_s_e_r_q_u_a_n_t_i_y_y"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  55 | [31mERROR[0m | [1mVariable "$TEMPLATE" is not in valid snake_case format, try "$t_e_m_p_l_a_t_e"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  57 | [31mERROR[0m | [1mVariable "$PAKAGE" is not in valid snake_case format, try "$p_a_k_a_g_e"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  58 | [31mERROR[0m | [1mVariable "$URL" is not in valid snake_case format, try "$u_r_l"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  59 | [31mERROR[0m | [1mVariable "$WORDPRESS_VERSION" is not in valid snake_case format, try "$w_o_r_d_p_r_e_s_s_v_e_r_s_i_o_n"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  60 | [31mERROR[0m | [1mVariable "$PHP_VERSION" is not in valid snake_case format, try "$p_h_p_v_e_r_s_i_o_n"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  62 | [31mERROR[0m | [1mVariable "$USER_QUANTIYY" is not in valid snake_case format, try "$u_s_e_r_q_u_a_n_t_i_y_y"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  63 | [31mERROR[0m | [1mVariable "$TEMPLATE" is not in valid snake_case format, try "$t_e_m_p_l_a_t_e"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  75 | [31mERROR[0m | [1mVariable "$PAKAGE" is not in valid snake_case format, try "$p_a_k_a_g_e"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  78 | [31mERROR[0m | [1mMissing doc comment for function instanse_comunicate_server()[0m (Squiz.Commenting.FunctionComment.Missing)
-  81 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  84 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  99 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  99 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  99 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 108 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 117 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$key'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 117 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '"' value ='$json'>"'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 118 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 121 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$event'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 130 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$case'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 133 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 148 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_schedule()[0m (Squiz.Commenting.FunctionComment.Missing)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/twchr-twchrapi-controller.php[0m
+----------------------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+----------------------------------------------------------------------------------------------------------------
 
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/uninstall.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------
- 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
- 4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-   |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
-------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twtcher.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 13 ERRORS AFFECTING 13 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------
-  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
- 27 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 39 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 46 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 49 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 52 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 57 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 60 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 63 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 66 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 71 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 75 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
- 81 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
-    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
--------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/shortcode/twich_embed.php[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 13 ERRORS AFFECTING 11 LINES[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twich-embed.php, but found twich_embed.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
-  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
-  2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
-  5 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 23 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 24 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 34 | [31mERROR[0m | [1mDoc comment for parameter "$atts" missing[0m (Squiz.Commenting.FunctionComment.MissingParamTag)
- 34 | [31mERROR[0m | [1mThere must be no blank lines after the function comment[0m (Squiz.Commenting.FunctionComment.SpacingAfter)
- 49 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 50 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 61 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 62 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/dev_functions.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 5 ERRORS AFFECTING 3 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected dev-functions.php, but found dev_functions.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+-----------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+-----------------------------------------------------------------------------------
  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
- 3 | [31mERROR[0m | [1mMissing doc comment for function show_dump()[0m (Squiz.Commenting.FunctionComment.Missing)
- 9 | [31mERROR[0m | [1mFunction name "comparate_WpPost" is not in snake case format, try "comparate_wp_post"[0m (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
- 9 | [31mERROR[0m | [1mMissing doc comment for function comparate_WpPost()[0m (Squiz.Commenting.FunctionComment.Missing)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/assets/plugin_enqueue.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 13 ERRORS AFFECTING 12 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected plugin-enqueue.php, but found plugin_enqueue.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher.php[0m
+------------------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+------------------------------------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m
+   |       | (Squiz.Commenting.FileComment.WrongStyle)
+------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/shortcode/twich-embed.php[0m
+----------------------------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------------------------------------------------------
+  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+  3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m
+    |       | (Squiz.Commenting.FunctionComment.WrongStyle)
+ 34 | [31mERROR[0m | [1mDoc comment for parameter "$atts" missing[0m (Squiz.Commenting.FunctionComment.MissingParamTag)
+ 34 | [31mERROR[0m | [1mThere must be no blank lines after the function comment[0m
+    |       | (Squiz.Commenting.FunctionComment.SpacingAfter)
+ 62 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m
+    |       | (Squiz.Commenting.FunctionComment.WrongStyle)
+----------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/assets/plugin-enqueue.php[0m
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 9 ERRORS AFFECTING 9 LINES[0m
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
   5 | [31mERROR[0m | [1mMissing doc comment for function twchr_fonts()[0m (Squiz.Commenting.FunctionComment.Missing)
- 10 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_FONTS'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_FONTS'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 20 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_FONTS'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
  28 | [31mERROR[0m | [1mMissing doc comment for function twchr_admin_js()[0m (Squiz.Commenting.FunctionComment.Missing)
  31 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
  34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 37 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 37 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
  38 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 39 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 39 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
  40 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/twchr_get_videos.php[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 19 ERRORS AFFECTING 15 LINES[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-get-videos.php, but found twchr_get_videos.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
-   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
-   3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-   7 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_videos_function()[0m (Squiz.Commenting.FunctionComment.Missing)
-  12 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  13 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
-  30 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
-  50 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
-  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  61 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  68 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  78 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  93 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 114 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 141 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/ext-wp-api.php[0m
@@ -232,11 +121,54 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twitch_alerts.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr-delete-schedule.php[0m
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 16 ERRORS AFFECTING 14 LINES[0m
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  2 | [31mERROR[0m | [1mMissing doc comment for function twchr_delete_schedule_by_cpt()[0m (Squiz.Commenting.FunctionComment.Missing)
+  5 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  6 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 12 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 12 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 13 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$url_main'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$url_list'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 27 | [31mERROR[0m | [1mMissing doc comment for function twchr_delete_schedule_by_term()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 32 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 33 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 43 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 45 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr_shorcode_twitch_status.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 11 ERRORS AFFECTING 10 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-shorcode-twitch-status.php, but found twchr_shorcode_twitch_status.php.[0m
+    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  3 | [31mERROR[0m | [1mThere must be no blank lines after the function comment[0m (Squiz.Commenting.FunctionComment.SpacingAfter)
+  6 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 10 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 13 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 16 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 21 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 24 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 29 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twitch-alerts.php[0m
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 32 ERRORS AFFECTING 27 LINES[0m
+[1mFOUND 31 ERRORS AFFECTING 26 LINES[0m
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twitch-alerts.php, but found twitch_alerts.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
    2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
    2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
   20 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
@@ -276,11 +208,29 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr_easy_setUp.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-activate.php[0m
+-----------------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+-----------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+-----------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-deactivate.php[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 3 LINES[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+ 3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+   |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-easy-set-up.php[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 15 ERRORS AFFECTING 12 LINES[0m
+[1mFOUND 14 ERRORS AFFECTING 11 LINES[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twtchr-easy-setup.php, but found twtchr_easy_setUp.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
   4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
   5 | [31mERROR[0m | [1mFunction name "twchr_redirect_setUp" is not in snake case format, try "twchr_redirect_set_up"[0m (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
@@ -297,74 +247,6 @@
     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
  18 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr_shorcode_twitch_status.php[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 11 ERRORS AFFECTING 10 LINES[0m
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-shorcode-twitch-status.php, but found twchr_shorcode_twitch_status.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
-  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  3 | [31mERROR[0m | [1mThere must be no blank lines after the function comment[0m (Squiz.Commenting.FunctionComment.SpacingAfter)
-  6 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 10 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 13 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 16 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 21 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 24 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 29 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr_deactivate.php[0m
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 4 ERRORS AFFECTING 4 LINES[0m
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twtchr-deactivate.php, but found twtchr_deactivate.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
- 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
- 3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
- 4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr_delete_schedule.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 17 ERRORS AFFECTING 14 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-delete-schedule.php, but found twchr_delete_schedule.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
-  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  2 | [31mERROR[0m | [1mMissing doc comment for function twchr_delete_schedule_by_cpt()[0m (Squiz.Commenting.FunctionComment.Missing)
-  5 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  6 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 12 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 12 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 13 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$url_main'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$url_list'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 27 | [31mERROR[0m | [1mMissing doc comment for function twchr_delete_schedule_by_term()[0m (Squiz.Commenting.FunctionComment.Missing)
- 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 32 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 33 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 43 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 45 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr_activate.php[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 2 ERRORS AFFECTING 1 LINE[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twtchr-activate.php, but found twtchr_activate.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
- 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streaming_custom_tab2.php[0m
@@ -420,54 +302,10 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streamings.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 28 ERRORS AFFECTING 27 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mClass file names should be based on the class name with "class-" prepended. Expected class-twttcher.php, but found streamings.php.[0m (WordPress.Files.FileName.InvalidClassFileName)
-   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  26 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
-  28 | [31mERROR[0m | [1mMissing doc comment for function __construct()[0m (Squiz.Commenting.FunctionComment.Missing)
-  35 | [31mERROR[0m | [1mMissing doc comment for function process_cpts()[0m (Squiz.Commenting.FunctionComment.Missing)
-  46 | [31mERROR[0m | [1mMissing doc comment for function add_meta_boxes()[0m (Squiz.Commenting.FunctionComment.Missing)
-  59 | [31mERROR[0m | [1mMissing doc comment for function save_post()[0m (Squiz.Commenting.FunctionComment.Missing)
-  63 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
-  64 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
-  69 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
-  70 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
-  77 | [31mERROR[0m | [1mMissing doc comment for function add_meta_box_callback()[0m (Squiz.Commenting.FunctionComment.Missing)
-  81 | [31mERROR[0m | [1mMissing doc comment for function fields_table()[0m (Squiz.Commenting.FunctionComment.Missing)
-  99 | [31mERROR[0m | [1mMissing doc comment for function label()[0m (Squiz.Commenting.FunctionComment.Missing)
- 104 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 105 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['label']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 110 | [31mERROR[0m | [1mMissing doc comment for function field()[0m (Squiz.Commenting.FunctionComment.Missing)
- 120 | [31mERROR[0m | [1mMissing doc comment for function input()[0m (Squiz.Commenting.FunctionComment.Missing)
- 123 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['class']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 124 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 125 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 126 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'isset'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 127 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['type']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 128 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 132 | [31mERROR[0m | [1mMissing doc comment for function textarea()[0m (Squiz.Commenting.FunctionComment.Missing)
- 137 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['rows']'.[0m
-     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 138 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 142 | [31mERROR[0m | [1mMissing doc comment for function value()[0m (Squiz.Commenting.FunctionComment.Missing)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule_card.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule-card.php[0m
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 54 ERRORS AFFECTING 38 LINES[0m
+[1mFOUND 53 ERRORS AFFECTING 38 LINES[0m
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected schedule-card.php, but found schedule_card.php.[0m
-     |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
    1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
    2 | [31mERROR[0m | [1mMissing doc comment for function twchr_cf_schedule__card()[0m (Squiz.Commenting.FunctionComment.Missing)
   18 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
@@ -525,6 +363,48 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streamings.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 28 ERRORS AFFECTING 27 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mClass file names should be based on the class name with "class-" prepended. Expected class-twttcher.php, but found streamings.php.[0m (WordPress.Files.FileName.InvalidClassFileName)
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  26 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+  28 | [31mERROR[0m | [1mMissing doc comment for function __construct()[0m (Squiz.Commenting.FunctionComment.Missing)
+  35 | [31mERROR[0m | [1mMissing doc comment for function process_cpts()[0m (Squiz.Commenting.FunctionComment.Missing)
+  46 | [31mERROR[0m | [1mMissing doc comment for function add_meta_boxes()[0m (Squiz.Commenting.FunctionComment.Missing)
+  59 | [31mERROR[0m | [1mMissing doc comment for function save_post()[0m (Squiz.Commenting.FunctionComment.Missing)
+  63 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  64 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  69 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  70 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  77 | [31mERROR[0m | [1mMissing doc comment for function add_meta_box_callback()[0m (Squiz.Commenting.FunctionComment.Missing)
+  81 | [31mERROR[0m | [1mMissing doc comment for function fields_table()[0m (Squiz.Commenting.FunctionComment.Missing)
+  99 | [31mERROR[0m | [1mMissing doc comment for function label()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 104 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 105 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['label']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 110 | [31mERROR[0m | [1mMissing doc comment for function field()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 120 | [31mERROR[0m | [1mMissing doc comment for function input()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 123 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['class']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 124 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 125 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 126 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'isset'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 127 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['type']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 128 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 132 | [31mERROR[0m | [1mMissing doc comment for function textarea()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 137 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['rows']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 138 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 142 | [31mERROR[0m | [1mMissing doc comment for function value()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule_custom_card.php[0m
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [1mFOUND 6 ERRORS AFFECTING 5 LINES[0m
@@ -553,50 +433,39 @@
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streaming_custom_tab3.php[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 16 ERRORS AFFECTING 8 LINES[0m
+[1mFOUND 7 ERRORS AFFECTING 5 LINES[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected streaming-custom-tab3.php, but found streaming_custom_tab3.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  6 | [31mERROR[0m | [1mVariable "$youtubeData" is not in valid snake_case format, try "$youtube_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  7 | [31mERROR[0m | [1mVariable "$youtubeData" is not in valid snake_case format, try "$youtube_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  7 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  7 | [31mERROR[0m | [1mVariable "$youtubeData" is not in valid snake_case format, try "$youtube_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  7 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  7 | [31mERROR[0m | [1mVariable "$youtubeData" is not in valid snake_case format, try "$youtube_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-  7 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 10 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$youtubeData'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 10 | [31mERROR[0m | [1mVariable "$youtubeData" is not in valid snake_case format, try "$youtube_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
- 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 15 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
- 21 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $post_id[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
- 33 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '"<script>location.href='$url'</script>"'.[0m
+ 11 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 19 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $post_id[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 31 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '"<script>location.href='$url'</script>"'.[0m
     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/update-post/update_twchr_stream.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected update-twchr-stream.php, but found update_twchr_stream.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/update-post/update-twchr-stream.php[0m
+------------------------------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+------------------------------------------------------------------------------------------------------------------
  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
- 3 | [31mERROR[0m | [1mMissing doc comment for function twitcher_update_cpt()[0m (Squiz.Commenting.FunctionComment.Missing)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 3 | [31mERROR[0m | [1mMissing doc comment for function twitcher_update_cpt()[0m
+   |       | (Squiz.Commenting.FunctionComment.Missing)
+------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/api_db.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 16 ERRORS AFFECTING 13 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected api-db.php, but found api_db.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/api-db.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 15 ERRORS AFFECTING 12 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
   2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
  11 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 12 | [31mERROR[0m | [1mFunction name "twittcher_getData" is not in snake case format, try "twittcher_get_data"[0m (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 12 | [31mERROR[0m | [1mFunction name "twittcher_getData" is not in snake case format, try "twittcher_get_data"[0m
+    |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
  12 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
  15 | [31mERROR[0m | [1mUse placeholders and $wpdb->prepare(); found $sql[0m (WordPress.DB.PreparedSQL.NotPrepared)
  24 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
@@ -607,7 +476,7 @@
  44 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
  45 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
  46 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/twicht.php[0m
@@ -744,23 +613,20 @@
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/get-post/get_twchr_stream.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected get-twchr-stream.php, but found get_twchr_stream.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/get-post/get-twchr-stream.php[0m
+------------------------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+------------------------------------------------------------------------------------------------------------
  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
- 2 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_stream()[0m (Squiz.Commenting.FunctionComment.Missing)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_stream()[0m
+   |       | (Squiz.Commenting.FunctionComment.Missing)
+------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/cat_twcht.php[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 16 ERRORS AFFECTING 15 LINES[0m
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected cat-twcht.php, but found cat_twcht.php.[0m
-     |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/cat-twcht.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 15 ERRORS AFFECTING 15 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------
    1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
    4 | [31mERROR[0m | [1mMissing doc comment for function twchr_taxonomy_cat_twcht()[0m (Squiz.Commenting.FunctionComment.Missing)
   31 | [31mERROR[0m | [1mMissing doc comment for function twchr_cat_twcht_create_field()[0m (Squiz.Commenting.FunctionComment.Missing)
@@ -770,20 +636,24 @@
   90 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
   91 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
  109 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
- 110 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
- 138 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 110 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m
+     |       | (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 138 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
  139 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
- 140 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 206 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 208 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 140 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 206 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 208 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/form_serie.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/form-serie.php[0m
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 13 ERRORS AFFECTING 10 LINES[0m
+[1mFOUND 12 ERRORS AFFECTING 9 LINES[0m
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected form-serie.php, but found form_serie.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
  32 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
  34 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
  34 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$dateTime'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
@@ -801,11 +671,10 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/twchr_tax_serie.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/twchr-tax-serie.php[0m
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 72 ERRORS AFFECTING 63 LINES[0m
+[1mFOUND 71 ERRORS AFFECTING 62 LINES[0m
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-tax-serie.php, but found twchr_tax_serie.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
    2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
    7 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
    8 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
@@ -885,31 +754,19 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/new_aloritm.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 15 ERRORS AFFECTING 14 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected new-aloritm.php, but found new_aloritm.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
-  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  3 | [31mERROR[0m | [1mMissing doc comment for function twchr_tax_calendar_import()[0m (Squiz.Commenting.FunctionComment.Missing)
-  5 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
-  7 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
-  9 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 12 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 32 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
- 37 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 38 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 44 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 45 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 54 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 55 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/dev-functions.php[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 3 LINES[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 3 | [31mERROR[0m | [1mMissing doc comment for function show_dump()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 9 | [31mERROR[0m | [1mFunction name "comparate_WpPost" is not in snake case format, try "comparate_wp_post"[0m
+   |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 9 | [31mERROR[0m | [1mMissing doc comment for function comparate_WpPost()[0m (Squiz.Commenting.FunctionComment.Missing)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/create-post/test.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/create-post/crear-twchr-stream.php[0m
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 [1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -920,23 +777,41 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/create-post/crear_twchr_stream.php[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 4 ERRORS AFFECTING 2 LINES[0m
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected crear-twchr-stream.php, but found crear_twchr_stream.php.[0m
-   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
- 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
- 2 | [31mERROR[0m | [1mFunction name "crearStream" is not in snake case format, try "crear_stream"[0m (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
- 2 | [31mERROR[0m | [1mMissing doc comment for function crearStream()[0m (Squiz.Commenting.FunctionComment.Missing)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/twchr-get-videos.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 18 ERRORS AFFECTING 14 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+   3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+   7 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_videos_function()[0m (Squiz.Commenting.FunctionComment.Missing)
+  12 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  13 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  30 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  50 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  61 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  68 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  78 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  93 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 114 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 141 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/main_page.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/main-page.php[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 113 ERRORS AFFECTING 81 LINES[0m
+[1mFOUND 112 ERRORS AFFECTING 81 LINES[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected main-page.php, but found main_page.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
    1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
    7 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
   27 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
@@ -1053,11 +928,41 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux_functions/aux_functions.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/admin-dashboard.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+  4 | [31mERROR[0m | [1mMissing doc comment for function twchr_left_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 10 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 11 | [31mERROR[0m | [1mMissing doc comment for function twchr_right_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/twchr-i18n.php[0m
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 8 ERRORS AFFECTING 8 LINES[0m
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  7 | [31mERROR[0m | [1mFunction return type is not void, but function has no return statement[0m (Squiz.Commenting.FunctionComment.InvalidNoReturn)
+ 12 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
+ 14 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 17 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
+ 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/aux-functions.php[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 26 ERRORS AFFECTING 24 LINES[0m
+[1mFOUND 25 ERRORS AFFECTING 23 LINES[0m
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected aux-functions.php, but found aux_functions.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
   2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
   4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
   5 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
@@ -1087,41 +992,24 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux_functions/twchr_max_of_list.php[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 11 ERRORS AFFECTING 10 LINES[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-max-of-list.php, but found twchr_max_of_list.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/twchr-max-of-list.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 10 ERRORS AFFECTING 10 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
   5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
   6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
   7 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
   8 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
   9 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
- 12 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 12 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
  29 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 38 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
- 45 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux_functions/twchr_i18n.php[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 9 ERRORS AFFECTING 8 LINES[0m
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-i18n.php, but found twchr_i18n.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
-  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
-  6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
-  7 | [31mERROR[0m | [1mFunction return type is not void, but function has no return statement[0m (Squiz.Commenting.FunctionComment.InvalidNoReturn)
- 12 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
- 14 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
- 17 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
- 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
-    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 38 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 45 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 [1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/submenu_menu_help.php[0m
@@ -1146,11 +1034,10 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twchr_setUp.php[0m
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twchr-set-up.php[0m
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 30 ERRORS AFFECTING 20 LINES[0m
+[1mFOUND 29 ERRORS AFFECTING 20 LINES[0m
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-setup.php, but found twchr_setUp.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
  11 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
  12 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
@@ -1189,34 +1076,21 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/admin_dashboard.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 6 ERRORS AFFECTING 5 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected admin-dashboard.php, but found admin_dashboard.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
-  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
-  3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
-  4 | [31mERROR[0m | [1mMissing doc comment for function twchr_left_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
- 10 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
- 11 | [31mERROR[0m | [1mMissing doc comment for function twchr_right_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twtchr_menus.php[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[1mFOUND 8 ERRORS AFFECTING 7 LINES[0m
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twtchr-menus.php, but found twtchr_menus.php.[0m
-    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twtchr-menus.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AFFECTING 6 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
   2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
-  2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
- 29 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 29 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
  30 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
- 34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
  35 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
 
-Time: 1.59 secs; Memory: 18MB
+Time: 1.64 secs; Memory: 18MB
 
