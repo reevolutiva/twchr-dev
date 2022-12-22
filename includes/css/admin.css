@@ -1037,3 +1037,13 @@ stream.twchr-modal .twchr-modal-button.close{
     }
     
 }
+
+@media screen and (max-width: 1149px) {
+    .twchr_custom_card--contain .custom_card_row .twchr_car_tab1{
+        grid-template-columns: 1fr 2fr;
+        grid-gap:31pt;
+    }
+    .twchr_custom_card--contain{
+        padding: 10pt 15pt;
+    }
+}
