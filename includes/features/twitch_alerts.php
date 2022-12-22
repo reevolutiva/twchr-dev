@@ -102,16 +102,19 @@ function twchr_alert_setup()
 {
     $dataUrl1 = str_contains($_SERVER['REQUEST_URI'], 'post_type=twchr_streams');
     $dataUrl2 = str_contains($_SERVER['REQUEST_URI'], 'plugins.php');
-    if ($dataUrl1 || $dataUrl2) :
-        if (get_option('twchr_setInstaled') <= 1 || get_option('twchr_setInstaled') == false) :
-?>
-            <section class="twchr-alert">
-                <img src="<?php echo TWCHR_URL_ASSETS ?>/warning.png" alt="">
-                <h3 class="twchr-alert__title"><?php _e('Twitcher Manage Twitch Acount needs connection with Twitch. ', 'twitcher'); ?></h3>
-                <a class="twchr-alert__anchor twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr-dashboard' ?>"><?php _e('Setup', 'twitcher'); ?></a>
-            </section>
-        <?php
-        endif;
+    
+    if(!(isset($_GET['page']) && $_GET['page'] === 'twchr_help' && isset($_GET['setUpPage']) && $_GET['setUpPage'] == true)):
+        if ($dataUrl1 || $dataUrl2) :
+                if (get_option('twchr_setInstaled') <= 1 || get_option('twchr_setInstaled') == false) :
+        ?>
+                    <section class="twchr-alert">
+                        <img src="<?php echo TWCHR_URL_ASSETS ?>/warning.png" alt="">
+                        <h3 class="twchr-alert__title"><?php _e('Twitcher Manage Twitch Acount needs connection with Twitch. ', 'twitcher'); ?></h3>
+                        <a class="twchr-alert__anchor twchr-btn-general" href="<?php echo TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr-dashboard' ?>"><?php _e('Setup', 'twitcher'); ?></a>
+                    </section>
+                <?php
+                endif;
+            endif;
     endif;
     
     
