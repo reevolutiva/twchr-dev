@@ -176,6 +176,7 @@ function twchr_tax_serie_import()
         //FROM TWCH
         $schedules_twitch = twtchr_twitch_schedule_segment_get();
 
+       
         // FROM WP
         $schedules_wp = get_terms(array(
             'taxonomy' => 'serie',
@@ -186,48 +187,48 @@ function twchr_tax_serie_import()
             //var_dump($schedules_twitch);
             twchr_twitch_autentication_error_handdler($schedules_twitch->{'error'}, $schedules_twitch->{'message'});
         }
+
+        
         //Si hay series
         if(!COUNT($schedules_wp) == 0){
             foreach($schedules_wp as $item){
                 $wp_id = $item->term_id;
+                $wp_title = $item->{'name'};
                 $wp_tw_id = get_term_meta($wp_id,'twchr_toApi_schedule_segment_id')[0];
                                 
-                foreach($schedules_twitch as $schedule){
+                foreach($schedules_twitch as $key => $schedule){
                                       
-                    $tw_id = $schedule->{'id'};
-                    if($tw_id == $wp_tw_id){
+                    $tw_title = $schedule->{'title'};
+                    if($tw_title == $wp_title){
                     }else{
                         $new_term = wp_insert_term($schedule->title, 'serie');
                         
                         if(isset($new_term->errors['term_exists'])){
-                            //TODO: Poner esta redireccion en el error handler
-                            echo "<script>location.href='".TWCHR_ADMIN_URL."edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
-                            die();
-                        }
-    
-                        $new_term_id = $new_term['term_id'];
+                            
+                        }else{
+                            $new_term_id = $new_term['term_id'];
                        
                         
-                        $dateTime = $schedule->start_time;
-                        add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
-                        $select_value = $schedule->category->id;
-                        add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
-                        $select_name = $schedule->category->name;
-                        add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
-                        $schedule_segment_id = $schedule->id;
-                        add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
-                        $allData = json_encode($schedule);
-                        add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
+                            $dateTime = $schedule->start_time;
+                            add_term_meta($new_term_id,'twchr_toApi_dateTime',$dateTime);
+                            $select_value = $schedule->category->id;
+                            add_term_meta($new_term_id,'twchr_toApi_category_value',$select_value);
+                            $select_name = $schedule->category->name;
+                            add_term_meta($new_term_id,'twchr_toApi_category_name',$select_name);
+                            $schedule_segment_id = $schedule->id;
+                            add_term_meta($new_term_id,'twchr_toApi_schedule_segment_id',$schedule_segment_id);
+                            $allData = json_encode($schedule);
+                            add_term_meta($new_term_id,'twchr_fromApi_allData',$allData);
 
-                        
-
-                        $schedule_segments = array();
-                        foreach($schedules_twitch as $segment){
-                            if($segment->{'title'} === $schedule->{'title'}){
-                                array_push($schedule_segments,$segment);
+                            
+                            
+                            $schedule_segments = array();
+                            foreach($schedules_twitch as $segment){
+                                if($segment->{'title'} === $schedule->{'title'}){
+                                    array_push($schedule_segments,$segment);
+                                }
                             }
-                        }
-                        
+                            
 
                         add_term_meta($new_term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
                         
@@ -236,6 +237,13 @@ function twchr_tax_serie_import()
                         $end_time = $schedule->end_time;
                         $minutos = twchr_twitch_video_duration_calculator($start_time ,$end_time);
                         add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
+                        }
+    
+                        
+                    }
+
+                    if($key === COUNT($schedules_twitch) - 1){
+                        twchr_javaScript_redirect(TWCHR_ADMIN_URL.'/edit-tags.php?taxonomy=serie&post_type=twchr_stream');
                     }
                    
                 }

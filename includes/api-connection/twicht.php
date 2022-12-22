@@ -23,7 +23,7 @@ function  twtchr_twitch_schedule_segment_update($post_id,$user_token,$client_id,
   $data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ?  false :  json_decode(get_option( 'twchr_data_broadcaster'));
   $broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
   
-  $url = " https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=".$broadcaster_id;
+  $url = "https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=".$broadcaster_id;
 
   $res = wp_remote_post($url,$args);
   $response_body = json_decode(wp_remote_retrieve_body($res));
@@ -456,6 +456,9 @@ function twchr_twitch_token_validate($token){
 }
 
 function twchr_twitch_autentication_error_handdler($error_code , $msg){
+  if($error_code = 'Not Found' && $msg == 'segments were not found'){
+    exit();
+  }
   echo "<script>
     alert('Error: ".$error_code."'); 
     alert('message: ".$msg."');
