@@ -29,7 +29,7 @@
 <div class='twchr_toApi_form-field'>
     <label>Every repeat: </label>
     <h4 class="twchr_serie_repeat"></h4>
-    <label for="twchr_toApi_dateTime"><?php twchr_esc_i18n('Date and Time','html'); ?></label>
+    <label for="twchr_toApi_dateTime"><?php twchr_esc_i18n('Start Date-Time','html'); ?></label>
     <div>
         <input type="<?php echo empty($dateTime) ? 'datetime-local' : 'text' ?>" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $dateTime?>">
         <p><?php twchr_esc_i18n('The recurring date your stream aired.','html') ?></p>
