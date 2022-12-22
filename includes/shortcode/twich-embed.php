@@ -1,8 +1,8 @@
 <?php
-// Add Shortcode
+// Add Shortcode.
 function twchr_shortcode_tw_video( $atts ) {
 
-	// Attributes
+	// Attributes.
 	$atts = shortcode_atts(
 		array(
 			'host' => '#',
@@ -20,8 +20,8 @@ function twchr_shortcode_tw_video( $atts ) {
 
 	$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
 	$url = 'https://player.twitch.tv/?autoplay=true&chanel=' . $atts['host'] . '&height=' . $atts['alto'] . '&parent=' . $host . '&referrer=https%3A%2F%2F' . $host . '%2Ftest%2F&video=' . $atts['video'] . '&width=' . $atts['ancho'];
-	$idClass = 'twich-frame' . rand();
-	$html = "<twichcontainer id='" . $idClass . "'>
+	$id_class = 'twich-frame' . rand();
+	$html = "<twichcontainer id='" . $id_class . "'>
 						<iframe src=" . $url . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
 						<script>
 							console.log($atts_ouput);
@@ -46,8 +46,8 @@ function twchr_shortcode_yt_video_embed( $atts ) {
 
 	$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
 	$url = 'https://player.twitch.tv/?autoplay=true&chanel=' . $atts['host'] . '&height=' . $atts['alto'] . '&parent=' . $host . '&referrer=https%3A%2F%2F' . $host . '%2Ftest%2F&video=' . $atts['video'] . '&width=' . $atts['ancho'];
-	$idClass = 'twich-frame' . rand();
-	$html = "<twichcontainer id='" . $idClass . "'>
+	$id_class = 'twich-frame' . rand();
+	$html = "<twichcontainer id='" . $id_class . "'>
 				<iframe src=" . $url . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
 	
 			</twichcontainer>";
@@ -58,7 +58,7 @@ add_shortcode( 'twchr_yt_video_embed', 'twchr_shortcode_yt_video_embed' );
 /** [twchr_yt_video_embed ancho="800" alto="400"] **/
 
 
-// Shorcode para listar todas las series
+// Shorcode para listar todas las series.
 function twtchr_shortcode_tx_series() {
 	$series = get_terms(
 		array(
