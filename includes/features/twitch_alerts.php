@@ -41,7 +41,7 @@ function twchr_alert_import(){
         </section>
         <script>
             document.querySelector("section.twchr-alert .twchr-alert__row a").addEventListener('click', () => {
-                location.href = location.origin + "/wp-admin/edit.php?post_type=twchr_streams";
+                location.href = tchr_vars_admin.site_url + "/wp-admin/edit.php?post_type=twchr_streams";
             });
 
             document.querySelector(".twchr-alert__anchor__null_videos_close").addEventListener('click', () => {

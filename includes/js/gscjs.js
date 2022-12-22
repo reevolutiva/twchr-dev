@@ -52,7 +52,7 @@ const GSCJS = {
   },
   // Retorna solo la URL
   getURLorigin: function getURLorigin() {
-    const url = location.origin;
+    const url = tchr_vars_admin.site_url;
     return url;
   },
   // Retorna la ruta del URL (lo que le sigue a la extención midominio.com/ruta)

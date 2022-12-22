@@ -43,7 +43,8 @@ function twchr_admin_js() {
             'twchr_keys' => json_decode(get_option('twchr_keys')) ,
             'twchr_app_token' => get_option('twchr_app_token'),
             'twitcher_data_broadcaster' => json_decode(get_option( 'twchr_data_broadcaster'))->{'data'}[0],
-            'twitcher_data_clear_all' => get_option( 'twchr_delete_all')
+            'twitcher_data_clear_all' => get_option( 'twchr_delete_all'),
+            'site_url' => site_url()
         );
         wp_register_script('twchr_custom_script',TWCHR_URL."includes/js/admin.js",array(),$version,true);
         wp_enqueue_script('twchr_custom_script');
