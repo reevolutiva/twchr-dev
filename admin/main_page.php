@@ -451,7 +451,5 @@ if ( ! twchr_is_ssl_secure() ) :
 			<?php
 		}
 
-
-
-
 		?>
+
