@@ -24,7 +24,7 @@ define( 'TWCHR_FEATURES', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 define( 'TWCHR_SETUP_ASSETS', plugin_dir_url( __FILE__ ) . '/admin/set-up-img/' );
 define( 'TWCHR_WPJSON_ROUTE', site_url() . '/wp-json/' );
 
-// setings
+// setings.
 require_once 'includes/dev-functions.php';
 require_once 'admin/aux-functions/twchr-i18n.php';
 require_once 'admin/twtchr-menus.php';
@@ -36,47 +36,47 @@ require_once TWCHR_FEATURES . 'twchr-delete-schedule.php';
 
 
 
-// Aux functions
+// Aux functions.
 require_once 'admin/aux-functions/aux-functions.php';
 
 require_once 'includes/api-connection/twicht.php';
 require_once 'includes/api-connection/twichtv.php';
 require_once 'includes/api-connection/api-db.php';
 
-// admin styles
+// admin styles.
 require_once 'admin/admin-dashboard.php';
 
-// Custom post types
+// Custom post types.
 require_once 'includes/cpt/streamings.php';
 
-// Custom fields
+// Custom fields.
 require_once 'includes/cf/streamings.php';
 require_once 'includes/cf/streamings.php';
 require_once 'includes/cf/schedule-card.php';
 
-// Shortcodes
+// Shortcodes.
 require_once 'includes/shortcode/twich-embed.php';
 
-// Crear post stream
+// Crear post stream.
 require_once 'includes/create-post/crear-twchr-stream.php';
 
-// Actualizar post
+// Actualizar post.
 require_once 'includes/update-post/update-twchr-stream.php';
 
-// Traer un post
+// Traer un post.
 require_once 'includes/get-post/get-twchr-stream.php';
 
 require_once 'includes/twchr-get-videos.php';
 
-// Taxonomias
+// Taxonomias.
 require_once 'includes/taxonomys/twchr-tax-serie.php';
 require_once 'includes/taxonomys/cat-twcht.php';
 
-// Enqueue
+// Enqueue.
 require_once 'includes/assets/plugin-enqueue.php';
 
 require_once 'twitcher-api/from-db.php';
 require_once 'twitcher-api/twchr-twchrapi-controller.php';
 
-// End Points
+// End Points.
 require_once 'includes/ext-wp-api.php';
