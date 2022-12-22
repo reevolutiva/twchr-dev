@@ -47,7 +47,7 @@ function twchr_recopiate_data() {
 		array_push( $list_new, $item['Name'] );
 	}
 
-	$URL = get_option( 'siteurl' );
+	$URL = site_url();
 	$WORDPRESS_VERSION = get_bloginfo( 'version' );
 	$PHP_VERSION = PHP_VERSION;
 
