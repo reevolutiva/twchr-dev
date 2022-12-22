@@ -1,18 +1,17 @@
 <?php
-
-	// Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva
-	/*
-		** DATA A RECOPILAR
-		* URL
-		* WORDPRESS Version
-		* PHP Version
-		* Plugins Instalados
-		* Cantidad de Usuarios
-		* Tema
-	*/
+	/**
+	* 	Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva 
+	* 	** DATA A RECOPILAR **
+	* 	- URL
+	*   - WORDPRESS Version
+	*   - PHP Version
+	*   - Plugins Instalados
+	*   - Cantidad de Usuarios
+	*   - Tema
+	**/
 function twchr_recopiate_data() {
-	// KEYS
-
+	
+	/** Keys **/
 	$data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 
 	$broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
@@ -23,16 +22,14 @@ function twchr_recopiate_data() {
 	$subcriptores = twtchr_twitch_subscribers_get( $user_token, $client_id )->{'total'};
 	$followers = twtchr_twitch_users_get_followers( $user_token, $client_id, $broadcaster_id )->{'total'};
 
-	// VIDEOS
-
+	
+	/** videos **/
 	$list_videos = twchr_twitch_video_get( $twch_data_app_token, $twch_data_prime->{'client-id'}, $broadcaster_id )->{'data'};
 	$videos = COUNT( $list_videos );
 
 	$vistas = $data_broadcaster->{'data'}[0]->{'view_count'};
 
 	$schedules = COUNT( twtchr_twitch_schedule_segment_get() );
-
-	// $moderatos = COUNT(twtchr_twitch_moderators_get($twch_data_app_token , $client_id, $broadcaster_id)-);
 
 	$clips = twtchr_twitch_clips_get( $twch_data_app_token, $client_id, $broadcaster_id )->{'data'};
 	if ( ! is_wp_error( $clips ) ) {
@@ -78,10 +75,9 @@ function twchr_recopiate_data() {
 function instanse_comunicate_server() {
 
 	$case = get_option( 'twchr_log' );
-	// Convierto $case de string a numero entero
+	/** Convierto $case de string a numero entero **/
 	$case = (int) $case;
 	$event = false;
-	// echo "<script> alert('".$case."'); </script>";
 
 	switch ( $case ) {
 		case 0:
@@ -105,7 +101,7 @@ function instanse_comunicate_server() {
 		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_setInstaled' ) == 3 ) {
 			$db = twchr_recopiate_data();
 		}
-			// var_dump($db);
+		
 		if ( ! empty( $db ) ) :
 
 			foreach ( $db as $key => $value ) {
