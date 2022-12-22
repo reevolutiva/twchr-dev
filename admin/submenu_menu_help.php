@@ -2,7 +2,7 @@
 $delete_all = get_option( 'twchr_delete_all' );
 
 if ( isset( $_GET['setUpPage'] ) && $_GET['setUpPage'] == true ) {
-	require_once 'twchr_setUp.php';
+	require_once 'twchr-set-up.php';
 	die();
 }
 

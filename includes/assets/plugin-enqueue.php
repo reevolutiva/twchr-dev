@@ -7,17 +7,17 @@ function twchr_fonts() {
 	<style>
 		@font-face {
 			font-family: 'Comfortaa';
-			src: url(<?php echo TWCHR_URL_FONTS . '/Comfortaa-Regular.ttf'; ?>);
+			src: url(<?php echo esc_url(TWCHR_URL_FONTS . '/Comfortaa-Regular.ttf'); ?>);
 			font-weight: normal;
 		}
 		@font-face {
 			font-family: 'Comfortaa';
-			src: url(<?php echo TWCHR_URL_FONTS . '/Comfortaa-Bold.ttf'; ?>);
+			src: url(<?php echo esc_url(TWCHR_URL_FONTS . '/Comfortaa-Bold.ttf'); ?>);
 			font-weight: bold;
 		}
 		@font-face {
 			font-family: 'Comfortaa';
-			src: url(<?php echo TWCHR_URL_FONTS . '/Comfortaa-Light.ttf'; ?>);
+			src: url(<?php echo esc_url(TWCHR_URL_FONTS . '/Comfortaa-Light.ttf'); ?>);
 			font-weight: light;
 		}
 	</style>

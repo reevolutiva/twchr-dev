@@ -114,11 +114,11 @@ function instanse_comunicate_server() {
 				} else {
 					$json = $value;
 				}
-				echo "<input type='hidden' name='to-twitcher-server-" . $key . "' value ='$json'>";
+				echo esc_html("<input type='hidden' name='to-twitcher-server-" . $key . "' value ='$json'>");
 				// var_dump($json);
 			}
 			?>
-			<input type="hidden" name="to-twitcher-server-event" value="<?php echo $event; ?>">
+			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html($event); ?>">
 		<?php endif; ?>
 		</form>
 		<?php
@@ -127,7 +127,6 @@ function instanse_comunicate_server() {
 	if ( $case >= 0 ) {
 		?>
 		<script>
-			console.log("<?php echo $case; ?>");
 			const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
 			<?php
 			if ( $case == 0 ) {

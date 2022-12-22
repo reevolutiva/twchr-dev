@@ -21,18 +21,18 @@ define( 'TWCHR_URL_FONTS', plugin_dir_url( __FILE__ ) . 'includes/assets/fonts' 
 // Añadí la carpeta features para poner funcionalidades del plugin.
 define( 'TWCHR_FEATURES', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 
-define( 'TWCHR_SETUP_ASSETS', plugin_dir_url( __FILE__ ) . '/admin/setUp-img/' );
+define( 'TWCHR_SETUP_ASSETS', plugin_dir_url( __FILE__ ) . '/admin/set-up-img/' );
 define( 'TWCHR_WPJSON_ROUTE', site_url() . '/wp-json/' );
 
 // setings
-require_once 'includes/dev_functions.php';
-require_once 'admin/aux_functions/twchr_i18n.php';
-require_once 'admin/twtchr_menus.php';
-require_once TWCHR_FEATURES . 'twitch_alerts.php';
-require_once TWCHR_FEATURES . 'twtchr_easy_setUp.php';
-require_once TWCHR_FEATURES . 'twtchr_activate.php';
-require_once TWCHR_FEATURES . 'twtchr_deactivate.php';
-require_once TWCHR_FEATURES . 'twchr_delete_schedule.php';
+require_once 'includes/dev-functions.php';
+require_once 'admin/aux-functions/twchr-i18n.php';
+require_once 'admin/twtchr-menus.php';
+require_once TWCHR_FEATURES . 'twitch-alerts.php';
+require_once TWCHR_FEATURES . 'twtchr-easy-set-up.php';
+require_once TWCHR_FEATURES . 'twtchr-activate.php';
+require_once TWCHR_FEATURES . 'twtchr-deactivate.php';
+require_once TWCHR_FEATURES . 'twchr-delete-schedule.php';
 
 
 
@@ -41,10 +41,10 @@ require_once 'admin/aux_functions/aux_functions.php';
 
 require_once 'includes/api-connection/twicht.php';
 require_once 'includes/api-connection/twichtv.php';
-require_once 'includes/api-connection/api_db.php';
+require_once 'includes/api-connection/api-db.php';
 
 // admin styles
-require_once 'admin/admin_dashboard.php';
+require_once 'admin/admin-dashboard.php';
 
 // Custom post types
 require_once 'includes/cpt/streamings.php';
@@ -52,31 +52,31 @@ require_once 'includes/cpt/streamings.php';
 // Custom fields
 require_once 'includes/cf/streamings.php';
 require_once 'includes/cf/streamings.php';
-require_once 'includes/cf/schedule_card.php';
+require_once 'includes/cf/schedule-card.php';
 
 // Shortcodes
-require_once 'includes/shortcode/twich_embed.php';
+require_once 'includes/shortcode/twich-embed.php';
 
 // Crear post stream
-require_once 'includes/create-post/crear_twchr_stream.php';
+require_once 'includes/create-post/crear-twchr-stream.php';
 
 // Actualizar post
-require_once 'includes/update-post/update_twchr_stream.php';
+require_once 'includes/update-post/update-twchr-stream.php';
 
 // Traer un post
-require_once 'includes/get-post/get_twchr_stream.php';
+require_once 'includes/get-post/get-twchr-stream.php';
 
-require_once 'includes/twchr_get_videos.php';
+require_once 'includes/twchr-get-videos.php';
 
 // Taxonomias
-require_once 'includes/taxonomys/twchr_tax_serie.php';
-require_once 'includes/taxonomys/cat_twcht.php';
+require_once 'includes/taxonomys/twch-tax-serie.php';
+require_once 'includes/taxonomys/cat-twcht.php';
 
 // Enqueue
-require_once 'includes/assets/plugin_enqueue.php';
+require_once 'includes/assets/plugin-enqueue.php';
 
-require_once 'twitcher-api/from_db.php';
-require_once 'twitcher-api/twchr_twchrapi_controller.php';
+require_once 'twitcher-api/from-db.php';
+require_once 'twitcher-api/twchr-twchrapi-controller.php';
 
 // End Points
 require_once 'includes/ext-wp-api.php';

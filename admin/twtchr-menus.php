@@ -28,7 +28,7 @@ add_action( 'admin_menu', 'twchr_main_menu' );
 
 // Template de menu prinicpal de plugin
 function twchr_main_page() {
-	require_once 'main_page.php';
+	require_once 'main-page.php';
 }
 
 // Template de menu secudario de plugin

@@ -151,7 +151,7 @@ function twchr_tax_serie_edit( $term, $taxonomy ) {
 		'value' => $select_value,
 	);
 
-	require_once 'form_serie.php';
+	require_once 'form-serie.php';
 }
 add_action( 'serie_edit_form_fields', 'twchr_tax_serie_edit', 10, 2 );
 
