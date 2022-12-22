@@ -674,8 +674,8 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 }
 
 if(
-    (location.pathname.split("/")[2] == 'post.php' && getParameterByName('action') == 'edit') ||
-    (location.pathname.split("/")[2] == 'post-new.php' && getParameterByName('post_type') == 'twchr_streams')
+    (location.pathname.includes('post.php') && getParameterByName('action') == 'edit') ||
+    (location.pathname.includes('post-new.php') && getParameterByName('post_type') == 'twchr_streams')
 ){
    const btn_get_video = document.querySelector(".twchr_button_get_videos");
    const modal_get_video = document.querySelector(".twchr_modal_get_videos");

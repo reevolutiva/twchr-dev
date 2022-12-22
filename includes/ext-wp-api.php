@@ -48,9 +48,11 @@ function twchr_endpoint_cpt_register_streaming() {
     register_rest_route( 'twchr/v1', 'twchr_get_streaming', array(
         'methods'  => 'GET',
         'callback' => 'twchr_endpoint_cpt_register_callback_streaming',
+        /*
         'permission_callback' => function(){
             return current_user_can( 'read' );
         }
+        */
     ) );
 }
 add_action( 'rest_api_init', 'twchr_endpoint_cpt_register_streaming' );
