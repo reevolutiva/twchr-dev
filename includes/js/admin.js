@@ -277,7 +277,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
             if(pos != 'not found'){
                 const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
                 let titulo = data.title;
-                twchrFetchGet(tchr_vars_admin.site_url+'/wp-json/twchr/v1/twchr_get_streaming',(i)=>{
+                twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming',(i)=>{
                     // Pregunto si este video ya existe
                     i.some(it => it.title == titulo) ? titulo = titulo+" (Duplicate)" : titulo = titulo; 
                     GSCJS.queryOnly("#titlewrap label").classList.add('screen-reader-text');
@@ -367,6 +367,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 twchr_card_header_menu[0].classList.remove("active");
                 twchr_card_header_menu[0].classList.add("diactive");
                 twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+                document.querySelector(".twchr_custom_card--contain").style.height = "3cm";
   
                 if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
                 if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
@@ -386,7 +387,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
         const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
           
-        twchrFetchGet(tchr_vars_admin.site_url + "/wp-json/twchr/v1/twchr_get_serie",
+        twchrFetchGet(tchr_vars_admin.wp_api_route+"twchr/v1/twchr_get_serie",
             (res) => {
                 res.forEach(item =>{
                     const option = `<option value="${item.term_id}">${item.name+" - "+item.term_id}</option>`;
@@ -577,7 +578,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
     }
 
-    const url = tchr_vars_admin.site_url+'/wp-json/twchr/v1/twchr_get_serie';
+    const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
     getResponse(url);
 
     const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
@@ -733,7 +734,7 @@ if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 
         modal.innerHTML += Content;
         
         // Me comunico con la API de wordpress
-        twchrFetchGet(tchr_vars_admin.site_url+'/wp-json/twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
+        twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
 
         function twchr_verification_videos(WpData){
             const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
