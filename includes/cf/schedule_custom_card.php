@@ -27,4 +27,7 @@
             <?php require 'script_streaming_single.js';?>
         </script>
     </div>
-<?php endif; ?>
+<?php 
+    require_once 'schedule_card_previw_card.php';
+    endif; 
+?>

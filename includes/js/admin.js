@@ -312,34 +312,34 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     // Lleno Twchr card
     
     //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
     
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
     let card_img = postBox[8].value;
     card_img = card_img.replace("%{width}x%{height}","250x150");
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_header--img img").setAttribute('src',card_img);
+    GSCJS.queryOnly(".previw_card .twchr_card_header--img img").setAttribute('src',card_img);
   
-    GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
    
     twchrFetchGet(
         'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
         (element)=>{
             
             if(element.data){
-                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('on');
-                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Online';
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('on');
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Online';
             }else{
-                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").classList.add('failed');
-                GSCJS.queryOnly(".twchr_car_tab2 .twchr_card_body--status .item.status h3").textContent = 'Offline';    
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('failed');
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Offline';    
             }
 
-            const stream_isset = document.querySelectorAll('.twchr_car_tab2 .previw_card__status ul li span.value');         
+            const stream_isset = document.querySelectorAll('.previw_card .previw_card__status ul li span.value');         
 
             const stream_isset_array = [];
             for (let i = 0; i < stream_isset.length; i++) {
@@ -353,7 +353,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
             // Sí todos los campos de previw_card son undefined es porque no se ha asignado
             if (stream_isset_array.every(item => item === true)) {
-                document.querySelector('.twchr_car_tab2 .previw_card').style.display = 'none';
+                document.querySelector('.previw_card').parentElement.style.display = 'none';
                 twchr_card_header_menu[0].addEventListener('click', ()=>{
                     twchr_slide_card_row.style.transform = 'translateX(0%)';
                 });
