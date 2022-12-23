@@ -1,4 +1,4 @@
-=== Manage Twitch Account. Import Streamings & VOD and Promote your Channel - Twitcher ===
+=== Manage Twitch Account - Import Streamings & VOD and Promote your Channel - Twitcher.pro ===
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
