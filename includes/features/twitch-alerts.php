@@ -29,12 +29,12 @@ function twchr_alert_import() {
 	);
 
 	if ( isset( $_POST['twchr-alert__anchor__null_videos_close'] ) && POST['twchr-alert__anchor__null_videos_close'] == true ) {
-		update_option( 'twchr_setInstaled', 4, '' );
+		update_option( 'twchr_set_instaled', 4, '' );
 		twchr_javaScript_redirect( TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams' );
 	}
 
 	// Si el numero de streamings creados es de 0.
-	if ( $num_streamigs == 0 && get_option( 'twchr_setInstaled' ) == 3 && twchr_is_ssl_secure() && ($_GET['post_type'] == 'twchr_streams') || str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' )) {
+	if ( $num_streamigs == 0 && get_option( 'twchr_set_instaled' ) == 3 && twchr_is_ssl_secure() && ($_GET['post_type'] == 'twchr_streams') || str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' )) {
 		?>
 		<section class="twchr-alert">
 			<h3 class="twchr-alert__title"><?php _e( 'It seems you havn’t imported or created any video already. ', 'twitcher' ); ?></h3>
@@ -100,7 +100,7 @@ add_action( 'all_admin_notices', 'twchr_alert_ssl' );
  *  - plugins.php
  *
  *  Si los contiene y setInstaled es igual o menos a 1 y aun no se ha completado
- * la instalacion no se ha realizadio es decir twchr_setInstaled
+ * la instalacion no se ha realizadio es decir twchr_set_instaled
  **/
 function twchr_alert_setup() {
 	$data_url1 = str_contains( $_SERVER['REQUEST_URI'], 'post_type=twchr_streams' );
@@ -108,7 +108,7 @@ function twchr_alert_setup() {
 
 	if ( ! ( isset( $_GET['page'] ) && $_GET['page'] === 'twchr_help' && isset( $_GET['setUpPage'] ) && $_GET['setUpPage'] == true ) ) :
 		if ( $data_url1 || $data_url2 ) :
-			if ( get_option( 'twchr_setInstaled' ) <= 1 || get_option( 'twchr_setInstaled' ) == false ) :
+			if ( get_option( 'twchr_set_instaled' ) <= 1 || get_option( 'twchr_set_instaled' ) == false ) :
 				?>
 					<section class="twchr-alert">
 						<img src="<?php echo TWCHR_URL_ASSETS; ?>/warning.png" alt="">

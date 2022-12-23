@@ -6,7 +6,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 if ( get_option( 'twchr_delete_all' ) == 1 ) {
 	delete_option( 'twchr_keys' );
 	delete_option( 'twchr_app_token' );
-	delete_option( 'twchr_setInstaled' );
+	delete_option( 'twchr_set_instaled' );
 	delete_option( 'twchr_data_broadcaster' );
 	delete_option( 'twchr_delete_all' );
 	delete_option( 'twchr_share_permissions' );

@@ -1,12 +1,12 @@
 <?php
 
 if ( isset( $_GET['clearAll'] ) ) {
-	delete_option( 'twchr_setInstaled' );
+	delete_option( 'twchr_set_instaled' );
 	delete_option( 'twchr_keys' );
 	delete_option( 'twchr_app_token' );
 	delete_option( 'twchr_data_broadcaster' );
 }
-		add_option( 'twchr_setInstaled', 1, '', true );
+		add_option( 'twchr_set_instaled', 1, '', true );
 
 		$twchrKeysJSON = get_option( 'twchr_keys' );
 		$clientId = $twchrKeysJSON != false ? json_decode( $twchrKeysJSON )->{'client-id'} : '';

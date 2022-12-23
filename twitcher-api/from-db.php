@@ -106,7 +106,7 @@ function instanse_comunicate_server() {
 		<?php
 			$share_permision = get_option( 'twchr_share_permissions' ) != false ? json_decode( get_option( 'twchr_share_permissions' ) ) : '';
 			$db = '';
-		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_setInstaled' ) == 3 ) {
+		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_set_instaled' ) == 3 ) {
 			$db = twchr_recopiate_data();
 		}
 

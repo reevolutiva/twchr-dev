@@ -5,10 +5,10 @@
 function twchr_redirect_setUp() {
 	// Si la url contiene 'plugins' retorna true
 	$dataUrl1 = str_contains( $_SERVER['REQUEST_URI'], 'post_type=twchr_streams&page=twchr-dashboard' );
-	// show_dump(twittcher_data_exist('twchr_setInstaled'));
-	// add_option('twchr_setInstaled',0,'',true );
-	// ¿Eciste dato en wp_options twchr_setInstaled?
-	$setInstaled = get_option( 'twchr_setInstaled' );
+	// show_dump(twittcher_data_exist('twchr_set_instaled'));
+	// add_option('twchr_set_instaled',0,'',true );
+	// ¿Eciste dato en wp_options twchr_set_instaled?
+	$setInstaled = get_option( 'twchr_set_instaled' );
 	// show_dump($setInstaled);
 	// echo "dentro de la funcion redirect_setUp";
 	if ( $setInstaled <= 1 || $setInstaled == false ) {

@@ -147,7 +147,7 @@ if ( ! twchr_is_ssl_secure() ) :
 				$listVideo_from_wp = twchr_get_stream();
 			}
 
-			if ( $listVideo_from_api === false && get_option( 'twchr_setInstaled' ) <= 3 ) {
+			if ( $listVideo_from_api === false && get_option( 'twchr_set_instaled' ) <= 3 ) {
 
 			} else {
 
@@ -166,7 +166,7 @@ if ( ! twchr_is_ssl_secure() ) :
 				echo 'card-blur'; }
 			?>
 			 twitch-result" >
-				<?php if ( $listVideo_from_api != false && get_option( 'twchr_setInstaled' ) >= 3 && get_option( 'twchr_data_broadcaster' ) != false ) : ?>
+				<?php if ( $listVideo_from_api != false && get_option( 'twchr_set_instaled' ) >= 3 && get_option( 'twchr_data_broadcaster' ) != false ) : ?>
 				<table>
 					<tbody>
 						<tr>
@@ -201,8 +201,8 @@ if ( ! twchr_is_ssl_secure() ) :
 				</table>
 					<?php
 				endif;
-				if ( get_option( 'twchr_setInstaled' ) <= 3 ) :
-					$setInstaled = get_option( 'twchr_setInstaled' );
+				if ( get_option( 'twchr_set_instaled' ) <= 3 ) :
+					$setInstaled = get_option( 'twchr_set_instaled' );
 					if ( $setInstaled >= 3 && $listVideo_from_api === false ) {
 						$error = twchr_twitch_video_get( $twch_data_app_token, $twch_data_prime->{'client-id'}, $broadcaster_id );
 						?>
@@ -256,7 +256,7 @@ if ( ! twchr_is_ssl_secure() ) :
 
 
 				// Paso 2 de la instalacion
-				update_option( 'twchr_setInstaled', 2, true );
+				update_option( 'twchr_set_instaled', 2, true );
 				echo "<script> location.href='" . TWCHR_HOME_URL . "/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true'; </script>";
 				die();
 
@@ -394,7 +394,7 @@ if ( ! twchr_is_ssl_secure() ) :
 							$json_array = json_encode( $array_keys );
 
 							update_option( 'twchr_keys', $json_array, true );
-							update_option( 'twchr_setInstaled', 3, true );
+							update_option( 'twchr_set_instaled', 3, true );
 
 
 							$urlRedirection = TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';

@@ -38,7 +38,7 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.173';
+	$version = 'beta.4.17';
 
 	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );

@@ -205,5 +205,5 @@ function twtchr_shortcode_tx_series() {
 
 	return $output;
 }
-  add_shortcode( 'twchr_tw_list_series', 'twtchr_shortcode_tx_series' );
+  add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
 
