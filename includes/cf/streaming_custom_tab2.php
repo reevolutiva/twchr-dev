@@ -4,10 +4,11 @@
 		$data_broadcaster = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 		$broadcaster_id = $data_broadcaster->{'data'}[0]->{'id'};
 		$twch_data_app_token = get_option( 'twchr_app_token' );
-		// domain.net/wp-admin/post-new.php
-		// Divide la url por sus "/" y escoje el ultimo item
-		$dataUrl = sanitize_url( $_SERVER['REQUEST_URI'] );
-		$dataUrl = explode( '/', $dataUrl )[2];
+		// domain.net/wp-admin/post-new.php.
+		// Divide la url por sus "/" y escoje el ultimo item.
+		// FIXME: sanitize_url es una funcion deprecada
+		$data_url = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$data_url = explode( '/', $data_url )[2];
 
 	?>
 			<style>

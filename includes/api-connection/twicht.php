@@ -32,9 +32,9 @@ function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_i
 	// codigo para accionar segun la respuesta de la api.
 	switch ( $response_response['code'] ) {
 		case 200:
-			$allData = $response_body->{'data'};
+			$all_data = $response_body->{'data'};
 			return array(
-				'allData' => $allData,
+				'allData' => $all_data,
 				'status' => 200,
 				'message' => __( 'Successfully updated serie.', 'twitcher' ),
 			);
@@ -103,9 +103,9 @@ function twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo = fa
 		// codigo para accionar segun la respuesta de la api.
 		switch ( $response_response['code'] ) {
 			case 204:
-				$allData = $response_body->{'data'};
+				$all_data = $response_body->{'data'};
 				return array(
-					'allData' => $allData,
+					'allData' => $all_data,
 					'status' => 204,
 					'message' => __( 'Successfully updated serie.', 'twitcher' ),
 				);
@@ -198,7 +198,7 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 
 	// GET CREDENTIALS.
 	$twch_data_prime = json_decode( get_option( 'twchr_keys', false ) );
-	$tokenValidate = $twch_data_prime->{'user_token'};
+	$token_validate = $twch_data_prime->{'user_token'};
 	$client_id = $twch_data_prime->{'client-id'};
 
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
@@ -215,7 +215,7 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 
 	$args = array(
 		'headers' => array(
-			'authorization' => 'Bearer ' . $tokenValidate,
+			'authorization' => 'Bearer ' . $token_validate,
 			'client-id' => $client_id,
 		),
 		'body' => $body,
@@ -230,10 +230,10 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 	// codigo para accionar segun la respuesta de la api.
 	switch ( $response_response['code'] ) {
 		case 200:
-			$allData = $response_body->{'data'};
+			$all_data = $response_body->{'data'};
 
 			return array(
-				'allData' => $allData,
+				'allData' => $all_data,
 				'status' => 200,
 				'message' => __( 'successfully created series', 'twitcher' ),
 			);

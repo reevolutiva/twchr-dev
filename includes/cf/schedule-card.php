@@ -1,4 +1,9 @@
 <?php
+/**
+ * Renderizo twchr_card
+ *
+ * @return void
+ */
 function twchr_cf_schedule__card() {
 	$post_id = get_the_id();
 	$term_serie = wp_get_post_terms( $post_id, 'serie' );
@@ -26,7 +31,7 @@ function twchr_cf_schedule__card() {
 
 	$title = isset( $values['twchr_schedule_card_input--title'] ) ? $values['twchr_schedule_card_input--title'][0] : '';
 	$category = isset( $values['twchr_schedule_card_input--category'] ) ? $values['twchr_schedule_card_input--category'][0] : '';
-	$dateTime = isset( $values['twchr_schedule_card_input--dateTime'] ) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
+	$date_time = isset( $values['twchr_schedule_card_input--dateTime'] ) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
 	$twchr_dateTime_slot = isset( $values['twchr_dateTime_slot'] ) ? $values['twchr_dateTime_slot'][0] : '';
 	$duration = isset( $values['twchr_schedule_card_input--duration'] ) ? $values['twchr_schedule_card_input--duration'][0] : '';
 
@@ -38,6 +43,12 @@ function twchr_cf_schedule__card() {
 
 add_action( 'edit_form_after_title', 'twchr_cf_schedule__card' );
 
+/**
+ * Guardo los custom fields que provienene de twitchr_card
+ *
+ * @param [type] $post_id
+ * @return void
+ */
 function twchr_cf_schedule__card__metadata_save( $post_id ) {
 	/*
 	Antes de guardar la información, necesito verificar tres cosas:
@@ -51,41 +62,40 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 
 	$allowed = array();
 
-	$to_api_Title = '';
-	$to_api_DateTime = '';
-	$to_api_IsRecurring = '';
-	$to_api_Duration = '';
+	$to_api_title = '';
+	$to_api_date_time = '';
+	$to_api_is_recurring = '';
+	$to_api_duration = '';
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--is_recurrig' ) ) {
-		$to_api_IsRecurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
-		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', $to_api_IsRecurring );
+		$to_api_is_recurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
+		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', $to_api_is_recurring );
 	} else {
-		// @jere: Evaluar If $is_recurring = => Check If $is_recurring = true => Check If $is_recurring = false => Uncheck
-		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', 'off' );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', '' );
 	}
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--title' ) ) {
-		$to_api_Title = wp_kses( $_POST['twchr_schedule_card_input--title'], $allowed );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $to_api_Title );
+		$to_api_title = wp_kses( $_POST['twchr_schedule_card_input--title'], $allowed );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $to_api_title );
 	}
 
 	// Si API IS RECURRING
 	// El titulo sera serie name
-	if ( $to_api_IsRecurring && twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__name' ) ) {
-		$to_api_Title = wp_kses( $_POST['twchr_schedule_card_input--serie__name'], $allowed );
+	if ( $to_api_is_recurring && twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__name' ) ) {
+		$to_api_title = wp_kses( $_POST['twchr_schedule_card_input--serie__name'], $allowed );
 	}
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--dateTime' ) ) {
 
-		$dateTime_raw = sanitize_text_field( $_POST['twchr_schedule_card_input--dateTime'] );
-		$dateTime_stg = strtotime( $dateTime_raw );
-		$to_api_DateTime = date( DateTimeInterface::RFC3339, $dateTime_stg );
+		$date_time_raw = sanitize_text_field( $_POST['twchr_schedule_card_input--dateTime'] );
+		$date_time_stg = strtotime( $date_time_raw );
+		$to_api_date_time = date( DateTimeInterface::RFC3339, $date_time_stg );
 
-		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $to_api_DateTime );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $to_api_date_time );
 	}
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--duration' ) ) {
-		$to_api_Duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $to_api_Duration );
+		$to_api_duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $to_api_duration );
 	}
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__id' ) ) {
@@ -117,12 +127,12 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 
 		$id = (int) $response['term_id'];
 
-		// Creo stream relacionado
+		// Creo stream relacionado.
 		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 	}
 
-	if ( $to_api_IsRecurring == false && isset( $to_api_Title ) && isset( $to_api_DateTime ) && isset( $cat_twitch_id ) && isset( $to_api_Duration ) ) {
-		$twch_res = twtchr_twitch_schedule_segment_create( $post_id, $to_api_Title, $to_api_DateTime, $cat_twitch_id, $to_api_Duration, false );
+	if ( $to_api_is_recurring == false && isset( $to_api_title ) && isset( $to_api_date_time ) && isset( $cat_twitch_id ) && isset( $to_api_duration ) ) {
+		$twch_res = twtchr_twitch_schedule_segment_create( $post_id, $to_api_title, $to_api_date_time, $cat_twitch_id, $to_api_duration, false );
 
 		if ( isset( $twch_res->error ) ) {
 
@@ -131,8 +141,8 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 			update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
 		}
 
-		$allData = json_encode( $twch_res );
-		update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch', $allData );
+		$all_data = json_encode( $twch_res );
+		update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch', $all_data );
 
 	} else {
 		update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch', '' );

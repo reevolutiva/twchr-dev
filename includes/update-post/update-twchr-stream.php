@@ -1,5 +1,27 @@
 <?php
-
+/**
+ * actualizo un cpt streaming
+ *
+ * @param [type] $title
+ * @param [type] $id
+ * @param [type] $create_at
+ * @param [type] $description
+ * @param [type] $duration
+ * @param [type] $api_languaje
+ * @param [type] $muted_segment
+ * @param [type] $published_at
+ * @param [type] $stream_id
+ * @param [type] $thumbnail_url
+ * @param [type] $type
+ * @param [type] $url
+ * @param [type] $user_id
+ * @param [type] $user_login
+ * @param [type] $user_name
+ * @param [type] $view_count
+ * @param [type] $viewble
+ * @param integer $author
+ * @return void
+ */
 function twitcher_update_cpt( $title, $id, $create_at, $description, $duration, $api_languaje, $muted_segment, $published_at, $stream_id, $thumbnail_url, $type, $url, $user_id, $user_login, $user_name, $view_count, $viewble, $author = 1 ) {
 	$postarr = array(
 		'post_title' => $title,

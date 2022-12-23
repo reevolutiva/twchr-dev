@@ -1,5 +1,10 @@
 <?php
-// Retorna true si $data existe en wp_options
+/**
+ * Retorna true si $data existe en wp_options
+ *
+ * @param [type] $data
+ * @return void
+ */
 function twittcher_data_exist( $data ) {
 	if ( get_option( $data, false ) != false ) {
 		return true;
@@ -8,7 +13,14 @@ function twittcher_data_exist( $data ) {
 	}
 }
 
-	// Si existe un dato en BDD me lo devuelves
+/**
+ * Si existe un dato en BDD me lo devuelves
+ *
+ * @param [type] $table
+ * @param [type] $key
+ * @param [type] $data
+ * @return void
+ */
 function twittcher_getData( $table, $key, $data ) {
 	global $wpdb;
 	$sql = "SELECT * FROM $table WHERE meta_key='$key' AND meta_value='$data'";
@@ -21,7 +33,13 @@ function twittcher_getData( $table, $key, $data ) {
 	}
 }
 
-	// Guarda $client_secret y $clientId en wp_options
+/**
+ * Guarda $client_secret y $clientId en wp_options
+ *
+ * @param [type] $client_secret
+ * @param [type] $clientId
+ * @return void
+ */
 function fronted_to_db( $client_secret, $clientId ) {
 	if ( twittcher_data_exist( 'twchr_keys' ) == false ) {
 		$array_keys = array(
@@ -41,9 +59,14 @@ function fronted_to_db( $client_secret, $clientId ) {
 	}
 }
 
-	// Guarda appToken en wp_option
+/**
+ * Guarda appToken en wp_option
+ *
+ * @param [type] $token
+ * @return void
+ */
 function twchr_save_app_token( $token ) {
-	// show_dump($token);
+	
 	if ( get_option( 'twchr_app_token' ) != false || get_option( 'twchr_app_token' ) == '' ) {
 		update_option( 'twchr_app_token', $token );
 
