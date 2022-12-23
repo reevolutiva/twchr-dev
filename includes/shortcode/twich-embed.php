@@ -50,6 +50,105 @@ function twchr_shortcode_tw_video( $atts ) {
 
 }
 add_shortcode( 'twchr_tw_video', 'twchr_shortcode_tw_video' );
+/**
+ * Est funcion retorna un iframe con la transmision en vivo de tu canal de twitch
+ *	[twchr_tw_video_live host="reevolutiva"]
+ * @param [type] $atts
+ * @return void
+ */
+function twchr_shortcode_tw_video_live( $atts ) {
+	
+	// Attributes.
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			
+			$url = "https://player.twitch.tv/?autoplay=true&channel=".$atts['host']."&parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twchr_tw_video_live', 'twchr_shortcode_tw_video_live' );
+
+
+/**
+ * Esta funcion retorna un iframe con la trasmicion en vivo de tu canal
+ * de twitch y un iframe con el chat en vivo de ese canal
+ *	[twchr_tw_video_live_chat host="reevolutiva"]
+ * @param [type] $atts
+ * @return void
+ */
+function twchr_shortcode_tw_video_live_chat( $atts ) {
+	
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			$url = "https://player.twitch.tv/?autoplay=true&channel=".$atts['host']."&parent=".$host;
+			$urlChat = "https://www.twitch.tv/embed/".$atts['host']."/chat?parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+						<iframe src=".$urlChat." width='".($atts['ancho'] / 2)."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twchr_tw_video_live_chat', 'twchr_shortcode_tw_video_live_chat' );
+
+
+/**
+ * Esta funicion retorna un iframe con el chat en vivo de tu canal de twitch
+ * [twchr_tw_chat host="reevolutiva"]
+ * @param [type] $atts
+ * @return void
+ */
+function twchr_shortcode_tw_chat( $atts ) {
+	
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+            'ancho' => 800,
+            'alto' => 400
+		),
+		$atts
+	);
+    $atts_ouput = json_encode($atts);
+			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
+			$urlChat = "https://www.twitch.tv/embed/".$atts['host']."/chat?parent=".$host;
+			$idClass = 'twich-frame'.rand();
+			$html = "<twichcontainer id='".$idClass."'>
+						<iframe src=".$urlChat." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+					</twichcontainer>";
+			
+			return $html;
+
+}
+add_shortcode( 'twchr_tw_chat', 'twchr_shortcode_tw_chat' );
+
+
+
+
 
 
 /**
