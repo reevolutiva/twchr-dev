@@ -27,7 +27,7 @@ function twchr_delete_schedule_by_cpt( $post_id ) {
 		foreach ( $delete as $key => $value ) {
 			$url_list .= '&' . $key . '=' . $value;
 		}
-		echo "<script>location.href='" . $url_main . $url_list . "';</script>";
+		echo "<script>".esc_js("location.href='" . $url_main . $url_list . "';")."</script>";
 		die();
 	}
 
@@ -37,7 +37,7 @@ add_action( 'wp_trash_post', 'twchr_delete_schedule_by_cpt' );
 
 
 /**
- * Esta funcion elimina un schedule segment desde un custom term
+ * Esta funcion elimina un schedule segment desde un custom term.
  *
  * @param [type] $term_id
  * @return void

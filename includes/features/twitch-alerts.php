@@ -1,15 +1,15 @@
 <?php
-// TODO:Definir la ruta donde irán los menús e interfases y mover ahí
-
-
-/*
-	1- Alerta para cuando aun no congiguras el plugin
-		twchr_alert_setup
-	2- Alerta para cuando no estas con protocolo SSL
-		twchr_alert_ssl
-	3- Alerta para cuando aun no has importado o creado ningun streaming
-		twchr_alert_import
-*/
+/**
+ * En este archivo declaro las funciones que imprimiran en pantalla 
+ * las twitcher alert
+ * 
+ * 1- Alerta para cuando aun no congiguras el plugin
+ *		twchr_alert_setup
+ * 2- Alerta para cuando no estas con protocolo SSL
+ *		twchr_alert_ssl
+ * 3- Alerta para cuando aun no has importado o creado ningun streaming
+ *		twchr_alert_import
+**/
 
 /**
  * Cuenta la cantidad de custom-post-type twchr_streams
@@ -17,7 +17,7 @@
  **/
 function twchr_alert_import() {
 
-	// Cuenta cuantos streamings han sido creados
+	// Cuenta cuantos streamings han sido creados.
 
 	$num_streamigs = COUNT(
 		get_posts(
@@ -33,7 +33,7 @@ function twchr_alert_import() {
 		twchr_javaScript_redirect( TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams' );
 	}
 
-	// Si el numero de streamings creados es de 0
+	// Si el numero de streamings creados es de 0.
 	if ( $num_streamigs == 0 && get_option( 'twchr_setInstaled' ) == 3 && twchr_is_ssl_secure() ) {
 		?>
 		<section class="twchr-alert">
@@ -96,18 +96,18 @@ add_action( 'all_admin_notices', 'twchr_alert_ssl' );
 
 /**
  * Pregunta si estamos la url contiene alguno de los siguientes strings
- *  1- post_type=twchr_streams
- *  2- plugins.php
+ *  - post_type=twchr_streams
+ *  - plugins.php
  *
  *  Si los contiene y setInstaled es igual o menos a 1 y aun no se ha completado
  * la instalacion no se ha realizadio es decir twchr_setInstaled
  **/
 function twchr_alert_setup() {
-	$dataUrl1 = str_contains( $_SERVER['REQUEST_URI'], 'post_type=twchr_streams' );
-	$dataUrl2 = str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' );
+	$data_url1 = str_contains( $_SERVER['REQUEST_URI'], 'post_type=twchr_streams' );
+	$data_url2 = str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' );
 
 	if ( ! ( isset( $_GET['page'] ) && $_GET['page'] === 'twchr_help' && isset( $_GET['setUpPage'] ) && $_GET['setUpPage'] == true ) ) :
-		if ( $dataUrl1 || $dataUrl2 ) :
+		if ( $data_url1 || $data_url2 ) :
 			if ( get_option( 'twchr_setInstaled' ) <= 1 || get_option( 'twchr_setInstaled' ) == false ) :
 				?>
 					<section class="twchr-alert">
@@ -122,7 +122,11 @@ function twchr_alert_setup() {
 
 }
 
-// Funcion que retorna true si la pagina actual esta corriendo con el protocolo SSL
+/**
+ * Funcion que retorna true si la pagina actual esta corriendo con el protocolo SSL
+ *
+ * @return void
+ */ 
 function twchr_is_ssl_secure() {
 	$res = $_SERVER['HTTPS'] == 'on';
 	return $res;
