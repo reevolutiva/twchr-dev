@@ -71,6 +71,16 @@ function twchr_recopiate_data() {
 	return $pakage;
 }
 
+/**
+ * Genera un fomulario HTML con toda la data de wordpress
+ * que posteriormente sera enviado al servidor twitcher server
+ * tomando el valor twchr_log en donde si twchr_log es 0 el evento sera
+ * activacion de plugin y si es 1 el evento sera 1
+ * 
+ * TODO: Modificar esta funcion para que use wp_remote_post
+ *
+ * @return void
+ */
 function instanse_comunicate_server() {
 
 	$case = get_option( 'twchr_log' );
