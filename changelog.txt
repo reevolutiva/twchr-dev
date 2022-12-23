@@ -1,6 +1,7 @@
 == Changelog ==
 
 ==0.3==
+
 * Redesigned schedule card
 * Improved series integration with Twitch Calendar
 * Improved code
@@ -24,6 +25,7 @@
 
 = 0.1 =
 * Public Beta Released
+
 
 == Upgrade Notice ==
 
@@ -50,4 +52,3 @@
 * Asign Twitch video to post
 * Easy Install
 * Api Helix
- 
