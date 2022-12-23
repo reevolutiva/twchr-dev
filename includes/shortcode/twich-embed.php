@@ -1,8 +1,27 @@
 <?php
-// Add Shortcode.
+/**
+ *  En este archivo declaro los shorcodes
+ * que retornaran un iframe con una transmision en vivo o grabada
+ * en Twitch o en YouTube
+ */
+
+
+/**
+ * Retornona un iframe con el reproductor de twich
+ * 
+ * [twchr_tw_video host="reevolutiva" video="46325675668" ancho="800" alto="400"]
+ * 
+ * - video: id del video
+ * - host: el dominio de la web desde donde se incursta el iframe
+ * - ancho: el ancho del iframe en px
+ * - alto: el alto del iframe en px
+ * 
+ * @param [type] $atts
+ * @return void
+ */
 function twchr_shortcode_tw_video( $atts ) {
 
-	// Attributes.
+	//Attributes.
 	$atts = shortcode_atts(
 		array(
 			'host' => '#',
@@ -31,31 +50,39 @@ function twchr_shortcode_tw_video( $atts ) {
 
 }
 add_shortcode( 'twchr_tw_video', 'twchr_shortcode_tw_video' );
-/** [twchr_tw_video host="reevolutiva" video="46325675668" ancho="800" alto="400"] **/
 
+
+/**
+ * Retornona un iframe con el reproductor de youtube
+ * 
+ * [twchr_yt_video_embed ancho="800" alto="400" src="http://www.youtube.com/watch"]
+ * 
+ * - ancho: el ancho del iframe en px
+ * - alto: el alto del iframe en px
+ * 
+ * @param [type] $atts
+ * @return void
+ */
 function twchr_shortcode_yt_video_embed( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'ancho' => 800,
 			'alto' => 400,
+			'src' => '#'
 		),
 		$atts
 	);
 
 	$atts_ouput = json_encode( $atts );
-
-	$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
-	$url = 'https://player.twitch.tv/?autoplay=true&chanel=' . $atts['host'] . '&height=' . $atts['alto'] . '&parent=' . $host . '&referrer=https%3A%2F%2F' . $host . '%2Ftest%2F&video=' . $atts['video'] . '&width=' . $atts['ancho'];
 	$id_class = 'twich-frame' . rand();
 	$html = "<twichcontainer id='" . $id_class . "'>
-				<iframe src=" . $url . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
-	
+				<iframe width='" . $atts['ancho'] . "' height='" . $atts['alto'] . " src='".$atts['src']."' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
 			</twichcontainer>";
 	return $html;
 }
 
 add_shortcode( 'twchr_yt_video_embed', 'twchr_shortcode_yt_video_embed' );
-/** [twchr_yt_video_embed ancho="800" alto="400"] **/
+
 
 
 // Shorcode para listar todas las series.
