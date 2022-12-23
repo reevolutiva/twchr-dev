@@ -1,5 +1,10 @@
 <?php
 	/**
+	 * En este archivo van todas las funciones necesarias para enviar las estaditicas de wordpress a 
+	 * twitcher server
+	 */
+
+	/**
 	 *   Esta funcion debe ejecturase cuando se el plugin se activa y cuando se desactriva
 	 *   ** DATA A RECOPILAR **
 	 *   - url

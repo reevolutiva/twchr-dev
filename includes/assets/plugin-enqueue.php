@@ -1,7 +1,13 @@
 <?php
+/**
+ *  En este archivo declaro todas las funciones que encolan archivos css,js,ttf, etc.
+ **/
 
-add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
 
+/**
+ * Llamo  a todas las variates de fuente comfortaa que seran utilizadas en el plugin.
+ * @return void
+ */
 function twchr_fonts() {
 	?>
 	<style>
@@ -24,20 +30,26 @@ function twchr_fonts() {
 	<?php
 }
 
+add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
 
+
+/**
+ * Encolo los archivos JavaScript y CSS que necesitara el plugin para funcionar.
+ * @return void
+ */
 function twchr_admin_js() {
 	$version = 'beta.4.173';
 
-	// Estilos
+	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
 
-	// Scripts
+	// Scripts.
 	wp_enqueue_script( 'twchr_gscjs', TWCHR_URL . 'includes/js/gscjs.js', array(), $version, false );
 
-	$setInstaled = get_option( 'twchr_setInstaled' );
+	$set_instaled = get_option( 'twchr_set_instaled' );
 	// Usamos esta función para que coloque los valores inline
-	if ( $setInstaled >= 3 ) {
-		// Definimos las variables WordPress a enviar dentro de un array
+	if ( $set_instaled >= 3 ) {
+		// Definimos las variables WordPress a enviar dentro de un array.
 		$params = array(
 			'twchr_keys' => json_decode( get_option( 'twchr_keys' ) ),
 			'twchr_app_token' => get_option( 'twchr_app_token' ),

@@ -1,5 +1,5 @@
 <?php
-/*
+/** 
 * Plugin Name: Manage Twitch Account: Easy API Integration
 * Plugin URI: twitcher.pro
 * Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
@@ -9,7 +9,7 @@
 * License: GPL3
 * Text Domain: twitcher
 * Domain Path: /languages
-*/
+**/
 
 define( 'TWCHR_HOME_URL', site_url() );
 define( 'TWCHR_ADMIN_URL', site_url() . '/wp-admin/' );
