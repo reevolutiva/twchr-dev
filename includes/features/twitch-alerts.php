@@ -28,13 +28,13 @@ function twchr_alert_import() {
 		)
 	);
 
-	if ( isset( $_GET['twchr-alert__anchor__null_videos_close'] ) && $_GET['twchr-alert__anchor__null_videos_close'] == true ) {
+	if ( isset( $_POST['twchr-alert__anchor__null_videos_close'] ) && POST['twchr-alert__anchor__null_videos_close'] == true ) {
 		update_option( 'twchr_setInstaled', 4, '' );
 		twchr_javaScript_redirect( TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams' );
 	}
 
 	// Si el numero de streamings creados es de 0.
-	if ( $num_streamigs == 0 && get_option( 'twchr_setInstaled' ) == 3 && twchr_is_ssl_secure() ) {
+	if ( $num_streamigs == 0 && get_option( 'twchr_setInstaled' ) == 3 && twchr_is_ssl_secure() && ($_GET['post_type'] == 'twchr_streams') || str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' )) {
 		?>
 		<section class="twchr-alert">
 			<h3 class="twchr-alert__title"><?php _e( 'It seems you havn’t imported or created any video already. ', 'twitcher' ); ?></h3>
