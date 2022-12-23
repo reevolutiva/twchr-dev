@@ -72,13 +72,13 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 
 == Changelog ==
 ==0.3==
-* Redisigned schedule card
-* Improoved Series integration with Twitch Calendar
-* Improoved code
-* Bug correction
+* Redesigned schedule card
+* Improved series integration with Twitch Calendar
+* Improved code
+* Bug fixes
 
 == Upgrade Notice ==
 ==0.3==
-* All new schedule card for better streaming and series management
-* Better Twitch calendar integration. Create, delete and modify schedule segments direct from your WordPress Dashboard.
-* New short codes for embed anything <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* New schedule card for better streaming and series management
+* Improved Twitch calendar integration. Create, delete, and modify schedule segments directly from your WordPress dashboard.
+* New shortcode for embedding series: [twtchr_list_series] <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
