@@ -186,24 +186,24 @@ add_shortcode( 'twchr_yt_video_embed', 'twchr_shortcode_yt_video_embed' );
 
 // Shorcode para listar todas las series.
 function twtchr_shortcode_tx_series() {
-	$series = get_terms(
-		array(
-			'taxonomy' => 'serie',
-			'hide_empty' => false,
-		)
-	);
+	$series = get_terms( array(
+	  'taxonomy' => 'serie',
+	  'hide_empty' => false
+	) );
 
 	if ( ! empty( $series ) && ! is_wp_error( $series ) ) {
-		$output = '<ul>';
-		foreach ( $series as $serie ) {
-			$output .= '<li>' . $serie->name . '</li>';
-		}
-		$output .= '</ul>';
+	  $output = '<ul>';
+	  foreach ( $series as $serie ) {
+		$output .= '<li><a href="' . get_term_link( $serie )  . '">' . $serie->name . '</a></li>';
+	  }
+	  $output .= '</ul>';
 	} else {
-		$output = '<p>No hay series disponibles.</p>';
+	  $output = '<p>No hay series disponibles.</p>';
 	}
 
 	return $output;
-}
-  add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
+  }
 
+add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
+
+  
