@@ -88,21 +88,15 @@ function instanse_comunicate_server() {
 	$case = (int) $case;
 	$event = false;
 
-	switch ( $case ) {
-		case 0:
-			$event = 'activate';
-
-			break;
-		case 1:
-			$event = 'disactivate';
-
-			break;
-
-		default:
-			break;
+	if(0 === $case){
+		$event = 'activate';
 	}
-	if ( $event != false && ( $case == 0 || $case == 1 ) ) :
-		?>
+
+	if(1 === $case){
+		$event = 'disactivate';
+	}
+
+	if ( $event != false && ( $case == 0 || $case == 1 ) ) : ?>
 	<form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
 		<?php
 			$share_permision = get_option( 'twchr_share_permissions' ) != false ? json_decode( get_option( 'twchr_share_permissions' ) ) : '';
@@ -126,7 +120,7 @@ function instanse_comunicate_server() {
 			}
 			?>
 			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html( $event ); ?>">
-		<?php endif; ?>
+  <?php endif; ?>
 		</form>
 		<?php
 
@@ -151,6 +145,12 @@ function instanse_comunicate_server() {
 
 }
 
+/**
+ * Retrona un array con las series
+ * guardadas en la Base de datos
+ *
+ * @return void
+ */
 function twchr_get_schedule() {
 	$args = array(
 		'taxonomy' => 'serie',
