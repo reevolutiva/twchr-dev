@@ -876,19 +876,11 @@ if(location.pathname.includes('plugins.php')){
    
     disactive_link.setAttribute("src","#");
     disactive_link.addEventListener('click',(e)=>{
-        e.preventDefault();
-        const url = modal_disactive.querySelector("input[name='url-disactivate']").value;
-        const input_redirect = `<input type="hidden" name="twchr-to-server-redirect-disabled" value="${url}">`;
-        twchr_form_to_server.innerHTML = twchr_form_to_server.innerHTML + input_redirect;
-        GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
-        window.scrollTo(0,0);
+       
+        //const url = modal_disactive.querySelector("input[name='url-disactivate']").value;
+        //GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
+        //window.scrollTo(0,0);
         
     });
 
-    modal_disactive.querySelector("button").addEventListener("click",()=>{
-        const comments = modal_disactive.querySelector("textarea").value;
-        const input_comments = `<input type="hidden" name="twchr-to-server-redirect-comments" value="${comments}">`;
-        twchr_form_to_server.innerHTML = twchr_form_to_server.innerHTML + input_comments;
-        twchr_form_to_server.submit();
-    });
 }

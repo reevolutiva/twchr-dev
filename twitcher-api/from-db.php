@@ -92,6 +92,7 @@ function instanse_comunicate_server() {
 	/** Convierto $case de string a numero entero */
 	$case = (int) $case;
 	$event = false;
+	$share_permision = get_option( 'twchr_share_permissions' ) != false ? json_decode( get_option( 'twchr_share_permissions' ) ) : '';
 
 	if(0 === $case){
 		$event = 'activate';
@@ -101,53 +102,25 @@ function instanse_comunicate_server() {
 		$event = 'disactivate';
 	}
 
-	if ( $event != false && ( $case == 0 || $case == 1 ) ) : ?>
-	<form action="https://twitcher.pro/twch_server/twchr_get/" method="post" id="twchr-form-to-server">
-		<?php
-			$share_permision = get_option( 'twchr_share_permissions' ) != false ? json_decode( get_option( 'twchr_share_permissions' ) ) : '';
-			$db = '';
+	if ( $event != false && ( $case == 0 || $case == 1 ) ) {
+		$pakage = '';
 		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_set_instaled' ) == 3 ) {
-			$db = twchr_recopiate_data();
+			$pakage = twchr_recopiate_data();
 		}
 
-		if ( ! empty( $db ) ) :
-
-			foreach ( $db as $key => $value ) {
-				if ( is_array( $value ) || str_contains( $value, '{' ) || str_contains( $value, '}' ) ) {
-					$json = json_encode( $value );
-					$json = str_replace( '"', '\'', $json );
-				} else {
-					$json = $value;
-				}
-				?>
-					<input type="hidden" name="to-twitcher-server-<?php echo esc_html( $key ); ?>" value ="<?php echo esc_html( $json ); ?>">
-				<?
-			}
-			?>
-			<input type="hidden" name="to-twitcher-server-event" value="<?php echo esc_html( $event ); ?>">
-  <?php endif; ?>
-		</form>
-		<?php
-
-	endif;
-	if ( $case >= 0 ) {
-		?>
-		<script>
-			const twchr_form_to_server = document.querySelector("#twchr-form-to-server");
-			<?php
-			if ( $case == 0 ) {
-				update_option( 'twchr_log', 1 );
-				echo 'twchr_form_to_server.submit();';
-			}
-
-			?>
+		if ( ! empty( $db ) ) {
 			
+			array_push($pakage,['event' => $event]);
+			$args = array(
+				'method' => 'POST',
+				'body' => $pakage
+			  );
+			  
+			wp_remote_post('https://twitcher.pro/twch_server/twchr_get/', $args);
+		}
+
 			
-					
-		</script>
-		<?php
 	}
-
 }
 
 /**
