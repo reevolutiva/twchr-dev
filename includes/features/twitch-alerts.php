@@ -28,7 +28,7 @@ function twchr_alert_import() {
 		)
 	);
 
-	if ( isset( $_POST['twchr-alert__anchor__null_videos_close'] ) && POST['twchr-alert__anchor__null_videos_close'] == true ) {
+	if ( isset( $_GET['twchr-alert__anchor__null_videos_close'] ) && $_GET['twchr-alert__anchor__null_videos_close'] == true ) {
 		update_option( 'twchr_set_instaled', 4, '' );
 		twchr_javaScript_redirect( TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams' );
 	}

@@ -2,8 +2,8 @@
 function twchr_clipboard_include(){ ?>
 
     <script>
-    var btns = document.querySelectorAll('button');
-    var clipboard = new ClipboardJS(btns);
+    const twchr_btns = document.querySelectorAll('button.twchr_clipboard');
+    const twcjr_clipboard = new ClipboardJS(btns);
 
     clipboard.on('success', function(e) {
         console.log(e);
@@ -16,4 +16,4 @@ function twchr_clipboard_include(){ ?>
 <?php
 }
 
-add_action('shutdown ', 'twchr_clipboard_include');
+add_action('wp_footer', 'twchr_clipboard_include');
