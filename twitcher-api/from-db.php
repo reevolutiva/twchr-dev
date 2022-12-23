@@ -50,7 +50,7 @@ function twchr_recopiate_data() {
 	$user_quantity = COUNT( get_users() );
 	$template = get_option( 'template' );
 
-	$PAKAGE = array(
+	$pakage = array(
 		'url' => $url,
 		'wordpressversion' => $wordpress_version,
 		'php_version' => $php_version,
@@ -68,7 +68,7 @@ function twchr_recopiate_data() {
 		'user_login' => $user_login,
 	);
 
-	return $PAKAGE;
+	return $pakage;
 }
 
 function instanse_comunicate_server() {
