@@ -21,4 +21,4 @@ jobs:
         mv phpcs.phar /usr/local/bin/phpcs
     - name: Run PHP_CodeSniffer
       run: |
-        phpcs --report=WordPress-Core --standard=phpcs-report.xml .      
+        phpcs --report=WordPress-Core --standard=phpcs-report.xml
