@@ -26,8 +26,8 @@ function twchr_shortcode_tw_video( $atts ) {
 		array(
 			'host' => '#',
 			'video' => '#',
-			'ancho' => 800,
-			'alto' => 400,
+			'ancho' => '100%',
+			'alto' => '500px'
 		),
 		$atts
 	);
@@ -62,14 +62,14 @@ function twchr_shortcode_tw_video_live( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'host' => '#',
-            'ancho' => 800,
-            'alto' => 400
+            'ancho' => '100%',
+			'alto' => '500px'
 		),
 		$atts
 	);
     $atts_ouput = json_encode($atts);
 			$host = sanitize_text_field($_SERVER['SERVER_NAME']);
-			
+
 			$url = "https://player.twitch.tv/?autoplay=true&channel=".$atts['host']."&parent=".$host;
 			$idClass = 'twich-frame'.rand();
 			$html = "<twichcontainer id='".$idClass."'>
@@ -95,8 +95,8 @@ function twchr_shortcode_tw_video_live_chat( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'host' => '#',
-            'ancho' => 800,
-            'alto' => 400
+            'ancho' => 300,
+			'alto' => 500
 		),
 		$atts
 	);
@@ -106,7 +106,7 @@ function twchr_shortcode_tw_video_live_chat( $atts ) {
 			$urlChat = "https://www.twitch.tv/embed/".$atts['host']."/chat?parent=".$host;
 			$idClass = 'twich-frame'.rand();
 			$html = "<twichcontainer id='".$idClass."'>
-						<iframe src=".$url." width='".$atts['ancho']."' height='".$atts['alto']."'></iframe>
+						<iframe src=".$url." width='".$atts['ancho']."px' height='".$atts['alto']."px'></iframe>
 						<iframe src=".$urlChat." width='".($atts['ancho'] / 2)."' height='".$atts['alto']."'></iframe>
 					</twichcontainer>";
 			
@@ -128,8 +128,8 @@ function twchr_shortcode_tw_chat( $atts ) {
 	$atts = shortcode_atts(
 		array(
 			'host' => '#',
-            'ancho' => 800,
-            'alto' => 400
+            'ancho' => '100%',
+			'alto' => '500px'
 		),
 		$atts
 	);
@@ -165,18 +165,18 @@ add_shortcode( 'twchr_tw_chat', 'twchr_shortcode_tw_chat' );
 function twchr_shortcode_yt_video_embed( $atts ) {
 	$atts = shortcode_atts(
 		array(
-			'ancho' => 800,
-			'alto' => 400,
-			'src' => '#'
+			'ancho' => '100%',
+			'alto' => '500px',
+			'src_id' => '#'
 		),
 		$atts
 	);
-
+	$src_id = "https://www.youtube.com/embed/".$atts['src_id']."?feature=oembed";
 	$atts_ouput = json_encode( $atts );
 	$id_class = 'twich-frame' . rand();
-	$html = "<twichcontainer id='" . $id_class . "'>
-				<iframe width='" . $atts['ancho'] . "' height='" . $atts['alto'] . " src='".$atts['src']."' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-			</twichcontainer>";
+	$html = '<twichcontainer id="'. $id_class .'">
+				<iframe width="'.$atts['ancho'].'" height="'.$atts['alto'].'" src="'.$src_id.'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</twichcontainer>';
 	return $html;
 }
 
@@ -186,24 +186,24 @@ add_shortcode( 'twchr_yt_video_embed', 'twchr_shortcode_yt_video_embed' );
 
 // Shorcode para listar todas las series.
 function twtchr_shortcode_tx_series() {
-	$series = get_terms(
-		array(
-			'taxonomy' => 'serie',
-			'hide_empty' => false,
-		)
-	);
+	$series = get_terms( array(
+	  'taxonomy' => 'serie',
+	  'hide_empty' => false
+	) );
 
 	if ( ! empty( $series ) && ! is_wp_error( $series ) ) {
-		$output = '<ul>';
-		foreach ( $series as $serie ) {
-			$output .= '<li>' . $serie->name . '</li>';
-		}
-		$output .= '</ul>';
+	  $output = '<ul>';
+	  foreach ( $series as $serie ) {
+		$output .= '<li><a href="' . get_term_link( $serie )  . '">' . $serie->name . '</a></li>';
+	  }
+	  $output .= '</ul>';
 	} else {
-		$output = '<p>No hay series disponibles.</p>';
+	  $output = '<p>No hay series disponibles.</p>';
 	}
 
 	return $output;
-}
-  add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
+  }
 
+add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
+
+  
