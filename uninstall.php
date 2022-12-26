@@ -24,6 +24,6 @@ if ( get_option( 'twchr_delete_all' ) == 1 ) {
 	}
 }
 
-//HOLA GIO :)
+// HOLA GIO :)
 
 

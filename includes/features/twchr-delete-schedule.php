@@ -21,13 +21,13 @@ function twchr_delete_schedule_by_cpt( $post_id ) {
 	}
 
 	if ( $delete != null && $delete['status'] != 204 ) {
-		
+
 		$url_list = '';
 		$url_main = TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams';
 		foreach ( $delete as $key => $value ) {
 			$url_list .= '&' . $key . '=' . $value;
 		}
-		echo "<script>".esc_js("location.href='" . $url_main . $url_list . "';")."</script>";
+		echo '<script>' . esc_js( "location.href='" . $url_main . $url_list . "';" ) . '</script>';
 		die();
 	}
 
@@ -59,7 +59,7 @@ function twchr_delete_schedule_by_term( $term_id ) {
 			$schedule_id = $chapter->{'id'};
 			// Elimina schedule segment de twitch.tv.
 			twtchr_twitch_schedule_segment_delete( $schedule_id );
-			
+
 		}
 	}
 

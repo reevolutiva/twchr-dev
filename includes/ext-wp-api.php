@@ -8,17 +8,17 @@
  * Taxonomía Series
  * twchr_endpoint_tax
  * twchr_endpoint_tax_register_serie
-**/
- function twchr_endpoint_tax_register_serie() {
+ **/
+function twchr_endpoint_tax_register_serie() {
 	register_rest_route(
 		'twchr/v1',
 		'twchr_get_serie',
 		array(
 			'methods'  => WP_REST_Server::READABLE,
 			'callback' => 'twchr_endpoint_tax_register_callback_serie',
-		/** 
+		/**
 		'permission_callback' => function(){
-			return current_user_can( 'read' );
+		   return current_user_can( 'read' );
 		}
 		*/
 
@@ -55,7 +55,7 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 	return $response;
 }
 /**
- *  Fin Taxonomía Series 
+ *  Fin Taxonomía Series
  */
 
 /**

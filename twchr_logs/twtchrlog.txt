@@ -1,0 +1,1168 @@
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/from-db.php[0m
+-----------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 3 LINES[0m
+-----------------------------------------------------------------------------------------------------------------------------------------
+   5 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+ 105 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 105 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 105 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 128 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m
+     |       | (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher-api/twchr-twchrapi-controller.php[0m
+----------------------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+----------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/uninstall.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 27 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/twitcher.php[0m
+----------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------------
+ 12 | [31mERROR[0m | [1mMissing @package tag in file comment[0m
+    |       | (Squiz.Commenting.FileComment.MissingPackageTag)
+----------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/shortcode/twich-embed.php[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 25 ERRORS AFFECTING 24 LINES[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+   6 | [31mERROR[0m | [1mThere must be exactly one blank line after the file comment[0m (Squiz.Commenting.FileComment.SpacingAfterComment)
+   6 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+  19 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  20 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+  57 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  58 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+  75 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  76 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  91 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  92 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+  96 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 108 | [31mERROR[0m | [1mVariable "$urlChat" is not in valid snake_case format, try "$url_chat"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 109 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 110 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 112 | [31mERROR[0m | [1mVariable "$urlChat" is not in valid snake_case format, try "$url_chat"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 125 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 126 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 130 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 141 | [31mERROR[0m | [1mVariable "$urlChat" is not in valid snake_case format, try "$url_chat"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 142 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 143 | [31mERROR[0m | [1mVariable "$idClass" is not in valid snake_case format, try "$id_class"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 144 | [31mERROR[0m | [1mVariable "$urlChat" is not in valid snake_case format, try "$url_chat"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 165 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 166 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 191 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/assets/plugin-enqueue.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 3 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  4 | [31mERROR[0m | [1mThere must be exactly one blank line after the file comment[0m (Squiz.Commenting.FileComment.SpacingAfterComment)
+  4 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+ 52 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 72 | [31mERROR[0m | [1mMissing doc comment for function twchr_front_scripts()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/ext-wp-api.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 6 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  4 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+ 28 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 33 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 34 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m
+    |       | (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 86 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 87 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m
+    |       | (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr-delete-schedule.php[0m
+-----------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 5 LINES[0m
+-----------------------------------------------------------------------------------------------------------------
+  4 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+ 10 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 16 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 23 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 23 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 42 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+-----------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr_shorcode_twitch_status.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-shorcode-twitch-status.php, but found
+   |       | twchr_shorcode_twitch_status.php.[0m (WordPress.Files.FileName.NotHyphenatedLowercase)
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 3 | [31mERROR[0m | [1mThere must be no blank lines after the function comment[0m (Squiz.Commenting.FunctionComment.SpacingAfter)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twitch-alerts.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 24 ERRORS AFFECTING 20 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  12 | [31mERROR[0m | [1mMissing @package tag in file comment[0m (Squiz.Commenting.FileComment.MissingPackageTag)
+  31 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  37 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  37 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  40 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  42 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  43 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  69 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  73 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  74 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  76 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'str_replace'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  76 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  77 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  78 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  84 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  86 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 109 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 109 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 114 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 115 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 116 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 116 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 128 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 131 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-activate.php[0m
+-----------------------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+-----------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+-----------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-deactivate.php[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 3 LINES[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+ 3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+   |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twchr_clipboard.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected twchr-clipboard.php, but found twchr_clipboard.php.[0m
+   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 2 | [31mERROR[0m | [1mMissing doc comment for function twchr_clipboard_include()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/features/twtchr-easy-set-up.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 6 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  9 | [31mERROR[0m | [1mFunction name "twchr_redirect_setUp" is not in snake case format, try "twchr_redirect_set_up"[0m
+    |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 16 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 17 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 20 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+    |       | '"<script>location.href='$url'</script>"'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 21 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streaming_custom_tab2.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 6 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected streaming-custom-tab2.php, but found streaming_custom_tab2.php.[0m
+    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+  2 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  9 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 10 | [31mERROR[0m | [1msanitize_url() has been deprecated since WordPress version 2.8.0. Use esc_url_raw() instead.[0m (WordPress.WP.DeprecatedFunctions.sanitize_urlFound)
+ 43 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 88 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $post_id[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streaming_custom_tab1.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 21 ERRORS AFFECTING 17 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected streaming-custom-tab1.php, but found streaming_custom_tab1.php.[0m
+     |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+   4 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+   6 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+   6 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$title'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+   7 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+   9 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$term_cat_twcht_name'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  10 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$term_cat_twcht_list'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  12 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$term_cat_twcht_id'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  13 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  17 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  22 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$twchr_dateTime_slot'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  22 | [31mERROR[0m | [1mVariable "$twchr_dateTime_slot" is not in valid snake_case format, try "$twchr_date_time_slot"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  24 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  27 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  30 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  35 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$term_serie_list'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  36 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  36 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 122 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'get_option'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 202 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule-card.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 23 ERRORS AFFECTING 22 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  23 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  35 | [31mERROR[0m | [1mVariable "$twchr_dateTime_slot" is not in valid snake_case format, try "$twchr_date_time_slot"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  40 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  49 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  71 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  71 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  78 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  83 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  85 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  90 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  92 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+  97 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 102 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 105 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 109 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 113 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 117 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 122 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 123 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 125 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 134 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 137 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streamings.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 28 ERRORS AFFECTING 27 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mClass file names should be based on the class name with "class-" prepended. Expected class-twttcher.php, but found streamings.php.[0m
+     |       | (WordPress.Files.FileName.InvalidClassFileName)
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  23 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+  25 | [31mERROR[0m | [1mMissing doc comment for function __construct()[0m (Squiz.Commenting.FunctionComment.Missing)
+  32 | [31mERROR[0m | [1mMissing doc comment for function process_cpts()[0m (Squiz.Commenting.FunctionComment.Missing)
+  43 | [31mERROR[0m | [1mMissing doc comment for function add_meta_boxes()[0m (Squiz.Commenting.FunctionComment.Missing)
+  56 | [31mERROR[0m | [1mMissing doc comment for function save_post()[0m (Squiz.Commenting.FunctionComment.Missing)
+  60 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  61 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  66 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  67 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  74 | [31mERROR[0m | [1mMissing doc comment for function add_meta_box_callback()[0m (Squiz.Commenting.FunctionComment.Missing)
+  78 | [31mERROR[0m | [1mMissing doc comment for function fields_table()[0m (Squiz.Commenting.FunctionComment.Missing)
+  96 | [31mERROR[0m | [1mMissing doc comment for function label()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 101 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 102 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['label']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 107 | [31mERROR[0m | [1mMissing doc comment for function field()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 117 | [31mERROR[0m | [1mMissing doc comment for function input()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 120 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['class']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 121 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 122 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['id']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 123 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'isset'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 124 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['type']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 125 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 129 | [31mERROR[0m | [1mMissing doc comment for function textarea()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 134 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$field['rows']'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 135 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$this'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 139 | [31mERROR[0m | [1mMissing doc comment for function value()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule_custom_card.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 5 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected schedule-custom-card.php, but found schedule_custom_card.php.[0m
+    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  5 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  8 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 11 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/schedule_card_previw_card.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected schedule-card-previw-card.php, but found schedule_card_previw_card.php.[0m
+   |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+ 5 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 5 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+   |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cf/streaming_custom_tab3.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 4 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected streaming-custom-tab3.php, but found streaming_custom_tab3.php.[0m
+    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 11 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 19 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $post_id[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/update-post/update-twchr-stream.php[0m
+-----------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 21 ERRORS AFFECTING 21 LINES[0m
+-----------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  3 | [31mERROR[0m | [1mDoc comment short description must start with a capital letter[0m
+    |       | (Generic.Commenting.DocComment.ShortNotCapital)
+  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  7 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  8 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  9 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 10 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 11 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 12 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 13 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 14 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 15 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 16 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 17 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 18 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 19 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 20 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 21 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 22 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 28 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/api-db.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 15 ERRORS AFFECTING 15 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  6 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 19 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 20 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 21 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 22 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 24 | [31mERROR[0m | [1mFunction name "twittcher_getData" is not in snake case format, try "twittcher_get_data"[0m
+    |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 27 | [31mERROR[0m | [1mUse placeholders and $wpdb->prepare(); found $sql[0m (WordPress.DB.PreparedSQL.NotPrepared)
+ 39 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 40 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 43 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 47 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 55 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 65 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/twicht.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 78 ERRORS AFFECTING 74 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+   4 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+  73 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  74 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  75 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  76 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 102 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 102 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 143 | [31mERROR[0m | [1mDoc comment for parameter "$schedule_id" missing[0m (Squiz.Commenting.FunctionComment.MissingParamTag)
+ 147 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 147 | [31mERROR[0m | [1mDoc comment for parameter $schedule_id. does not match actual variable name $schedule_id[0m (Squiz.Commenting.FunctionComment.ParamNameNoMatch)
+ 148 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 165 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 189 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 190 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 191 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 192 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 193 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 194 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 195 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 274 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 275 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 276 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 277 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 299 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 300 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 301 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 302 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 330 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 331 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 332 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 354 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 355 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 356 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 357 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 378 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 379 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 380 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 381 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 403 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 404 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 405 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 406 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 431 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 432 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 433 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 434 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 460 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 461 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 462 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 472 | [31mERROR[0m | [1mDoc comment short description must start with a capital letter[0m (Generic.Commenting.DocComment.ShortNotCapital)
+ 475 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 476 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 477 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 478 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 479 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 481 | [31mERROR[0m | [1mFunction name "twchr_validateToken" is not in snake case format, try "twchr_validate_token"[0m
+     |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 496 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 497 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 498 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 499 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 509 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 517 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 540 | [31mERROR[0m | [1mVariable "$urlRedirection" is not in valid snake_case format, try "$url_redirection"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 541 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '"<script>location.href='$urlRedirection'</script>"'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 541 | [31mERROR[0m | [1mVariable "$urlRedirection" is not in valid snake_case format, try "$url_redirection"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase)
+ 546 | [31mERROR[0m | [1mVariable "$authUrl" is not in valid snake_case format, try "$auth_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 549 | [31mERROR[0m | [1mVariable "$authUrl" is not in valid snake_case format, try "$auth_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 552 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$script'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 560 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 561 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 576 | [31mERROR[0m | [1mMissing doc comment for function twchr_twitch_autentication_error_handdler()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 577 | [31mERROR[0m | [1mAssignments must be the first block of code on a line[0m (Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure)
+ 577 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 581 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$error_code'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 582 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$msg'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 583 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '__'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 584 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/api-connection/twichtv.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 26 ERRORS AFFECTING 13 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mClass file names should be based on the class name with "class-" prepended. Expected class-twitchtv.php, but found twichtv.php.[0m
+    |       | (WordPress.Files.FileName.InvalidClassFileName)
+  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+ 11 | [31mERROR[0m | [1mYou must use "/**" style comments for a class comment[0m (Squiz.Commenting.ClassComment.WrongStyle)
+ 12 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 12 | [31mERROR[0m | [1mVisibility must be declared on property "$base_url"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 12 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 13 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 13 | [31mERROR[0m | [1mVisibility must be declared on property "$client_id"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 13 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 14 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 14 | [31mERROR[0m | [1mVisibility must be declared on property "$client_secret"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 14 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 15 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 15 | [31mERROR[0m | [1mVisibility must be declared on property "$redirect_url"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 15 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 16 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 16 | [31mERROR[0m | [1mVisibility must be declared on property "$scope_array"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 16 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 23 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 23 | [31mERROR[0m | [1mVisibility must be declared on property "$channel_data"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 24 | [31mERROR[0m | [1mThe var keyword must not be used to declare a property[0m (PSR2.Classes.PropertyDeclaration.VarUsed)
+ 24 | [31mERROR[0m | [1mVisibility must be declared on property "$curl_cache"[0m (PSR2.Classes.PropertyDeclaration.ScopeMissing)
+ 24 | [31mERROR[0m | [1mMissing member variable doc comment[0m (Squiz.Commenting.VariableComment.Missing)
+ 26 | [31mERROR[0m | [1mMissing doc comment for function __construct()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 42 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 54 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/cpt/streamings.php[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+ 2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+ 2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+   |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/get-post/get-twchr-stream.php[0m
+------------------------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 2 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_stream()[0m
+   |       | (Squiz.Commenting.FunctionComment.Missing)
+------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/cat-twcht.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 15 ERRORS AFFECTING 15 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+   4 | [31mERROR[0m | [1mMissing doc comment for function twchr_taxonomy_cat_twcht()[0m (Squiz.Commenting.FunctionComment.Missing)
+  31 | [31mERROR[0m | [1mMissing doc comment for function twchr_cat_twcht_create_field()[0m (Squiz.Commenting.FunctionComment.Missing)
+  52 | [31mERROR[0m | [1mMissing doc comment for function twchr_cat_twcht_edit_field()[0m (Squiz.Commenting.FunctionComment.Missing)
+  82 | [31mERROR[0m | [1mMissing doc comment for function twchr_cat_twitch_save()[0m (Squiz.Commenting.FunctionComment.Missing)
+  89 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  90 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  91 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 109 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 110 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m
+     |       | (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 138 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 139 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 140 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 206 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 208 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+     |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/form-serie.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 5 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 32 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 34 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$date_time'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 44 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$select_name'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 49 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+    |       | '$twchr_streams_relateds'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 55 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$allData'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 55 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/taxonomys/twchr-tax-serie.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 71 ERRORS AFFECTING 62 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+   7 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+   8 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+  33 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  37 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  38 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+  40 | [31mERROR[0m | [1mVariable "$dateTime_old" is not in valid snake_case format, try "$date_time_old"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  47 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  47 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  48 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  49 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  50 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  53 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  53 | [31mERROR[0m | [1mVariable "$dateTime_old" is not in valid snake_case format, try "$date_time_old"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  57 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  57 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  57 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  59 | [31mERROR[0m | [1mVariable "$dateTime_raw" is not in valid snake_case format, try "$date_time_raw"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  59 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  60 | [31mERROR[0m | [1mVariable "$dateTime_stg" is not in valid snake_case format, try "$date_time_stg"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  60 | [31mERROR[0m | [1mVariable "$dateTime_raw" is not in valid snake_case format, try "$date_time_raw"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  61 | [31mERROR[0m | [1mVariable "$dateTime_rfc" is not in valid snake_case format, try "$date_time_rfc"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  61 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+     |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+  61 | [31mERROR[0m | [1mVariable "$dateTime_stg" is not in valid snake_case format, try "$date_time_stg"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  63 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  64 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  66 | [31mERROR[0m | [1mEmpty line required before block comment[0m (Squiz.Commenting.BlockComment.NoEmptyLineBefore)
+  71 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  72 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  82 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  83 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+  85 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  86 | [31mERROR[0m | [1mVariable "$dateTime_rfc" is not in valid snake_case format, try "$date_time_rfc"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 101 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 102 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 112 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 113 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 119 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 135 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 136 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 137 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 138 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 144 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 146 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 159 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 160 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 162 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 167 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 167 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$term_id'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 171 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 176 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 179 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 188 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 192 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 202 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
+ 206 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
+ 211 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 212 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 219 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 220 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 231 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 239 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 248 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
+ 253 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 254 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 260 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 261 | [31mERROR[0m | [1mVariable "$dateTime" is not in valid snake_case format, try "$date_time"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 268 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 269 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 280 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 287 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/dev-functions.php[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 3 LINES[0m
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 3 | [31mERROR[0m | [1mMissing doc comment for function show_dump()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 9 | [31mERROR[0m | [1mFunction name "comparate_WpPost" is not in snake case format, try "comparate_wp_post"[0m
+   |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 9 | [31mERROR[0m | [1mMissing doc comment for function comparate_WpPost()[0m (Squiz.Commenting.FunctionComment.Missing)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/create-post/crear-twchr-stream.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 2 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 2 | [31mERROR[0m | [1mFunction name "crearStream" is not in snake case format, try "crear_stream"[0m
+   |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 2 | [31mERROR[0m | [1mMissing doc comment for function crearStream()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/includes/twchr-get-videos.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 18 ERRORS AFFECTING 14 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   3 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+   3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+   7 | [31mERROR[0m | [1mMissing doc comment for function twchr_get_videos_function()[0m (Squiz.Commenting.FunctionComment.Missing)
+  12 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  13 | [31mERROR[0m | [1mVariable "$dataUrl" is not in valid snake_case format, try "$data_url"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  30 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  50 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  60 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  61 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  68 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  78 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  93 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 114 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 141 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/main-page.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 112 ERRORS AFFECTING 81 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+   7 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+     |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+  27 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  44 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  46 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  48 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+  54 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $type[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+  61 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$display_name'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  62 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$description'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+  70 | [31mERROR[0m | [1mVariable "$clientID" is not in valid snake_case format, try "$client_i_d"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  71 | [31mERROR[0m | [1mVariable "$clientID" is not in valid snake_case format, try "$client_i_d"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  72 | [31mERROR[0m | [1mVariable "$clientSecret" is not in valid snake_case format, try "$client_secret"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  73 | [31mERROR[0m | [1mVariable "$clientSecret" is not in valid snake_case format, try "$client_secret"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+  89 | [31mERROR[0m | [1mVariable "$clientID" is not in valid snake_case format, try "$client_i_d"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 102 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 104 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 117 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 128 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 129 | [31mERROR[0m | [1mVariable "$listVideo_from_wp" is not in valid snake_case format, try "$list_video_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 130 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 133 | [31mERROR[0m | [1mVariable "$userToken" is not in valid snake_case format, try "$user_token"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 136 | [31mERROR[0m | [1mVariable "$userToken" is not in valid snake_case format, try "$user_token"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 138 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 141 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 144 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 147 | [31mERROR[0m | [1mVariable "$listVideo_from_wp" is not in valid snake_case format, try "$list_video_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 150 | [31mERROR[0m | [1mEmpty IF statement detected[0m (Generic.CodeAnalysis.EmptyStatement.DetectedIf)
+ 150 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 150 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 155 | [31mERROR[0m | [1mVariable "$mostViwed_from_wp" is not in valid snake_case format, try "$most_viwed_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 155 | [31mERROR[0m | [1mVariable "$listVideo_from_wp" is not in valid snake_case format, try "$list_video_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 157 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 169 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 169 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 174 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'COUNT'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 178 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$subcribers'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 182 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 182 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'COUNT'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 182 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 182 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 182 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'COUNT'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 182 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 186 | [31mERROR[0m | [1mVariable "$mostViwed_from_api" is not in valid snake_case format, try "$most_viwed_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 186 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 186 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$mostViwed_from_api['view']'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 186 | [31mERROR[0m | [1mVariable "$mostViwed_from_api" is not in valid snake_case format, try "$most_viwed_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 187 | [31mERROR[0m | [1mVariable "$mostViwed_from_api" is not in valid snake_case format, try "$most_viwed_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 187 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 187 | [31mERROR[0m | [1mVariable "$mostViwed_from_api" is not in valid snake_case format, try "$most_viwed_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 191 | [31mERROR[0m | [1mVariable "$mostViwed_from_wp" is not in valid snake_case format, try "$most_viwed_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 191 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 191 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$mostViwed_from_wp['view']'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 191 | [31mERROR[0m | [1mVariable "$mostViwed_from_wp" is not in valid snake_case format, try "$most_viwed_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 192 | [31mERROR[0m | [1mVariable "$mostViwed_from_wp" is not in valid snake_case format, try "$most_viwed_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 192 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 192 | [31mERROR[0m | [1mVariable "$mostViwed_from_wp" is not in valid snake_case format, try "$most_viwed_from_wp"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 196 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 205 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 206 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 206 | [31mERROR[0m | [1mVariable "$listVideo_from_api" is not in valid snake_case format, try "$list_video_from_api"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 206 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 207 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $error[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 214 | [31mERROR[0m | [1mVariable "$setInstaled" is not in valid snake_case format, try "$set_instaled"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 228 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 238 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 239 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 250 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 253 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 258 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 260 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 279 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 283 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 286 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 287 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 290 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 290 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'twchr_esc_i18n'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 291 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 291 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 294 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 306 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 307 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 309 | [31mERROR[0m | [1mThere must be a comment when fall-through is intentional in a non-empty case body[0m (PSR2.ControlStructures.SwitchDeclaration.TerminatingComment)
+ 312 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 345 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 346 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 361 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 362 | [31mERROR[0m | [1mVariable "$allData" is not in valid snake_case format, try "$all_data"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 378 | [31mERROR[0m | [1mVariable "$twchr_validateTokenObject" is not in valid snake_case format, try "$twchr_validate_token_object"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 381 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 382 | [31mERROR[0m | [1mVariable "$userToken" is not in valid snake_case format, try "$user_token"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 382 | [31mERROR[0m | [1mVariable "$twchr_validateTokenObject" is not in valid snake_case format, try "$twchr_validate_token_object"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 383 | [31mERROR[0m | [1mVariable "$userTokenRefresh" is not in valid snake_case format, try "$user_token_refresh"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 383 | [31mERROR[0m | [1mVariable "$twchr_validateTokenObject" is not in valid snake_case format, try "$twchr_validate_token_object"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 390 | [31mERROR[0m | [1mVariable "$userToken" is not in valid snake_case format, try "$user_token"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 391 | [31mERROR[0m | [1mVariable "$userTokenRefresh" is not in valid snake_case format, try "$user_token_refresh"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 400 | [31mERROR[0m | [1mVariable "$urlRedirection" is not in valid snake_case format, try "$url_redirection"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 401 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '"<script>location.href='$urlRedirection'</script>"'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 401 | [31mERROR[0m | [1mVariable "$urlRedirection" is not in valid snake_case format, try "$url_redirection"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase)
+ 407 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$twchr_validateTokenObject'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 407 | [31mERROR[0m | [1mVariable "$twchr_validateTokenObject" is not in valid snake_case format, try "$twchr_validate_token_object"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 409 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 409 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$twchr_validateTokenObject'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 409 | [31mERROR[0m | [1mVariable "$twchr_validateTokenObject" is not in valid snake_case format, try "$twchr_validate_token_object"[0m
+     |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 420 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'sanitize_text_field'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 422 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '__'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 422 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'sanitize_text_field'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 428 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$_GET['error_description']'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 439 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 439 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '__'.[0m
+     |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 443 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 446 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 449 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+     |       | '$_GET['twchr_server_response']'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/admin-dashboard.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  3 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+  4 | [31mERROR[0m | [1mMissing doc comment for function twchr_left_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 10 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 11 | [31mERROR[0m | [1mMissing doc comment for function twchr_right_admin_footer_text_output()[0m (Squiz.Commenting.FunctionComment.Missing)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/twchr-i18n.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 8 ERRORS AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  7 | [31mERROR[0m | [1mFunction return type is not void, but function has no return statement[0m (Squiz.Commenting.FunctionComment.InvalidNoReturn)
+ 12 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
+ 14 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 17 | [31mERROR[0m | [1mThe $text arg must be a single string literal, not "$var".[0m (WordPress.WP.I18n.NonSingularStringLiteralText)
+ 19 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$result'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/aux-functions.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 25 ERRORS AFFECTING 23 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+  4 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+  5 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+  8 | [31mERROR[0m | [1mUse placeholders and $wpdb->prepare(); found $sql[0m (WordPress.DB.PreparedSQL.NotPrepared)
+ 21 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 22 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 23 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 33 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 34 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 35 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 45 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+ 46 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 49 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 49 | [31mERROR[0m | [1mProcessing form data without nonce verification.[0m (WordPress.Security.NonceVerification.Missing)
+ 56 | [31mERROR[0m | [1mMissing doc comment for function twchr_twitch_video_duration_calculator()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 57 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+    |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 58 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+    |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 59 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+    |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 60 | [31mERROR[0m | [1mdate() is affected by runtime timezone changes which can cause date/time to be incorrectly displayed. Use gmdate() instead.[0m
+    |       | (WordPress.DateTime.RestrictedFunctions.date_date)
+ 63 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 65 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 70 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 78 | [31mERROR[0m | [1mFunction name "twchr_javaScript_redirect" is not in snake case format, try "twchr_java_script_redirect"[0m
+    |       | (WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid)
+ 78 | [31mERROR[0m | [1mMissing doc comment for function twchr_javaScript_redirect()[0m (Squiz.Commenting.FunctionComment.Missing)
+ 79 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found
+    |       | '"<script>location.href='$url'</script>"'.[0m (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/aux-functions/twchr-max-of-list.php[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 10 ERRORS AFFECTING 10 LINES[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  5 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  6 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  7 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  8 | [31mERROR[0m | [1mMissing parameter comment[0m (Squiz.Commenting.FunctionComment.MissingParamComment)
+  9 | [31mERROR[0m | [1mFunction return type is void, but function contains return statement[0m (Squiz.Commenting.FunctionComment.InvalidReturnVoid)
+ 12 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 29 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 38 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 45 | [31mERROR[0m | [1mVariable "$mostViwed" is not in valid snake_case format, try "$most_viwed"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/submenu_menu_help.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 12 ERRORS AFFECTING 9 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mFilenames should be all lowercase with hyphens as word separators. Expected submenu-menu-help.php, but found submenu_menu_help.php.[0m
+    |       | (WordPress.Files.FileName.NotHyphenatedLowercase)
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+  4 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 11 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 13 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 14 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 16 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 36 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 36 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 40 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 40 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 45 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twchr-set-up.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 29 ERRORS AFFECTING 20 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | [31mERROR[0m | [1mMissing file doc comment[0m (Squiz.Commenting.FileComment.Missing)
+ 11 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 12 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 12 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 12 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 12 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 13 | [31mERROR[0m | [1mVariable "$clientSecret" is not in valid snake_case format, try "$client_secret"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 13 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 13 | [31mERROR[0m | [1mUse Yoda Condition checks, you must.[0m (WordPress.PHP.YodaConditions.NotYoda)
+ 13 | [31mERROR[0m | [1mVariable "$twchrKeysJSON" is not in valid snake_case format, try "$twchr_keys_j_s_o_n"[0m
+    |       | (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 14 | [31mERROR[0m | [1mOverriding WordPress globals is prohibited. Found assignment to $user_email[0m (WordPress.WP.GlobalVariablesOverride.Prohibited)
+ 21 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_URL_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 28 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_SETUP_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 33 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_SETUP_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 38 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_ADMIN_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 39 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_SETUP_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 44 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_SETUP_ASSETS'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 49 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'TWCHR_HOME_URL'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 54 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$clientId'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 54 | [31mERROR[0m | [1mVariable "$clientId" is not in valid snake_case format, try "$client_id"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 56 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$clientSecret'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 56 | [31mERROR[0m | [1mVariable "$clientSecret" is not in valid snake_case format, try "$client_secret"[0m (WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase)
+ 59 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 65 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 66 | [31mERROR[0m | [1mAll output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found '$user_email'.[0m
+    |       | (WordPress.Security.EscapeOutput.OutputNotEscaped)
+ 67 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 72 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 73 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+ 73 | [31mERROR[0m | [1mAll output should be run through an escaping function (like esc_html_e() or esc_attr_e()), found '_e'.[0m
+    |       | (WordPress.Security.EscapeOutput.UnsafePrintingFunction)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[1mFILE: /home/twitcher.pro/public_html/dev/wp-content/plugins/twchr-dev/admin/twtchr-menus.php[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AFFECTING 6 LINES[0m
+-------------------------------------------------------------------------------------------------------------------------------------------
+  2 | [31mERROR[0m | [1mYou must use "/**" style comments for a file comment[0m (Squiz.Commenting.FileComment.WrongStyle)
+  2 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+  3 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 29 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 30 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+ 34 | [31mERROR[0m | [1mInline comments must end in full-stops, exclamation marks, or question marks[0m
+    |       | (Squiz.Commenting.InlineComment.InvalidEndChar)
+ 35 | [31mERROR[0m | [1mYou must use "/**" style comments for a function comment[0m (Squiz.Commenting.FunctionComment.WrongStyle)
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Time: 1.76 secs; Memory: 18MB
+

@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * En este archivo van todas las funciones necesarias para enviar las estaditicas de wordpress a 
+	 * En este archivo van todas las funciones necesarias para enviar las estaditicas de wordpress a
 	 * twitcher server
 	 */
 
@@ -81,7 +81,7 @@ function twchr_recopiate_data() {
  * que posteriormente sera enviado al servidor twitcher server
  * tomando el valor twchr_log en donde si twchr_log es 0 el evento sera
  * activacion de plugin y si es 1 el evento sera 1
- * 
+ *
  * TODO: Modificar esta funcion para que use wp_remote_post
  *
  * @return void
@@ -94,32 +94,30 @@ function instanse_comunicate_server() {
 	$event = false;
 	$share_permision = get_option( 'twchr_share_permissions' ) != false ? json_decode( get_option( 'twchr_share_permissions' ) ) : '';
 
-	if(0 === $case){
+	if ( 0 === $case ) {
 		$event = 'activate';
 	}
 
-	if(1 === $case){
+	if ( 1 === $case ) {
 		$event = 'disactivate';
 	}
 
-	if ( $event != false && ( $case == 0 || $case == 1 ) ) {
+	if ( false != $event  && ( 0 == $case || 1 == $case ) ) {
 		$pakage = '';
 		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_set_instaled' ) == 3 ) {
 			$pakage = twchr_recopiate_data();
 		}
 
 		if ( ! empty( $db ) ) {
-			
-			array_push($pakage,['event' => $event]);
+
+			array_push( $pakage, array( 'event' => $event ) );
 			$args = array(
 				'method' => 'POST',
-				'body' => $pakage
-			  );
-			  
-			wp_remote_post('https://twitcher.pro/twch_server/twchr_get/', $args);
-		}
+				'body' => $pakage,
+			);
 
-			
+			wp_remote_post( 'https://twitcher.pro/twch_server/twchr_get/', $args );
+		}
 	}
 }
 

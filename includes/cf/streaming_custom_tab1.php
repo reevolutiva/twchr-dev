@@ -13,8 +13,8 @@
 	<label for="twchr_schedule_card_input--dateTime"><?php _e( 'Date time Streaming', 'twitcher' ); ?></label>
 	<div>
 	<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"
-		class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html($date_time); ?>">
-	<p><?php echo ! empty( $dateTime ) ? esc_html($date_time) : ''; ?></p>
+		class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
+	<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
 	</div>
 	<div class="twchr_cards_input_badges">
 		<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
@@ -23,7 +23,7 @@
 	</div>
 	<label for="twchr_schedule_card_input--duration"><?php _e( 'Duration (mins)', 'twitcher' ); ?></label>
 	<input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
-		class="twchr_schedule_card_input" type="number" value="<?php echo esc_html($duration); ?>">
+		class="twchr_schedule_card_input" type="number" value="<?php echo esc_html( $duration ); ?>">
 	<label for="twchr_schedule_card_input--is_recurrig"><?php _e( 'Is Recurring ?', 'twitcher' ); ?></label>
 	<input id="twchr_schedule_card_input--is_recurrig"  name="twchr_schedule_card_input--is_recurrig"
 		class="twchr_schedule_card_input" type="checkbox" checked>
@@ -36,9 +36,9 @@
 		<p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php _e( 'Create a new serie', 'twitcher' ); ?></a></p>
 	</div>
 	
-	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js($twchr_twicth_schedule_response); ?><p>
+	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
    
-	<input name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo ! empty( $term_serie_id ) ? esc_html($term_serie_id) : ''; ?>"> 
+	<input name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id" type="hidden" value="<?php echo ! empty( $term_serie_id ) ? esc_html( $term_serie_id ) : ''; ?>"> 
 	<section id="twchr_schedule_card_input--show">
 		
 	</section>

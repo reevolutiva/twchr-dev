@@ -66,7 +66,7 @@ function fronted_to_db( $client_secret, $clientId ) {
  * @return void
  */
 function twchr_save_app_token( $token ) {
-	
+
 	if ( get_option( 'twchr_app_token' ) != false || get_option( 'twchr_app_token' ) == '' ) {
 		update_option( 'twchr_app_token', $token );
 

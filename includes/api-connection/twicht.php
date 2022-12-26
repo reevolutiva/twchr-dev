@@ -38,9 +38,9 @@ function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_i
 				'status' => 200,
 				'message' => __( 'Successfully updated serie.', 'twitcher' ),
 			);
-		
+
 		break;
-		
+
 		case 401:
 			return array(
 				'message' => __( 'USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN', 'twitcher' ),
@@ -50,7 +50,7 @@ function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_i
 			);
 
 		break;
-		
+
 		case 400:
 			$glosa = str_replace( '"', '`', $response_body->{'message'} );
 			return array(
@@ -70,7 +70,7 @@ function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_i
 /**
  * Eliminar un schedule segment
  *
- * @param [type] $schedule_id
+ * @param [type]  $schedule_id
  * @param boolean $twchr_titulo
  * @param boolean $post_id
  * @return void
@@ -109,9 +109,9 @@ function twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo = fa
 					'status' => 204,
 					'message' => __( 'Successfully updated serie.', 'twitcher' ),
 				);
-			
+
 			break;
-			
+
 			case 401:
 				return array(
 					'message' => __( 'USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN', 'twitcher' ),
@@ -121,7 +121,7 @@ function twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo = fa
 				);
 
 			break;
-			
+
 			case 400:
 				$glosa = str_replace( '"', '`', $response_body->{'message'} );
 				return array(
@@ -141,7 +141,7 @@ function twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo = fa
 }
 
 /**
- * Obetiene un schedule segment por su id 
+ * Obetiene un schedule segment por su id
  * y si no pasamos id los tre todos
  *
  * @param boolean $schedule_id.
@@ -178,7 +178,7 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 	} else {
 
 		if ( isset( $response_body->{'error'} ) ) {
-		
+
 			twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
 		}
 	}
@@ -186,11 +186,11 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 /**
  * Crea un schedule segment
  *
- * @param [type] $post_id
- * @param [type] $twchr_titulo
- * @param [type] $twchr_start_time
- * @param [type] $twchr_category
- * @param [type] $twchr_duration
+ * @param [type]  $post_id
+ * @param [type]  $twchr_titulo
+ * @param [type]  $twchr_start_time
+ * @param [type]  $twchr_category
+ * @param [type]  $twchr_duration
  * @param boolean $is_recurring
  * @return void
  */
@@ -226,7 +226,7 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 	$res = wp_remote_post( $url, $args );
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
 	$response_response = $res['response'];
-	
+
 	// codigo para accionar segun la respuesta de la api.
 	switch ( $response_response['code'] ) {
 		case 200:
@@ -237,9 +237,9 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 				'status' => 200,
 				'message' => __( 'successfully created series', 'twitcher' ),
 			);
-		
+
 		break;
-		
+
 		case 401:
 			return array(
 				'message' => __( 'USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN', 'twitcher' ),
@@ -249,7 +249,7 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 			);
 
 		break;
-		
+
 		case 400:
 			$glosa = str_replace( '"', '`', $response_body->{'message'} );
 			return array(
@@ -487,7 +487,7 @@ function twchr_validateToken( $client_id, $client_secret, $code, $redirect ) {
 	);
 
 	$res = wp_remote_post( $url, $args );
-	
+
 	return $res;
 }
 /**
