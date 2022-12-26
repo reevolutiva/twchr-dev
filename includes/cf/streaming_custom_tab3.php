@@ -5,9 +5,7 @@ $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true 
 $select = isset( $values['twchr_stream_src_priority'] ) ? $values['twchr_stream_src_priority'][0] : '';
 
 ?>
-<metabox>
-	
-		
+<metabox>		
 	<label>Youtbe URL <input type="text" name='twchr_streams__yt-link-video-src' class="twchr_schedule_card_input" value="<?php $yt_url != false ? twchr_esc_i18n( $yt_url, 'html' ) : ''; ?>"></label>
 
 	<a href="<?php echo TWCHR_ADMIN_URL . '/post.php?post=' . get_the_id() . '&action=edit&twchr_insert_shorcode=ancho-800,alto-400'; ?>"><?php _e( 'Insert shorcode', 'twitcher' ); ?></a>
@@ -28,7 +26,7 @@ if ( isset( $_GET['twchr_insert_shorcode'] ) ) {
 		)
 	);
 	$url = TWCHR_ADMIN_URL . '/post.php?post=' . get_the_id() . '&action=edit';
-	echo "<script>".esc_js("location.href=".$url)."</script>";
+	echo "<script>location.href=".$url."';</script>";
 	die();
 
 
