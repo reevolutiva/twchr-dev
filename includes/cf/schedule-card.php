@@ -66,12 +66,9 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 	$to_api_date_time = '';
 	$to_api_is_recurring = '';
 	$to_api_duration = '';
-
+	
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--is_recurrig' ) ) {
-		$to_api_is_recurring = $_POST['twchr_schedule_card_input--is_recurrig'] == 'on' ? true : false;
 		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', $to_api_is_recurring );
-	} else {
-		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', '' );
 	}
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--title' ) ) {

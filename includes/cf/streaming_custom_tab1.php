@@ -24,9 +24,14 @@
 	<label for="twchr_schedule_card_input--duration"><?php twchr_esc_i18n( 'Duration (mins)', 'html' ); ?></label>
 	<input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
 		class="twchr_schedule_card_input" type="number" value="<?php echo esc_html( $duration ); ?>">
-	<label for="twchr_schedule_card_input--is_recurrig"><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
-	<input id="twchr_schedule_card_input--is_recurrig"  name="twchr_schedule_card_input--is_recurrig"
-		class="twchr_schedule_card_input" type="checkbox" checked>
+	<label><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
+	<div class="is-recurring-input-group">
+	<label for="twchr_schedule_card_input--is_recurrig__yes"><?php twchr_esc_i18n( 'Yes', 'html' ); ?></label>
+	<input id="twchr_schedule_card_input--is_recurrig__yes"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="true" <?php echo $is_recurring == true ? 'checked' : '' ?> >
+	<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
+	<input id="twchr_schedule_card_input--is_recurri__no"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="false" <?php echo $is_recurring == false ? 'checked' : '' ?>>
+	</div>
+	
 	<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 	<div class="twchr_cards_input_badges">
 		<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
