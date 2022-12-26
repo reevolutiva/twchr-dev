@@ -496,6 +496,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
             const segment_id = dataFromApi.allData.segments[0].id;
 
             
+            
             if(segment_id === current_stream_id){
                 let existTwitch = false;
                 switch (state) {
@@ -511,7 +512,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                             };
                         twchrFetchGet(`https://api.twitch.tv/helix/schedule?broadcaster_id=${tchr_vars_admin.twitcher_data_broadcaster.id}`,getScheduleCallback,'json',requestOptionsgetSchedule);
                         function getScheduleCallback(res){
-                        
+                           
                             if(res.status === 401){
                                 const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true`;
                                 alert('Invalid User Token, You will be redirected to another page to get a new User Token');

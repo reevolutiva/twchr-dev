@@ -1,16 +1,16 @@
 <?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
 <?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
 <div class="twchr_car_tab1">
-	<label for="twchr_schedule_card_input--title"><?php _e( 'Streaming Title', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
 	<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title"
 		class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
-	<label for="twchr_schedule_card_input--category"><?php _e( 'Twitch category', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
 	<div class="twchr_cards_input_badges">
 		<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
 		<badges><?php echo $term_cat_twcht_list; ?></badges>
 	</div>
 	<input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
-	<label for="twchr_schedule_card_input--dateTime"><?php _e( 'Date time Streaming', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Date time Streaming', 'html' ); ?></label>
 	<div>
 	<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"
 		class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
@@ -21,19 +21,19 @@
 		</select>
 		<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_dateTime_slot; ?></span></badges>
 	</div>
-	<label for="twchr_schedule_card_input--duration"><?php _e( 'Duration (mins)', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--duration"><?php twchr_esc_i18n( 'Duration (mins)', 'html' ); ?></label>
 	<input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"
 		class="twchr_schedule_card_input" type="number" value="<?php echo esc_html( $duration ); ?>">
-	<label for="twchr_schedule_card_input--is_recurrig"><?php _e( 'Is Recurring ?', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--is_recurrig"><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
 	<input id="twchr_schedule_card_input--is_recurrig"  name="twchr_schedule_card_input--is_recurrig"
 		class="twchr_schedule_card_input" type="checkbox" checked>
-	<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php _e( 'Serie', 'twitcher' ); ?></label>
+	<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 	<div class="twchr_cards_input_badges">
 		<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
 			<option value="null">notting</option>
 		</select>
 		<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
-		<p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php _e( 'Create a new serie', 'twitcher' ); ?></a></p>
+		<p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
 	</div>
 	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
@@ -199,7 +199,7 @@ twchr_is_recurring.addEventListener('click', (e) => {
 		} else {
 			// Si el broacater type no es ni pather ni afilate
 			const opt1 = confirm(
-				"<?php _e( 'you are neither an affiliate nor a phatner so you cannot create a unique stream do you want to continue?', 'twitcher' ); ?>"
+				"<?php twchr_esc_i18n( 'you are neither an affiliate nor a phatner so you cannot create a unique stream do you want to continue?', 'html' ); ?>"
 				);
 			// si opt1 es true lo desaparce
 			if (opt1) {

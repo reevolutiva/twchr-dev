@@ -40,7 +40,7 @@
 					display: block;
 					width: 40px;
 					height: 40px;
-					background-image: url(<?php echo TWCHR_URL_ASSETS . 'help.png'; ?>);
+					background-image: url(<?php echo esc_html(TWCHR_URL_ASSETS . 'help.png'); ?>);
 					background-size: contain;
 					background-repeat: no-repeat;
 					margin-right: 6pt;
