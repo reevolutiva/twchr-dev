@@ -33,6 +33,7 @@ require_once TWCHR_FEATURES . 'twtchr-easy-set-up.php';
 require_once TWCHR_FEATURES . 'twtchr-activate.php';
 require_once TWCHR_FEATURES . 'twtchr-deactivate.php';
 require_once TWCHR_FEATURES . 'twchr-delete-schedule.php';
+require_once TWCHR_FEATURES . 'twchr_flush_cache.php';
 
 
 
