@@ -2,7 +2,7 @@
 function twchr_clipboard_include(){ ?>
 
     <script>
-    const twchr_btns = document.querySelectorAll('button.twchr_clipboard');
+    const twchr_btns = document.querySelectorAll('.twchr-clipboard-item');
     const twcjr_clipboard = new ClipboardJS(twchr_btns);
 
     twcjr_clipboard.on('success', function(e) {
