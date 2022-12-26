@@ -28,7 +28,7 @@ if ( isset( $_GET['twchr_insert_shorcode'] ) ) {
 		)
 	);
 	$url = TWCHR_ADMIN_URL . '/post.php?post=' . get_the_id() . '&action=edit';
-	echo "<script>location.href='$url'</script>";
+	echo "<script>".esc_js("location.href=".$url)."</script>";
 	die();
 
 

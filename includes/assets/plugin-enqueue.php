@@ -45,6 +45,8 @@ function twchr_admin_js() {
 
 	// Scripts.
 	wp_enqueue_script( 'twchr_gscjs', TWCHR_URL . 'includes/js/gscjs.js', array(), $version, false );
+	wp_enqueue_script( 'twchr_clipboard', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js', array(), $version, false );
+	
 
 	$set_instaled = get_option( 'twchr_set_instaled' );
 	// Usamos esta función para que coloque los valores inline
