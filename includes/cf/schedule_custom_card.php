@@ -19,9 +19,6 @@
 			<section>
 				<?php require_once 'streaming_custom_tab2.php'; ?>
 			</section>
-			<section>
-				<?php require_once 'streaming_custom_tab3.php'; ?>
-			</section>
 		</div>
 		<script>
 			<?php require 'script_streaming_single.js'; ?>
