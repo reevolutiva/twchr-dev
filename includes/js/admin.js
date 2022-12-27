@@ -356,6 +356,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             // Sí todos los campos de previw_card son undefined es porque no se ha asignado
             if (stream_isset_array.every(item => item === true)) {
                 document.querySelector('.previw_card').parentElement.style.display = 'none';
+                document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
                 twchr_card_header_menu[0].addEventListener('click', ()=>{
                     twchr_slide_card_row.style.transform = 'translateX(0%)';
                 });
@@ -370,6 +371,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 twchr_card_header_menu[0].classList.add("diactive");
                 twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
                 document.querySelector(".twchr_custom_card--contain").style.height = "3cm";
+                document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
   
                 if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
                 if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");

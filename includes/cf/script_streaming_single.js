@@ -21,4 +21,5 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
     document.querySelector(".twchr_car_tab2").style.display = 'block';
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";
+    document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
 });

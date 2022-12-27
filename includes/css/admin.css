@@ -959,6 +959,10 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-right: 23px;
 }
 
+.twchr_custom_card--contain .twchr-card-img-footer #twchr-modal-selection__btn.disabled{
+    display: none;
+}
+
 .twchr_custom_card--contain .twchr-card-img-footer img{
     width: 79.11px;
     height: 51px;
