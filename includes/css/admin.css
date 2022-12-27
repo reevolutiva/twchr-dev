@@ -308,7 +308,7 @@ stream.twchr-modal .twchr-modal-button.close{
 
 
 
-.twchr_car_tab1 input[type=radio]{
+.twchr_custom_card--contain input[type=radio]{
     width: 25px;
     height: 25px;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;
@@ -318,7 +318,8 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 
 .twchr_modal_video_ajax input[type=radio]:checked,
-.twchr_car_tab1 input[type=radio]:checked{
+.twchr_car_tab1 input[type=radio]:checked,
+.twchr_custom_card--contain input[type=radio]:checked{
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #65449B;
     background-blend-mode: soft-light, normal;
     border: 0.5px solid rgba(255, 255, 255, 0.4);
@@ -329,7 +330,8 @@ stream.twchr-modal .twchr-modal-button.close{
 
 }
 .twchr_modal_video_ajax input[type=radio]:checked::before,
-.twchr_car_tab1 input[type=radio]:checked::before{
+.twchr_car_tab1 input[type=radio]:checked::before,
+.twchr_custom_card--contain input[type=radio]:checked::before{
     content:"";
     width: 12px;
     height: 12px;
