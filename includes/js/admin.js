@@ -681,7 +681,20 @@ if(
     const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
     const client_id = tchr_vars_admin.twchr_keys['client-id'];
     const appToken = tchr_vars_admin.twchr_app_token;
-    tchr_get_clips(appToken,client_id,user_id)
+    if(twchr_card_embed_menu_state == 'tw'){
+        tchr_get_clips(appToken,client_id,user_id)
+    }
+    
+   });
+
+   document.querySelector("#twchr-modal-selection__btn").addEventListener('click',(e)=>{
+        e.preventDefault();
+        if(twchr_card_embed_menu_state == 'yt'){
+            
+			const url = '/post.php?post='+getParameterByName('post')+'&action=edit&twchr_insert_shorcode=ancho-800,alto-400';
+			const new_link = tchr_vars_admin.site_url+'/wp-admin/'+url+"&yt_url="+document.querySelector("#twchr-yt-url-link").value;
+			location.href= new_link;
+        }
    });
     
 }

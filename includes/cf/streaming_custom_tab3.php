@@ -3,19 +3,11 @@ $values    = get_post_custom( get_the_id() );
 $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
 
 ?>
-<metabox class="twchr_car_tab3" style="<?php echo $twchr_card_src_priority == 'tw'? 'display:none;' : ''; ?>" >
-	
-		
+<metabox class="twchr_car_tab3" style="<?php echo $twchr_card_src_priority == 'tw'? 'display:none;' : ''; ?>" >	
 	<label>Youtbe URL <input id="twchr-yt-url-link" type="text" name='twchr_streams__yt-link-video-src' class="twchr_schedule_card_input" value="<?php $yt_url != false ? twchr_esc_i18n( $yt_url, 'html' ) : ''; ?>"></label>
-
-	<a id="twchr_btn_inser_yt_shorcode" href="<?php echo TWCHR_ADMIN_URL . '/post.php?post=' . get_the_id() . '&action=edit&twchr_insert_shorcode=ancho-800,alto-400'; ?>"><?php _e( 'Insert shorcode', 'twitcher' ); ?></a>
 	<script>
-		document.querySelector("#twchr_btn_inser_yt_shorcode").addEventListener('click',(e)=>{
-			e.preventDefault();
-			const url = e.target.getAttribute('href');
-			const new_link = url+"&yt_url="+document.querySelector("#twchr-yt-url-link").value;
-			location.href= new_link;
-		});
+		let twchr_card_embed_menu_state = 'tw';
+		twchr_card_embed_menu_state = '<?php echo $twchr_card_src_priority;?>';
 	</script>
 </metabox>
 
