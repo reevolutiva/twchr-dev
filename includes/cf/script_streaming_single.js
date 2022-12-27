@@ -3,15 +3,26 @@ const twchr_slide_card_row = document.querySelector(".twchr_custom_card--contain
 const twchr_slide_card__section_to_api = document.querySelector(".twchr_custom_card--contain .custom_card_row .twchr_car_tab1");
 const twchr_slide_card__section_to_api_input = twchr_slide_card__section_to_api.querySelectorAll("input.twchr_schedule_card_input");
 const twchr_card_embed_menu = document.querySelectorAll(".twchr_card_embed_menu  input");
+let twchr_card_embed_menu_state = 'tw';
+
+function twchr_card_embend_visibiliy_chage(state){
+    if(state === 'tw'){
+        document.querySelector(".twchr_car_tab2").style.display = "block";
+        document.querySelector(".twchr_car_tab3").style.display = "none";
+    }else if(state == 'yt'){
+        document.querySelector(".twchr_car_tab2").style.display = "none";
+        document.querySelector(".twchr_car_tab3").style.display = "block";
+    }
+}
 
 twchr_card_embed_menu[0].addEventListener('click',(e)=>{
-    document.querySelector(".twchr_car_tab2").style.display = "block";
-    document.querySelector(".twchr_car_tab3").style.display = "none";
+    twchr_card_embed_menu_state = 'tw';
+    twchr_card_embend_visibiliy_chage(twchr_card_embed_menu_state);
 });
 
 twchr_card_embed_menu[1].addEventListener('click',(e)=>{
-    document.querySelector(".twchr_car_tab2").style.display = "none";
-    document.querySelector(".twchr_car_tab3").style.display = "block";
+    twchr_card_embed_menu_state = 'yt';
+    twchr_card_embend_visibiliy_chage(twchr_card_embed_menu_state);
 });
 
 
