@@ -132,9 +132,8 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 
 	if ( $to_api_is_recurring == 'false' && isset( $to_api_title ) && isset( $to_api_date_time ) && isset( $cat_twitch_id ) && isset( $to_api_duration ) ) {
 		$twch_res = twtchr_twitch_schedule_segment_create( $post_id, $to_api_title, $to_api_date_time, $cat_twitch_id, $to_api_duration, false );
-
+		
 		if ( isset( $twch_res->error ) ) {
-
 		} else {
 			$schedule_segment_id = $twch_res['allData']->{'segments'}[0]->{'id'};
 			update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );

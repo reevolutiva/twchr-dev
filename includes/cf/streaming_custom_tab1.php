@@ -1,3 +1,5 @@
+<?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
+<?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
 <div class="twchr_car_tab1">
 	<div class="twchr-card-row is_recurring">
 		<label><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
@@ -158,8 +160,22 @@ if(!twchr_dateTime_slot.textContent.length == 0){
 if(twchr_twtich_schedule_response.textContent.length > 0){
 	const response = JSON.parse(twchr_twtich_schedule_response.textContent);
 	if(response.status != 200){
-		alert("Error: " + response.error);
+		if(response.error){
+			alert("Error: " + response.error);
+		}
+
 		alert("message: "+ response.message);
+
+		if(response.url_redirect){
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+			const id_cpt_from = getParameterByName('post');
+			location.href= response.url_redirect+"&twcr_from_cpt="+id_cpt_from;
+		}
 	}
 	
 }

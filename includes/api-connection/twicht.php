@@ -244,7 +244,7 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
 			return array(
 				'message' => __( 'USER TOKEN is invalid, wait a moment, in a few moments you will be redirected to a place where you can get an updated USER TOKEN', 'twitcher' ),
 				'status' => 401,
-				'url_redirect' => 'https://' . TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true',
+				'url_redirect' => TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true',
 				'post-id' => $post_id,
 			);
 
