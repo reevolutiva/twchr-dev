@@ -1,9 +1,6 @@
 <?php
 $values    = get_post_custom( get_the_id() );
-
 $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
-$select = isset( $values['twchr_stream_src_priority'] ) ? $values['twchr_stream_src_priority'][0] : '';
-
 ?>
 <metabox>
 	
