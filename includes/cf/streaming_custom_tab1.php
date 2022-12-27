@@ -139,6 +139,7 @@ const input_post_title = document.querySelector("#title");
 const twchr_data_broadcaster = <?php echo get_option( 'twchr_data_broadcaster' ); ?>;
 const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
 const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
+const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
 	const badge = twchr_dateTime_slot.textContent;
@@ -262,6 +263,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 					twchr_schedule_card_dateTime.setAttribute('disabled', 'true');
 					twchr_schedule_card_dateTime.parentElement.style.display = 'none';
 					document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'block'; 
+					/*
 					getSchedules_by_id((data)=>{
 						const segments = data.segments;
 						document.querySelector("#twchr_dateTime_slot").innerHTML = '';
@@ -306,8 +308,43 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 							}
 						);
 					});
-				}
-			});
+					*/
+					const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
+					twchrFetchGet(tchr_vars_admin.wp_api_route+"twchr/v1/twchr_get_serie",
+						(res) => {
+							res.forEach(item =>{
+								const option = `<option value="${item.term_id}">${item.name+" - "+item.term_id}</option>`;
+								twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
+							});
+
+							twchr_ajax_input_serie.addEventListener('click', (event) =>{
+					
+								const term_id = event.target.value;
+									res.forEach(item =>{
+										if(item.term_id == term_id){
+											const chapters = item.chapters;
+											chapters.forEach(chapter =>{
+												const opt = `<option value=" ${chapter.id} | ${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+												twchr_dateTime_slot_option.innerHTML = twchr_dateTime_slot_option.innerHTML + opt;
+											});
+										}
+									});
+
+									document.querySelector("#twchr_schedule_card_input--serie__id").value = term_id;
+									
+							});
+
+							
+							
+							
+							
+							
+							
+							
+						},
+						'json');
+							}
+						});
 		}
 
 
