@@ -16,8 +16,11 @@ twchr_card_embed_menu[1].addEventListener('click',(e)=>{
 
 
 document.querySelector("body").classList.add("twchr-single-streaming-active");
-
+let twchr_card_state = 'schedule';
 twchr_card_header_menu[1].addEventListener('click', ()=>{
+    twchr_card_state = 'embed';
+    twchr_card_header_menu[1].classList.remove("disabled");
+    twchr_card_header_menu[0].classList.add("disabled");
     twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
     document.querySelector(".twchr_car_tab2").style.display = 'block';
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";

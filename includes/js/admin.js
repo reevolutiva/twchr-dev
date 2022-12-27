@@ -358,6 +358,9 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 document.querySelector('.previw_card').parentElement.style.display = 'none';
                 document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
                 twchr_card_header_menu[0].addEventListener('click', ()=>{
+                    twchr_card_state = 'schedule';
+                    twchr_card_header_menu[1].classList.add("disabled");
+                    twchr_card_header_menu[0].classList.remove("disabled");
                     twchr_slide_card_row.style.transform = 'translateX(0%)';
                 });
 

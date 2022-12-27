@@ -990,6 +990,11 @@ stream.twchr-modal .twchr-modal-button.close{
     padding: 4px 0 4px 13px;
     border-radius: 5px;
 }
+
+.twchr-tab-card.disabled{
+    background-color: #A6ABBD;
+}
+
 .twchr-tab-card h3{
     color:#fff;
     margin-left: 17px;
