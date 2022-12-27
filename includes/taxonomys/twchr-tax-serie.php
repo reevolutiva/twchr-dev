@@ -173,9 +173,10 @@ function twchr_tax_serie_import() {
 		$client_id = $twch_data_prime->{'client-id'};
 		$user_token = $twch_data_prime->{'user_token'};
 
+		
 		// FROM TWCH
 		$schedules_twitch = twtchr_twitch_schedule_segment_get();
-
+		
 		// FROM WP
 		$schedules_wp = get_terms(
 			array(
@@ -184,6 +185,7 @@ function twchr_tax_serie_import() {
 			)
 		);
 
+
 		if ( isset( $schedules_twitch->{'error'} ) ) {
 			// var_dump($schedules_twitch);
 			twchr_twitch_autentication_error_handdler( $schedules_twitch->{'error'}, $schedules_twitch->{'message'} );
@@ -191,20 +193,25 @@ function twchr_tax_serie_import() {
 
 		// Si hay series
 		if ( ! COUNT( $schedules_wp ) == 0 ) {
+			
 			foreach ( $schedules_wp as $item ) {
+			
 				$wp_id = $item->term_id;
 				$wp_title = $item->{'name'};
-				$wp_tw_id = get_term_meta( $wp_id, 'twchr_toApi_schedule_segment_id' )[0];
 
 				foreach ( $schedules_twitch as $key => $schedule ) {
-
+					
+					
 					$tw_title = $schedule->{'title'};
 					if ( $tw_title == $wp_title ) {
+						
 					} else {
-						$new_term = wp_insert_term( $schedule->title, 'serie' );
+						$title = empty($schedule->title) ? __('No title','twitcher') : $schedule->title;
+						$new_term = wp_insert_term($title, 'serie' );
+						
 
 						if ( isset( $new_term->errors['term_exists'] ) ) {
-
+							
 						} else {
 							$new_term_id = $new_term['term_id'];
 
@@ -239,13 +246,16 @@ function twchr_tax_serie_import() {
 					if ( $key === COUNT( $schedules_twitch ) - 1 ) {
 						twchr_javaScript_redirect( TWCHR_ADMIN_URL . '/edit-tags.php?taxonomy=serie&post_type=twchr_stream' );
 					}
+					
 				}
+				die();
 			}
 		} else {
 			foreach ( $schedules_twitch as $schedule ) {
 
-				$tw_id = $schedule->{'id'};
-				if ( $tw_id == $wp_tw_id ) {
+			
+				$tw_title = $schedule->{'title'};
+				if ( $tw_title == $wp_title ) {
 				} else {
 					$new_term = wp_insert_term( $schedule->title, 'serie' );
 
