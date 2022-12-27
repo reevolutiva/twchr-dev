@@ -184,7 +184,6 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr-modal-selection__list{
     display:grid;
     grid-template-columns:2fr 1.5fr 1fr 56px;
-    margin-top:1cm;
 }
 
 .twchr-modal-selection__list li {
@@ -951,12 +950,22 @@ stream.twchr-modal .twchr-modal-button.close{
     right: 20px;
     display: flex;
 }
+.twchr_custom_card--contain .silde-2{
+    position: relative;
+    margin-top: 36px;
+}
 
-.twchr_custom_card--contain .twchr-card-img-footer #twchr-modal-selection__btn{
+.twchr_custom_card--contain  #twchr-modal-selection__btn{
     width: 178px;
     height: 50px;
-    flex-shrink: 0;
-    margin-right: 23px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.twchr_custom_card--contain  .twchr_car_tab3{
+    width: 100%;
+    min-height: 250px;
+
 }
 
 .twchr_custom_card--contain .twchr-card-img-footer #twchr-modal-selection__btn.disabled{

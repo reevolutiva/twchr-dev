@@ -28,12 +28,15 @@
 						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n('Youtube','html');?></label>
 					</span>
 				</div>
-				<?php require_once 'streaming_custom_tab2.php'; ?>
-				<?php require_once 'streaming_custom_tab3.php'; ?>
+				<div class="silde-2">
+					<?php require_once 'streaming_custom_tab2.php'; ?>
+					<?php require_once 'streaming_custom_tab3.php'; ?>
+					<button id="twchr-modal-selection__btn"><?php twchr_esc_i18n( 'Asign and Embed', 'html' ); ?></button>
+				</div>
+				
 			</section>
 		</div>
 		<div class="twchr-card-img-footer">
-			<button id="twchr-modal-selection__btn"><?php twchr_esc_i18n( 'Asign and Embed', 'html' ); ?></button>
 			<img src="<?php echo TWCHR_URL_ASSETS . 'Isologo_twitcher.svg'; ?>" alt="logo twitcher">
 		</div>
 		<script>

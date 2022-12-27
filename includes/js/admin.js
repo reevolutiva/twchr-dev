@@ -267,7 +267,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
            const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
 
            // Guardo boton asign 
-           const asign_btn = GSCJS.queryOnly(".twchr_custom_card--contain .twchr-card-img-footer #twchr-modal-selection__btn");
+           const asign_btn = GSCJS.queryOnly(".twchr_custom_card--contain  #twchr-modal-selection__btn");
 
            asign_btn.addEventListener('click',(event)=>{
             //console.log(event.target);
