@@ -110,7 +110,8 @@
     border-radius: 15px;
 }
 
-stream.twchr-modal,.twchr-modal-general{
+stream.twchr-modal,
+.twchr-modal-general{
     background-color: #fff;
     position: absolute;
     left: 16%;
@@ -121,6 +122,10 @@ stream.twchr-modal,.twchr-modal-general{
     border-radius: 15px;
     padding:1cm;
     z-index: 99;
+}
+
+stream.twchr-modal{
+    padding: 0 !important;
 }
 
 stream.twchr-modal h3{
@@ -943,8 +948,20 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr-card-img-footer{
     position: absolute;
     bottom: 20px;
-    right: 27px;
-    width: 86px;
+    right: 20px;
+    display: flex;
+}
+
+.twchr_custom_card--contain .twchr-card-img-footer #twchr-modal-selection__btn{
+    width: 178px;
+    height: 50px;
+    flex-shrink: 0;
+    margin-right: 23px;
+}
+
+.twchr_custom_card--contain .twchr-card-img-footer img{
+    width: 79.11px;
+    height: 51px;
 }
 .alert-fade-out{
     opacity: 0;
@@ -978,6 +995,7 @@ stream.twchr-modal .twchr-modal-button.close{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    max-width: 600px;
 }
 
 .twchr_card_embed_menu span,

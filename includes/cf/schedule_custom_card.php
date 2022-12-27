@@ -32,7 +32,10 @@
 				<?php require_once 'streaming_custom_tab3.php'; ?>
 			</section>
 		</div>
-		<img src="<?php echo TWCHR_URL_ASSETS . 'Isologo_twitcher.svg'; ?>" alt="logo twitcher" class="twchr-card-img-footer">
+		<div class="twchr-card-img-footer">
+			<button id="twchr-modal-selection__btn"><?php twchr_esc_i18n( 'Asign and Embed', 'html' ); ?></button>
+			<img src="<?php echo TWCHR_URL_ASSETS . 'Isologo_twitcher.svg'; ?>" alt="logo twitcher">
+		</div>
 		<script>
 			<?php require 'script_streaming_single.js'; ?>
 		</script>

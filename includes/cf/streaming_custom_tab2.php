@@ -70,7 +70,6 @@
 						</p>
 						
 					</span>
-					<button id="twchr-modal-selection__btn"><?php twchr_esc_i18n( 'Asign', 'html' ); ?></button>
 				</div>
 			</stream>
 			<script>
