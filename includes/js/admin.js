@@ -435,7 +435,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         input_serie.parentElement.style.display = 'none';
         input_serie_label.style.display = 'none';
         input_title.removeAttribute('disabled');
-        document.querySelector("#twchr_dateTime_slot").style.display = 'none';
+        document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none';
     }
 
     

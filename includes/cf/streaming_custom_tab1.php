@@ -180,6 +180,11 @@ if(twchr_twtich_schedule_response.textContent.length > 0){
 	
 }
 
+if(twchr_schedule_card_dateTime.getAttribute("value").length > 0){
+	twchr_schedule_card_dateTime.setAttribute('type','text');
+	twchr_schedule_card_dateTime.value = twchr_schedule_card_dateTime.getAttribute("value");
+}
+
 
 const twchr_broad_type = twchr_data_broadcaster.data[0].broadcaster_type;
 
