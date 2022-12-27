@@ -291,7 +291,7 @@ const tchr_get_clips = async (appToken, client_id, user_id,callback_ajax=false) 
                     stream_data_from_twitch =  stream_data_from_twitch + "&"+element+"="+data[element];
                 }
 
-                location.href = location.href+"&twchr_twitch_embed__host="+data.user_name+"&twchr_twitch_embed__video="+data.id+stream_data_from_twitch;
+                //location.href = location.href+"&twchr_twitch_embed__host="+data.user_name+"&twchr_twitch_embed__video="+data.id+stream_data_from_twitch;
             }
            });
       }else{ // Sí se definio un callback ejecuta el callback

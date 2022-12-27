@@ -263,52 +263,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 					twchr_schedule_card_dateTime.setAttribute('disabled', 'true');
 					twchr_schedule_card_dateTime.parentElement.style.display = 'none';
 					document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'block'; 
-					/*
-					getSchedules_by_id((data)=>{
-						const segments = data.segments;
-						document.querySelector("#twchr_dateTime_slot").innerHTML = '';
-						segments.forEach(segment =>{
-							const id = segment.id;
-							const title = segment.title;
-							const option = `<option value="${id}" >${title} - ${segment.start_time} - ${segment.end_time}</option>`;
-							document.querySelector("#twchr_dateTime_slot").innerHTML = document.querySelector("#twchr_dateTime_slot").innerHTML + option;
-
-							
-						});
-
-						[...document.querySelectorAll("#twchr_dateTime_slot option")].forEach(
-							option => {
-								option.addEventListener('click', (event) =>{
-									twchr_schedule_id = event.target.value;
-									segments.forEach(segment =>{
-										const id = segment.id;
-										if(id === twchr_schedule_id){
-											const title = segment.title;
-											const start_time = segment.start_time;
-											const end_time = segment.end_time;
-											const category = segment.category;
-
-																	
-											twchr_schedule_card_cat_tw.value = category.name;
-											const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
-											twchr_schedule_card_duration.value  = duration.minutes;
-											twchr_schedule_card_dateTime.setAttribute('type','text');
-											twchr_schedule_card_dateTime.value =  start_time;
-											input_title.value = title;
-
-											const repeat_every = twchr_every_reapeat_writer(dastart_time,duration);
-											
-											
-
-										}
-									})
-
-								});
-								//console.log(option);
-							}
-						);
-					});
-					*/
+					
 					const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
 					twchrFetchGet(tchr_vars_admin.wp_api_route+"twchr/v1/twchr_get_serie",
 						(res) => {

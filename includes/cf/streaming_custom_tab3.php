@@ -1,8 +1,9 @@
 <?php
 $values    = get_post_custom( get_the_id() );
 $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true );
+
 ?>
-<metabox>
+<metabox class="twchr_car_tab3" style="<?php echo $twchr_card_src_priority == 'tw'? 'display:none;' : ''; ?>" >
 	
 		
 	<label>Youtbe URL <input id="twchr-yt-url-link" type="text" name='twchr_streams__yt-link-video-src' class="twchr_schedule_card_input" value="<?php $yt_url != false ? twchr_esc_i18n( $yt_url, 'html' ) : ''; ?>"></label>

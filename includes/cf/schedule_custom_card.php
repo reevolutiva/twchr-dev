@@ -8,7 +8,7 @@
 			<div class="twchr-tab-card twchr-tab-card-embed">
 				<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>" alt="twitch">
 				<img src="<?php echo TWCHR_URL_ASSETS . 'youtube_white.png'; ?>" alt="twitch">
-				<h3 class="twchr_button_get_videos"><?php _e( 'Embed Streaming or VOD', 'twitcher' ); ?></h3>
+				<h3><?php _e( 'Embed Streaming or VOD', 'twitcher' ); ?></h3>
 			</div>
 			
 		</div>
@@ -20,12 +20,12 @@
 				<div class="twchr_card_embed_menu">
 					<span><?php twchr_esc_i18n('Embed from','html');?></span>
 					<span>
-						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--yt" value="tw">
-						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'twitch_logo.png'; ?>" alt=""><?php twchr_esc_i18n('Twitch','html');?></label>
+						<input class="twchr_button_get_videos" type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--tw" value="tw" <?php echo $twchr_card_src_priority == 'tw' ? 'checked' : ''?> >
+						<label for="twchr-card-src-priority--tw"><img src="<?php echo TWCHR_URL_ASSETS . 'twitch_logo.png'; ?>" alt=""><?php twchr_esc_i18n('Twitch','html');?></label>
 					</span>
 					<span>
-						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--tw" value="yt">
-						<label for="twchr-card-src-priority--tw""><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n('Youtube','html');?></label>
+						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--yt" value="yt" <?php echo $twchr_card_src_priority == 'yt' ? 'checked' : ''?>>
+						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n('Youtube','html');?></label>
 					</span>
 				</div>
 				<?php require_once 'streaming_custom_tab2.php'; ?>

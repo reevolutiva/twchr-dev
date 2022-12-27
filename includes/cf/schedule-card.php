@@ -37,6 +37,7 @@ function twchr_cf_schedule__card() {
 
 	$is_recurring = isset( $values['twchr_schedule_card_input--is_recurrig'] ) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
 	$serie = isset( $values['twchr_schedule_card_input--serie'] ) ? $values['twchr_schedule_card_input--serie'][0] : '';
+	$twchr_card_src_priority = isset($values['twchr-card-src-priority']) ? $values['twchr-card-src-priority'][0] : ''; 
 	// var_dump($term_serie);
 	require_once 'schedule_custom_card.php';
 }
@@ -109,11 +110,11 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 	}
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_streams__yt-link-video-src' ) ) {
-		update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', wp_kses( $_POST['twchr_streams__yt-link-video-src'], $allowed ) );
+		update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', sanitize_text_field( $_POST['twchr_streams__yt-link-video-src']) );
 	}
 
-	if ( twchr_post_isset_and_not_empty( 'twchr_stream_src_priority' ) ) {
-		update_post_meta( $post_id, 'twchr_stream_src_priority', wp_kses( $_POST['twchr_stream_src_priority'], $allowed ) );
+	if ( twchr_post_isset_and_not_empty( 'twchr-card-src-priority' ) ) {
+		update_post_meta( $post_id, 'twchr-card-src-priority', sanitize_text_field( $_POST['twchr-card-src-priority'] ) );
 	}
 
 	$twch_res = false;
