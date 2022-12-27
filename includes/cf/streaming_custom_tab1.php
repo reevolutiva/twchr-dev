@@ -11,11 +11,13 @@
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
-		<p><?php twchr_esc_i18n("¿Is this streaming part of a serie?",'html');?></p>
+		<p><?php twchr_esc_i18n("¿Is this streaming part of a serie or recurrent streaming?",'html');?></p>
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
+	</div>
+	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
 		<div class="twchr_cards_input_badges">
 			<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
@@ -23,18 +25,22 @@
 		</div>
 	</div>
 	<div class="twchr-card-row">
-		
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
-		<div>
+		<div style="display:none;">
 			<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"	class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
 			<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
 		</div>
-		
+		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
+			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
+			</select>
+			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_dateTime_slot; ?></span></badges>
+		</div>
+	</div>
+	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--duration"><?php twchr_esc_i18n( 'Duration (mins)', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"	class="twchr_schedule_card_input" type="number" value="<?php echo esc_html( $duration ); ?>">
 	</div>
 	<div class="twchr-card-row serie">	
-	
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 			<div class="twchr_cards_input_badges">
 				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
