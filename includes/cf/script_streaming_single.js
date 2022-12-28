@@ -6,6 +6,50 @@ const twchr_card_embed_menu = document.querySelectorAll(".twchr_card_embed_menu 
 const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule__btn");
 
 
+/**
+ * //FLOW CREATE SCHEDULE NOT RECURENT FROM CARD
+ * IF CPT CONTAINS SCHEDULE ID ?
+ *  IF ({GET SCHEDULE BY ID FROM TWITCH()}) == SUCCESS ?
+ *        REWRITE CARD WITH DATA FROM API
+ * 
+ * RECOLLET INPUTS FROM SLIDE 1
+ * PUSH INPUTS IN OBJET
+ * SEND OBJET TO WP API
+ * WP UPDATE  CF
+ * SEND RESPONSE EXIST OR ERROR
+ *   
+ */
+
+/*
+ * //FLOW ASIGNS STREAMING OR VOD
+    RECOLLECT IN OBJECT
+    WP.AJAX.SEND OBJECT
+    SAVE CF IN ACTION
+    REPONSE EXIT OR ERROR
+
+*/
+
+function twtchr_singular_schedule_segment_create(body) {
+    const client_id = twchr_card_credentials.twchr_keys['client-id'];
+    const token = twchr_card_credentials.twchr_keys['user_token']; 
+    const broadcaster_id = twchr_card_credentials.twitcher_data_broadcaster.id; 
+	var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer "+token);
+    myHeaders.append("client-id", client_id);
+    myHeaders.append("Content-Type", "application/json");
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: body
+    };
+
+    fetch("https://api.twitch.tv/helix/schedule/segment?broadcaster_id="+broadcaster_id, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+}
+
 function twchr_card_embend_change_by_state(state){
     if(state === 'tw'){
         document.querySelector(".twchr_car_tab2").style.display = "block";
@@ -64,5 +108,24 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
 
         }
     };
-    twchr_send_front_to_bk(data,e=>console.log(e));
+    /*
+        'start_time' => $twchr_start_time,
+		'title' => $twchr_titulo,
+		'timezone' => 'America/New_York',
+		'is_recurring' => $is_recurring,
+		'duration' => $twchr_duration,
+		'category_id' => $twchr_category,
+	);
+    */
+    const body = {
+        is_recurring: is_recurring[0].value,
+        start_time: twchr_schedule_card_dateTime.value,
+        timezone: 'America/New_York',
+        title: input_title.value,
+        category_id:document.querySelector("input[name='twchr_schedule_card_input--category__value']").value,
+        duration:twchr_schedule_card_duration.value
+
+    }
+    twtchr_singular_schedule_segment_create(JSON.stringify(body));
+    //twchr_send_front_to_bk(data,e=>console.log(e));
 });

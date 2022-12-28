@@ -38,7 +38,14 @@ function twchr_cf_schedule__card() {
 	$is_recurring = isset( $values['twchr_schedule_card_input--is_recurrig'] ) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
 	$serie = isset( $values['twchr_schedule_card_input--serie'] ) ? $values['twchr_schedule_card_input--serie'][0] : '';
 	$twchr_card_src_priority = isset($values['twchr-card-src-priority']) ? $values['twchr-card-src-priority'][0] : ''; 
-	// var_dump($term_serie);
+	$card_keys = array(
+		'twchr_keys' => json_decode( get_option( 'twchr_keys' ) ),
+		'twchr_app_token' => get_option( 'twchr_app_token' ),
+		'twitcher_data_broadcaster' => json_decode( get_option( 'twchr_data_broadcaster' ) )->{'data'}[0]
+	);
+	?>
+	<script> const twchr_card_credentials = JSON.parse(`<?php echo json_encode($card_keys)?>`);</script>
+	<?php
 	require_once 'schedule_custom_card.php';
 }
 
