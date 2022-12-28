@@ -165,7 +165,9 @@ if(twchr_stream_twtich_schedule_id.value.length > 0){
 	twchr_card_connect_status = '<span style="color:green;">Connected with Twitch<span>';
 }
 
-document.querySelector(".twchr-schedule-card-status-container h5").innerHTML = twchr_card_connect_status;
+if(document.querySelector(".twchr-schedule-card-status-container h5")){
+	document.querySelector(".twchr-schedule-card-status-container h5").innerHTML = twchr_card_connect_status;
+}
 
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
