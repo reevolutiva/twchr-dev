@@ -9,9 +9,11 @@ function twchr_card_embend_change_by_state(state){
     if(state === 'tw'){
         document.querySelector(".twchr_car_tab2").style.display = "block";
         document.querySelector(".twchr_car_tab3").style.display = "none";
+        twchr_card_embed_menu[0].checked = true;
     }else if(state == 'yt'){
         document.querySelector(".twchr_car_tab2").style.display = "none";
         document.querySelector(".twchr_car_tab3").style.display = "block";
+        twchr_card_embed_menu[1].checked = true;
     }
 }
 
@@ -25,7 +27,7 @@ twchr_card_embed_menu[1].addEventListener('click',(e)=>{
     twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
 });
 
-
+twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
 document.querySelector("body").classList.add("twchr-single-streaming-active");
 let twchr_card_state = 'schedule';
 twchr_card_header_menu[1].addEventListener('click', ()=>{

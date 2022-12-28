@@ -7,7 +7,7 @@ $yt_url = get_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', true 
 	<label>Youtbe URL <input id="twchr-yt-url-link" type="text" name='twchr_streams__yt-link-video-src' class="twchr_schedule_card_input" value="<?php $yt_url != false ? twchr_esc_i18n( $yt_url, 'html' ) : ''; ?>"></label>
 	<script>
 		let twchr_card_embed_menu_state = 'tw';
-		twchr_card_embed_menu_state = '<?php echo $twchr_card_src_priority;?>';
+		<?php echo $twchr_card_src_priority != false ? 'twchr_card_embed_menu_state = "'.$twchr_card_src_priority.'";' : '';?>
 	</script>
 </metabox>
 
