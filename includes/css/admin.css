@@ -940,6 +940,10 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr-card-row.is_recurring p{
     grid-column: 1/-1;
 }
+
+.twchr-card-row.tw-category{
+    grid-template-columns: 256px 320px 50px;
+}
 .twchr_custom_card--contain select{
     width: 300px;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;

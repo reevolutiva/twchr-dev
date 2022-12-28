@@ -1,8 +1,9 @@
-<?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
-<?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
-<?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
-<?php $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id') != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id')[0] : ''; ?>
 <?php 
+ $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; 
+ $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single ); 
+ $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true ); 
+ $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id') != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id')[0] : ''; 
+ 
 	if(isset($_GET['twitcher_twitch_schedule_response']) && $_GET['twitcher_twitch_schedule_response'] == 'delete'){
 		update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
 							
@@ -27,13 +28,18 @@
 		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
 	</div>
-	<div class="twchr-card-row">
+	<div class="twchr-card-row tw-category">
 		<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
 		<div class="twchr_cards_input_badges">
 			<input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
 			<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
 			<badges><?php echo $term_cat_twcht_list; ?></badges>
 		</div>
+		<picture>
+			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) &&  $twchr_twicth_twitch_cat_img != false) : ?>
+					<img  src="<?php twchr_esc_i18n( $twchr_twicth_twitch_cat_img, 'html' ); ?>" alt="Twitcher Stream Category Thumbnail">
+				<?php endif; ?>    
+		</picture>
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
