@@ -29,7 +29,11 @@ const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule_
 
 */
 
+<<<<<<< HEAD
 function twtchr_singular_schedule_segment_create(body) {
+=======
+function twtchr_schedule_segment_create(body) {
+>>>>>>> a13f734b11842023851ea44b0c38d4b51932baf2
     const client_id = twchr_card_credentials.twchr_keys['client-id'];
     const token = twchr_card_credentials.twchr_keys['user_token']; 
     const broadcaster_id = twchr_card_credentials.twitcher_data_broadcaster.id; 
