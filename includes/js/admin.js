@@ -391,6 +391,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
         twchr_is_recurring[0].checked = true;
         twchr_schedule_card_dateTime.parentElement.style.display = 'none'
+        twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',true);
         
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
         const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
