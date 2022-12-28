@@ -1,5 +1,7 @@
 <?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
 <?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
+<?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
+<?php $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id') != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id')[0] : ''; ?>
 <?php 
 	if(isset($_GET['twitcher_twitch_schedule_response']) && $_GET['twitcher_twitch_schedule_response'] == 'delete'){
 		update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
@@ -62,7 +64,7 @@
 		</div>
 	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
-   
+	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id?>">
 
 </div>
 
@@ -146,6 +148,13 @@ const twchr_data_broadcaster = <?php echo get_option( 'twchr_data_broadcaster' )
 const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
 const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
 const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
+const twchr_stream_twtich_schedule_id = document.querySelector("#twchr_stream_twtich_schedule_id");
+
+let twchr_card_connect_status = 'Connect with Twitch';
+if(twchr_stream_twtich_schedule_id.value.length > 0){
+	twchr_card_connect_status = 'Connected with Twitch';
+}
+
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
 	const badge = twchr_dateTime_slot.textContent;
