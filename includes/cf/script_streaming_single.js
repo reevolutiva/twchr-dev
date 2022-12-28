@@ -39,3 +39,8 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";
     document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
 });
+
+
+function twchr_send_front_to_bk(twchr_object,twchr_callback){
+    wp.ajax.send('twchr_ajax_recive',{data:twchr_object}).done(e => twchr_callback(e));
+}
