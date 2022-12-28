@@ -6,6 +6,7 @@
 
 /**
  * Llamo  a todas las variates de fuente comfortaa que seran utilizadas en el plugin.
+ *
  * @return void
  */
 function twchr_fonts() {
@@ -35,10 +36,11 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
 
 /**
  * Encolo los archivos JavaScript y CSS que necesitara el plugin para funcionar.
+ *
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.17';
+	$version = 'beta.4.125';
 
 	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
@@ -67,8 +69,8 @@ function twchr_admin_js() {
 
 add_action( 'admin_enqueue_scripts', 'twchr_admin_js' );
 
-function twchr_front_scripts(){
+function twchr_front_scripts() {
 	wp_enqueue_script( 'twchr_clipboard-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js', array(), $version, false );
 }
 
-add_action('wp_enqueue_scripts', 'twchr_front_scripts');
+add_action( 'wp_enqueue_scripts', 'twchr_front_scripts' );

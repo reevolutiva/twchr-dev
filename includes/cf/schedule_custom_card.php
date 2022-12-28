@@ -1,27 +1,43 @@
 <?php if ( get_post_type() === 'twchr_streams' ) : ?>
 	<div class="twchr_custom_card--contain">
-		<div class="twchr_custom_card_header">
-			<div>
-				<h3 class="active"><?php _e( 'Schedule Future Streaming', 'twitcher' ); ?></h3>
+		<div class="twchr-tab-card-bar">
+			<div class="twchr-tab-card twchr-tab-card-stream">
+				<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>"" alt="twitch">
+				<h3><?php _e( 'Schedule streaming', 'twitcher' ); ?></h3>
 			</div>
-			<div>
-				<h3 class="active twchr_button_get_videos"><?php _e( 'Assign Twitch Streaming or Video', 'twitcher' ); ?></h3>
+			<div class="twchr-tab-card twchr-tab-card-embed">
+				<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>" alt="twitch">
+				<img src="<?php echo TWCHR_URL_ASSETS . 'youtube_white.png'; ?>" alt="twitch">
+				<h3><?php _e( 'Embed Streaming or VOD', 'twitcher' ); ?></h3>
 			</div>
-			<div>
-				<h3 class="active"><?php _e( 'Assign Youtube Link Video', 'twitcher' ); ?></h3>
-			</div>
-			<img src="<?php echo TWCHR_URL_ASSETS . 'logo_menu.svg'; ?>" alt="logo twitcher">
+			
 		</div>
 		<div class="custom_card_row">
 			<section>
 				<?php require_once 'streaming_custom_tab1.php'; ?>
 			</section>
 			<section>
-				<?php require_once 'streaming_custom_tab2.php'; ?>
+				<div class="twchr_card_embed_menu">
+					<span><?php twchr_esc_i18n('Embed from','html');?></span>
+					<span>
+						<input class="twchr_button_get_videos" type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--tw" value="tw" <?php echo $twchr_card_src_priority == 'tw' ? 'checked' : ''?> >
+						<label for="twchr-card-src-priority--tw"><img src="<?php echo TWCHR_URL_ASSETS . 'twitch_logo.png'; ?>" alt=""><?php twchr_esc_i18n('Twitch','html');?></label>
+					</span>
+					<span>
+						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--yt" value="yt" <?php echo $twchr_card_src_priority == 'yt' ? 'checked' : ''?>>
+						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n('Youtube','html');?></label>
+					</span>
+				</div>
+				<div class="silde-2">
+					<?php require_once 'streaming_custom_tab2.php'; ?>
+					<?php require_once 'streaming_custom_tab3.php'; ?>
+					<button id="twchr-modal-selection__btn"><?php twchr_esc_i18n( 'Asign and Embed', 'html' ); ?></button>
+				</div>
+				
 			</section>
-			<section>
-				<?php require_once 'streaming_custom_tab3.php'; ?>
-			</section>
+		</div>
+		<div class="twchr-card-img-footer">
+			<img src="<?php echo TWCHR_URL_ASSETS . 'Isologo_twitcher.svg'; ?>" alt="logo twitcher">
 		</div>
 		<script>
 			<?php require 'script_streaming_single.js'; ?>

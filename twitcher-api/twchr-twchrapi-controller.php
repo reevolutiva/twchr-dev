@@ -1,5 +1,9 @@
 <?php
 /**
+* Aqui ejecuto la comunicacion con el servidor 
+**/
+
+/**
  * Enviar las estadisticas de wordpress
  * en el caso en que  la url contenga los siguientes strings
  *  - post_type=twchr_streams

@@ -362,6 +362,14 @@ if ( ! twchr_is_ssl_secure() ) :
 									update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
 								}
 
+								if ( isset( $_GET['twcr_from_cpt'] ) ) {
+									$post_id = sanitize_text_field( $_GET['twcr_from_cpt'] );
+									$twitcher_respose = '';
+									update_post_meta( $post_id, 'twchr_stream_all_data_from_twitch', $twitcher_respose );
+								}
+
+
+
 								twtchr_twitch_autenticate( $client_id, $secret_key, $return, $scope );
 
 							endif;

@@ -9,10 +9,10 @@
 function twchr_redirect_setUp() {
 	// Si la url contiene 'plugins' retorna true.
 	$data_url_1 = str_contains( $_SERVER['REQUEST_URI'], 'post_type=twchr_streams&page=twchr-dashboard' );
-	
+
 	// ¿Eciste dato en wp_options twchr_set_instaled?.
 	$set_instaled = get_option( 'twchr_set_instaled' );
-	
+
 	// echo "dentro de la funcion redirect_setUp";
 	if ( $set_instaled <= 1 || $set_instaled == false ) {
 		if ( $data_url_1 ) {
