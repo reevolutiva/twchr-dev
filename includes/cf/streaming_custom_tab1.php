@@ -60,7 +60,7 @@
 				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
 				<input type="hidden" name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id">
 			</div>
-			<p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
+			<p id="twchr_card_button_create_new_serie"><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
 		</div>
 	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
@@ -250,6 +250,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
 						twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 						twchr_schedule_card_dateTime.removeAttribute('disabled');
+						document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
 						
 					} else {
 						// Si el broacater type no es ni pather ni afilate
@@ -265,16 +266,18 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 							document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
 							twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 							twchr_schedule_card_dateTime.removeAttribute('disabled')
+							document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
 						} else {
 							// volvermos al estado inicial del ckeckbox
-							tag.checked = true;
+							tag.checked = true;//TODO: adaptar logica para radio-button
 						}
 					}
 				} else {
-					//Si checkbox is true
+					//Si is_recurring is true
 					
 					input_serie.parentElement.style.display = 'block';
 					input_serie_label.style.display = 'block';
+					document.querySelector("#twchr_card_button_create_new_serie").style.display = "block";
 					
 			
 					input_title.value = input_post_title.value;

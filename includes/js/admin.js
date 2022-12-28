@@ -391,6 +391,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
         twchr_is_recurring[0].checked = true;
         twchr_schedule_card_dateTime.parentElement.style.display = 'none'
+        
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
         const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
 
@@ -443,6 +444,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         input_serie_label.style.display = 'none';
         input_title.removeAttribute('disabled');
         document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none';
+        document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
     }
 
     
