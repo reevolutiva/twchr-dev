@@ -941,8 +941,22 @@ stream.twchr-modal .twchr-modal-button.close{
     grid-column: 1/-1;
 }
 
-.twchr-card-row.tw-category{
-    grid-template-columns: 256px 320px 50px;
+.twchr-card-row.is_recurring{
+    grid-template-columns: 256px 320px 150px;
+    
+}
+.twchr-card-row.is_recurring .twchr-schedule-card-status-container{
+    position: relative;
+}
+.twchr-card-row.is_recurring .twchr-schedule-card-status-container div{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.twchr-card-row.is_recurring .twchr-schedule-card-status-container div img{
+    display: block;
+    margin: 0 auto;
 }
 .twchr_custom_card--contain select{
     width: 300px;

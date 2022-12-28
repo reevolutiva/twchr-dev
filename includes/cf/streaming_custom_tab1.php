@@ -22,6 +22,14 @@
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
+		<picture class="twchr-schedule-card-status-container">
+			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) &&  $twchr_twicth_twitch_cat_img != false) : ?>
+					<div>
+						<img  src="<?php echo str_replace('-52x72','-104x144',$twchr_twicth_twitch_cat_img); ?>" alt="Twitcher Stream Category Thumbnail">
+						<h5></h5>
+					</div>
+				<?php endif; ?>    
+		</picture>
 		<p><?php twchr_esc_i18n("¿Is this streaming part of a serie or recurrent streaming?",'html');?></p>
 	</div>
 	<div class="twchr-card-row">
@@ -35,11 +43,7 @@
 			<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
 			<badges><?php echo $term_cat_twcht_list; ?></badges>
 		</div>
-		<picture>
-			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) &&  $twchr_twicth_twitch_cat_img != false) : ?>
-					<img  src="<?php twchr_esc_i18n( $twchr_twicth_twitch_cat_img, 'html' ); ?>" alt="Twitcher Stream Category Thumbnail">
-				<?php endif; ?>    
-		</picture>
+	
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
@@ -156,10 +160,12 @@ const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
 const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
 const twchr_stream_twtich_schedule_id = document.querySelector("#twchr_stream_twtich_schedule_id");
 
-let twchr_card_connect_status = 'Connect with Twitch';
+let twchr_card_connect_status = '<button style="background-color: transparent;color: var(--twchr-purple); border: 0; font-family: `Comfortaa`;font-weight: bold;font-size: 13px;text-decoration: underline;">Connect with Twitch</button>';
 if(twchr_stream_twtich_schedule_id.value.length > 0){
-	twchr_card_connect_status = 'Connected with Twitch';
+	twchr_card_connect_status = '<span style="color:green;">Connected with Twitch<span>';
 }
+
+document.querySelector(".twchr-schedule-card-status-container h5").innerHTML = twchr_card_connect_status;
 
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
