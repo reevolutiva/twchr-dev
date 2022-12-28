@@ -240,6 +240,7 @@ twchr_schedule_card_dateTime.oninput = ()=>{
 for (let i = 0; i < twchr_is_recurring.length; i++) {
 	const element = twchr_is_recurring[i];
 	element.addEventListener('click', (e) => {
+				if(i == 0) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',true);
 				const tag = e.target;
 				const value = tag.value;
 				const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__name");
@@ -265,6 +266,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 						twchr_schedule_card_dateTime.removeAttribute('disabled');
 						document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
+						if(i == 1) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
 						
 					} else {
 						// Si el broacater type no es ni pather ni afilate
@@ -281,9 +283,10 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 							twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 							twchr_schedule_card_dateTime.removeAttribute('disabled')
 							document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
+							if(i == 1) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
 						} else {
 							// volvermos al estado inicial del ckeckbox
-							tag.checked = true;//TODO: adaptar logica para radio-button
+							twchr_is_recurring[0].checked = true;
 						}
 					}
 				} else {

@@ -390,8 +390,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     if(twchr_is_recurring[0].checked == true ||  (twchr_is_recurring[0].checked == false && twchr_is_recurring[1].checked == false)){
 
         twchr_is_recurring[0].checked = true;
-        twchr_schedule_card_dateTime.parentElement.style.display = 'none'
-        twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',true);
+        twchr_schedule_card_dateTime.parentElement.style.display = 'none';
         
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
         const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
@@ -438,7 +437,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
         const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__name");
         const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
-       
+        twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
 
     
         input_serie.parentElement.style.display = 'none';

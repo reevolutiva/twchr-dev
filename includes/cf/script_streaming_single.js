@@ -39,9 +39,30 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     document.querySelector(".twchr_car_tab2").style.display = 'block';
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";
     document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
+    
 });
 
 
 function twchr_send_front_to_bk(twchr_object,twchr_callback){
     wp.ajax.send('twchr_ajax_recive',{data:twchr_object}).done(e => twchr_callback(e));
 }
+
+twchr_modal_schedule__btn.addEventListener('click',e => {
+    e.preventDefault();
+    // GUARDA EL INPUT QUE ESTE CHECKED
+    let is_recurring = [...twchr_is_recurring].filter(x => x.checked == true);
+
+    const data = {
+        twchr_action:'update',
+        body:{
+            post_id:getParameterByName('post'),
+            is_recurring: is_recurring[0].value,
+            date_time: twchr_schedule_card_dateTime.value,
+            streaming_title: input_title.value,
+            twicth_category:document.querySelector("input[name='twchr_schedule_card_input--category__value']").value,
+            streaming_duration:twchr_schedule_card_duration.value
+
+        }
+    };
+    twchr_send_front_to_bk(data,e=>console.log(e));
+});
