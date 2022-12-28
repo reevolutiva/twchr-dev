@@ -5,7 +5,7 @@ Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, emb
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 0.3
+Stable tag: 0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,6 +71,13 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 7. Asign video to Post 7.png
 
 == Changelog ==
+==0.4==
+* New Post Streaming Flow: Schedule - Stream - Embed
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* New Shortcodes 
+* Code Optimizations
+* Bug Fixes
+
 ==0.3==
 * Redesigned schedule card
 * Improved series integration with Twitch Calendar
@@ -78,6 +85,12 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 * Bug fixes
 
 == Upgrade Notice ==
+==0.4==
+* Improved Streaming Flow: Easily program your streamings & series and embed videos into your post.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
+
 ==0.3==
 * New schedule card for better streaming and series management
 * Improved Twitch calendar integration. Create, delete, and modify schedule segments directly from your WordPress dashboard.
