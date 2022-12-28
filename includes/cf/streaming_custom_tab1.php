@@ -1,5 +1,11 @@
 <?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
 <?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
+<?php 
+	if(isset($_GET['twitcher_twitch_schedule_response']) && $_GET['twitcher_twitch_schedule_response'] == 'delete'){
+		update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
+							
+	}
+?>
 <div class="twchr_car_tab1">
 	<div class="twchr-card-row is_recurring">
 		<label><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
@@ -160,12 +166,16 @@ if(!twchr_dateTime_slot.textContent.length == 0){
 
 if(twchr_twtich_schedule_response.textContent.length > 0){
 	const response = JSON.parse(twchr_twtich_schedule_response.textContent);
-	if(response.status != 200){
+	if(response.status != 200 && !location.search.includes("twitcher_twitch_schedule_response=delete")){
 		if(response.error){
 			alert("Error: " + response.error);
 		}
 
 		alert("message: "+ response.message);
+
+		if(response.message == 'single segment creation not authorized'){
+			location.href = location.href+'&twitcher_twitch_schedule_response=delete';
+		}
 
 		if(response.url_redirect){
 			function getParameterByName(name) {
