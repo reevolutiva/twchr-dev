@@ -201,6 +201,15 @@ stream.twchr-modal .twchr-modal-button.close{
     grid-template-columns:auto 56px;
     margin-bottom: 10pt;
 }
+
+#twchr-setUp input,
+#twchr-setUp label{
+    display: block;
+}
+
+#twchr-setUp label{
+    font-family: 'Comfortaa';
+}
 .twchr_modal_video_ajax input[type='checkbox'],
 #twchr-setUp input[type='checkbox'],
 .twchr_schedule_card_input[type='checkbox']{
