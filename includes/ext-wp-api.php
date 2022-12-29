@@ -193,5 +193,9 @@ function twchr_endpoint_get_jwt_callback() {
 	// Codifica el JWT
 	$jwt = JWT::encode($payload, $secret_key,'HS256');
 
- 	return $jwt;
+ 	return [
+		'username' => $username,
+		'email' => $email,
+        'jwt' => $jwt
+	];
 }
