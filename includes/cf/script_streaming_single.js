@@ -122,7 +122,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         }
         if(res.data){
           const segment = res.data.segments[0];
-          let date1Object = new Date(Date.parse(segment.start_time.end_time));
+          let date1Object = new Date(Date.parse(segment.end_time));
           let date2Object = new Date(Date.parse(segment.start_time));
 
           // Get the difference in milliseconds
