@@ -29,7 +29,7 @@ const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule_
 
 */
 
-function twtchr_schedule_segment_create(body) {
+function twtchr_schedule_segment_create(body,callback,error) {
     const client_id = twchr_card_credentials.twchr_keys['client-id'];
     const token = twchr_card_credentials.twchr_keys['user_token']; 
     const broadcaster_id = twchr_card_credentials.twitcher_data_broadcaster.id; 
@@ -42,12 +42,17 @@ function twtchr_schedule_segment_create(body) {
         headers: myHeaders,
         body: body
     };
+    let response;
+    fetch(
+      "https://api.twitch.tv/helix/schedule/segment?broadcaster_id=" +
+        broadcaster_id,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => callback(result))
+      .catch((error) => error(error));
 
-    fetch("https://api.twitch.tv/helix/schedule/segment?broadcaster_id="+broadcaster_id, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-
+    return response;
 }
 
 function twchr_card_embend_change_by_state(state){
@@ -96,36 +101,58 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
     // GUARDA EL INPUT QUE ESTE CHECKED
     let is_recurring = [...twchr_is_recurring].filter(x => x.checked == true);
 
-    const data = {
-        twchr_action:'update',
-        body:{
-            post_id:getParameterByName('post'),
-            is_recurring: is_recurring[0].value,
-            date_time: twchr_schedule_card_dateTime.value,
-            streaming_title: input_title.value,
-            twicth_category:document.querySelector("input[name='twchr_schedule_card_input--category__value']").value,
-            streaming_duration:twchr_schedule_card_duration.value
-
-        }
-    };
-    /*
-        'start_time' => $twchr_start_time,
-		'title' => $twchr_titulo,
-		'timezone' => 'America/New_York',
-		'is_recurring' => $is_recurring,
-		'duration' => $twchr_duration,
-		'category_id' => $twchr_category,
-	);
-    */
+    
     const body = {
-        is_recurring: is_recurring[0].value,
-        start_time: twchr_schedule_card_dateTime.value,
-        timezone: 'America/New_York',
-        title: input_title.value,
-        category_id:document.querySelector("input[name='twchr_schedule_card_input--category__value']").value,
-        duration:twchr_schedule_card_duration.value
+      is_recurring: is_recurring[0].value,
+      start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
+      timezone: "America/New_York",
+      title: input_title.value,
+      category_id: document.querySelector(
+        "input[name='twchr_schedule_card_input--category__value']"
+      ).value,
+      duration: twchr_schedule_card_duration.value,
+    };
+    twtchr_schedule_segment_create(
+      JSON.stringify(body),
+      (e) => {
+        const res = JSON.parse(e);
+        if(res.error){
+            alert(res.error);
+            alert(res.message);
+        }
+        if(res.data){
+          const segment = res.data.segments[0];
+          let date1Object = new Date(Date.parse(segment.start_time.end_time));
+          let date2Object = new Date(Date.parse(segment.start_time));
 
-    }
-    twtchr_singular_schedule_segment_create(JSON.stringify(body));
-    //twchr_send_front_to_bk(data,e=>console.log(e));
+          // Get the difference in milliseconds
+          let diff = date1Object - date2Object;
+
+          // Convert the difference to minutes
+          let minutes = diff / (1000 * 60);
+          const data = {
+            twchr_action: "update",
+            body: {
+              post_id: getParameterByName("post"),
+              schedule_id: segment.id,
+              is_recurring: segment.is_recurring,
+              date_time: segment.start_time,
+              streaming_title: segment.title,
+              twicth_category: segment.category,
+              streaming_duration: minutes,
+            },
+          };
+          twchr_send_front_to_bk(data,e=>console.log(e));
+        }
+        console.log(res);
+      },
+      (e) => console.log(e)
+    );
+    
 });
+
+function twchr_date_to_rfc366(dateTimeRaw) {
+  const dateTimeStg = Date.parse(dateTimeRaw);
+  const rfc3339Date = new Date(dateTimeStg).toISOString();
+  return rfc3339Date;
+}

@@ -35,6 +35,15 @@ function twchr_ajax_recive_callback() {
 
 function twchr_save_cf_slide_1($post_id,$body){
     $allowed = [];
+	/**
+	          post_id: getParameterByName("post"),
+              schedule_id: segment.id,
+              is_recurring: segment.is_recurring,
+              date_time: segment.start_time,
+              streaming_title: segment.title,
+              twicth_category: segment.category,
+              streaming_duration: minutes,
+	 **/
     if ( twchr_post_isset_and_not_empty( $body->is_recurring ) ) {
 		$to_api_is_recurring =  wp_kses( $body->is_recurring, $allowed );
 		update_post_meta( $post_id, $body->is_recurring, $to_api_is_recurring );
@@ -45,19 +54,9 @@ function twchr_save_cf_slide_1($post_id,$body){
 		update_post_meta( $post_id, $body->streaming_title, $to_api_title );
 	}
 
-	// Si API IS RECURRING
-	// El titulo sera serie name
-	if ( $to_api_is_recurring && twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__name' ) ) {
-		$to_api_title = wp_kses( $_POST['twchr_schedule_card_input--serie__name'], $allowed );
-	}
 
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--dateTime' ) ) {
-
-		$date_time_raw = sanitize_text_field( $_POST['twchr_schedule_card_input--dateTime'] );
-		$date_time_stg = strtotime( $date_time_raw );
-		$to_api_date_time = date( DateTimeInterface::RFC3339, $date_time_stg );
-
-		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $to_api_date_time );
+	if ( twchr_post_isset_and_not_empty($body->date_time)) {
+		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $body->date_time );
 	}
 	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--duration' ) ) {
 		$to_api_duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
@@ -73,6 +72,11 @@ function twchr_save_cf_slide_1($post_id,$body){
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_stream_data_dateTime' ) ) {
 		update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
+	}
+
+	if(twchr_post_isset_and_not_empty('schedule_id')){
+		$schedule_segment_id = sanitize_term_field($_POST['schedule_id']);
+		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
 	}
 
     return 200;
