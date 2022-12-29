@@ -7,7 +7,14 @@ function twchr_ajax_recive_callback() {
   // Recupera los datos enviados con la solicitud AJAX
 
   $twchr_action = sanitize_text_field($_POST['twchr_action']);
-  $body = json_decode($_POST['body']);
+  $body = $_POST['body'];
+  $response = 'LE NO';
+
+  
+  if ( ! check_ajax_referer( 'twchr_ajax_recive', 'nonce', false ) ) {
+    wp_die( 'Invalid security token' );
+  }  
+  
 
   switch ($twchr_action) {
     case 'create':
@@ -17,7 +24,7 @@ function twchr_ajax_recive_callback() {
         # code...
         break;
     case 'update':
-        $post_id = $body->post_id;
+        $post_id = (int) $body['post_id'];
         twchr_save_cf_slide_1($post_id,$body);
         break;
     
@@ -30,56 +37,40 @@ function twchr_ajax_recive_callback() {
   //update_post_meta( $post_id, 'mi_campo_personalizado', $valor_del_campo );
 
   // Envía una respuesta al navegador
-  wp_send_json_success(json_encode($_POST));
+  wp_send_json_success($_POST);
 }
 
 function twchr_save_cf_slide_1($post_id,$body){
     $allowed = [];
-	/**
-	          post_id: getParameterByName("post"),
-              schedule_id: segment.id,
-              is_recurring: segment.is_recurring,
-              date_time: segment.start_time,
-              streaming_title: segment.title,
-              twicth_category: segment.category,
-              streaming_duration: minutes,
-	 **/
-    if ( twchr_post_isset_and_not_empty( $body->is_recurring ) ) {
-		$to_api_is_recurring =  wp_kses( $body->is_recurring, $allowed );
-		update_post_meta( $post_id, $body->is_recurring, $to_api_is_recurring );
+	
+    if ( isset( $body['is_recurring'] ) ) {
+		$to_api_is_recurring =  wp_kses( $body['is_recurring'], $allowed );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig',$body['is_recurring'] );
 	}
 
-	if ( twchr_post_isset_and_not_empty( $body->streaming_title ) ) {
-		$to_api_title = sanitize_text_field( $body->streaming_title);
-		update_post_meta( $post_id, $body->streaming_title, $to_api_title );
-	}
+	if ( isset($body['streaming_title'] ) ) {
+		$to_api_title = sanitize_text_field( $body['stream_title']);
+		update_post_meta( $post_id, 'twchr_schedule_card_input--title',$to_api_title);
+	}else{
+        update_post_meta( $post_id, 'twchr_schedule_card_input--title',' ');
+    }
 
 
-	if ( twchr_post_isset_and_not_empty($body->date_time)) {
-		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $body->date_time );
+	if ( isset($body['date_time'])) {
+		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $body['date_time'] );
 	}
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--duration' ) ) {
-		$to_api_duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $to_api_duration );
-	}
-
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__id' ) ) {
-		wp_set_post_terms( $post_id, array( (int) $_POST['twchr_schedule_card_input--serie__id'] ), 'serie' );
-	}
-	if ( twchr_post_isset_and_not_empty( 'twchr_dateTime_slot' ) ) {
-		update_post_meta( $post_id, 'twchr_dateTime_slot', $_POST['twchr_dateTime_slot'] );
+	if ( isset($body['streaming_duration'])) {
+		$to_api_duration = (int) wp_kses( $body['streaming_duration'], $allowed );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--duration',  $to_api_duration);
 	}
 
-	if ( twchr_post_isset_and_not_empty( 'twchr_stream_data_dateTime' ) ) {
-		update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
-	}
-
-	if(twchr_post_isset_and_not_empty('schedule_id')){
-		$schedule_segment_id = sanitize_term_field($_POST['schedule_id']);
+	if(isset($body['schedule_id'])){
+		$schedule_segment_id = sanitize_text_field($body['schedule_id']);
 		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
 	}
 
     return 200;
 }
+
 
 ?>

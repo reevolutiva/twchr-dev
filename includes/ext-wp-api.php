@@ -188,7 +188,8 @@ function twchr_endpoint_get_jwt_callback() {
 	];
 
 	// Define la clave secreta para firmar el JWT
-	$secret_key = 'twchr_api_secret_key';
+	$secret_key = wp_generate_password(20);
+	//wp_create_app('twchr_card',$secret_key);
 
 	// Codifica el JWT
 	$jwt = JWT::encode($payload, $secret_key,'HS256');
@@ -198,4 +199,41 @@ function twchr_endpoint_get_jwt_callback() {
 		'email' => $email,
         'jwt' => $jwt
 	];
+}
+
+/*
+function twchr_endpoint_get_nonce() {
+	register_rest_route(
+		'twchr/v1',
+		'twchr_get_nonce',
+		array(
+			'methods'  => 'POST',
+			'callback' => 'twchr_endpoint_get_nonce_callback',
+
+		)
+	);
+}
+add_action( 'rest_api_init', 'twchr_endpoint_get_nonce' );
+
+function twchr_endpoint_get_nonce_callback(){
+	
+}
+*/
+
+function twchr_create_user_admin(){
+	// Generar una contraseña aleatoria para la aplicación
+	$app_password = wp_generate_password( 64, true, false );
+
+	// Crear un usuario para la aplicación
+	$userdata = array(
+		'user_login' => 'mi_aplicación',
+		'user_pass'  => $app_password,
+		'role'       => 'app'
+	);
+	$user_id = wp_insert_user( $userdata );
+
+	if ( is_wp_error( $user_id ) ) {
+	// Mostrar un mensaje de error si hay un problema al crear el usuario
+	echo 'Error al crear el usuario de la aplicación: ' . $user_id->get_error_messa;	
+	}
 }

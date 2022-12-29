@@ -93,6 +93,7 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
 
 
 function twchr_send_front_to_bk(twchr_object,twchr_callback){
+    //console.log(twchr_object);
     wp.ajax.send('twchr_ajax_recive',{data:twchr_object}).done(e => twchr_callback(e));
 }
 
@@ -120,7 +121,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
             alert(res.error);
             alert(res.message);
         }
-        if(res.data){
+        if(res.data != false){
           const segment = res.data.segments[0];
           let date1Object = new Date(Date.parse(segment.end_time));
           let date2Object = new Date(Date.parse(segment.start_time));
@@ -132,8 +133,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           let minutes = diff / (1000 * 60);
           const data = {
             twchr_action: "update",
+            nonce: twchr_post_nonce,
             body: {
-              post_id: getParameterByName("post"),
+              post_id: twchr_post_id,
               schedule_id: segment.id,
               is_recurring: segment.is_recurring,
               date_time: segment.start_time,
@@ -143,8 +145,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
             },
           };
           twchr_send_front_to_bk(data,e=>console.log(e));
+
         }
-        console.log(res);
+        
       },
       (e) => console.log(e)
     );
