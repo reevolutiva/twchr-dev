@@ -143,3 +143,30 @@ function twchr_cat_twcht_endpoint() {
 }
 
 add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
+
+
+/** ENDPOINT PARA JWT */
+/**
+ * Hago visible a los CPT Streamins en la API REST de WordPress
+ *
+ * @return void
+ */
+function twchr_endpoint_get_jwt() {
+	register_rest_route(
+		'twchr/v1',
+		'twchr_get_jwt',
+		array(
+			'methods'  => 'POST',
+			'callback' => 'twchr_endpoint_get_jwt_callback',
+
+		)
+	);
+}
+add_action( 'rest_api_init', 'twchr_endpoint_get_jwt' );
+
+
+function twchr_endpoint_get_jwt_callback( $request ) {
+	$body = file_get_contents( 'php://input' );
+	$post = json_encode( $_POST);
+ 	return $post;
+}
