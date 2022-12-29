@@ -386,6 +386,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
 
         const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
           
+        
         twchrFetchGet(tchr_vars_admin.site_url + "/wp-json/twchr/v1/twchr_get_serie",
             (res) => {
                 res.forEach(item =>{
@@ -393,39 +394,53 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                     twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
                 });
 
-                const options_serie = twchr_ajax_input_serie.querySelectorAll("option");
+                const options_serie = [...twchr_ajax_input_serie.querySelectorAll("option")];
+                console.log(options_serie);
+        
                 options_serie.forEach(option_serie =>{
-                    option_serie.addEventListener('click',(e)=>{
-                        const term_id = e.target.value;
-                        res.forEach(item =>{
-                            if(item.term_id == term_id){
-                                const chapters = item.chapters;
-                                chapters.forEach(chapter =>{
-                                    const opt = `<option data-term-id="${term_id}" value="${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
-                                    twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-                                });
-                            }
-                        });
+                    //console.log(option_serie);
+                    
+                    option_serie.addEventListener("click", (e) => {
+                      console.log("funciona");
+                      const term_id = e.target.value;
+                      res.forEach((item) => {
+                        if (item.term_id == term_id) {
+                          const chapters = item.chapters;
+                          chapters.forEach((chapter) => {
+                            const opt = `<option data-term-id="${term_id}" value="${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+                            twchr_dateTime_slot.innerHTML =
+                              twchr_dateTime_slot.innerHTML + opt;
+                          });
+                        }
+                      });
 
-                        const options_slot = twchr_dateTime_slot.querySelectorAll("option");
-                        options_slot.forEach(option_slot =>{
-                            option_slot.addEventListener('click',(e)=>{
-                                const term_id = e.target.getAttribute("data-term-id");
-                                res.forEach(item =>{
-                                    if(item.term_id == term_id){
-                                        const chapters = item.chapters;
-                                        chapters.forEach(chapter =>{
-                                            const duration = twchr_get_duration_form_RFC3666(chapter.end_time, chapter.start_time);
-                                            twchr_schedule_card_duration.value = parseInt(duration.minutes);
-                                            twchr_schedule_card_cat_tw.value = chapter.category.name;
-                                            twchr_schedule_card_serie_id.value = term_id;
-                                            
-                                        });
-                                    }
-                                });
-                            });
+                      const options_slot =
+                        twchr_dateTime_slot.querySelectorAll("option");
+                      options_slot.forEach((option_slot) => {
+                        option_slot.addEventListener("click", (e) => {
+                          const term_id = e.target.getAttribute("data-term-id");
+                          res.forEach((item) => {
+                            if (item.term_id == term_id) {
+                              const chapters = item.chapters;
+                              chapters.forEach((chapter) => {
+                                const duration =
+                                  twchr_get_duration_form_RFC3666(
+                                    chapter.end_time,
+                                    chapter.start_time
+                                  );
+                                twchr_schedule_card_duration.value = parseInt(
+                                  duration.minutes
+                                );
+                                twchr_schedule_card_cat_tw.value =
+                                  chapter.category.name;
+                                twchr_schedule_card_serie_id.value = term_id;
+                              });
+                            }
+                          });
                         });
+                      });
                     });
+                    
                 });
                 
                 
