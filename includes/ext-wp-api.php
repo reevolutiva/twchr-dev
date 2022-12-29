@@ -3,6 +3,10 @@
  * En este archivo esta todas las funciones que extienden la API REST de WordPress
  */
 
+require 'features/jwt/JWT.php';
+//require 'features/jwt/Key.php';
+use Firebase\JWT\JWT;
+//use Firebase\Key;
 /**
  * Haciendo visible en el Enpoint
  * Taxonomía Series
@@ -165,8 +169,29 @@ function twchr_endpoint_get_jwt() {
 add_action( 'rest_api_init', 'twchr_endpoint_get_jwt' );
 
 
-function twchr_endpoint_get_jwt_callback( $request ) {
+function twchr_endpoint_get_jwt_callback() {
 	$body = file_get_contents( 'php://input' );
-	$post = json_encode( $_POST);
- 	return $post;
+	$body = json_decode( $body);
+	$username = $body->username;
+	$email = $body->email;
+	
+	
+
+	// Define el contenido del JWT (payload)
+	$payload = [
+		'iss' => site_url(), // Emisor del JWT
+		'iat' => time(), // Fecha de creación del JWT
+		'exp' => time() + (60 * 60), // Fecha de expiración del JWT
+		'sub' => 'write_wp_bdd', // Asunto del JWT
+		'name' => $username, // Nombre del usuario autenticado
+		'email' => $email // Correo electrónico del usuario autenticado
+	];
+
+	// Define la clave secreta para firmar el JWT
+	$secret_key = 'twchr_api_secret_key';
+
+	// Codifica el JWT
+	$jwt = JWT::encode($payload, $secret_key,'HS256');
+
+ 	return $jwt;
 }
