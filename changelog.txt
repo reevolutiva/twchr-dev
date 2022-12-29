@@ -1,4 +1,12 @@
 == Changelog ==
+
+==0.3==
+
+* Redesigned schedule card
+* Improved series integration with Twitch Calendar
+* Improved code
+* Bug fixes
+
 ==0.2==
 * Twitcher Api Integration
 * Feedback capture
@@ -18,7 +26,14 @@
 = 0.1 =
 * Public Beta Released
 
+
 == Upgrade Notice ==
+
+==0.3==
+* New schedule card for better streaming and series management
+* Improved Twitch calendar integration. Create, delete, and modify schedule segments directly from your WordPress dashboard.
+* New shortcode for embedding series: [twtchr_list_series] <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+
 ==0.2==
 * Twitcher Api Integration
 * Feedback capture
@@ -37,4 +52,3 @@
 * Asign Twitch video to post
 * Easy Install
 * Api Helix
- 

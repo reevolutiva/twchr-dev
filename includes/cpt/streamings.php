@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Register Custom Post Type
 function register_twchr_stream() {
 
@@ -36,14 +36,14 @@ function register_twchr_stream() {
 		'label'                 => __( 'Streaming', 'twitcher' ),
 		'description'           => __( 'Streaming de strean', 'twitcher' ),
 		'labels'                => $labels,
-		'supports'              => array( 
-											'title',
-											'thumbnail',
-											'editor',
-											'comments',
-											'excerpt' 
-										),
-		'taxonomies'            => array( 'schedule','cat_twcht'),
+		'supports'              => array(
+			'title',
+			'thumbnail',
+			'editor',
+			'comments',
+			'excerpt',
+		),
+		'taxonomies'            => array( 'schedule', 'cat_twcht' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -56,8 +56,8 @@ function register_twchr_stream() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
-		'menu_icon' 			=> TWCHR_URL_ASSETS."logo_menu.svg",
-		'show_in_rest'			=> false
+		'menu_icon'             => TWCHR_URL_ASSETS . 'logo_menu.svg',
+		'show_in_rest'          => false,
 
 	);
 	register_post_type( 'twchr_streams', $args );
@@ -65,4 +65,4 @@ function register_twchr_stream() {
 }
 add_action( 'init', 'register_twchr_stream', 0 );
 
-?>
+
