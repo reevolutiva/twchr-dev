@@ -104,7 +104,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
 
     
     const body = {
-      is_recurring: is_recurring[0].value,
+      is_recurring: true,
       start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
       timezone: "America/New_York",
       title: input_title.value,

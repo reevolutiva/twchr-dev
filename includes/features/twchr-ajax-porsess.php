@@ -49,7 +49,7 @@ function twchr_save_cf_slide_1($post_id,$body){
 	}
 
 	if ( isset($body['streaming_title'] ) ) {
-		$to_api_title = sanitize_text_field( $body['stream_title']);
+		$to_api_title = sanitize_text_field( $body['streaming_title']);
 		update_post_meta( $post_id, 'twchr_schedule_card_input--title',$to_api_title);
 	}else{
         update_post_meta( $post_id, 'twchr_schedule_card_input--title',' ');
@@ -67,6 +67,19 @@ function twchr_save_cf_slide_1($post_id,$body){
 	if(isset($body['schedule_id'])){
 		$schedule_segment_id = sanitize_text_field($body['schedule_id']);
 		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
+	}
+
+  if ( isset($body['twicth_category'])) {
+		$cat_twitch_id = (int) $body['twicth_category']['id'];
+		$cat_twitch_name = $body['twicth_category']['name'];
+
+		// Creo una taxonomia cat_twcht
+		$response = wp_create_term( $cat_twitch_name, 'cat_twcht' );
+
+		$id = (int) $response['term_id'];
+
+		// Creo stream relacionado.
+		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 	}
 
     return 200;
