@@ -175,13 +175,14 @@ if(!twchr_dateTime_slot.textContent.length == 0){
 	const stream_id = object.chapter_id;
 	const start_time = object.start_time;
 	const end_time = object.end_time;
+	const chapter_name = object.chapter_name;
 
 	
 
 	const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
 	
 	const twchr_date = twchr_every_reapeat_writer(start_time,duration.minutes);
-	document.querySelector("#twchr_dateTime_slot").innerHTML = `<option>${start_time} - ${end_time}</option>`;
+	document.querySelector("#twchr_dateTime_slot").innerHTML = `<option value="${stream_id};${chapter_name}|${start_time};${end_time}" >${chapter_name} ${start_time} - ${end_time}</option>`;
 	twchr_dateTime_slot.innerHTML = twchr_date;
 }
 

@@ -82,7 +82,7 @@ function twchr_schedule_chapter_asign() {
               
                     
               chapters.forEach(chapter => {
-                const opt = `<option value="${chapter.id}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+                const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
                 twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
               });
             }else{
@@ -197,9 +197,10 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
             name: document.querySelector("#twchr_schedule_card_input--category__name").value
           },
           twchr_slot: {
-            chapter_id: document.querySelector("#twchr_dateTime_slot").value.split("|")[0],
+            chapter_id: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[0],
             start_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[0],
             end_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[1],
+            chapter_name: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[1]
           }
         }
       }
