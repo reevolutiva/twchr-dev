@@ -86,3 +86,6 @@ require_once TWCHR_FEATURES . 'twchr_clipboard.php';
 
 // End Points.
 require_once 'includes/ext-wp-api.php';
+
+// dinamyc js
+require_once 'includes/dynamic-js.php';
