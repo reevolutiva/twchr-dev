@@ -217,48 +217,9 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     if(twchr_is_recurring[0].checked == true ||  (twchr_is_recurring[0].checked == false && twchr_is_recurring[1].checked == false)){
 
         twchr_is_recurring[0].checked = true;
-        twchr_schedule_card_dateTime.parentElement.style.display = 'none';
-        
+        twchr_schedule_card_dateTime.parentElement.style.display = 'none';      
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
-        const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
-
-        const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
-          
-        twchrFetchGet(tchr_vars_admin.wp_api_route+"twchr/v1/twchr_get_serie",
-            (res) => {
-                res.forEach(item =>{
-                    const option = `<option value="${item.term_id}">${item.name+" - "+item.term_id}</option>`;
-                    twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
-                });
-
-                twchr_ajax_input_serie.addEventListener('click', (event) =>{
-        
-                    const term_id = event.target.value;
-                        res.forEach(item =>{
-                            if(item.term_id == term_id){
-                                const chapters = item.chapters;
-                                chapters.forEach(chapter =>{
-                                    const opt = `<option value=" ${chapter.id} | ${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
-                                    twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-                                });
-                            }
-                        });
-
-                        document.querySelector("#twchr_schedule_card_input--serie__id").value = term_id;
-                        
-                });
-
-                
-                
-                
-                
-                
-                
-                
-            },
-            'json');
-
-        
+        twchr_schedule_chapter_asign();
     
     }else{
         const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
