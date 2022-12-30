@@ -30,7 +30,11 @@ function twchr_ajax_recive_callback() {
           twchr_save_cf_slide_1($post_id,$body); 
         }
         break;
-    
+    case 'asing':
+      $post_id = (int) $body['post_id'];
+        if($target == 'slide-1'){
+          $response = twchr_asign_chapter_by_cf($post_id,$body); 
+        }
     default:
         # code...
         break;
@@ -40,7 +44,7 @@ function twchr_ajax_recive_callback() {
   //update_post_meta( $post_id, 'mi_campo_personalizado', $valor_del_campo );
 
   // Envía una respuesta al navegador
-  wp_send_json_success($_POST);
+  wp_send_json_success($response);
 }
 
 function twchr_save_cf_slide_1($post_id,$body){
@@ -88,5 +92,22 @@ function twchr_save_cf_slide_1($post_id,$body){
     return 200;
 }
 
+
+function twchr_asign_chapter_by_cf($post_id,$body){
+  $serie = $body['serie'];
+  $twitch_category = $body['twitch_category'];
+  $twchr_slot = $body['twchr_slot'];
+  try{
+    
+    update_post_meta($post_id,'twchr_dateTime_slot',json_encode($twchr_slot));
+    update_post_meta($post_id,'twchr_schedule_card_input--serie__name',json_encode($serie));
+    update_post_meta($post_id,'twchr_schedule_card_input--category__name',$twitch_category["name"]);
+    update_post_meta($post_id,'twchr_schedule_card_input--category__value',$twitch_category["id"]);
+
+  }catch(Exception $e){
+    $response = $e;
+  }
+  return $response;
+}
 
 ?>

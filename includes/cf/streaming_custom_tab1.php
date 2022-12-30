@@ -39,8 +39,8 @@
 	<div class="twchr-card-row tw-category">
 		<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
 		<div class="twchr_cards_input_badges">
-			<input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
-			<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
+			<input id="twchr_schedule_card_input--category__value" name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
+			<input id="twchr_schedule_card_input--category__name" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
 			<badges><?php echo $term_cat_twcht_list; ?></badges>
 		</div>
 	
@@ -171,12 +171,10 @@ if(document.querySelector(".twchr-schedule-card-status-container h5")){
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
 	const badge = twchr_dateTime_slot.textContent;
-	const byPipe = badge.split("|");
-	const stream_id = byPipe[0];
-	const dates = byPipe[1];
-
-	const start_time = dates.split(" - ")[0].trim();
-	const end_time = dates.split(" - ")[1];
+	const object = JSON.parse(badge);
+	const stream_id = object.chapter_id;
+	const start_time = object.start_time;
+	const end_time = object.end_time;
 
 
 	const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
