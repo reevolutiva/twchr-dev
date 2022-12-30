@@ -3,10 +3,7 @@
  * En este archivo esta todas las funciones que extienden la API REST de WordPress
  */
 
-require 'features/jwt/JWT.php';
-//require 'features/jwt/Key.php';
-use Firebase\JWT\JWT;
-//use Firebase\Key;
+
 /**
  * Haciendo visible en el Enpoint
  * Taxonomía Series
@@ -149,57 +146,7 @@ function twchr_cat_twcht_endpoint() {
 add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
 
 
-/** ENDPOINT PARA JWT */
-/**
- * Hago visible a los CPT Streamins en la API REST de WordPress
- *
- * @return void
- */
-function twchr_endpoint_get_jwt() {
-	register_rest_route(
-		'twchr/v1',
-		'twchr_get_jwt',
-		array(
-			'methods'  => 'POST',
-			'callback' => 'twchr_endpoint_get_jwt_callback',
 
-		)
-	);
-}
-add_action( 'rest_api_init', 'twchr_endpoint_get_jwt' );
-
-
-function twchr_endpoint_get_jwt_callback() {
-	$body = file_get_contents( 'php://input' );
-	$body = json_decode( $body);
-	$username = $body->username;
-	$email = $body->email;
-	
-	
-
-	// Define el contenido del JWT (payload)
-	$payload = [
-		'iss' => site_url(), // Emisor del JWT
-		'iat' => time(), // Fecha de creación del JWT
-		'exp' => time() + (60 * 60), // Fecha de expiración del JWT
-		'sub' => 'write_wp_bdd', // Asunto del JWT
-		'name' => $username, // Nombre del usuario autenticado
-		'email' => $email // Correo electrónico del usuario autenticado
-	];
-
-	// Define la clave secreta para firmar el JWT
-	$secret_key = wp_generate_password(20);
-	//wp_create_app('twchr_card',$secret_key);
-
-	// Codifica el JWT
-	$jwt = JWT::encode($payload, $secret_key,'HS256');
-
- 	return [
-		'username' => $username,
-		'email' => $email,
-        'jwt' => $jwt
-	];
-}
 
 /*
 function twchr_endpoint_get_nonce() {
