@@ -1000,7 +1000,7 @@ stream.twchr-modal .twchr-modal-button.close{
     height: 50px;
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 57px;
 }
 .twchr_custom_card--contain  .twchr_car_tab3{
     width: 100%;
@@ -1052,14 +1052,20 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_card_embed_menu{
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    max-width: 600px;
+    justify-content: space-between;
 }
 
 .twchr_card_embed_menu span,
 .twchr_card_embed_menu span label{
     display: flex;
     align-items: center;
+}
+
+.twchr_card_embed_menu,
+.twchr_car_tab3,
+#twchr_button_get_videos__content{
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #menu-posts-twchr_streams .wp-submenu li:nth-of-type(6){

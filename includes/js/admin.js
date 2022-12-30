@@ -200,7 +200,6 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 twchr_card_header_menu[0].classList.remove("active");
                 twchr_card_header_menu[0].classList.add("diactive");
                 twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
-                document.querySelector(".twchr_custom_card--contain").style.height = "3cm";
                 document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
                 twchr_card_header_menu[0].classList.add("disabled");
                 twchr_card_header_menu[1].classList.remove("disabled");
