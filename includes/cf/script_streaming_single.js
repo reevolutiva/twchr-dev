@@ -29,6 +29,10 @@ const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule_
 
 */
 
+function twchr_schedule_chapter_asign(){
+  
+}
+
 function twtchr_schedule_segment_create(body,callback,error_callback) {
     const client_id = twchr_card_credentials.twchr_keys['client-id'];
     const token = twchr_card_credentials.twchr_keys['user_token']; 
@@ -113,6 +117,12 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
       ).value,
       duration: twchr_schedule_card_duration.value,
     };
+
+    // Si is_recurring vale "YES".
+    if(is_recurring[0].value == true){
+
+    // SI is_recurring vale "NO".
+    }else{
     twtchr_schedule_segment_create(
       JSON.stringify(body),
       (e) => {
@@ -152,6 +162,8 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
       },
       (e) => console.log(e)
     );
+    }
+    
     
 });
 
