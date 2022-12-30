@@ -1,4 +1,5 @@
 <?php
+
 add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_twchr_aja_callback' );
 
 function twchr_taxonomy_update_twchr_aja_callback(){
