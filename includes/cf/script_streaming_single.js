@@ -33,29 +33,38 @@ function twchr_schedule_chapter_asign() {
 
   const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
 
-  const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
+  const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
 
   twchrFetchGet(tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_serie",
     (res) => {
       res.forEach(item => {
-        const option = `<option value="${item.term_id}">${item.name + " - " + item.term_id}</option>`;
+        const option = `<option value="${item.term_id}|${item.name}">${item.name + " - " + item.term_id}</option>`;
         twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
       });
 
       twchr_ajax_input_serie.addEventListener('click', (event) => {
 
-        const term_id = event.target.value;
+        const term = {
+          term_id: event.target.value.split('|')[0],
+          name: event.target.value.split('|')[1]
+        };
         res.forEach(item => {
-          if (item.term_id == term_id) {
-            const chapters = item.chapters;
-            chapters.forEach(chapter => {
-              const opt = `<option value=" ${chapter.id} | ${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+          if (item.term_id == term.term_id) {
+            if(item.chapters){
+              const chapters = item.chapters;
+              twchr_dateTime_slot.innerHTML = "";
+              console.log(item);
+              chapters.forEach(chapter => {
+                const opt = `<option value=" ${chapter.id} | ${chapter.start_time} - ${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+                twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
+              });
+            }else{
+              twchr_dateTime_slot.innerHTML = "";
+              const opt = `<option value="false">this serie not contains chapter</option>`;
               twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-            });
+            }
           }
         });
-
-        document.querySelector("#twchr_schedule_card_input--serie__id").value = term_id;
 
       });
 
@@ -144,23 +153,30 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
     // GUARDA EL INPUT QUE ESTE CHECKED
     let is_recurring = [...twchr_is_recurring].filter(x => x.checked == true);
 
-    
-    const body = {
-      is_recurring: true,
-      start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
-      timezone: "America/New_York",
-      title: input_title.value,
-      category_id: document.querySelector(
-        "input[name='twchr_schedule_card_input--category__value']"
-      ).value,
-      duration: twchr_schedule_card_duration.value,
-    };
-
     // Si is_recurring vale "YES".
     if(is_recurring[0].value == true){
+      const body = {
+        start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
+        timezone: "America/New_York",
+        title: input_title.value,
+        category_id: document.querySelector(
+          "input[name='twchr_schedule_card_input--category__value']"
+        ).value,
+        duration: twchr_schedule_card_duration.value,
+      };
 
     // SI is_recurring vale "NO".
     }else{
+      const body = {
+        is_recurring: true,
+        start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
+        timezone: "America/New_York",
+        title: input_title.value,
+        category_id: document.querySelector(
+          "input[name='twchr_schedule_card_input--category__value']"
+        ).value,
+        duration: twchr_schedule_card_duration.value,
+      };
     twtchr_schedule_segment_create(
       JSON.stringify(body),
       (e) => {

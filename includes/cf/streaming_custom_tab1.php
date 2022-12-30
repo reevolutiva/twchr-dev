@@ -64,11 +64,10 @@
 	<div class="twchr-card-row serie">	
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 			<div class="twchr_cards_input_badges">
-				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
+				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
 					<option value="null">notting</option>
 				</select>
 				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
-				<input type="hidden" name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id">
 			</div>
 			<p id="twchr_card_button_create_new_serie"><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
 		</div>
