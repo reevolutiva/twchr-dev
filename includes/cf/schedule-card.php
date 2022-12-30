@@ -44,7 +44,7 @@ function twchr_cf_schedule__card() {
 		'twitcher_data_broadcaster' => json_decode( get_option( 'twchr_data_broadcaster' ) )->{'data'}[0]
 	);
 	?>
-	<script>const twchr_post_id=<?php echo get_the_ID();?>;  const twchr_post_nonce = "<?php echo wp_create_nonce('twchr_ajax_recive'); ?>"; const twchr_card_credentials = JSON.parse(`<?php echo json_encode($card_keys)?>`);</script>
+	<script>const twchr_post_id=<?php echo get_the_ID();?>;  const twchr_taxonomy_update = "<?php echo wp_create_nonce('twchr_taxonomy_update');?>"; const twchr_post_nonce = "<?php echo wp_create_nonce('twchr_ajax_recive'); ?>"; const twchr_card_credentials = JSON.parse(`<?php echo json_encode($card_keys)?>`);</script>
 	<?php
 	require_once 'schedule_custom_card.php';
 }

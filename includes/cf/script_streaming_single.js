@@ -46,14 +46,42 @@ function twchr_schedule_chapter_asign() {
 
         const term = {
           term_id: event.target.value.split('|')[0],
-          name: event.target.value.split('|')[1]
+          name: event.target.value.split('|')[1],
         };
+
+
         res.forEach(item => {
           if (item.term_id == term.term_id) {
             if(item.chapters){
+              
               const chapters = item.chapters;
               twchr_dateTime_slot.innerHTML = "";
+
+
+               /** 
+               * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
+                **/
+
+                getSchedules_by_id(e=>{
+                  const segments = e.segments;
+                  const segment_item =  segments.find(i => i.title == segments);
+
+                  if(segment != false){
+                    wp.ajax.send('twchr_taxonomy_update',{
+                      data:{
+                        nonce: twchr_taxonomy_update,
+                        segment: segment_item,
+                        term_id: term.term_id
+                      }}
+                    ).done(e => {
+                      console.log(e);
+                    });
+                  }
+                    
+                })
+
               
+                    
               chapters.forEach(chapter => {
                 const opt = `<option value="${chapter.id}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
                 twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;

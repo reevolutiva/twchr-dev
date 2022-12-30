@@ -1,4 +1,13 @@
 <?php
+add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_callback' );
+
+function twchr_taxonomy_update_callback(){
+  if ( ! check_ajax_referer( 'twchr_taxonomy_update', 'nonce', false ) ) {
+    wp_die( 'Invalid security token' );
+  }  
+}
+
+
 // Registra la acción AJAX para actualizar el campo personalizado
 add_action( 'wp_ajax_twchr_ajax_recive', 'twchr_ajax_recive_callback' );
 
@@ -103,6 +112,8 @@ function twchr_asign_chapter_by_cf($post_id,$body){
     update_post_meta($post_id,'twchr_schedule_card_input--serie__name',json_encode($serie));
     update_post_meta($post_id,'twchr_schedule_card_input--category__name',$twitch_category["name"]);
     update_post_meta($post_id,'twchr_schedule_card_input--category__value',$twitch_category["id"]);
+
+    wp_set_post_terms( $post_id, array( $id ), 'series' );
 
   }catch(Exception $e){
     $response = $e;
