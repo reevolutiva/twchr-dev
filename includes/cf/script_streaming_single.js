@@ -64,17 +64,16 @@ function twchr_schedule_chapter_asign() {
 
                 getSchedules_by_id(e=>{
                   const segments = e.segments;
-                  const segment_item =  segments.find(i => i.title == segments);
 
-                  if(segment != false){
+                  if(segments != false){
                     wp.ajax.send('twchr_taxonomy_update',{
                       data:{
                         nonce: twchr_taxonomy_update,
-                        segment: segment_item,
-                        term_id: term.term_id
-                      }}
-                    ).done(e => {
-                      console.log(e);
+                        segment: segments
+                      }
+                    }
+                    ).done(succs => {
+                      console.log(succs);
                     });
                   }
                     
@@ -205,7 +204,12 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         }
       }
       
-      twchr_send_front_to_bk(data,e=>console.log(e));
+      twchr_send_front_to_bk(data,e=>{
+        console.log(e);
+        if(confirm("Reload page?")){
+          location.reload();
+        }
+      });
 
     // SI is_recurring vale "NO".
     }else{

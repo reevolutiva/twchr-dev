@@ -1,10 +1,80 @@
 <?php
-add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_callback' );
+add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_twchr_aja_callback' );
 
-function twchr_taxonomy_update_callback(){
+function twchr_taxonomy_update_twchr_aja_callback(){
   if ( ! check_ajax_referer( 'twchr_taxonomy_update', 'nonce', false ) ) {
     wp_die( 'Invalid security token' );
-  }  
+  }
+
+  $schedules_twitch  = $_POST['segment'];
+
+  // FROM WP.
+  $schedules_wp = get_terms(
+    array(
+      'taxonomy' => 'serie',
+      'hide_empty' => false,
+    )
+  );
+
+  $response = '';
+
+ try {
+  foreach ($schedules_wp as $item) {
+
+    $wp_id = $item->term_id;
+    $wp_title = $item->{'name'};
+
+    foreach ($schedules_twitch as $key => $schedule) {
+
+
+      $tw_title = $schedule->{'title'};
+      if ($tw_title == $wp_title) {
+      } else {
+        $title = empty($schedule->title) ? __('No title', 'twitcher') : $schedule->title;
+        $new_term = wp_insert_term($title, 'serie');
+
+
+        if (isset($new_term->errors['term_exists'])) {
+        } else {
+          $new_term_id = $new_term['term_id'];
+
+          $dateTime = $schedule->start_time;
+          add_term_meta($new_term_id, 'twchr_toApi_dateTime', $dateTime);
+          $select_value = $schedule->category->id;
+          add_term_meta($new_term_id, 'twchr_toApi_category_value', $select_value);
+          $select_name = $schedule->category->name;
+          add_term_meta($new_term_id, 'twchr_toApi_category_name', $select_name);
+          $schedule_segment_id = $schedule->id;
+          add_term_meta($new_term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id);
+          $allData = json_encode($schedule);
+          add_term_meta($new_term_id, 'twchr_fromApi_allData', $allData);
+
+          $schedule_segments = array();
+          foreach ($schedules_twitch as $segment) {
+            if ($segment->{'title'} === $schedule->{'title'}) {
+              array_push($schedule_segments, $segment);
+            }
+          }
+
+          add_term_meta($new_term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
+
+          // Convertir las fechas a timestamp
+          $start_time = $schedule->start_time;
+          $end_time = $schedule->end_time;
+          $minutos = twchr_twitch_video_duration_calculator($start_time, $end_time);
+          add_term_meta($new_term_id, 'twchr_toApi_duration', $minutos);
+        }
+      }
+    }
+  }
+
+  $response = 200;
+
+ } catch (Exception $e) {
+  $response = $e;
+ }
+  wp_send_json_success($response);
+
 }
 
 
@@ -37,6 +107,7 @@ function twchr_ajax_recive_callback() {
         $post_id = (int) $body['post_id'];
         if($target == 'slide-1'){
           twchr_save_cf_slide_1($post_id,$body); 
+          $response = 200;
         }
         break;
     case 'asing':
