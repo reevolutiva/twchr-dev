@@ -1076,6 +1076,10 @@ stream.twchr-modal .twchr-modal-button.close{
     margin: 0 auto;
 }
 
+#twchr_card_button_create_new_serie{
+    grid-column: 2/3;
+}
+
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;
