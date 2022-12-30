@@ -65,7 +65,7 @@
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 			<div class="twchr_cards_input_badges">
 				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
-					<option value="null">notting</option>
+					
 				</select>
 				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
 			</div>

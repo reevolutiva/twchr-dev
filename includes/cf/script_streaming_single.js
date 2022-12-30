@@ -38,7 +38,7 @@ function twchr_schedule_chapter_asign() {
   twchrFetchGet(tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_serie",
     (res) => {
       res.forEach(item => {
-        const option = `<option value="${item.term_id}|${item.name}">${item.name + " - " + item.term_id}</option>`;
+        const option = `<option value="${item.term_id}|${item.name}" ${document.querySelector("#twchr_term_serie_list").textContent == item.name.toLowerCase() ? 'selected' : ''} >${item.name + " - " + item.term_id}</option>`;
         twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
       });
 
