@@ -243,7 +243,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 				if(i == 0) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',true);
 				const tag = e.target;
 				const value = tag.value;
-				const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__name");
+				const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
 				
 				const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
 
