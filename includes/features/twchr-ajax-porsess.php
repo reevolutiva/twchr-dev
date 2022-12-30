@@ -7,6 +7,7 @@ function twchr_ajax_recive_callback() {
   // Recupera los datos enviados con la solicitud AJAX
 
   $twchr_action = sanitize_text_field($_POST['twchr_action']);
+  $target = sanitize_text_field($_POST['twchr_target']);
   $body = $_POST['body'];
   $response = 'LE NO';
 
@@ -25,7 +26,9 @@ function twchr_ajax_recive_callback() {
         break;
     case 'update':
         $post_id = (int) $body['post_id'];
-        twchr_save_cf_slide_1($post_id,$body);
+        if($target == 'slide-1'){
+          twchr_save_cf_slide_1($post_id,$body); 
+        }
         break;
     
     default:

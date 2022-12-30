@@ -133,6 +133,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           let minutes = diff / (1000 * 60);
           const data = {
             twchr_action: "update",
+            twchr_target: "slide-1",
             nonce: twchr_post_nonce,
             body: {
               post_id: twchr_post_id,
