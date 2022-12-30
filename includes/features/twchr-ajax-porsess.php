@@ -184,7 +184,7 @@ function twchr_asign_chapter_by_cf($post_id,$body){
     update_post_meta($post_id,'twchr_schedule_card_input--category__name',$twitch_category["name"]);
     update_post_meta($post_id,'twchr_schedule_card_input--category__value',$twitch_category["id"]);
 
-    wp_set_post_terms( $post_id, array( $id ), 'series' );
+    wp_set_post_terms( $post_id, array( (int)$serie["term_id"] ), 'serie' );
 
   }catch(Exception $e){
     $response = $e;

@@ -176,10 +176,12 @@ if(!twchr_dateTime_slot.textContent.length == 0){
 	const start_time = object.start_time;
 	const end_time = object.end_time;
 
+	
 
 	const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
 	
 	const twchr_date = twchr_every_reapeat_writer(start_time,duration.minutes);
+	document.querySelector("#twchr_dateTime_slot").innerHTML = `<option>${start_time} - ${end_time}</option>`;
 	twchr_dateTime_slot.innerHTML = twchr_date;
 }
 
