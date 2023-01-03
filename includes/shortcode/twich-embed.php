@@ -72,8 +72,8 @@ function twchr_shortcode_tw_video_live( $atts ) {
 			$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
 
 			$url = 'https://player.twitch.tv/?autoplay=true&channel=' . $atts['host'] . '&parent=' . $host;
-			$idClass = 'twich-frame' . rand();
-			$html = "<twichcontainer id='" . $idClass . "'>
+			$id_class = 'twich-frame' . rand();
+			$html = "<twichcontainer id='" . $id_class . "'>
 						<iframe src=" . $url . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
 					</twichcontainer>";
 
@@ -105,11 +105,11 @@ function twchr_shortcode_tw_video_live_chat( $atts ) {
 	$atts_ouput = json_encode( $atts );
 			$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
 			$url = 'https://player.twitch.tv/?autoplay=true&channel=' . $atts['host'] . '&parent=' . $host;
-			$urlChat = 'https://www.twitch.tv/embed/' . $atts['host'] . '/chat?parent=' . $host;
-			$idClass = 'twich-frame' . rand();
-			$html = "<twichcontainer id='" . $idClass . "'>
+			$url_chat = 'https://www.twitch.tv/embed/' . $atts['host'] . '/chat?parent=' . $host;
+			$id_class = 'twich-frame' . rand();
+			$html = "<twichcontainer id='" . $id_class . "'>
 						<iframe src=" . $url . " width='" . $atts['ancho'] . "px' height='" . $atts['alto'] . "px'></iframe>
-						<iframe src=" . $urlChat . " width='" . ( $atts['ancho'] / 2 ) . "' height='" . $atts['alto'] . "'></iframe>
+						<iframe src=" . $url_chat . " width='" . ( $atts['ancho'] / 2 ) . "' height='" . $atts['alto'] . "'></iframe>
 					</twichcontainer>";
 
 			return $html;
@@ -138,10 +138,10 @@ function twchr_shortcode_tw_chat( $atts ) {
 	);
 	$atts_ouput = json_encode( $atts );
 			$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
-			$urlChat = 'https://www.twitch.tv/embed/' . $atts['host'] . '/chat?parent=' . $host;
-			$idClass = 'twich-frame' . rand();
-			$html = "<twichcontainer id='" . $idClass . "'>
-						<iframe src=" . $urlChat . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
+			$url_chat = 'https://www.twitch.tv/embed/' . $atts['host'] . '/chat?parent=' . $host;
+			$id_class = 'twich-frame' . rand();
+			$html = "<twichcontainer id='" . $id_class . "'>
+						<iframe src=" . $url_chat . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
 					</twichcontainer>";
 
 			return $html;
