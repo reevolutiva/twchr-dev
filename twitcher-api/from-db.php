@@ -102,7 +102,7 @@ function instanse_comunicate_server() {
 		$event = 'disactivate';
 	}
 
-	if ( false != $event  && ( 0 == $case || 1 == $case ) ) {
+	if ( false != $event && ( 0 == $case || 1 == $case ) ) {
 		$pakage = '';
 		if ( get_option( 'twchr_log' ) >= 0 && get_option( 'twchr_set_instaled' ) == 3 ) {
 			$pakage = twchr_recopiate_data();

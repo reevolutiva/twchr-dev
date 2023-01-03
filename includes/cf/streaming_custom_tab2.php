@@ -7,7 +7,7 @@
 		// domain.net/wp-admin/post-new.php.
 		// Divide la url por sus "/" y escoje el ultimo item.
 		// FIXME: sanitize_url es una funcion deprecada
-		$data_url = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$data_url = esc_url_raw( $_SERVER['REQUEST_URI'] );
 		$data_url = explode( '/', $data_url )[2];
 
 	?>
@@ -40,7 +40,7 @@
 					display: block;
 					width: 40px;
 					height: 40px;
-					background-image: url(<?php echo esc_html(TWCHR_URL_ASSETS . 'help.png'); ?>);
+					background-image: url(<?php echo esc_html( TWCHR_URL_ASSETS . 'help.png' ); ?>);
 					background-size: contain;
 					background-repeat: no-repeat;
 					margin-right: 6pt;
@@ -88,7 +88,7 @@ if ( isset( $_GET['twchr_twitch_embed__host'] ) && $_GET['twchr_twitch_embed__vi
 	$shortcode = '[twchr_tw_video host="' . $host . '" video="' . $video . '" ancho="800" alto="400"]';
 	wp_update_post(
 		array(
-			'post_id' => $post_id,
+			'ID' => $post_id,
 			'post_content' => $shortcode,
 			'meta_input'   => array(
 				'twchr-from-api_create_at' => sanitize_text_field( $_GET['created_at'] ),

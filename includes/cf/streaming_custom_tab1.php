@@ -1,36 +1,36 @@
-<?php 
- $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; 
- $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single ); 
- $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true ); 
- $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id') != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id')[0] : ''; 
- 
-	if(isset($_GET['twitcher_twitch_schedule_response']) && $_GET['twitcher_twitch_schedule_response'] == 'delete'){
-		update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
-							
-	}
+<?php
+ $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0];
+ $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single );
+ $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true );
+ $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id' ) != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id' )[0] : '';
+
+if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twitch_schedule_response'] == 'delete' ) {
+	update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
+
+}
 ?>
 <div class="twchr_car_tab1">
 	<div class="twchr-card-row is_recurring">
 		<label><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
 		<div class="is-recurring-input-group">
 			<div>
-				<input id="twchr_schedule_card_input--is_recurrig__yes"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="true" <?php echo $is_recurring == 'true' ? 'checked' : '' ?> >
+				<input id="twchr_schedule_card_input--is_recurrig__yes"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="true" <?php echo $is_recurring == 'true' ? 'checked' : ''; ?> >
 				<label for="twchr_schedule_card_input--is_recurrig__yes"><?php twchr_esc_i18n( 'Yes', 'html' ); ?></label>
 			</div>
 			<div>
-				<input id="twchr_schedule_card_input--is_recurri__no"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="false" <?php echo $is_recurring == 'false' ? 'checked' : '' ?>>
+				<input id="twchr_schedule_card_input--is_recurri__no"  name="twchr_schedule_card_input--is_recurrig" class="twchr_schedule_card_input" type="radio" value="false" <?php echo $is_recurring == 'false' ? 'checked' : ''; ?>>
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
 		<picture class="twchr-schedule-card-status-container">
-			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) &&  $twchr_twicth_twitch_cat_img != false) : ?>
+			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) && $twchr_twicth_twitch_cat_img != false ) : ?>
 					<div>
-						<img  src="<?php echo str_replace('-52x72','-104x144',$twchr_twicth_twitch_cat_img); ?>" alt="Twitcher Stream Category Thumbnail">
+						<img  src="<?php echo str_replace( '-52x72', '-104x144', $twchr_twicth_twitch_cat_img ); ?>" alt="Twitcher Stream Category Thumbnail">
 						<h5></h5>
 					</div>
 				<?php endif; ?>    
 		</picture>
-		<p><?php twchr_esc_i18n("¿Is this streaming part of a serie or recurrent streaming?",'html');?></p>
+		<p><?php twchr_esc_i18n( '¿Is this streaming part of a serie or recurrent streaming?', 'html' ); ?></p>
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
@@ -73,7 +73,7 @@
 		</div>
 	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
-	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id?>">
+	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id; ?>">
 
 </div>
 

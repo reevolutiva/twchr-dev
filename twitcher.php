@@ -1,15 +1,15 @@
 <?php
-/** 
-* Plugin Name: Manage Twitch Account: Easy API Integration
-* Plugin URI: twitcher.pro
-* Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
-* Version: 0.4
-* Author: Conjuntas.Club
-* Author URI: conjuntas.club
-* License: GPL3
-* Text Domain: twitcher
-* Domain Path: /languages
-**/
+/**
+ * Plugin Name: Manage Twitch Account: Easy API Integration
+ * Plugin URI: twitcher.pro
+ * Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
+ * Version: 0.4
+ * Author: Conjuntas.Club
+ * Author URI: conjuntas.club
+ * License: GPL3
+ * Text Domain: twitcher
+ * Domain Path: /languages
+ **/
 
 define( 'TWCHR_HOME_URL', site_url() );
 define( 'TWCHR_ADMIN_URL', site_url() . '/wp-admin/' );
@@ -80,7 +80,7 @@ require_once 'includes/assets/plugin-enqueue.php';
 /** TWITCHER API
 require_once 'twitcher-api/from-db.php';
 require_once 'twitcher-api/twchr-twchrapi-controller.php';
-**/
+*/
 
 require_once TWCHR_FEATURES . 'twchr-clipboard.php';
 

@@ -40,7 +40,7 @@ function twchr_alert_import() {
 			<h3 class="twchr-alert__title"><?php twchr_esc_i18n( 'It seems you havn’t imported or created any video already.', 'html' ); ?></h3>
 			<div class="twchr-alert__row">
 				<a class="twchr-alert__anchor twchr-btn-general" target="_blank" href="https://twitcher.pro/twitcher-first-steps-manage-twitch-account-from-wordpress-easy-api-integration/"><?php twchr_esc_i18n( 'Import or create streaming', 'html' ); ?></a>
-				<img class="twchr-alert__anchor__null_videos_close"  src="<?php echo esc_html(TWCHR_URL_ASSETS."close.png"); ?>" alt="">
+				<img class="twchr-alert__anchor__null_videos_close"  src="<?php echo esc_html( TWCHR_URL_ASSETS . 'close.png' ); ?>" alt="">
 			</div>
 		</section>
 		<script>
@@ -73,9 +73,9 @@ function twchr_alert_ssl() {
 			<img src="<?php echo TWCHR_URL_ASSETS; ?>warning.png" alt="">
 			<h3 class="twchr-alert__title"><?php twchr_esc_i18n( 'Twitch.tv requires SSL https:// secure sites. ', 'html' ); ?></h3>
 			<div class="twchr-alert__row">
-				<a class="twchr-alert__anchor twchr-btn-general ssl" target="_blank" href="<?php echo esc_attr(str_replace( site_url(), 'http', 'https' )); ?>"><?php twchr_esc_i18n( 'Force SSL', 'html' ); ?></a>
+				<a class="twchr-alert__anchor twchr-btn-general ssl" target="_blank" href="<?php echo esc_attr( str_replace( site_url(), 'http', 'https' ) ); ?>"><?php twchr_esc_i18n( 'Force SSL', 'html' ); ?></a>
 				<a class="twchr-alert__anchor twchr-btn-general" target="_blank" href="https://dev.twitch.tv/docs/embed"><?php twchr_esc_i18n( 'Read More', 'html' ); ?></a>
-				<img src="<?php echo esc_html(TWCHR_URL_ASSETS."close.png"); ?>" alt="">
+				<img src="<?php echo esc_html( TWCHR_URL_ASSETS . 'close.png' ); ?>" alt="">
 			</div>
 		</section>
 		<script>
@@ -113,7 +113,7 @@ function twchr_alert_setup() {
 					<section class="twchr-alert">
 						<img src="<?php echo TWCHR_URL_ASSETS; ?>/warning.png" alt="">
 						<h3 class="twchr-alert__title"><?php twchr_esc_i18n( 'Twitcher Manage Twitch Acount needs connection with Twitch. ', 'html' ); ?></h3>
-						<a class="twchr-alert__anchor twchr-btn-general" href="<?php echo esc_html(TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr-dashboard'); ?>"><?php twchr_esc_i18n( 'Setup', 'html' ); ?></a>
+						<a class="twchr-alert__anchor twchr-btn-general" href="<?php echo esc_html( TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr-dashboard' ); ?>"><?php twchr_esc_i18n( 'Setup', 'html' ); ?></a>
 					</section>
 				<?php
 				endif;

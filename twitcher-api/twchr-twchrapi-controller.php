@@ -1,7 +1,7 @@
 <?php
 /**
-* Aqui ejecuto la comunicacion con el servidor 
-**/
+ * Aqui ejecuto la comunicacion con el servidor
+ **/
 
 /**
  * Enviar las estadisticas de wordpress

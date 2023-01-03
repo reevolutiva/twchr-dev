@@ -9,17 +9,17 @@
  * Taxonomía Series
  * twchr_endpoint_tax
  * twchr_endpoint_tax_register_serie
-**/
- function twchr_endpoint_tax_register_serie() {
+ **/
+function twchr_endpoint_tax_register_serie() {
 	register_rest_route(
 		'twchr/v1',
 		'twchr_get_serie',
 		array(
 			'methods'  => WP_REST_Server::READABLE,
 			'callback' => 'twchr_endpoint_tax_register_callback_serie',
-		/** 
+		/**
 		'permission_callback' => function(){
-			return current_user_can( 'read' );
+		   return current_user_can( 'read' );
 		}
 		*/
 
@@ -56,7 +56,7 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 	return $response;
 }
 /**
- *  Fin Taxonomía Series 
+ *  Fin Taxonomía Series
  */
 
 /**
@@ -163,11 +163,11 @@ function twchr_endpoint_get_nonce() {
 add_action( 'rest_api_init', 'twchr_endpoint_get_nonce' );
 
 function twchr_endpoint_get_nonce_callback(){
-	
+
 }
 */
 
-function twchr_create_user_admin(){
+function twchr_create_user_admin() {
 	// Generar una contraseña aleatoria para la aplicación
 	$app_password = wp_generate_password( 64, true, false );
 
@@ -175,12 +175,12 @@ function twchr_create_user_admin(){
 	$userdata = array(
 		'user_login' => 'mi_aplicación',
 		'user_pass'  => $app_password,
-		'role'       => 'app'
+		'role'       => 'app',
 	);
 	$user_id = wp_insert_user( $userdata );
 
 	if ( is_wp_error( $user_id ) ) {
-	// Mostrar un mensaje de error si hay un problema al crear el usuario
-	echo 'Error al crear el usuario de la aplicación: ' . $user_id->get_error_messa;	
+		// Mostrar un mensaje de error si hay un problema al crear el usuario
+		echo 'Error al crear el usuario de la aplicación: ' . $user_id->get_error_messa;
 	}
 }

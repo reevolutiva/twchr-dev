@@ -19,14 +19,14 @@
 			</section>
 			<section>
 				<div class="twchr_card_embed_menu">
-					<span><?php twchr_esc_i18n('Embed from','html');?></span>
+					<span><?php twchr_esc_i18n( 'Embed from', 'html' ); ?></span>
 					<span>
-						<input class="twchr_button_get_videos" type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--tw" value="tw" <?php echo $twchr_card_src_priority == 'tw' ? 'checked' : ''?> >
-						<label for="twchr-card-src-priority--tw"><img src="<?php echo TWCHR_URL_ASSETS . 'twitch_logo.png'; ?>" alt=""><?php twchr_esc_i18n('Twitch','html');?></label>
+						<input class="twchr_button_get_videos" type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--tw" value="tw" <?php echo $twchr_card_src_priority == 'tw' ? 'checked' : ''; ?> >
+						<label for="twchr-card-src-priority--tw"><img src="<?php echo TWCHR_URL_ASSETS . 'twitch_logo.png'; ?>" alt=""><?php twchr_esc_i18n( 'Twitch', 'html' ); ?></label>
 					</span>
 					<span>
-						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--yt" value="yt" <?php echo $twchr_card_src_priority == 'yt' ? 'checked' : ''?>>
-						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n('Youtube','html');?></label>
+						<input type="radio" name="twchr-card-src-priority" id="twchr-card-src-priority--yt" value="yt" <?php echo $twchr_card_src_priority == 'yt' ? 'checked' : ''; ?>>
+						<label for="twchr-card-src-priority--yt"><img src="<?php echo TWCHR_URL_ASSETS . 'youtube.png'; ?>" alt=""> <?php twchr_esc_i18n( 'Youtube', 'html' ); ?></label>
 					</span>
 				</div>
 				<div class="silde-2">
