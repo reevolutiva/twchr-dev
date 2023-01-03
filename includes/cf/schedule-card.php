@@ -38,7 +38,14 @@ function twchr_cf_schedule__card() {
 	$is_recurring = isset( $values['twchr_schedule_card_input--is_recurrig'] ) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
 	$serie = isset( $values['twchr_schedule_card_input--serie'] ) ? $values['twchr_schedule_card_input--serie'][0] : '';
 	$twchr_card_src_priority = isset($values['twchr-card-src-priority']) ? $values['twchr-card-src-priority'][0] : ''; 
-	// var_dump($term_serie);
+	$card_keys = array(
+		'twchr_keys' => json_decode( get_option( 'twchr_keys' ) ),
+		'twchr_app_token' => get_option( 'twchr_app_token' ),
+		'twitcher_data_broadcaster' => json_decode( get_option( 'twchr_data_broadcaster' ) )->{'data'}[0]
+	);
+	?>
+	<script>const twchr_post_id=<?php echo get_the_ID();?>;  const twchr_taxonomy_update = "<?php echo wp_create_nonce('twchr_taxonomy_update');?>"; const twchr_post_nonce = "<?php echo wp_create_nonce('twchr_ajax_recive'); ?>"; const twchr_card_credentials = JSON.parse(`<?php echo json_encode($card_keys)?>`);</script>
+	<?php
 	require_once 'schedule_custom_card.php';
 }
 
@@ -69,45 +76,7 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 	$to_api_duration = '';
 
 	
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--is_recurrig' ) ) {
-		$to_api_is_recurring =  wp_kses( $_POST['twchr_schedule_card_input--is_recurrig'], $allowed );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', $to_api_is_recurring );
-	}
-
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--title' ) ) {
-		$to_api_title = sanitize_text_field( $_POST['twchr_schedule_card_input--title']);
-		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $to_api_title );
-	}
-
-	// Si API IS RECURRING
-	// El titulo sera serie name
-	if ( $to_api_is_recurring && twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__name' ) ) {
-		$to_api_title = wp_kses( $_POST['twchr_schedule_card_input--serie__name'], $allowed );
-	}
-
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--dateTime' ) ) {
-
-		$date_time_raw = sanitize_text_field( $_POST['twchr_schedule_card_input--dateTime'] );
-		$date_time_stg = strtotime( $date_time_raw );
-		$to_api_date_time = date( DateTimeInterface::RFC3339, $date_time_stg );
-
-		update_post_meta( $post_id, 'twchr_schedule_card_input--dateTime', $to_api_date_time );
-	}
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--duration' ) ) {
-		$to_api_duration = (int) wp_kses( $_POST['twchr_schedule_card_input--duration'], $allowed );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $to_api_duration );
-	}
-
-	if ( twchr_post_isset_and_not_empty( 'twchr_schedule_card_input--serie__id' ) ) {
-		wp_set_post_terms( $post_id, array( (int) $_POST['twchr_schedule_card_input--serie__id'] ), 'serie' );
-	}
-	if ( twchr_post_isset_and_not_empty( 'twchr_dateTime_slot' ) ) {
-		update_post_meta( $post_id, 'twchr_dateTime_slot', $_POST['twchr_dateTime_slot'] );
-	}
-
-	if ( twchr_post_isset_and_not_empty( 'twchr_stream_data_dateTime' ) ) {
-		update_post_meta( $post_id, 'twchr_stream_data_dateTime', wp_kses( $_POST['twchr_stream_data_dateTime'], $allowed ) );
-	}
+	
 
 	if ( twchr_post_isset_and_not_empty( 'twchr_streams__yt-link-video-src' ) ) {
 		update_post_meta( $post_id, 'twchr_streams__yt-link-video-src', sanitize_text_field( $_POST['twchr_streams__yt-link-video-src']) );
@@ -131,7 +100,7 @@ function twchr_cf_schedule__card__metadata_save( $post_id ) {
 		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 	}
 
-	if ( $to_api_is_recurring == 'false' && isset( $to_api_title ) && isset( $to_api_date_time ) && isset( $cat_twitch_id ) && isset( $to_api_duration ) ) {
+	if ( $to_api_is_recurring == 'false' && isset( $to_api_title ) && isset( $to_api_date_time ) && isset( $cat_twitch_id ) && isset( $to_api_duration ) && !isset($_POST['twchr-from-api_create_at']) && !isset($_POST['twchr-from-api_title'])) {
 		$twch_res = twtchr_twitch_schedule_segment_create( $post_id, $to_api_title, $to_api_date_time, $cat_twitch_id, $to_api_duration, false );
 		
 		if ( isset( $twch_res->error ) ) {

@@ -13,8 +13,9 @@
 			
 		</div>
 		<div class="custom_card_row">
-			<section>
+			<section class="silde-1">
 				<?php require_once 'streaming_custom_tab1.php'; ?>
+				<button class="twchr-btn-general" id="twchr-modal-schedule__btn"><?php twchr_esc_i18n( 'save', 'html' ); ?></button>
 			</section>
 			<section>
 				<div class="twchr_card_embed_menu">

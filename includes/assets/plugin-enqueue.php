@@ -40,7 +40,7 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.125';
+	$version = 'beta.4.146';
 
 	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
@@ -61,8 +61,11 @@ function twchr_admin_js() {
 			'wp_api_route' => rest_url(),
 		);
 		wp_register_script( 'twchr_custom_script', TWCHR_URL . 'includes/js/admin.js', array(), $version, true );
+		wp_register_script( 'twchr_ajax_functions', TWCHR_URL . 'includes/js/twchr_ajax_functions.js', array(), $version, false );
 		wp_enqueue_script( 'twchr_custom_script' );
+		wp_enqueue_script( 'twchr_ajax_functions' );
 		wp_localize_script( 'twchr_custom_script', 'tchr_vars_admin', $params );
+		wp_localize_script( 'twchr_ajax_functions', 'tchr_vars_admin', $params );
 	}
 
 }

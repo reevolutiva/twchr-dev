@@ -1,5 +1,14 @@
-<?php $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; ?>
-<?php $twchr_twtich_schedule_chapters = get_term_meta( $term_id, 'twchr_schdules_chapters', $single ); ?>
+<?php 
+ $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0]; 
+ $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single ); 
+ $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true ); 
+ $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id') != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id')[0] : ''; 
+ 
+	if(isset($_GET['twitcher_twitch_schedule_response']) && $_GET['twitcher_twitch_schedule_response'] == 'delete'){
+		update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
+							
+	}
+?>
 <div class="twchr_car_tab1">
 	<div class="twchr-card-row is_recurring">
 		<label><?php twchr_esc_i18n( 'Is Recurring ?', 'html' ); ?></label>
@@ -13,19 +22,28 @@
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
+		<picture class="twchr-schedule-card-status-container">
+			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) &&  $twchr_twicth_twitch_cat_img != false) : ?>
+					<div>
+						<img  src="<?php echo str_replace('-52x72','-104x144',$twchr_twicth_twitch_cat_img); ?>" alt="Twitcher Stream Category Thumbnail">
+						<h5></h5>
+					</div>
+				<?php endif; ?>    
+		</picture>
 		<p><?php twchr_esc_i18n("¿Is this streaming part of a serie or recurrent streaming?",'html');?></p>
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
 	</div>
-	<div class="twchr-card-row">
+	<div class="twchr-card-row tw-category">
 		<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
 		<div class="twchr_cards_input_badges">
-			<input name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
-			<input id="twchr_schedule_card_input--category" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
+			<input id="twchr_schedule_card_input--category__value" name="twchr_schedule_card_input--category__value" type="hidden" value="<?php echo ! empty( $term_cat_twcht_id ) ? $term_cat_twcht_id : ''; ?>" />
+			<input id="twchr_schedule_card_input--category__name" class="twchr_schedule_card_input" name="twchr_schedule_card_input--category__name" type="text" value="<?php echo ! empty( $term_cat_twcht_name ) ? $term_cat_twcht_name : ''; ?>" />
 			<badges><?php echo $term_cat_twcht_list; ?></badges>
 		</div>
+	
 	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
@@ -46,17 +64,16 @@
 	<div class="twchr-card-row serie">	
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 			<div class="twchr_cards_input_badges">
-				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name">
-					<option value="null">notting</option>
+				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
+					
 				</select>
 				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
-				<input type="hidden" name="twchr_schedule_card_input--serie__id" id="twchr_schedule_card_input--serie__id">
 			</div>
-			<p><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
+			<p id="twchr_card_button_create_new_serie"><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
 		</div>
 	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
-   
+	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id?>">
 
 </div>
 
@@ -140,32 +157,48 @@ const twchr_data_broadcaster = <?php echo get_option( 'twchr_data_broadcaster' )
 const twchr_twtich_schedule_response = document.querySelector("#twchr_twtich_schedule_response");
 const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
 const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
+const twchr_stream_twtich_schedule_id = document.querySelector("#twchr_stream_twtich_schedule_id");
+
+let twchr_card_connect_status = '<button style="background-color: transparent;color: var(--twchr-purple); border: 0; font-family: `Comfortaa`;font-weight: bold;font-size: 13px;text-decoration: underline;">Connect with Twitch</button>';
+if(twchr_stream_twtich_schedule_id.value.length > 0){
+	twchr_card_connect_status = '<span style="color:green;">Connected with Twitch<span>';
+}
+
+if(document.querySelector(".twchr-schedule-card-status-container h5")){
+	document.querySelector(".twchr-schedule-card-status-container h5").innerHTML = twchr_card_connect_status;
+}
+
 // si no esta vacio
 if(!twchr_dateTime_slot.textContent.length == 0){
 	const badge = twchr_dateTime_slot.textContent;
-	const byPipe = badge.split("|");
-	const stream_id = byPipe[0];
-	const dates = byPipe[1];
+	const object = JSON.parse(badge);
+	const stream_id = object.chapter_id;
+	const start_time = object.start_time;
+	const end_time = object.end_time;
+	const chapter_name = object.chapter_name;
 
-	const start_time = dates.split(" - ")[0].trim();
-	const end_time = dates.split(" - ")[1];
-
+	
 
 	const duration = twchr_get_duration_form_RFC3666(end_time, start_time);
 	
 	const twchr_date = twchr_every_reapeat_writer(start_time,duration.minutes);
+	document.querySelector("#twchr_dateTime_slot").innerHTML = `<option value="${stream_id};${chapter_name}|${start_time};${end_time}" >${chapter_name} ${start_time} - ${end_time}</option>`;
 	twchr_dateTime_slot.innerHTML = twchr_date;
 }
 
 
 if(twchr_twtich_schedule_response.textContent.length > 0){
 	const response = JSON.parse(twchr_twtich_schedule_response.textContent);
-	if(response.status != 200){
+	if(response.status != 200 && !location.search.includes("twitcher_twitch_schedule_response=delete")){
 		if(response.error){
 			alert("Error: " + response.error);
 		}
 
 		alert("message: "+ response.message);
+
+		if(response.message == 'single segment creation not authorized'){
+			location.href = location.href+'&twitcher_twitch_schedule_response=delete';
+		}
 
 		if(response.url_redirect){
 			function getParameterByName(name) {
@@ -207,9 +240,10 @@ twchr_schedule_card_dateTime.oninput = ()=>{
 for (let i = 0; i < twchr_is_recurring.length; i++) {
 	const element = twchr_is_recurring[i];
 	element.addEventListener('click', (e) => {
+				if(i == 0) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',true);
 				const tag = e.target;
 				const value = tag.value;
-				const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__name");
+				const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
 				
 				const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
 
@@ -231,6 +265,8 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
 						twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 						twchr_schedule_card_dateTime.removeAttribute('disabled');
+						document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
+						if(i == 1) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
 						
 					} else {
 						// Si el broacater type no es ni pather ni afilate
@@ -246,16 +282,19 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 							document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
 							twchr_schedule_card_dateTime.parentElement.style.display = 'block';
 							twchr_schedule_card_dateTime.removeAttribute('disabled')
+							document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
+							if(i == 1) twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
 						} else {
 							// volvermos al estado inicial del ckeckbox
-							tag.checked = true;
+							twchr_is_recurring[0].checked = true;
 						}
 					}
 				} else {
-					//Si checkbox is true
+					//Si is_recurring is true
 					
 					input_serie.parentElement.style.display = 'block';
 					input_serie_label.style.display = 'block';
+					document.querySelector("#twchr_card_button_create_new_serie").style.display = "block";
 					
 			
 					input_title.value = input_post_title.value;

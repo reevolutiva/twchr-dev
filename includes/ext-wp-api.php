@@ -3,6 +3,7 @@
  * En este archivo esta todas las funciones que extienden la API REST de WordPress
  */
 
+
 /**
  * Haciendo visible en el Enpoint
  * Taxonomía Series
@@ -143,3 +144,43 @@ function twchr_cat_twcht_endpoint() {
 }
 
 add_action( 'rest_api_init', 'twchr_cat_twcht_endpoint' );
+
+
+
+
+/*
+function twchr_endpoint_get_nonce() {
+	register_rest_route(
+		'twchr/v1',
+		'twchr_get_nonce',
+		array(
+			'methods'  => 'POST',
+			'callback' => 'twchr_endpoint_get_nonce_callback',
+
+		)
+	);
+}
+add_action( 'rest_api_init', 'twchr_endpoint_get_nonce' );
+
+function twchr_endpoint_get_nonce_callback(){
+	
+}
+*/
+
+function twchr_create_user_admin(){
+	// Generar una contraseña aleatoria para la aplicación
+	$app_password = wp_generate_password( 64, true, false );
+
+	// Crear un usuario para la aplicación
+	$userdata = array(
+		'user_login' => 'mi_aplicación',
+		'user_pass'  => $app_password,
+		'role'       => 'app'
+	);
+	$user_id = wp_insert_user( $userdata );
+
+	if ( is_wp_error( $user_id ) ) {
+	// Mostrar un mensaje de error si hay un problema al crear el usuario
+	echo 'Error al crear el usuario de la aplicación: ' . $user_id->get_error_messa;	
+	}
+}

@@ -79,3 +79,18 @@ function twchr_javaScript_redirect( $url ) {
 	echo "<script>location.href='$url'</script>";
 	die();
 }
+
+/**
+ * Sanitiza u guarda un custom field
+ *
+ * @param [type] $post_id
+ * @param [type] $key
+ * @param [type] $value
+ * @return void
+ */
+function twchr_sanitize_cf_save($post_id,$key,$value){
+	$santize = sanitize_text_field($value);
+	if(update_post_meta($post_id, $key, $santize) == false){
+		add_post_meta($post_id, $key, $santize);
+	}
+}
