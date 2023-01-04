@@ -34,17 +34,17 @@ function twittcher_getData( $table, $key, $data ) {
 }
 
 /**
- * Guarda $client_secret y $clientId en wp_options
+ * Guarda $client_secret y $client_id en wp_options
  *
  * @param [type] $client_secret
- * @param [type] $clientId
+ * @param [type] $client_id
  * @return void
  */
-function fronted_to_db( $client_secret, $clientId ) {
+function fronted_to_db( $client_secret, $client_id ) {
 	if ( twittcher_data_exist( 'twchr_keys' ) == false ) {
 		$array_keys = array(
 			'client-secret' => $client_secret,
-			'client-id' => $clientId,
+			'client-id' => $client_id,
 		);
 		$json_array = json_encode( $array_keys );
 		add_option( 'twchr_keys', $json_array );
@@ -52,7 +52,7 @@ function fronted_to_db( $client_secret, $clientId ) {
 	} else {
 		$array_keys = array(
 			'client-secret' => $client_secret,
-			'client-id' => $clientId,
+			'client-id' => $client_id,
 		);
 		$json_array = json_encode( $array_keys );
 		update_option( 'twchr_keys', $json_array );
