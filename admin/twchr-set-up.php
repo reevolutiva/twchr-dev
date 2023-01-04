@@ -8,9 +8,9 @@ if ( isset( $_GET['clearAll'] ) ) {
 }
 		add_option( 'twchr_set_instaled', 1, '', true );
 
-		$twchrKeysJSON = get_option( 'twchr_keys' );
-		$clientId = $twchrKeysJSON != false ? json_decode( $twchrKeysJSON )->{'client-id'} : '';
-		$clientSecret = $twchrKeysJSON != false ? json_decode( $twchrKeysJSON )->{'client-secret'} : '';
+		$twchr_keys_json = get_option( 'twchr_keys' );
+		$client_id = $twchr_keys_json != false ? json_decode( $twchr_keys_json )->{'client-id'} : '';
+		$client_secret = $twchr_keys_json != false ? json_decode( $twchr_keys_json )->{'client-secret'} : '';
 		$user_email = wp_get_current_user()->{'user_email'};
 
 ?>
@@ -51,9 +51,9 @@ if ( isset( $_GET['clearAll'] ) ) {
 				<input type='hidden' name='page' value='twchr-dashboard'>
 				<input type='hidden' name='from' value='setUp-plugin'>
 				<label for="client-id">Client Id</label>
-				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?php echo $clientId; ?>'>
+				<input id='client-id' type='text' placeholder='Client ID' name='client-id' value='<?php echo $client_id; ?>'>
 				<label for="client-secret">Client Secret</label>
-				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $clientSecret; ?>'>						
+				<input id='client-secret' type='password' placeholder='Client Secret' name='client-secret' value='<?php echo $client_secret; ?>'>						
 				<div class="row-input">
 					<input type="checkbox" name="twchr_share_twitch_data" id="twchr_share_twitch_data" checked>
 					<label for="twchr_share_twitch_data"><?php _e( 'Help Twitcher to improve sharing your public Twitch data anonymously', 'twitcher' ); ?></label>

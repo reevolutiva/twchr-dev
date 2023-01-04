@@ -478,7 +478,7 @@ function twtchr_twitch_autenticate_apptoken_get( $client_id, $client_secret ) {
  * @param [type] $redirect
  * @return void
  */
-function twchr_validateToken( $client_id, $client_secret, $code, $redirect ) {
+function twchr_validate_token( $client_id, $client_secret, $code, $redirect ) {
 	$url = 'https://id.twitch.tv/oauth2/token';
 	$urlecode = 'client_id=' . $client_id . '&client_secret=' . $client_secret . '&code=' . $code . '&grant_type=authorization_code&redirect_uri=' . $redirect;
 
@@ -537,16 +537,16 @@ function twtchr_twitch_autenticate( $api_key, $client_id, $redirect, $scope ) {
 
 		add_option( 'twchr_log', 0 );
 
-		$urlRedirection = TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
-		echo "<script>location.href='$urlRedirection'</script>";
+		$url_redirection = TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard';
+		echo "<script>location.href='$url_redirection'</script>";
 
 	} else {
 
 		$twitchtv = new TwitchTV( $api_key, $client_id, urlencode( $redirect ), $scope );
-		$authUrl = $twitchtv->authenticate();
+		$auth_url = $twitchtv->authenticate();
 
 		$msg = '<h3>Usted sera redirigido a Twcht en unos segundos</h3>';
-		$script = '<script>location.href ="' . $authUrl . '";</script>';
+		$script = '<script>location.href ="' . $auth_url . '";</script>';
 
 		echo esc_html( $msg );
 		echo $script;

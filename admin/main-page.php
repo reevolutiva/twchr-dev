@@ -382,13 +382,13 @@ if ( ! twchr_is_ssl_secure() ) :
 						$scope = sanitize_text_field( $_GET['scope'] );
 						$redirect = TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams%26page=twchr-dashboard';
 
-						$response = twchr_validateToken( $client_id, $client_secret, $code, $redirect );
-						$twchr_validateTokenObject = json_decode( $response['body'] );
+						$response = twchr_validate_token( $client_id, $client_secret, $code, $redirect );
+						$twchr_validate_tokenObject = json_decode( $response['body'] );
 						$response_response = $response['response'];
 
 						if ( $response_response['code'] == 200 ) {
-							$userToken = $twchr_validateTokenObject->{'access_token'};
-							$userTokenRefresh = $twchr_validateTokenObject->{'refresh_token'};
+							$userToken = $twchr_validate_tokenObject->{'access_token'};
+							$userTokenRefresh = $twchr_validate_tokenObject->{'refresh_token'};
 
 							$array_keys = array(
 								'client-secret' => $client_secret,
@@ -405,16 +405,16 @@ if ( ! twchr_is_ssl_secure() ) :
 							update_option( 'twchr_set_instaled', 3, true );
 
 
-							$urlRedirection = TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
-							echo "<script>location.href='$urlRedirection'</script>";
+							$url_redirection = TWCHR_HOME_URL . '/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+							echo "<script>location.href='$url_redirection'</script>";
 						} else {
 							?>
 							<div class="twchr-modal-error">
 								<h3>¡Ups! User Token no ha sido actualizado actualizado correctamente</h3>
 								<p>Intente nuevamente</p>
-								<p><b>Error: </b><?php echo $twchr_validateTokenObject->{'message'}; ?></p>
+								<p><b>Error: </b><?php echo $twchr_validate_tokenObject->{'message'}; ?></p>
 								<p>
-									<a href='<?php echo TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=' . $twchr_validateTokenObject->{'message'}; ?>'>
+									<a href='<?php echo TWCHR_ADMIN_URL . 'edit.php?post_type=twchr_streams&page=twchr_help&setUpPage=true&error=' . $twchr_validate_tokenObject->{'message'}; ?>'>
 										<?php twchr_esc_i18n( 'Back SetUp', 'html' ); ?>
 									</a>
 								</p>
