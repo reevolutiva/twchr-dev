@@ -34,7 +34,7 @@ function twchr_alert_import() {
 	}
 
 	// Si el numero de streamings creados es de 0.
-	if ( $num_streamigs == 0 && get_option( 'twchr_set_instaled' ) == 3 && twchr_is_ssl_secure() && ( $_GET['post_type'] == 'twchr_streams' ) || (str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' ) && $num_streamigs == 0) ) {
+	if ( $num_streamigs == 0 && get_option( 'twchr_set_instaled' ) == 3 && twchr_is_ssl_secure() && ( isset($_GET['post_type']) && $_GET['post_type'] == 'twchr_streams' ) || (str_contains( $_SERVER['REQUEST_URI'], 'plugins.php' ) && $num_streamigs == 0) ) {
 		?>
 		<section class="twchr-alert">
 			<h3 class="twchr-alert__title"><?php twchr_esc_i18n( 'It seems you havn’t imported or created any video already.', 'html' ); ?></h3>
