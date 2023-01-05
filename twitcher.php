@@ -36,7 +36,7 @@ require_once TWCHR_FEATURES . 'twchr-delete-schedule.php';
 require_once TWCHR_FEATURES . 'twchr-flush-cache.php';
 require_once TWCHR_FEATURES . 'twchr-ajax-porsess.php';
 
-
+register_deactivation_hook( __FILE__, 'twchr_desactivar' );
 
 // Aux functions.
 require_once 'admin/aux-functions/aux-functions.php';
