@@ -278,15 +278,24 @@ function twtchr_twitch_schedule_segment_create( $post_id, $twchr_titulo, $twchr_
  * @param [type] $user_id
  * @return void
  */
-function twchr_twitch_video_get( $app_token, $client_id, $user_id ) {
+function twchr_twitch_video_get() {
+
+	// GET CREDENTIALS.
+	$twch_data_prime = json_decode( get_option( 'twchr_keys', false ) );
+	$token_validate = $twch_data_prime->{'user_token'};
+	$client_id = $twch_data_prime->{'client-id'};
+
+	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
+	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+
 	$args = array(
 		'headers' => array(
-			'Authorization' => "Bearer $app_token",
+			'Authorization' => "Bearer $token_validate",
 			'client-id' => $client_id,
 		),
 	);
 
-	$url = "https://api.twitch.tv/helix/videos?user_id=$user_id";
+	$url = "https://api.twitch.tv/helix/videos?user_id=$broadcaster_id";
 
 	$data = wp_remote_get( $url, $args );
 

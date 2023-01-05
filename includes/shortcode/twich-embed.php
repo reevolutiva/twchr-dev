@@ -212,3 +212,41 @@ function twtchr_shortcode_tx_series() {
 add_shortcode( 'twchr_list_series', 'twtchr_shortcode_tx_series' );
 
 
+function twchr_shortcode_tw_last_video_shortcode( $atts ) {
+
+	// Attributes.
+	$atts = shortcode_atts(
+		array(
+			'host' => '#',
+			'ancho' => '100%',
+			'alto' => '500px',
+		),
+		$atts
+	);
+	$atts_ouput = json_encode( $atts );
+
+	/*
+	* Traer vides
+	*/
+	$videos = twchr_twitch_video_get();
+
+	$ultimo_video = $videos->data[0];
+	$video_id = $ultimo_video->id;
+
+
+
+	$host = sanitize_text_field( $_SERVER['SERVER_NAME'] );
+	$url = 'https://player.twitch.tv/?autoplay=true&chanel=' . $atts['host'] . '&height=' . $atts['alto'] . '&parent=' . $host . '&referrer=https%3A%2F%2F' . $host . '%2Ftest%2F&video=' . $video_id . '&width=' . $atts['ancho'];
+	$id_class = 'twich-frame' . rand();
+	$html = "<twichcontainer id='" . $id_class . "'>
+						<iframe src=" . $url . " width='" . $atts['ancho'] . "' height='" . $atts['alto'] . "'></iframe>
+						<script>
+							console.log($atts_ouput);
+						</script>
+					</twichcontainer>";
+	return $html;
+
+
+
+}
+add_shortcode( 'twchr_shortcode_tw_last_video', 'twchr_shortcode_tw_last_video_shortcode' );

@@ -58,6 +58,7 @@ require_once 'includes/cf/schedule-card.php';
 
 // Shortcodes.
 require_once 'includes/shortcode/twich-embed.php';
+require_once 'includes/shortcode/shortcode-archive.php';
 
 // Crear post stream.
 require_once 'includes/create-post/crear-twchr-stream.php';
