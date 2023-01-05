@@ -94,14 +94,6 @@ function twchr_schedule_chapter_asign() {
         });
 
       });
-
-
-
-
-
-
-
-
     },
     'json');
 }
@@ -188,6 +180,10 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         nonce: twchr_post_nonce,
         body: {
           post_id : twchr_post_id,
+          stream: {
+            duration: document.querySelector("#twchr_schedule_card_input--duration").value,
+            title: document.querySelector("#twchr_schedule_card_input--title").value
+          },
           serie: {
             term_id: document.querySelector("#twchr_schedule_card_input--serie").value.split("|")[0],
             name: document.querySelector("#twchr_schedule_card_input--serie").value.split("|")[1]
