@@ -692,7 +692,7 @@ if(location.pathname.includes('plugins.php')){
         if(confirm('You want to remove all twitcher information from the database when uninstalling this plugin?')){
             wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:true}}).done(
                 e => {if(e == 200){
-                    alert('You uninstall the plugin all twitcher settings and data will be deleted.');
+                    alert('When you uninstall the plugin all twitcher settings and data will be deleted.');
                         location.href = url_disactive;
                     }else{
                         alert('When you uninstall the plugin it will not remove all twitcher settings and data.');
