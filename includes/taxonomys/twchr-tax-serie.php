@@ -183,8 +183,10 @@ function twchr_tax_serie_import() {
 			)
 		);
 
+		//var_dump($schedules_twitch);
+
 		if ( isset( $schedules_twitch->{'error'} ) ) {
-			// var_dump($schedules_twitch);
+			
 			twchr_twitch_autentication_error_handdler( $schedules_twitch->{'error'}, $schedules_twitch->{'message'} );
 		}
 
@@ -240,7 +242,7 @@ function twchr_tax_serie_import() {
 					}
 
 					if ( $key === COUNT( $schedules_twitch ) - 1 ) {
-						twchr_javaScript_redirect( TWCHR_ADMIN_URL . '/edit-tags.php?taxonomy=serie&post_type=twchr_stream' );
+						twchr_javaScript_redirect( TWCHR_ADMIN_URL . '/edit-tags.php?taxonomy=serie' );
 					}
 				}
 				die();

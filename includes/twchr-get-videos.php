@@ -5,11 +5,12 @@
 add_action( 'restrict_manage_posts', 'twchr_get_videos_function' );
 
 function twchr_get_videos_function() {
-	$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
-
-	$twch_data_app_token = get_option( 'twchr_app_token' );
-	$get_length = COUNT( $_GET );
-	$dataUrl = sanitize_text_field( $_GET['post_type'] );
+	if(isset($_GET['post_type'])):
+		$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
+		$twch_data_app_token = get_option( 'twchr_app_token' );
+		$get_length = COUNT( $_GET );
+		$dataUrl = sanitize_text_field( $_GET['post_type'] );
+	
 	if ( $dataUrl == 'twchr_streams' && $get_length == 1 ) :
 		?>
 <a style="text-decoration: none;display:inline-block;color:#fff;background-color: var(--twchr-purple);padding: .5em;border: 1px solid;border-radius: 5px;line-height: 1em;"
@@ -148,4 +149,5 @@ function twchr_get_videos_function() {
 				break;
 		}
 	}
+endif;
 }
