@@ -253,7 +253,7 @@ function twchr_tax_serie_import() {
 				$tw_title = $schedule->{'title'};
 				if ( $tw_title == $wp_title ) {
 				} else {
-					$new_term = wp_insert_term( $schedule->title, 'serie' );
+					$new_term = wp_insert_term( $tw_title, 'serie' );
 
 					if ( isset( $new_term->errors['term_exists'] ) ) {
 						// TODO: Poner esta redireccion en el error handler
