@@ -125,9 +125,6 @@ stream.twchr-modal,
     z-index: 99;
 }
 
-stream.twchr-modal{
-    padding: 0 !important;
-}
 
 stream.twchr-modal h3{
     color:var(--twchr-purple);

@@ -99,6 +99,7 @@ function twchr_get_videos_function() {
 				break;
 			case 'videos_ajax':
 				?>
+							
 							<stream id="twchr-modal-selection" class='twchr-modal 
 							<?php
 							if ( isset( $_GET['stream_id'] ) ) {
