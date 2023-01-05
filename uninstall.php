@@ -4,15 +4,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	die();
 }
 if ( get_option( 'twchr_delete_all' ) == 1 ) {
-	delete_option( 'twchr_keys' );
-	delete_option( 'twchr_app_token' );
-	delete_option( 'twchr_set_instaled' );
-	delete_option( 'twchr_data_broadcaster' );
-	delete_option( 'twchr_delete_all' );
-	delete_option( 'twchr_share_permissions' );
-	delete_option( 'twchr_installation_date' );
-	delete_option( 'twchr_log' );
+	global $wpdb;
+	//Elimina todas las entradas en wp_options que comiencen con twchr
+	$wpdb->query( "DELETE FROM {$wpdb->prefix}_options WHERE option_name LIKE 'twchr_%';");
 
+	// Custom Post Types
 	$allposts = get_posts(
 		array(
 			'post_type' => 'twchr_streams',
@@ -21,6 +17,17 @@ if ( get_option( 'twchr_delete_all' ) == 1 ) {
 	);
 	foreach ( $allposts as $eachpost ) {
 		wp_delete_post( $eachpost->ID, true );
+	}
+
+	//Terms
+	$all_terms = get_terms([
+		'taxonomy' => 'serie'
+	]);
+
+	foreach($all_terms as $term){
+		wp_delete_term($term->term_id,[
+			'taxonomy' => 'serie',
+		]);
 	}
 }
 
