@@ -37,8 +37,8 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 					} else {
 						$new_term_id = $new_term['term_id'];
 
-						$dateTime = $schedule->start_time;
-						add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
+						$date_time = $schedule->start_time;
+						add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $date_time );
 						$select_value = $schedule->category->id;
 						add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
 						$select_name = $schedule->category->name;

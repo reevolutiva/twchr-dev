@@ -32,7 +32,7 @@ function twchr_cf_schedule__card() {
 	$title = isset( $values['twchr_schedule_card_input--title'] ) ? $values['twchr_schedule_card_input--title'][0] : '';
 	$category = isset( $values['twchr_schedule_card_input--category'] ) ? $values['twchr_schedule_card_input--category'][0] : '';
 	$date_time = isset( $values['twchr_schedule_card_input--dateTime'] ) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
-	$twchr_dateTime_slot = isset( $values['twchr_dateTime_slot'] ) ? $values['twchr_dateTime_slot'][0] : '';
+	$twchr_date_time_slot = isset( $values['twchr_dateTime_slot'] ) ? $values['twchr_dateTime_slot'][0] : '';
 	$duration = isset( $values['twchr_schedule_card_input--duration'] ) ? $values['twchr_schedule_card_input--duration'][0] : '';
 
 	$is_recurring = isset( $values['twchr_schedule_card_input--is_recurrig'] ) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;

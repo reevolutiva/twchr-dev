@@ -37,28 +37,28 @@ add_action( 'init', 'twchr_tax_serie_register' ); // Fin Guardar taxonomía
 // twchr_tax_serie_save
 function twchr_tax_serie_save( $term_id, $tt_id ) {
 
-	$dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
+	$date_time_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
 	$duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
 	$select_old = get_term_meta( $term_id, 'twchr_toApi_category', true );
 	$select_value_old = get_term_meta( $term_id, 'twchr_toApi_category_value', true );
 	$select_name_old = get_term_meta( $term_id, 'twchr_toApi_category_name', true );
 
 	// Saneamos lo introducido por el usuario.
-	$dateTime = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
+	$date_time = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 	$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 	$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
 	$select_name = sanitize_text_field( $_POST['twchr_toApi_category_name'] );
 
 	// Actualizamos el campo meta en la base de datos.
-	update_term_meta( $term_id, 'twchr_toApi_dateTime', $dateTime, $dateTime_old );
+	update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time, $date_time_old );
 	update_term_meta( $term_id, 'twchr_toApi_duration', $duration, $duration_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_value', $select_value, $select_value_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_name', $select_name, $select_name_old );
 	if ( isset( $_POST['twchr_toApi_dateTime'] ) && isset( $_POST['twchr_toApi_duration'] ) && isset( $_POST['twchr_toApi_category_value'] ) ) {
 
-		$dateTime_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
-		$dateTime_stg = strtotime( $dateTime_raw );
-		$dateTime_rfc = date( DateTimeInterface::RFC3339, $dateTime_stg );
+		$date_time_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
+		$date_time_stg = strtotime( $date_time_raw );
+		$date_time_rfc = date( DateTimeInterface::RFC3339, $date_time_stg );
 
 		$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 		$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
@@ -83,7 +83,7 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 			$tag_name = sanitize_text_field( $_POST['name'] );
 		}
 		// Envia los datos a la API de twich
-		$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $dateTime_rfc, $select_value, $duration );
+		$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $date_time_rfc, $select_value, $duration );
 		$schedule_segment_id = $response['allData']->{'segments'}[0]->{'id'};
 
 		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
@@ -135,7 +135,7 @@ add_action( 'create_serie', 'twchr_tax_serie_create', 10, 5 );
 // twchr_tax_serie_edit
 function twchr_tax_serie_edit( $term, $taxonomy ) {
 	// wp_nonce_field( 'serie_cf', 'serie_cf_nonce' );
-	$dateTime = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
+	$date_time = get_term_meta( $term->term_id, 'twchr_toApi_dateTime', true );
 	$duration = get_term_meta( $term->term_id, 'twchr_toApi_duration', true );
 	$select_value = get_term_meta( $term->term_id, 'twchr_toApi_category_value', true );
 	$select_value = sanitize_text_field( $select_value );
@@ -211,8 +211,8 @@ function twchr_tax_serie_import() {
 						} else {
 							$new_term_id = $new_term['term_id'];
 
-							$dateTime = $schedule->start_time;
-							add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
+							$date_time = $schedule->start_time;
+							add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $date_time );
 							$select_value = $schedule->category->id;
 							add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
 							$select_name = $schedule->category->name;
@@ -261,8 +261,8 @@ function twchr_tax_serie_import() {
 
 					$new_term_id = $new_term['term_id'];
 
-					$dateTime = $schedule->start_time;
-					add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
+					$date_time = $schedule->start_time;
+					add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $date_time );
 					$select_value = $schedule->category->id;
 					add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
 					$select_name = $schedule->category->name;

@@ -49,12 +49,12 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
 		<div>
 			<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"	class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
-			<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
+			<p><?php echo ! empty( $date_time ) ? esc_html( $date_time ) : ''; ?></p>
 		</div>
 		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
 			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
 			</select>
-			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_dateTime_slot; ?></span></badges>
+			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot; ?></span></badges>
 		</div>
 	</div>
 	<div class="twchr-card-row">
