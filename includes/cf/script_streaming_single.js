@@ -52,7 +52,7 @@ function twchr_schedule_chapter_asign() {
 
         res.forEach(item => {
           if (item.term_id == term.term_id) {
-            if(item.chapters){
+            if(item.chapters && item.chapters != 'this serie not contains chapters'){
               
               const chapters = item.chapters;
               twchr_dateTime_slot.innerHTML = "";
