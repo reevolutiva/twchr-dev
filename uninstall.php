@@ -20,14 +20,19 @@ if ( get_option( 'twchr_delete_all' ) == 1 ) {
 	}
 
 	//Terms
-	$all_terms = get_terms([
-		'taxonomy' => 'serie'
+	$all_terms_serie = get_terms('serie',[
+		'hide_empty' => false
+	]);
+	$all_terms_cat_tw = get_terms('cat_twcht',[
+		'hide_empty' => false
 	]);
 
-	foreach($all_terms as $term){
-		wp_delete_term($term->term_id,[
-			'taxonomy' => 'serie',
-		]);
+	foreach($all_terms_serie as $term){
+		wp_delete_term($term->term_id,'serie');
+	}
+	
+	foreach($all_terms_cat_tw as $term){
+		wp_delete_term($term->term_id,'cat_twcht');
 	}
 }
 
