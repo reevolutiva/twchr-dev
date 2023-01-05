@@ -1,7 +1,9 @@
 <?php
  $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0];
- $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single );
- $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true );
+ if(!empty($term_cat_twcht)){
+	 $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', $single );
+	 $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true );
+ }
  $twchr_stream_twtich_schedule_id = get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id' ) != false ? get_post_meta( get_the_ID(), 'twchr_stream_twtich_schedule_id' )[0] : '';
 
 if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twitch_schedule_response'] == 'delete' ) {
@@ -49,7 +51,7 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
 		<div>
 			<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"	class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
-			<p><?php echo ! empty( $date_time ) ? esc_html( $date_time ) : ''; ?></p>
+			<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
 		</div>
 		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
 			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">

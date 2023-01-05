@@ -466,14 +466,17 @@ if(
 ){
    const btn_get_video = document.querySelector(".twchr_button_get_videos");
    const modal_get_video = document.querySelector(".twchr_modal_get_videos");
-    
+   const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
+   const client_id = tchr_vars_admin.twchr_keys['client-id'];
+   const appToken = tchr_vars_admin.twchr_app_token;
+   
+   tchr_get_clips(appToken,client_id,user_id);
+
    btn_get_video.addEventListener('click',e=>{
     //e.preventDefault();
-    const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
-    const client_id = tchr_vars_admin.twchr_keys['client-id'];
-    const appToken = tchr_vars_admin.twchr_app_token;
+    
     if(twchr_card_embed_menu_state == 'tw'){
-        tchr_get_clips(appToken,client_id,user_id)
+        tchr_get_clips(appToken,client_id,user_id);
     }
     
    });
