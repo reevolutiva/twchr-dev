@@ -686,9 +686,22 @@ if(location.pathname.includes('plugins.php')){
         <button>Share your feedback </button>
     `;
    
-    disactive_link.setAttribute("src","#");
+    //disactive_link.setAttribute("src","#");
     disactive_link.addEventListener('click',(e)=>{
-       
+        e.preventDefault();
+        if(confirm('You want to remove all twitcher information from the database when uninstalling this plugin?')){
+            wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:true}}).done(
+                e => {if(e == 200){
+                    alert('You uninstall the plugin all twitcher settings and data will be deleted.');
+                        location.href = url_disactive;
+                    }else{
+                        alert('When you uninstall the plugin it will not remove all twitcher settings and data.');
+                    } 
+                }
+            );
+        }else{
+            location.href = url_disactive;
+        }
         //const url = modal_disactive.querySelector("input[name='url-disactivate']").value;
         //GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
         //window.scrollTo(0,0);

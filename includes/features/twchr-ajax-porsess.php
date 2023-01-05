@@ -194,3 +194,13 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 }
 
 
+add_action( 'wp_ajax_twchr_delete_all', 'twchr_delete_all__callback' );
+
+function twchr_delete_all__callback(){
+	if(isset($_POST['twchr_delete_all'])){
+		$twchr_delete_all = $_POST['twchr_delete_all'];
+		update_option( 'twchr_delete_all', 1 );
+	}
+	
+	wp_send_json_success(200);
+}
