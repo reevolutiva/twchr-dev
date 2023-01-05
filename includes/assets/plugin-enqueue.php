@@ -40,7 +40,7 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.146';
+	$version = 'beta.4.147';
 
 	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
@@ -73,6 +73,7 @@ function twchr_admin_js() {
 add_action( 'admin_enqueue_scripts', 'twchr_admin_js' );
 
 function twchr_front_scripts() {
+	$version = 'beta.4.147';
 	wp_enqueue_script( 'twchr_clipboard-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js', array(), $version, false );
 }
 
