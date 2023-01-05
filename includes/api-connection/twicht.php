@@ -152,6 +152,8 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 	$client_id = $twch_data_prime->{'client-id'};
 	$user_token = $twch_data_prime->{'user_token'};
 
+	//var_dump($twch_data_prime);
+
 	$args = array(
 		'headers' => array(
 			'authorization' => 'Bearer ' . $user_token,
@@ -172,13 +174,13 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
 	$response_response = $res['response'];
 
+
 	if ( isset( $response_body->{'data'}->{'segments'} ) ) {
 		$data = $response_body->{'data'}->{'segments'};
 		return $data;
 	} else {
 
 		if ( isset( $response_body->{'error'} ) ) {
-
 			twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
 		}
 	}
@@ -575,6 +577,10 @@ function twchr_twitch_token_validate( $token ) {
 
 function twchr_twitch_autentication_error_handdler( $error_code, $msg ) {
 	if ( $error_code = 'Not Found' && $msg == 'segments were not found' ) {
+		?>
+		 <h2><?php echo __('Not Found, segments were not found','twitcher') ?> </h2>
+		<a href="<?php echo site_url('wp-admin/edit-tags.php?taxonomy=serie&post_type=twchr_streams')?>"><?php echo __('Back to Series','twitcher')?></a>
+		<?php
 		exit();
 	}
 	echo "<script>

@@ -169,11 +169,9 @@ function twchr_tax_serie_import() {
 		die();
 
 	}
+	
 	if ( isset( $_GET['sync_serie'] ) && $_GET['sync_serie'] == 'true' ) {
-		$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
-		$client_id = $twch_data_prime->{'client-id'};
-		$user_token = $twch_data_prime->{'user_token'};
-
+		
 		// FROM TWCH
 		$schedules_twitch = twtchr_twitch_schedule_segment_get();
 
@@ -190,6 +188,7 @@ function twchr_tax_serie_import() {
 			twchr_twitch_autentication_error_handdler( $schedules_twitch->{'error'}, $schedules_twitch->{'message'} );
 		}
 
+
 		// Si hay series
 		if ( ! COUNT( $schedules_wp ) == 0 ) {
 
@@ -202,7 +201,7 @@ function twchr_tax_serie_import() {
 
 					$tw_title = $schedule->{'title'};
 					if ( $tw_title == $wp_title ) {
-
+						
 					} else {
 						$title = empty( $schedule->title ) ? __( 'No title', 'twitcher' ) : $schedule->title;
 						$new_term = wp_insert_term( $title, 'serie' );
