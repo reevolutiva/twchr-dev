@@ -56,7 +56,7 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
 			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
 			</select>
-			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot; ?></span></badges>
+			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot != 'false' ? $twchr_date_time_slot : 'this serie not contains chapters'; ?></span></badges>
 		</div>
 	</div>
 	<div class="twchr-card-row">

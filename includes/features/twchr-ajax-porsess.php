@@ -173,6 +173,9 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$serie = $body['serie'];
 	$twitch_category = $body['twitch_category'];
 	$twchr_slot = $body['twchr_slot'];
+	if(!is_array($twchr_slot)){
+		$twchr_slot = 'this serie not contains chapters';
+	}
 	$stream = $body['stream'];
 	try {
 		if(!empty($serie['term_id']) && !empty($twchr_slot) && !empty($serie) && !empty($twitch_category['name']) && !empty($twitch_category['id']) && !empty($stream['title']) && !empty($stream['duration'])){
