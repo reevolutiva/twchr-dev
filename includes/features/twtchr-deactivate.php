@@ -35,6 +35,7 @@ function twchr_desactivar() {
 			wp_delete_term($term->term_id,'cat_twcht');
 		}
 	}
+	
 }
 
 

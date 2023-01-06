@@ -103,8 +103,8 @@ function twchr_ajax_recive_callback() {
 		case 'update':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				twchr_save_cf_slide_1( $post_id, $body );
-				$response = 200;
+				$response = twchr_save_cf_slide_1( $post_id, $body );
+				
 			}
 			break;
 		case 'asing':
@@ -152,7 +152,7 @@ function twchr_save_cf_slide_1( $post_id, $body ) {
 		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
 	}
 
-	if ( isset( $body['twicth_category'] ) ) {
+	if ( isset( $body['twitch_category'] ) ) {
 		$cat_twitch_id = (int) $body['twicth_category']['id'];
 		$cat_twitch_name = $body['twicth_category']['name'];
 
@@ -165,7 +165,7 @@ function twchr_save_cf_slide_1( $post_id, $body ) {
 		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 	}
 
-	return 200;
+	return $response;
 }
 
 
@@ -185,7 +185,15 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
 
-		$response =$body;
+		// Creo una taxonomia cat_twcht
+		$response = wp_create_term( $twitch_category['name'], 'cat_twcht' );
+
+		$id = (int) $response['term_id'];
+
+		// Creo stream relacionado.
+		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
+
+		$response = $body;
 
 	} catch ( Exception $e ) {
 		$response = $e;

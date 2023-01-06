@@ -20,7 +20,7 @@ function twchr_cf_schedule__card() {
 	$term_cat_twcht = wp_get_post_terms( $post_id, 'cat_twcht' );
 	$term_cat_twcht_id = '';
 	$term_cat_twcht_name = '';
-	// var_dump($term_cat_twcht);
+	//var_dump($term_cat_twcht);
 	foreach ( $term_cat_twcht as $term ) {
 		$str = '<span>' . $term->{'slug'} . '</span>';
 		$term_cat_twcht_list = $term_cat_twcht_list . $str;
