@@ -174,32 +174,50 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
     
     // Si is_recurring vale "YES".
     if(is_recurring[0].value == 'true'){
+      
+      let twchr_chapter_slot;
+      if(document.querySelector("#twchr_dateTime_slot").value.include('|')){
+         twchr_chapter_slot = {
+            chapter_id: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[0],
+            start_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[0],
+            end_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[1],
+            chapter_name: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[1]     
+        }
+      }else{
+        twchr_chapter_slot = document.querySelector("#twchr_dateTime_slot").value;
+      }
       const data = {
         twchr_action: "asing",
         twchr_target: "slide-1",
         nonce: twchr_post_nonce,
         body: {
-          post_id : twchr_post_id,
+          post_id: twchr_post_id,
           stream: {
-            duration: document.querySelector("#twchr_schedule_card_input--duration").value,
-            title: document.querySelector("#twchr_schedule_card_input--title").value
+            duration: document.querySelector(
+              "#twchr_schedule_card_input--duration"
+            ).value,
+            title: document.querySelector("#twchr_schedule_card_input--title")
+              .value,
           },
           serie: {
-            term_id: document.querySelector("#twchr_schedule_card_input--serie").value.split("|")[0],
-            name: document.querySelector("#twchr_schedule_card_input--serie").value.split("|")[1]
+            term_id: document
+              .querySelector("#twchr_schedule_card_input--serie")
+              .value.split("|")[0],
+            name: document
+              .querySelector("#twchr_schedule_card_input--serie")
+              .value.split("|")[1],
           },
           twitch_category: {
-            id: document.querySelector("#twchr_schedule_card_input--category__value").value,
-            name: document.querySelector("#twchr_schedule_card_input--category__name").value
+            id: document.querySelector(
+              "#twchr_schedule_card_input--category__value"
+            ).value,
+            name: document.querySelector(
+              "#twchr_schedule_card_input--category__name"
+            ).value,
           },
-          twchr_slot: {
-            chapter_id: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[0],
-            start_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[0],
-            end_time: document.querySelector("#twchr_dateTime_slot").value.split("|")[1].split(";")[1],
-            chapter_name: document.querySelector("#twchr_dateTime_slot").value.split("|")[0].split(";")[1]
-          }
-        }
-      }
+          twchr_slot: twchr_chapter_slot
+        },
+      };
       
       twchr_send_front_to_bk(data,e=>{
         console.log(e);
