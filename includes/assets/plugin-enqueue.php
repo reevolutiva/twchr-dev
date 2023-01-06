@@ -40,13 +40,14 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.153';
+	$version = 'beta.4.156';
 
 	// Estilos.
 	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
 
 	// Scripts.
 	wp_enqueue_script( 'twchr_gscjs', TWCHR_URL . 'includes/js/gscjs.js', array(), $version, false );
+	wp_enqueue_script( 'twchr_cookies_manage', TWCHR_URL . 'includes/js/cookies_manage.js', array(), $version, false );
 
 	$set_instaled = get_option( 'twchr_set_instaled' );
 	// Usamos esta función para que coloque los valores inline

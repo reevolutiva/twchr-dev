@@ -382,41 +382,19 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
     getResponse(url);
     */
-
+    const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
     if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
         alert('this seres exist in twitch');
     }
 
-    const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
-    let current_stream_id;
-        if(allData.value != ""){
-            const object = JSON.parse(allData.value);
-            const state  = object.status;
-            const alert = crearElemento("DIV","alert-twchr-back");
-            switch (state) {
-               case 401:
-                    alert.classList.add("warning");
-                    alert.innerHTML = `<h4>${object['message']}</h4>`;
-                    ajaxResponse.appendChild(alert);
-                    const url = dataFromApi.url_redirect+"&tchr_id="+object['post-id'];
-                    
-                    setTimeout(() => {
-                        //location.href = url;
-                    }, 2000);
+    if(allData.textContent.length > 0){
+        const data = JSON.parse(allData.textContent);
+        const txt = `Error: ${data.error} Message: ${data.message}`;
+        alert(txt);
+    }
 
-                    break;
-                case 400:
-                    alert.classList.add("warning");
-                    alert.innerHTML = `<h3>${object.error}</h3><p>${object.message}</p><p>serie: <b>${object.title}</b></p>`;
-                    ajaxResponse.appendChild(alert);
-                    break;
-                
-                
-            
-                default:
-                    break;
-            }
-        }
+    
+
 
 
     
