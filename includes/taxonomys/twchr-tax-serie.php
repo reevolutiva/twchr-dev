@@ -27,7 +27,7 @@ function twchr_tax_serie_register() {
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'serie' ),
 	);
-	register_taxonomy( 'serie', array( 'post', 'twchr_streams' ), $args );
+	register_taxonomy( 'serie', array('twchr_streams' ), $args );
 }
 
 add_action( 'init', 'twchr_tax_serie_register' ); // Fin Guardar taxonomía
