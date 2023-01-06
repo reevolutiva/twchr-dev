@@ -270,6 +270,7 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
 //taxonomy=serie&post_type=twchr_streams
 if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.href.split(tchr_vars_admin.site_url+"/wp-admin/")[1].includes("term.php"))
    {
+    /*
     const ajaxResponse = document.querySelector("#ajax-response");
     
     const getResponse = async (url) =>{
@@ -364,7 +365,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                     default:
                         break;
                 }
-                */
+                
             }
                 
            });
@@ -376,9 +377,15 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         }
 
     }
+    
 
     const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
     getResponse(url);
+    */
+
+    if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
+        alert('this seres exist in twitch');
+    }
 
     const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
     let current_stream_id;
