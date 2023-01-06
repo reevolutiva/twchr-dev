@@ -107,8 +107,10 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		}
 		 $allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
-		$state = 'term_id:'.$term_id.';alert_state:true';
-		setcookie( 'twchr_alert_state', json_encode($state) );
+
+		$state = isset($response['error']) ? 'error' : 'succses';
+		setcookie( 'twchr_serie_twitch_response_state', $state);
+		setcookie( 'twchr_serie_twitch_response_term_id', $term_id);
 	}
 }
 

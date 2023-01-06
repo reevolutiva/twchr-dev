@@ -382,16 +382,37 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
     getResponse(url);
     */
-    const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
-    if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
-        alert('this seres exist in twitch');
-    }
 
-    if(allData.textContent.length > 0){
-        const data = JSON.parse(allData.textContent);
-        const txt = `Error: ${data.error} Message: ${data.message}`;
-        alert(txt);
+    if(twchr_getCookie('twchr_serie_twitch_response_term_id') != undefined &&
+       twchr_getCookie('twchr_serie_twitch_response_state') != undefined
+    ){
+        const twchr_tw_cookie_response = {
+          term_id: twchr_getCookie("twchr_serie_twitch_response_term_id"),
+          state: twchr_getCookie("twchr_serie_twitch_response_state"),
+        };
+
+        console.log(twchr_tw_cookie_response);
+
+        const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
+
+        if (twchr_tw_cookie_response.state == "succses") {
+          if (document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0) {
+            alert("this seres exist in twitch");
+            }
+            twchr_setCookie("twchr_serie_twitch_response_term_id", null);
+            twchr_setCookie("twchr_serie_twitch_response_state", false);
+        }else if(twchr_tw_cookie_response.state == "error"){
+            if (allData.textContent.length > 0) {
+              const data = JSON.parse(allData.textContent);
+              const txt = `Error: ${data.error} Message: ${data.message}`;
+              alert(txt);
+            }
+            twchr_setCookie("twchr_serie_twitch_response_term_id",null);
+            twchr_setCookie("twchr_serie_twitch_response_state", false);
+        }
+        
     }
+    
 
     
 
