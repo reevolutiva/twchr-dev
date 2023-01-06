@@ -703,6 +703,7 @@ if(location.pathname.includes('plugins.php')){
                         location.href = url_disactive;
                     }else{
                         alert('When you uninstall the plugin it will not remove all twitcher settings and data.');
+                        location.href = url_disactive;
                     } 
                 }
             );

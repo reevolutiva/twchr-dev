@@ -72,4 +72,12 @@ function twchr_save_cf_slide_1($post_id,$body){
     return 200;
 }
 
+add_action( 'wp_ajax_twchr_delete_all', 'twchr_delete_all_callack');
+function twchr_delete_all_callack(){
+    $twchr_delete_all = $_POST['twchr_delete_all'];
+    update_option( 'twchr_delete_all', $twchr_delete_all );
+
+    wp_send_json_success(200);
+}
+
 ?>
