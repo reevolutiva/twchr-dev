@@ -171,7 +171,7 @@ if(document.querySelector(".twchr-schedule-card-status-container h5")){
 }
 
 // si no esta vacio
-if(!twchr_dateTime_slot.textContent.length == 0){
+if(!twchr_dateTime_slot.textContent.length == 0 && twchr_dateTime_slot.textContent.includes("{")){
 	const badge = twchr_dateTime_slot.textContent;
 	const object = JSON.parse(badge);
 	const stream_id = object.chapter_id;

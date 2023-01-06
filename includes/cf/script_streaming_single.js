@@ -55,6 +55,7 @@ function twchr_schedule_chapter_asign() {
             if(item.chapters && item.chapters != 'this serie not contains chapters'){
               
               const chapters = item.chapters;
+              
               twchr_dateTime_slot.innerHTML = "";
 
 
