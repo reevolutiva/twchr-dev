@@ -267,33 +267,33 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
     twchrFrontEndCounter(twchr_result_items[4],80);
 
 }
-
 //taxonomy=serie&post_type=twchr_streams
-if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.pathname.split("/")[2] == 'term.php')
+if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.href.split(tchr_vars_admin.site_url+"/wp-admin/")[1].includes("term.php"))
    {
     const ajaxResponse = document.querySelector("#ajax-response");
+    
     const getResponse = async (url) =>{
         try {
            const response = await fetch(url);
            let res = await response.text();
            res = JSON.parse(res);
+           console.log(res);
            
            const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
            let current_stream_id;
                if(allData.value != ""){
                     const object = JSON.parse(allData.value);
-                    current_stream_id = object.allData.segments[0].id; 
+                    current_stream_id = object.id; 
             }
            res.forEach((element, index) => {
-            const dataFromApi = JSON.parse(element.dataFromTwitch);
+            const dataFromApi = element;
             const alert = crearElemento("DIV","alert-twchr-back");
-            const state = dataFromApi.status;
-            const segment_id = dataFromApi.allData.segments[0].id;
+            const segment_id = dataFromApi.id;
 
             
             
             if(segment_id === current_stream_id){
-                let existTwitch = false;
+                /*let existTwitch = false;
                 switch (state) {
                     case 200:
 
@@ -364,6 +364,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                     default:
                         break;
                 }
+                */
             }
                 
            });
