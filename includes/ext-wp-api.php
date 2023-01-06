@@ -43,7 +43,14 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 	$response = array();
 	foreach ( $request as $term ) {
 		$term_id = $term->{'term_id'};
-		$chapters = get_term_meta( $term_id, 'twchr_schdules_chapters' ) != false ? json_decode(get_term_meta( $term_id, 'twchr_schdules_chapters' )[0]) : __('this serie not contains chapters','twitcher');
+		if(get_term_meta( $term_id, 'twchr_schdules_chapters' ) != false){
+			$chapters =	json_decode(get_term_meta( $term_id, 'twchr_schdules_chapters' )[0]);
+			if(COUNT($chapters) == 0){
+				$chapters = __('this serie not contains chapters','twitcher');
+			}
+		}else{
+			$chapters = __('this serie not contains chapters','twitcher');
+		}
 		$array_rest = array(
 			'term_id' => $term_id,
 			'name' => $term->{'name'},
