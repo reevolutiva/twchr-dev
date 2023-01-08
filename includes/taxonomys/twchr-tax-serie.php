@@ -96,15 +96,6 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
-		$allData = [];
-		foreach ($response as $key => $value) {
-			$var = esc_html($value);
-			$res = [
-				$key => $var
-			];
-
-			array_push($allData,$res);
-		}
 		 $allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
 	}else{

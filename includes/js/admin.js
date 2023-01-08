@@ -382,35 +382,50 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
     getResponse(url);
     */
+    const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
 
-    if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
-        alert('this seres exist in twitch');
-    }
-    const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
     
-    if(allData.value != ""){
-        const object = JSON.parse(allData.value);
-        if(object.error){
-            alert(object.error+' '+error.message);
-        }
-        current_stream_id = object.id; 
-    }
+    
+    if(allData.textContent.length > 0){
+        const twchr_response = JSON.parse(allData.textContent);
+        console.log(twchr_response);
+        const twchr_response_template = (status,txt,msg=false) =>{
+            let template = `<h3>${txt}</h3>`;
+            if(status !== 200 && msg != false){
+                template+= `<p>${msg}</p>`;
+            }
 
-    let current_stream_id;
-        if(allData.value != ""){
-            const object = JSON.parse(allData.value);
-            const state  = object.status;
-            const alert = crearElemento("DIV","alert-twchr-back");
-            switch (state) {
-               case 401:
-                    alert.classList.add("warning");
-                    alert.innerHTML = `<h4>${object['message']}</h4>`;
-                    ajaxResponse.appendChild(alert);
-                    const url = dataFromApi.url_redirect+"&tchr_id="+object['post-id'];
-                    
-                    setTimeout(() => {
-                        //location.href = url;
-                    }, 2000);
+            return template;
+        }
+        if(twchr_response.status == 401 ){
+            const div = GSCJS.crearNodo("DIV");
+            div.innerHTML = twchr_response_template(401,`<span style="color:red;">Disconected Twitch</span>`,twchr_response.message);
+            allData.parentElement.appendChild(div);
+            if(confirm(twchr_response.message)){
+                location.href = twchr_response.url_redirect;
+            }
+            
+        }else if((twchr_response.start_time && twchr_response.end_time) || twchr_response.allData){
+            const div = GSCJS.crearNodo("DIV");
+            div.innerHTML = twchr_response_template(200,`<span style="color:green;">Conected Twitch</span>`);
+            allData.parentElement.appendChild(div);
+
+            if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
+                alert('this seres exist in twitch');
+            }
+
+        }else{
+            const div = GSCJS.crearNodo("DIV");
+            div.innerHTML = twchr_response_template(twchr_response.status,
+                                                    `<span style="color:red;">Disconected Twitch</span>`,
+                                                    `<b>Error: </b>${twchr_response.status} 
+                                                        </br> 
+                                                    <b>Glosa: </b>${twchr_response.message}`);
+            allData.parentElement.appendChild(div);
+        }
+    }
+    
+
     if(twchr_getCookie('twchr_serie_twitch_response_term_id') != undefined &&
        twchr_getCookie('twchr_serie_twitch_response_state') != undefined
     ){
@@ -419,9 +434,8 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
           state: twchr_getCookie("twchr_serie_twitch_response_state"),
         };
 
-        console.log(twchr_tw_cookie_response);
 
-        const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
+        
 
         if (twchr_tw_cookie_response.state == "succses") {
           if (document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0) {
