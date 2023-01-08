@@ -40,13 +40,13 @@ add_action( 'wp_after_admin_bar_render', 'twchr_fonts' );
  * @return void
  */
 function twchr_admin_js() {
-	$version = 'beta.4.153';
 
 	// Estilos.
-	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), $version, 'all' );
+	wp_enqueue_style( 'admin-styles', TWCHR_URL . 'includes/css/admin.css', array(), TWCHR_ASSETS_VERSION, 'all' );
 
 	// Scripts.
-	wp_enqueue_script( 'twchr_gscjs', TWCHR_URL . 'includes/js/gscjs.js', array(), $version, false );
+	wp_enqueue_script( 'twchr_gscjs', TWCHR_URL . 'includes/js/gscjs.js', array(), TWCHR_ASSETS_VERSION, false );
+	wp_enqueue_script( 'twchr_cookies_manage', TWCHR_URL . 'includes/js/cookies_manage.js', array(), TWCHR_ASSETS_VERSION, false );
 
 	$set_instaled = get_option( 'twchr_set_instaled' );
 	// Usamos esta función para que coloque los valores inline
@@ -60,8 +60,8 @@ function twchr_admin_js() {
 			'site_url' => site_url(),
 			'wp_api_route' => rest_url(),
 		);
-		wp_register_script( 'twchr_custom_script', TWCHR_URL . 'includes/js/admin.js', array(), $version, true );
-		wp_register_script( 'twchr_ajax_functions', TWCHR_URL . 'includes/js/twchr_ajax_functions.js', array(), $version, false );
+		wp_register_script( 'twchr_custom_script', TWCHR_URL . 'includes/js/admin.js', array(), TWCHR_ASSETS_VERSION, true );
+		wp_register_script( 'twchr_ajax_functions', TWCHR_URL . 'includes/js/twchr_ajax_functions.js', array(), TWCHR_ASSETS_VERSION, false );
 		wp_enqueue_script( 'twchr_custom_script' );
 		wp_enqueue_script( 'twchr_ajax_functions' );
 		wp_localize_script( 'twchr_custom_script', 'tchr_vars_admin', $params );
@@ -73,8 +73,7 @@ function twchr_admin_js() {
 add_action( 'admin_enqueue_scripts', 'twchr_admin_js' );
 
 function twchr_front_scripts() {
-	$version = 'beta.4.147';
-	wp_enqueue_script( 'twchr_clipboard-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js', array(), $version, false );
+	wp_enqueue_script( 'twchr_clipboard-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js', array(), TWCHR_ASSETS_VERSION, false );
 }
 
 add_action( 'wp_enqueue_scripts', 'twchr_front_scripts' );

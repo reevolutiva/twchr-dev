@@ -50,10 +50,9 @@
 	</div>
 	<input type="hidden" name="twchr_toApi_category_value" id='twchr_toApi_category_value' value='<?php echo esc_html( $select_value ); ?>'>
 	<input type="hidden" name="twchr_toApi_category_name" id='twchr_toApi_category_name' value='<?php echo esc_html( $select_name ); ?>'>
-	<label for="twchr_fromApi_allData"><?php twchr_esc_i18n( 'All Data', 'html' ); ?></label>
+	<label for="twchr_fromApi_allData"><?php twchr_esc_i18n( 'twitch response', 'html' ); ?></label>
 	<div>
-		<input data-twchr-stream-id="" type="text" name="twchr_fromApi_allData" id="twchr_fromApi_allData" disabled="true" value='<?php echo $allData; ?>'>
-		<p><?php twchr_esc_i18n( 'Data from Twitch', 'html' ); ?></p>
+		<p id="twchr_fromApi_allData" style="display:none;"><?php echo $allData; ?></p>
 	</div>
 	<div>
 		<input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo esc_html( $schedule_segment_id ); ?>">

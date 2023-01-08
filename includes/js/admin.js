@@ -411,20 +411,39 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                     setTimeout(() => {
                         //location.href = url;
                     }, 2000);
+    if(twchr_getCookie('twchr_serie_twitch_response_term_id') != undefined &&
+       twchr_getCookie('twchr_serie_twitch_response_state') != undefined
+    ){
+        const twchr_tw_cookie_response = {
+          term_id: twchr_getCookie("twchr_serie_twitch_response_term_id"),
+          state: twchr_getCookie("twchr_serie_twitch_response_state"),
+        };
 
-                    break;
-                case 400:
-                    alert.classList.add("warning");
-                    alert.innerHTML = `<h3>${object.error}</h3><p>${object.message}</p><p>serie: <b>${object.title}</b></p>`;
-                    ajaxResponse.appendChild(alert);
-                    break;
-                
-                
-            
-                default:
-                    break;
+        console.log(twchr_tw_cookie_response);
+
+        const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
+
+        if (twchr_tw_cookie_response.state == "succses") {
+          if (document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0) {
+            alert("this seres exist in twitch");
             }
+            twchr_setCookie("twchr_serie_twitch_response_term_id", null);
+            twchr_setCookie("twchr_serie_twitch_response_state", false);
+        }else if(twchr_tw_cookie_response.state == "error"){
+            if (allData.textContent.length > 0) {
+              const data = JSON.parse(allData.textContent);
+              const txt = `Error: ${data.error} Message: ${data.message}`;
+              alert(txt);
+            }
+            twchr_setCookie("twchr_serie_twitch_response_term_id",null);
+            twchr_setCookie("twchr_serie_twitch_response_state", false);
         }
+        
+    }
+    
+
+    
+
 
 
     
@@ -706,12 +725,15 @@ if(location.pathname.includes('plugins.php')){
     disactive_link.addEventListener('click',(e)=>{
         e.preventDefault();
         if(confirm('You want to remove all twitcher information from the database when uninstalling this plugin?')){
-            wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:true}}).done(
-                e => {if(e == 200){
+            wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:1}}).done(
+
+                e => {
+                    if(e == 200){
                     alert('When you uninstall the plugin all twitcher settings and data will be deleted.');
                         location.href = url_disactive;
                     }else{
                         alert('When you uninstall the plugin it will not remove all twitcher settings and data.');
+                        location.href = url_disactive;
                     } 
                 }
             );

@@ -37,8 +37,8 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 					} else {
 						$new_term_id = $new_term['term_id'];
 
-						$date_time = $schedule->start_time;
-						add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $date_time );
+						$dateTime = $schedule->start_time;
+						add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
 						$select_value = $schedule->category->id;
 						add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
 						$select_name = $schedule->category->name;
@@ -103,8 +103,8 @@ function twchr_ajax_recive_callback() {
 		case 'update':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				$response = twchr_save_cf_slide_1( $post_id, $body );
-				
+				twchr_save_cf_slide_1( $post_id, $body );
+				$response = 200;
 			}
 			break;
 		case 'asing':
@@ -152,7 +152,7 @@ function twchr_save_cf_slide_1( $post_id, $body ) {
 		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $schedule_segment_id );
 	}
 
-	if ( isset( $body['twitch_category'] ) ) {
+	if ( isset( $body['twicth_category'] ) ) {
 		$cat_twitch_id = (int) $body['twicth_category']['id'];
 		$cat_twitch_name = $body['twicth_category']['name'];
 
@@ -165,7 +165,7 @@ function twchr_save_cf_slide_1( $post_id, $body ) {
 		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 	}
 
-	return $response;
+	return 200;
 }
 
 
@@ -173,33 +173,14 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$serie = $body['serie'];
 	$twitch_category = $body['twitch_category'];
 	$twchr_slot = $body['twchr_slot'];
-	if(!is_array($twchr_slot)){
-		$twchr_slot = 'this serie not contains chapters';
-	}
-	$stream = $body['stream'];
 	try {
-		if(!empty($serie['term_id']) && !empty($twchr_slot) && !empty($serie) && !empty($twitch_category['name']) && !empty($twitch_category['id']) && !empty($stream['title']) && !empty($stream['duration'])){
+
 		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $stream['title'] );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
-
-		// Creo una taxonomia cat_twcht
-		$response = wp_create_term( $twitch_category['name'], 'cat_twcht' );
-
-		$id = (int) $response['term_id'];
-
-		// Creo stream relacionado.
-		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
-
-		$response = $body;
-		}else{
-			$response = __('Not was send all data');
-		}
 
 	} catch ( Exception $e ) {
 		$response = $e;
@@ -207,14 +188,12 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	return $response;
 }
 
+add_action( 'wp_ajax_twchr_delete_all', 'twchr_delete_all_callack');
+function twchr_delete_all_callack(){
+    $twchr_delete_all = $_POST['twchr_delete_all'];
+    update_option( 'twchr_delete_all', $twchr_delete_all );
 
-add_action( 'wp_ajax_twchr_delete_all', 'twchr_delete_all__callback' );
-
-function twchr_delete_all__callback(){
-	if(isset($_POST['twchr_delete_all'])){
-		$twchr_delete_all = $_POST['twchr_delete_all'];
-		update_option( 'twchr_delete_all', 1 );
-	}
-	
-	wp_send_json_success(200);
+    wp_send_json_success(wp_json_encode($_POST));
 }
+
+?>

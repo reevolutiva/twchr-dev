@@ -3,7 +3,7 @@
  * Plugin Name: Manage Twitch Account: Easy API Integration
  * Plugin URI: twitcher.pro
  * Description: Manage, promote and monetise your Twitch.tv streamings integrating Twitch to Wordpress.
- * Version: 0.4
+ * Version: 0.5
  * Author: Conjuntas.Club
  * Author URI: conjuntas.club
  * License: GPL3
@@ -15,6 +15,7 @@ define( 'TWCHR_HOME_URL', site_url() );
 define( 'TWCHR_ADMIN_URL', site_url() . '/wp-admin/' );
 define( 'TWCHR_PATH', __FILE__ );
 define( 'TWCHR_URL', plugin_dir_url( __FILE__ ) );
+define( 'TWCHR_ASSETS_VERSION', 'beta.5.0' );
 
 define( 'TWCHR_URL_ASSETS', plugin_dir_url( __FILE__ ) . 'includes/assets/' );
 define( 'TWCHR_URL_FONTS', plugin_dir_url( __FILE__ ) . 'includes/assets/fonts' );

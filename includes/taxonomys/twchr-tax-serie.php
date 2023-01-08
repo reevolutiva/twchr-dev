@@ -96,11 +96,23 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
+		$allData = [];
+		foreach ($response as $key => $value) {
+			$var = esc_html($value);
+			$res = [
+				$key => $var
+			];
 
-		$allData = json_encode( $response );
+			array_push($allData,$res);
+		}
+		 $allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
 	}else{
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', 'disconected' );
+
+		$state = isset($response['error']) ? 'error' : 'succses';
+		setcookie( 'twchr_serie_twitch_response_state', $state);
+		setcookie( 'twchr_serie_twitch_response_term_id', $term_id);
 	}
 }
 
