@@ -99,6 +99,8 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		$allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
+	}else{
+		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', 'disconected' );
 	}
 }
 

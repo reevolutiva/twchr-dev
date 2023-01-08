@@ -386,8 +386,16 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
         alert('this seres exist in twitch');
     }
-
     const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
+    
+    if(allData.value != ""){
+        const object = JSON.parse(allData.value);
+        if(object.error){
+            alert(object.error+' '+error.message);
+        }
+        current_stream_id = object.id; 
+    }
+
     let current_stream_id;
         if(allData.value != ""){
             const object = JSON.parse(allData.value);
