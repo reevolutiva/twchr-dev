@@ -700,8 +700,6 @@ if(location.pathname.includes('plugins.php')){
             wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:1}}).done(
 
                 e => {
-                    console.log(e);
-                    return;
                     if(e == 200){
                     alert('When you uninstall the plugin all twitcher settings and data will be deleted.');
                         location.href = url_disactive;
