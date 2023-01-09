@@ -173,20 +173,26 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$serie = $body['serie'];
 	$twitch_category = $body['twitch_category'];
 	$twchr_slot = $body['twchr_slot'];
+	$stream = $body['stream'];
 	try {
 
 		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $stream['title'] );
+		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
+
+		$response =$body;
 
 	} catch ( Exception $e ) {
 		$response = $e;
 	}
 	return $response;
 }
+
 
 add_action( 'wp_ajax_twchr_delete_all', 'twchr_delete_all_callack');
 function twchr_delete_all_callack(){
