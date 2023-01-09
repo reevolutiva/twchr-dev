@@ -32,6 +32,7 @@
 	<label for="twchr_toApi_dateTime"><?php twchr_esc_i18n( 'Start Date-Time', 'html' ); ?></label>
 	<div>
 		<input type="<?php echo empty( $date_time ) ? 'datetime-local' : 'text'; ?>" id="twchr_toApi_dateTime" name='twchr_toApi_dateTime' value="<?php echo $date_time; ?>">
+		<input type="hidden" id="twchr_toApi_timeZone" name="twchr_toApi_timeZone" value="">
 		<p><?php twchr_esc_i18n( 'The recurring date your stream aired.', 'html' ); ?></p>
 	</div>
 	<label for="twchr_toApi_duration"><?php twchr_esc_i18n( 'Duration (minutes)', 'html' ); ?></label>
@@ -59,3 +60,9 @@
 	</div>
 	
 </div>
+
+<script>
+	let twchr_serie_timeZone = new Date();
+	twchr_serie_timeZone = twchr_serie_timeZone.getTimezoneOffset() / 60;
+	GSCJS.queryOnly("#twchr_toApi_timeZone").value = twchr_serie_timeZone;
+</script>

@@ -28,7 +28,34 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 			foreach ( $schedules_twitch as $key => $schedule ) {
 
 				$tw_title = $schedule->{'title'};
+				// Si existe actualiza la serie
 				if ( $tw_title == $wp_title ) {
+
+						$dateTime = $schedule->start_time;
+						update_term_meta( $wp_id, 'twchr_toApi_dateTime', $dateTime );
+						$select_value = $schedule->category->id;
+						update_term_meta( $wp_id, 'twchr_toApi_category_value', $select_value );
+						$select_name = $schedule->category->name;
+						update_term_meta( $wp_id, 'twchr_toApi_category_name', $select_name );
+						$schedule_segment_id = $schedule->id;
+						update_term_meta( $wp_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
+						$allData = json_encode( $schedule );
+						update_term_meta( $wp_id, 'twchr_fromApi_allData', $allData );
+
+						$schedule_segments = array();
+						foreach ( $schedules_twitch as $segment ) {
+							if ( $segment->{'title'} === $schedule->{'title'} ) {
+									array_push( $schedule_segments, $segment );
+							}
+						}
+
+						update_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+
+						// Convertir las fechas a timestamp
+						$start_time = $schedule->start_time;
+						$end_time = $schedule->end_time;
+						$minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
+						update_term_meta( $wp_id, 'twchr_toApi_duration', $minutos );
 				} else {
 					$title = empty( $schedule->title ) ? __( 'No title', 'twitcher' ) : $schedule->title;
 					$new_term = wp_insert_term( $title, 'serie' );
@@ -64,6 +91,12 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 						add_term_meta( $new_term_id, 'twchr_toApi_duration', $minutos );
 					}
 				}
+
+				$wp_date = get_term_meta($wp_id,'twchr_toApi_dateTime');
+				$date_now = date( DateTimeInterface::RFC3339);
+
+
+
 			}
 		}
 

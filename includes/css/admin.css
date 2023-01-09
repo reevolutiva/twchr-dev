@@ -1067,7 +1067,7 @@ stream.twchr-modal .twchr-modal-button.close{
 
 #menu-posts-twchr_streams .wp-submenu li:nth-of-type(6),
 #menu-posts-twchr_streams .wp-submenu li:nth-of-type(5){
-    display: none;
+    /*display: none;*/
 }
 
 #twchr_button_get_videos__content input[type=radio]{

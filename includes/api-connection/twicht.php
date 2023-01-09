@@ -181,7 +181,12 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 	} else {
 
 		if ( isset( $response_body->{'error'} ) ) {
-			twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
+			if($response_body->{'message'} == 'segments were not found'){
+				return $response_body->{'message'};
+			}else{
+
+				twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
+			}
 		}
 	}
 }
@@ -586,16 +591,16 @@ function twchr_twitch_token_validate( $token ) {
 
 function twchr_twitch_autentication_error_handdler( $error_code, $msg ) {
 	if ( $error_code = 'Not Found' && $msg == 'segments were not found' ) {
-		?>
-		 <h2><?php echo __('Not Found, segments were not found','twitcher') ?> </h2>
-		<a href="<?php echo site_url('wp-admin/edit-tags.php?taxonomy=serie&post_type=twchr_streams')?>"><?php echo __('Back to Series','twitcher')?></a>
-		<?php
-		exit();
+		echo "<script>
+    	alert('".$msg."'); 
+		</script>"; 
+	}else{
+		echo "<script>
+		alert('Error: " . $error_code . "'); 
+		alert('message: " . $msg . "');
+		alert('" . __( 'You will be redirected to the authentication page in a few seconds.', 'twitcher' ) . "');
+		location.href = '" . TWCHR_ADMIN_URL . "edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+	</script>";
 	}
-	echo "<script>
-    alert('Error: " . $error_code . "'); 
-    alert('message: " . $msg . "');
-    alert('" . __( 'You will be redirected to the authentication page in a few seconds.', 'twitcher' ) . "');
-    location.href = '" . TWCHR_ADMIN_URL . "edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
-  </script>";
+	
 }

@@ -47,18 +47,27 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 	$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 	$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
 	$select_name = sanitize_text_field( $_POST['twchr_toApi_category_name'] );
+	$timezone = (int) $_POST['twchr_toApi_timeZone'];
 
 	// Actualizamos el campo meta en la base de datos.
 	update_term_meta( $term_id, 'twchr_toApi_dateTime', $dateTime, $dateTime_old );
 	update_term_meta( $term_id, 'twchr_toApi_duration', $duration, $duration_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_value', $select_value, $select_value_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_name', $select_name, $select_name_old );
+
 	if ( isset( $_POST['twchr_toApi_dateTime'] ) && isset( $_POST['twchr_toApi_duration'] ) && isset( $_POST['twchr_toApi_category_value'] ) ) {
 
 		$dateTime_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
-		$dateTime_stg = strtotime( $dateTime_raw );
-		$dateTime_rfc = date( DateTimeInterface::RFC3339, $dateTime_stg );
-
+		$timestamp = '';
+		var_dump($dateTime_raw);
+		if( $timezone > 0){
+			$timestamp = strtotime("+ ".abs($timezone)." hours",strtotime($dateTime_raw));
+		}else{
+			$timestamp = strtotime("- ".abs($timezone)." hours", strtotime($dateTime_raw));
+		}
+		
+		$dateTime_rfc = date( DateTimeInterface::RFC3339, $timestamp );
+		
 		$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 		$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
 		$tag_name = '';
@@ -87,15 +96,22 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
 
-		$schedule_segments = array();
-		foreach ( $schedule_segments_array as $segment ) {
-			if ( $segment->{'title'} === $tag_name ) {
-				array_push( $schedule_segments, $segment );
-			}
-		}
+		if($schedule_segments_array != 'segments were not found'){
 
-		update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+			$schedule_segments = array();
+				foreach ( $schedule_segments_array as $segment ) {
+					if ( $segment->{'title'} === $tag_name ) {
+						array_push( $schedule_segments, $segment );
+					}
+				}
+
+				update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+
+		}
+		
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
+		$date_time = $response['allData']->{'segments'}[0]->{'start_time'};
+		update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time);
 		$allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
 
