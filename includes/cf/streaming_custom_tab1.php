@@ -34,6 +34,28 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		</picture>
 		<p><?php twchr_esc_i18n( '¿Is this streaming part of a serie or recurrent streaming?', 'html' ); ?></p>
 	</div>
+	<div class="twchr-card-row serie">	
+		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
+		<div class="twchr_cards_input_badges">
+			<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
+				<option value="undefined"><?php esc_html_e('Serie not selected','twitcher');?></option>
+			</select>
+			<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
+		</div>
+		<p id="twchr_card_button_create_new_serie"><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
+	</div> 
+	<div class="twchr-card-row">
+		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
+		<div>
+			<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"	class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
+			<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
+		</div>
+		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
+			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
+			</select>
+			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot != 'false' ? $twchr_date_time_slot : 'this serie not contains chapters'; ?></span></badges>
+		</div>
+	</div>
 	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
@@ -48,32 +70,9 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 	
 	</div>
 	<div class="twchr-card-row">
-		<label for="twchr_schedule_card_input--dateTime"><?php twchr_esc_i18n( 'Streaming Date & Time', 'html' ); ?></label>
-		<div>
-			<input id="twchr_schedule_card_input--dateTime"  name="twchr_schedule_card_input--dateTime"	class="twchr_schedule_card_input" type="datetime-local" value="<?php echo esc_html( $date_time ); ?>">
-			<p><?php echo ! empty( $dateTime ) ? esc_html( $date_time ) : ''; ?></p>
-		</div>
-		<div class="twchr_cards_input_badges twchr_schedule_card_select--dateTime">
-			<select name="twchr_dateTime_slot" id="twchr_dateTime_slot">
-			</select>
-			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot != 'false' ? $twchr_date_time_slot : 'this serie not contains chapters'; ?></span></badges>
-		</div>
-	</div>
-	<div class="twchr-card-row">
 		<label for="twchr_schedule_card_input--duration"><?php twchr_esc_i18n( 'Duration (mins)', 'html' ); ?></label>
 		<input id="twchr_schedule_card_input--duration"  name="twchr_schedule_card_input--duration"	class="twchr_schedule_card_input" type="number" value="<?php echo esc_html( $duration ); ?>">
-	</div>
-	<div class="twchr-card-row serie">	
-		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
-			<div class="twchr_cards_input_badges">
-				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
-					<option value="undefined"><?php esc_html_e('Serie not selected','twitcher');?></option>
-				</select>
-				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
-			</div>
-			<p id="twchr_card_button_create_new_serie"><a target="_blank" href="<?php echo TWCHR_ADMIN_URL . 'edit-tags.php?taxonomy=serie&post_type=twchr_streams&from_cpt_id=' . get_the_id(); ?>"><?php twchr_esc_i18n( 'Create a new serie', 'html' ); ?></a></p>
-		</div>
-	
+	</div>	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
 	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id; ?>">
 

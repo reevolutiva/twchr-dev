@@ -103,7 +103,7 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 			$dateTime = get_term_meta($wp_id,'twchr_toApi_dateTime');
 
 			if(strtotime($dateTime) < time()){
-				update_term_meta( $wp_id, 'twchr_schdules_chapters', '' );
+				//update_term_meta( $wp_id, 'twchr_schdules_chapters', '' );
 			} 
 
 			 

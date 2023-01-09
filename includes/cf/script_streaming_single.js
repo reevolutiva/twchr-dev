@@ -31,11 +31,32 @@ const twchr_term_serie_list = GSCJS.queryOnly("#twchr_term_serie_list");
 */
 
 
+
+
 function twchr_schedule_chapter_asign() {
 
   const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
 
   const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
+  const twchr_ajax_label_serie = document.querySelector("label#twchr_schedule_card_input--serie__name--label");
+
+  if(twchr_ajax_input_serie.value == 'undefined'){
+    GSCJS.queryAll(".twchr-card-row").forEach(item => {
+      if(item.classList.contains("serie") ||
+        item.classList.contains("is_recurring")){
+        }else{
+          item.style.display = "none";
+      }
+    });
+  }else{
+    GSCJS.queryAll(".twchr-card-row").forEach(item => {
+      if(item.classList.contains("serie") ||
+        item.classList.contains("is_recurring")){
+        }else{
+          item.style.display = "block";
+      }
+    });
+  }
 
   /** 
     * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
@@ -108,7 +129,25 @@ function twchr_schedule_chapter_asign() {
         });
       
       }
-
+      twchr_ajax_input_serie.addEventListener('click', e =>{
+        if(twchr_ajax_input_serie.value == 'undefined'){
+          GSCJS.queryAll(".twchr-card-row").forEach(item => {
+            if(item.classList.contains("serie") ||
+              item.classList.contains("is_recurring")){
+              }else{
+                item.style.display = "none";
+            }
+          });
+        }else{
+          GSCJS.queryAll(".twchr-card-row").forEach(item => {
+            if(item.classList.contains("serie") ||
+              item.classList.contains("is_recurring")){
+              }else{
+                item.style.display = "";
+            }
+          });
+        }
+      });
     },
     'json');
 }
@@ -330,3 +369,4 @@ function twchr_date_to_rfc366(dateTimeRaw) {
   const rfc3339Date = new Date(dateTimeStg).toISOString();
   return rfc3339Date;
 }
+GSCJS.queryOnly(".twchr-card-row.serie");

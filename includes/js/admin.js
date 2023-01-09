@@ -565,8 +565,7 @@ if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_typ
 if(document.querySelector("body").classList.contains("twchr-single-streaming-active")){
     const twchr_modal = crearElemento("MODAL","twchr_modal");
     const twchr_ajax_input_category = document.querySelector("#twchr_schedule_card_input--category__name");
-    const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
-    const twchr_ajax_label_serie = document.querySelector("label#twchr_schedule_card_input--serie__name--label");
+    
     const twchr_ajax_label_category = document.querySelector("label[for='twchr_schedule_card_input--category']");
     twchr_ajax_label_category.classList.add("twchr_toApi_category_ajax--container");
     twchr_ajax_label_category.appendChild(twchr_modal);
