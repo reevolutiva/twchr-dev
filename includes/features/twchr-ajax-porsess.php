@@ -174,6 +174,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$twitch_category = $body['twitch_category'];
 	$twchr_slot = $body['twchr_slot'];
 	$stream = $body['stream'];
+	$chapter_id = $body['twchr_slot']['chapter_id'];
 	try {
 
 		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
@@ -182,6 +183,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $stream['title'] );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
+		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
 
