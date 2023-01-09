@@ -1065,7 +1065,8 @@ stream.twchr-modal .twchr-modal-button.close{
     margin: 0 auto;
 }
 
-#menu-posts-twchr_streams .wp-submenu li:nth-of-type(6){
+#menu-posts-twchr_streams .wp-submenu li:nth-of-type(6),
+#menu-posts-twchr_streams .wp-submenu li:nth-of-type(5){
     display: none;
 }
 

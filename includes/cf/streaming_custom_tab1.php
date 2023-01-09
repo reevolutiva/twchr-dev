@@ -67,7 +67,7 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 			<div class="twchr_cards_input_badges">
 				<select name="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie">
-					
+					<option value="undefined"><?php esc_html_e('Serie not selected','twitcher');?></option>
 				</select>
 				<badges id="twchr_term_serie_list"><?php echo $term_serie_list; ?></badges>
 			</div>

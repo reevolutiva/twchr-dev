@@ -99,7 +99,7 @@ function twchr_schedule_chapter_asign() {
 
       });
 
-      if(twchr_term_serie_list.children[0].textContent.length > 0){
+      if( twchr_term_serie_list.children.length > 0){
         const slot_selected = twchr_term_serie_list.children[0].textContent;
         const slots = GSCJS.queryAll("#twchr_schedule_card_input--serie option");
         slots.forEach(slot => {

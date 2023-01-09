@@ -229,6 +229,16 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         twchr_is_recurring[0].checked = true;
         twchr_schedule_card_dateTime.parentElement.style.display = 'none';      
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
+        GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.querySelector("label").textContent= 'Serie Name';
+        const button = GSCJS.queryOnly("#twchr_card_button_create_new_serie a");
+        const url_original = button.getAttribute('href');
+        GSCJS.queryOnly("#twchr_schedule_card_input--title").oninput = ()=>{
+            const text = GSCJS.queryOnly("#twchr_schedule_card_input--title").value;
+            const url = url_original+'&from_cpt_name='+text;
+             
+            button.setAttribute('href', url);
+            //console.log(url);
+        }
         twchr_schedule_chapter_asign();
 
     
