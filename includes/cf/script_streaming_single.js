@@ -37,6 +37,27 @@ function twchr_schedule_chapter_asign() {
 
   const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
 
+  /** 
+    * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
+  **/
+
+  getSchedules_by_id(e=>{
+    const segments = e.segments;
+
+    if(segments != false){
+      wp.ajax.send('twchr_taxonomy_update',{
+        data:{
+          nonce: twchr_taxonomy_update,
+          segment: segments
+        }
+      }
+      ).done(succs => {
+        console.log(succs);
+      });
+    }
+      
+  });
+
   twchrFetchGet(tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_serie",
     (res) => {
       res.forEach(item => {
@@ -58,31 +79,7 @@ function twchr_schedule_chapter_asign() {
               
               const chapters = item.chapters;
               
-              twchr_dateTime_slot.innerHTML = "";
-
-
-               /** 
-               * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
-                **/
-
-                getSchedules_by_id(e=>{
-                  const segments = e.segments;
-
-                  if(segments != false){
-                    wp.ajax.send('twchr_taxonomy_update',{
-                      data:{
-                        nonce: twchr_taxonomy_update,
-                        segment: segments
-                      }
-                    }
-                    ).done(succs => {
-                      console.log(succs);
-                    });
-                  }
-                    
-                })
-
-              
+              twchr_dateTime_slot.innerHTML = "";              
                     
               chapters.forEach(chapter => {
                 const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;

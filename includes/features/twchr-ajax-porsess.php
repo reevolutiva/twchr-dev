@@ -98,6 +98,15 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 
 
 			}
+
+			// SI la fecha de este serie esta en el pasado
+			$dateTime = get_term_meta($wp_id,'twchr_toApi_dateTime');
+
+			if(strtotime($dateTime) < time()){
+				update_term_meta( $wp_id, 'twchr_schdules_chapters', '' );
+			} 
+
+			 
 		}
 
 		$response = 200;

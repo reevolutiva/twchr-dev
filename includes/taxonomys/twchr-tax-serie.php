@@ -42,6 +42,7 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 	$select_old = get_term_meta( $term_id, 'twchr_toApi_category', true );
 	$select_value_old = get_term_meta( $term_id, 'twchr_toApi_category_value', true );
 	$select_name_old = get_term_meta( $term_id, 'twchr_toApi_category_name', true );
+	$twchr_toApi_schedule_segment_id = get_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', true );
 	// Saneamos lo introducido por el usuario.
 	$dateTime = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 	$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
@@ -59,7 +60,7 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		$dateTime_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 		$timestamp = '';
-		var_dump($dateTime_raw);
+		//var_dump($dateTime_raw);
 		if( $timezone > 0){
 			$timestamp = strtotime("+ ".abs($timezone)." hours",strtotime($dateTime_raw));
 		}else{
@@ -96,6 +97,7 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
 
+		// Si exiten segmentos.
 		if($schedule_segments_array != 'segments were not found'){
 
 			$schedule_segments = array();
