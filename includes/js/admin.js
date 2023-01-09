@@ -383,8 +383,15 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     getResponse(url);
     */
     const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
+    const dateTime = GSCJS.queryOnly("#twchr_toApi_dateTime");
 
-    
+
+    dateTime.addEventListener('click',(e)=>{
+        if(e.target.getAttribute('type') == 'text'){
+            e.target.setAttribute('type','dateTime-local');
+        }
+    });
+
     
     if(allData.textContent.length > 0){
         const twchr_response = JSON.parse(allData.textContent);
@@ -401,18 +408,11 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
             const div = GSCJS.crearNodo("DIV");
             div.innerHTML = twchr_response_template(401,`<span style="color:red;">Disconected Twitch</span>`,twchr_response.message);
             allData.parentElement.appendChild(div);
-            if(confirm(twchr_response.message)){
-                location.href = twchr_response.url_redirect;
-            }
             
         }else if((twchr_response.start_time && twchr_response.end_time) || twchr_response.allData){
             const div = GSCJS.crearNodo("DIV");
             div.innerHTML = twchr_response_template(200,`<span style="color:green;">Conected Twitch</span>`);
             allData.parentElement.appendChild(div);
-
-            if(document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0){
-                alert('this seres exist in twitch');
-            }
 
         }else{
             const div = GSCJS.crearNodo("DIV");
@@ -434,19 +434,23 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
           state: twchr_getCookie("twchr_serie_twitch_response_state"),
         };
 
-        //console.log(twchr_tw_cookie_response.state == "error");
-
-        
 
         if (twchr_tw_cookie_response.state == "succses") {
           if (document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0) {
-            alert("this seres exist in twitch");
+                alert("serie created in twitch");
             }
         }else if(twchr_tw_cookie_response.state == "error"){
             if (allData.textContent.length > 0) {
               const data = JSON.parse(allData.textContent);
               const txt = `Error: ${data.error} Message: ${data.message}`;
               alert(txt);
+
+              if(twchr_response.status == 401 ){
+                if(confirm(twchr_response.message)){
+                    location.href = twchr_response.url_redirect;
+                }
+                
+                }
             }
         }
 
