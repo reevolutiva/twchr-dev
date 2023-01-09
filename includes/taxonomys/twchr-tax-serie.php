@@ -83,7 +83,7 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		}
 		// Envia los datos a la API de twich
 		$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $dateTime_rfc, $select_value, $duration );
-		$schedule_segment_id = $response['allData']->{'segments'}[0]->{'id'};
+		$schedule_segment_id = isset($response['error']) ? 'disconected': $response['allData']->{'segments'}[0]->{'id'};
 
 		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
 
@@ -96,10 +96,8 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
-		 $allData = json_encode( $response );
+		$allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
-	}else{
-		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', 'disconected' );
 
 		$state = isset($response['error']) ? 'error' : 'succses';
 		setcookie( 'twchr_serie_twitch_response_state', $state);

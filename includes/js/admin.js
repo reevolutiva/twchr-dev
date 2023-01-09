@@ -388,7 +388,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     
     if(allData.textContent.length > 0){
         const twchr_response = JSON.parse(allData.textContent);
-        console.log(twchr_response);
+        //console.log(twchr_response);
         const twchr_response_template = (status,txt,msg=false) =>{
             let template = `<h3>${txt}</h3>`;
             if(status !== 200 && msg != false){
@@ -434,6 +434,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
           state: twchr_getCookie("twchr_serie_twitch_response_state"),
         };
 
+        //console.log(twchr_tw_cookie_response.state == "error");
 
         
 
@@ -441,17 +442,16 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
           if (document.querySelector("#twchr_toApi_schedule_segment_id").value.length > 0) {
             alert("this seres exist in twitch");
             }
-            twchr_setCookie("twchr_serie_twitch_response_term_id", null);
-            twchr_setCookie("twchr_serie_twitch_response_state", false);
         }else if(twchr_tw_cookie_response.state == "error"){
             if (allData.textContent.length > 0) {
               const data = JSON.parse(allData.textContent);
               const txt = `Error: ${data.error} Message: ${data.message}`;
               alert(txt);
             }
-            twchr_setCookie("twchr_serie_twitch_response_term_id",null);
-            twchr_setCookie("twchr_serie_twitch_response_state", false);
         }
+
+        twchr_deleteCookie("twchr_serie_twitch_response_term_id");
+        twchr_deleteCookie("twchr_serie_twitch_response_state");
         
     }
     

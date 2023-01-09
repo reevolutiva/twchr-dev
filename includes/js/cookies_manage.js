@@ -13,3 +13,8 @@ function twchr_setCookie(name, value, days) {
   }
   document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
+
+function twchr_deleteCookie(name) {
+  document.cookie = name + "=; expires="+new Date(1);
+
+}
