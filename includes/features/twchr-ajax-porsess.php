@@ -110,7 +110,8 @@ function twchr_ajax_recive_callback() {
 		case 'asing':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				$response = twchr_asign_chapter_by_cf( $post_id, $body );
+				 twchr_asign_chapter_by_cf( $post_id, $body );
+				 $response = 200;
 			}
 		default:
 			// code...
@@ -175,8 +176,14 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$twchr_slot = $body['twchr_slot'];
 	$stream = $body['stream'];
 	$chapter_id = $body['twchr_slot']['chapter_id'];
+	$post_title = $body['post_title'];
 	try {
+		wp_update_post(array(
+			'ID' => $post_id,
+            'post_title' => $post_title,
+			'post_status' => 'publish'
 
+		));
 		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
@@ -186,6 +193,13 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
+
+		$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht' );
+
+		$id = (int) $cat_twitch['term_id'];
+
+		// Creo stream relacionado.
+		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 
 		$response =$body;
 

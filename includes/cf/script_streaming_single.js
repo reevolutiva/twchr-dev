@@ -229,6 +229,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           nonce: twchr_post_nonce,
           body: {
             post_id: twchr_post_id,
+            post_title: document.querySelector("#titlewrap #title").value,
             stream: {
               duration: document.querySelector(
                 "#twchr_schedule_card_input--duration"
@@ -257,9 +258,12 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         };
 
         twchr_send_front_to_bk(data, (e) => {
-          console.log(e);
-          if (confirm("Reload page?")) {
+          
+          if(e == 200){
+            //console.log(e);
             location.reload();
+          }else{
+            console.log(e);
           }
         });
 
