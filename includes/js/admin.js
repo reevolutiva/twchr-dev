@@ -219,6 +219,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
         twchr_schedule_card_dateTime.parentElement.style.display = 'none';      
         document.querySelector("#twchr_dateTime_slot").style.display = 'block';
         twchr_schedule_chapter_asign();
+
     
     }else{
         const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");

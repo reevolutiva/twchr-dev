@@ -4,6 +4,7 @@ const twchr_slide_card__section_to_api = document.querySelector(".twchr_custom_c
 const twchr_slide_card__section_to_api_input = twchr_slide_card__section_to_api.querySelectorAll("input.twchr_schedule_card_input");
 const twchr_card_embed_menu = document.querySelectorAll(".twchr_card_embed_menu  input");
 const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule__btn");
+const twchr_term_serie_list = GSCJS.queryOnly("#twchr_term_serie_list");
 
 
 /**
@@ -28,6 +29,7 @@ const twchr_modal_schedule__btn = document.querySelector("#twchr-modal-schedule_
     REPONSE EXIT OR ERROR
 
 */
+
 
 function twchr_schedule_chapter_asign() {
 
@@ -86,6 +88,7 @@ function twchr_schedule_chapter_asign() {
                 const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
                 twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
               });
+
             }else{
               twchr_dateTime_slot.innerHTML = "";
               const opt = `<option value="false">this serie not contains chapter</option>`;
@@ -95,6 +98,20 @@ function twchr_schedule_chapter_asign() {
         });
 
       });
+
+      if(twchr_term_serie_list.children[0].textContent.length > 0){
+        const slot_selected = twchr_term_serie_list.children[0].textContent;
+        const slots = GSCJS.queryAll("#twchr_schedule_card_input--serie option");
+        slots.forEach(slot => {
+            let name = slot.value.split("|")[1];
+            name = name.replace(" ","-");
+          if(name == slot_selected){
+            slot.setAttribute("selected", true);
+          }
+        });
+      
+      }
+
     },
     'json');
 }
