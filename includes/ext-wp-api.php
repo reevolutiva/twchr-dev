@@ -34,23 +34,28 @@ add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );// twchr_endp
  * @param [type] $request
  * @return void
  */
-function twchr_endpoint_tax_register_callback_serie( $request ) {
+function twchr_endpoint_tax_register_callback_serie() {
 	$args = array(
 		'taxonomy' => 'serie',
 		'hide_empty' => false,
 	);
 	$request = get_terms( $args );
 	$response = array();
+	
 	foreach ( $request as $term ) {
 		$term_id = $term->{'term_id'};
-		if(get_term_meta( $term_id, 'twchr_schdules_chapters' ) != false){
+		
+		if(get_term_meta( $term_id, 'twchr_schdules_chapters' ) != false || empty(get_term_meta( $term_id, 'twchr_schdules_chapters')) != false){
 			$chapters =	json_decode(get_term_meta( $term_id, 'twchr_schdules_chapters' )[0]);
-			if(COUNT($chapters) == 0){
+			if(is_array($chapters)){
+			}else{
 				$chapters = __('this serie not contains chapters','twitcher');
 			}
+			
 		}else{
 			$chapters = __('this serie not contains chapters','twitcher');
 		}
+		
 		$array_rest = array(
 			'term_id' => $term_id,
 			'name' => $term->{'name'},
@@ -59,7 +64,9 @@ function twchr_endpoint_tax_register_callback_serie( $request ) {
 		);
 
 		array_push( $response, $array_rest );
+		
 	}
+	
 
 	return $response;
 }
