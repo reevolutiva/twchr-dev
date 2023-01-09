@@ -30,7 +30,18 @@ function twchr_get_duration_form_RFC3666(end_time, start_time) {
 }
 
 function twchr_every_reapeat_writer(newDate_raw,duration){
+    let timeOffset = new Date();
+    timeOffset = timeOffset.getTimezoneOffset() / 60;
     const fecha = new Date(newDate_raw);
+   
+    //Positivo true y Negativo false
+    const sing = twchr_math_sign(timeOffset);
+    if(sing){
+        fecha.setMinutes(fecha.getMinutes()+Math.abs(timeOffset));
+    }else{
+        fecha.setMinutes(fecha.getMinutes()-Math.abs(timeOffset));
+    }
+    
     let dia = '';
     switch (fecha.getDay()) {
         case 0 : dia = 'domingo';
@@ -52,11 +63,11 @@ function twchr_every_reapeat_writer(newDate_raw,duration){
     }
     
 
-    const start_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+    const start_time = fecha.toLocaleTimeString();
 
-    fecha.setMinutes(fecha.getMinutes() + duration);
+    fecha.setMinutes(fecha.getMinutes() + parseInt(duration));
 
-    const end_time = `${fecha.getHours()}:${fecha.getMinutes()}`;
+    const end_time = fecha.toLocaleTimeString();
     
     const fecha_msg = `${dia} from <b>${start_time}</b> to <b>${end_time}</b>`;
     
@@ -271,118 +282,7 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
 //taxonomy=serie&post_type=twchr_streams
 if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.href.split(tchr_vars_admin.site_url+"/wp-admin/")[1].includes("term.php"))
    {
-    /*
-    const ajaxResponse = document.querySelector("#ajax-response");
     
-    const getResponse = async (url) =>{
-        try {
-           const response = await fetch(url);
-           let res = await response.text();
-           res = JSON.parse(res);
-           console.log(res);
-           
-           const allData = GSCJS.queryOnly("input#twchr_fromApi_allData");
-           let current_stream_id;
-               if(allData.value != ""){
-                    const object = JSON.parse(allData.value);
-                    current_stream_id = object.id; 
-            }
-           res.forEach((element, index) => {
-            const dataFromApi = element;
-            const alert = crearElemento("DIV","alert-twchr-back");
-            const segment_id = dataFromApi.id;
-
-            
-            
-            if(segment_id === current_stream_id){
-                /*let existTwitch = false;
-                switch (state) {
-                    case 200:
-
-                        let requestOptionsgetSchedule = {
-                            method: 'GET',
-                            headers: {
-                                    "Authorization" : `Bearer ${tchr_vars_admin.twchr_keys.user_token}`,
-                                    "client-id" : tchr_vars_admin.twchr_keys['client-id']
-                                },
-                            redirect: 'follow'
-                            };
-                        twchrFetchGet(`https://api.twitch.tv/helix/schedule?broadcaster_id=${tchr_vars_admin.twitcher_data_broadcaster.id}`,getScheduleCallback,'json',requestOptionsgetSchedule);
-                        function getScheduleCallback(res){
-                           
-                            if(res.status === 401){
-                                const url_redirect  = `${GSCJS.getURLorigin()}/wp-admin/edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true`;
-                                alert('Invalid User Token, You will be redirected to another page to get a new User Token');
-                                location.href = url_redirect
-                            }
-                    
-                            if(res.status != 404){
-                                const schedule_segment = res.data.segments;
-                                
-                                schedule_segment.forEach(segment =>{
-                                    if(segment.id === segment_id){
-                                        //console.log('existe');
-                                        //console.log(segment.title);
-                                        alert.classList.remove("warning");
-                                        alert.innerHTML = `<h3>Success</h3><p>${dataFromApi.message}</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" checked>`;
-                                    }else{
-                                        alert.classList.add("warning");
-                                        alert.innerHTML = `<h3>Ups!</h3><p><b>${element.name}</b> was created in wordpress, but not exist in twitch</p><p>serie: <b>${element.name}</b></p><input type="checkbox" name="twchr_schedule_exist" >`;
-                                        ajaxResponse.appendChild(alert)
-                                    }
-                                });
-                                
-                            }else{
-                                console.log(res);
-                            }
-                            
-                            
-                            
-                        }
-                        
-                        
-                        
-                        break;
-
-                    case 401:
-                        alert.classList.add("warning");
-                        alert.innerHTML = `<h4>${dataFromApi['message']}</h4>`;
-                        ajaxResponse.appendChild(alert);
-                        const url = dataFromApi.url_redirect+"&tchr_id="+dataFromApi['post-id'];
-                        
-                        setTimeout(() => {
-                            //location.href = url;
-                        }, 2000);
-
-                        break;
-                    case 400:
-                        alert.classList.add("warning");
-                        alert.innerHTML = `<h3>${dataFromApi.error}</h3><p>${dataFromApi.message}</p><p>serie: <b>${dataFromApi.title}</b></p>`;
-                        ajaxResponse.appendChild(alert);
-                        break;
-                    
-                    
-                
-                    default:
-                        break;
-                }
-                
-            }
-                
-           });
-
-          
-           //console.log(dataFromApi);
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
-    
-
-    const url = tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_serie';
-    getResponse(url);
-    */
     const allData = GSCJS.queryOnly("#twchr_fromApi_allData");
     const dateTime = GSCJS.queryOnly("#twchr_toApi_dateTime");
 

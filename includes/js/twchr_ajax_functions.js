@@ -210,3 +210,7 @@ const tchr_get_clips = async (
     callback_ajax(arrayList); // Pasa al Callback el arrayList con los videos
   }
 };
+
+function twchr_math_sign(num) {
+  return Math.sign(num) == 1 ? true : false;
+}
