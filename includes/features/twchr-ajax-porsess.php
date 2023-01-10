@@ -189,7 +189,7 @@ function twchr_save_cf_slide_1( $post_id, $body ) {
 	wp_update_post(
 		array(
 			'ID' => $post_id,
-			'post_status' => 'published', 
+			'post_status' => 'publish' 
 		)
 	);
 

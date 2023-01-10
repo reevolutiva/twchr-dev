@@ -244,12 +244,14 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     
     }else{
         const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
-        const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie__name");
+        const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
         const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
         twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
-
+        const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
+        
+        twchr_dateTime_slot.style.display = "none";
     
-        input_serie.parentElement.style.display = 'none';
+        input_serie.parentElement.parentElement.style.display = 'none';
         input_serie_label.style.display = 'none';
         input_title.removeAttribute('disabled');
         document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none';
