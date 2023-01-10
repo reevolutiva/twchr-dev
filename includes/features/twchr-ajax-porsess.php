@@ -168,8 +168,8 @@ function twchr_ajax_recive_callback() {
 		case 'asing':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				$response = twchr_asign_chapter_by_cf( $post_id, $body );
-				 //$response = 200;
+				twchr_asign_chapter_by_cf( $post_id, $body );
+				$response = 200;
 			}
 		default:
 			// code...
