@@ -262,6 +262,23 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 
 		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
 
+		// DESPUES DE QUE ACTUALIZAS LOS CUSTOM FIELDS
+		if(isset($serie['term_id'])){
+			
+			$date_time_slot = get_post_meta($post_id,'twchr_dateTime_slot',false) != false ? json_decode(get_post_meta(get_the_ID(),'twchr_dateTime_slot')[0]) : false;
+			$date_time = $date_time_slot->{'start_time'};
+			
+			$fecha = strtotime($date_time);
+			$fecha_actual = time();
+		
+			// Si la fecha es antigua
+			if($fecha > $fecha_actual){
+				$term_id = $serie['term_id'];
+				update_term_meta($term_id, 'twchr_schdules_chapters','');
+			}
+			
+		}
+
 		$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht' );
 
 		$id = (int) $cat_twitch['term_id'];

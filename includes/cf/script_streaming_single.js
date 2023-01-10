@@ -72,9 +72,9 @@ function twchr_schedule_chapter_asign() {
         const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
         twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
       });
-
+      
       if(twchr_ajax_input_serie.value == 'undefined'){
-        GSCJS.queryAll(".twchr-card-row").forEach(item => {
+        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
           if(item.classList.contains("serie") ||
             item.classList.contains("is_recurring")){
             }else{
@@ -82,7 +82,7 @@ function twchr_schedule_chapter_asign() {
           }
         });
       }else{
-        GSCJS.queryAll(".twchr-card-row").forEach(item => {
+        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
           if(item.classList.contains("serie") ||
             item.classList.contains("is_recurring")){
             }else{
@@ -138,7 +138,7 @@ function twchr_schedule_chapter_asign() {
       */
       twchr_ajax_input_serie.addEventListener('click', e =>{
         if(twchr_ajax_input_serie.value == 'undefined'){
-          GSCJS.queryAll(".twchr-card-row").forEach(item => {
+          GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
               item.classList.contains("is_recurring")){
               }else{
@@ -146,7 +146,7 @@ function twchr_schedule_chapter_asign() {
             }
           });
         }else{
-          GSCJS.queryAll(".twchr-card-row").forEach(item => {
+          GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
               item.classList.contains("is_recurring")){
               }else{

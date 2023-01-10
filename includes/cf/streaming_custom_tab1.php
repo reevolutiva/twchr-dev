@@ -10,6 +10,8 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 	update_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch', '' );
 
 }
+
+
 ?>
 <div class="twchr_car_tab1">
 	<div class="twchr-card-row is_recurring">
@@ -160,9 +162,12 @@ const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
 const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
 const twchr_stream_twtich_schedule_id = document.querySelector("#twchr_stream_twtich_schedule_id");
 
+
+
 let twchr_card_connect_status = '<button style="background-color: transparent;color: var(--twchr-purple); border: 0; font-family: `Comfortaa`;font-weight: bold;font-size: 13px;text-decoration: underline;">Connect with Twitch</button>';
 if(twchr_stream_twtich_schedule_id.value.length > 0){
 	twchr_card_connect_status = '<span style="color:green;">Connected with Twitch<span>';
+	// Obtengo el nombre del stream con ese id
 }
 
 if(document.querySelector(".twchr-schedule-card-status-container h5")){
@@ -256,6 +261,13 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 
 				// Si is_recurring es false
 				if (twchr_is_recurring[1].checked == true) {
+					GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+						if(item.classList.contains("serie") ||
+						item.classList.contains("is_recurring")){
+						}else{
+							item.style.display = "";
+						}
+					});
 					// Evaluamos el estado broadcaster
 					if (twchr_broad_type == 'partner' || twchr_broad_type == 'afiliate') {
 
