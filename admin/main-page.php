@@ -17,12 +17,7 @@ if ( ! twchr_is_ssl_secure() ) :
 
 <div class="twchr-for-back twchr-container">
 	
-	<article class='twchr-dashboard-card 
-	<?php
-	if ( ! twchr_is_ssl_secure() ) {
-		echo 'card-blur'; }
-	?>
-	 plugin-hello'>
+	<article class='twchr-dashboard-card <?php if ( ! twchr_is_ssl_secure() ) { echo 'card-blur'; }?> plugin-hello'>
 		<picture>
 			<img src="<?php echo TWCHR_URL_ASSETS . 'Isologo_twitcher.svg'; ?>" alt="Logo Twitcher">
 		</picture>
@@ -151,10 +146,10 @@ if ( ! twchr_is_ssl_secure() ) :
 
 			} else {
 
-
+				$mostViwed_from_api = twchr_max_of_list( $listVideo_from_api->{'data'}, 'view_count', 'title' );
 				$mostViwed_from_wp = twchr_max_of_list( $listVideo_from_wp, 'twchr-from-api_view_count', 'post_title', true );
 
-				// show_dump($listVideo_from_api->{'data'});
+				//show_dump($listVideo_from_api->{'data'});
 			}
 
 				$followers = twtchr_twitch_users_get_followers( $twch_data_app_token, $twch_data_prime->{'client-id'}, $data_broadcaster_raw->{'data'}[0]->{'id'} )->{'data'};
