@@ -322,7 +322,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         // SI is_recurring vale "NO".
       } else {
         const body = {
-          is_recurring: true,
+          is_recurring: false,
           start_time: twchr_date_to_rfc366(twchr_schedule_card_dateTime.value),
           timezone: "America/New_York",
           title: input_title.value,
@@ -365,11 +365,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
                 },
               };
               twchr_send_front_to_bk(data, (e) => {
-                console.log(e);
-
-                if (confirm("Reload page?")) {
-                  location.reload();
-                }
+                //console.log(e);
+                location.reload();
+                
               });
             }
           },
