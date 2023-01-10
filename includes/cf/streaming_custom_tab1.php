@@ -272,7 +272,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 					if (twchr_broad_type == 'partner' || twchr_broad_type == 'afiliate') {
 
 					
-						input_serie.parentElement.style.display = 'none';
+						input_serie.parentElement.parentElement.style.display = 'none';
 						input_serie_label.style.display = 'none';
 						input_title.removeAttribute('disabled');
 						document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
@@ -289,7 +289,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						// si opt1 es true lo desaparce
 						if (opt1) {
 						
-							input_serie.parentElement.style.display = 'none';
+							input_serie.parentElement.parentElement.style.display = 'none';
 							input_serie_label.style.display = 'none';
 							input_title.removeAttribute('disabled');
 							document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none'; 
@@ -305,9 +305,10 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 				} else {
 					//Si is_recurring is true
 					
-					input_serie.parentElement.style.display = 'block';
+					input_serie.parentElement.parentElement.style.display = 'grid';
 					input_serie_label.style.display = 'block';
 					document.querySelector("#twchr_card_button_create_new_serie").style.display = "block";
+					
 					
 			
 					input_title.value = input_post_title.value;
@@ -316,7 +317,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 					twchr_schedule_card_dateTime.parentElement.style.display = 'none';
 					document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'block'; 
 					
-					const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie__name");
+					const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
 					twchrFetchGet(tchr_vars_admin.wp_api_route+"twchr/v1/twchr_get_serie",
 						(res) => {
 							res.forEach(item =>{
