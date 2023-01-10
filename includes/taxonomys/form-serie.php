@@ -56,7 +56,7 @@
 		<p id="twchr_fromApi_allData" style="display:none;"><?php echo $allData; ?></p>
 	</div>
 	<div>
-		<input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo esc_html( $schedule_segment_id ); ?>">
+		<input type="hidden" id="twchr_toApi_schedule_segment_id" name='twchr_toApi_schedule_segment_id' value="<?php echo $schedule_segment_id; ?>">
 	</div>
 	
 </div>
