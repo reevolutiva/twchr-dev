@@ -303,18 +303,19 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         }
     });
 
-    
+    const twchr_response_template = (status,txt,msg=false) =>{
+        let template = `<h3>${txt}</h3>`;
+        if(status !== 200 && msg != false){
+            template+= `<p>${msg}</p>`;
+        }
+
+        return template;
+    }
+
     if(allData.textContent.length > 0){
         const twchr_response = JSON.parse(allData.textContent);
         //console.log(twchr_response);
-        const twchr_response_template = (status,txt,msg=false) =>{
-            let template = `<h3>${txt}</h3>`;
-            if(status !== 200 && msg != false){
-                template+= `<p>${msg}</p>`;
-            }
-
-            return template;
-        }
+        
         if(twchr_response.status == 401 ){
             const div = GSCJS.crearNodo("DIV");
             div.innerHTML = twchr_response_template(401,`<span style="color:red;">Disconected Twitch</span>`,twchr_response.message);
@@ -334,6 +335,10 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                                                     <b>Glosa: </b>${twchr_response.message}`);
             allData.parentElement.appendChild(div);
         }
+    }else{
+        const div = GSCJS.crearNodo("DIV");
+            div.innerHTML = twchr_response_template(404,`<span style="color:red;">Disconected Twitch</span>`);
+            allData.parentElement.appendChild(div)
     }
     
 
