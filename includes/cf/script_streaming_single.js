@@ -40,23 +40,6 @@ function twchr_schedule_chapter_asign() {
   const twchr_ajax_input_serie = document.querySelector("#twchr_schedule_card_input--serie");
   const twchr_ajax_label_serie = document.querySelector("label#twchr_schedule_card_input--serie__name--label");
 
-  if(twchr_ajax_input_serie.value == 'undefined'){
-    GSCJS.queryAll(".twchr-card-row").forEach(item => {
-      if(item.classList.contains("serie") ||
-        item.classList.contains("is_recurring")){
-        }else{
-          item.style.display = "none";
-      }
-    });
-  }else{
-    GSCJS.queryAll(".twchr-card-row").forEach(item => {
-      if(item.classList.contains("serie") ||
-        item.classList.contains("is_recurring")){
-        }else{
-          item.style.display = "block";
-      }
-    });
-  }
 
   /** 
     * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
@@ -82,9 +65,31 @@ function twchr_schedule_chapter_asign() {
   twchrFetchGet(tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_serie",
     (res) => {
       res.forEach(item => {
-        const option = `<option value="${item.term_id}|${item.name}" ${document.querySelector("#twchr_term_serie_list").textContent == item.name.toLowerCase() ? 'selected' : ''} >${item.name + " - " + item.term_id}</option>`;
+        let selected = '';
+        if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replace('-',' ') == item.name){
+          selected = 'selected="true"';
+        }
+        const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
         twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
       });
+
+      if(twchr_ajax_input_serie.value == 'undefined'){
+        GSCJS.queryAll(".twchr-card-row").forEach(item => {
+          if(item.classList.contains("serie") ||
+            item.classList.contains("is_recurring")){
+            }else{
+              item.style.display = "none";
+          }
+        });
+      }else{
+        GSCJS.queryAll(".twchr-card-row").forEach(item => {
+          if(item.classList.contains("serie") ||
+            item.classList.contains("is_recurring")){
+            }else{
+              item.style.display = "";
+          }
+        });
+      }
 
       twchr_ajax_input_serie.addEventListener('click', (event) => {
 
@@ -117,6 +122,7 @@ function twchr_schedule_chapter_asign() {
 
       });
 
+      /*
       if( twchr_term_serie_list.children.length > 0){
         const slot_selected = twchr_term_serie_list.children[0].textContent;
         const slots = GSCJS.queryAll("#twchr_schedule_card_input--serie option");
@@ -129,6 +135,7 @@ function twchr_schedule_chapter_asign() {
         });
       
       }
+      */
       twchr_ajax_input_serie.addEventListener('click', e =>{
         if(twchr_ajax_input_serie.value == 'undefined'){
           GSCJS.queryAll(".twchr-card-row").forEach(item => {
@@ -149,8 +156,10 @@ function twchr_schedule_chapter_asign() {
         }
       });
 
-      // Si la el dateTime de el cpt es del pasado elimina los chapters.
       
+
+      // Si la el dateTime de el cpt es del pasado elimina los chapters.
+
     },
     'json');
 }
