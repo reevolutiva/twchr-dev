@@ -163,8 +163,12 @@ function twchr_tax_serie_edit( $term, $taxonomy ) {
 	$select_name = sanitize_text_field( $select_name );
 	$allData = get_term_meta( $term->term_id, 'twchr_fromApi_allData', true );
 	$schedule_segment_id = get_term_meta( $term->term_id, 'twchr_toApi_schedule_segment_id',true);
-	if(!empty($allData)){
-		$schedule_segment_id = empty( $schedule_segment_id ) ? json_decode( $allData )->{'allData'}->{'segments'}[0]->id : $schedule_segment_id;
+	if(!empty($allData) ){
+		$allData_object = json_decode( $allData);
+		if(isset($allData->{'allData'})){
+			$schedule_segment_id = empty( $schedule_segment_id ) ? $allData_object->{'allData'}->{'segments'}[0]->id : $schedule_segment_id;
+		}
+		
 	}
 	$twchr_streams_relateds = get_term_meta( $term->term_id, 'twchr_schdules_chapters', true );
 

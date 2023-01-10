@@ -80,15 +80,16 @@ function twchr_cat_twcht_edit_field( $term, $taxonomy ) {
 }
 
 function twchr_cat_twitch_save( $term_id, $tt_id ) {
+	
 
 	$twchr_cat_id_old = get_term_meta( $term_id, 'twchr_stream_category_id', true );
 	$twchr_cat_name_old = get_term_meta( $term_id, 'twchr_stream_category_name', true );
 	$twchr_cat_thumbail_old = get_term_meta( $term_id, 'twchr_stream_category_thumbail', true );
 
 	// Saneamos lo introducido por el usuario.
-	$twchr_cat_id = sanitize_text_field( $_POST['twchr_stream_category_id'] );
-	$twchr_cat_name = sanitize_text_field( $_POST['twchr_stream_category_name'] );
-	$twchr_cat_thumbail = sanitize_text_field( $_POST['twchr_stream_category_thumbail'] );
+	$twchr_cat_id = isset($_POST['twchr_stream_category_id']) ?  sanitize_text_field( $_POST['twchr_stream_category_id'] ) : false;
+	$twchr_cat_name = isset($_POST['twchr_stream_category_name']) ? sanitize_text_field( $_POST['twchr_stream_category_name'] ) : false;
+	$twchr_cat_thumbail = isset($_POST['twchr_stream_category_thumbail']) ? sanitize_text_field( $_POST['twchr_stream_category_thumbail'] ) : false;
 
 	if ( ! empty( $twchr_cat_id ) && ! empty( $twchr_cat_name ) && ! empty( $twchr_cat_thumbail ) ) {
 		// Actualizamos el campo meta en la base de datos.

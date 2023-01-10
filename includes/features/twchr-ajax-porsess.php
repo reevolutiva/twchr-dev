@@ -74,7 +74,7 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 						update_term_meta( $wp_id, 'twchr_toApi_duration', $minutos );
 				} else {
 					// Si no existe crea una serie.
-					$title = empty( $schedule->title ) ? __( 'No title', 'twitcher' ) : $schedule->title;
+					$title = empty( $schedule->{'title'} ) ? __( 'No title', 'twitcher' ) : $schedule->{'title'};
 					$new_term = wp_insert_term( $title, 'serie' );
 
 					// Si esta serie efetivamente no existe
@@ -168,8 +168,8 @@ function twchr_ajax_recive_callback() {
 		case 'asing':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				 twchr_asign_chapter_by_cf( $post_id, $body );
-				 $response = 200;
+				$response = twchr_asign_chapter_by_cf( $post_id, $body );
+				 //$response = 200;
 			}
 		default:
 			// code...
@@ -234,7 +234,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$twchr_slot = $body['twchr_slot'];
 	$stream = $body['stream'];
 	$chapter_id = $body['twchr_slot']['chapter_id'];
-	$post_title = $body['post_title'];
+	$post_title = empty($body['post_title']) ? $serie['name'] : $body['post_title'];
 	try {
 		wp_update_post(array(
 			'ID' => $post_id,
@@ -242,25 +242,36 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 			'post_status' => 'publish'
 
 		));
+
+		
+			update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
+			update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
+			update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
+
+			wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
+		
+
+		
+			update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
+			update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
+
+			$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht' );
+
+			$id = (int) $cat_twitch['term_id'];
+
+			// Creo stream relacionado.
+			wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
+		
 		
 		// Verfico si vienen los datos y si no estan vacios
-		if(!isset($twchr_slot) && !empty($twchr_slot) && 
-		   !isset($serie) && !empty($serie) && 
-		   !isset($twitch_category['name']) && !empty($twitch_category['name']) &&
-		   !isset($twitch_category['id']) && !empty($twitch_category['id']) &&
-		   !isset($stream['title']) && !empty($stream['title']) &&
-		   !isset($stream['duration']) && !empty($stream['duration']) && 
-		   !isset($chapter_id) && !empty($chapter_id)
-		   ):
-		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--title', $stream['title'] );
+		
+		
+		
+		
+		update_post_meta( $post_id, 'twchr_schedule_card_input--title', empty($stream['title']) ? $post_title : $stream['title'] );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
-		update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
+		
 
-		wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
 
 		// DESPUES DE QUE ACTUALIZAS LOS CUSTOM FIELDS
 		if(isset($serie['term_id'])){
@@ -279,13 +290,8 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 			
 		}
 
-		$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht' );
-
-		$id = (int) $cat_twitch['term_id'];
-
-		// Creo stream relacionado.
-		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
-		endif;
+		
+		
 
 		$response =$body;
 

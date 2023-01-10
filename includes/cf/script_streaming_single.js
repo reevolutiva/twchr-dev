@@ -76,6 +76,7 @@ function twchr_schedule_chapter_asign() {
       if(twchr_ajax_input_serie.value == 'undefined'){
         GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
           if(item.classList.contains("serie") ||
+            item.classList.contains("serie-name") ||
             item.classList.contains("is_recurring")){
             }else{
               item.style.display = "none";
@@ -84,6 +85,7 @@ function twchr_schedule_chapter_asign() {
       }else{
         GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
           if(item.classList.contains("serie") ||
+            item.classList.contains("serie-name") ||
             item.classList.contains("is_recurring")){
             }else{
               item.style.display = "";
@@ -140,6 +142,7 @@ function twchr_schedule_chapter_asign() {
         if(twchr_ajax_input_serie.value == 'undefined'){
           GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
+              item.classList.contains("serie-name") ||
               item.classList.contains("is_recurring")){
               }else{
                 item.style.display = "none";
@@ -148,6 +151,7 @@ function twchr_schedule_chapter_asign() {
         }else{
           GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
+              item.classList.contains("serie-name") ||
               item.classList.contains("is_recurring")){
               }else{
                 item.style.display = "";

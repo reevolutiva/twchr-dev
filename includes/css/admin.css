@@ -603,7 +603,7 @@ stream.twchr-modal .twchr-modal-button.close{
 .twchr_custom_card--contain .twchr_card_header{
     display: grid;
     grid-template-columns:1fr 220px;
-    grid-template-rows:68px 100px;
+    grid-template-rows:auto 100px;
 }
 .twchr_custom_card--contain .twchr_card_header--title{
     display: flex;

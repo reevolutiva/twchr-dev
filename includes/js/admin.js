@@ -356,6 +356,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                 alert("serie created in twitch");
             }
         }else if(twchr_tw_cookie_response.state == "error"){
+            const twchr_response = JSON.parse(allData.textContent);
             if (allData.textContent.length > 0) {
               const data = JSON.parse(allData.textContent);
               const txt = `Error: ${data.error} Message: ${data.message}`;

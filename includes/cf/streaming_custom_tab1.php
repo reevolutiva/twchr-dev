@@ -36,6 +36,10 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		</picture>
 		<p><?php twchr_esc_i18n( '¿Is this streaming part of a serie or recurrent streaming?', 'html' ); ?></p>
 	</div>
+	<div class="twchr-card-row serie-name">
+		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
+		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
+	</div>
 	<div class="twchr-card-row serie">	
 		<label for="twchr_schedule_card_input--serie__name" id="twchr_schedule_card_input--serie__name--label"><?php twchr_esc_i18n( 'Serie', 'html' ); ?></label>
 		<div class="twchr_cards_input_badges">
@@ -57,10 +61,6 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 			</select>
 			<badges id="twchr_dateTime_slot" ><span><?php echo $twchr_date_time_slot != 'false' ? $twchr_date_time_slot : 'this serie not contains chapters'; ?></span></badges>
 		</div>
-	</div>
-	<div class="twchr-card-row">
-		<label for="twchr_schedule_card_input--title"><?php twchr_esc_i18n( 'Streaming Title', 'html' ); ?></label>
-		<input id="twchr_schedule_card_input--title" name="twchr_schedule_card_input--title" class="twchr_schedule_card_input" type="text" <?php echo $is_recurring == true ? 'disabled="true"' : ''; ?>  value="<?php echo $title; ?>">
 	</div>
 	<div class="twchr-card-row tw-category">
 		<label for="twchr_schedule_card_input--category"><?php twchr_esc_i18n( 'Twitch category', 'html' ); ?></label>
