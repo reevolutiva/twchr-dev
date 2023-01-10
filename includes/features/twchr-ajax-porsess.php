@@ -1,7 +1,19 @@
 <?php
 
+/**
+ *  This file contains all functions that
+ * prosess the request ajax from twitcher plugin to
+ * same wordpress.
+ */
+
+
 add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_twchr_aja_callback' );
 
+/**
+ * Process ajax request with action: 'twchr_taxonomy_update'
+ *
+ * @return void
+ */
 function twchr_taxonomy_update_twchr_aja_callback() {
 	if ( ! check_ajax_referer( 'twchr_taxonomy_update', 'nonce', false ) ) {
 		wp_die( 'Invalid security token' );
@@ -9,7 +21,7 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 
 	$schedules_twitch  = $_POST['segment'];
 
-	// FROM WP.
+	// Obtieen todas las series guardadas en wordpress.
 	$schedules_wp = get_terms(
 		array(
 			'taxonomy' => 'serie',
@@ -20,15 +32,18 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 	$response = '';
 
 	try {
+		// Recorre todas las series guardadas en wordpress.
 		foreach ( $schedules_wp as $item ) {
 
+			// Obtengo el term_id y title de cada serie.
 			$wp_id = $item->term_id;
 			$wp_title = $item->{'name'};
 
+			// Recorro la lista actualizado de schedules segments que entrega twitch. 
 			foreach ( $schedules_twitch as $key => $schedule ) {
 
 				$tw_title = $schedule->{'title'};
-				// Si existe actualiza la serie
+				// Si existe actualiza la serie.
 				if ( $tw_title == $wp_title ) {
 
 						$dateTime = $schedule->start_time;
@@ -48,8 +63,9 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 									array_push( $schedule_segments, $segment );
 							}
 						}
-
-						update_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+						if(COUNT($schedule_segments) > 0){
+							update_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+						}
 
 						// Convertir las fechas a timestamp
 						$start_time = $schedule->start_time;
@@ -57,9 +73,11 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 						$minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
 						update_term_meta( $wp_id, 'twchr_toApi_duration', $minutos );
 				} else {
+					// Si no existe crea una serie.
 					$title = empty( $schedule->title ) ? __( 'No title', 'twitcher' ) : $schedule->title;
 					$new_term = wp_insert_term( $title, 'serie' );
 
+					// Si esta serie efetivamente no existe
 					if ( isset( $new_term->errors['term_exists'] ) ) {
 					} else {
 						$new_term_id = $new_term['term_id'];
@@ -82,7 +100,9 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 							}
 						}
 
-						add_term_meta( $new_term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+						if(COUNT($schedule_segments) > 0){
+							add_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+						}
 
 						// Convertir las fechas a timestamp
 						$start_time = $schedule->start_time;
@@ -98,14 +118,6 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 
 
 			}
-
-			// SI la fecha de este serie esta en el pasado
-			$dateTime = get_term_meta($wp_id,'twchr_toApi_dateTime');
-
-			if(strtotime($dateTime) < time()){
-				//update_term_meta( $wp_id, 'twchr_schdules_chapters', '' );
-			} 
-
 			 
 		}
 
