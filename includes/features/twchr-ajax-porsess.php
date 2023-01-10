@@ -134,7 +134,11 @@ function twchr_taxonomy_update_twchr_aja_callback() {
 // Registra la acción AJAX para actualizar el campo personalizado
 add_action( 'wp_ajax_twchr_ajax_recive', 'twchr_ajax_recive_callback' );
 
-// Define la función que maneja la solicitud AJAX para actualizar el campo personalizado
+/**
+ *  Define la función que maneja la solicitud AJAX para actualizar el campo personalizado.
+ *
+ * @return void
+ */
 function twchr_ajax_recive_callback() {
 	// Recupera los datos enviados con la solicitud AJAX
 
@@ -238,6 +242,16 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 			'post_status' => 'publish'
 
 		));
+		
+		// Verfico si vienen los datos y si no estan vacios
+		if(!isset($twchr_slot) && !empty($twchr_slot) && 
+		   !isset($serie) && !empty($serie) && 
+		   !isset($twitch_category['name']) && !empty($twitch_category['name']) &&
+		   !isset($twitch_category['id']) && !empty($twitch_category['id']) &&
+		   !isset($stream['title']) && !empty($stream['title']) &&
+		   !isset($stream['duration']) && !empty($stream['duration']) && 
+		   !isset($chapter_id) && !empty($chapter_id)
+		   ):
 		update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
@@ -254,6 +268,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 
 		// Creo stream relacionado.
 		wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
+		endif;
 
 		$response =$body;
 
