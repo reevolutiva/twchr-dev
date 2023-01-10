@@ -186,6 +186,13 @@ function twchr_ajax_recive_callback() {
 function twchr_save_cf_slide_1( $post_id, $body ) {
 	$allowed = array();
 
+	wp_update_post(
+		array(
+			'ID' => $post_id,
+			'post_status' => 'published', 
+		)
+	);
+
 	if ( isset( $body['is_recurring'] ) ) {
 		$to_api_is_recurring = wp_kses( $body['is_recurring'], $allowed );
 		update_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig', $body['is_recurring'] );
