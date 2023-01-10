@@ -46,7 +46,8 @@ function twchr_endpoint_tax_register_callback_serie() {
 		$term_id = $term->{'term_id'};
 		
 		if(get_term_meta( $term_id, 'twchr_schdules_chapters' ) != false || empty(get_term_meta( $term_id, 'twchr_schdules_chapters')) != false){
-			$chapters =	json_decode(get_term_meta( $term_id, 'twchr_schdules_chapters' )[0]);
+			
+			$chapters =	get_term_meta( $term_id, 'twchr_schdules_chapters') != false ? json_decode(get_term_meta( $term_id, 'twchr_schdules_chapters')[0]) : __('this serie not contains chapters','twitcher');
 			if(is_array($chapters)){
 			}else{
 				$chapters = __('this serie not contains chapters','twitcher');

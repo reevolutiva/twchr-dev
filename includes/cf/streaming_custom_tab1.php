@@ -1,5 +1,5 @@
 <?php
- $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch' )[0];
+ $twchr_twicth_schedule_response = get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch') != false ? get_post_meta( get_the_ID(), 'twchr_stream_all_data_from_twitch')[0] : false;
  if(!empty($term_cat_twcht)){
 	 $twchr_twtich_schedule_chapters = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_schdules_chapters', true );
 	 $twchr_twicth_twitch_cat_img = get_term_meta( $term_cat_twcht[0]->term_id, 'twchr_stream_category_thumbail', true );

@@ -148,6 +148,9 @@ function twchr_schedule_chapter_asign() {
           });
         }
       });
+
+      // Si la el dateTime de el cpt es del pasado elimina los chapters.
+      
     },
     'json');
 }
