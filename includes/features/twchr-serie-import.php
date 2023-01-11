@@ -18,7 +18,6 @@ function twchr_tax_serie_update($schedules_twitch){
 	);
 
 	$response = '';
-
     if($schedules_twitch == 'segments were not found'){
         $response = 'segments were not found';
         return $response;
@@ -36,11 +35,17 @@ function twchr_tax_serie_update($schedules_twitch){
                 // Recorro la lista actualizado de schedules segments que entrega twitch. 
                 foreach ( $schedules_twitch as $key => $schedule ) {
 
+                    // si es un array lo convierto a objeto.
+                    if(is_array($schedule)){
+                        $old_schedule = json_encode($schedule);
+                        $schedule = json_decode($old_schedule);
+                    }
+
                     $tw_title = $schedule->{'title'};
                     if($schedule->{'is_recurring'} == true):
                         // Si existe actualiza la serie.
                         if ( $tw_title == $wp_title ) {
-
+                                
                                 $dateTime = $schedule->start_time;
                                 update_term_meta( $wp_id, 'twchr_toApi_dateTime', $dateTime );
                                 $select_value = $schedule->category->id;
@@ -68,6 +73,7 @@ function twchr_tax_serie_update($schedules_twitch){
                                 $minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
                                 update_term_meta( $wp_id, 'twchr_toApi_duration', $minutos );
                         } else {
+                            
                             // Si no existe crea una serie.
                             $title = empty( $schedule->{'title'} ) ? __( 'No title', 'twitcher' ) : $schedule->{'title'};
                             $new_term = wp_insert_term( $title, 'serie' );
@@ -116,6 +122,7 @@ function twchr_tax_serie_update($schedules_twitch){
                 }
                 
             }
+            
         }else{
             foreach ( $schedules_twitch as $schedule ) {
 
@@ -170,7 +177,6 @@ function twchr_tax_serie_update($schedules_twitch){
 	} catch ( Exception $e ) {
 		$response = $e;
 	}
-
     return $response;
 }
 

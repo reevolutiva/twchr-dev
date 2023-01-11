@@ -58,8 +58,8 @@ function twchr_ajax_recive_callback() {
 		case 'update':
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
-				twchr_save_cf_slide_1( $post_id, $body );
-				$response = 200;
+				$response = twchr_save_cf_slide_1( $post_id, $body );
+				
 			}
 			break;
 		case 'asing':
