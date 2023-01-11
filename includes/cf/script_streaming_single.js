@@ -139,6 +139,7 @@ function twchr_schedule_chapter_asign() {
       }
       */
       twchr_ajax_input_serie.addEventListener('click', e =>{
+        // Si el value del select twchr_ajax_input_serie es undefined. 
         if(twchr_ajax_input_serie.value == 'undefined'){
           GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
@@ -148,6 +149,7 @@ function twchr_schedule_chapter_asign() {
                 item.style.display = "none";
             }
           });
+          // Si no es undefined.
         }else{
           GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
@@ -155,7 +157,12 @@ function twchr_schedule_chapter_asign() {
               item.classList.contains("is_recurring")){
               }else{
                 item.style.display = "";
-            }
+              }
+
+              GSCJS.queryOnly("#twchr_schedule_card_input--title").value = twchr_ajax_input_serie.value.split("|")[1];
+              const curr_url = GSCJS.queryOnly("#twchr_card_button_create_new_serie a").getAttribute("href");
+              GSCJS.queryOnly("#twchr_card_button_create_new_serie a").setAttribute("href",`${curr_url}&from_cpt_name=${twchr_ajax_input_serie.value.split("|")[1]}`);
+      
           });
         }
       });

@@ -36,10 +36,8 @@ function twchr_tax_serie_update($schedules_twitch){
                 foreach ( $schedules_twitch as $key => $schedule ) {
 
                     // si es un array lo convierto a objeto.
-                    if(is_array($schedule)){
-                        $old_schedule = json_encode($schedule);
-                        $schedule = json_decode($old_schedule);
-                    }
+                    $schedule = twchr_array_to_object($schedule);
+                    
 
                     $tw_title = $schedule->{'title'};
                     if($schedule->{'is_recurring'} == true):

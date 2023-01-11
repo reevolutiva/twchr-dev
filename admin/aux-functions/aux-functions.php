@@ -94,3 +94,21 @@ function twchr_sanitize_cf_save( $post_id, $key, $value ) {
 		add_post_meta( $post_id, $key, $santize );
 	}
 }
+
+/**
+ * Convierte un array a objeto php.
+ *
+ * @param [type] $array
+ * @return void
+ */
+function twchr_array_to_object($array){
+	if(is_array($array)){
+		$old_array = json_encode($array);
+		$array = json_decode($old_array);
+	}else{
+		$array = $array;
+	}
+
+	return $array;
+
+}
