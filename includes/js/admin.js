@@ -398,7 +398,8 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
     span.addEventListener('click',()=>{
         const radios = document.querySelectorAll(".twchr_toApi_category_ajax_radio");
-        if(radios.length > 1){
+        if(radios.length >= 1){
+            console.log(radios);
             radios.forEach(radio =>{
                 if(radio.checked === true){
                     const optionName = radio.parentElement.children[0].textContent;
