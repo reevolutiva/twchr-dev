@@ -9,6 +9,7 @@
  */
 function twchr_tax_serie_update($schedules_twitch){
     // Obtieen todas las series guardadas en wordpress.
+
 	$schedules_wp = get_terms(
 		array(
 			'taxonomy' => 'serie',
@@ -17,6 +18,11 @@ function twchr_tax_serie_update($schedules_twitch){
 	);
 
 	$response = '';
+
+    if($schedules_twitch == 'segments were not found'){
+        $response = 'segments were not found';
+        return $response;
+    }
 
 	try {
         if ( ! COUNT( $schedules_wp ) == 0 ){

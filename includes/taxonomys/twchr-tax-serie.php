@@ -156,7 +156,7 @@ function twchr_tax_serie_create( $term_id, $tt_id ) {
 }
 
 
-add_action( 'create_serie', 'twchr_tax_serie_create', 10, 5 );
+//add_action( 'create_serie', 'twchr_tax_serie_create', 10, 5 );
 
 // Formulario que aparece en el Edit de la taxonomía Serie en Wordpress
 // twchr_tax_serie
@@ -244,8 +244,12 @@ function twchr_tax_serie_import() {
 
 
 		
-		twchr_tax_serie_update($schedules_twitch);
-		echo "<script>location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+		$response = twchr_tax_serie_update($schedules_twitch);
+		if($response == 'segments were not found'){
+			echo "<script>alert('segments were not found');location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+		}else{
+			echo "<script>location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+		}
 		die();
 		
 	}
