@@ -11,11 +11,12 @@
  * @return void
  */
 function twchr_delete_schedule_by_cpt( $post_id ) {
-	$is_recurrig = get_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig' )[0];
-
-	if ( $is_recurrig === false ) {
+	$is_recurrig = get_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig' ) == false ? false : get_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig' )[0];
+	$schedule_id = get_post_meta( $post_id, 'twchr_stream_twtich_schedule_id' );
+	$delete = null;
+	if ( $is_recurrig === false &&  $schedule_id != false) {
 		// ESTE CPT es un solo streaming.
-		$schedule_id = get_post_meta( $post_id, 'twchr_stream_twtich_schedule_id' );
+		
 		$twchr_titulo = get_the_title( $post_id );
 		$delete = twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo, $post_id );
 	}

@@ -1,6 +1,6 @@
 <?php
-function crearStream( $title, $id, $create_at, $description, $duration, $api_languaje, $muted_segment, $published_at, $stream_id, $thumbnail_url, $type, $url, $user_id, $user_login, $user_name, $view_count, $viewble, $author = 1, $host = undefined ) {
-
+function crearStream( $title, $id, $create_at, $description, $duration, $api_languaje, $muted_segment_par, $published_at, $stream_id, $thumbnail_url, $type, $url, $user_id, $user_login, $user_name, $view_count, $viewble, $author = 1, $host = undefined ) {
+	$muted_segment = $muted_segment_par == null ? '' : $muted_segment_par;
 	$postarr = array(
 		'post_title' => $title,
 		'post_status' => 'publish',
