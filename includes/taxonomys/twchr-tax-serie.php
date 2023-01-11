@@ -199,6 +199,10 @@ function twchr_tax_serie_import() {
 	?>
    <a class="twchr-btn-general twchr-btn-general-lg" href="<?php echo TWCHR_ADMIN_URL; ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_serie=true">import serie</a>
 	<?php
+	/*
+	* Si por GET llega un ID de CPT y nombre de un CPT Crea una serie con esos datos
+	* y luego redirecciona al edit de la serie recien creada.
+	*/
 	if ( isset( $_GET['from_cpt_id']) && isset( $_GET['from_cpt_name']) ) {
 		$name = sanitize_text_field($_GET['from_cpt_name']);
 		$term = wp_create_term( $name, 'serie' );
@@ -206,6 +210,16 @@ function twchr_tax_serie_import() {
 		echo "<script>location.href='" . TWCHR_ADMIN_URL . 'term.php?taxonomy=serie&tag_ID=' . $term_id . "&post_type=twchr_streams'</script>";
 		die();
 
+		/*
+		* Si por GET llega un ID de CPT y no un nombre de un CPT entonces crea una serie con esos el ID
+		* y crea un nombre de la siguiente manera: "serie-{$cpt-id}"y luego redirecciona al edit de la serie recien creada.
+		*/
+	}else if( isset( $_GET['from_cpt_id'])){
+		$name =  "serie-".$_GET['from_cpt_id'];
+		$term = wp_create_term( $name, 'serie' );
+		$term_id = $term['term_id'];
+		echo "<script>location.href='" . TWCHR_ADMIN_URL . 'term.php?taxonomy=serie&tag_ID=' . $term_id . "&post_type=twchr_streams'</script>";
+		die();
 	}
 	
 	if ( isset( $_GET['sync_serie'] ) && $_GET['sync_serie'] == 'true' ) {
