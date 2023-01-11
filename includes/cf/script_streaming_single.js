@@ -141,6 +141,7 @@ function twchr_schedule_chapter_asign() {
       twchr_ajax_input_serie.addEventListener('click', e =>{
         // Si el value del select twchr_ajax_input_serie es undefined. 
         if(twchr_ajax_input_serie.value == 'undefined'){
+          GSCJS.queryOnly("#twchr_schedule_card_input--title").value = '';
           GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
             if(item.classList.contains("serie") ||
               item.classList.contains("serie-name") ||
