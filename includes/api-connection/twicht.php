@@ -396,7 +396,17 @@ function twtchr_twitch_categories_get( $app_token, $client_id, $query ) {
  * @param [type] $user_id
  * @return void
  */
-function twtchr_twitch_users_get_followers( $app_token, $client_id, $user_id ) {
+function twtchr_twitch_users_get_followers() {
+	// Credentials.
+	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
+	$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
+	$twch_data_app_token = get_option( 'twchr_app_token' );
+
+	
+	$app_token = $twch_data_app_token; 
+	$client_id = $twch_data_prime == false ? false : $twch_data_prime->{'client-id'};
+	$user_id = $data_broadcaster_raw == false ? false : $data_broadcaster_raw->{'data'}[0]->{'id'};
+
 	$url = 'https://api.twitch.tv/helix/users/follows?to_id=' . $user_id;
 
 	$args = array(

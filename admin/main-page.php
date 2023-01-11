@@ -151,8 +151,8 @@ if ( ! twchr_is_ssl_secure() ) :
 
 				//show_dump($listVideo_from_api->{'data'});
 			}
-
-				$followers = twtchr_twitch_users_get_followers( $twch_data_app_token, $twch_data_prime->{'client-id'}, $data_broadcaster_raw->{'data'}[0]->{'id'} )->{'data'};
+				// TODO: Llamar credeciales en la misma funcion.
+				$followers = twtchr_twitch_users_get_followers()->{'data'};
 
 			?>
 			<div class="twchr-dashboard-card 
