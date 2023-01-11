@@ -50,7 +50,7 @@ function twchr_admin_js() {
 
 	$set_instaled = get_option( 'twchr_set_instaled' );
 	// Usamos esta función para que coloque los valores inline
-	if ( $set_instaled >= 3 ) {
+	if ( $set_instaled >= 3 && get_option( 'twchr_data_broadcaster') != false) {
 		// Definimos las variables WordPress a enviar dentro de un array.
 		$params = array(
 			'twchr_keys' => json_decode( get_option( 'twchr_keys' ) ),

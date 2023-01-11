@@ -152,7 +152,8 @@ if ( ! twchr_is_ssl_secure() ) :
 				//show_dump($listVideo_from_api->{'data'});
 			}
 				// TODO: Llamar credeciales en la misma funcion.
-				$followers = twtchr_twitch_users_get_followers()->{'data'};
+				$followers = isset(twtchr_twitch_users_get_followers()->data) ? twtchr_twitch_users_get_followers()->data : twtchr_twitch_users_get_followers();
+				
 
 			?>
 			<div class="twchr-dashboard-card 
@@ -196,7 +197,7 @@ if ( ! twchr_is_ssl_secure() ) :
 				</table>
 					<?php
 				endif;
-				if ( get_option( 'twchr_set_instaled' ) <= 3 ) :
+				if ( get_option( 'twchr_set_instaled' ) <= 3  && isset($broadcaster_id)) :
 					$setInstaled = get_option( 'twchr_set_instaled' );
 					if ( $setInstaled >= 3 && $listVideo_from_api === false ) {
 						$error = twchr_twitch_video_get( $twch_data_app_token, $twch_data_prime->{'client-id'}, $broadcaster_id );
