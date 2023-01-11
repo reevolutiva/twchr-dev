@@ -19,6 +19,7 @@ define( 'TWCHR_ASSETS_VERSION', 'beta.5.8' );
 
 define( 'TWCHR_URL_ASSETS', plugin_dir_url( __FILE__ ) . 'includes/assets/' );
 define( 'TWCHR_URL_FONTS', plugin_dir_url( __FILE__ ) . 'includes/assets/fonts' );
+
 // Añadí la carpeta features para poner funcionalidades del plugin.
 define( 'TWCHR_FEATURES', plugin_dir_path( __FILE__ ) . 'includes/features/' );
 

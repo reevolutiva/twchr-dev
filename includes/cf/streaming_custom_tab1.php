@@ -269,7 +269,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						}
 					});
 					// Evaluamos el estado broadcaster
-					if (twchr_broad_type == 'partner' || twchr_broad_type == 'afiliate') {
+					if (twchr_broad_type == 'partner' || twchr_broad_type == 'affiliate') {
 
 					
 						input_serie.parentElement.parentElement.style.display = 'none';
