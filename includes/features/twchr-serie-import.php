@@ -40,7 +40,7 @@ function twchr_tax_serie_update($schedules_twitch){
                     
 
                     $tw_title = $schedule->{'title'};
-                    if($schedule->{'is_recurring'} == true):
+                    if($schedule->{'is_recurring'} == true || $schedule->{'is_recurring'} == "true"):
                         // Si existe actualiza la serie.
                         if ( $tw_title == $wp_title ) {
                                 
@@ -166,7 +166,7 @@ function twchr_tax_serie_update($schedules_twitch){
 
 				$tw_title = $schedule->{'title'};
 				// Si el schedule segment es recurrente.
-				if($schedule->{'is_recurring'} == true):
+				if($schedule->{'is_recurring'} == true || $schedule->{'is_recurring'} == "true"):
 					// Si el nombre del schedule segment existe como nombre de una taxonomia serie.
 					if ( $tw_title == $wp_title ) {
                         $schedule_segments_array = twtchr_twitch_schedule_segment_get();
