@@ -37,34 +37,34 @@ add_action( 'init', 'twchr_tax_serie_register' ); // Fin Guardar taxonomía
 // twchr_tax_serie_save
 function twchr_tax_serie_save( $term_id, $tt_id ) {
 
-	$dateTime_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
+	$date_time_old = get_term_meta( $term_id, 'twchr_toApi_dateTime', true );
 	$duration_old = get_term_meta( $term_id, 'twchr_toApi_duration', true );
 	$select_old = get_term_meta( $term_id, 'twchr_toApi_category', true );
 	$select_value_old = get_term_meta( $term_id, 'twchr_toApi_category_value', true );
 	$select_name_old = get_term_meta( $term_id, 'twchr_toApi_category_name', true );
 	$twchr_toApi_schedule_segment_id = get_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', true );
 	// Saneamos lo introducido por el usuario.
-	$dateTime = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
+	$date_time= sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 	$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 	$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
 	$select_name = sanitize_text_field( $_POST['twchr_toApi_category_name'] );
 	$timezone = (int) $_POST['twchr_toApi_timeZone'];
 
 	// Actualizamos el campo meta en la base de datos.
-	update_term_meta( $term_id, 'twchr_toApi_dateTime', $dateTime, $dateTime_old );
+	update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time, $date_time_old );
 	update_term_meta( $term_id, 'twchr_toApi_duration', $duration, $duration_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_value', $select_value, $select_value_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_name', $select_name, $select_name_old );
 
 	if ( isset( $_POST['twchr_toApi_dateTime'] ) && isset( $_POST['twchr_toApi_duration'] ) && isset( $_POST['twchr_toApi_category_value'] ) ) {
 
-		$dateTime_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
+		$date_time_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 		$timestamp = '';
-		//var_dump($dateTime_raw);
+		//var_dump($date_time_raw);
 		if( $timezone > 0){
-			$timestamp = strtotime("+ ".abs($timezone)." hours",strtotime($dateTime_raw));
+			$timestamp = strtotime("+ ".abs($timezone)." hours",strtotime($date_time_raw));
 		}else{
-			$timestamp = strtotime("- ".abs($timezone)." hours", strtotime($dateTime_raw));
+			$timestamp = strtotime("- ".abs($timezone)." hours", strtotime($date_time_raw));
 		}
 		
 		$dateTime_rfc = date( DateTimeInterface::RFC3339, $timestamp );
@@ -112,8 +112,16 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		}
 		
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
-		$date_time = $response['allData']->{'segments'}[0]->{'start_time'};
-		update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time);
+
+		// Custom fields que nesesian que exista la propiedad allData.
+		if(isset($response['allData'])){
+			$date_time = $response['allData']->{'segments'}[0]->{'start_time'};
+			update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time);
+		}else{
+			update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time);
+		}
+		// Fin Custom fields que nesesian que exista propiedad allData.
+
 		$allData = json_encode( $response );
 		update_term_meta( $term_id, 'twchr_fromApi_allData', $allData );
 
@@ -181,8 +189,12 @@ function twchr_tax_serie_edit( $term, $taxonomy ) {
 }
 add_action( 'serie_edit_form_fields', 'twchr_tax_serie_edit', 10, 2 );
 
-// twchr_tax_serie
-// twchr_tax_serie_import
+/**
+ *  Esta funcion importa shcedules segments como un taxnomia serie
+ *	twchr_tax_serie
+ *  twchr_tax_serie_import
+ * @return void
+ */
 function twchr_tax_serie_import() {
 	?>
    <a class="twchr-btn-general twchr-btn-general-lg" href="<?php echo TWCHR_ADMIN_URL; ?>edit-tags.php?taxonomy=serie&post_type=twchr_streams&sync_serie=true">import serie</a>
@@ -217,108 +229,11 @@ function twchr_tax_serie_import() {
 		}
 
 
-		// Si hay series
-		if ( ! COUNT( $schedules_wp ) == 0 ) {
-
-			foreach ( $schedules_wp as $item ) {
-
-				$wp_id = $item->term_id;
-				$wp_title = $item->{'name'};
-
-				foreach ( $schedules_twitch as $key => $schedule ) {
-
-					$tw_title = $schedule->{'title'};
-					if ( $tw_title == $wp_title ) {
-						
-					} else {
-						$title = empty( $schedule->title ) ? __( 'No title', 'twitcher' ) : $schedule->title;
-						$new_term = wp_insert_term( $title, 'serie' );
-
-						if ( isset( $new_term->errors['term_exists'] ) ) {
-
-						} else {
-							$new_term_id = $new_term['term_id'];
-
-							$dateTime = $schedule->start_time;
-							add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
-							$select_value = $schedule->category->id;
-							add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
-							$select_name = $schedule->category->name;
-							add_term_meta( $new_term_id, 'twchr_toApi_category_name', $select_name );
-							$schedule_segment_id = $schedule->id;
-							add_term_meta( $new_term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
-							$allData = json_encode( $schedule );
-							add_term_meta( $new_term_id, 'twchr_fromApi_allData', $allData );
-
-							$schedule_segments = array();
-							foreach ( $schedules_twitch as $segment ) {
-								if ( $segment->{'title'} === $schedule->{'title'} ) {
-									array_push( $schedule_segments, $segment );
-								}
-							}
-
-							add_term_meta( $new_term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
-
-							// Convertir las fechas a timestamp
-							$start_time = $schedule->start_time;
-							$end_time = $schedule->end_time;
-							$minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
-							add_term_meta( $new_term_id, 'twchr_toApi_duration', $minutos );
-						}
-					}
-
-					if ( $key === COUNT( $schedules_twitch ) - 1 ) {
-						twchr_javaScript_redirect( TWCHR_ADMIN_URL . '/edit-tags.php?taxonomy=serie' );
-					}
-				}
-				die();
-			}
-		} else {
-			foreach ( $schedules_twitch as $schedule ) {
-
-				$tw_title = $schedule->{'title'};
-				if ( $tw_title == $wp_title ) {
-				} else {
-					$new_term = wp_insert_term( $tw_title, 'serie' );
-
-					if ( isset( $new_term->errors['term_exists'] ) ) {
-						// TODO: Poner esta redireccion en el error handler
-						echo "<script>location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
-						die();
-					}
-
-					$new_term_id = $new_term['term_id'];
-
-					$dateTime = $schedule->start_time;
-					add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
-					$select_value = $schedule->category->id;
-					add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
-					$select_name = $schedule->category->name;
-					add_term_meta( $new_term_id, 'twchr_toApi_category_name', $select_name );
-					$schedule_segment_id = $schedule->id;
-					add_term_meta( $new_term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
-					$allData = json_encode( $schedule );
-					add_term_meta( $new_term_id, 'twchr_fromApi_allData', $allData );
-
-					$schedule_segments = array();
-					foreach ( $schedules_twitch as $segment ) {
-						if ( $segment->{'title'} === $schedule->{'title'} ) {
-							array_push( $schedule_segments, $segment );
-						}
-					}
-
-					add_term_meta( $new_term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
-
-					// Convertir las fechas a timestamp
-					$start_time = $schedule->start_time;
-					$end_time = $schedule->end_time;
-					$minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
-					add_term_meta( $new_term_id, 'twchr_toApi_duration', $minutos );
-				}
-			}
-			echo "<script>location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
-			die();
-		}
+		
+		twchr_tax_serie_update($schedules_twitch);
+		echo "<script>location.href='" . TWCHR_ADMIN_URL . "edit-tags.php?taxonomy=serie&post_type=twchr_streams'</script>";
+		die();
+		
 	}
 }
 
