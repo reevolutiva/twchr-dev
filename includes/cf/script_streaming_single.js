@@ -122,6 +122,23 @@ function twchr_schedule_chapter_asign() {
           }
         });
 
+        twchr_dateTime_slot.addEventListener('click',e =>{
+          const id = e.target.value.split(";")[0];
+          
+          res.forEach(element =>{
+            if(element.chapters != 'this serie not contains chapters'){
+              const capitulo = element.chapters[0];
+              console.log(capitulo);
+              if(capitulo.id == id){
+                const cat = capitulo.category;
+                GSCJS.queryOnly("#twchr_schedule_card_input--category__name").value = cat.name;
+                GSCJS.queryOnly("#twchr_schedule_card_input--category__value").value = cat.id;
+                console.log(cat);
+              } 
+            }
+          });
+        });
+
       });
 
       /*
@@ -319,9 +336,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
 
         twchr_send_front_to_bk(data, (e) => {
           
-          if(e == 200){
+          if(e.status == 200){
             //console.log(e);
-            location.reload();
+            location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
           }else{
             console.log(e);
           }

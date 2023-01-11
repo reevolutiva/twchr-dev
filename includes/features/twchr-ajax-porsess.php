@@ -66,7 +66,7 @@ function twchr_ajax_recive_callback() {
 			$post_id = (int) $body['post_id'];
 			if ( $target == 'slide-1' ) {
 				twchr_asign_chapter_by_cf( $post_id, $body );
-				$response = 200;
+				$response = ['status' => 200, 'post_id' => $post_id];
 			}
 		default:
 			// code...
