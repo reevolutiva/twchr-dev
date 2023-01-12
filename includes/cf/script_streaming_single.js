@@ -63,7 +63,7 @@ function twchr_schedule_chapter_asign() {
 
           terms.forEach(item => {
             let selected = '';
-            if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replace('-',' ') == item.name){
+            if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replaceAll('-',' ').toLowerCase() == item.name.toLowerCase()){
               selected = 'selected="true"';
             }
             const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
@@ -116,7 +116,7 @@ function twchr_schedule_chapter_asign() {
             };
     
     
-            res.forEach(item => {
+            terms.forEach(item => {
               if (item.term_id == term.term_id) {
                 if(item.chapters && item.chapters != 'this serie not contains chapters'){
                   
@@ -140,7 +140,7 @@ function twchr_schedule_chapter_asign() {
             twchr_dateTime_slot.addEventListener('click',e =>{
               const id = e.target.value.split(";")[0];
               
-              res.forEach(element =>{
+              terms.forEach(element =>{
                 if(element.chapters != 'this serie not contains chapters'){
                   const capitulo = element.chapters[0];
                   console.log(capitulo);

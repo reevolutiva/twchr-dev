@@ -109,6 +109,8 @@ function twchr_endpoint_cpt_register_callback_streaming( $request ) {
 		array(
 			'post_type'  => 'twchr_streams',
 			'post_status' => 'publish',
+			// TODO: Hacer dinamico este valor.
+			'numberposts' => 999
 		)
 	);
 
