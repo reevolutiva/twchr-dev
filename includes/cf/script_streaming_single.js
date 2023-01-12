@@ -45,6 +45,7 @@ function twchr_schedule_chapter_asign() {
     * Vuelvo a pedir una lista de schdules segment antes de seleccionar un chapter
   **/
 
+  
   getSchedules_by_id(e=>{
     const segments = e.segments;
 
@@ -92,6 +93,24 @@ function twchr_schedule_chapter_asign() {
           }
         });
       }
+
+      if(twchr_is_recurring[0].checked == true){
+        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+            // SI este item tiene un input
+            if(item.querySelector("input") != null){
+                const input = item.querySelector("input");
+                if(input.value.length > 0){
+                    item.style.display = '';
+                }
+            }
+            if(item.querySelector("twchr_cards_input_badges badges")){
+                const badge = querySelector("twchr_cards_input_badges badges");
+                if(badge.textContent.length > 0){
+                    item.style.display = '';
+                }
+            }
+        });
+    }
 
       twchr_ajax_input_serie.addEventListener('click', (event) => {
 
@@ -141,20 +160,6 @@ function twchr_schedule_chapter_asign() {
 
       });
 
-      /*
-      if( twchr_term_serie_list.children.length > 0){
-        const slot_selected = twchr_term_serie_list.children[0].textContent;
-        const slots = GSCJS.queryAll("#twchr_schedule_card_input--serie option");
-        slots.forEach(slot => {
-            let name = slot.value.split("|")[1];
-            name = name.replace(" ","-");
-          if(name == slot_selected){
-            slot.setAttribute("selected", true);
-          }
-        });
-      
-      }
-      */
       twchr_ajax_input_serie.addEventListener('click', e =>{
         // Si el value del select twchr_ajax_input_serie es undefined. 
         if(twchr_ajax_input_serie.value == 'undefined'){
@@ -191,6 +196,8 @@ function twchr_schedule_chapter_asign() {
 
     },
     'json');
+    
+  
 }
 
 

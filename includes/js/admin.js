@@ -239,6 +239,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
             button.setAttribute('href', url);
             //console.log(url);
         }
+
         twchr_schedule_chapter_asign();
 
     
