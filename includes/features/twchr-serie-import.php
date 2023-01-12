@@ -52,10 +52,16 @@ function twchr_tax_serie_update($schedules_twitch){
                                 
                                 $dateTime = $schedule->start_time;
                                 update_term_meta( $wp_id, 'twchr_toApi_dateTime', $dateTime );
-                                $select_value = $schedule->category->id;
-                                update_term_meta( $wp_id, 'twchr_toApi_category_value', $select_value );
-                                $select_name = $schedule->category->name;
-                                update_term_meta( $wp_id, 'twchr_toApi_category_name', $select_name );
+
+                                // Guardo Custom field de twitch category.
+                                if($schedule->category !== null){
+                                    $select_value = $schedule->category->id;
+                                    update_term_meta( $wp_id, 'twchr_toApi_category_value', $select_value );
+                                    $select_name = $schedule->category->name;
+                                    update_term_meta( $wp_id, 'twchr_toApi_category_name', $select_name );
+                                }
+                                // end - Guardo Custom field de twitch category.
+                                
                                 $schedule_segment_id = $schedule->id;
                                 update_term_meta( $wp_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
                                 $allData = json_encode( $schedule );
@@ -109,10 +115,16 @@ function twchr_tax_serie_update($schedules_twitch){
 
                                 $dateTime = $schedule->start_time;
                                 add_term_meta( $new_term_id, 'twchr_toApi_dateTime', $dateTime );
-                                $select_value = $schedule->category->id;
-                                add_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
-                                $select_name = $schedule->category->name;
-                                add_term_meta( $new_term_id, 'twchr_toApi_category_name', $select_name );
+                               
+                                // Guardo Custom field de twitch category.
+                                if($schedule->category !== null){
+                                    $select_value = $schedule->category->id;
+                                    update_term_meta( $wp_id, 'twchr_toApi_category_value', $select_value );
+                                    $select_name = $schedule->category->name;
+                                    update_term_meta( $wp_id, 'twchr_toApi_category_name', $select_name );
+                                }
+                                // end - Guardo Custom field de twitch category.
+
                                 $schedule_segment_id = $schedule->id;
                                 add_term_meta( $new_term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
                                 $allData = json_encode( $schedule );
