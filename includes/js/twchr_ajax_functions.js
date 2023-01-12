@@ -214,3 +214,20 @@ const tchr_get_clips = async (
 function twchr_math_sign(num) {
   return Math.sign(num) == 1 ? true : false;
 }
+
+/**
+ * Este código recorre el objeto utilizando un ciclo "for...in" y compara cada propiedad del objeto con la key que se le pasa como parámetro.
+ *  Si encuentra una propiedad que coincide con la key, devuelve el valor de esa propiedad. Si no encuentra la key en el objeto, devuelve "undefined".
+ *
+ * @param {*} obj
+ * @param {*} key
+ * @return {*} 
+ */
+function twchrFindValueByKey(obj, key) {
+  for (let prop in obj) {
+      if (prop === key) {
+          return obj[prop];
+      }
+  }
+  return undefined;
+}

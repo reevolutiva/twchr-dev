@@ -19,6 +19,7 @@ function twchr_tax_serie_update($schedules_twitch){
 
     // Si no hay series en twitch denten el flujo.
 	$response = '';
+    $response_terms = [];
     if($schedules_twitch == 'segments were not found'){
         $response = 'segments were not found';
         return $response;
@@ -83,19 +84,7 @@ function twchr_tax_serie_update($schedules_twitch){
                                         update_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 
                                 }
-                                
-                                /*
-                                $schedule_segments = array();
-                                foreach ( $schedules_twitch as $segment ) {
-                                    if ( $segment->{'title'} === $schedule->{'title'} ) {
-                                            array_push( $schedule_segments, $segment );
-                                    }
-                                }
-                                if(COUNT($schedule_segments) > 0){
-                                    update_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
-                                }
-
-                                */
+    
 
                                 // Convertir las fechas a timestamp
                                 $start_time = $schedule->start_time;
@@ -259,7 +248,7 @@ function twchr_tax_serie_update($schedules_twitch){
 			}
         }
 
-		$response = 200;
+		$response = ['status' => 200, 'terms' => twchr_endpoint_tax_register_callback_serie()];
 
 	} catch ( Exception $e ) {
 		$response = $e;
