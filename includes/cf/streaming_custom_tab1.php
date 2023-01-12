@@ -77,7 +77,10 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 	</div>	
 	<p id="twchr_twtich_schedule_response" style="display: none;"><?php echo esc_js( $twchr_twicth_schedule_response ); ?><p>
 	<input type="hidden" name="twchr_stream_twtich_schedule_id" id="twchr_stream_twtich_schedule_id" value ="<?php echo $twchr_stream_twtich_schedule_id; ?>">
-
+	<div class="twchr__schedule__loading">
+		<h3>Loading... </h3>
+		<span class="twchr__schedule__loading--icon"></span>
+	</div>
 </div>
 
 <script>

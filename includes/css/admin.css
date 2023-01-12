@@ -1078,6 +1078,31 @@ stream.twchr-modal .twchr-modal-button.close{
     grid-column: 2/3;
 }
 
+.twchr__schedule__loading{
+    display: flex;
+    align-items: center;
+}
+
+.twchr__schedule__loading--icon{
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 5px solid var(--twchr-blue);
+    border-left-color: transparent;
+    animation: twchr_loading .5s linear infinite;
+    margin-left:10px;
+}
+
+@keyframes twchr_loading {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 @media screen and (max-width:1330px){
     .twchr_settUp_overlay #twchr-setUp{
         max-width: 960px;

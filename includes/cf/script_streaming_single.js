@@ -186,146 +186,14 @@ function twchr_schedule_chapter_asign() {
             }
           });
         }
+
+        GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
       });
     }
       
   });
 
-  /*
-  twchrFetchGet(tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_serie",
-    (res) => {
-      res.forEach(item => {
-        let selected = '';
-        if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replace('-',' ') == item.name){
-          selected = 'selected="true"';
-        }
-        const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
-        twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
-      });
-      
-      if(twchr_ajax_input_serie.value == 'undefined'){
-        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-          if(item.classList.contains("serie") ||
-            item.classList.contains("serie-name") ||
-            item.classList.contains("is_recurring")){
-            }else{
-              item.style.display = "none";
-          }
-        });
-      }else{
-        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-          if(item.classList.contains("serie") ||
-            item.classList.contains("serie-name") ||
-            item.classList.contains("is_recurring")){
-            }else{
-              item.style.display = "";
-          }
-        });
-      }
 
-      if(twchr_is_recurring[0].checked == true){
-        GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-            // SI este item tiene un input
-            if(item.querySelector("input") != null){
-                const input = item.querySelector("input");
-                if(input.value.length > 0){
-                    item.style.display = '';
-                }
-            }
-            if(item.querySelector("twchr_cards_input_badges badges")){
-                const badge = querySelector("twchr_cards_input_badges badges");
-                if(badge.textContent.length > 0){
-                    item.style.display = '';
-                }
-            }
-        });
-    }
-
-      twchr_ajax_input_serie.addEventListener('click', (event) => {
-
-        const term = {
-          term_id: event.target.value.split('|')[0],
-          name: event.target.value.split('|')[1],
-        };
-
-
-        res.forEach(item => {
-          if (item.term_id == term.term_id) {
-            if(item.chapters && item.chapters != 'this serie not contains chapters'){
-              
-              const chapters = item.chapters;
-              
-              twchr_dateTime_slot.innerHTML = "";              
-                    
-              chapters.forEach(chapter => {
-                const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
-                twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-              });
-
-            }else{
-              twchr_dateTime_slot.innerHTML = "";
-              const opt = `<option value="false">this serie not contains chapter</option>`;
-              twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-            }
-          }
-        });
-
-        twchr_dateTime_slot.addEventListener('click',e =>{
-          const id = e.target.value.split(";")[0];
-          
-          res.forEach(element =>{
-            if(element.chapters != 'this serie not contains chapters'){
-              const capitulo = element.chapters[0];
-              console.log(capitulo);
-              if(capitulo.id == id){
-                const cat = capitulo.category;
-                GSCJS.queryOnly("#twchr_schedule_card_input--category__name").value = cat.name;
-                GSCJS.queryOnly("#twchr_schedule_card_input--category__value").value = cat.id;
-                console.log(cat);
-              } 
-            }
-          });
-        });
-
-      });
-
-      twchr_ajax_input_serie.addEventListener('click', e =>{
-        // Si el value del select twchr_ajax_input_serie es undefined. 
-        if(twchr_ajax_input_serie.value == 'undefined'){
-          GSCJS.queryOnly("#twchr_schedule_card_input--title").value = '';
-          GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-            if(item.classList.contains("serie") ||
-              item.classList.contains("serie-name") ||
-              item.classList.contains("is_recurring")){
-              }else{
-                item.style.display = "none";
-            }
-          });
-          // Si no es undefined.
-        }else{
-          GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-            if(item.classList.contains("serie") ||
-              item.classList.contains("serie-name") ||
-              item.classList.contains("is_recurring")){
-              }else{
-                item.style.display = "";
-              }
-
-              GSCJS.queryOnly("#twchr_schedule_card_input--title").value = twchr_ajax_input_serie.value.split("|")[1];
-              const curr_url = GSCJS.queryOnly("#twchr_card_button_create_new_serie a").getAttribute("href");
-              GSCJS.queryOnly("#twchr_card_button_create_new_serie a").setAttribute("href",`${curr_url}&from_cpt_name=${twchr_ajax_input_serie.value.split("|")[1]}`);
-      
-          });
-        }
-      });
-
-      
-
-      // Si la el dateTime de el cpt es del pasado elimina los chapters.
-
-    },
-    'json');
-  */
   
 }
 
