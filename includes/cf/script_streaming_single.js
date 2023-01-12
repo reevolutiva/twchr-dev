@@ -256,7 +256,12 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     
 });
 
-
+/**
+ * Enviar infromacion del front al back usando
+ * el action twchr_ajax_recive.
+ * @param {*} twchr_object
+ * @param {*} twchr_callback
+ */
 function twchr_send_front_to_bk(twchr_object,twchr_callback){
     //console.log(twchr_object);
     wp.ajax.send('twchr_ajax_recive',{data:twchr_object}).done(e => twchr_callback(e));
@@ -391,8 +396,10 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
               };
               twchr_send_front_to_bk(data, (e) => {
                 //console.log(e);
-                location.reload();
-                
+                if(e.status == 200){
+                  //console.log(e);
+                  location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
+                }                
               });
             }
           },
