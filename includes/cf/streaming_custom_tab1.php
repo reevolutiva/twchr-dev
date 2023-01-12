@@ -162,7 +162,15 @@ const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot span");
 const twchr_dateTime_slot_option = document.querySelector("#twchr_dateTime_slot");
 const twchr_stream_twtich_schedule_id = document.querySelector("#twchr_stream_twtich_schedule_id");
 
-
+// Si is recurring es false
+if (twchr_is_recurring[1].checked == true) {
+    GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+        if (item.classList.contains("serie") ||
+            item.classList.contains("is_recurring")) {} else {
+            item.style.display = "";
+        }
+    });
+}
 
 let twchr_card_connect_status = '<button style="background-color: transparent;color: var(--twchr-purple); border: 0; font-family: `Comfortaa`;font-weight: bold;font-size: 13px;text-decoration: underline;">Connect with Twitch</button>';
 if(twchr_stream_twtich_schedule_id.value.length > 0){
