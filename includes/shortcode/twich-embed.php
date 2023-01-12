@@ -230,6 +230,14 @@ function twchr_shortcode_tw_last_video_shortcode( $atts ) {
 	*/
 	$videos = twchr_twitch_video_get();
 
+	if(isset($videos->{'error'})){
+		echo "<h3>".__('This shortcode not was rended.','twitcher')."</h3>";
+		if($videos->{'status'} == 401){
+			echo "<h4>".$videos->{'message'}."</h4>";
+			return null;
+		}
+	}
+
 	$ultimo_video = $videos->data[0];
 	$video_id = $ultimo_video->id;
 

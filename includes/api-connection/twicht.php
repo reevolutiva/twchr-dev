@@ -287,7 +287,7 @@ function twchr_twitch_video_get() {
 
 	// GET CREDENTIALS.
 	$twch_data_prime = json_decode( get_option( 'twchr_keys', false ) );
-	$token_validate = $twch_data_prime->{'user_token'};
+	$app_token = get_option( 'twchr_app_token' );
 	$client_id = $twch_data_prime->{'client-id'};
 
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
@@ -295,7 +295,7 @@ function twchr_twitch_video_get() {
 
 	$args = array(
 		'headers' => array(
-			'Authorization' => "Bearer $token_validate",
+			'Authorization' => "Bearer $app_token",
 			'client-id' => $client_id,
 		),
 	);
