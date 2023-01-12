@@ -8,8 +8,8 @@
  * @return void
  */
 function twchr_tax_serie_update($schedules_twitch){
-    // Obtieen todas las series guardadas en wordpress.
 
+    // Obtiene todas las series guardadas en wordpress.
 	$schedules_wp = get_terms(
 		array(
 			'taxonomy' => 'serie',
@@ -17,14 +17,18 @@ function twchr_tax_serie_update($schedules_twitch){
 		)
 	);
 
+    // Si no hay series en twitch denten el flujo.
 	$response = '';
     if($schedules_twitch == 'segments were not found'){
         $response = 'segments were not found';
         return $response;
     }
 
+    
 	try {
+        //Si wordpress no tiene 0 series (es decir si tiene series).
         if ( ! COUNT( $schedules_wp ) == 0 ){
+
             // Recorre todas las series guardadas en wordpress.
             foreach ( $schedules_wp as $item ) {
 
@@ -32,14 +36,16 @@ function twchr_tax_serie_update($schedules_twitch){
                 $wp_id = $item->term_id;
                 $wp_title = $item->{'name'};
 
-                // Recorro la lista actualizado de schedules segments que entrega twitch. 
+                // Recorro la lista de schedules que retorna twitch.
                 foreach ( $schedules_twitch as $key => $schedule ) {
 
                     // si es un array lo convierto a objeto.
                     $schedule = twchr_array_to_object($schedule);
                     
-
+                    // Obtengo el titulo del schedule que retorna twitch.
                     $tw_title = $schedule->{'title'};
+                    
+                    // Si la propiedad is_recurrin del schedule es true(boolean) o "true"(string).
                     if($schedule->{'is_recurring'} == true || $schedule->{'is_recurring'} == "true"):
                         // Si existe actualiza la serie.
                         if ( $tw_title == $wp_title ) {

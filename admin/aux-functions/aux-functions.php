@@ -102,13 +102,14 @@ function twchr_sanitize_cf_save( $post_id, $key, $value ) {
  * @return void
  */
 function twchr_array_to_object($array){
+	$new_array = '';
 	if(is_array($array)){
 		$old_array = json_encode($array);
-		$array = json_decode($old_array);
+		$new_array = json_decode($old_array);
 	}else{
-		$array = $array;
+		$new_array = $array;
 	}
 
-	return $array;
+	return $new_array;
 
 }
