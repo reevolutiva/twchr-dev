@@ -1,3 +1,13 @@
+/*
+ * == INDICE ==
+ * FUNCTIONS
+ * TERMS
+ * PAGE
+ * PLUGINS
+ * TWCHER STREAMS
+ */
+
+// FUNCTIONS.
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -136,134 +146,9 @@ const twchrFrontEndCounter = (nodeTarget,time) =>{
   }
   
 
+// END FUNCTIONS.
 
-
-
-if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
-(getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
-    const element = GSCJS.queryOnly("#twittcher-stream .inside input");
-    const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
-    const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
-    if(element.value.length < 1){
-        //twittcher_stream.style.display = 'none';
-    }
-
-    const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
-    // Lleno Twchr card
-    
-    //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
-    GSCJS.queryOnly(".previw_card .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
-    
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
-    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
-    let card_img = postBox[8].value;
-    card_img = card_img.replace("%{width}x%{height}","250x150");
-    GSCJS.queryOnly(".previw_card .twchr_card_header--img img").setAttribute('src',card_img);
-  
-    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
-   
-    twchrFetchGet(
-        'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
-        (element)=>{
-            
-            if(element.data){
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('on');
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Online';
-            }else{
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('failed');
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Offline';    
-            }
-
-            const stream_isset = document.querySelectorAll('.previw_card .previw_card__status ul li span.value');         
-
-            const stream_isset_array = [];
-            for (let i = 0; i < stream_isset.length; i++) {
-                const element = stream_isset[i];
-                if (element.textContent === 'undefined') {
-                    stream_isset_array.push(true);
-                } else {
-                    stream_isset_array.push(false);
-                }
-            }
-
-            // Sí todos los campos de previw_card son undefined es porque no se ha asignado
-            if (stream_isset_array.every(item => item === true)) {
-                document.querySelector('.previw_card').parentElement.style.display = 'none';
-                document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
-                twchr_card_header_menu[0].addEventListener('click', ()=>{
-                    twchr_card_state = 'schedule';
-                    twchr_card_header_menu[1].classList.add("disabled");
-                    twchr_card_header_menu[0].classList.remove("disabled");
-                    twchr_slide_card_row.style.transform = 'translateX(0%)';
-                });
-
-                if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
-                if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
-
-                
-                // Si no todos los campos son undefined es porque fue asignado
-            }else{
-                twchr_card_header_menu[0].classList.remove("active");
-                twchr_card_header_menu[0].classList.add("diactive");
-                twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
-                document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
-                twchr_card_header_menu[0].classList.add("disabled");
-                twchr_card_header_menu[1].classList.remove("disabled");
-  
-                if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
-                if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
-            }
-        },
-        'json',{headers: {
-            "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
-            "client-id": tchr_vars_admin.twchr_keys['client-id']
-    }});
-
-    if(twchr_is_recurring[0].checked == true ||  (twchr_is_recurring[0].checked == false && twchr_is_recurring[1].checked == false)){
-
-        twchr_is_recurring[0].checked = true;
-        twchr_schedule_card_dateTime.parentElement.style.display = 'none';      
-        document.querySelector("#twchr_dateTime_slot").style.display = 'block';
-        GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.querySelector("label").textContent= 'Serie Name';
-        const button = GSCJS.queryOnly("#twchr_card_button_create_new_serie a");
-        const url_original = button.getAttribute('href');
-        GSCJS.queryOnly("#twchr_schedule_card_input--title").oninput = ()=>{
-            const text = GSCJS.queryOnly("#twchr_schedule_card_input--title").value;
-            const url = url_original+'&from_cpt_name='+text;
-             
-            button.setAttribute('href', url);
-            //console.log(url);
-        }
-
-        twchr_schedule_chapter_asign();
-
-    
-    }else{
-        const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
-        const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
-        const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
-        twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
-        //const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
-        
-        //twchr_dateTime_slot.style.display = "none";
-    
-        input_serie.parentElement.parentElement.style.display = 'none';
-        input_serie_label.style.display = 'none';
-        input_title.removeAttribute('disabled');
-        document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none';
-        document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
-    }
-
-    
-
-
-    
-}
+// PAGE.PHP PAGE.
 
 //post_type=twchr_streams&page=twchr-dashboard
 if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page')=='twchr-dashboard'){
@@ -292,6 +177,10 @@ if(getParameterByName('post_type')=='twchr_streams' && getParameterByName('page'
     twchrFrontEndCounter(twchr_result_items[4],80);
 
 }
+
+// END PAGE.PHP PAGE.
+
+// TERM.PHP PAGE.
 //taxonomy=serie&post_type=twchr_streams
 if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') == 'twchr_streams' && location.href.split(tchr_vars_admin.site_url+"/wp-admin/")[1].includes("term.php"))
    {
@@ -434,6 +323,136 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     }
 }
 
+// END TERM.PHP PAGE.
+
+// POST.PHP Y POST-NEW.PHP PAGE.
+
+if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
+(getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
+    const element = GSCJS.queryOnly("#twittcher-stream .inside input");
+    const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
+    const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
+    if(element.value.length < 1){
+        //twittcher_stream.style.display = 'none';
+    }
+
+    const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
+    // Lleno Twchr card
+    
+    //GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").value === '' ? null : GSCJS.queryOnly("#twchr_stream_data input[name='twchr_stream_data_dateTime']").setAttribute("disabled",true);
+    GSCJS.queryOnly(".previw_card .twchr_card_header--title h3").textContent = postBox[16].value === '' ? 'undefined' : postBox[16].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_header-description h4").textContent = postBox[1].value === '' ? 'undefined' : postBox[1].value;
+    
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(1) span.value").textContent = postBox[0].value === '' ? 'undefined' : postBox[0].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(2) span.value").textContent = postBox[2].value === '' ? 'undefined' : postBox[2].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(3) span.value").textContent = postBox[4].value === '' ? 'undefined' : postBox[4].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(4) span.value").textContent = postBox[9].value === '' ? 'undefined' : postBox[9].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(5) span.value").textContent = postBox[15].value === '' ? 'undefined' : postBox[15].value;
+    GSCJS.queryOnly(".previw_card .twchr_card_body--list li:nth-of-type(6) span.value").textContent = postBox[10].value === '' ? 'undefined' : postBox[10].value;
+    let card_img = postBox[8].value;
+    card_img = card_img.replace("%{width}x%{height}","250x150");
+    GSCJS.queryOnly(".previw_card .twchr_card_header--img img").setAttribute('src',card_img);
+  
+    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
+   
+    twchrFetchGet(
+        'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
+        (element)=>{
+            
+            if(element.data){
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('on');
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Online';
+            }else{
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('failed');
+                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Offline';    
+            }
+
+            const stream_isset = document.querySelectorAll('.previw_card .previw_card__status ul li span.value');         
+
+            const stream_isset_array = [];
+            for (let i = 0; i < stream_isset.length; i++) {
+                const element = stream_isset[i];
+                if (element.textContent === 'undefined') {
+                    stream_isset_array.push(true);
+                } else {
+                    stream_isset_array.push(false);
+                }
+            }
+
+            // Sí todos los campos de previw_card son undefined es porque no se ha asignado
+            if (stream_isset_array.every(item => item === true)) {
+                document.querySelector('.previw_card').parentElement.style.display = 'none';
+                document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
+                twchr_card_header_menu[0].addEventListener('click', ()=>{
+                    twchr_card_state = 'schedule';
+                    twchr_card_header_menu[1].classList.add("disabled");
+                    twchr_card_header_menu[0].classList.remove("disabled");
+                    twchr_slide_card_row.style.transform = 'translateX(0%)';
+                });
+
+                if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
+                if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
+
+                
+                // Si no todos los campos son undefined es porque fue asignado
+            }else{
+                twchr_card_header_menu[0].classList.remove("active");
+                twchr_card_header_menu[0].classList.add("diactive");
+                twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+                document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
+                twchr_card_header_menu[0].classList.add("disabled");
+                twchr_card_header_menu[1].classList.remove("disabled");
+  
+                if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
+                if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
+            }
+        },
+        'json',{headers: {
+            "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
+            "client-id": tchr_vars_admin.twchr_keys['client-id']
+    }});
+
+    if(twchr_is_recurring[0].checked == true ||  (twchr_is_recurring[0].checked == false && twchr_is_recurring[1].checked == false)){
+
+        twchr_is_recurring[0].checked = true;
+        twchr_schedule_card_dateTime.parentElement.style.display = 'none';      
+        document.querySelector("#twchr_dateTime_slot").style.display = 'block';
+        GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.querySelector("label").textContent= 'Serie Name';
+        const button = GSCJS.queryOnly("#twchr_card_button_create_new_serie a");
+        const url_original = button.getAttribute('href');
+        GSCJS.queryOnly("#twchr_schedule_card_input--title").oninput = ()=>{
+            const text = GSCJS.queryOnly("#twchr_schedule_card_input--title").value;
+            const url = url_original+'&from_cpt_name='+text;
+             
+            button.setAttribute('href', url);
+            //console.log(url);
+        }
+
+        twchr_schedule_chapter_asign();
+
+    
+    }else{
+        const twchr_schedule_card = document.querySelector(".twchr_custom_card--contain");
+        const input_serie = twchr_schedule_card.querySelector("#twchr_schedule_card_input--serie");
+        const input_serie_label = twchr_schedule_card.querySelector("label#twchr_schedule_card_input--serie__name--label");
+        twchr_modal_schedule__btn.setAttribute('data-twchr-is-recurring',false);
+        //const twchr_dateTime_slot = document.querySelector("#twchr_dateTime_slot");
+        
+        //twchr_dateTime_slot.style.display = "none";
+    
+        input_serie.parentElement.parentElement.style.display = 'none';
+        input_serie_label.style.display = 'none';
+        input_title.removeAttribute('disabled');
+        document.querySelector("#twchr_dateTime_slot").parentElement.style.display = 'none';
+        document.querySelector("#twchr_card_button_create_new_serie").style.display = "none";
+    }
+
+    
+
+
+    
+}
+
 if(
     (location.pathname.includes('post.php') && getParameterByName('action') == 'edit') ||
     (location.pathname.includes('post-new.php') && getParameterByName('post_type') == 'twchr_streams')
@@ -467,8 +486,12 @@ if(
     
 }
 
+// END POST.PHP Y POST-NEW.PHP PAGE.
+
+// EDIT.PHP PAGE.
+
 if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('get_thing') == 'videos_ajax'){
-    console.log("funcona");
+    
     function twchr_videos_ajax (data){
         // Agrego un EventLitener al boton enviar del modal
         console.log(data);
@@ -551,6 +574,8 @@ if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 
     tchr_get_clips(appToken,client_id,user_id,twchr_videos_ajax);
 }
 
+// END EDIT.PHP PAGE.
+
 if(location.pathname.split("/")[2] == 'edit.php' && getParameterByName('post_type') == 'twchr_streams' && getParameterByName('page') == 'twchr-dashboard'){
     const field_created_at = GSCJS.queryOnly(".twchr-data .created_at");
     const create_at_data_raw = field_created_at.textContent;
@@ -601,6 +626,7 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
      
 }
 
+// PLUGINS.PHP PAGE.
 
 if(location.pathname.includes('plugins.php')){
     //console.log("hello");
