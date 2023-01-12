@@ -16,6 +16,15 @@ if ( isset( $_GET['twchr_set_clear_all'] ) ) {
 		echo "<script>location.href='" . TWCHR_ADMIN_URL . '/edit.php?post_type=twchr_streams&page=twchr_help' . "'</script>";
 	}
 }
+if ( isset( $_GET['twchr_set_clear_tw'] ) ) {
+	if ( $_GET['twchr_set_clear_tw'] == 1 ) {
+		update_option( 'twchr_set_clear_tw', 1 );
+		echo "<script>location.href='" . TWCHR_ADMIN_URL . '/edit.php?post_type=twchr_streams&page=twchr_help' . "'</script>";
+	} else if ( $_GET['twchr_set_clear_tw'] == 0 ) {
+		update_option( 'twchr_set_clear_tw', 0 );
+		echo "<script>location.href='" . TWCHR_ADMIN_URL . '/edit.php?post_type=twchr_streams&page=twchr_help' . "'</script>";
+	}
+}
 
 ?>
 
@@ -30,7 +39,7 @@ if ( isset( $_GET['twchr_set_clear_all'] ) ) {
 	<form action="./edit.php" method="get">
 		<input type="hidden" name="post_type" value="twchr_streams">
 		<input type="hidden" name="page" value="twchr_help">
-		<p><?php twchr_esc_i18n( 'Remove all data on uninstall', 'html' ); ?></p>
+		<p><?php twchr_esc_i18n( 'Remove all data of WordpPress on uninstall', 'html' ); ?></p>
 		<label>
 			on
 			<input type="radio" name="twchr_set_clear_all" value="1" <?php echo $delete_all !== false && $delete_all == 1 ? 'checked' : ''; ?>>
@@ -38,6 +47,16 @@ if ( isset( $_GET['twchr_set_clear_all'] ) ) {
 		<label>
 			off
 			<input type="radio" name="twchr_set_clear_all" value="0" <?php echo $delete_all !== false && $delete_all == 0 ? 'checked' : ''; ?>>
+		</label>
+		<hr/>
+		<p><?php twchr_esc_i18n( 'Remove schedule of Twitch on uninstall', 'html' ); ?></p>
+		<label>
+			on
+			<input type="radio" name="twchr_set_clear_tw" value="1" <?php echo $delete_all !== false && $delete_all == 1 ? 'checked' : ''; ?>>
+		</label>
+		<label>
+			off
+			<input type="radio" name="twchr_set_clear_tw" value="0" <?php echo $delete_all !== false && $delete_all == 0 ? 'checked' : ''; ?>>
 		</label>
 		<input type="submit" value="<?php twchr_esc_i18n( 'save', 'html' ); ?>">
 	</form> 
