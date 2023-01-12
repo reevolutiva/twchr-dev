@@ -14,7 +14,7 @@ function twchr_delete_schedule_by_cpt( $post_id ) {
 	$is_recurrig = get_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig' ) == false ? 'not-exist' : get_post_meta( $post_id, 'twchr_schedule_card_input--is_recurrig' )[0];
 	$schedule_id = get_post_meta( $post_id, 'twchr_stream_twtich_schedule_id' );
 	$delete = null;
-	if ( $is_recurrig === false &&  $schedule_id != false) {
+	if ( $is_recurrig === false &&  $schedule_id != false && get_option( 'twchr_set_clear_tw') == 1) {
 		// ESTE CPT es un solo streaming.
 		
 		$twchr_titulo = get_the_title( $post_id );
@@ -49,7 +49,7 @@ function twchr_delete_schedule_by_term( $term_id ) {
 	$schedule_id = '';
 
 	// Si $twchr_schdules_chapters esta vacio.
-	if ( null == $twchr_schdules_chapters ) {
+	if ( null == $twchr_schdules_chapters && get_option( 'twchr_set_clear_tw') == 1) {
 		// obtiene $twchr_schdules_chapters de custom_field twchr_toApi_schedule_segment_id.
 		$schedule_id = get_term_meta( $term_id, 'twchr_toApi_schedule_segment_id' )[0];
 		twtchr_twitch_schedule_segment_delete( $schedule_id );

@@ -239,6 +239,7 @@ if ( ! twchr_is_ssl_secure() ) :
 				);
 
 				add_option( 'twchr_share_permissions', json_encode( $share_permision ) );
+				add_option( 'twchr_set_clear_tw', 0 );
 
 
 				fronted_to_db( $client_secret, $client_id );
