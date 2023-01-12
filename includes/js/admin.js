@@ -8,6 +8,7 @@
  */
 
 // FUNCTIONS.
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -547,24 +548,7 @@ if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 
         // Me comunico con la API de wordpress
         twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
 
-        function twchr_verification_videos(WpData){
-            const chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
-            // Itero la lista.
-            chekeed.forEach((check, index) => { 
-                console.log(check.value);
-                console.log(WpData);
-                
-                
-                if(WpData.length > 1 && index < WpData.length ){
-
-                    if(WpData.find(wp => wp.twchr_id == check.value) != undefined){
-                        check.parentElement.querySelector("label").children[2].classList.add("video-saved");
-                    }
-           
-                }
-                
-            });
-        }
+        
 
     }
 
@@ -620,6 +604,8 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
                     
                 });
             }
+
+            
         });
         
     }

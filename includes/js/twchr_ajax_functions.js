@@ -29,6 +29,28 @@ async function twchrFetchGet(url, callback, mode, requestOptions = false) {
   callback(response);
 }
 
+function twchr_verification_videos(WpData,radio=fasle){
+  let chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
+  if(radio != false){
+    chekeed = GSCJS.queryAll(".twchr_modal_video_ajax input[type=radio]");
+  }
+  // Itero la lista.
+  chekeed.forEach((check, index) => { 
+      console.log(check);
+      console.log(check.value);
+      console.log(WpData);
+      
+      
+          if(WpData.length > 1 && index < WpData.length ){
+
+              if(WpData.find(wp => wp.twchr_id == check.value) != undefined){
+                  check.parentElement.querySelector("label").children[2].classList.add("video-saved");
+              }
+          }
+      
+  });
+}
+
 /**
  * Trae una lista de categorias de twicht segun los filtra query
  * @param {*} appToken
@@ -152,6 +174,8 @@ const tchr_get_clips = async (
                     </section>`;
     });
 
+    
+
     // Introdusco la lista de check-boxs al modal .twchr_modal_get_videos
     GSCJS.queryOnly("#twchr_button_get_videos__content .content").innerHTML =
       Content;
@@ -159,6 +183,8 @@ const tchr_get_clips = async (
     // Guardo los inputs radio creados más arriba
     const input = GSCJS.queryAll(".twchr_modal_get_videos section input");
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
+
+    //TODO: Agregar verificacion de tiket verde para modal de asignacion twitchembed.
 
     // Guardo boton asign
     const asign_btn = GSCJS.queryOnly(
