@@ -358,7 +358,8 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           
           if(e.status == 200){
             //console.log(e);
-            location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
+            //location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
+            GSCJS.queryOnly("#publish").click();
           }else{
             console.log(e);
           }
