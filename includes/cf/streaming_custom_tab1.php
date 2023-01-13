@@ -279,6 +279,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 							item.style.display = "";
 						}
 					});
+					GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.querySelector("label").textContent= 'Streaming Title';
 					// Evaluamos el estado broadcaster
 					if (twchr_broad_type == 'partner' || twchr_broad_type == 'affiliate') {
 
@@ -315,7 +316,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 					}
 				} else {
 					//Si is_recurring is true
-					
+					GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.querySelector("label").textContent= 'Serie Name';
 					input_serie.parentElement.parentElement.style.display = 'grid';
 					input_serie_label.style.display = 'block';
 					document.querySelector("#twchr_card_button_create_new_serie").style.display = "block";

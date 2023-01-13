@@ -131,6 +131,8 @@ const getSchedules_by_id = async (callback) => {
   callback(arrayList);
 };
 
+// getSchedules_by_id fin.
+
 // Hago la peticion de videos a Twitch
 const tchr_get_clips = async (
   appToken,

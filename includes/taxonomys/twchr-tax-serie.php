@@ -96,6 +96,13 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		$schedule_segment_id = isset($response['error']) ? 'disconected': $response['allData']->{'segments'}[0]->{'id'};
 
 		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
+		if(isset($schedule_segments_array->{'error'})){
+			echo "<script>
+				alert('message: " . $schedule_segments_array->{'message'} . "');
+				alert('" . __( 'You will be redirected to the authentication page in a few seconds.', 'twitcher' ) . "');
+				location.href = '" . TWCHR_ADMIN_URL . "edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+			</script>";
+		}
 
 		// Si exiten segmentos.
 		if($schedule_segments_array != 'segments were not found'){

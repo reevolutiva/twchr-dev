@@ -48,16 +48,27 @@ function twchr_schedule_chapter_asign() {
   
   getSchedules_by_id(e=>{
     const segments = e.segments;
-
+    //console.log(e);
     if(segments != false){
       wp.ajax.send('twchr_taxonomy_update',{
         data:{
           nonce: twchr_taxonomy_update,
           segment: segments
+        },
+        success: res =>{
+          console.log(res);
+          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
+        },
+        error: err =>{
+          console.log(err);
+          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
+          alert("message: "+res.message);
+				  alert("You will be redirected to the authentication page in a few seconds.");
+				  location.href = twchr_admin_url+'edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
         }
       }
       ).done(succs => {
-        
+        //console.log(succs);
         if(succs.terms){
           const terms = succs.terms;
 
@@ -186,8 +197,6 @@ function twchr_schedule_chapter_asign() {
             }
           });
         }
-
-        GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
       });
     }
       

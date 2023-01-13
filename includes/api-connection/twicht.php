@@ -184,8 +184,8 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 			if($response_body->{'message'} == 'segments were not found'){
 				return $response_body->{'message'};
 			}else{
-
-				twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
+				return $response_body;
+				//twchr_twitch_autentication_error_handdler( $response_body->{'error'}, $response_body->{'message'} );
 			}
 		}
 	}
