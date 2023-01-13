@@ -358,9 +358,23 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         twchr_send_front_to_bk(data, (e) => {
           
           if(e.status == 200){
-            //console.log(e);
-            //location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
-            GSCJS.queryOnly("#publish").click();
+            console.log(e);
+            // Bloqueo todos los inputs.
+            GSCJS.queryAll(".twchr_custom_card--contain .custom_card_row input").forEach(
+              i => {
+                i.setAttribute("disabled", true);
+              }
+            );
+
+            // Bloqueo todos los select.
+            GSCJS.queryAll(".twchr_custom_card--contain .custom_card_row select").forEach(
+              i => {
+                i.setAttribute("disabled", true);
+              }
+            );
+            setTimeout(() => {
+              location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
+            }, 1000);
           }else{
             console.log(e);
           }

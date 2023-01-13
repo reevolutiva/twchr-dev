@@ -148,35 +148,48 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 
 		));
 
+		// verifico que el post exister.
+			$post = get_post($post_id);
+			if($post !== null):
 		
-			update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
-			update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
-			update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
+				update_post_meta( $post_id, 'twchr_dateTime_slot', json_encode( $twchr_slot ) );
+				update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
+				update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
 
-			$serie_id = (int) wp_create_term( $serie['name'], 'serie');
-			wp_set_post_terms( $post_id, array( $serie_id ), 'serie', false);
 				
-			update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
-			update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
-		
-		
-		// Verfico si vienen los datos y si no estan vacios
-		$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht');
+				$serie_id = (int) $serie['term_id'];
+				$exist = '';
+				$realation = '';
 
-	    $id = (int) $cat_twitch['term_id'];
+				if($exist = term_exists($serie_id,'serie')){
+					$realation = wp_set_object_terms( $post_id, array( $serie_id ), 'serie', false);
 
-		// Creo stream relacionado.
-	    wp_set_post_terms( $post_id, array( $id ), 'cat_twcht', true);
-		
-		
-		
-		update_post_meta( $post_id, 'twchr_schedule_card_input--title', empty($stream['title']) ? $post_title : $stream['title'] );
-		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
-		
+					//$term_serie = wp_get_post_terms( $post_id, 'serie' );
+					// RETUNR SERIE_ID
+				}
+					
+				update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
+				update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
+			
+				
+				// CREO UN TERM CAT TWITCH.
+				$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht');
+				// CONVIERTO A INT TERM_ID
+				$id = (int) $cat_twitch['term_id'];
+
+				// CREO RELACION DE NUEVO TERM(ID) CON CPT(POST_ID).
+				$twchr_cat = wp_set_post_terms( $post_id, array( $id ), 'cat_twcht', false);
+				
+				//$realation = wp_get_object_terms($post_id,'serie');
+				
+				
+				update_post_meta( $post_id, 'twchr_schedule_card_input--title', empty($stream['title']) ? $post_title : $stream['title'] );
+				update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
+			endif;
 
 		// DESPUES DE QUE ACTUALIZAS LOS CUSTOM FIELDS
 		if(isset($serie['term_id'])){
-			
+			/*
 			$date_time_slot = get_post_meta($post_id,'twchr_dateTime_slot',false) != false ? json_decode(get_post_meta(get_the_ID(),'twchr_dateTime_slot')[0]) : false;
 			if(isset($date_time_slot->{'start_time'})){
 				$date_time = $date_time_slot->{'start_time'};
@@ -190,6 +203,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 					update_term_meta($term_id, 'twchr_schdules_chapters','');
 				}
 			}
+			*/
 			
 		}
 

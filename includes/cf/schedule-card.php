@@ -5,7 +5,7 @@
  * @return void
  */
 function twchr_cf_schedule__card() {
-	$post_id = get_the_id();
+	$post_id = get_the_ID();
 	$term_serie = wp_get_post_terms( $post_id, 'serie' );
 	$term_serie_list = '';
 	$term_serie_id = '';
@@ -58,6 +58,8 @@ add_action( 'edit_form_after_title', 'twchr_cf_schedule__card' );
  * @return void
  */
 function twchr_cf_schedule__card__metadata_save( $post_id ) {
+
+
 	/*
 	Antes de guardar la información, necesito verificar tres cosas:
 		1. Si la entrada se está autoguardando
