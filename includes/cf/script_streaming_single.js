@@ -150,16 +150,17 @@ function twchr_schedule_chapter_asign() {
     
             twchr_dateTime_slot.addEventListener('click',e =>{
               const id = e.target.value.split(";")[0];
+              console.log(id);
               
               terms.forEach(element =>{
                 if(element.chapters != 'this serie not contains chapters'){
-                  const capitulo = element.chapters[0];
+                  const capitulo = element.chapters[0] != undefined ? element.chapters[0] : false;
                   console.log(capitulo);
-                  if(capitulo.id == id){
+                  if(capitulo.id == id && capitulo != false){
                     const cat = capitulo.category;
                     GSCJS.queryOnly("#twchr_schedule_card_input--category__name").value = cat.name;
                     GSCJS.queryOnly("#twchr_schedule_card_input--category__value").value = cat.id;
-                    console.log(cat);
+                    //console.log(cat);
                   } 
                 }
               });

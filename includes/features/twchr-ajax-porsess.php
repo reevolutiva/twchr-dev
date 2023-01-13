@@ -139,6 +139,7 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 	$stream = $body['stream'];
 	$chapter_id = $body['twchr_slot']['chapter_id'];
 	$post_title = empty($body['post_title']) ? $serie['name'] : $body['post_title'];
+	$response = '';
 	try {
 		wp_update_post(array(
 			'ID' => $post_id,
@@ -152,23 +153,20 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 			update_post_meta( $post_id, 'twchr_schedule_card_input--serie__name', json_encode( $serie ) );
 			update_post_meta( $post_id, 'twchr_stream_twtich_schedule_id', $chapter_id );
 
-			wp_set_post_terms( $post_id, array( (int) $serie['term_id'] ), 'serie' );
-		
-
-		
+			$serie_id = (int) wp_create_term( $serie['name'], 'serie');
+			wp_set_post_terms( $post_id, array( $serie_id ), 'serie', false);
+				
 			update_post_meta( $post_id, 'twchr_schedule_card_input--category__name', $twitch_category['name'] );
 			update_post_meta( $post_id, 'twchr_schedule_card_input--category__value', $twitch_category['id'] );
-
-			$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht' );
-
-			$id = (int) $cat_twitch['term_id'];
-
-			// Creo stream relacionado.
-			wp_set_post_terms( $post_id, array( $id ), 'cat_twcht' );
 		
 		
 		// Verfico si vienen los datos y si no estan vacios
-		
+		$cat_twitch = wp_create_term( $twitch_category['name'], 'cat_twcht');
+
+	    $id = (int) $cat_twitch['term_id'];
+
+		// Creo stream relacionado.
+	    wp_set_post_terms( $post_id, array( $id ), 'cat_twcht', true);
 		
 		
 		
@@ -176,20 +174,21 @@ function twchr_asign_chapter_by_cf( $post_id, $body ) {
 		update_post_meta( $post_id, 'twchr_schedule_card_input--duration', $stream['duration'] );
 		
 
-
 		// DESPUES DE QUE ACTUALIZAS LOS CUSTOM FIELDS
 		if(isset($serie['term_id'])){
 			
 			$date_time_slot = get_post_meta($post_id,'twchr_dateTime_slot',false) != false ? json_decode(get_post_meta(get_the_ID(),'twchr_dateTime_slot')[0]) : false;
-			$date_time = $date_time_slot->{'start_time'};
+			if(isset($date_time_slot->{'start_time'})){
+				$date_time = $date_time_slot->{'start_time'};
 			
-			$fecha = strtotime($date_time);
-			$fecha_actual = time();
-		
-			// Si la fecha es antigua
-			if($fecha > $fecha_actual){
-				$term_id = $serie['term_id'];
-				update_term_meta($term_id, 'twchr_schdules_chapters','');
+				$fecha = strtotime($date_time);
+				$fecha_actual = time();
+			
+				// Si la fecha es antigua
+				if($fecha > $fecha_actual){
+					$term_id = $serie['term_id'];
+					update_term_meta($term_id, 'twchr_schdules_chapters','');
+				}
 			}
 			
 		}

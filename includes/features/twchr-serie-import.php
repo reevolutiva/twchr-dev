@@ -72,8 +72,8 @@ function twchr_tax_serie_update($schedules_twitch){
                                 $schedule_segments_array = twtchr_twitch_schedule_segment_get();
 
                                 // Si exiten segmentos.
-                                if($schedule_segments_array != 'segments were not found'){
-
+                                if($schedule_segments_array != 'segments were not found' && isset($schedule_segments_array->{'error'})){
+                                    
                                     $schedule_segments = array();
                                         foreach ( $schedule_segments_array as $segment ) {
                                             if ( $segment->{'title'} === $wp_title ) {
