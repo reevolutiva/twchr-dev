@@ -96,14 +96,17 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		//TODO: verifica que esta serie ya existe.
 
-
-		$current_schedule = twtchr_twitch_schedule_segment_get($stream_id);
-		$response = '';
-		if(isset($current_schedule->{'message'}) && $current_schedule->{'message'} == 'Invalid OAuth token'){
-			twchr_twitch_autentication_error_handdler( $current_schedule->{'error'}, $current_schedule->{'message'} );
+		$current_schedule = '';
+		if($stream_id != false){
+			$current_schedule = twtchr_twitch_schedule_segment_get($stream_id);
+			$response = '';
+			if(isset($current_schedule->{'message'}) && $current_schedule->{'message'} == 'Invalid OAuth token'){
+				twchr_twitch_autentication_error_handdler( $current_schedule->{'error'}, $current_schedule->{'message'} );
+			}	
 		}
+		
 		// no existe
-		if($current_schedule == null){
+		if($current_schedule == null || $stream_id == false){
 			// SI la seire no existe
 			// Envia los datos a la API de twich
 			$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $dateTime_rfc, $select_value, $duration );
@@ -112,17 +115,21 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		$res = '';
 
-		if(COUNT($current_schedule) == 1){
-		
-		}else{
-			foreach($current_schedule as $schedule){
-				$title = $schedule->{'title'};
-				if($title == $term_name){
-					$twchr_category = $schedule->{'category'}->{'id'};
-					$twchr_duration = $duration;
-					
-					$res = twtchr_twitch_schedule_segment_update('',$title, $stream_id,$twchr_category, $twchr_duration );
-					break;
+		if(is_array($current_schedule)){
+			if(COUNT($current_schedule) == 1){
+				$twchr_category = $select_value;
+				$twchr_duration = $duration;
+				$response = twtchr_twitch_schedule_segment_update('',$term_name, $stream_id,$twchr_category, $twchr_duration );
+			}else{
+				foreach($current_schedule as $schedule){
+					$title = $schedule->{'title'};
+					if($title == $term_name){
+						$twchr_category = $schedule->{'category'}->{'id'};
+						$twchr_duration = $duration;
+						
+						$res = twtchr_twitch_schedule_segment_update('',$title, $stream_id,$twchr_category, $twchr_duration );
+						break;
+					}
 				}
 			}
 		}

@@ -25,9 +25,13 @@
 		}
 	}
 </style>
-
+<?php 
+	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
+	$broadcaster_user = $data_broadcaster_raw->{'data'}[0]->{'login'};
+?>
+<h3><?php _e("Series (Beta)  connects Twitch with your channel's programming schedule on Twitch. Some features can only be applied from the Twitch.tv page, Channel, Schedule at the following link","twitcher");?> <a href="https://dashboard.twitch.tv/u/<?php echo $broadcaster_user?>/settings/channel/schedule">https://dashboard.twitch.tv/u/<?php echo $broadcaster_user?>/settings/channel/schedule</a></h3>
 <div class='twchr_toApi_form-field'>
-	<label>Every repeat: </label>
+	<label>Repeat every: </label>
 	<h4 class="twchr_serie_repeat"></h4>
 	<label for="twchr_toApi_dateTime"><?php twchr_esc_i18n( 'Start Date-Time', 'html' ); ?></label>
 	<div>

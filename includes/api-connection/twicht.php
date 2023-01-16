@@ -11,10 +11,8 @@ function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream
 
 	$body = array(
 		'duration' => $twchr_duration,
-		'category_id' => $twchr_category,
+		'category' => $twchr_category,
 		'title' => $twchr_titulo,
-		'is_canceled' => true,
-		'timezone' => 'America/New_York',
 	);
 
 	$args = array(
@@ -23,9 +21,11 @@ function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream
 			'client-id' => $client_id,
 			'Content-Type' => 'application/json',
 		),
-		'method' => 'PATCH',
-		'body' => $body,
+		'body' => json_encode($body),
+		'method' => 'PATCH'
 	);
+
+	var_dump($args);
 
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
@@ -33,15 +33,12 @@ function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream
 	$url = 'https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=' . $broadcaster_id.'&id='.$stream_id;
 
 
-	var_dump($args);
-	var_dump($broadcaster_id);
-
-	$res = wp_remote_post( $url, json_encode($args) );
+	$res = wp_remote_post( $url, $args );
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
-	//$response_response = $res['response'];
+	$response_response = $res['response'];
 
-	var_dump($res);
-	die();
+	
+	//var_dump($response_body);
 
 	// codigo para accionar segun la respuesta de la api.
 	switch ( $response_response['code'] ) {
@@ -161,7 +158,7 @@ function twtchr_twitch_schedule_segment_delete( $schedule_id, $twchr_titulo = fa
  * @param boolean $schedule_id.
  * @return void
  */
-function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
+function twtchr_twitch_schedule_segment_get( $schedule_id = null ) {
 	$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
 	$client_id = $twch_data_prime->{'client-id'};
 	$user_token = $twch_data_prime->{'user_token'};
@@ -178,7 +175,7 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = false ) {
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-	if ( $schedule_id == false ) {
+	if ( $schedule_id == null ) {
 		$url = 'https://api.twitch.tv/helix/schedule?broadcaster_id=' . $broadcaster_id;
 	} else {
 		$url = 'https://api.twitch.tv/helix/schedule?broadcaster_id=' . $broadcaster_id . '&id=' . $schedule_id;

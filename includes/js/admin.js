@@ -277,6 +277,11 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     
 
     const inputTxtCategory = document.querySelector("#twchr_toApi_category_ajax");
+    const twchr_modal = crearElemento("MODAL","twchr_modal");
+    const padreInput = inputTxtCategory.parentElement;
+    padreInput.classList.add("twchr_toApi_category_ajax--container");
+    padreInput.appendChild(twchr_modal);
+
     let radios;   
     inputTxtCategory.oninput = ()=>{
         const query = inputTxtCategory.value;
