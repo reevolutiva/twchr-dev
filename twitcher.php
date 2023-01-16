@@ -29,7 +29,7 @@ define( 'TWCHR_WPJSON_ROUTE', site_url() . '/wp-json/' );
 // setings.
 require_once 'includes/dev-functions.php';
 require_once 'admin/aux-functions/twchr-i18n.php';
-require_once 'admin/twtchr-menus.php';
+//require_once 'admin/twtchr-menus.php';
 require_once TWCHR_FEATURES . 'twitch-alerts.php';
 require_once TWCHR_FEATURES . 'twtchr-easy-set-up.php';
 require_once TWCHR_FEATURES . 'twtchr-activate.php';
@@ -93,3 +93,40 @@ require_once 'includes/ext-wp-api.php';
 
 // dinamyc js
 require_once 'includes/dynamic-js.php';
+
+// Menu consola de administracion en Dashboard WP
+function twchr_main_menu() {
+
+	add_submenu_page(
+		'edit.php?post_type=twchr_streams', // $parent_slug
+		'Twitcher Dashboard',  // $page_title
+		'Twitcher Dashboard',        // $menu_title
+		'manage_options',           // $capability
+		'twchr-dashboard', // $menu_slug
+		'twchr_main_page', // $function
+		0
+	);
+
+	add_submenu_page(
+		'edit.php?post_type=twchr_streams',
+		__( 'Help', 'twitcher' ),
+		__( 'Help', 'twitcher' ),
+		'manage_options',
+		'twchr_help',
+		'twchr_menu_help',
+	);
+
+}
+
+add_action( 'admin_menu', 'twchr_main_menu' );
+
+
+// Template de menu prinicpal de plugin
+function twchr_main_page() {
+	require_once 'admin/main-page.php';
+}
+
+// Template de menu secudario de plugin
+function twchr_menu_help() {
+	require_once 'admin/submenu_menu_help.php';
+}

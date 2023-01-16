@@ -20,6 +20,14 @@ function twchr_main_menu() {
 		'twchr_help',
 		'twchr_menu_help',
 	);
+	add_submenu_page(
+		'edit.php?post_type=twchr_streams',
+		__( 'Add Streaming', 'twitcher' ),
+		__( 'Add Streaming', 'twitcher' ),
+		'manage_options',
+		'twchr_add_streaming',
+		'twchr_add_streaming_callback',
+	);
 
 }
 
@@ -34,4 +42,8 @@ function twchr_main_page() {
 // Template de menu secudario de plugin
 function twchr_menu_help() {
 	require_once 'submenu_menu_help.php';
+}
+
+function twchr_add_streaming_callback(){
+	require_once 'includes\cf\schedule-card.php.php';
 }

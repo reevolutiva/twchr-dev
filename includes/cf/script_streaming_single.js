@@ -373,7 +373,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
               }
             );
             setTimeout(() => {
-              location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
+              //location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit";
             }, 1000);
           }else{
             console.log(e);
