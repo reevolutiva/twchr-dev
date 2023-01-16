@@ -42,13 +42,14 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 	$select_old = get_term_meta( $term_id, 'twchr_toApi_category', true );
 	$select_value_old = get_term_meta( $term_id, 'twchr_toApi_category_value', true );
 	$select_name_old = get_term_meta( $term_id, 'twchr_toApi_category_name', true );
-	$twchr_toApi_schedule_segment_id = get_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', true );
 	// Saneamos lo introducido por el usuario.
 	$date_time= sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 	$duration = sanitize_text_field( $_POST['twchr_toApi_duration'] );
 	$select_value = sanitize_text_field( $_POST['twchr_toApi_category_value'] );
 	$select_name = sanitize_text_field( $_POST['twchr_toApi_category_name'] );
+	$term_name = sanitize_text_field($_POST['name']);
 	$timezone = (int) $_POST['twchr_toApi_timeZone'];
+	$stream_id = isset($_POST['twchr_toApi_schedule_segment_id']) && !empty($_POST['twchr_toApi_schedule_segment_id']) ? sanitize_text_field($_POST['twchr_toApi_schedule_segment_id']) : false;
 
 	// Actualizamos el campo meta en la base de datos.
 	update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time, $date_time_old );
@@ -56,8 +57,9 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 	update_term_meta( $term_id, 'twchr_toApi_category_value', $select_value, $select_value_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_name', $select_name, $select_name_old );
 
+	// Si vienen pos POST twchr_toApi_dateTime y twchr_toApi_duration y twchr_toApi_duration.
 	if ( isset( $_POST['twchr_toApi_dateTime'] ) && isset( $_POST['twchr_toApi_duration'] ) && isset( $_POST['twchr_toApi_category_value'] ) ) {
-
+		$schedule_segment_id = '';
 		$date_time_raw = sanitize_text_field( $_POST['twchr_toApi_dateTime'] );
 		$timestamp = '';
 		//var_dump($date_time_raw);
@@ -91,18 +93,49 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		} elseif ( isset( $_POST['name'] ) ) {
 			$tag_name = sanitize_text_field( $_POST['name'] );
 		}
-		// Envia los datos a la API de twich
-		$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $dateTime_rfc, $select_value, $duration );
-		$schedule_segment_id = isset($response['error']) ? 'disconected': $response['allData']->{'segments'}[0]->{'id'};
 
-		$schedule_segments_array = twtchr_twitch_schedule_segment_get();
-		if(isset($schedule_segments_array->{'error'})){
-			echo "<script>
-				alert('message: " . $schedule_segments_array->{'message'} . "');
-				alert('" . __( 'You will be redirected to the authentication page in a few seconds.', 'twitcher' ) . "');
-				location.href = '" . TWCHR_ADMIN_URL . "edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
-			</script>";
+		//TODO: verifica que esta serie ya existe.
+
+
+		$current_schedule = twtchr_twitch_schedule_segment_get($stream_id);
+		$response = '';
+		if(isset($current_schedule->{'message'}) && $current_schedule->{'message'} == 'Invalid OAuth token'){
+			twchr_twitch_autentication_error_handdler( $current_schedule->{'error'}, $current_schedule->{'message'} );
 		}
+		// no existe
+		if($current_schedule == null){
+			// SI la seire no existe
+			// Envia los datos a la API de twich
+			$response = twtchr_twitch_schedule_segment_create( $term_id, $tag_name, $dateTime_rfc, $select_value, $duration );
+			$schedule_segment_id = isset($response['error']) ? 'disconected': $response['allData']->{'segments'}[0]->{'id'};
+		}
+
+		$res = '';
+
+		if(COUNT($current_schedule) == 1){
+		
+		}else{
+			foreach($current_schedule as $schedule){
+				$title = $schedule->{'title'};
+				if($title == $term_name){
+					$twchr_category = $schedule->{'category'}->{'id'};
+					$twchr_duration = $duration;
+					
+					$res = twtchr_twitch_schedule_segment_update('',$title, $stream_id,$twchr_category, $twchr_duration );
+					break;
+				}
+			}
+		}
+
+
+			$schedule_segments_array = twtchr_twitch_schedule_segment_get();
+			if(isset($schedule_segments_array->{'error'})){
+				echo "<script>
+					alert('message: " . $schedule_segments_array->{'message'} . "');
+					alert('" . __( 'You will be redirected to the authentication page in a few seconds.', 'twitcher' ) . "');
+					location.href = '" . TWCHR_ADMIN_URL . "edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+				</script>";
+			}
 
 		// Si exiten segmentos.
 		if($schedule_segments_array != 'segments were not found'){

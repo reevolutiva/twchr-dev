@@ -1,9 +1,15 @@
 <?php
 // twtchr_twitch_schedule.
 // Actualiza los schedules segment.
-function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_id, $twchr_titulo, $twchr_start_time, $twchr_category, $twchr_duration ) {
+function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream_id, $twchr_category, $twchr_duration ) {
+	// Credentials.
+	$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
+	$client_id = $twch_data_prime->{'client-id'};
+	$user_token = $twch_data_prime->{'user_token'};
+	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
+	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
+
 	$body = array(
-		'start_time' => $twchr_start_time,
 		'duration' => $twchr_duration,
 		'category_id' => $twchr_category,
 		'title' => $twchr_titulo,
@@ -17,17 +23,25 @@ function twtchr_twitch_schedule_segment_update( $post_id, $user_token, $client_i
 			'client-id' => $client_id,
 			'Content-Type' => 'application/json',
 		),
+		'method' => 'PATCH',
 		'body' => $body,
 	);
 
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-	$url = 'https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=' . $broadcaster_id;
+	$url = 'https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=' . $broadcaster_id.'&id='.$stream_id;
 
-	$res = wp_remote_post( $url, $args );
+
+	var_dump($args);
+	var_dump($broadcaster_id);
+
+	$res = wp_remote_post( $url, json_encode($args) );
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
-	$response_response = $res['response'];
+	//$response_response = $res['response'];
+
+	var_dump($res);
+	die();
 
 	// codigo para accionar segun la respuesta de la api.
 	switch ( $response_response['code'] ) {
@@ -614,3 +628,4 @@ function twchr_twitch_autentication_error_handdler( $error_code, $msg ) {
 	}
 	
 }
+
