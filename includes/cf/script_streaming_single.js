@@ -74,7 +74,7 @@ function twchr_schedule_chapter_asign() {
 
           terms.forEach(item => {
             let selected = '';
-            if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replaceAll('-',' ').toLowerCase() == item.name.toLowerCase()){
+            if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.replaceAll('-',' ').toLowerCase() == item.slug.toLowerCase()){
               selected = 'selected="true"';
             }
             const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;

@@ -61,6 +61,7 @@ function twchr_endpoint_tax_register_callback_serie() {
 			'term_id' => $term_id,
 			'name' => $term->{'name'},
 			'taxonomy' => $term->{'taxonomy'},
+			'slug' => $term->{'slug'},
 			'chapters' => $chapters
 		);
 
