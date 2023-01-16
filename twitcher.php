@@ -15,7 +15,7 @@ define( 'TWCHR_HOME_URL', site_url() );
 define( 'TWCHR_ADMIN_URL', site_url() . '/wp-admin/' );
 define( 'TWCHR_PATH', __FILE__ );
 define( 'TWCHR_URL', plugin_dir_url( __FILE__ ) );
-define( 'TWCHR_ASSETS_VERSION', 'beta.5.13' );
+define( 'TWCHR_ASSETS_VERSION', 'beta.5.14' );
 
 define( 'TWCHR_URL_ASSETS', plugin_dir_url( __FILE__ ) . 'includes/assets/' );
 define( 'TWCHR_URL_FONTS', plugin_dir_url( __FILE__ ) . 'includes/assets/fonts' );

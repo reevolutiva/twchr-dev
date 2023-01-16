@@ -277,42 +277,32 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
     
 
     const inputTxtCategory = document.querySelector("#twchr_toApi_category_ajax");
-    const span = crearElemento("SPAN","btn");
-    span.classList.add("twchr-category-button-select");
-    span.classList.add("twchr-btn-general");
-    const twchr_modal = crearElemento("MODAL","twchr_modal");
-    const padreInput = inputTxtCategory.parentElement;
-    span.textContent = 'select';
-    padreInput.classList.add("twchr_toApi_category_ajax--container");
-    padreInput.appendChild(span);
-    padreInput.appendChild(twchr_modal);
-
-    span.addEventListener('click',()=>{
-        const radios = document.querySelectorAll(".twchr_toApi_category_ajax_radio");
-        if(radios.length >= 1){
-            console.log(radios);
-            radios.forEach(radio =>{
-                if(radio.checked === true){
-                    const optionName = radio.parentElement.children[0].textContent;
-                    document.querySelector("#twchr_toApi_category_value").value = radio.value;
-                    document.querySelector("#twchr_toApi_category_name").value = optionName;
-                    inputTxtCategory.value = optionName;
-                    
-                }
-            });
-        }
-
-        
-
-
-        twchr_modal.classList.remove('active');
-    });
+    let radios;   
     inputTxtCategory.oninput = ()=>{
         const query = inputTxtCategory.value;
         const appToken = tchr_vars_admin.twchr_app_token;
         const twch_data_prime = tchr_vars_admin.twchr_keys;
         twchr_modal.classList.add('active');
-        getCategorysTwitch(appToken, twch_data_prime['client-id'], query);
+        getCategorysTwitch(appToken, twch_data_prime['client-id'], query, ()=>{
+            radios = document.querySelectorAll(".twchr_toApi_category_ajax_radio");
+            if(radios.length >= 1){
+               radios.forEach(radio =>{
+                    const section = radio.parentElement;
+                    section.addEventListener('click',()=>{
+                        console.log(radio);
+                        if(radio.checked === true){
+                            const optionName = radio.parentElement.children[0].textContent;
+                            twchr_modal.classList.remove('active');
+                            twchr_modal.innerHTML ="";
+                            document.querySelector("#twchr_toApi_category_value").value = radio.value;
+                            document.querySelector("#twchr_toApi_category_name").value = optionName;
+                            inputTxtCategory.value = optionName;
+                        }
+                    });
+                    
+                });
+            }
+        });
     }  
      
     const twchr_toApi_dateTime = document.querySelector("#twchr_toApi_dateTime");
