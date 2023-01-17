@@ -82,14 +82,26 @@
 <?php
 
 if ( isset( $_GET['twchr_twitch_embed__host'] ) && $_GET['twchr_twitch_embed__video'] ) {
+
+	
 	$host = sanitize_text_field( $_GET['twchr_twitch_embed__host'] );
 	$video = sanitize_text_field( $_GET['twchr_twitch_embed__video'] );
 	$post_id = get_the_id();
 	$shortcode = '[twchr_tw_video host="' . $host . '" video="' . $video . '" ancho="800" alto="400"]';
+
+	// Antes de actualizar video obtener el content del streaming.
+
+	$post = get_post($post_id);
+	$post_content = $post->{'post_content'};
+
+	// Concateno el shortcode con el contenido del streaming.
+	$content = $post_content.$shortcode;
+
+	// Actualizo el streaming.
 	wp_update_post(
 		array(
 			'ID' => $post_id,
-			'post_content' => $shortcode,
+			'post_content' => $content,
 			'meta_input'   => array(
 				'twchr-from-api_create_at' => sanitize_text_field( $_GET['created_at'] ),
 				'twchr-from-api_description' => sanitize_text_field( $_GET['description'] ),
