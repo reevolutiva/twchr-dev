@@ -351,62 +351,65 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
   
     GSCJS.queryOnly(".previw_card .twchr_card_body--status .item h3").textContent = postBox[14].value === '' ? 'undefined' : postBox[14].value;
    
-    twchrFetchGet(
-        'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
-        (element)=>{
-            
-            if(element.data){
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('on');
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Online';
-            }else{
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('failed');
-                GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Offline';    
-            }
-
-            const stream_isset = document.querySelectorAll('.previw_card .previw_card__status ul li span.value');         
-
-            const stream_isset_array = [];
-            for (let i = 0; i < stream_isset.length; i++) {
-                const element = stream_isset[i];
-                if (element.textContent === 'undefined') {
-                    stream_isset_array.push(true);
-                } else {
-                    stream_isset_array.push(false);
+    if(postBox[3].value != ""){
+        twchrFetchGet(
+            'https://api.twitch.tv/helix/videos?id='+postBox[3].value,
+            (element)=>{
+                if(element.data){
+                    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('on');
+                    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Online';
+                }else{
+                    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").classList.add('failed');
+                    GSCJS.queryOnly(".previw_card .twchr_card_body--status .item.status h3").textContent = 'Offline';    
                 }
-            }
-
-            // Sí todos los campos de previw_card son undefined es porque no se ha asignado
-            if (stream_isset_array.every(item => item === true)) {
-                document.querySelector('.previw_card').parentElement.style.display = 'none';
-                document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
-                twchr_card_header_menu[0].addEventListener('click', ()=>{
-                    twchr_card_state = 'schedule';
-                    twchr_card_header_menu[1].classList.add("disabled");
-                    twchr_card_header_menu[0].classList.remove("disabled");
-                    twchr_slide_card_row.style.transform = 'translateX(0%)';
-                });
-
-                if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
-                if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
-
-                
-                // Si no todos los campos son undefined es porque fue asignado
-            }else{
-                twchr_card_header_menu[0].classList.remove("active");
-                twchr_card_header_menu[0].classList.add("diactive");
-                twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
-                document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
-                twchr_card_header_menu[0].classList.add("disabled");
-                twchr_card_header_menu[1].classList.remove("disabled");
-  
-                if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
-                if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
-            }
-        },
-        'json',{headers: {
-            "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
-            "client-id": tchr_vars_admin.twchr_keys['client-id']
-    }});
+    
+                const stream_isset = document.querySelectorAll('.previw_card .previw_card__status ul li span.value');         
+    
+                const stream_isset_array = [];
+                for (let i = 0; i < stream_isset.length; i++) {
+                    const element = stream_isset[i];
+                    if (element.textContent === 'undefined') {
+                        stream_isset_array.push(true);
+                    } else {
+                        stream_isset_array.push(false);
+                    }
+                }
+    
+                // Sí todos los campos de previw_card son undefined es porque no se ha asignado
+                if (stream_isset_array.every(item => item === true)) {
+                    document.querySelector('.previw_card').parentElement.style.display = 'none';
+                    document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
+                    twchr_card_header_menu[0].addEventListener('click', ()=>{
+                        twchr_card_state = 'schedule';
+                        twchr_card_header_menu[1].classList.add("disabled");
+                        twchr_card_header_menu[0].classList.remove("disabled");
+                        twchr_slide_card_row.style.transform = 'translateX(0%)';
+                    });
+    
+                    if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
+                    if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
+    
+                    
+                    // Si no todos los campos son undefined es porque fue asignado
+                }else{
+                    twchr_card_header_menu[0].classList.remove("active");
+                    twchr_card_header_menu[0].classList.add("diactive");
+                    twchr_slide_card_row.style.transform = 'translateX(calc(-100% - .5cm))';
+                    document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
+                    twchr_card_header_menu[0].classList.add("disabled");
+                    twchr_card_header_menu[1].classList.remove("disabled");
+      
+                    if([...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.remove("hide-if-js"); 
+                    if([...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.remove("hide-if-js");
+                }
+            },
+            'json',{headers: {
+                "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
+                "client-id": tchr_vars_admin.twchr_keys['client-id']
+        }});
+    }
+    
+    
 
     if(twchr_is_recurring[0].checked == true ||  (twchr_is_recurring[0].checked == false && twchr_is_recurring[1].checked == false)){
 
