@@ -56,7 +56,7 @@ if ( isset( $_GET['twchr_set_clear_tw'] ) ) {
 			<input type="radio" name="twchr_set_clear_all" value="0" <?php echo $delete_all !== false && $delete_all == 0 ? 'checked' : ''; ?>>
 		</label>
 		<hr/>
-		<p><?php twchr_esc_i18n( "Remove Twitch's schedules on uninstall", "html" ); ?></p>
+		<p><?php twchr_esc_i18n( "Remove Twitch's schedules on delete Wordpress's serie", "html" ); ?></p>
 		<label>
 			on
 			<input type="radio" name="twchr_set_clear_tw" value="1" <?php echo $delete_from_tw !== false && $delete_from_tw == 1 ? 'checked' : ''; ?>>
