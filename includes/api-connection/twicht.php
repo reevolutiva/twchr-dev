@@ -183,7 +183,7 @@ function twtchr_twitch_schedule_segment_get( $schedule_id = null ) {
 
 	$res = wp_remote_get( $url, $args );
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
-	$response_response = $res['response'];
+
 
 
 	if ( isset( $response_body->{'data'}->{'segments'} ) ) {

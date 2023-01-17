@@ -77,6 +77,7 @@ require_once 'includes/twchr-get-videos.php';
 // Taxonomias.
 require_once 'includes/taxonomys/twchr-tax-serie.php';
 require_once 'includes/taxonomys/cat-twcht.php';
+require_once 'includes/taxonomys/twchr_status.php';
 
 // Enqueue.
 require_once 'includes/assets/plugin-enqueue.php';

@@ -146,8 +146,10 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 
 		// Si exiten segmentos.
 		if($schedule_segments_array != 'segments were not found'){
-
 			$schedule_segments = array();
+				/*
+					* Itero la streamins desde twitch
+				*/
 				foreach ( $schedule_segments_array as $segment ) {
 					if ( $segment->{'title'} === $tag_name ) {
 						array_push( $schedule_segments, $segment );

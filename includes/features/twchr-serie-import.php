@@ -48,7 +48,9 @@ function twchr_tax_serie_update($schedules_twitch){
                     
                     // Si la propiedad is_recurrin del schedule es true(boolean) o "true"(string).
                     if($schedule->{'is_recurring'} == true || $schedule->{'is_recurring'} == "true"):
-                        // Si existe actualiza la serie.
+
+                        // Si el titulo de wordpress es el mismo titulo que el de twitch.
+                        // El titulo existe existe actualiza la serie.
                         if ( $tw_title == $wp_title ) {
                                 
                                 $dateTime = $schedule->start_time;
@@ -72,7 +74,7 @@ function twchr_tax_serie_update($schedules_twitch){
                                 $schedule_segments_array = twtchr_twitch_schedule_segment_get();
 
                                 // Si exiten segmentos.
-                                if($schedule_segments_array != 'segments were not found' && isset($schedule_segments_array->{'error'})){
+                                if($schedule_segments_array != 'segments were not found' && !isset($schedule_segments_array->{'error'})){
                                     
                                     $schedule_segments = array();
                                         foreach ( $schedule_segments_array as $segment ) {
@@ -108,9 +110,9 @@ function twchr_tax_serie_update($schedules_twitch){
                                 // Guardo Custom field de twitch category.
                                 if($schedule->category !== null){
                                     $select_value = $schedule->category->id;
-                                    update_term_meta( $wp_id, 'twchr_toApi_category_value', $select_value );
+                                    update_term_meta( $new_term_id, 'twchr_toApi_category_value', $select_value );
                                     $select_name = $schedule->category->name;
-                                    update_term_meta( $wp_id, 'twchr_toApi_category_name', $select_name );
+                                    update_term_meta( $new_term_id, 'twchr_toApi_category_name', $select_name );
                                 }
                                 // end - Guardo Custom field de twitch category.
 
@@ -128,27 +130,14 @@ function twchr_tax_serie_update($schedules_twitch){
 
                                     $schedule_segments = array();
                                         foreach ( $schedule_segments_array as $segment ) {
-                                            if ( $segment->{'title'} === $wp_title ) {
+                                            if ( $segment->{'title'} == $title ) {
                                                 array_push( $schedule_segments, $segment );
                                             }
                                         }
 
-                                        add_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
+                                        $var = add_term_meta( $new_term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 
                                 }
-
-                                /*$schedule_segments = array();
-                                foreach ( $schedules_twitch as $segment ) {
-                                    if ( $segment->{'title'} === $schedule->{'title'} ) {
-                                            array_push( $schedule_segments, $segment );
-                                    }
-                                }
-
-                                if(COUNT($schedule_segments) > 0){
-                                    add_term_meta( $wp_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
-                                }
-
-                                */
 
                                 // Convertir las fechas a timestamp
                                 $start_time = $schedule->start_time;
@@ -169,28 +158,13 @@ function twchr_tax_serie_update($schedules_twitch){
             }
             
         }else{
-            foreach ( $schedules_twitch as $schedule ) {
-
+            
+            foreach ( $schedules_twitch as $schedule_vanilla ) {
+                $schedule = twchr_array_to_object($schedule_vanilla);
 				$tw_title = $schedule->{'title'};
 				// Si el schedule segment es recurrente.
 				if($schedule->{'is_recurring'} == true || $schedule->{'is_recurring'} == "true"):
-					// Si el nombre del schedule segment existe como nombre de una taxonomia serie.
-					if ( $tw_title == $wp_title ) {
-                        $schedule_segments_array = twtchr_twitch_schedule_segment_get();
-
-                        // Si exiten segmentos.
-                        if ($schedule_segments_array != 'segments were not found') {
-
-                            $schedule_segments = array();
-                            foreach ($schedule_segments_array as $segment) {
-                                if ($segment->{'title'} === $wp_title) {
-                                    array_push($schedule_segments, $segment);
-                                }
-                            }
-
-                            update_term_meta($wp_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
-                        }
-					} else {
+					
 						$new_term = wp_insert_term( $tw_title, 'serie' );
 
 						if ( isset( $new_term->errors['term_exists'] ) ) {
@@ -213,29 +187,22 @@ function twchr_tax_serie_update($schedules_twitch){
 						add_term_meta( $new_term_id, 'twchr_fromApi_allData', $allData );
 
                         $schedule_segments_array = twtchr_twitch_schedule_segment_get();
-
+                        /*
                         // Si exiten segmentos.
                         if ($schedule_segments_array != 'segments were not found') {
 
                             $schedule_segments = array();
                             foreach ($schedule_segments_array as $segment) {
-                                if ($segment->{'title'} === $wp_title) {
+                                if ($segment->{'title'} === $tw_title) {
                                     array_push($schedule_segments, $segment);
                                 }
                             }
 
-                            add_term_meta($wp_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
+                            add_term_meta($new_term_id, 'twchr_schdules_chapters', json_encode($schedule_segments));
                         }
-                        
-                        /*$schedule_segments = array();
-						foreach ( $schedules_twitch as $segment ) {
-							if ( $segment->{'title'} === $schedule->{'title'} ) {
-								array_push( $schedule_segments, $segment );
-							}
-						}
-
-						add_term_meta( $new_term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
                         */
+                        
+                        
 
                         
 						// Convertir las fechas a timestamp
@@ -243,11 +210,12 @@ function twchr_tax_serie_update($schedules_twitch){
 						$end_time = $schedule->end_time;
 						$minutos = twchr_twitch_video_duration_calculator( $start_time, $end_time );
 						add_term_meta( $new_term_id, 'twchr_toApi_duration', $minutos );
-					}
+					
 				endif;
 			}
+            
         }
-
+        
 		$response = ['status' => 200, 'terms' => twchr_endpoint_tax_register_callback_serie()];
 
 	} catch ( Exception $e ) {
