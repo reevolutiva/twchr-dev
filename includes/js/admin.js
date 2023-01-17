@@ -459,7 +459,7 @@ if(
    const client_id = tchr_vars_admin.twchr_keys['client-id'];
    const appToken = tchr_vars_admin.twchr_app_token;
    
-   tchr_get_clips(appToken,client_id,user_id);
+   tchr_get_clips(appToken,client_id,user_id); //TODO:
 
    btn_get_video.addEventListener('click',e=>{
     //e.preventDefault();

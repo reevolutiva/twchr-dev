@@ -1,7 +1,7 @@
 <?php
 // twtchr_twitch_schedule.
 // Actualiza los schedules segment.
-function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream_id, $twchr_category, $twchr_duration ) {
+function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream_id, $twchr_category, $twchr_duration, $start_time ) {
 	// Credentials.
 	$twch_data_prime = get_option( 'twchr_keys' ) == false ? false : json_decode( get_option( 'twchr_keys' ) );
 	$client_id = $twch_data_prime->{'client-id'};
@@ -10,8 +10,9 @@ function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream
 	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
 	$body = array(
+		'start_time' => $start_time,
 		'duration' => $twchr_duration,
-		'category' => $twchr_category,
+		'category_id' => $twchr_category,
 		'title' => $twchr_titulo,
 	);
 
@@ -25,15 +26,13 @@ function twtchr_twitch_schedule_segment_update( $post_id, $twchr_titulo, $stream
 		'method' => 'PATCH'
 	);
 
-	var_dump($args);
 
 	$data_broadcaster_raw = get_option( 'twchr_data_broadcaster', false ) == false ? false : json_decode( get_option( 'twchr_data_broadcaster' ) );
 	$broadcaster_id = $data_broadcaster_raw->{'data'}[0]->{'id'};
 
 	$url = 'https://api.twitch.tv/helix/schedule/segment/?broadcaster_id=' . $broadcaster_id.'&id='.$stream_id;
 
-
-	$res = wp_remote_post( $url, $args );
+	$res = wp_remote_request( $url, $args );
 	$response_body = json_decode( wp_remote_retrieve_body( $res ) );
 	$response_response = $res['response'];
 

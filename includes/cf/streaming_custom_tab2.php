@@ -12,7 +12,17 @@
 
 	?>
 			<style>
-				a.twchr_button_get_videos {
+			.twchr_modal_video_ajax span.video-saved {
+				display: block;
+				width: 25px;
+				height: 100%;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(<?php echo TWCHR_URL_ASSETS . 'twchr_check.png'; ?>);
+				margin: 0;
+			}
+			a.twchr_button_get_videos {
 					text-decoration: none;
 					padding: 5px 10px;
 					display: block;

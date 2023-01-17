@@ -49,10 +49,10 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 	$select_name = sanitize_text_field( $_POST['twchr_toApi_category_name'] );
 	$term_name = sanitize_text_field($_POST['name']);
 	$timezone = (int) $_POST['twchr_toApi_timeZone'];
-	$stream_id = isset($_POST['twchr_toApi_schedule_segment_id']) && !empty($_POST['twchr_toApi_schedule_segment_id']) ? sanitize_text_field($_POST['twchr_toApi_schedule_segment_id']) : false;
+	$stream_id = isset($_POST['twchr_toApi_schedule_segment_id']) && !empty($_POST['twchr_toApi_schedule_segment_id']) ? sanitize_text_field($_POST['twchr_toApi_schedule_segment_id']) : get_term_meta($term_id,'twchr_toApi_schedule_segment_id',true);
 
 	// Actualizamos el campo meta en la base de datos.
-	update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time, $date_time_old );
+	
 	update_term_meta( $term_id, 'twchr_toApi_duration', $duration, $duration_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_value', $select_value, $select_value_old );
 	update_term_meta( $term_id, 'twchr_toApi_category_name', $select_name, $select_name_old );
@@ -99,10 +99,14 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 		$current_schedule = '';
 		if($stream_id != false){
 			$current_schedule = twtchr_twitch_schedule_segment_get($stream_id);
+			update_term_meta($term_id,'twchr_fromApi_allData',json_encode($current_schedule));
 			$response = '';
 			if(isset($current_schedule->{'message'}) && $current_schedule->{'message'} == 'Invalid OAuth token'){
 				twchr_twitch_autentication_error_handdler( $current_schedule->{'error'}, $current_schedule->{'message'} );
-			}	
+			}
+			if($current_schedule == 'segments were not found'){
+				$schedule_segment_id = '';
+			}
 		}
 		
 		// no existe
@@ -119,7 +123,13 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 			if(COUNT($current_schedule) == 1){
 				$twchr_category = $select_value;
 				$twchr_duration = $duration;
-				$response = twtchr_twitch_schedule_segment_update('',$term_name, $stream_id,$twchr_category, $twchr_duration );
+				// CAmbio term name
+				$response = twtchr_twitch_schedule_segment_update('',$term_name, $stream_id,$twchr_category, $twchr_duration,$dateTime_rfc );
+				update_term_meta($term_id,'twchr_fromApi_allData',json_encode($response));
+				if(!isset($response['error'])){
+					update_term_meta( $term_id, 'twchr_toApi_dateTime', $date_time, $date_time_old );
+					$schedule_segment_id = $response['allData']->{'segments'}[0]->{'id'};
+				}
 			}else{
 				foreach($current_schedule as $schedule){
 					$title = $schedule->{'title'};
@@ -127,7 +137,8 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 						$twchr_category = $schedule->{'category'}->{'id'};
 						$twchr_duration = $duration;
 						
-						$res = twtchr_twitch_schedule_segment_update('',$title, $stream_id,$twchr_category, $twchr_duration );
+						$res = twtchr_twitch_schedule_segment_update('',$title, $stream_id,$twchr_category, $twchr_duration, $dateTime_rfc);
+						update_term_meta($term_id,'twchr_fromApi_allData',json_encode($response));
 						break;
 					}
 				}
@@ -159,6 +170,9 @@ function twchr_tax_serie_save( $term_id, $tt_id ) {
 				update_term_meta( $term_id, 'twchr_schdules_chapters', json_encode( $schedule_segments ) );
 
 		}
+
+
+
 		
 		update_term_meta( $term_id, 'twchr_toApi_schedule_segment_id', $schedule_segment_id );
 

@@ -29,7 +29,7 @@ async function twchrFetchGet(url, callback, mode, requestOptions = false) {
   callback(response);
 }
 
-function twchr_verification_videos(WpData,radio=fasle){
+function twchr_verification_videos(WpData,radio=false){
   let chekeed = GSCJS.queryAll("#twchr-modal-selection__content input[type=checkbox]"); // Guarda una lista de todos los checkbox
   if(radio != false){
     chekeed = GSCJS.queryAll(".twchr_modal_video_ajax input[type=radio]");
@@ -42,10 +42,13 @@ function twchr_verification_videos(WpData,radio=fasle){
       
       
           if(WpData.length > 1 && index < WpData.length ){
-
+              console.log(WpData.find(wp => wp.twchr_id == check.value) != undefined);
               if(WpData.find(wp => wp.twchr_id == check.value) != undefined){
+                // TODO: marcar cheked
+                  //console.log("paso el if");
                   check.parentElement.querySelector("label").children[2].classList.add("video-saved");
-              }
+              
+                }
           }
       
   });
@@ -187,6 +190,10 @@ const tchr_get_clips = async (
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
 
     //TODO: Agregar verificacion de tiket verde para modal de asignacion twitchembed.
+    twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', (e)=>{
+        console.log(e);
+        twchr_verification_videos(e,true);
+     },'json');
 
     // Guardo boton asign
     const asign_btn = GSCJS.queryOnly(
