@@ -323,8 +323,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
 // POST.PHP Y POST-NEW.PHP PAGE.
 
-if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.includes('post-new.php')) ||
-(getParameterByName('action') == 'edit' && location.pathname.includes('post.php')) ){
+if(getParameterByName('action') == 'edit' && location.pathname.includes('post.php')){
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
     const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
     const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
@@ -407,6 +406,8 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
                 "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
                 "client-id": tchr_vars_admin.twchr_keys['client-id']
         }});
+    }else{
+        GSCJS.queryOnly(".previw_card").parentElement.style.display = "none";
     }
     
     
@@ -452,10 +453,7 @@ if((getParameterByName('post_type') == 'twchr_streams' && location.pathname.incl
     
 }
 
-if(
-    (location.pathname.includes('post.php') && getParameterByName('action') == 'edit') ||
-    (location.pathname.includes('post-new.php') && getParameterByName('post_type') == 'twchr_streams')
-){
+if(location.pathname.includes('post.php') && getParameterByName('action') == 'edit'){
    const btn_get_video = document.querySelector(".twchr_button_get_videos");
    const modal_get_video = document.querySelector(".twchr_modal_get_videos");
    const user_id = tchr_vars_admin.twitcher_data_broadcaster.id;
