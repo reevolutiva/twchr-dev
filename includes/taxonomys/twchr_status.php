@@ -34,7 +34,25 @@ function register_streaming_status_taxonomy() {
         'rewrite' => array('slug' => 'streaming-states'),
         );
         
-    register_taxonomy( 'streaming_states', 'twchr_streams', $args );
+    register_taxonomy( 'twchr_streaming_states', 'twchr_streams', $args );
+
+    // Creo los 3 estados.
+
+    // Si no existe lo creo.
+    if(get_term('Future','twchr_streaming_states') == null){
+        wp_insert_term('Future','twchr_streaming_states');
+    }
+
+    // Si no existe lo creo.
+    if(get_term('Live','twchr_streaming_states') == null){
+        wp_insert_term('Live','twchr_streaming_states');
+    }
+
+    // Si no existe lo creo.
+    if(get_term('Past','twchr_streaming_states') == null){
+        wp_insert_term('Past','twchr_streaming_states');
+    }
+    
 }
 
 add_action( 'init', 'register_streaming_status_taxonomy' );
