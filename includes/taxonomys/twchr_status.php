@@ -29,9 +29,10 @@ function register_streaming_status_taxonomy() {
         'show_tagcloud' => true,
         'show_in_quick_edit' => true,
         'show_admin_column' => true,
-        'hierarchical' => true,
+        'hierarchical' => false,
         'query_var' => true,
-        'rewrite' => array('slug' => 'streaming-states'),
+        'rewrite' => array('slug' => 'twchr-streaming-states'),
+        'default_term' => 'Future'
         );
         
     register_taxonomy( 'twchr_streaming_states', 'twchr_streams', $args );
