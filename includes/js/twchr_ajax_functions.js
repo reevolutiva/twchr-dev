@@ -36,9 +36,9 @@ function twchr_verification_videos(WpData,radio=false){
   }
   // Itero la lista.
   chekeed.forEach((check, index) => { 
-      console.log(check);
-      console.log(check.value);
-      console.log(WpData);
+      //console.log(check);
+      //console.log(check.value);
+      //console.log(WpData);
       
       
           if(WpData.length > 1 && index < WpData.length ){
@@ -50,8 +50,33 @@ function twchr_verification_videos(WpData,radio=false){
               
                 }
           }
+
+          
       
   });
+
+  // Si es un input type radio.
+  if(radio != false){
+    // Obtengo el video id asignado.
+    const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
+    // Hay un video asignado ?.
+    if(postBox[3].value != ""){
+      // Pregunto a Twitch toda la data del video asignado
+      twchrFetchGet('https://api.twitch.tv/helix/videos?id='+postBox[3].value,(e)=>{
+          //
+          const id = e.data[0].id;
+          //console.log(e);
+          //console.log(id);
+          //console.log(chekeed);
+          // Retorna el input que tenga que corresponde al video asignado y asignale check true.
+          chekeed.find(check => check.value == id).checked = true;
+      },'json',{headers: {
+        "Authorization": `Bearer ${tchr_vars_admin.twchr_app_token}`,
+        "client-id": tchr_vars_admin.twchr_keys['client-id']
+        }
+      });
+    }
+  }
 }
 
 /**
