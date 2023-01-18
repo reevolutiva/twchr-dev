@@ -325,8 +325,6 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
 
 if(getParameterByName('action') == 'edit' && location.pathname.includes('post.php')){
     const element = GSCJS.queryOnly("#twittcher-stream .inside input");
-    const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
-    const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
     if(element.value.length < 1){
         //twittcher_stream.style.display = 'none';
     }
@@ -481,6 +479,30 @@ if(location.pathname.includes('post.php') && getParameterByName('action') == 'ed
         }
    });
     
+}
+
+if((location.pathname.includes('post-new.php') && getParameterByName('action') == 'edit') || location.pathname.includes('post.php') && getParameterByName('action') == 'edit'){
+    const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
+    const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
+
+    const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
+    const isAssigned = postBox[3].value != "" ? true : false;
+
+    if(isAssigned){
+        if(twchr_meta_box_serie.classList.contains("hide-if-js")){
+            twchr_meta_box_serie.classList.remove("hide-if-js");
+        }
+        if(twchr_meta_box_cat_tw.classList.contains("hide-if-js")){
+            twchr_meta_box_cat_tw.classList.remove("hide-if-js");
+        }
+    }else{
+        if(!twchr_meta_box_serie.classList.contains("hide-if-js")){
+            twchr_meta_box_serie.classList.add("hide-if-js");
+        }
+        if(!twchr_meta_box_cat_tw.classList.contains("hide-if-js")){
+            twchr_meta_box_cat_tw.classList.add("hide-if-js");
+        }
+    }
 }
 
 // END POST.PHP Y POST-NEW.PHP PAGE.
