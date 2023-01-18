@@ -479,7 +479,7 @@ if(location.pathname.includes('post.php') && getParameterByName('action') == 'ed
     
 }
 
-if((location.pathname.includes('post-new.php') && getParameterByName('action') == 'edit') || location.pathname.includes('post.php') && getParameterByName('action') == 'edit'){
+if(location.pathname.includes('post-new.php') || location.pathname.includes('post.php') && getParameterByName('action') == 'edit'){
     const twchr_meta_box_serie = document.querySelector("#tagsdiv-serie");
     const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
 
