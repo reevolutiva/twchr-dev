@@ -34,7 +34,7 @@ function twchr_delete_schedule_by_cpt( $post_id ) {
 
 }
 
-//add_action( 'wp_trash_post', 'twchr_delete_schedule_by_cpt' );
+add_action( 'wp_trash_post', 'twchr_delete_schedule_by_cpt' );
 
 
 /**
@@ -70,42 +70,3 @@ function twchr_delete_schedule_by_term( $term_id ) {
 add_action( 'pre_delete_term', 'twchr_delete_schedule_by_term', 10 );
 
 
-function confirm_streaming_deletion($post_id) {
-    $post = get_post($post_id);
-    if ($post->post_type === 'streaming') {
-        // Mostrar cuadro de diálogo de confirmación
-        echo '
-        <script>
-            var confirmDeletion = confirm("¿Estás seguro de que deseas eliminar este post de tipo \"Streaming\"?");
-            if (confirmDeletion) {
-                update_option_twchr_set_clear_tw();
-                // continue with deletion
-                //...
-            } else {
-                // cancel deletion
-                //...
-            }
-            function update_option_twchr_set_clear_tw(){
-                var data = {
-                    action: "update_twchr_set_clear_tw",
-                    nonce: ' . wp_create_nonce( 'update_twchr_set_clear_tw' ) . '
-                };
-                jQuery.post(ajaxurl, data, function(response) {
-                    // handle response here
-                });
-            }
-        </script>
-        ';
-		die();
-        exit;
-    }
-}
-add_action('wp_trash_post', 'confirm_streaming_deletion');
-
-// function to update the twchr_set_clear_tw option
-add_action( 'wp_ajax_update_twchr_set_clear_tw', 'update_twchr_set_clear_tw_callback' );
-function update_twchr_set_clear_tw_callback() {
-    check_ajax_referer( 'update_twchr_set_clear_tw', 'nonce' );
-    update_option( 'twchr_set_clear_tw', true);
-    wp_die();
-}
