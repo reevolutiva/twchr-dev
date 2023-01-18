@@ -264,7 +264,7 @@ const tchr_get_clips = async (
           data.id +
           stream_data_from_twitch;
       }
-    });
+    },{passive: true});
   } else {
     // Sí se definio un callback ejecuta el callback
     callback_ajax(arrayList); // Pasa al Callback el arrayList con los videos

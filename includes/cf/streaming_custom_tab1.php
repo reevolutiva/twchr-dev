@@ -352,7 +352,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 
 									document.querySelector("#twchr_schedule_card_input--serie__id").value = term_id;
 									
-							});
+							},{ passive: true});
 
 							
 							
@@ -364,7 +364,7 @@ for (let i = 0; i < twchr_is_recurring.length; i++) {
 						},
 						'json');
 							}
-						});
+						},{ passive: true});
 		}
 
 

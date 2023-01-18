@@ -174,7 +174,7 @@ function twchr_schedule_chapter_asign() {
               });
             });
     
-          });
+          },{ passive: true});
     
           twchr_ajax_input_serie.addEventListener('click', e =>{
             // Si el value del select twchr_ajax_input_serie es undefined. 
@@ -206,7 +206,7 @@ function twchr_schedule_chapter_asign() {
           
               });
             }
-          });
+          },{ passive: true});
         }
       });
     }
@@ -259,12 +259,12 @@ function twchr_card_embend_change_by_state(state){
 twchr_card_embed_menu[0].addEventListener('click',(e)=>{
     twchr_card_embed_menu_state = 'tw';
     twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
-});
+},{ passive: true});
 
 twchr_card_embed_menu[1].addEventListener('click',(e)=>{
     twchr_card_embed_menu_state = 'yt';
     twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
-});
+},{ passive: true});
 
 twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
 document.querySelector("body").classList.add("twchr-single-streaming-active");
@@ -278,7 +278,7 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";
     document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
     
-});
+},{ passive: true});
 
 /**
  * Enviar infromacion del front al back usando
@@ -447,7 +447,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
       }
     
     
-});
+},{passive: true});
 
 function twchr_date_to_rfc366(dateTimeRaw) {
   const dateTimeStg = Date.parse(dateTimeRaw);
