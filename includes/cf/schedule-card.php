@@ -34,7 +34,32 @@ function twchr_cf_schedule__card() {
 	$date_time = isset( $values['twchr_schedule_card_input--dateTime'] ) ? $values['twchr_schedule_card_input--dateTime'][0] : '';
 	$twchr_date_time_slot = isset( $values['twchr_dateTime_slot'] ) ? $values['twchr_dateTime_slot'][0] : '';
 	$duration = isset( $values['twchr_schedule_card_input--duration'] ) ? $values['twchr_schedule_card_input--duration'][0] : '';
+	
+	if($twchr_date_time_slot != 'false'){
+		$objetc = json_decode($twchr_date_time_slot);
+		$start_time = new DateTime($objetc->{'start_time'});
+		$end_time = new DateTime($objetc->{'end_time'});
+		$date_now = new DateTime(date("c"));
 
+		/*
+		* Si start time es igual que la fecha actual
+		* cambia este cpt a twchr_streaming_states Live.
+		*/ 
+		if($start_time->getTimestamp() == $date_now->getTimestamp()){
+			wp_set_post_terms( $post_id, 'Live', 'twchr_streaming_states' );
+		}
+
+		/*
+		* Si end time es mayo que la fecha actual
+		* cambia este cpt a twchr_streaming_states Past.
+		*/ 
+		if($date_now->getTimestamp() > $end_time->getTimestamp()){
+			wp_set_post_terms( $post_id, 'Past', 'twchr_streaming_states' );
+		}
+
+	}
+	
+	
 	$is_recurring = isset( $values['twchr_schedule_card_input--is_recurrig'] ) ? $values['twchr_schedule_card_input--is_recurrig'][0] : false;
 	$serie = isset( $values['twchr_schedule_card_input--serie'] ) ? $values['twchr_schedule_card_input--serie'][0] : '';
 	$twchr_card_src_priority = isset( $values['twchr-card-src-priority'] ) ? $values['twchr-card-src-priority'][0] : '';
