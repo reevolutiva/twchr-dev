@@ -34,7 +34,7 @@ if ( isset( $_GET['twchr_insert_shorcode'] ) ) {
 
 	$id = get_youtube_video_id( $yt_url );
 
-	$shorcode = 'https://youtu.be/' . $id;
+	$shorcode = '<br/> https://youtu.be/' . $id;
 
 	update_post_meta( get_the_ID(), 'twchr_streams__yt-link-video-src', $shorcode );
 
@@ -52,7 +52,7 @@ if ( isset( $_GET['twchr_insert_shorcode'] ) ) {
 	wp_update_post(
 		array(
 			'ID' => $post_id,
-			'post_content' => $post_content . $shorcode,
+			'post_content' => $post_content .  $shorcode,
 		)
 	);
 	$url = TWCHR_ADMIN_URL . '/post.php?post=' . get_the_id() . '&action=edit';
