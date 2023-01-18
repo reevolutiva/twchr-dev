@@ -484,7 +484,7 @@ if((location.pathname.includes('post-new.php') && getParameterByName('action') =
     const twchr_meta_box_cat_tw = document.querySelector("#tagsdiv-cat_twcht");
 
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
-    const isAssigned = postBox[3].value != "" ? true : false;
+    const isAssigned = postBox[3].value == "" ? false : true;
 
     if(isAssigned){
         if(twchr_meta_box_serie.classList.contains("hide-if-js")){
