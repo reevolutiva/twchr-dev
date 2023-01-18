@@ -1,5 +1,5 @@
 <?php if ( get_post_type() === 'twchr_streams' ) : ?>
-	<div class="twchr_custom_card--contain">
+	<div class="twchr_custom_card--contain" <?php if(!str_contains($_SERVER['REQUEST_URI'],'post.php')) echo"style='min-height: auto;'";?>>
 		<?php if(str_contains($_SERVER['REQUEST_URI'],'post.php')){ ?>
 			<div class="twchr-tab-card-bar">
 				<div class="twchr-tab-card twchr-tab-card-stream">
@@ -45,10 +45,16 @@
 			echo "<h2>".__('Define a name for your streaming or video, and describe to your audience what they will see on it. On the next page, link your streaming with your platform','twitcher')."</h2>";			
 		} ?>
 		<script>
-			<?php require 'script_streaming_single.js'; ?>
+			<?php 
+			if(str_contains($_SERVER['REQUEST_URI'],'post.php')){
+				require 'script_streaming_single.js'; 
+			}
+			?>
 		</script>
 	</div>
 	<?php
-	require 'schedule_card_previw_card.php';
+	if(str_contains($_SERVER['REQUEST_URI'],'post.php')){
+		require 'schedule_card_previw_card.php';
+	}
 	endif;
 ?>
