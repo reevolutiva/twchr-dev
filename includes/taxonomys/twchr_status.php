@@ -1,7 +1,7 @@
 <?php
 
 // Register custom taxonomy for Streamings
-function register_streaming_taxonomy() {
+function register_streaming_status_taxonomy() {
     $args = array(
         'labels' => array(
             'name' => 'Streaming States',
@@ -34,8 +34,16 @@ function register_streaming_taxonomy() {
         'rewrite' => array('slug' => 'streaming-states'),
         );
         
-    register_taxonomy( 'streaming_states', 'streamings', $args );
+    register_taxonomy( 'streaming_states', 'twchr_streams', $args );
 }
 
-add_action( 'init', 'register_streaming_taxonomy' );
+add_action( 'init', 'register_streaming_status_taxonomy' );
 
+
+// ALGORITMO.
+/*
+    IF CREATE FROM TWCJER CARD -> STATUS FUTURE
+    ELSE IF SCHEDULE START TIME == NOW TIME -> STATUS LIVE
+    ELSE IF SCHEDULE END TIME < NOW TIME -> STATUS PASSED
+    ELSE IF SCHEDULE EMBED TRUE -> STATUS EMBED
+*/

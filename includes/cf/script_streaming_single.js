@@ -447,7 +447,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
       }
     
     
-});
+},{passive: true});
 
 function twchr_date_to_rfc366(dateTimeRaw) {
   const dateTimeStg = Date.parse(dateTimeRaw);
