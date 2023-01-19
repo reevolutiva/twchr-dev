@@ -194,7 +194,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
         if(e.target.getAttribute('type') == 'text'){
             e.target.setAttribute('type','dateTime-local');
         }
-    },{passive: true});
+    },);
 
     const twchr_response_template = (status,txt,msg=false) =>{
         let template = `<h3>${txt}</h3>`;
@@ -303,7 +303,7 @@ if(getParameterByName('taxonomy') ==='serie' && getParameterByName('post_type') 
                             document.querySelector("#twchr_toApi_category_name").value = optionName;
                             inputTxtCategory.value = optionName;
                         }
-                    },{passive: true});
+                    },);
                     
                 });
             }
@@ -381,7 +381,7 @@ if(getParameterByName('action') == 'edit' && location.pathname.includes('post.ph
                         twchr_card_header_menu[1].classList.add("disabled");
                         twchr_card_header_menu[0].classList.remove("disabled");
                         twchr_slide_card_row.style.transform = 'translateX(0%)';
-                    },{passive: true});
+                    },);
     
                     if(![...twchr_meta_box_serie.classList].find(item => item == 'hide-if-js')) twchr_meta_box_serie.classList.add("hide-if-js"); 
                     if(![...twchr_meta_box_cat_tw.classList].find(item => item == 'hide-if-js')) twchr_meta_box_cat_tw.classList.add("hide-if-js");
@@ -465,7 +465,7 @@ if(location.pathname.includes('post.php') && getParameterByName('action') == 'ed
         tchr_get_clips(appToken,client_id,user_id);
     }
     
-   },{passive: true});
+   },);
 
    document.querySelector("#twchr-modal-selection__btn").addEventListener('click',(e)=>{
         e.preventDefault();
@@ -475,7 +475,7 @@ if(location.pathname.includes('post.php') && getParameterByName('action') == 'ed
 			const new_link = tchr_vars_admin.site_url+'/wp-admin/'+url+"&yt_url="+document.querySelector("#twchr-yt-url-link").value;
 			location.href= new_link;
         }
-   },{passive: true});
+   },);
     
 }
 
@@ -536,7 +536,7 @@ if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 
             newURL = GSCJS.getURLorigin()+GSCJS.getURLpath()+getParameters; // Crea una nueva url con la infromacion de las variables seleccionadas
             //console.log(newURL);
             location.href=newURL; // Redireciona al navegador a la url newURL
-        },{passive: true});
+        },);
 
         const modal = GSCJS.queryOnly("#twchr-modal-selection__content"); // Guarda el modal #twchr-modal-selection__content
         let Content = '';
@@ -618,7 +618,7 @@ if(document.querySelector("body").classList.contains("twchr-single-streaming-act
                         }
                     });
                     
-                },{passive: true});
+                },);
             }
 
             
@@ -697,6 +697,6 @@ if(location.pathname.includes('plugins.php')){
         //GSCJS.queryOnly(".wp-heading-inline").appendChild(modal_disactive);
         //window.scrollTo(0,0);
         
-    },{passive: true});
+    },);
 
 }

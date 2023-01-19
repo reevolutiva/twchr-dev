@@ -127,7 +127,7 @@ function twchr_schedule_chapter_asign() {
             });
           }
 
-          twchr_ajax_input_serie.addEventListener('click', (event) => {
+          twchr_ajax_input_serie.addEventListener('change', (event) => {
 
             const term = {
               term_id: event.target.value.split('|')[0],
@@ -156,7 +156,7 @@ function twchr_schedule_chapter_asign() {
               }
             });
     
-            twchr_dateTime_slot.addEventListener('click',e =>{
+            twchr_dateTime_slot.addEventListener('change',e =>{
               const id = e.target.value.split(";")[0];
               console.log(id);
               
@@ -176,7 +176,7 @@ function twchr_schedule_chapter_asign() {
     
           },{ passive: true});
     
-          twchr_ajax_input_serie.addEventListener('click', e =>{
+          twchr_ajax_input_serie.addEventListener('change', e =>{
             // Si el value del select twchr_ajax_input_serie es undefined. 
             if(twchr_ajax_input_serie.value == 'undefined'){
               GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.style.display = "grid";
@@ -447,7 +447,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
       }
     
     
-},{passive: true});
+},);
 
 function twchr_date_to_rfc366(dateTimeRaw) {
   const dateTimeStg = Date.parse(dateTimeRaw);
