@@ -1,4 +1,4 @@
-=== Manage Twitch Account - Promote, Embed & Manage Streamings & VOD - Twitcher.pro ===
+=== Manage Twitch Account (Easy Api Integration) - Promote, Embed & Manage Streamings & VOD - Twitcher.pro ===
 
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
