@@ -171,7 +171,7 @@ if ( ! twchr_is_ssl_secure() ) :
 						</tr>
 						<tr>
 							<td><?php twchr_esc_i18n( 'Suscribers', 'html' ); ?></td>
-							<td data-twchr-final-number="<?php echo isset( $subcribers->{'total'} ) ? $subcribers->{'total'} : 0; ?>" class='twchr-results-item' ><?php echo isset( $subcribers->{'total'} ) ? esc_html( $subcribers->{'total'} ) : 'null'; ?></td>
+							<td data-twchr-final-number="<?php echo isset( $subcribers->{'total'} ) ? $subcribers->{'total'} : 0; ?>" class='twchr-results-item' ><?php echo isset( $subcribers->{'total'} ) ? esc_html( $subcribers->{'total'} ) : 0; ?></td>
 						</tr>
 						<tr>
 							<td><?php twchr_esc_i18n( 'Videos', 'html' ); ?></td>

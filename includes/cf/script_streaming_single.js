@@ -259,16 +259,25 @@ function twchr_card_embend_change_by_state(state){
 twchr_card_embed_menu[0].addEventListener('click',(e)=>{
     twchr_card_embed_menu_state = 'tw';
     twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
-},{ passive: true});
+});
 
 twchr_card_embed_menu[1].addEventListener('click',(e)=>{
     twchr_card_embed_menu_state = 'yt';
     twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
-},{ passive: true});
+});
 
 twchr_card_embend_change_by_state(twchr_card_embed_menu_state);
 document.querySelector("body").classList.add("twchr-single-streaming-active");
 let twchr_card_state = 'schedule';
+twchr_card_header_menu[0].addEventListener('click',()=>{
+  twchr_card_state = 'schedule';
+    twchr_card_header_menu[1].classList.add("disabled");
+    twchr_card_header_menu[0].classList.remove("disabled");
+    twchr_slide_card_row.style.transform = 'translateX(0)';
+    document.querySelector(".twchr_car_tab2").style.display = 'none';
+    document.querySelector("#twchr-modal-selection__btn").classList.add("disabled");
+});
+
 twchr_card_header_menu[1].addEventListener('click', ()=>{
     twchr_card_state = 'embed';
     twchr_card_header_menu[1].classList.remove("disabled");
@@ -278,7 +287,7 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
     document.querySelector(".twchr_custom_card--contain").style.height = "auto";
     document.querySelector("#twchr-modal-selection__btn").classList.remove("disabled");
     
-},{ passive: true});
+});
 
 /**
  * Enviar infromacion del front al back usando

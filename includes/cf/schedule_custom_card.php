@@ -6,7 +6,7 @@
 					<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>"" alt="twitch">
 					<h3><?php _e( 'Schedule streamings and series', 'twitcher' ); ?></h3>
 				</div>
-				<div class="twchr-tab-card twchr-tab-card-embed">
+				<div class="twchr-tab-card twchr-tab-card-embed disabled">
 					<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>" alt="twitch">
 					<img src="<?php echo TWCHR_URL_ASSETS . 'youtube_white.png'; ?>" alt="twitch">
 					<h3><?php _e( 'Embed past streaming or VOD', 'twitcher' ); ?></h3>
