@@ -4,12 +4,12 @@
 			<div class="twchr-tab-card-bar">
 				<div class="twchr-tab-card twchr-tab-card-stream">
 					<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>"" alt="twitch">
-					<h3><?php _e( 'Schedule streaming', 'twitcher' ); ?></h3>
+					<h3><?php _e( 'Schedule streamings and series', 'twitcher' ); ?></h3>
 				</div>
 				<div class="twchr-tab-card twchr-tab-card-embed">
 					<img src="<?php echo TWCHR_URL_ASSETS . 'twitcht_white.png'; ?>" alt="twitch">
 					<img src="<?php echo TWCHR_URL_ASSETS . 'youtube_white.png'; ?>" alt="twitch">
-					<h3><?php _e( 'Embed Streaming or VOD', 'twitcher' ); ?></h3>
+					<h3><?php _e( 'Embed past streaming or VOD', 'twitcher' ); ?></h3>
 				</div>
 				
 			</div>
