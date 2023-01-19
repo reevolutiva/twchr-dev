@@ -1,30 +1,49 @@
-=== Manage Twitch Account - Import Streamings & VOD and Promote your Channel - Twitcher.pro ===
+=== Manage Twitch Account - Promote, Embed & Manage Streamings & VOD - Twitcher.pro ===
+
 Contributors: reevolutiva
 Donate link: http://twitcher.pro
 Tags: Twitch, streaming, monetization, twitter, youtube, twitch.tv, channel, embed
 Requires at least: 5.0
 Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 0.4
+Stable tag: 0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-With Twitcher.pro, you can easily manage and promote your Twitch streamings, and videos from WordPress by scheduling series and importing all your content
- onto your own website.
-== Description ==
-Easily *integrate your Twitch channel* with your WordPress site using Twitcher.pro Wordpress Twitch account manager Plugin. 
-*Twitcher.pro* creates a post page for every past stream and/or video, allowing you to manage and promote your programs and series, and offer extra content for your audience,
- taking advantage of the power of Google.
-== Features ==
-* *Embed Twitch videos* onto WordPress and import them as a new Streaming Post Type
-* *Create and promote your own series*: delete and modify schedule segments directly from your WordPress Dashboard
-* *Shortcodes to embed* your Twitch streamings anywhere and series  <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
-* Import and embed past videos and streamings
-* Keep track of your *Twitch views* and *manage connections* easily
-* *Easy installation* and use: connect your WordPress site with your Twitch.tv channel and import your previous videos in less than 5 minutes
-* Compatible with Woocommerce, Learndash, and most plugins and themes
-* Twitch API Helix enabled
+Manage and integrate your Twitch.tv channel from WordPress Admin with <a href="https://twitcher.pro/" title="">Twitcher.pro</a>. Promote future streamings and embed past streamings from Twitch or Youtube.
 
+== Description ==
+Easily *integrate your Twitch channel* to WordPress with <a href="https://twitcher.pro/" title="">Twitcher.pro</a>. 
+Twitcher helps you to program and manage your streamings in an easy way in 3 simple steps:
+1. *Program your future streamings and series from WordPress*: 
+    Twitcher.pro creates a landing page for every future streaming and synchronizes with the Twitch.tv Calendar. 
+    Create series for every recurrent streaming and automatically create and archive pages for each one.
+
+2. Go *Live*: 
+    Transmit your live stream as always. <a href="https://twitcher.pro/" title="">Twitcher.pro</a> will show your 
+    live streaming on your Streaming Landing Page.
+
+3. *Import and Embed* your past streaming to your Streaming Landing Page: 
+    Embed your past streaming directly from Twitch. 
+    <a href="https://twitcher.pro/" title="">Twitcher.pro</a> will show your actual list of Twitch videos. Assign a past VOD from Twitch or Youtube.
+
+Of course, you can customize any part of your site with shortcodes. <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+
+Our main goal is to create a tool and a method for streamers that helps them grow their community and monetization, integrating the management, programming, 
+and integration of a commercial strategy to sell any WooCommerce product, course, digital event, or any product or service.
+
+Twitcher.pro is in beta. Any feedback, please comment us in <a href="https://twitcher.pro/" title="">Twitcher.pro webpage</a>.
+
+== Features ==
+
+* Embed Twitch videos onto WordPress and import them as a new Streaming Post Type
+* Create and promote your own series: delete and modify schedule segments directly from your WordPress Dashboard
+* Shortcodes to embed your Twitch streamings anywhere and series. <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Import and embed past videos and streamings
+* Keep track of your Twitch views and manage connections easily
+* Easy installation and use: connect your WordPress site with your Twitch.tv channel and import your previous videos in less than 5 minutes
+* Compatible with WooCommerce, LearnDash, and most plugins and themes
+* Twitch API Helix enabled
 
 Note: Use of this plugin requires full understanding and acceptance of Twitch Interactive, Inc.'s terms of service. This is an unofficial WordPress integration.
 
@@ -71,6 +90,14 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 7. Asign video to Post 7.png
 
 == Changelog ==
+==0.5==
+* Twitcher Card Redisign
+* Streaming States (Future, scheduled, Live, Past)
+* Live streaming automatic embed on Streaming Landin Page.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
+
 ==0.4==
 * New Post Streaming Flow: Schedule - Stream - Embed
 * **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
@@ -85,6 +112,14 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 * Bug fixes
 
 == Upgrade Notice ==
+==0.5==
+* Twitcher Card Redisign
+* Streaming States (Future, scheduled, Live, Past)
+* Live streaming automatic embed on Streaming Landin Page.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
+
 ==0.4==
 * Improved Streaming Flow: Easily program your streamings & series and embed videos into your post.
 * **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>

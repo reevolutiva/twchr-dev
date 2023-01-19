@@ -1,7 +1,21 @@
 == Changelog ==
+==0.5==
+* Twitcher Card Redisign
+* Streaming States (Future, scheduled, Live, Past)
+* Live streaming automatic embed on Streaming Landin Page.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
+
+==0.4==
+* New Post Streaming Flow: Schedule - Stream - Embed
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* New Shortcodes 
+* Code Optimizations
+* Bug Fixes
+
 
 ==0.3==
-
 * Redesigned schedule card
 * Improved series integration with Twitch Calendar
 * Improved code
@@ -28,6 +42,19 @@
 
 
 == Upgrade Notice ==
+
+* Twitcher Card Redisign
+* Streaming States (Future, scheduled, Live, Past)
+* Live streaming automatic embed on Streaming Landin Page.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
+
+==0.4==
+* Improved Streaming Flow: Easily program your streamings & series and embed videos into your post.
+* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
+* Code Optimizations
+* Bug Fixes
 
 ==0.3==
 * New schedule card for better streaming and series management
