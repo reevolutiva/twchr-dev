@@ -152,7 +152,7 @@ if ( ! twchr_is_ssl_secure() ) :
 				//show_dump($listVideo_from_api->{'data'});
 			}
 				// TODO: Llamar credeciales en la misma funcion.
-				$followers = isset(twtchr_twitch_users_get_followers()->data) ? twtchr_twitch_users_get_followers()->data : twtchr_twitch_users_get_followers();
+				$followers = twtchr_twitch_users_get_followers();
 				
 
 			?>
@@ -167,7 +167,7 @@ if ( ! twchr_is_ssl_secure() ) :
 					<tbody>
 						<tr>
 							<td><?php twchr_esc_i18n( 'Followers', 'html' ); ?></td>
-							<td data-twchr-final-number="<?php echo isset( $followers ) ? 'Followers' : ''; ?>" class='twchr-results-item' ><?php echo isset( $followers ) ? COUNT( $followers ) : ''; ?></td> 
+							<td data-twchr-final-number="<?php echo isset( $followers ) ? 'Followers' : ''; ?>" class='twchr-results-item' ><?php echo isset( $followers->{'total'} ) ? $followers->{'total'}: ''; ?></td> 
 						</tr>
 						<tr>
 							<td><?php twchr_esc_i18n( 'Suscribers', 'html' ); ?></td>

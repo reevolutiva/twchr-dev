@@ -417,7 +417,7 @@ function twtchr_twitch_users_get_followers() {
 	$client_id = $twch_data_prime == false ? false : $twch_data_prime->{'client-id'};
 	$user_id = $data_broadcaster_raw == false ? false : $data_broadcaster_raw->{'data'}[0]->{'id'};
 
-	$url = 'https://api.twitch.tv/helix/users/follows?to_id=' . $user_id;
+	$url = 'https://api.twitch.tv/helix/users/follows?to_id=' . $user_id.'&first=100';
 
 	$args = array(
 		'headers' => array(
@@ -429,6 +429,12 @@ function twtchr_twitch_users_get_followers() {
 	$get = wp_remote_get( $url, $args );
 	$response = wp_remote_retrieve_body( $get );
 	$object = json_decode( $response );
+
+	if(isset($object->{'c'})){
+
+	}
+
+	
 
 	return $object;
 
