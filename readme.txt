@@ -10,11 +10,16 @@ Stable tag: 0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Manage and integrate your Twitch.tv channel from WordPress Admin with <a href="https://twitcher.pro/" title="">Twitcher.pro</a>. Promote future streamings and embed past streamings from Twitch or Youtube.
+Stream smarter, not harder. 
+<a href="https://twitcher.pro/" title="">Twitcher.pro</a> integrates your Twitch.tv channel with your WordPress for easy manage, promotion, and monetization of your Twitch.tv channel.
 
 == Description ==
+Unleash the full potential of your Twitch.tv channel with <a href='https://twitcher.pro/' title='Twitcher.pro'>Twitcher.pro</a> - the ultimate tool for seamless integration, 
+effortless management, and maximum monetization of your Twitch.tv channel on WordPress
+
 Easily *integrate your Twitch channel* to WordPress with <a href="https://twitcher.pro/" title="">Twitcher.pro</a>. 
 Twitcher helps you to program and manage your streamings in an easy way in 3 simple steps:
+
 1. *Program your future streamings and series from WordPress*: 
     Twitcher.pro creates a landing page for every future streaming and synchronizes with the Twitch.tv Calendar. 
     Create series for every recurrent streaming and automatically create and archive pages for each one.
