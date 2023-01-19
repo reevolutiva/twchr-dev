@@ -28,6 +28,6 @@ function crearStream( $title, $id, $create_at, $description, $duration, $api_lan
 		),
 	);
 
-	wp_insert_post( $postarr );
+	return wp_insert_post( $postarr );
 }
 

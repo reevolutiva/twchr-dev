@@ -80,12 +80,15 @@ function twchr_get_videos_function() {
 
 						foreach ( $list_videos_array as $video ) {
 							if ( $video->id === $index ) {
+								$post_id = '';
 								if ( twchr_validate_cf_db_exist( 'twchr-from-api_id', $index ) != false ) {
 									$title_new = $video->title . __( ' (Duplicated)', 'twitcher' );
-									crearStream( $title_new, $video->id, $video->{'created_at'}, $video->{'description'}, $video->{'duration'}, $video->{'language'}, $video->{'muted_segments'}, $video->{'published_at'}, $video->{'stream_id'}, $video->{'thumbnail_url'}, $video->{'type'}, $video->{'url'}, $video->{'user_id'}, $video->{'user_login'}, $video->{'user_name'}, $video->{'view_count'}, $video->{'viewable'}, get_current_user_id(), $twitch_chanel );
+									$post_id = crearStream( $title_new, $video->id, $video->{'created_at'}, $video->{'description'}, $video->{'duration'}, $video->{'language'}, $video->{'muted_segments'}, $video->{'published_at'}, $video->{'stream_id'}, $video->{'thumbnail_url'}, $video->{'type'}, $video->{'url'}, $video->{'user_id'}, $video->{'user_login'}, $video->{'user_name'}, $video->{'view_count'}, $video->{'viewable'}, get_current_user_id(), $twitch_chanel );
 								} else {
-									crearStream( $video->title, $video->id, $video->{'created_at'}, $video->{'description'}, $video->{'duration'}, $video->{'language'}, $video->{'muted_segments'}, $video->{'published_at'}, $video->{'stream_id'}, $video->{'thumbnail_url'}, $video->{'type'}, $video->{'url'}, $video->{'user_id'}, $video->{'user_login'}, $video->{'user_name'}, $video->{'view_count'}, $video->{'viewable'}, get_current_user_id(), $twitch_chanel );
+									$post_id = crearStream( $video->title, $video->id, $video->{'created_at'}, $video->{'description'}, $video->{'duration'}, $video->{'language'}, $video->{'muted_segments'}, $video->{'published_at'}, $video->{'stream_id'}, $video->{'thumbnail_url'}, $video->{'type'}, $video->{'url'}, $video->{'user_id'}, $video->{'user_login'}, $video->{'user_name'}, $video->{'view_count'}, $video->{'viewable'}, get_current_user_id(), $twitch_chanel );
 								}
+
+								wp_set_post_terms( $post_id, 'Past', 'twchr_streaming_states' );
 							}
 						}
 						array_shift( $streams_id );
