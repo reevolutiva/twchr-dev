@@ -486,6 +486,45 @@ if(location.pathname.includes('post-new.php') || location.pathname.includes('pos
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
     const isAssigned = postBox[3].value == "" ? false : true;
 
+        const twchr_modal = crearElemento("MODAL","twchr_modal");
+        const twchr_ajax_input_category = document.querySelector("#new-tag-cat_twcht");
+        
+        const twchr_ajax_label_category = twchr_ajax_input_category.parentElement.parentElement;
+        twchr_ajax_label_category.classList.add("twchr_toApi_category_ajax--container");
+        twchr_ajax_label_category.appendChild(twchr_modal);
+    
+       
+        let radios;   
+    
+        twchr_ajax_input_category.oninput = ()=>{
+            const query = twchr_ajax_input_category.value;
+            const appToken = tchr_vars_admin.twchr_app_token;
+            const twch_data_prime = tchr_vars_admin.twchr_keys;
+            twchr_modal.classList.add('active');
+            
+            getCategorysTwitch(appToken, twch_data_prime['client-id'], query,()=>{
+                radios = document.querySelectorAll(".twchr_toApi_category_ajax_radio");
+                if(radios.length >= 1){
+                    radios.forEach(radio =>{
+                        const section = radio.parentElement;
+                        section.addEventListener('click',()=>{
+                            //console.log(radio);
+                            if(radio.checked === true){
+                                const optionName = radio.parentElement.children[0].textContent;
+                                twchr_ajax_input_category.value = optionName
+                                twchr_modal.classList.remove('active');
+                                twchr_modal.innerHTML ="";
+                            }
+                        });
+                        
+                    },);
+                }
+    
+                
+            },'#cat_twcht .twchr_modal ');
+            
+        }
+
     if(isAssigned){
         if(twchr_meta_box_serie.classList.contains("hide-if-js")){
             twchr_meta_box_serie.classList.remove("hide-if-js");
@@ -496,9 +535,6 @@ if(location.pathname.includes('post-new.php') || location.pathname.includes('pos
     }else{
         if(!twchr_meta_box_serie.classList.contains("hide-if-js")){
             twchr_meta_box_serie.classList.add("hide-if-js");
-        }
-        if(!twchr_meta_box_cat_tw.classList.contains("hide-if-js")){
-            twchr_meta_box_cat_tw.classList.add("hide-if-js");
         }
     }
 }

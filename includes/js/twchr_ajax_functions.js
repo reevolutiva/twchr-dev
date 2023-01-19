@@ -90,7 +90,8 @@ const getCategorysTwitch = async (
   appToken,
   client_id,
   query,
-  callback = false
+  callback = false,
+  targetNode = false
 ) => {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${appToken}`);
@@ -111,7 +112,11 @@ const getCategorysTwitch = async (
     response = await get.json();
     const responseFromApi = response.data;
 
-    const select = document.querySelector(".twchr_modal");
+    let select = document.querySelector(".twchr_modal");
+    if(targetNode != false){
+        select = document.querySelector(targetNode);
+    }
+    
 
     let innerSelect = "";
     responseFromApi.forEach((item) => {
