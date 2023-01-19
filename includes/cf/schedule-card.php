@@ -35,7 +35,7 @@ function twchr_cf_schedule__card() {
 	$twchr_date_time_slot = isset( $values['twchr_dateTime_slot'] ) ? $values['twchr_dateTime_slot'][0] : '';
 	$duration = isset( $values['twchr_schedule_card_input--duration'] ) ? $values['twchr_schedule_card_input--duration'][0] : '';
 	
-	if($twchr_date_time_slot != 'false'){
+	if($twchr_date_time_slot != 'false' && !empty($twchr_date_time_slot)){
 		$objetc = json_decode($twchr_date_time_slot);
 		$start_time = new DateTime($objetc->{'start_time'});
 		$end_time = new DateTime($objetc->{'end_time'});

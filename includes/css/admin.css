@@ -963,6 +963,7 @@ stream.twchr-modal .twchr-modal-button.close{
 }
 .twchr-card-row.is_recurring .twchr-schedule-card-status-container{
     position: relative;
+    grid-column: 2/4;
 }
 .twchr-card-row.is_recurring .twchr-schedule-card-status-container div{
     position: absolute;

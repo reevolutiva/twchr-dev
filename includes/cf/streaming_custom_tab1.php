@@ -26,6 +26,17 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
+		<div class="status">
+				<?php 
+					$terms = wp_get_post_terms(get_the_ID(), 'twchr_streaming_states');
+					if(COUNT($terms) > 0){
+						$term = $terms[0];
+						if($term->{'slug'} == 'future'){
+							echo "<h4>Programed</h4>";
+						}
+					}				
+				?>
+			</div>
 		<picture class="twchr-schedule-card-status-container">
 			<?php if ( ! empty( $twchr_twicth_twitch_cat_img ) && $twchr_twicth_twitch_cat_img != false ) : ?>
 					<div>
