@@ -1,4 +1,6 @@
-<?php if ( get_post_type() === 'twchr_streams' ) : ?>
+<?php if ( get_post_type() === 'twchr_streams' ) :
+	$twchr_streaming_states = wp_get_post_terms(get_the_ID(), 'twchr_streaming_states');	
+?>
 	<div class="twchr_custom_card--contain" <?php if(!str_contains($_SERVER['REQUEST_URI'],'post.php')) echo"style='min-height: auto;'";?>>
 		<?php if(str_contains($_SERVER['REQUEST_URI'],'post.php')){ ?>
 			<div class="twchr-tab-card-bar">
@@ -54,6 +56,25 @@
 	</div>
 	<?php
 	if(str_contains($_SERVER['REQUEST_URI'],'post.php')){
+		if(COUNT($twchr_streaming_states) > 0){
+			$term = $twchr_streaming_states[0];
+			$slug = $term->{'slug'};
+			$color = '';
+			switch ($slug) {
+				case 'future':
+					$color = 'var(--twchr-blue)';
+					break;
+				case 'live':
+					$color = 'var(--twchr-green)';
+					break;
+				
+				default:
+					$color = 'var(--twchr-purple)';
+					break;
+			}
+			echo "<h2 class='twchr_streaming_states_bage'>Status: <span style='background-color:".$color.";'>".$slug."</span></h2>";
+		
+		}
 		require 'schedule_card_previw_card.php';
 	}
 	endif;

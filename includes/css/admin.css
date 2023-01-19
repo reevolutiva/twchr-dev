@@ -1136,6 +1136,19 @@ stream.twchr-modal .twchr-modal-button.close{
     margin-left:10px;
 }
 
+.twchr_streaming_states_bage{
+    font-size: 1cm !important;
+    line-height: 1em !important;
+    margin-top: 30px !important;
+}
+
+.twchr_streaming_states_bage span{
+    color: #fff;
+    padding: 3pt 5pt;
+    width: max-content;
+    border-radius: 10px;
+}
+
 @keyframes twchr_loading {
     0%{
         transform: rotate(0);

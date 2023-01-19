@@ -28,9 +28,8 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 		</div>
 		<div class="status" style="text-align: center;">
 				<?php 
-					$terms = wp_get_post_terms(get_the_ID(), 'twchr_streaming_states');
-					if(COUNT($terms) > 0){
-						$term = $terms[0];
+					if(COUNT($twchr_streaming_states) > 0){
+						$term = $twchr_streaming_states[0];
 						if($term->{'slug'} == 'future'){
 							echo "<h4>Programed</h4>";
 						}

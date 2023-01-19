@@ -524,7 +524,10 @@ if(location.pathname.includes('post-new.php') || location.pathname.includes('pos
             },'#cat_twcht .twchr_modal ');
             
         }
-
+        
+    if(!GSCJS.queryOnly("#tagsdiv-twchr_streaming_states").classList.contains("hide-if-js")){
+        GSCJS.queryOnly("#tagsdiv-twchr_streaming_states").classList.add("hide-if-js");
+    }
     if(isAssigned){
         if(twchr_meta_box_serie.classList.contains("hide-if-js")){
             twchr_meta_box_serie.classList.remove("hide-if-js");
