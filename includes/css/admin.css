@@ -1056,6 +1056,24 @@ stream.twchr-modal .twchr-modal-button.close{
     color: #fff;
 }
 
+.twchr-tab-card:hover{
+    background-color: var(--twchr-blue);
+    border: 1px solid var(--twchr-blue);
+    
+}
+
+.twchr-tab-card-embed img:nth-child(1){
+    margin-right: 5px;
+}
+
+.twchr-tab-card:hover img{
+    filter: brightness(5);
+}
+
+.twchr-tab-card:hover h3{
+    color: #fff;
+}
+
 .twchr-tab-card h3{
     color:var(--twchr-purple);
     margin-left: 17px;
