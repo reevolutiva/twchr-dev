@@ -103,19 +103,6 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 * Code Optimizations
 * Bug Fixes
 
-==0.4==
-* New Post Streaming Flow: Schedule - Stream - Embed
-* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
-* New Shortcodes 
-* Code Optimizations
-* Bug Fixes
-
-==0.3==
-* Redesigned schedule card
-* Improved series integration with Twitch Calendar
-* Improved code
-* Bug fixes
-
 == Upgrade Notice ==
 ==0.5==
 * Twitcher Card Redisign
@@ -124,14 +111,3 @@ Move folder inside the .zip file into the “wp-content/plugins/” directory if
 * **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
 * Code Optimizations
 * Bug Fixes
-
-==0.4==
-* Improved Streaming Flow: Easily program your streamings & series and embed videos into your post.
-* **New Shortcodes** <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
-* Code Optimizations
-* Bug Fixes
-
-==0.3==
-* New schedule card for better streaming and series management
-* Improved Twitch calendar integration. Create, delete, and modify schedule segments directly from your WordPress dashboard.
-* New shortcode for embedding series: [twtchr_list_series] <a href="https://twitcher.pro/twitcher-shortcodes/" title="">More Info here</a>
