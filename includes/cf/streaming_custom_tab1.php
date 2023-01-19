@@ -26,7 +26,7 @@ if ( isset( $_GET['twitcher_twitch_schedule_response'] ) && $_GET['twitcher_twit
 				<label for="twchr_schedule_card_input--is_recurrig__no"><?php twchr_esc_i18n( 'No', 'html' ); ?></label>
 			</div>
 		</div>
-		<div class="status">
+		<div class="status" style="text-align: center;">
 				<?php 
 					$terms = wp_get_post_terms(get_the_ID(), 'twchr_streaming_states');
 					if(COUNT($terms) > 0){

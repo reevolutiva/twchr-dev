@@ -57,6 +57,15 @@ function twchr_cf_schedule__card() {
 			wp_set_post_terms( $post_id, 'Past', 'twchr_streaming_states' );
 		}
 
+	}else{
+		$create_at_raw = get_post_meta( get_the_ID(), 'twchr-from-api_create_at', true );
+		$create_at = new DateTime($create_at_raw);
+		$date_now = new DateTime(date("c"));
+
+		if($date_now->getTimestamp() > $create_at->getTimestamp()){
+			wp_set_post_terms( $post_id, 'Past', 'twchr_streaming_states' );
+		}
+
 	}
 	
 	
