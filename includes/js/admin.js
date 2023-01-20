@@ -539,6 +539,9 @@ if(location.pathname.includes('post-new.php') || location.pathname.includes('pos
         if(!twchr_meta_box_serie.classList.contains("hide-if-js")){
             twchr_meta_box_serie.classList.add("hide-if-js");
         }
+        if(!twchr_meta_box_cat_tw.classList.contains("hide-if-js")){
+            twchr_meta_box_cat_tw.classList.add("hide-if-js");
+        }
     }
 }
 
