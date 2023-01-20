@@ -49,7 +49,7 @@ require_once 'includes/api-connection/twichtv.php';
 require_once 'includes/api-connection/api-db.php';
 
 // admin styles.
-require_once 'admin/admin-dashboard.php';
+//require_once 'admin/admin-dashboard.php';
 
 // Custom post types.
 require_once 'includes/cpt/streamings.php';
