@@ -69,13 +69,13 @@ function twchr_schedule_chapter_asign() {
         function(response) {
           const succs = response.data;
           GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
-          console.log(succs);
+          //console.log(succs);
           if(succs.terms){
             const terms = succs.terms;
   
             terms.forEach(item => {
               let selected = '';
-              console.log(item);
+              //console.log(item);
               if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.toLowerCase() == item.slug.toLowerCase()){
                 selected = 'selected="true"';
               }
@@ -388,8 +388,8 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
 
         twchr_send_front_to_bk(twchr_post_nonce,dataTo, (dataFrom) => {
           const e = dataFrom.data;
-          console.log(dataTo);
-          console.log(e);
+          //console.log(dataTo);
+          //console.log(e);
           if(e.status == 200){
             console.log(e);
             // Bloqueo todos los inputs.
@@ -459,8 +459,8 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
               };
               twchr_send_front_to_bk(twchr_post_nonce,dataTo, (dataFrom) => {
                 const e = dataFrom.data;
-                console.log(dataTo);
-                console.log(e);
+                //console.log(dataTo);
+                //console.log(e);
                 if(e.status == 200){
                   //console.log(e);
                   location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"

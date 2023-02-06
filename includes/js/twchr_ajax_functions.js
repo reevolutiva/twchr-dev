@@ -186,8 +186,11 @@ const tchr_get_clips = async (
     `https://api.twitch.tv/helix/videos?user_id=${user_id}`,
     requestOptions
   );
+
+  
   const response = await get.json();
   const arrayList = response.data;
+ 
   let Content = ""; // Inizializo Content
 
   // Si el parametro callback_ajax no esta definido
@@ -223,8 +226,9 @@ const tchr_get_clips = async (
 
     wp.apiRequest({
       path:'twchr/v1/twchr_get_streaming',
-      method:'POST',
+      method:'GET',
     }).then(data => {
+      //console.log(data);
       twchr_verification_videos(data,true);
     }); 
 
@@ -251,7 +255,7 @@ const tchr_get_clips = async (
         //TODO: cambiar wp.apiRequest
         wp.apiRequest({
           path:'twchr/v1/twchr_get_streaming',
-          method:'POST',
+          method:'GET',
         }).then(i => {
           //console.log(i);
           i.some((it) => it.title == titulo)
