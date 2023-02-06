@@ -605,7 +605,15 @@ if(location.pathname.includes('edit.php') && getParameterByName('post_type') == 
         
         // Me comunico con la API de wordpress
         //TODO: cambiar wp.apiRequest
-        twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
+
+        wp.apiRequest({
+            path:'twchr/v1/twchr_get_streaming',
+            method:'POST',
+          }).then(data => {
+            twchr_verification_videos(data);
+          }); 
+
+        //twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', twchr_verification_videos,'json');
 
         
 

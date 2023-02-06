@@ -220,10 +220,19 @@ const tchr_get_clips = async (
 
     //TODO: Agregar verificacion de tiket verde para modal de asignacion twitchembed.
     //TODO: cambiar wp.apiRequest
+
+    wp.apiRequest({
+      path:'twchr/v1/twchr_get_streaming',
+      method:'POST',
+    }).then(data => {
+      twchr_verification_videos(data,true);
+    }); 
+
+    /*
     twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', (e)=>{
         twchr_verification_videos(e,true);
      },'json');
-
+    */
     // Guardo boton asign
     const asign_btn = GSCJS.queryOnly(
       ".twchr_custom_card--contain  #twchr-modal-selection__btn"
@@ -240,6 +249,20 @@ const tchr_get_clips = async (
         const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
         let titulo = data.title;
         //TODO: cambiar wp.apiRequest
+        wp.apiRequest({
+          path:'twchr/v1/twchr_get_streaming',
+          method:'POST',
+        }).then(i => {
+          //console.log(i);
+          i.some((it) => it.title == titulo)
+              ? (titulo = titulo + " (Duplicate)")
+              : (titulo = titulo);
+            GSCJS.queryOnly("#titlewrap label").classList.add(
+              "screen-reader-text"
+            );
+            GSCJS.queryOnly("#titlewrap input").value = titulo; // Escribo el titulo del post
+        }); 
+        /*
         twchrFetchGet(
           tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_streaming",
           (i) => {
@@ -254,6 +277,7 @@ const tchr_get_clips = async (
           },
           "json"
         );
+        */
 
         let stream_data_from_twitch = "";
         for (element in data) {

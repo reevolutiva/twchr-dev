@@ -42,7 +42,7 @@ function twchr_ajax_recive_callback() {
 	$twchr_data = $_POST['data'];
 	$twchr_action = sanitize_text_field( $twchr_data['twchr_action'] );
 	$target = sanitize_text_field( $twchr_data['twchr_target'] );
-	$body = $_POST['body'];
+	$body = $twchr_data['body'];
 	$response = 'LE NO';
 
 	if ( ! check_ajax_referer( 'twchr_ajax_recive', 'nonce', false ) ) {

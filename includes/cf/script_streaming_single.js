@@ -75,7 +75,7 @@ function twchr_schedule_chapter_asign() {
   
             terms.forEach(item => {
               let selected = '';
-              //console.log(item);
+              console.log(item);
               if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.toLowerCase() == item.slug.toLowerCase()){
                 selected = 'selected="true"';
               }
@@ -353,7 +353,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
             "#twchr_dateTime_slot"
           ).value;
         }
-        const data = {
+        const dataTo = {
           twchr_action: "asing",
           twchr_target: "slide-1",
           body: {
@@ -386,8 +386,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           },
         };
 
-        twchr_send_front_to_bk(twchr_post_nonce,data, (data) => {
-          const e = data.data;
+        twchr_send_front_to_bk(twchr_post_nonce,dataTo, (dataFrom) => {
+          const e = dataFrom.data;
+          console.log(dataTo);
           console.log(e);
           if(e.status == 200){
             console.log(e);
@@ -405,7 +406,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
               }
             );
             setTimeout(() => {
-              location.reload();
+              //location.reload();
             }, 1000);
           }else{
             console.log(e);
@@ -443,7 +444,7 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
 
               // Convert the difference to minutes
               let minutes = diff / (1000 * 60);
-              const data = {
+              const dataTo = {
                 twchr_action: "update",
                 twchr_target: "slide-1",
                 body: {
@@ -456,8 +457,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
                   streaming_duration: minutes,
                 },
               };
-              twchr_send_front_to_bk(twchr_post_nonce,data, (data) => {
-                const e = data.data;
+              twchr_send_front_to_bk(twchr_post_nonce,dataTo, (dataFrom) => {
+                const e = dataFrom.data;
+                console.log(dataTo);
                 console.log(e);
                 if(e.status == 200){
                   //console.log(e);
