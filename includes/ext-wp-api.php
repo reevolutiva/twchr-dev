@@ -35,6 +35,14 @@ add_action( 'rest_api_init', 'twchr_endpoint_tax_register_serie' );// twchr_endp
  * @return void
  */
 function twchr_endpoint_tax_register_callback_serie() {
+
+	/* 
+	* Verifico si el usuario tiene lso permiso
+	*/
+	if(!is_user_logged_in() || !current_user_can('read')){
+		wp_die('usuario no autenticado');
+	}
+
 	$args = array(
 		'taxonomy' => 'serie',
 		'hide_empty' => false,
@@ -105,6 +113,14 @@ add_action( 'rest_api_init', 'twchr_endpoint_cpt_register_streaming' );
  * @return void
  */
 function twchr_endpoint_cpt_register_callback_streaming( $request ) {
+
+	/* 
+	* Verifico si el usuario tiene lso permiso
+	*/
+	if(!is_user_logged_in() || !current_user_can('read')){
+		wp_die('usuario no autenticado');
+	}
+
 	// Solicita a BDD todos los post-type = twchr_streams que esten plubicados.
 	$posts = get_posts(
 		array(

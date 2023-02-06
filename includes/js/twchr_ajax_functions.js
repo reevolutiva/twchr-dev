@@ -219,6 +219,7 @@ const tchr_get_clips = async (
     const postBox = GSCJS.queryAll("#twittcher-stream .inside input");
 
     //TODO: Agregar verificacion de tiket verde para modal de asignacion twitchembed.
+    //TODO: cambiar wp.apiRequest
     twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', (e)=>{
         twchr_verification_videos(e,true);
      },'json');
@@ -238,6 +239,7 @@ const tchr_get_clips = async (
       if (pos != "not found") {
         const data = arrayList[pos]; // tomo el video de la api con el mismo index guardado en pos
         let titulo = data.title;
+        //TODO: cambiar wp.apiRequest
         twchrFetchGet(
           tchr_vars_admin.wp_api_route + "twchr/v1/twchr_get_streaming",
           (i) => {
