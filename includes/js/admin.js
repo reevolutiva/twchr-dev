@@ -720,6 +720,7 @@ if(location.pathname.includes('plugins.php')){
     disactive_link.addEventListener('click',(e)=>{
         e.preventDefault();
         if(confirm('You want to remove all twitcher information from the database when uninstalling this plugin?')){
+            //TODO: Cambiar por una peticion Jquery.
             wp.ajax.send('twchr_delete_all',{data:{twchr_delete_all:1}}).done(
 
                 e => {
@@ -742,3 +743,4 @@ if(location.pathname.includes('plugins.php')){
     },);
 
 }
+

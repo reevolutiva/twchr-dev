@@ -15,6 +15,7 @@ add_action( 'wp_ajax_twchr_taxonomy_update', 'twchr_taxonomy_update_twchr_aja_ca
  * @return void
  */
 function twchr_taxonomy_update_twchr_aja_callback() {
+
 	if ( ! check_ajax_referer( 'twchr_taxonomy_update', 'nonce', false ) ) {
 		wp_die( 'Invalid security token' );
 	}
@@ -38,9 +39,9 @@ add_action( 'wp_ajax_twchr_ajax_recive', 'twchr_ajax_recive_callback' );
  */
 function twchr_ajax_recive_callback() {
 	// Recupera los datos enviados con la solicitud AJAX
-
-	$twchr_action = sanitize_text_field( $_POST['twchr_action'] );
-	$target = sanitize_text_field( $_POST['twchr_target'] );
+	$twchr_data = $_POST['data'];
+	$twchr_action = sanitize_text_field( $twchr_data['twchr_action'] );
+	$target = sanitize_text_field( $twchr_data['twchr_target'] );
 	$body = $_POST['body'];
 	$response = 'LE NO';
 

@@ -42,7 +42,6 @@ function twchr_verification_videos(WpData,radio=false){
       
       
           if(WpData.length > 1 && index < WpData.length ){
-              console.log(WpData.find(wp => wp.twchr_id == check.value) != undefined);
               if(WpData.find(wp => wp.twchr_id == check.value) != undefined){
                 // TODO: marcar cheked
                   //console.log("paso el if");
@@ -221,7 +220,6 @@ const tchr_get_clips = async (
 
     //TODO: Agregar verificacion de tiket verde para modal de asignacion twitchembed.
     twchrFetchGet(tchr_vars_admin.wp_api_route+'twchr/v1/twchr_get_streaming', (e)=>{
-        console.log(e);
         twchr_verification_videos(e,true);
      },'json');
 

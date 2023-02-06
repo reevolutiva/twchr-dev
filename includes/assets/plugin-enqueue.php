@@ -59,9 +59,10 @@ function twchr_admin_js() {
 			'twitcher_data_clear_all' => get_option( 'twchr_delete_all' ),
 			'site_url' => site_url(),
 			'wp_api_route' => rest_url(),
+			'ajax_url' => admin_url( 'admin-ajax.php' )
 		);
-		wp_register_script( 'twchr_custom_script', TWCHR_URL . 'includes/js/admin.js', array(), TWCHR_ASSETS_VERSION, true );
-		wp_register_script( 'twchr_ajax_functions', TWCHR_URL . 'includes/js/twchr_ajax_functions.js', array(), TWCHR_ASSETS_VERSION, false );
+		wp_register_script( 'twchr_custom_script', TWCHR_URL . 'includes/js/admin.js', array('wp-api','jquery'), TWCHR_ASSETS_VERSION, true );
+		wp_register_script( 'twchr_ajax_functions', TWCHR_URL . 'includes/js/twchr_ajax_functions.js', array('wp-api','jquery'), TWCHR_ASSETS_VERSION, false );
 		wp_enqueue_script( 'twchr_custom_script' );
 		wp_enqueue_script( 'twchr_ajax_functions' );
 		wp_localize_script( 'twchr_custom_script', 'tchr_vars_admin', $params );

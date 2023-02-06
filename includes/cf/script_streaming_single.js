@@ -57,130 +57,33 @@ function twchr_schedule_chapter_asign() {
     }
     
     if(segments != false && e != 'undefined'){
-      wp.ajax.send('twchr_taxonomy_update',{
-        data:{
-          nonce: twchr_taxonomy_update,
-          segment: segments
-        },
-        success: res =>{
-          console.log(res);
-          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
-        },
-        error: err =>{
-          //console.log(err);
-          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
-          //alert("message: "+res.message);
-				  alert("You will be redirected to the authentication page in a few seconds.");
-				  location.href = twchr_admin_url+'edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
-        }
+      //TODO: Cambiar por una peticion Jquery.
+      const data = {
+        action: 'twchr_taxonomy_update',
+        nonce: twchr_taxonomy_update,
+        segment: segments
       }
-      ).done(succs => {
-        //console.log(succs);
-        if(succs.terms){
-          const terms = succs.terms;
-
-          terms.forEach(item => {
-            let selected = '';
-            //console.log(item);
-            if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.toLowerCase() == item.slug.toLowerCase()){
-              selected = 'selected="true"';
-            }
-            const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
-            twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
-          });
-
-          if(twchr_ajax_input_serie.value == 'undefined'){
-            GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-              if(item.classList.contains("serie") ||
-                item.classList.contains("serie-name") ||
-                item.classList.contains("is_recurring")){
-                }else{
-                  item.style.display = "none";
-              }
-            });
-          }else{
-            GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-              if(item.classList.contains("serie") ||
-                item.classList.contains("serie-name") ||
-                item.classList.contains("is_recurring")){
-                }else{
-                  item.style.display = "";
-              }
-            });
-          }
-    
-          if(twchr_is_recurring[0].checked == true){
-            GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
-                // SI este item tiene un input
-                if(item.querySelector("input") != null){
-                    const input = item.querySelector("input");
-                    if(input.value.length > 0){
-                        item.style.display = '';
-                    }
-                }
-                if(item.querySelector("twchr_cards_input_badges badges")){
-                    const badge = querySelector("twchr_cards_input_badges badges");
-                    if(badge.textContent.length > 0){
-                        item.style.display = '';
-                    }
-                }
-            });
-          }
-
-          twchr_ajax_input_serie.addEventListener('change', (event) => {
-
-            const term = {
-              term_id: event.target.value.split('|')[0],
-              name: event.target.value.split('|')[1],
-            };
-    
-    
+      jQuery.post(
+        tchr_vars_admin.ajax_url,
+        data,
+        function(response) {
+          const succs = response.data;
+          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
+          console.log(succs);
+          if(succs.terms){
+            const terms = succs.terms;
+  
             terms.forEach(item => {
-              if (item.term_id == term.term_id) {
-                if(item.chapters && item.chapters != 'this serie not contains chapters'){
-                  
-                  const chapters = item.chapters;
-                  
-                  twchr_dateTime_slot.innerHTML = "";              
-                        
-                  chapters.forEach(chapter => {
-                    const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
-                    twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-                  });
-    
-                }else{
-                  twchr_dateTime_slot.innerHTML = "";
-                  const opt = `<option value="false">this serie not contains chapter</option>`;
-                  twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
-                }
+              let selected = '';
+              //console.log(item);
+              if(GSCJS.queryOnly("#twchr_term_serie_list").textContent.toLowerCase() == item.slug.toLowerCase()){
+                selected = 'selected="true"';
               }
+              const option = `<option value="${item.term_id}|${item.name}" ${selected} >${item.name + " - " + item.term_id}</option>`;
+              twchr_ajax_input_serie.innerHTML = twchr_ajax_input_serie.innerHTML + option;
             });
-    
-            twchr_dateTime_slot.addEventListener('change',e =>{
-              const id = e.target.value.split(";")[0];
-              console.log(id);
-              
-              terms.forEach(element =>{
-                if(element.chapters != 'this serie not contains chapters'){
-                  const capitulo = element.chapters[0] != undefined ? element.chapters[0] : false;
-                  console.log(capitulo);
-                  if(capitulo.id == id && capitulo != false){
-                    const cat = capitulo.category;
-                    GSCJS.queryOnly("#twchr_schedule_card_input--category__name").value = cat.name;
-                    GSCJS.queryOnly("#twchr_schedule_card_input--category__value").value = cat.id;
-                    //console.log(cat);
-                  } 
-                }
-              });
-            });
-    
-          },{ passive: true});
-    
-          twchr_ajax_input_serie.addEventListener('change', e =>{
-            // Si el value del select twchr_ajax_input_serie es undefined. 
+  
             if(twchr_ajax_input_serie.value == 'undefined'){
-              GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.style.display = "grid";
-              GSCJS.queryOnly("#twchr_schedule_card_input--title").value = '';
               GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
                 if(item.classList.contains("serie") ||
                   item.classList.contains("serie-name") ||
@@ -189,7 +92,6 @@ function twchr_schedule_chapter_asign() {
                     item.style.display = "none";
                 }
               });
-              // Si no es undefined.
             }else{
               GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
                 if(item.classList.contains("serie") ||
@@ -197,17 +99,119 @@ function twchr_schedule_chapter_asign() {
                   item.classList.contains("is_recurring")){
                   }else{
                     item.style.display = "";
-                  }
-    
-                  GSCJS.queryOnly("#twchr_schedule_card_input--title").value = twchr_ajax_input_serie.value.split("|")[1];
-                  GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.style.display = "none";
-                  const curr_url = GSCJS.queryOnly("#twchr_card_button_create_new_serie a").getAttribute("href");
-                  GSCJS.queryOnly("#twchr_card_button_create_new_serie a").setAttribute("href",`${curr_url}&from_cpt_name=${twchr_ajax_input_serie.value.split("|")[1]}`);
-          
+                }
               });
             }
-          },{ passive: true});
+      
+            if(twchr_is_recurring[0].checked == true){
+              GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+                  // SI este item tiene un input
+                  if(item.querySelector("input") != null){
+                      const input = item.querySelector("input");
+                      if(input.value.length > 0){
+                          item.style.display = '';
+                      }
+                  }
+                  if(item.querySelector("twchr_cards_input_badges badges")){
+                      const badge = querySelector("twchr_cards_input_badges badges");
+                      if(badge.textContent.length > 0){
+                          item.style.display = '';
+                      }
+                  }
+              });
+            }
+  
+            twchr_ajax_input_serie.addEventListener('change', (event) => {
+  
+              const term = {
+                term_id: event.target.value.split('|')[0],
+                name: event.target.value.split('|')[1],
+              };
+      
+      
+              terms.forEach(item => {
+                if (item.term_id == term.term_id) {
+                  if(item.chapters && item.chapters != 'this serie not contains chapters'){
+                    
+                    const chapters = item.chapters;
+                    
+                    twchr_dateTime_slot.innerHTML = "";              
+                          
+                    chapters.forEach(chapter => {
+                      const opt = `<option value="${chapter.id};${chapter.title}|${chapter.start_time};${chapter.end_time}">${chapter.title} ${chapter.start_time} - ${chapter.end_time}</option>`;
+                      twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
+                    });
+      
+                  }else{
+                    twchr_dateTime_slot.innerHTML = "";
+                    const opt = `<option value="false">this serie not contains chapter</option>`;
+                    twchr_dateTime_slot.innerHTML = twchr_dateTime_slot.innerHTML + opt;
+                  }
+                }
+              });
+      
+              twchr_dateTime_slot.addEventListener('change',e =>{
+                const id = e.target.value.split(";")[0];
+                console.log(id);
+                
+                terms.forEach(element =>{
+                  if(element.chapters != 'this serie not contains chapters'){
+                    const capitulo = element.chapters[0] != undefined ? element.chapters[0] : false;
+                    console.log(capitulo);
+                    if(capitulo.id == id && capitulo != false){
+                      const cat = capitulo.category;
+                      GSCJS.queryOnly("#twchr_schedule_card_input--category__name").value = cat.name;
+                      GSCJS.queryOnly("#twchr_schedule_card_input--category__value").value = cat.id;
+                      //console.log(cat);
+                    } 
+                  }
+                });
+              });
+      
+            },{ passive: true});
+      
+            twchr_ajax_input_serie.addEventListener('change', e =>{
+              // Si el value del select twchr_ajax_input_serie es undefined. 
+              if(twchr_ajax_input_serie.value == 'undefined'){
+                GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.style.display = "grid";
+                GSCJS.queryOnly("#twchr_schedule_card_input--title").value = '';
+                GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+                  if(item.classList.contains("serie") ||
+                    item.classList.contains("serie-name") ||
+                    item.classList.contains("is_recurring")){
+                    }else{
+                      item.style.display = "none";
+                  }
+                });
+                // Si no es undefined.
+              }else{
+                GSCJS.queryAll(".silde-1 .twchr-card-row").forEach(item => {
+                  if(item.classList.contains("serie") ||
+                    item.classList.contains("serie-name") ||
+                    item.classList.contains("is_recurring")){
+                    }else{
+                      item.style.display = "";
+                    }
+      
+                    GSCJS.queryOnly("#twchr_schedule_card_input--title").value = twchr_ajax_input_serie.value.split("|")[1];
+                    GSCJS.queryOnly("#twchr_schedule_card_input--title").parentElement.style.display = "none";
+                    const curr_url = GSCJS.queryOnly("#twchr_card_button_create_new_serie a").getAttribute("href");
+                    GSCJS.queryOnly("#twchr_card_button_create_new_serie a").setAttribute("href",`${curr_url}&from_cpt_name=${twchr_ajax_input_serie.value.split("|")[1]}`);
+            
+                });
+              }
+            },{ passive: true});
+          }
+          // Handle the response
         }
+      ).fail(function(jqXHR, textStatus, errorThrown) {
+        // Handle the error
+        GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
+          //alert("message: "+errorThrown);
+          GSCJS.queryOnly(".twchr_car_tab1 .twchr__schedule__loading").style.display = "none";
+				  alert("You will be redirected to the authentication page in a few seconds.");
+				  location.href = twchr_admin_url+'edit.php?post_type=twchr_streams&page=twchr-dashboard&autentication=true';
+
       });
     }
       
@@ -295,9 +299,20 @@ twchr_card_header_menu[1].addEventListener('click', ()=>{
  * @param {*} twchr_object
  * @param {*} twchr_callback
  */
-function twchr_send_front_to_bk(twchr_object,twchr_callback){
+function twchr_send_front_to_bk(nonce,twchr_object,twchr_callback){
     //console.log(twchr_object);
-    wp.ajax.send('twchr_ajax_recive',{data:twchr_object}).done(e => twchr_callback(e));
+    //TODO: Cambiar por una peticion Jquery.
+    jQuery.post(
+      tchr_vars_admin.ajax_url,
+      {
+        action : 'twchr_ajax_recive',
+        nonce: nonce,
+        data : twchr_object
+      },
+      function(response) {
+        twchr_callback(response);
+      }
+    );
 }
 
 twchr_modal_schedule__btn.addEventListener('click',e => {
@@ -341,7 +356,6 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
         const data = {
           twchr_action: "asing",
           twchr_target: "slide-1",
-          nonce: twchr_post_nonce,
           body: {
             post_id: twchr_post_id,
             post_title: document.querySelector("#titlewrap #title").value,
@@ -372,8 +386,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
           },
         };
 
-        twchr_send_front_to_bk(data, (e) => {
-          
+        twchr_send_front_to_bk(twchr_post_nonce,data, (data) => {
+          const e = data.data;
+          console.log(e);
           if(e.status == 200){
             console.log(e);
             // Bloqueo todos los inputs.
@@ -431,7 +446,6 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
               const data = {
                 twchr_action: "update",
                 twchr_target: "slide-1",
-                nonce: twchr_post_nonce,
                 body: {
                   post_id: twchr_post_id,
                   schedule_id: segment.id,
@@ -442,8 +456,9 @@ twchr_modal_schedule__btn.addEventListener('click',e => {
                   streaming_duration: minutes,
                 },
               };
-              twchr_send_front_to_bk(data, (e) => {
-                //console.log(e);
+              twchr_send_front_to_bk(twchr_post_nonce,data, (data) => {
+                const e = data.data;
+                console.log(e);
                 if(e.status == 200){
                   //console.log(e);
                   location.href = twchr_admin_url+"post.php?post="+e.post_id+"&action=edit"
