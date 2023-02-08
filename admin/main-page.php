@@ -316,6 +316,34 @@ if ( ! twchr_is_ssl_secure() ) :
 			?>
 		
 	</article>
+	<article class="followers-table">
+		<h3>Your Followers</h3>
+		<div class="twchr-dashboard-card">
+			
+						<table>
+							<tbody>
+								<tr>
+									<td>Nombre</td>
+									<td>Followed at</td>
+								</tr>
+								<?php
+								if(isset($followers) && !empty($followers)){
+									foreach($followers->{'data'} as $follower):
+									?>
+								<tr>
+									<td><?php echo $follower->{'from_name'}?></td>
+									<td><?php echo date('d/m/y',strtotime($follower->{'followed_at'}))?></td>
+								</tr>
+								<?php
+									endforeach;
+								}
+								?>
+							</tbody>
+						</table>	
+					
+		
+		</div>
+	</article>
 			<?php
 			if ( isset( $_GET ) ) {
 				if ( count( $_GET ) > 1 ) {
