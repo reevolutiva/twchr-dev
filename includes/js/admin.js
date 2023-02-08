@@ -753,3 +753,32 @@ if(location.pathname.includes('plugins.php')){
 
 }
 
+if(location.pathname.includes("edit.php") && getParameterByName('post_type') == 'twchr_streams'){
+    const streaming_status = document.querySelectorAll("table.posts tr td.taxonomy-twchr_streaming_states");
+    /*
+        STATES: PAST, LIVE, FUTURE
+    */
+
+    for(let i = 0; i < streaming_status.length; i++) {
+        const item = streaming_status[i];
+        let styles = `color: #fff; padding: 3pt 5pt; width: max-content; border-radius: 10px;`;
+        switch (item.textContent) {
+            case 'Past':
+                styles = styles + `background-color:var(--twchr-purple);`
+                break;
+            case 'Live':
+                styles = styles + `background-color:var(--twchr-green);`
+                break;
+            case 'Future':
+                styles = styles + `background-color:var(--twchr-blue);`
+                break;
+        
+            default:
+                break;
+        }
+        item.querySelector("a").setAttribute('style', styles);
+        //console.log(item.textContent);
+    }
+
+    
+}
