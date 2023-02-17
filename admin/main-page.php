@@ -321,11 +321,14 @@ if ( ! twchr_is_ssl_secure() ) :
 		<div class="twchr-dashboard-card">
 			
 						<table>
-							<tbody>
+							<thead>
 								<tr>
-									<td>Nombre</td>
+									<td>Username</td>
 									<td>Followed at</td>
 								</tr>
+							</thead>
+							<tbody>
+				
 								<?php
 								if(isset($followers) && !empty($followers)){
 									foreach($followers->{'data'} as $follower):

@@ -229,7 +229,7 @@
     
     .twchr-for-back.twchr-container{
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 150px auto auto;
+        grid-template-rows: 150px auto auto auto 1cm;
         max-width: 800px;
     }
     
