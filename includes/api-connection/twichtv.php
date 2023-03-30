@@ -9,7 +9,7 @@
  */
 
 class TwitchTV {
-	var $base_url = 'https://api.twitch.tv/kraken/';
+	var $base_url = 'https://id.twitch.tv/';
 	var $client_id = '';
 	var $client_secret = '';
 	var $redirect_url = '';
